@@ -39,6 +39,12 @@ message PvpFightOvercome{
     optional int32 skill = 4; //无双技能ID
 }
 
+//864
+message PvpRobTreasureRequest{
+    required int32 uid = 1;
+    required int32 chip_id = 2;
+}
+
 message PvpFightOvercomeInfo{
     repeated int32 character_ids = 1;
     required int32 index = 2;

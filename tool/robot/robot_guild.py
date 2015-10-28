@@ -11,9 +11,22 @@ from app.proto_file.travel_pb2 import *
 from app.proto_file.runt_pb2 import *
 from app.proto_file.level_gift_pb2 import *
 from app.proto_file.start_target_pb2 import *
+from app.proto_file.rob_treasure_pb2 import *
 
 
 class RobotGuild(Robot):
+    def command_rob_treasure_init(self):
+        self.send_message('', 858)
+
+    def rob_treasure_init_858(self, message):
+        argument = RobTreasureInitResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    # =====================
+
+    """
     def command_start_target_get(self):
         argument1 = GetStartTargetRewardRequest()
         argument1.target_id = 29001
@@ -209,3 +222,4 @@ class RobotGuild(Robot):
         argument = StageSettlementResponse()
         argument.ParseFromString(message)
         print argument
+    """

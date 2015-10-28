@@ -28,12 +28,12 @@ def add_level_rank_info(instance, users):
 def add_power_rank_info(instance, users):
     for uid in users:
         character_obj = tb_character_info.getObj(uid)
-        character_info = character_obj.hmget(['level', 'attackPoint',
+        character_info = character_obj.hmget(['level', 'hight_power',
                                               'nickname'])
         if not character_info['nickname']:
             continue
-        if character_info['attackPoint']:
-            rank_value = int(character_info['attackPoint'])
+        if character_info['hight_power']:
+            rank_value = int(character_info['hight_power'])
         else:
             rank_value = 0
         value = rank_value * const.power_rank_xs + character_info['level']

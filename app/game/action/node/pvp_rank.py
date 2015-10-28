@@ -26,6 +26,7 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 from app.game.core.task import hook_task, CONDITIONId
+from app.game.core.equipment.equipment_chip import EquipmentChip
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -213,7 +214,7 @@ def get_pvp_data(character_id):
     return {}
 
 
-def pvp_fight(player, character_id, line_up, skill, response, callback,
+def pvp_fight(player, character_id, line_up, skill, response,
               is_copy_unit=False):
     record = get_pvp_data(character_id)
     if not record:
@@ -247,7 +248,7 @@ def pvp_fight(player, character_id, line_up, skill, response, callback,
     response.red_skill_level = skill_level
     response.blue_skill = record.get("unpar_skill")
     response.blue_skill_level = record.get("unpar_skill_level")
-    return callback(player, fight_result)
+    return fight_result
 
 
 @remoteserviceHandle('gate')
@@ -321,84 +322,83 @@ def pvp_fight_request_1505(data, player):
     return_data = consume(player, arena_consume, const.PVP)
     get_return(player, return_data, response.consume)
 
-    def settle(player, fight_result):
-        rank_incr = 0
-        response.top_rank = player.pvp.pvp_high_rank
-        if fight_result:
-            logger.debug("fight result:True:%s:%s",
-                         before_player_rank, challenge_rank)
+    fight_result = pvp_fight(player, target_id, line_up, skill, response)
 
-            _arena_win_points = game_configs.base_config.get('arena_win_points')
-            if _arena_win_points:
-                return_data = gain(player, _arena_win_points, const.ARENA_WIN)
-                get_return(player, return_data, response.gain)
-            else:
-                logger.debug('arena win points is not find')
+    rank_incr = 0
+    response.top_rank = player.pvp.pvp_high_rank
+    if fight_result:
+        logger.debug("fight result:True:%s:%s",
+                     before_player_rank, challenge_rank)
 
-            push_config = game_configs.push_config[1003]
-            rank_count = push_config.conditions[0]
-            if challenge_rank - before_player_rank >= rank_count:
-                txt = game_configs.push_config[1003].text
-                message = game_configs.language_config.get(str(txt)).get('cn')
-                remote_gate['push'].add_push_message_remote(player.base_info.id, 3,
-                                                            message, int(time.time()))
-
-            push_message('add_blacklist_request_remote', target_id,
-                         player.base_info.id)
-
-            if challenge_rank < before_player_rank:
-                tb_pvp_rank.zadd(challenge_rank, player.base_info.id,
-                                 before_player_rank, target_id)
-                send_mail(conf_id=123, receive_id=target_id,
-                          pvp_rank=before_player_rank,
-                          nickname=player.base_info.base_name)
-
-            if challenge_rank < player.pvp.pvp_high_rank:
-                rank_incr = player.pvp.pvp_high_rank - challenge_rank
-            if player.pvp.pvp_high_rank > challenge_rank:
-                hook_task(player, CONDITIONId.PVP_RANK, challenge_rank)
-
-            # stage award
-            stage_info_before = get_player_pvp_stage(player.pvp.pvp_high_rank)
-            stage_info_current = get_player_pvp_stage(challenge_rank)
-            if not stage_info_current and stage_info_before.get('Gradient') > stage_info_current.get('Gradient'):
-                arena_stage_reward = stage_info_current.get('Reward')
-                stage_reward_data = gain(player, arena_stage_reward,
-                                         const.ARENA_WIN)
-                get_return(player, stage_reward_data, response.award2)
-                logger.debug('stage award',
-                             stage_info_current, stage_info_before)
-
-            player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
-                                           challenge_rank)
-            logger.debug(" history_high_rank %s current %s" % (player.pvp.pvp_high_rank, before_player_rank))
-
-            # 首次达到某名次的奖励
-            arena_rank_up_rewards = game_configs.base_config.get('arenaRankUpRewards')
-            if arena_rank_up_rewards:
-                return_data = gain(player, arena_rank_up_rewards,
-                                   const.ARENA_WIN, multiple=rank_incr)
-                get_return(player, return_data, response.award)
-            else:
-                logger.debug('arena rank up points is not find')
+        _arena_win_points = game_configs.base_config.get('arena_win_points')
+        if _arena_win_points:
+            return_data = gain(player, _arena_win_points, const.ARENA_WIN)
+            get_return(player, return_data, response.gain)
         else:
-            logger.debug("fight result:False")
-            send_mail(conf_id=124, receive_id=target_id,
+            logger.debug('arena win points is not find')
+
+        push_config = game_configs.push_config[1003]
+        rank_count = push_config.conditions[0]
+        if challenge_rank - before_player_rank >= rank_count:
+            txt = game_configs.push_config[1003].text
+            message = game_configs.language_config.get(str(txt)).get('cn')
+            remote_gate['push'].add_push_message_remote(player.base_info.id, 3,
+                                                        message, int(time.time()))
+
+        push_message('add_blacklist_request_remote', target_id,
+                     player.base_info.id)
+
+        if challenge_rank < before_player_rank:
+            tb_pvp_rank.zadd(challenge_rank, player.base_info.id,
+                             before_player_rank, target_id)
+            send_mail(conf_id=123, receive_id=target_id,
+                      pvp_rank=before_player_rank,
                       nickname=player.base_info.base_name)
 
-        hook_task(player, CONDITIONId.PVP_RANk_TIMES, 1)
+        if challenge_rank < player.pvp.pvp_high_rank:
+            rank_incr = player.pvp.pvp_high_rank - challenge_rank
+        if player.pvp.pvp_high_rank > challenge_rank:
+            hook_task(player, CONDITIONId.PVP_RANK, challenge_rank)
 
-        player.pvp.pvp_times -= 1
-        player.pvp.pvp_refresh_time = time.time()
-        player.pvp.save_data()
-        response.res.result = True
-        # response.top_rank = player.pvp.pvp_high_rank
-        response.rank_incr = rank_incr
-        logger.debug(response)
+        # stage award
+        stage_info_before = get_player_pvp_stage(player.pvp.pvp_high_rank)
+        stage_info_current = get_player_pvp_stage(challenge_rank)
+        if not stage_info_current and stage_info_before.get('Gradient') > stage_info_current.get('Gradient'):
+            arena_stage_reward = stage_info_current.get('Reward')
+            stage_reward_data = gain(player, arena_stage_reward,
+                                     const.ARENA_WIN)
+            get_return(player, stage_reward_data, response.award2)
+            logger.debug('stage award',
+                         stage_info_current, stage_info_before)
 
-        return response.SerializeToString()
+        player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
+                                       challenge_rank)
+        logger.debug(" history_high_rank %s current %s" % (player.pvp.pvp_high_rank, before_player_rank))
 
-    return pvp_fight(player, target_id, line_up, skill, response, settle)
+        # 首次达到某名次的奖励
+        arena_rank_up_rewards = game_configs.base_config.get('arenaRankUpRewards')
+        if arena_rank_up_rewards:
+            return_data = gain(player, arena_rank_up_rewards,
+                               const.ARENA_WIN, multiple=rank_incr)
+            get_return(player, return_data, response.award)
+        else:
+            logger.debug('arena rank up points is not find')
+    else:
+        logger.debug("fight result:False")
+        send_mail(conf_id=124, receive_id=target_id,
+                  nickname=player.base_info.base_name)
+
+    hook_task(player, CONDITIONId.PVP_RANk_TIMES, 1)
+
+    player.pvp.pvp_times -= 1
+    player.pvp.pvp_refresh_time = time.time()
+    player.pvp.save_data()
+    response.res.result = True
+    # response.top_rank = player.pvp.pvp_high_rank
+    response.rank_incr = rank_incr
+    logger.debug(response)
+
+    return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
@@ -416,22 +416,22 @@ def pvp_fight_revenge_1507(data, player):
         response.res.result_no = 1516
         return response.SerializePartialToString()
 
-    def settle(player, fight_result):
-        logger.debug("fight revenge result:%s" % fight_result)
+    fight_result = pvp_fight(player, target_id, line_up, skill, response)
 
-        if fight_result:
-            player.friends.del_blacklist(target_id)
-            player.friends.save_data()
+    logger.debug("fight revenge result:%s" % fight_result)
 
-            revenge_reward = game_configs.base_config['arenaRevengeRewards']
-            return_data = gain(player, revenge_reward, const.FRIEND_REVENGE)
-            get_return(player, return_data, response.gain)
+    if fight_result:
+        player.friends.del_blacklist(target_id)
+        player.friends.save_data()
 
-        response.res.result = True
-        logger.debug("red_units: %s" % response.red)
-        return response.SerializeToString()
+        revenge_reward = game_configs.base_config['arenaRevengeRewards']
+        return_data = gain(player, revenge_reward, const.FRIEND_REVENGE)
+        get_return(player, return_data, response.gain)
 
-    return pvp_fight(player, target_id, line_up, skill, response, settle)
+    response.res.result = True
+    logger.debug("red_units: %s" % response.red)
+    return response.SerializeToString()
+
 
 
 @remoteserviceHandle('gate')
@@ -475,31 +475,30 @@ def pvp_fight_overcome_1508(data, player):
         response.res.result_no = 150802
         return response.SerializePartialToString()
 
-    def settle(player, fight_result):
-        logger.debug("fight revenge result:%s" % fight_result)
+    fight_result = pvp_fight(player, target_id, line_up, skill, response,
+                             is_copy_unit=True)
 
-        if fight_result:
-            player.pvp.pvp_overcome_current += 1
-            player.pvp.pvp_overcome_stars += ggzj_item.get('star')
-            player.pvp.save_data()
+    logger.debug("fight revenge result:%s" % fight_result)
 
-            return_data = gain(player, ggzj_item.get('reward1'),
-                               const.PVP_OVERCOME)
-            get_return(player, return_data, response.gain)
-            return_data = gain(player, ggzj_item.get('reward2'),
-                               const.PVP_OVERCOME)
-            get_return(player, return_data, response.gain)
-            response.res.result = True
-        else:
-            player.pvp.pvp_overcome_failed = True
-            player.pvp.save_data()
-            response.res.result = False
+    if fight_result:
+        player.pvp.pvp_overcome_current += 1
+        player.pvp.pvp_overcome_stars += ggzj_item.get('star')
+        player.pvp.save_data()
 
-        logger.debug("red_units: %s" % response.red)
-        return response.SerializeToString()
+        return_data = gain(player, ggzj_item.get('reward1'),
+                           const.PVP_OVERCOME)
+        get_return(player, return_data, response.gain)
+        return_data = gain(player, ggzj_item.get('reward2'),
+                           const.PVP_OVERCOME)
+        get_return(player, return_data, response.gain)
+        response.res.result = True
+    else:
+        player.pvp.pvp_overcome_failed = True
+        player.pvp.save_data()
+        response.res.result = False
 
-    return pvp_fight(player, target_id, line_up, skill, response,
-                     settle, is_copy_unit=True)
+    logger.debug("red_units: %s" % response.red)
+    return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
@@ -747,3 +746,147 @@ def GetPvpOvercomeInfo_1513(data, player):
         res_buff.value = value
 
     return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def pvp_rob_treasure_864(data, player):
+    request = pvp_rank_pb2.PvpRobTreasureRequest()
+    response = pvp_rank_pb2.PvpFightResponse()
+    request.ParseFromString(data)
+    uid = request.uid
+    chip_id = request.chip_id
+    player_ids = player.pvp.rob_treasure
+
+    if uid not in player_ids:
+        logger.error('pvp_rob_treasure_864, uid error')
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+
+    chip_conf = game_configs.chip_config.get('chips', {}).get(chip_id, None)
+    if not chip_conf:
+        logger.error('pvp_rob_treasure_864, chip_id error')
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+    treasure_id = chip_conf.combineResult
+
+    chips = game_configs.chip_config.get('mapping').get(treasure_id)
+
+    can_rob = 0
+    for x in chips:
+        chip = player.equipment_chip_component.get_chip(x)
+        # 没有碎片
+        if chip and chip.chip_num >= 1:
+            can_rob = 1
+
+    if not can_rob:
+        logger.error('pvp_rob_treasure_864, dont have one chip')
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+
+    price = game_configs.base_config.get('indianaConsume')
+    is_afford_res = is_afford(player, price, multiple=num)  # 校验
+
+    if not is_afford_res.get('result'):
+        logger.error('rob_treasure_truce_841, item not enough')
+        response.res.result = False
+        response.res.result_no = is_afford_res.get('result_no')
+        return response.SerializeToString()
+
+    return_data = consume(player, price, const.ROB_TREASURE)  # 消耗
+    get_return(player, return_data, response.consume)
+
+    fight_result = pvp_fight(player, uid, [], 0, response,
+                             settle, is_copy_unit=True)
+
+    logger.debug("fight revenge result:%s" % fight_result)
+
+    indiana_conf = get_indiana_conf(player, uid, chip_conf)
+    if fight_result and indiana_conf.probability >= random.random():
+
+        player.rob_treasure.can_receive = indiana_conf.id
+        player.rob_treasure.save_data()
+
+        gain_items = parse({103: [1, 1, chip_id]})
+        return_data = gain(player, gain_items,
+                           const.ROB_TREASURE)
+        get_return(player, return_data, response.gain)
+
+        player.pvp.reset_rob_treasure()
+
+        # 处理被打玩家
+        deal_target_player(player, uid, chip_id)
+
+    response.res.result = True
+
+    logger.debug("red_units: %s" % response.red)
+    return response.SerializeToString()
+
+
+def deal_target_player(player, target_id, chip_id):
+    target_data = tb_character_info.getObj(target_id)
+    isexist = target_data.exists()
+    if not isexist:
+        logger.error('deal_target_player, player id error')
+        return
+
+    target_data = player_data.hmget(['equipment_chips'])
+
+    chips = target_data.get('equipment_chips')
+    chips_obj = {}
+    for chip_id_x, chip_num in chips.items():
+        equipment_chip = EquipmentChip(chip_id_x, chip_num)
+        chips_obj[chip_no] = equipment_chip
+
+    chip_obj = chips_obj.get(chip_id)
+    if not chip_obj or chip_obj.chip_num == 0:
+        return
+    # 如果对方有的话
+    is_online = remote_gate.is_online_remote(
+        'modify_equ_chip_remote', target_id, {'chip_id': chip_id})
+    if is_online == "notonline":
+        chip_obj.chip_num -= 1
+
+        props = {}
+        for chip_id_x, chip_obj in chips_obj.items():
+            if chip.chip_num:  # 如果chip num == 0, 则不保存
+                props[no] = chip.chip_num
+        target_data.hset('equipment_chips', props)
+
+    mail_arg1 = [{103: [1, 1, chip_id]}]
+    send_mail(conf_id=10000000, receive_id=p_id, arg1=str(mail_arg1))
+
+
+def get_indiana_conf(player, target_id, chip_conf):
+    color_info = player.rob_treasure.get_target_color_info(target_id)
+    quality = chip_conf.quality
+    treasure_conf = game_configs.equipment_config.get(chip_conf.combineResult)
+    treasure_type = 1
+    if treasure_conf.type in [5, 6]:
+        treasure_type = 2
+    index = color_info.Gradient*100+quality*10+treasure_type
+    indiana_conf_id = game_configs.indiana_config.get('indexes').get(index)
+    indiana_conf = game_configs.indiana_config.get('indiana').get(indiana_conf_id)
+    return indiana_conf
+
+
+@remoteserviceHandle('gate')
+def modify_equ_chip_remote(data, player):
+    chip_id = data['chip_id']
+
+    chip = player.equipment_chip_component.get_chip(chip_id)
+    # 没有碎片
+    if not chip:
+        logger.error('modify_equ_chip_remote, dont have chip')
+        return
+
+    chip.chip_num -= 1
+    player.equipment_chip_component.save_data()
+
+    proto_data = pvp_rank_pb2.BeRobTreasure()
+    proto_data.chip_id = chip_id
+    remote_gate.push_object_remote(865,
+                                   proto_data.SerializeToString(),
+                                   [player.dynamic_id])

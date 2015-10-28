@@ -18,6 +18,12 @@ class ChipConfig(object):
             row["sacrificeGain"] = parse(row.get("sacrificeGain"))
             obj = CommonItem(row)
             self._chips[obj.id] = obj
-            self._mapping[obj.combineResult] = obj
+            if obj.type == 5 or obj.type == 6 or obj.type == 7 or obj.type == 8:
+                if self._mapping.get(obj.combineResult):
+                    self._mapping.get(obj.combineResult).append(obj)
+                else:
+                    self._mapping[obj.combineResult] = [obj]
+            else:
+                self._mapping[obj.combineResult] = obj
 
         return {'chips': self._chips, 'mapping': self._mapping}

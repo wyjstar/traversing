@@ -202,6 +202,10 @@ const.act_28 = 67  # 关卡宝箱
 const.START_TARGET = 68  # 开服7日活动
 const.STAGE_STAR_GIFT = 69  # 满星抽奖
 const.RUNT_MAKE = 70  # 宝石合成
+const.ROB_TREASURE_TRUCE = 71  # 夺宝休战
+const.BUY_TRUCE_ITEM = 72  # 夺宝购买休战符
+const.ROB_TREASURE = 73  # 夺宝
+const.ROB_TREASURE_REWARD = 74  # 夺宝
 
 
 const.LOGIN_GIFT_CONTINUS = 8061
@@ -225,8 +229,7 @@ const.PVB_IN_AWARD = 4 #参与奖
 const.DEBUG = False
 
 const.level_rank_xs = 10000000
-const.power_rank_xs = 1000
-
+const.power_rank_xs = 1000 
 
 const.BATTLE_PVE = 1
 const.BATTLE_PVP = 6
