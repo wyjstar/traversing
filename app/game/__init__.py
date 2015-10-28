@@ -32,7 +32,9 @@ Ranking.init('StarRank1', 99999)
 Ranking.init('StarRank2', 99999)
 Ranking.init('LimitHeroRank', 99999)
 
-if game_configs.base_config.get('initial'):
+
+if game_configs.base_config.get('initial') and GlobalObject().json_config.get("name") == u"game":
+    print(GlobalObject().json_config.get("name"), "GlobalObject================")
     robotname_id, robot_level, rhero_id, rhero_level = game_configs.base_config.get('initial')
 
     player = PlayerCharacter(999, dynamic_id=-1)
