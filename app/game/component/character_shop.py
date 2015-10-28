@@ -117,7 +117,11 @@ class CharacterShopComponent(Component):
     def check_shop_refresh_times(self, shop_type):
         shop_data = self._shop_data[shop_type]
         max_shop_refresh_times = self.owner.base_info.shop_refresh_times
-        return shop_data['refresh_times'] < max_shop_refresh_times
+        if shop_type not in max_shop_refresh_times:
+            logger.error('not found shop refresh times: %s--%s',
+                         shop_type, max_shop_refresh_times)
+            return False
+        return shop_data['refresh_times'] < max_shop_refresh_times[shop_type]
 
     def refresh_price(self, shop_type, response):
         shop_item = game_configs.shop_type_config.get(shop_type)

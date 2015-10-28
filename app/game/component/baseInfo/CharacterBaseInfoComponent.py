@@ -355,7 +355,7 @@ class CharacterBaseInfoComponent(Component):
     def shop_refresh_times(self):
         """每日商店刷新次数"""
         vip_content = game_configs.vip_config.get(self._vip_level)
-        return vip_content.shopRefreshTimes
+        return vip_content.shopRefreshTime
 
     @property
     def activity_copy_times1(self):
