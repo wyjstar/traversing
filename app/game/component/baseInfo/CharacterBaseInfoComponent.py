@@ -358,6 +358,11 @@ class CharacterBaseInfoComponent(Component):
         return vip_content.shopRefreshTime
 
     @property
+    def vip_shop_open(self):
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.shopOpen
+
+    @property
     def activity_copy_times1(self):
         """每日活动宝库副本次数"""
         vip_content = game_configs.vip_config.get(self._vip_level)

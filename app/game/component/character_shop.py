@@ -27,7 +27,8 @@ class CharacterShopComponent(Component):
 
     def init_data(self, character_info):
         self._shop_data = character_info.get('shop')
-        self._shop_extra_args = character_info.get('shop_extra_args', self.get_new_shop_extra_args())
+        self._shop_extra_args = character_info.get('shop_extra_args',
+                                                   self.get_new_shop_extra_args())
         self.check_time()
         self.refresh_shop_info()
 
@@ -97,7 +98,7 @@ class CharacterShopComponent(Component):
             if 'vip_limit_items' not in v:
                 v['vip_limit_items'] = {}
 
-            #自动刷新列表
+            # 自动刷新列表
             shop_type_info = game_configs.shop_type_config.get(k)
             freeRefreshTime = shop_type_info.freeRefreshTime
             if shop_type_info.freeRefreshTime == "-1":
@@ -138,11 +139,17 @@ class CharacterShopComponent(Component):
 
             # 道具
             refresh_items = shop_item.get('refreshItem')
-            has_refresh_item = is_afford(self._owner, refresh_items).get('result')
+            has_refresh_item = is_afford(self._owner,
+                                         refresh_items).get('result')
             if refresh_items and has_refresh_item:
                 price = 0
                 # 如果有刷新令，则消耗刷新令
-                return_data = consume(self._owner, refresh_items, const.SHOP_REFRESH, shop=None, luck_config=None, multiple=1)
+                return_data = consume(self._owner,
+                                      refresh_items,
+                                      const.SHOP_REFRESH,
+                                      shop=None,
+                                      luck_config=None,
+                                      multiple=1)
                 get_return(self._owner, return_data, response.consume)
             elif not has_refresh_item or not refresh_items:
                 price = get_consume_gold_num(refreshprice)
@@ -156,7 +163,12 @@ class CharacterShopComponent(Component):
                             xs = act_conf.parameterC[0]
                             price = int(price*xs)
                             break
-                return_data = consume(self._owner, refreshprice, const.SHOP_REFRESH, shop=None, luck_config=None, multiple=xs)
+                return_data = consume(self._owner,
+                                      refreshprice,
+                                      const.SHOP_REFRESH,
+                                      shop=None,
+                                      luck_config=None,
+                                      multiple=xs)
                 get_return(self._owner, return_data, response.consume)
 
         def func():
@@ -176,7 +188,8 @@ class CharacterShopComponent(Component):
     def auto_refresh_items(self, type_shop):
         logger.debug("auto_refresh_items=========")
         if type_shop in self._shop_data:
-            ids = self.get_shop_item_ids(type_shop, self._shop_data[type_shop]['luck_num'])
+            ids = self.get_shop_item_ids(type_shop,
+                                         self._shop_data[type_shop]['luck_num'])
             self._shop_data[type_shop]['item_ids'] = ids
             self._shop_data[type_shop]['last_auto_refresh_time'] = time.time()
             self._shop_data[type_shop]['buyed_item_ids'] = []
@@ -200,7 +213,8 @@ class CharacterShopComponent(Component):
                         items[item.id] = item.get('weightGroup')[w]
                         break
                 else:
-                    logger.error('error luck_num:%s:%s', luck_num, item.get('weightGroup'))
+                    logger.error('error luck_num:%s:%s',
+                                 luck_num, item.get('weightGroup'))
             else:
                 items[item.id] = item.weight
 
@@ -217,6 +231,7 @@ class CharacterShopComponent(Component):
     @property
     def first_coin_draw(self):
         return self._shop_extra_args.get("first_coin_draw")
+
     @first_coin_draw.setter
     def first_coin_draw(self, value):
         self._shop_extra_args["first_coin_draw"] = value
@@ -224,6 +239,7 @@ class CharacterShopComponent(Component):
     @property
     def first_gold_draw(self):
         return self._shop_extra_args.get("first_gold_draw")
+
     @first_gold_draw.setter
     def first_gold_draw(self, value):
         self._shop_extra_args["first_gold_draw"] = value
@@ -251,7 +267,7 @@ class CharacterShopComponent(Component):
     def get_draw_drop_bag(self, pseudo_bag_id):
         """docstring for get_draw_drop_bag"""
         draw_times = self.pseudo_times.get(pseudo_bag_id, 0)
-        drop =  do_get_draw_drop_bag(pseudo_bag_id, draw_times)
+        drop = do_get_draw_drop_bag(pseudo_bag_id, draw_times)
         self.pseudo_times[pseudo_bag_id] = draw_times + 1
         self.save_data()
         return drop
