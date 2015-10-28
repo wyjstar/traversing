@@ -73,6 +73,9 @@ class Hero(object):
 
     @hero_no.setter
     def hero_no(self, value):
+        import traceback
+        print("hero no cant be 0!", traceback.print_stack)
+        assert value != 0, "hero no cant be 0!"
         self._hero_no = value
 
     @property
