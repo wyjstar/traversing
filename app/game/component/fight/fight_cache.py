@@ -497,7 +497,7 @@ class CharacterFightCacheComponent(Component):
             if not hero:
                 continue
             hero_item = hero.hero_info
-            if not hero_item:
+            if not hero_item or hero_item.type == 1:
                 continue
             line_up_slot = self.line_up_slots.get(red.slot_no)
             if hero.is_awake():
