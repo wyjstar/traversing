@@ -26,6 +26,7 @@ from app.proto_file.common_pb2 import CommonResponse
 from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 from app.game.core.task import hook_task, CONDITIONId
+from app.game.component.fight.stage_logic.pvp_stage import PvpStageLogic
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -230,6 +231,7 @@ def pvp_fight(player, character_id, line_up, skill, response, callback,
     else:
         blue_units = record.get('copy_units')
     # save_line_up_order(line_up, player, skill)
+    player.fight_cache_component.stage = PvpStageLogic()
 
     red_units = player.fight_cache_component.get_red_units()
 
