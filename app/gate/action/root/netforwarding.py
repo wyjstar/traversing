@@ -29,10 +29,12 @@ def forwarding_remote(key, dynamic_id, data):
         if not oldvcharacter:
             logger.error('cant find player:%s', dynamic_id)
             return
-        child_node = GlobalObject().child(oldvcharacter.node)
-        result = child_node.callbackChild(key, dynamic_id, data)
+        if oldvcharacter.node:
+            child_node = GlobalObject().child(oldvcharacter.node)
+            result = child_node.callbackChild(key, dynamic_id, data)
+            return result
 
-        return result
+        return False
 
 
 @rootserviceHandle
