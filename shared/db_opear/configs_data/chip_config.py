@@ -11,6 +11,7 @@ class ChipConfig(object):
     def __init__(self):
         self._chips = {}
         self._mapping = {}
+        self._map = {}
 
     def parser(self, config_value):
         """解析config到HeroConfig"""
@@ -18,6 +19,10 @@ class ChipConfig(object):
             row["sacrificeGain"] = parse(row.get("sacrificeGain"))
             obj = CommonItem(row)
             self._chips[obj.id] = obj
+            if self._map.get(obj.combineResult):
+                self._map.get(obj.combineResult).append(obj.id)
+            else:
+                self._map[obj.combineResult] = [obj.id]
             self._mapping[obj.combineResult] = obj
 
-        return {'chips': self._chips, 'mapping': self._mapping}
+        return {'chips': self._chips, 'mapping': self._mapping, 'map': self._map}

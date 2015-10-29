@@ -94,6 +94,10 @@ class BaseConfig(object):
                 equPrefix[v[0]] = []
             equPrefix[v[0]].append(v[1:])
         config_value["equPrefix"] = equPrefix
+        config_value["indianaIteam"] = parse(config_value["indianaIteam"])
+        config_value["indianaTrucePrice"] = parse(config_value["indianaTrucePrice"])
+        config_value["indianaConsume"] = parse(config_value["indianaConsume"])
+        config_value["stonesynthesis"] = parse(config_value["stonesynthesis"])
         config_value["CoinCardFirst"] = parse(config_value["CoinCardFirst"])
         config_value["travelExpend"] = parse(config_value["travelExpend"])
         config_value["CardTimeCumulate"] = parse(config_value["CardTimeCumulate"])

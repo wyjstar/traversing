@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='pvp_rank.proto',
   package='',
-  serialized_pb='\n\x0epvp_rank.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"\xbf\x01\n\tRankItems\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\r\n\x05level\x18\x03 \x02(\x05\x12\n\n\x02\x61p\x18\x04 \x02(\x05\x12\x10\n\x08hero_ids\x18\x05 \x03(\x05\x12\x13\n\x0bhero_levels\x18\x06 \x03(\x05\x12\x0f\n\x07head_no\x18\x07 \x02(\x05\x12\x14\n\x0c\x63haracter_id\x18\x08 \x02(\x05\x12\x15\n\tvip_level\x18\t \x01(\x05:\x02-1\x12\x12\n\nguild_name\x18\n \x01(\t\"\xa9\x01\n\x12PlayerRankResponse\x12\x1e\n\nrank_items\x18\x01 \x03(\x0b\x32\n.RankItems\x12\x13\n\x0bplayer_rank\x18\x02 \x01(\x05\x12\x11\n\tpvp_score\x18\x03 \x01(\x05\x12#\n\x18pvp_upstage_challenge_id\x18\x04 \x01(\x05:\x01\x30\x12&\n\x1epvp_upstage_challenge_nickname\x18\x05 \x01(\t\"^\n\x0fPvpFightRequest\x12\x16\n\x0e\x63hallenge_rank\x18\x01 \x02(\x05\x12\x14\n\x0c\x63hallenge_id\x18\x02 \x01(\x05\x12\x0e\n\x06lineup\x18\x03 \x03(\x05\x12\r\n\x05skill\x18\x04 \x01(\x05\"B\n\x0fPvpFightRevenge\x12\x10\n\x08\x62lack_id\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\r\n\x05skill\x18\x03 \x01(\x05\"@\n\x10PvpFightOvercome\x12\r\n\x05index\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x03 \x03(\x05\x12\r\n\x05skill\x18\x04 \x01(\x05\"<\n\x14PvpFightOvercomeInfo\x12\x15\n\rcharacter_ids\x18\x01 \x03(\x05\x12\r\n\x05index\x18\x02 \x02(\x05\"+\n\x14PvpPlayerInfoRequest\x12\x13\n\x0bplayer_rank\x18\x01 \x02(\x05\"\x1d\n\x0cResetPvpTime\x12\r\n\x05times\x18\x01 \x02(\x05\"%\n\x14ResetPvpOvercomeTime\x12\r\n\x05times\x18\x01 \x02(\x05\"\xb6\x03\n\x10PvpFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x11\n\tred_skill\x18\x04 \x01(\x05\x12\x17\n\x0fred_skill_level\x18\x05 \x01(\x05\x12\x12\n\nblue_skill\x18\x06 \x01(\x05\x12\x18\n\x10\x62lue_skill_level\x18\x07 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x08 \x01(\x08\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12$\n\x04gain\x18\x0b \x01(\x0b\x32\x16.GameResourcesResponse\x12\x10\n\x08top_rank\x18\x0c \x01(\x05\x12%\n\x05\x61ward\x18\r \x01(\x0b\x32\x16.GameResourcesResponse\x12&\n\x06\x61ward2\x18\x0e \x01(\x0b\x32\x16.GameResourcesResponse\x12\x11\n\trank_incr\x18\x0f \x01(\x05\x12\'\n\x07\x63onsume\x18\x10 \x01(\x0b\x32\x16.GameResourcesResponse\"(\n\x17PvpOvercomeAwardRequest\x12\r\n\x05index\x18\x01 \x02(\x05\"^\n\x18PvpOvercomeAwardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"_\n\nBattleBuff\x12\r\n\x05index\x18\x01 \x02(\x05\x12\x11\n\tbuff_type\x18\x02 \x02(\x05\x12\x12\n\nvalue_type\x18\x03 \x02(\x05\x12\r\n\x05value\x18\x04 \x02(\x02\x12\x0c\n\x04star\x18\x05 \x01(\x05\"*\n\x19GetPvpOvercomeBuffRequest\x12\r\n\x05index\x18\x01 \x02(\x05\"U\n\x1aGetPvpOvercomeBuffResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x04\x62uff\x18\x02 \x03(\x0b\x32\x0b.BattleBuff\"7\n\x19\x42uyPvpOvercomeBuffRequest\x12\r\n\x05index\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x02(\x05\"U\n\x1a\x42uyPvpOvercomeBuffResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x04\x62uff\x18\x02 \x03(\x0b\x32\x0b.BattleBuff\"\xc6\x01\n\x12GetPvpOvercomeInfo\x12\x1a\n\x12pvp_overcome_index\x18\x01 \x02(\x05\x12\r\n\x05stars\x18\x02 \x02(\x05\x12\x15\n\rrefresh_count\x18\x03 \x02(\x05\x12\x0f\n\x07\x61warded\x18\x04 \x03(\x05\x12\x19\n\x04\x62uff\x18\x05 \x03(\x0b\x32\x0b.BattleBuff\x12\x1b\n\x13target_fight_powers\x18\x06 \x03(\x05\x12\x12\n\ntarget_ids\x18\x07 \x03(\x05\x12\x11\n\tis_failed\x18\x08 \x01(\x08')
+  serialized_pb='\n\x0epvp_rank.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"\xbf\x01\n\tRankItems\x12\x10\n\x08nickname\x18\x01 \x02(\t\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\r\n\x05level\x18\x03 \x02(\x05\x12\n\n\x02\x61p\x18\x04 \x02(\x05\x12\x10\n\x08hero_ids\x18\x05 \x03(\x05\x12\x13\n\x0bhero_levels\x18\x06 \x03(\x05\x12\x0f\n\x07head_no\x18\x07 \x02(\x05\x12\x14\n\x0c\x63haracter_id\x18\x08 \x02(\x05\x12\x15\n\tvip_level\x18\t \x01(\x05:\x02-1\x12\x12\n\nguild_name\x18\n \x01(\t\"\xa9\x01\n\x12PlayerRankResponse\x12\x1e\n\nrank_items\x18\x01 \x03(\x0b\x32\n.RankItems\x12\x13\n\x0bplayer_rank\x18\x02 \x01(\x05\x12\x11\n\tpvp_score\x18\x03 \x01(\x05\x12#\n\x18pvp_upstage_challenge_id\x18\x04 \x01(\x05:\x01\x30\x12&\n\x1epvp_upstage_challenge_nickname\x18\x05 \x01(\t\"^\n\x0fPvpFightRequest\x12\x16\n\x0e\x63hallenge_rank\x18\x01 \x02(\x05\x12\x14\n\x0c\x63hallenge_id\x18\x02 \x01(\x05\x12\x0e\n\x06lineup\x18\x03 \x03(\x05\x12\r\n\x05skill\x18\x04 \x01(\x05\"B\n\x0fPvpFightRevenge\x12\x10\n\x08\x62lack_id\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\r\n\x05skill\x18\x03 \x01(\x05\"@\n\x10PvpFightOvercome\x12\r\n\x05index\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x03 \x03(\x05\x12\r\n\x05skill\x18\x04 \x01(\x05\"5\n\x15PvpRobTreasureRequest\x12\x0b\n\x03uid\x18\x01 \x02(\x05\x12\x0f\n\x07\x63hip_id\x18\x02 \x02(\x05\"<\n\x14PvpFightOvercomeInfo\x12\x15\n\rcharacter_ids\x18\x01 \x03(\x05\x12\r\n\x05index\x18\x02 \x02(\x05\"+\n\x14PvpPlayerInfoRequest\x12\x13\n\x0bplayer_rank\x18\x01 \x02(\x05\"\x1d\n\x0cResetPvpTime\x12\r\n\x05times\x18\x01 \x02(\x05\"%\n\x14ResetPvpOvercomeTime\x12\r\n\x05times\x18\x01 \x02(\x05\"\xb6\x03\n\x10PvpFightResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x11\n\tred_skill\x18\x04 \x01(\x05\x12\x17\n\x0fred_skill_level\x18\x05 \x01(\x05\x12\x12\n\nblue_skill\x18\x06 \x01(\x05\x12\x18\n\x10\x62lue_skill_level\x18\x07 \x01(\x05\x12\x14\n\x0c\x66ight_result\x18\x08 \x01(\x08\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12$\n\x04gain\x18\x0b \x01(\x0b\x32\x16.GameResourcesResponse\x12\x10\n\x08top_rank\x18\x0c \x01(\x05\x12%\n\x05\x61ward\x18\r \x01(\x0b\x32\x16.GameResourcesResponse\x12&\n\x06\x61ward2\x18\x0e \x01(\x0b\x32\x16.GameResourcesResponse\x12\x11\n\trank_incr\x18\x0f \x01(\x05\x12\'\n\x07\x63onsume\x18\x10 \x01(\x0b\x32\x16.GameResourcesResponse\"(\n\x17PvpOvercomeAwardRequest\x12\r\n\x05index\x18\x01 \x02(\x05\"^\n\x18PvpOvercomeAwardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"_\n\nBattleBuff\x12\r\n\x05index\x18\x01 \x02(\x05\x12\x11\n\tbuff_type\x18\x02 \x02(\x05\x12\x12\n\nvalue_type\x18\x03 \x02(\x05\x12\r\n\x05value\x18\x04 \x02(\x02\x12\x0c\n\x04star\x18\x05 \x01(\x05\"*\n\x19GetPvpOvercomeBuffRequest\x12\r\n\x05index\x18\x01 \x02(\x05\"U\n\x1aGetPvpOvercomeBuffResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x04\x62uff\x18\x02 \x03(\x0b\x32\x0b.BattleBuff\"7\n\x19\x42uyPvpOvercomeBuffRequest\x12\r\n\x05index\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x02(\x05\"U\n\x1a\x42uyPvpOvercomeBuffResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x04\x62uff\x18\x02 \x03(\x0b\x32\x0b.BattleBuff\"\xc6\x01\n\x12GetPvpOvercomeInfo\x12\x1a\n\x12pvp_overcome_index\x18\x01 \x02(\x05\x12\r\n\x05stars\x18\x02 \x02(\x05\x12\x15\n\rrefresh_count\x18\x03 \x02(\x05\x12\x0f\n\x07\x61warded\x18\x04 \x03(\x05\x12\x19\n\x04\x62uff\x18\x05 \x03(\x0b\x32\x0b.BattleBuff\x12\x1b\n\x13target_fight_powers\x18\x06 \x03(\x05\x12\x12\n\ntarget_ids\x18\x07 \x03(\x05\x12\x11\n\tis_failed\x18\x08 \x01(\x08')
 
 
 
@@ -300,6 +300,41 @@ _PVPFIGHTOVERCOME = _descriptor.Descriptor(
 )
 
 
+_PVPROBTREASUREREQUEST = _descriptor.Descriptor(
+  name='PvpRobTreasureRequest',
+  full_name='PvpRobTreasureRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='uid', full_name='PvpRobTreasureRequest.uid', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='chip_id', full_name='PvpRobTreasureRequest.chip_id', index=1,
+      number=2, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=641,
+  serialized_end=694,
+)
+
+
 _PVPFIGHTOVERCOMEINFO = _descriptor.Descriptor(
   name='PvpFightOvercomeInfo',
   full_name='PvpFightOvercomeInfo',
@@ -330,8 +365,8 @@ _PVPFIGHTOVERCOMEINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=641,
-  serialized_end=701,
+  serialized_start=696,
+  serialized_end=756,
 )
 
 
@@ -358,8 +393,8 @@ _PVPPLAYERINFOREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=703,
-  serialized_end=746,
+  serialized_start=758,
+  serialized_end=801,
 )
 
 
@@ -386,8 +421,8 @@ _RESETPVPTIME = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=748,
-  serialized_end=777,
+  serialized_start=803,
+  serialized_end=832,
 )
 
 
@@ -414,8 +449,8 @@ _RESETPVPOVERCOMETIME = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=779,
-  serialized_end=816,
+  serialized_start=834,
+  serialized_end=871,
 )
 
 
@@ -547,8 +582,8 @@ _PVPFIGHTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=819,
-  serialized_end=1257,
+  serialized_start=874,
+  serialized_end=1312,
 )
 
 
@@ -575,8 +610,8 @@ _PVPOVERCOMEAWARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1259,
-  serialized_end=1299,
+  serialized_start=1314,
+  serialized_end=1354,
 )
 
 
@@ -610,8 +645,8 @@ _PVPOVERCOMEAWARDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1301,
-  serialized_end=1395,
+  serialized_start=1356,
+  serialized_end=1450,
 )
 
 
@@ -666,8 +701,8 @@ _BATTLEBUFF = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1397,
-  serialized_end=1492,
+  serialized_start=1452,
+  serialized_end=1547,
 )
 
 
@@ -694,8 +729,8 @@ _GETPVPOVERCOMEBUFFREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1494,
-  serialized_end=1536,
+  serialized_start=1549,
+  serialized_end=1591,
 )
 
 
@@ -729,8 +764,8 @@ _GETPVPOVERCOMEBUFFRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1538,
-  serialized_end=1623,
+  serialized_start=1593,
+  serialized_end=1678,
 )
 
 
@@ -764,8 +799,8 @@ _BUYPVPOVERCOMEBUFFREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1625,
-  serialized_end=1680,
+  serialized_start=1680,
+  serialized_end=1735,
 )
 
 
@@ -799,8 +834,8 @@ _BUYPVPOVERCOMEBUFFRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1682,
-  serialized_end=1767,
+  serialized_start=1737,
+  serialized_end=1822,
 )
 
 
@@ -876,8 +911,8 @@ _GETPVPOVERCOMEINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1770,
-  serialized_end=1968,
+  serialized_start=1825,
+  serialized_end=2023,
 )
 
 _PLAYERRANKRESPONSE.fields_by_name['rank_items'].message_type = _RANKITEMS
@@ -900,6 +935,7 @@ DESCRIPTOR.message_types_by_name['PlayerRankResponse'] = _PLAYERRANKRESPONSE
 DESCRIPTOR.message_types_by_name['PvpFightRequest'] = _PVPFIGHTREQUEST
 DESCRIPTOR.message_types_by_name['PvpFightRevenge'] = _PVPFIGHTREVENGE
 DESCRIPTOR.message_types_by_name['PvpFightOvercome'] = _PVPFIGHTOVERCOME
+DESCRIPTOR.message_types_by_name['PvpRobTreasureRequest'] = _PVPROBTREASUREREQUEST
 DESCRIPTOR.message_types_by_name['PvpFightOvercomeInfo'] = _PVPFIGHTOVERCOMEINFO
 DESCRIPTOR.message_types_by_name['PvpPlayerInfoRequest'] = _PVPPLAYERINFOREQUEST
 DESCRIPTOR.message_types_by_name['ResetPvpTime'] = _RESETPVPTIME
@@ -943,6 +979,12 @@ class PvpFightOvercome(_message.Message):
   DESCRIPTOR = _PVPFIGHTOVERCOME
 
   # @@protoc_insertion_point(class_scope:PvpFightOvercome)
+
+class PvpRobTreasureRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _PVPROBTREASUREREQUEST
+
+  # @@protoc_insertion_point(class_scope:PvpRobTreasureRequest)
 
 class PvpFightOvercomeInfo(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
