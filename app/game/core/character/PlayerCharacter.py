@@ -59,6 +59,7 @@ class PlayerCharacter(object):
         a['pvp'] = component.CharacterPvpComponent(self)
         a['hjqy'] = component.CharacterHjqyComponent(self)
         a['start_target'] = component.CharacterStartTargetComponent(self)
+        a['rob_treasure'] = component.CharacterRobTreasureComponent(self)
         logger.debug("keys %s" % a.keys())
         self._components = a
         self._pay = component.CharacterPay(self)
@@ -137,6 +138,10 @@ class PlayerCharacter(object):
     @property
     def base_info(self):
         return self._components['base_info']
+
+    @property
+    def rob_treasure(self):
+        return self._components['rob_treasure']
 
     @property
     def hero_component(self):

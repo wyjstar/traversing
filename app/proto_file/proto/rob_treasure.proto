@@ -1,0 +1,89 @@
+import "common.proto";
+import "equipment.proto";
+
+//858 夺宝初始化
+message RobTreasureInitResponse{
+    optional int32 start_truce = 1;  //开始休战时间戳
+    optional int32 truce_item_num = 2;  //使用的休战道具个数
+    required int32 truce_item_num_day = 3;  //今天已经使用的休战道具个数
+    repeated PlayerRobTreasureInfo player_info = 4;  //玩家信息
+    required int32 refresh_time = 5;  //列表刷新时间
+}
+
+//859 休战
+message RobTreasureTruceRequest{
+    required int32 num = 1;  //使用休战道具个数
+}
+
+//859
+message RobTreasureTruceResponse{
+    required CommonResponse res = 1;
+    optional int32 start_truce = 2;  //开始休战时间戳
+    optional int32 truce_item_num = 3;  //使用的休战道具个数
+    optional int32 truce_item_num_day = 4;  //今天已经使用的休战道具个数
+    optional GameResourcesResponse consume = 5;
+}
+
+//860 合成
+message ComposeTreasureRequest{
+    required int32 treasure_id = 1;  //宝物或饰品id
+}
+
+//860
+message ComposeTreasureResponse{
+    required CommonResponse res = 1;
+    optional EquipmentPB equ = 2;  //装备
+}
+
+//861 购买休战符
+message BuyTruceItemRequest{
+    required int32 num = 1;  //购买休战符个数
+}
+
+//861
+message BuyTruceItemResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse consume = 2;
+    optional GameResourcesResponse gain = 3;
+}
+
+message PlayerRobTreasureInfo{
+    optional int32 id = 1;
+    optional string nickname = 2;
+    optional int32 power = 3;
+    optional string guild_id = 4;
+    optional int32 vip_level = 5;
+    optional int32 now_head = 6;
+    optional int32 level = 7;
+    optional int32 color = 8;  // 颜色
+}
+
+//862 刷新玩家列表
+message RefreshRobTreasureResponse{
+    required CommonResponse res = 1;
+    repeated PlayerRobTreasureInfo player_info = 2;  //玩家信息
+    optional int32 refresh_time = 3;  //列表刷新时间
+}
+
+//863 选择战利品
+message RobTreasureRewardResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+    repeated  GameResourcesResponse look_gain = 3;
+}
+
+// 865
+message BeRobTreasure{
+    required int32 chip_id = 1;
+}
+
+//866 宝物饰品强化
+message RobTreasureEnhanceRequest{
+    required string no = 1;  //强化物品ID
+    repeated string use_no = 2;  //消耗物品ID
+}
+
+//866
+message RobTreasureEnhanceResponse{
+    required CommonResponse res = 1;
+}

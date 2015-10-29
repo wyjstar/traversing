@@ -13,12 +13,12 @@ class ArenaFightConfig(object):
 
     def parser(self, config_value):
         for row in config_value:
-            item = CommonItem(row)
-            data = item.get('choose')
+            data = row.get('choose')
             row["Reward"] = parse(row.get("Reward"))
             if data:
                 data = compile(data, '', 'eval')
                 row['choose'] = data
+            item = CommonItem(row)
             self._items[item.id] = row
 
         return self._items

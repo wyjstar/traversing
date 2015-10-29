@@ -29,6 +29,9 @@ class CharacterRuntComponent(Component):
         self._refresh_runt = character_info.get('refresh_runt')
         self._refresh_times = character_info.get('refresh_times')
 
+    def save_data(self):
+        self.save()
+
     def save(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
         data_obj.hmset({'m_runt': self._m_runt,
