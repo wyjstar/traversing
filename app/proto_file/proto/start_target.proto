@@ -29,7 +29,7 @@ message GetStartTargetRewardResponse{
     optional GameResourcesResponse gain = 2;
 }
 
-//1841
+//1841 推送有任务完成， 红点显示, 暂时只发协议号
 message PushStartTarget{
     required int32 target_id = 1;
     optional int32 jindu = 2;  // 目标进度 半价商品已买个数

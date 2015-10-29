@@ -192,8 +192,6 @@ class CharacterBaseInfoComponent(Component):
                 return True
         return False
 
-
-
     def addexp(self, exp, reason):
         self._exp += exp
         before_level = self._level
@@ -209,12 +207,16 @@ class CharacterBaseInfoComponent(Component):
                                  self._level-1, self._level)
             if self._level == max_level:
                 self._exp = 0
-                return
+                break
+        if self._level > before_level:
+            # 更新 七日奖励
+            target_update(self.owner, [43])
 
         # hook task
         hook_task(self.owner, CONDITIONId.LEVEL, self._level)
         # =====Tlog================
         tlog_action.log('PlayerExpFlow', self.owner, before_level, exp, reason)
+        return
 
     def generate_google_id(self, channel):
         if self._google_consume_id == '':

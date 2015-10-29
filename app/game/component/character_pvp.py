@@ -12,6 +12,7 @@ from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_pvp_rank
 from app.game.core import rank_helper
 from gfirefly.dbentrust.redis_mode import RedisObject
+from app.game.action.node.start_target import target_update
 tb_rank = RedisObject('tb_rank')
 
 tb_robot2 = tb_character_info.getObj('robot2')
@@ -192,6 +193,8 @@ class CharacterPvpComponent(Component):
     @pvp_overcome_current.setter
     def pvp_overcome_current(self, value):
         self._pvp_overcome_current = value
+        # 更新 七日奖励
+        target_update(self.owner, [35])
 
     @property
     def pvp_times(self):
@@ -223,7 +226,10 @@ class CharacterPvpComponent(Component):
 
     @pvp_high_rank.setter
     def pvp_high_rank(self, value):
-        self._pvp_high_rank = value
+        if value > self._pvp_high_rank:
+            self._pvp_high_rank = value
+            # 更新 七日奖励
+            target_update(self.owner, [33])
 
     @property
     def pvp_high_rank_award(self):
