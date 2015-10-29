@@ -785,7 +785,7 @@ def pvp_rob_treasure_864(data, player):
             flag = 1
             break
 
-    print uid, player_ids, '================uid playerids'
+    print uid, player_ids, '================uid playerids', chip_id
     if not flag:
         logger.error('pvp_rob_treasure_864, uid error')
         response.res.result = False
@@ -819,14 +819,14 @@ def pvp_rob_treasure_864(data, player):
     price = game_configs.base_config.get('indianaConsume')
     is_afford_res = is_afford(player, price)  # 校验
 
-    # if not is_afford_res.get('result'):
-    #     logger.error('rob_treasure_truce_841, item not enough')
-    #     response.res.result = False
-    #     response.res.result_no = is_afford_res.get('result_no')
-    #     return response.SerializeToString()
+    if not is_afford_res.get('result'):
+        logger.error('rob_treasure_truce_841, item not enough')
+        response.res.result = False
+        response.res.result_no = is_afford_res.get('result_no')
+        return response.SerializeToString()
 
-    # return_data = consume(player, price, const.ROB_TREASURE)  # 消耗
-    # get_return(player, return_data, response.consume)
+    return_data = consume(player, price, const.ROB_TREASURE)  # 消耗
+    get_return(player, return_data, response.consume)
 
     fight_result = pvp_fight(player, uid, [], 0, response,
                              is_copy_unit=True)
@@ -834,20 +834,21 @@ def pvp_rob_treasure_864(data, player):
     logger.debug("fight revenge result:%s" % fight_result)
 
     indiana_conf = get_indiana_conf(player, uid, chip_conf)
-    if fight_result and indiana_conf.probability >= random.random():
+    if fight_result:
 
         player.rob_treasure.can_receive = indiana_conf.id
         player.rob_treasure.save_data()
+        if indiana_conf.probability >= random.random():
 
-        gain_items = parse({103: [1, 1, chip_id]})
-        return_data = gain(player, gain_items,
-                           const.ROB_TREASURE)
-        get_return(player, return_data, response.gain)
+            gain_items = parse({104: [1, 1, chip_id]})
+            return_data = gain(player, gain_items,
+                               const.ROB_TREASURE)
+            get_return(player, return_data, response.gain)
 
-        player.pvp.reset_rob_treasure()
+            player.pvp.reset_rob_treasure()
 
-        # 处理被打玩家
-        deal_target_player(player, uid, chip_id)
+            # 处理被打玩家
+            deal_target_player(player, uid, chip_id)
 
     response.res.result = True
 
@@ -886,7 +887,7 @@ def deal_target_player(player, target_id, chip_id):
                 props[no] = chip.chip_num
         target_data.hset('equipment_chips', props)
 
-    mail_arg1 = [{103: [1, 1, chip_id]}]
+    mail_arg1 = [{104: [1, 1, chip_id]}]
     send_mail(conf_id=10000000, receive_id=p_id, arg1=str(mail_arg1))
 
 

@@ -240,7 +240,7 @@ def refresh_rob_treasure_862(data, player):
 def rob_treasure_reward_863(data, player):
     """选择战利品"""
     response = rob_treasure_pb2.RobTreasureRewardResponse()
-    player.rob_treasure.can_receive = 10001
+    print player.rob_treasure.can_receive, '==========================================rob_treasure_reward_863'
     if not player.rob_treasure.can_receive:
         logger.error('rob_treasure_reward_863, can not receive')
         response.res.result = False
@@ -272,26 +272,12 @@ def rob_treasure_reward_863(data, player):
     player.rob_treasure.save_data()
 
     response.res.result = True
+    print response, '=============================选择战利品'
     return response.SerializeToString()
-
-    jiange_time = game_configs.base_config.get('indianaRefreshCoolTime')
-    allow_refresh_time = player.rob_treasure.refresh_time + jiange_time * 60
-    now = int(time.time())
-    if allow_refresh_time > now:
-        logger.error('refresh_rob_treasure, dont allow refresh')
-        response.res.result = False
-        response.res.result_no = 800
-        return response.SerializeToString()
-
-    deal_player_infos(player, response)
-    response.refresh_time = now
-    player.rob_treasure.refresh_time = now
-    player.pvp.reset_rob_treasure()
-    player.rob_treasure.save_data()
 
 
 @remoteserviceHandle('gate')
-def buy_truce_item_866(data, player):
+def rob_treasure_enhance_866(data, player):
     """宝物饰品强化"""
     args = rob_treasure_pb2.RobTreasureEnhanceRequest()
     args.ParseFromString(data)
@@ -299,5 +285,68 @@ def buy_truce_item_866(data, player):
     use_nos = args.use_no
     response = rob_treasure_pb2.RobTreasureEnhanceResponse()
 
+    result = enhance_treasure(no,
+                              use_nos,
+                              player)
+    if not result:
+        response.res.result = False
+        response.res.message = 800
+        return response.SerializePartialToString()
+
     response.res.result = True
     return response.SerializeToString()
+
+
+def enhance_treasure(no, use_nos, player):
+    treasure_obj = player.equipment_component.get_equipment(no)
+
+    if not treasure_obj:
+        logger.debug('enhance_treasure dont have this treasure!')
+        return {'result': False, 'result_no': 800, 'message': u''}
+
+    treasure_id = treasure_obj.base_info.equipment_no
+    equ_conf = game_configs.equipment_config.get(treasure_id)
+    equ_type = equ_conf.type
+    if equ_type not in [5, 6]:
+        logger.debug('rob_treasure_enhance_866: type error!')
+        return {'result': False, 'result_no': 800, 'message': u''}
+    if equ_type == 5:
+        need_type = [5, 7]
+    else:
+        need_type = [6, 8]
+
+    all_exp = 0
+    for use_no in use_nos:
+        treasure_obj = player.equipment_component.get_equipment(use_no)
+        use_equ_conf = game_configs.equipment_config.get(treasure_id)
+        if use_equ_conf.type not in need_type:
+            logger.debug('rob_treasure_enhance_866: item error!')
+            return {'result': False, 'result_no': 800, 'message': u''}
+        all_exp += use_equ_conf.exp
+    equ_exp = treasure_obj.attribute.exp
+    equ_level = equipment_obj.attribute.strengthen_lv
+    level_max = player.base_info.level + game_configs.base_config.get('max_equipment_special_strength')
+    all_max_level = game_configs.base_config.get('equ_special_level_max')
+    if equ_level >= level_max or equ_level >= all_max_level:
+        logger.debug('rob_treasure_enhance_866: level is max!')
+        return {'result': False, 'result_no': 800, 'message': u''}
+
+    key_num = equ_conf.currencyDir
+    key_str = 'experienceCost' + str(key_num)
+    while level_max > equ_level and all_max_level > equ_level:
+        str_config_obj = game_configs.equipment_strengthen_config.get(equ_level)
+        up_level_exp = str_config_obj.get(key_str)
+        all_exp -= (up_level_exp - equ_exp)
+        if all_exp > 0:
+            equ_level += 1
+            equ_exp = 0
+        else:
+            break
+    treasure_obj.attribute.exp = equ_exp
+    equipment_obj.attribute.strengthen_lv = equ_level
+
+    for use_no in use_nos:
+        # 删除装备
+        player.equipment_component.delete_equipment(use_no)
+
+    return {'result': True}

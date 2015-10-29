@@ -167,7 +167,7 @@ class Equipment(object):
     def __init__(self, character_id, equipment_id, equipment_name,
                  equipment_no,
                  strengthen_lv=1, awakening_lv=1, _enhance_info=None,
-                 nobbing_effect={}, is_guard=False, main_attr={},
+                 nobbing_effect={}, is_guard=False, exp=0, main_attr={},
                  minor_attr={}, prefix=0, attr_id=0):
 
         _enhance_info = _enhance_info if _enhance_info else []
@@ -186,7 +186,8 @@ class Equipment(object):
                                                       is_guard,
                                                       main_attr,
                                                       minor_attr,
-                                                      prefix, attr_id)
+                                                      prefix, attr_id,
+                                                      exp)
         self._record = EquipmentEnhanceComponent(self, _enhance_info)
 
     def add_data(self, character_id, attr_id=0):
@@ -201,6 +202,7 @@ class Equipment(object):
                                         slv=self._attribute.strengthen_lv,
                                         alv=self._attribute.awakening_lv,
                                         is_guard=self._attribute.is_guard,
+                                        exp=self._attribute.exp,
                                         main_attr=mainAttr,
                                         minor_attr=minorAttr,
                                         prefix=prefix,
@@ -219,6 +221,7 @@ class Equipment(object):
                                    'slv': self._attribute.strengthen_lv,
                                    'alv': self._attribute.awakening_lv,
                                    'is_guard': self._attribute.is_guard,
+                                   'exp': self._attribute.exp,
                                    'main_attr': self._attribute.main_attr,
                                    'minor_attr': self._attribute.minor_attr,
                                    'prefix': self._attribute.prefix,
@@ -311,6 +314,7 @@ class Equipment(object):
         equipment_pb.strengthen_lv = self.attribute.strengthen_lv
         equipment_pb.awakening_lv = self.attribute.awakening_lv
         equipment_pb.is_guard = self.attribute.is_guard
+        equipment_pb.exp = self.attribute.exp
         equipment_pb.prefix = self.attribute.prefix
         equipment_pb.attr_id = self.attribute.attr_id
         equipment_pb.nobbing_effect = 0
