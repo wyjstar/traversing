@@ -21,6 +21,7 @@ from app.game.core.drop_bag import BigBag
 from app.proto_file.db_pb2 import Heads_DB
 from app.game.core import rank_helper
 from app.game.core.item_group_helper import gain, get_return
+from app.game.core.equipment.equipment import init_equipment_attr
 
 
 @remoteserviceHandle('gate')
@@ -264,9 +265,13 @@ def rob_treasure_reward_863(data, player):
                        const.ROB_TREASURE_REWARD)
     get_return(player, return_data, response.gain)
 
-    return_data = gain(player, [drops[x[1]], drops[x[2]]],
+    return_data = gain(player, [drops[x[1]]],
                        const.ROB_TREASURE_REWARD)
-    get_return(player, return_data, response.look_gain)
+    get_return(player, return_data, response.look_gain.add())
+
+    return_data = gain(player, [drops[x[2]]],
+                       const.ROB_TREASURE_REWARD)
+    get_return(player, return_data, response.look_gain.add())
 
     player.rob_treasure.can_receive = 0
     player.rob_treasure.save_data()
@@ -294,6 +299,7 @@ def rob_treasure_enhance_866(data, player):
         return response.SerializePartialToString()
 
     response.res.result = True
+    print response, '==================================866'
     return response.SerializeToString()
 
 
@@ -317,14 +323,14 @@ def enhance_treasure(no, use_nos, player):
 
     all_exp = 0
     for use_no in use_nos:
-        treasure_obj = player.equipment_component.get_equipment(use_no)
-        use_equ_conf = game_configs.equipment_config.get(treasure_id)
+        use_treasure_obj = player.equipment_component.get_equipment(use_no)
+        use_equ_conf = game_configs.equipment_config.get(use_treasure_obj.base_info.equipment_no)
         if use_equ_conf.type not in need_type:
             logger.debug('rob_treasure_enhance_866: item error!')
             return {'result': False, 'result_no': 800, 'message': u''}
         all_exp += use_equ_conf.exp
     equ_exp = treasure_obj.attribute.exp
-    equ_level = equipment_obj.attribute.strengthen_lv
+    equ_level = treasure_obj.attribute.strengthen_lv
     level_max = player.base_info.level + game_configs.base_config.get('max_equipment_special_strength')
     all_max_level = game_configs.base_config.get('equ_special_level_max')
     if equ_level >= level_max or equ_level >= all_max_level:
@@ -333,20 +339,53 @@ def enhance_treasure(no, use_nos, player):
 
     key_num = equ_conf.currencyDir
     key_str = 'experienceCost' + str(key_num)
+
+    attr_variety = equ_conf.attrVariety
+    attr_v_keys = attr_variety.keys()
+    attr_v_keys.sort()
+    before_attr_id = 0
+    print attr_v_keys, '====================================121'
+
+    for x in attr_v_keys:
+        if equ_level <= int(x)-1:
+            after_attr_id = attr_variety[x][0]
+        else:
+            break
+
     while level_max > equ_level and all_max_level > equ_level:
+        print all_exp, equ_level, all_max_level, '==================================111'
         str_config_obj = game_configs.equipment_strengthen_config.get(equ_level)
         up_level_exp = str_config_obj.get(key_str)
-        all_exp -= (up_level_exp - equ_exp)
-        if all_exp > 0:
+        if all_exp > (up_level_exp-equ_exp):
+            all_exp -= (up_level_exp - equ_exp)
             equ_level += 1
             equ_exp = 0
         else:
+            equ_exp += all_exp
             break
+    print equ_exp, equ_level, '==============================equ exp equ level'
     treasure_obj.attribute.exp = equ_exp
-    equipment_obj.attribute.strengthen_lv = equ_level
+    treasure_obj.attribute.strengthen_lv = equ_level
 
+    after_attr_id = 0
+    for x in attr_v_keys:
+        if equ_level <= int(x)-1:
+            after_attr_id = attr_variety[x][0]
+        else:
+            break
+    if after_attr_id != before_attr_id:
+        mainAttr, minorAttr, prefix, equip_attr_id = init_equipment_attr(treasure_obj.base_info.equipment_no, after_attr_id)
+        treasure_obj.attribute.main_attr = mainAttr
+        treasure_obj.attribute.minor_attr = minorAttr
+        treasure_obj.attribute.prefix = prefix
+        treasure_obj.attribute.attr_id = equip_attr_id
+    treasure_obj.save_data()
     for use_no in use_nos:
         # 删除装备
         player.equipment_component.delete_equipment(use_no)
 
     return {'result': True}
+
+
+def change_attr(treasure_obj):
+    mainAttr, minorAttr, prefix, equip_attr_id = init_equipment_attr(treasure_obj, attr_id)

@@ -8,6 +8,7 @@ import random
 from shared.utils.pyuuid import get_uuid
 import copy
 import time
+from shared.db_opear.configs_data.common_item import CommonItem
 
 
 class CharacterRobTreasureComponent(Component):
@@ -90,7 +91,8 @@ class CharacterRobTreasureComponent(Component):
         print '======================index:', index
         types = game_configs.base_config.get('indianaMatch')
         for _id in types:
-            item = game_configs.arena_fight_config.get(_id)
+            item1 = game_configs.arena_fight_config.get(_id)
+            item = CommonItem(item1)
             if len(item.play_rank) == 2 and item.play_rank[0] <= index <= item.play_rank[1]:
                 return item
             elif len(item.play_rank) == 1 and item.play_rank[0] == index:

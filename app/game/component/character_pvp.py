@@ -14,6 +14,7 @@ from app.game.core import rank_helper
 from gfirefly.dbentrust.redis_mode import RedisObject
 from app.game.action.node.start_target import target_update
 tb_rank = RedisObject('tb_rank')
+from shared.db_opear.configs_data.common_item import CommonItem
 
 
 tb_robot2 = tb_character_info.getObj('robot2')
@@ -160,7 +161,8 @@ class CharacterPvpComponent(Component):
 
         num = 0
         for _id in types:
-            item = game_configs.arena_fight_config.get(_id)
+            item1 = game_configs.arena_fight_config.get(_id)
+            item = CommonItem(item1)
             if not item:
                 logger.error('arena_fight_config:%d', _id)
             for x in item.play_rank:
@@ -435,7 +437,8 @@ def get_player_ids(player_id, player_ap, types, num):
     count = 0
     ids = set()
     for _id in types:
-        item = game_configs.arena_fight_config.get(_id)
+        item1 = game_configs.arena_fight_config.get(_id)
+        item = CommonItem(item1)
         if not item:
             logger.error('arena_fight_config:%d', _id)
         scope = eval(item.choose, dict(k=player_ap))[0]

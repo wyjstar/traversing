@@ -57,6 +57,8 @@ def init_equipment_attr(equipment_no, attr_id=0):
     if equipment_item.type not in [7, 8]:
         prefix = get_prefix(equipment_item, mainAttr, minorAttr)
 
+    print mainAttr, minorAttr, '============================mainAttr, minorAttr'
+
     return mainAttr, minorAttr, prefix, equip_attr_id
 
 
@@ -167,8 +169,8 @@ class Equipment(object):
     def __init__(self, character_id, equipment_id, equipment_name,
                  equipment_no,
                  strengthen_lv=1, awakening_lv=1, _enhance_info=None,
-                 nobbing_effect={}, is_guard=False, exp=0, main_attr={},
-                 minor_attr={}, prefix=0, attr_id=0):
+                 nobbing_effect={}, is_guard=False, main_attr={},
+                 minor_attr={}, prefix=0, attr_id=0, exp=0):
 
         _enhance_info = _enhance_info if _enhance_info else []
         nobbing_effect = nobbing_effect if nobbing_effect else {}
@@ -216,6 +218,7 @@ class Equipment(object):
             logger.error('add equipment error!:%s', self._base_info.id)
 
     def save_data(self):
+        print self._attribute.exp,self._attribute.strengthen_lv, '=================================savedata'
         data = {'id': self._base_info.id,
                 'equipment_info': {'equipment_no': self._base_info.equipment_no,
                                    'slv': self._attribute.strengthen_lv,

@@ -69,7 +69,7 @@ message RefreshRobTreasureResponse{
 message RobTreasureRewardResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
-    optional GameResourcesResponse look_gain = 3;
+    repeated  GameResourcesResponse look_gain = 3;
 }
 
 // 865
