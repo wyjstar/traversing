@@ -422,7 +422,6 @@ def line_up_info(player, response=None):
         response.res.result = True
     for temp in _line_up.line_up_order:
         response.order.append(temp)
-    response.unpar_id = _line_up.current_unpar
 
     # 武将和装备
     line_up_info_detail(_line_up.line_up_slots, _line_up.sub_slots, response)
@@ -518,7 +517,7 @@ def save_line_order_708(pro_data, player):
         logger.error("line up order error %s !" % len(line_up_info))
         response.result = False
         return
-    logger.debug("line_up %s, current_unpar%s"% (request.lineup, request.unparalleled))
+    logger.debug("line_up %s, unpar_type%s, unpar_other_id%s" % (request.lineup, request.unpar_type, request.unpar_other_id))
     player.line_up_component.line_up_order = line_up_info
     player.line_up_component._unpar_type = request.unpar_type
     player.line_up_component._unpar_other_id = request.unpar_other_id

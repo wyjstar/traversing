@@ -40,7 +40,7 @@ class CharacterLineUpComponent(Component):
 
         self._unpar_type = 0          # 当前无双类型，战，刺，法，牧
         self._unpar_other_id = 0      # 当前无双附加属性
-        self._unpar_level = 0         # 无双等级
+        self._unpar_level = 1         # 无双等级
         self._ever_have_heros = []    # 点亮的武将列表
 
         self._friend_fight_times = {} # 小伙伴战斗次数
@@ -60,9 +60,8 @@ class CharacterLineUpComponent(Component):
             line_sub_slot = LineUpSlotComponent.loads(self, sub_slot)
             self._sub_slots[sub_slot_no] = line_sub_slot
         self._line_up_order = character_info.get('line_up_order')
-        #self._unpars = character_info.get('unpars')
 
-        self._unpar_level = character_info.get('unpar_level', 0)
+        self._unpar_level = character_info.get('unpar_level', 1)
         self._unpar_type = character_info.get('unpar_type', 0)
         self._unpar_other_id = character_info.get('unpar_other_id', 0)
         self._ever_have_heros = character_info.get('ever_have_heros', 0)
@@ -180,7 +179,10 @@ class CharacterLineUpComponent(Component):
         return True
 
 
-    def get_skill_info_by_unpar(self, unpar):
+    def get_skill_info_by_unpar_unused(self, unpar):
+        """
+        已弃用
+        """
         if unpar not in self._unpars:
             return (0, 0)
 
@@ -279,14 +281,6 @@ class CharacterLineUpComponent(Component):
 
         tlog_action.log('LineUpChange', self.owner, slot_no, origin_hero_no,
                         hero_no, change_type)
-        # 如果无双条件不满足，则无双设为空
-        hero_nos = set(self.hero_nos)  # 阵容英雄编号
-        for skill_id, item in game_configs.warriors_config.items():
-            if skill_id not in self._unpars:
-                conditions = item.get('conditions')
-                if conditions and hero_nos.issuperset(conditions):
-                    self._unpars[skill_id] = 1
-                    # logger.warning('unpars:%s', str(self._unpars))
 
     def change_equipment(self, slot_no, no, equipment_id):
         """更改装备
