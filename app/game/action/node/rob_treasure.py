@@ -78,7 +78,7 @@ def rob_treasure_init_858(data, player):
 
     deal_player_infos(player, response)
     response.refresh_time = player.rob_treasure.refresh_time
-
+    print response, '============================='
     return response.SerializeToString()
 
 
@@ -167,7 +167,7 @@ def deal_player_infos(player, response):
                                              'heads', 'vip_level',
                                              'guild_id'])
             player_pb = response.player_info.add()
-            player_pb.color = player.rob_treasure.get_target_color_info(player_id).Gradient
+            player_pb.color = player.rob_treasure.get_target_color_info(player_id).id
             player_pb.id = player_info.get('id')
             player_pb.nickname = player_info.get('nickname', 'nickname')
             player_pb.vip_level = player_info.get('vip_level')
@@ -190,6 +190,18 @@ def deal_player_infos(player, response):
             player_pb.level = int(rankinfo % const.power_rank_xs)
         else:
             robot_obj = tb_character_info.getObj('robot')
+            data = robot_obj.hget(player_id)
+
+            player_pb = response.player_info.add()
+            player_pb.color = player.rob_treasure.get_target_color_info(player_id).id
+            player_pb.id = player_id
+            player_pb.nickname = data.get('nickname')
+            player_pb.vip_level = 0
+            player_pb.now_head = data.get('head_no', 0)
+            player_pb.guild_id = ''
+
+            player_pb.power = int(data.get('attackPoint'))
+            player_pb.level = data.get('level')
 
 
 @remoteserviceHandle('gate')

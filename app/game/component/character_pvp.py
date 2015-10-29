@@ -167,11 +167,13 @@ class CharacterPvpComponent(Component):
                 if x > num:
                     num = x
 
+        print '========================num', num
         ids = get_player_ids(self.owner.base_info.id,
                              int(character_info.hget('attackPoint')),
                              types, num)
         print '=====================================ids:', ids
-        ids.remove([0, 0])
+        if [0, 0] in ids:
+            ids.remove([0, 0])
         self._rob_treasure = ids
         self.save_data()
 
@@ -400,7 +402,8 @@ def get_player_ids(player_id, player_ap, types, num):
         if len(robot2_rank) < num:
             logger.error('not robot2 exist')
             return []
-        robot_ids = set([(0, 0)])
+        robot_ids = set([])
+        print '===========', robot_ids
         index = 0
         for i in range(len(robot2_rank)):
             rid, rap = robot2_rank[i]
