@@ -25,7 +25,7 @@ class BaseConfig(object):
                 free_fight_times = config_value.get("worldbossFightTimes"),
                 rank_rewards = config_value.get("hurt_rewards_worldboss_rank"),
                 hurt_rank_rewards = config_value.get("worldbossHurtRankRewards"),
-                accumulated_rewards = config_value.get("worldbossAccumulatedReward"),
+                accumulated_rewards = config_value.get("worldbossHurtReward"),
                 kill_rewards = config_value.get("kill_rewards_worldboss"),
                 last_kill_rewards = config_value.get("worldbossKillRewards"),
                 time_to_upgrade = config_value.get("time_kill_worldboss_to_upgrade"),
@@ -50,7 +50,8 @@ class BaseConfig(object):
                 gold_inspire_cd = config_value.get("money_inspire_CD"),
 
                 free_relive_time = config_value.get("free_relive_time"),
-                gold_relive_price = config_value.get("money_relive_price")
+                gold_relive_price = config_value.get("money_relive_price"),
+                in_rewards = config_value.get("worldbossParticipationRewards"),
                 )
         config_value["world_boss"] = world_boss
 

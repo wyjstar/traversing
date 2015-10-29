@@ -12,19 +12,19 @@ from app.world.core.base_boss import BaseBoss
 from shared.db_opear.configs_data import game_configs
 from gtwisted.core import reactor
 import cPickle
-import random
+#import random
 import time
 from gfirefly.server.globalobject import GlobalObject
 from app.proto_file.db_pb2 import WorldBossAwardDB
-from shared.utils.mail_helper import deal_mail
+#from shared.utils.mail_helper import deal_mail
 from shared.utils.date_util import str_time_to_timestamp
 from app.world.action.gateforwarding import push_all_object_message
 from app.proto_file.notice_pb2 import NoticeResponse
 from shared.utils.random_pick import random_pick_with_weight
 from shared.utils.date_util import string_to_timestamp
-from shared.utils.const import const
-from gfirefly.server.logobj import logger
+#from shared.utils.const import const
 from shared.common_logic.lucky_hero import update_lucky_hero
+from app.game.core.mail_helper import send_mail
 
 def get_remote_gate():
     """docstring for get_remote_gate"""
@@ -190,13 +190,14 @@ class WorldBoss(BaseBoss):
         排行奖励, top 10
         """
         logger.debug("send_award_top_ten===========")
-        award_info = game_configs.base_config.get("world_boss").get('hurt_rank_rewards')
-        for up, down, big_bag_id in award_info.values():
+        award_info = game_configs.base_config.get("world_boss").get('rank_rewards')
+        for up, down, mail_id in award_info.values():
             ranks = self._rank_instance.get(up, down)
             for k, v in enumerate(ranks):
                 player_id, val = v
-                logger.debug("send_award_top_ten: player_id %s, value %s, big_bag_id %s" % (player_id, v, big_bag_id))
-                self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id, k+up)
+                logger.debug("send_award_top_ten: player_id %s, value %s, mail_id %s" % (player_id, v, mail_id))
+                send_mail(conf_id=mail_id, receive_id=player_id)
+                #self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id, k+up)
 
     def send_award_add_up(self):
         """
@@ -211,7 +212,9 @@ class WorldBoss(BaseBoss):
                 reward_info = accumulated_rewards.get(i)
                 logger.debug("percent %s hp_max %s damage %s actual damage %s" % (reward_info[0], hp_max, reward_info[0]*hp_max, v))
                 if hp_max * reward_info[0] < v:
-                    self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
+
+                    send_mail(conf_id=reward_info[1], receive_id=player_id)
+                    #self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
                     break
                 else:
                     continue
@@ -239,17 +242,20 @@ class WorldBoss(BaseBoss):
         if not self._last_shot_item:
             return
         player_id = self._last_shot_item['player_id']
-        big_bag_id = game_configs.base_config.get("world_boss").get('last_kill_rewards')
-        logger.debug("send_award_last=============== player_id %s, big_bag_id %s" % (player_id, big_bag_id))
-        self.send_award(player_id, const.PVB_LAST_AWARD, big_bag_id)
+        mail_id = game_configs.base_config.get("world_boss").get('kill_rewards')
+        logger.debug("send_award_last=============== player_id %s, mail_id %s" % (player_id, mail_id))
+        send_mail(conf_id=mail_id, receive_id=player_id)
+        #self.send_award(player_id, const.PVB_LAST_AWARD, mail_id)
 
     def send_award_in(self):
         """ 参与奖励
         """
+        mail_id = game_configs.base_config.get("world_boss").get('in_rewards')
         logger.debug("send_award_in=========== %s", self._rank_instance.get(1, 0))
         for player_id, v in self._rank_instance.get(1, 0):
             logger.debug("send_award_in==== %s %s" % (player_id, v))
-            self.send_award(player_id, const.PVB_IN_AWARD, int(v))
+            #self.send_award(player_id, const.PVB_IN_AWARD, int(v))
+            send_mail(conf_id=mail_id, receive_id=player_id)
 
     def send_award(self, player_id, award_type, award, rank_no=0):
         """
