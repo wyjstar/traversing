@@ -226,7 +226,7 @@ class CharacterPvpComponent(Component):
 
     @pvp_high_rank.setter
     def pvp_high_rank(self, value):
-        if value > self._pvp_high_rank:
+        if value < self._pvp_high_rank:
             self._pvp_high_rank = value
             # 更新 七日奖励
             target_update(self.owner, [33])
