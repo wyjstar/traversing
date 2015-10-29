@@ -38,6 +38,7 @@ from rebate.rebate import Rebate
 from character_task import CharacterTaskComponent
 from character_hjqy import CharacterHjqyComponent
 from character_act import CharacterActComponent
+from character_rob_treasure import CharacterRobTreasureComponent
 
 from character_buy_coin_activity import CharacterBuyCoinActivity
 from character_start_target import CharacterStartTargetComponent
@@ -60,5 +61,6 @@ __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'CharacterPay', 'Rebate', 'CharacterBuyCoinActivity',
            'CharacterLimitHeroComponent', 'CharacterPvpComponent',
            'CharacterTaskComponent', 'CharacterStartTargetComponent',
-           'CharacterHjqyComponent', 'CharacterActComponent'
+           'CharacterHjqyComponent', 'CharacterActComponent',
+           'CharacterRobTreasureComponent'
            ]

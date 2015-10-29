@@ -62,6 +62,8 @@ class CharacterPvpComponent(Component):
         self._pvp_arena_players = []
         self._pvp_upstage_challenge_rank = 0
 
+        self._rob_treasure = []
+
     def init_data(self, character_info):
         self._pvp_overcome = character_info['pvp_overcome']
         self._pvp_overcome_current = character_info['pvp_overcome_current']
@@ -89,6 +91,7 @@ class CharacterPvpComponent(Component):
 
         self.save_data()
         # self.reset_overcome()
+        self.reset_rob_treasure()
 
     def save_data(self):
         character_info = tb_character_info.getObj(self.owner.base_info.id)
@@ -150,6 +153,30 @@ class CharacterPvpComponent(Component):
             # self._pvp_overcome_current = 1
             self.save_data()
 
+    def reset_rob_treasure(self):
+        # types = [30001, 30002, 30003]
+        character_info = tb_character_info.getObj(self.owner.base_info.id)
+        types = game_configs.base_config.get('indianaMatch')
+
+        num = 0
+        for _id in types:
+            item = game_configs.arena_fight_config.get(_id)
+            if not item:
+                logger.error('arena_fight_config:%d', _id)
+            for x in item.play_rank:
+                if x > num:
+                    num = x
+
+        print '========================num', num
+        ids = get_player_ids(self.owner.base_info.id,
+                             int(character_info.hget('attackPoint')),
+                             types, num)
+        print '=====================================ids:', ids
+        if [0, 0] in ids:
+            ids.remove([0, 0])
+        self._rob_treasure = ids
+        self.save_data()
+
     def reset_overcome(self):
         _times = self.pvp_overcome_refresh_count + 1
         if _times > self.owner.base_info.buyGgzj_times:
@@ -159,8 +186,11 @@ class CharacterPvpComponent(Component):
             return False
 
         character_info = tb_character_info.getObj(self.owner.base_info.id)
-        ids = get_overcomes(self.owner.base_info.id,
-                            int(character_info.hget('attackPoint')))
+
+        types = [20001, 20002, 20003]
+        ids = get_player_ids(self.owner.base_info.id,
+                             int(character_info.hget('attackPoint')),
+                             types, 46)
         if not ids:
             return False
         logger.debug('reset overcome:%s', ids)
@@ -235,6 +265,10 @@ class CharacterPvpComponent(Component):
     @property
     def pvp_overcome(self):
         return self._pvp_overcome
+
+    @property
+    def rob_treasure(self):
+        return self._rob_treasure
 
     # @pvp_overcome.setter
     # def pvp_overcome(self, value):
@@ -360,15 +394,16 @@ class CharacterPvpComponent(Component):
         return self._pvp_arena_players
 
 
-def get_overcomes(player_id, player_ap):
+def get_player_ids(player_id, player_ap, types, num):
     rank_name, _ = rank_helper.get_power_rank_name()
     rank = tb_rank.getObj(rank_name)
     rank_toal = rank.ztotal()
-    if rank_toal < 50:
-        if len(robot2_rank) < 50:
+    if rank_toal < num:
+        if len(robot2_rank) < num:
             logger.error('not robot2 exist')
             return []
-        robot_ids = set([(0, 0)])
+        robot_ids = set([])
+        print '===========', robot_ids
         index = 0
         for i in range(len(robot2_rank)):
             rid, rap = robot2_rank[i]
@@ -378,9 +413,9 @@ def get_overcomes(player_id, player_ap):
         else:
             index = len(robot2_rank)
 
-        _min = max(index - 50, 0)
-        _max = min(index + 50, len(robot2_rank) - 1)
-        while len(robot_ids) != 46:
+        _min = max(index - num, 0)
+        _max = min(index + num, len(robot2_rank) - 1)
+        while len(robot_ids) != num:
             _id = random.randint(_min, _max)
             robot_ids.add(robot2_rank[_id])
         robot_ids = sorted(list(robot_ids), key=lambda x: x[1])
@@ -391,7 +426,7 @@ def get_overcomes(player_id, player_ap):
         logger.error('reset overcome not enough player:%s(%s)', ids, index)
         return ids
 
-    types = [20001, 20002, 20003]
+    # types = [20001, 20002, 20003]
     count = 0
     ids = set()
     for _id in types:

@@ -35,6 +35,8 @@ message Mail_PB
     optional int32 rank = 25;
     optional string arg1 = 27;
 
+    optional string arg1=27; //
+
     optional int32 effec = 22;  //有效时间
     optional bool is_got_prize = 23;  //是否已经获取奖励
 }

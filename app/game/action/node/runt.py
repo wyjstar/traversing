@@ -333,11 +333,9 @@ def make_runt_857(data, player):
     print args, '==================================', num
     response = MakeRuntResponse()
 
-    item_type = game_configs.base_config.get('stonesynthesis')[0]
-    item_id = game_configs.base_config.get('stonesynthesis')[1]
-    price = parse({item_type: [num, num, item_id]})
+    price = game_configs.base_config.get('stonesynthesis')
 
-    is_afford_res = is_afford(player, price)  # 校验
+    is_afford_res = is_afford(player, price, multiple=num)  # 校验
     if num and not is_afford_res.get('result'):
         logger.error('make_runt_857, item not enough')
         response.res.result = False

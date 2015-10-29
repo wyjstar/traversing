@@ -11,9 +11,96 @@ from app.proto_file.travel_pb2 import *
 from app.proto_file.runt_pb2 import *
 from app.proto_file.level_gift_pb2 import *
 from app.proto_file.start_target_pb2 import *
+from app.proto_file.rob_treasure_pb2 import *
 
 
 class RobotGuild(Robot):
+    def command_rob_treasure_init(self):
+        self.send_message('', 858)
+
+    def rob_treasure_init_858(self, message):
+        argument = RobTreasureInitResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_rob_treasure_truce(self):
+        argument1 = RobTreasureTruceRequest()
+        argument1.num = 2
+        self.send_message(argument1, 859)
+
+    def rob_treasure_truce_859(self, message):
+        argument = RobTreasureTruceResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_rob_treasure_truce(self):
+        argument1 = RobTreasureTruceRequest()
+        argument1.num = 2
+        self.send_message(argument1, 859)
+
+    def rob_treasure_truce_859(self, message):
+        argument = RobTreasureTruceResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_buy_rob_treasure_item(self):
+        argument1 = BuyTruceItemRequest()
+        argument1.num = 2
+        self.send_message(argument1, 861)
+
+    def buy_rob_treasure_item_861(self, message):
+        argument = BuyTruceItemResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_refresh_rob_treasure_item(self):
+        self.send_message("", 862)
+
+    def refresh_rob_treasure_item_862(self, message):
+        argument = RefreshRobTreasureResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_rob_treasure_reward(self):
+        self.send_message("", 863)
+
+    def rob_treasure_reward_863(self, message):
+        argument = RobTreasureRewardResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_pvp_rob_treasure(self):
+        argument1 = PvpRobTreasureRequest()
+        argument1.uid = 1
+        self.send_message(argument1, 864)
+
+    def pvp_rob_treasure_864(self, message):
+        argument = PvpFightResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    def command_enhance_rob_treasure(self):
+        argument1 = RobTreasureEnhanceRequest()
+        argument1.no = ''
+        argument1.use_no = ''
+        self.send_message(argument1, 866)
+
+    def enhance_rob_treasure_866(self, message):
+        argument = RobTreasureEnhanceResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
+    # =====================
+
+    """
     def command_start_target_get(self):
         argument1 = GetStartTargetRewardRequest()
         argument1.target_id = 29001
@@ -209,3 +296,4 @@ class RobotGuild(Robot):
         argument = StageSettlementResponse()
         argument.ParseFromString(message)
         print argument
+    """

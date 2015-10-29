@@ -28,14 +28,16 @@ def init_equipment_attr(equipment_no, attr_id=0):
     equip_attr_id = equipment_item.attr if attr_id == 0 else attr_id
     logger.debug('init_equipment_attr %s %s', equip_attr_id, attr_id)
     equipment_attr_item = EQUIP_ATTR_CONFIG.get(int(equip_attr_id))
+    print equipment_attr_item,'============================================='
     if not equipment_attr_item:
         logger.error('error equipment attr no:%s:%s',
                      equip_attr_id, equipment_no)
         return mainAttr, minorAttr
 
-    main_num = equipment_attr_item.get('mainAttrNum')
-    minor_num_min, minor_num_min = equipment_attr_item.get('minorAttrNum')
-    minor_num = random.randint(minor_num_min, minor_num_min)
+    main_num_min, main_num_max = equipment_attr_item.get('mainAttrNum') if equipment_attr_item.get('mainAttrNum')else [0, 0]
+    main_num = random.randint(main_num_min, main_num_max)
+    minor_num_min, minor_num_max = equipment_attr_item.get('minorAttrNum') if equipment_attr_item.get('minorAttrNum') else [0, 0]
+    minor_num = random.randint(minor_num_min, minor_num_max)
 
     main_pool = copy.copy(equipment_attr_item.get('mainAttr'))
     minor_pool = copy.copy(equipment_attr_item.get('minorAttr'))
@@ -51,9 +53,12 @@ def init_equipment_attr(equipment_no, attr_id=0):
     assert minor_num == len(minorAttr)
 
     # calculation for prefx
-    prefix = get_prefix(equipment_item, mainAttr, minorAttr)
+    prefix = 2
+    if equipment_item.type not in [7, 8]:
+        prefix = get_prefix(equipment_item, mainAttr, minorAttr)
 
     return mainAttr, minorAttr, prefix, equip_attr_id
+
 
 def get_prefix(equipment_item, mainAttr, minorAttr):
     """docstring for get_prefix"""
@@ -64,6 +69,7 @@ def get_prefix(equipment_item, mainAttr, minorAttr):
         if item[0] <= ran and item[1] > ran:
             return item[2]
     return 0
+
 
 def get_equip_rate(equipment_item, mainAttr, minorAttr):
     """当前装备/极限装备战斗力"""
@@ -142,10 +148,10 @@ def rand_pick_attr(attr):
             attrValue = int(valueMin + random.random() * (valueMax - valueMin))
             # add increment formula
             inputs = {'EquNumRandom': attrValue,'EquNumMax': valueMax, 'EquNumMin': valueMin, 'grow': attrIncrement}
-            print(inputs)
-            formula = game_configs.formula_config.get("equGrowUpParameter").get("formula")
-            assert formula!=None, "formula can not be None"
-            attrIncrement = eval(formula, inputs)
+            if valueMax != valueMin:
+                formula = game_configs.formula_config.get("equGrowUpParameter").get("formula")
+                assert formula!=None, "formula can not be None"
+                attrIncrement = eval(formula, inputs)
             logger.debug("increment value: %s %s" % (attrIncrement, attrIncrement))
 
             del attr[k]
@@ -411,6 +417,8 @@ class Equipment(object):
                        growDuctility=0,
                        equLevel=self._attribute.strengthen_lv)
 
+        print("self._attribute.main_attr====", self.base_info.equipment_no)
+        print(self._attribute.main_attr)
         for k, v in self._attribute.main_attr.items():
             assert varNames[k] in allVars
             avt, av, ai = v
@@ -419,10 +427,10 @@ class Equipment(object):
                 if k in varNames2:
                     allVars[varNames2[k]] += ai
             elif avt == 2:
-                if k not in varNames3:
-                    allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
-                else:
-                    raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
+                #if k not in varNames3:
+                allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
+                #jelse:
+                #    raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
         for k, v in self._attribute.minor_attr.items():
             assert varNames[k] in allVars
             avt, av, ai = v
@@ -431,10 +439,10 @@ class Equipment(object):
                 if k in varNames2:
                     allVars[varNames2[k]] += ai
             elif avt == 2:
-                if k not in varNames3:
-                    allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
-                else:
-                    raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
+                #if k not in varNames3:
+                allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
+                #else:
+                #    raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
 
         formulas = dict(hp='hpEqu',
                         atk='atkEqu',

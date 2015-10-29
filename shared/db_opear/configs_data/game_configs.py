@@ -57,7 +57,9 @@ from lottery_config import LotteryConfig
 from activity_type_config import ActivityTypeConfig
 from ggzj_config import GgzjConfig
 from awake_config import AwakeConfig
+from indiana_config import IndianaConfig
 
+indiana_config = {}
 activity_type_config = {}
 lottery_config = {}
 travel_item_group_config = {}
@@ -167,6 +169,7 @@ all_config_name = {
     'currency_config': CurrencyConfig(),
     'ggzj_config': GgzjConfig(),
     'awake_config': AwakeConfig(),
+    'indiana_config': IndianaConfig(),
 }
 
 logger.info("=============load game_configs=============")
