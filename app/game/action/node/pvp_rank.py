@@ -27,6 +27,7 @@ from app.game.core.mail_helper import send_mail
 from app.game.redis_mode import tb_character_info, tb_pvp_rank
 from app.game.core.task import hook_task, CONDITIONId
 from app.game.core.equipment.equipment_chip import EquipmentChip
+from shared.db_opear.configs_data.data_helper import parse
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -756,8 +757,14 @@ def pvp_rob_treasure_864(data, player):
     uid = request.uid
     chip_id = request.chip_id
     player_ids = player.pvp.rob_treasure
+    flag = 0
+    for player_id, ap in player_ids:
+        if uid == player_id:
+            flag = 1
+            break
 
-    if uid not in player_ids:
+    print uid, player_ids, '================uid playerids'
+    if not flag:
         logger.error('pvp_rob_treasure_864, uid error')
         response.res.result = False
         response.res.result_no = 800
@@ -771,7 +778,7 @@ def pvp_rob_treasure_864(data, player):
         return response.SerializeToString()
     treasure_id = chip_conf.combineResult
 
-    chips = game_configs.chip_config.get('mapping').get(treasure_id)
+    chips = game_configs.chip_config.get('map').get(treasure_id)
 
     can_rob = 0
     for x in chips:
@@ -780,26 +787,27 @@ def pvp_rob_treasure_864(data, player):
         if chip and chip.chip_num >= 1:
             can_rob = 1
 
-    if not can_rob:
+    default_chips = game_configs.base_config.get('indianaDefaultId')
+    if not can_rob and treasure_id not in default_chips:
         logger.error('pvp_rob_treasure_864, dont have one chip')
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
 
     price = game_configs.base_config.get('indianaConsume')
-    is_afford_res = is_afford(player, price, multiple=num)  # 校验
+    is_afford_res = is_afford(player, price)  # 校验
 
-    if not is_afford_res.get('result'):
-        logger.error('rob_treasure_truce_841, item not enough')
-        response.res.result = False
-        response.res.result_no = is_afford_res.get('result_no')
-        return response.SerializeToString()
+    # if not is_afford_res.get('result'):
+    #     logger.error('rob_treasure_truce_841, item not enough')
+    #     response.res.result = False
+    #     response.res.result_no = is_afford_res.get('result_no')
+    #     return response.SerializeToString()
 
-    return_data = consume(player, price, const.ROB_TREASURE)  # 消耗
-    get_return(player, return_data, response.consume)
+    # return_data = consume(player, price, const.ROB_TREASURE)  # 消耗
+    # get_return(player, return_data, response.consume)
 
     fight_result = pvp_fight(player, uid, [], 0, response,
-                             settle, is_copy_unit=True)
+                             is_copy_unit=True)
 
     logger.debug("fight revenge result:%s" % fight_result)
 
@@ -822,6 +830,7 @@ def pvp_rob_treasure_864(data, player):
     response.res.result = True
 
     logger.debug("red_units: %s" % response.red)
+    logger.debug("response ==================== ::: %s" % response)
     return response.SerializeToString()
 
 

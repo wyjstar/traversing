@@ -13,14 +13,14 @@ class IndianaConfig(object):
 
     def __init__(self):
         self._indiana = {}
-        self._weight = {}
+        self._indexes = {}
 
     def parser(self, config_value):
 
         for row in config_value:
             # row["consume"] = parse(row.get("consume"))
             item = CommonItem(row)
-            index = item.difficult*100+item.quality*10+item.type
+            index = item.difficulty*100+item.quality*10+item.type
 
             self._indiana[item.id] = item
             self._indexes[index] = item.id

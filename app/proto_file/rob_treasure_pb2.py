@@ -15,7 +15,7 @@ import equipment_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='rob_treasure.proto',
   package='',
-  serialized_pb='\n\x12rob_treasure.proto\x1a\x0c\x63ommon.proto\x1a\x0f\x65quipment.proto\"\xa5\x01\n\x17RobTreasureInitResponse\x12\x13\n\x0bstart_truce\x18\x01 \x01(\x05\x12\x16\n\x0etruce_item_num\x18\x02 \x01(\x05\x12\x1a\n\x12truce_item_num_day\x18\x03 \x02(\x05\x12+\n\x0bplayer_info\x18\x04 \x03(\x0b\x32\x16.PlayerRobTreasureInfo\x12\x14\n\x0crefresh_time\x18\x05 \x02(\x05\"&\n\x17RobTreasureTruceRequest\x12\x0b\n\x03num\x18\x01 \x02(\x05\"\x81\x01\n\x18RobTreasureTruceResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x13\n\x0bstart_truce\x18\x02 \x01(\x05\x12\x16\n\x0etruce_item_num\x18\x03 \x01(\x05\x12\x1a\n\x12truce_item_num_day\x18\x04 \x02(\x05\"-\n\x16\x43omposeTreasureRequest\x12\x13\n\x0btreasure_id\x18\x01 \x02(\x05\"R\n\x17\x43omposeTreasureResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"\"\n\x13\x42uyTruceItemRequest\x12\x0b\n\x03num\x18\x01 \x02(\x05\"\x83\x01\n\x14\x42uyTruceItemResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\x99\x01\n\x15PlayerRobTreasureInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\r\n\x05power\x18\x03 \x01(\x05\x12\x10\n\x08guild_id\x18\x04 \x01(\t\x12\x11\n\tvip_level\x18\x05 \x01(\x05\x12\x10\n\x08now_head\x18\x06 \x01(\x05\x12\r\n\x05level\x18\x07 \x01(\x05\x12\r\n\x05\x63olor\x18\x08 \x01(\x05\"}\n\x1aRefreshRobTreasureResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12+\n\x0bplayer_info\x18\x02 \x03(\x0b\x32\x16.PlayerRobTreasureInfo\x12\x14\n\x0crefresh_time\x18\x03 \x02(\x05\"\x8a\x01\n\x19RobTreasureRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12)\n\tlook_gain\x18\x03 \x03(\x0b\x32\x16.GameResourcesResponse\" \n\rBeRobTreasure\x12\x0f\n\x07\x63hip_id\x18\x01 \x02(\x05\"7\n\x19RobTreasureEnhanceRequest\x12\n\n\x02no\x18\x01 \x02(\t\x12\x0e\n\x06use_no\x18\x02 \x03(\t\":\n\x1aRobTreasureEnhanceResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\x12rob_treasure.proto\x1a\x0c\x63ommon.proto\x1a\x0f\x65quipment.proto\"\xa5\x01\n\x17RobTreasureInitResponse\x12\x13\n\x0bstart_truce\x18\x01 \x01(\x05\x12\x16\n\x0etruce_item_num\x18\x02 \x01(\x05\x12\x1a\n\x12truce_item_num_day\x18\x03 \x02(\x05\x12+\n\x0bplayer_info\x18\x04 \x03(\x0b\x32\x16.PlayerRobTreasureInfo\x12\x14\n\x0crefresh_time\x18\x05 \x02(\x05\"&\n\x17RobTreasureTruceRequest\x12\x0b\n\x03num\x18\x01 \x02(\x05\"\xaa\x01\n\x18RobTreasureTruceResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x13\n\x0bstart_truce\x18\x02 \x01(\x05\x12\x16\n\x0etruce_item_num\x18\x03 \x01(\x05\x12\x1a\n\x12truce_item_num_day\x18\x04 \x01(\x05\x12\'\n\x07\x63onsume\x18\x05 \x01(\x0b\x32\x16.GameResourcesResponse\"-\n\x16\x43omposeTreasureRequest\x12\x13\n\x0btreasure_id\x18\x01 \x02(\x05\"R\n\x17\x43omposeTreasureResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x03\x65qu\x18\x02 \x01(\x0b\x32\x0c.EquipmentPB\"\"\n\x13\x42uyTruceItemRequest\x12\x0b\n\x03num\x18\x01 \x02(\x05\"\x83\x01\n\x14\x42uyTruceItemResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"\x99\x01\n\x15PlayerRobTreasureInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\r\n\x05power\x18\x03 \x01(\x05\x12\x10\n\x08guild_id\x18\x04 \x01(\t\x12\x11\n\tvip_level\x18\x05 \x01(\x05\x12\x10\n\x08now_head\x18\x06 \x01(\x05\x12\r\n\x05level\x18\x07 \x01(\x05\x12\r\n\x05\x63olor\x18\x08 \x01(\x05\"}\n\x1aRefreshRobTreasureResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12+\n\x0bplayer_info\x18\x02 \x03(\x0b\x32\x16.PlayerRobTreasureInfo\x12\x14\n\x0crefresh_time\x18\x03 \x01(\x05\"\x8a\x01\n\x19RobTreasureRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12)\n\tlook_gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\" \n\rBeRobTreasure\x12\x0f\n\x07\x63hip_id\x18\x01 \x02(\x05\"7\n\x19RobTreasureEnhanceRequest\x12\n\n\x02no\x18\x01 \x02(\t\x12\x0e\n\x06use_no\x18\x02 \x03(\t\":\n\x1aRobTreasureEnhanceResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
 
 
 
@@ -134,8 +134,15 @@ _ROBTREASURETRUCERESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='truce_item_num_day', full_name='RobTreasureTruceResponse.truce_item_num_day', index=3,
-      number=4, type=5, cpp_type=1, label=2,
+      number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='consume', full_name='RobTreasureTruceResponse.consume', index=4,
+      number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -149,7 +156,7 @@ _ROBTREASURETRUCERESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=262,
-  serialized_end=391,
+  serialized_end=432,
 )
 
 
@@ -176,8 +183,8 @@ _COMPOSETREASUREREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=393,
-  serialized_end=438,
+  serialized_start=434,
+  serialized_end=479,
 )
 
 
@@ -211,8 +218,8 @@ _COMPOSETREASURERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=440,
-  serialized_end=522,
+  serialized_start=481,
+  serialized_end=563,
 )
 
 
@@ -239,8 +246,8 @@ _BUYTRUCEITEMREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=524,
-  serialized_end=558,
+  serialized_start=565,
+  serialized_end=599,
 )
 
 
@@ -281,8 +288,8 @@ _BUYTRUCEITEMRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=561,
-  serialized_end=692,
+  serialized_start=602,
+  serialized_end=733,
 )
 
 
@@ -358,8 +365,8 @@ _PLAYERROBTREASUREINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=695,
-  serialized_end=848,
+  serialized_start=736,
+  serialized_end=889,
 )
 
 
@@ -386,7 +393,7 @@ _REFRESHROBTREASURERESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='refresh_time', full_name='RefreshRobTreasureResponse.refresh_time', index=2,
-      number=3, type=5, cpp_type=1, label=2,
+      number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -400,8 +407,8 @@ _REFRESHROBTREASURERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=850,
-  serialized_end=975,
+  serialized_start=891,
+  serialized_end=1016,
 )
 
 
@@ -428,8 +435,8 @@ _ROBTREASUREREWARDRESPONSE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='look_gain', full_name='RobTreasureRewardResponse.look_gain', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -442,8 +449,8 @@ _ROBTREASUREREWARDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=978,
-  serialized_end=1116,
+  serialized_start=1019,
+  serialized_end=1157,
 )
 
 
@@ -470,8 +477,8 @@ _BEROBTREASURE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1118,
-  serialized_end=1150,
+  serialized_start=1159,
+  serialized_end=1191,
 )
 
 
@@ -505,8 +512,8 @@ _ROBTREASUREENHANCEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1152,
-  serialized_end=1207,
+  serialized_start=1193,
+  serialized_end=1248,
 )
 
 
@@ -533,12 +540,13 @@ _ROBTREASUREENHANCERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1209,
-  serialized_end=1267,
+  serialized_start=1250,
+  serialized_end=1308,
 )
 
 _ROBTREASUREINITRESPONSE.fields_by_name['player_info'].message_type = _PLAYERROBTREASUREINFO
 _ROBTREASURETRUCERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_ROBTREASURETRUCERESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _COMPOSETREASURERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _COMPOSETREASURERESPONSE.fields_by_name['equ'].message_type = equipment_pb2._EQUIPMENTPB
 _BUYTRUCEITEMRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

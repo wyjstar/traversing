@@ -20,6 +20,7 @@ from app.game.redis_mode import tb_character_info
 from app.game.core.drop_bag import BigBag
 from app.proto_file.db_pb2 import Heads_DB
 from app.game.core import rank_helper
+from app.game.core.item_group_helper import gain, get_return
 
 
 @remoteserviceHandle('gate')
@@ -35,16 +36,17 @@ def rob_treasure_truce_859(data, player):
     is_afford_res = is_afford(player, price, multiple=num)  # 校验
 
     if not is_afford_res.get('result'):
-        logger.error('rob_treasure_truce_841, item not enough')
+        logger.error('rob_treasure_truce_859, item not enough')
         response.res.result = False
         response.res.result_no = is_afford_res.get('result_no')
         return response.SerializeToString()
+    print num, '======================-=-=-===num'
 
     truce_item_num_day = player.rob_treasure.truce_item_num_day
     use_truce_item_max = game_configs.vip_config. \
         get(player.base_info.vip_level).indiana_TruceTime
     if (truce_item_num_day + num) > use_truce_item_max:
-        logger.error('rob_treasure_truce_841, use item times not enough')
+        logger.error('rob_treasure_truce_859, use item times not enough')
         response.res.result = False
         response.res.result_no = is_afford_res.get('result_no')
         return response.SerializeToString()
@@ -88,10 +90,12 @@ def compose_rob_treasure_860(data, player):
     args = rob_treasure_pb2.ComposeTreasureRequest()
     args.ParseFromString(data)
     treasure_id = args.treasure_id
+    print treasure_id, '=============================treasure id'
 
     response = rob_treasure_pb2.ComposeTreasureResponse()
 
-    chips = game_configs.chip_config.get('mapping').get(treasure_id)
+    chips = game_configs.chip_config.get('map').get(treasure_id)
+    print chips, '===================chips'
 
     for chip_no in chips:
         chip = player.equipment_chip_component.get_chip(chip_no)
@@ -121,6 +125,7 @@ def compose_rob_treasure_860(data, player):
     equipment_obj.update_pb(equ)
 
     response.res.result = True
+    print response, '=========================='
     return response.SerializeToString()
 
 
@@ -136,6 +141,7 @@ def buy_truce_item_861(data, player):
     price = game_configs.base_config.get('indianaTrucePrice')
     is_afford_res = is_afford(player, price, multiple=num)  # 校验
 
+    """
     if not is_afford_res.get('result'):
         logger.error('rob_treasure_truce_841, item not enough')
         response.res.result = False
@@ -145,6 +151,8 @@ def buy_truce_item_861(data, player):
     return_data = consume(player, price, const.BUY_TRUCE_ITEM, multiple=num)  # 消耗
     get_return(player, return_data, response.consume)
 
+    """
+    gain_items = game_configs.base_config.get('indianaIteam')
     return_data = gain(player, gain_items, const.BUY_TRUCE_ITEM, multiple=num)
     get_return(player, return_data, response.gain)
 
@@ -232,7 +240,7 @@ def refresh_rob_treasure_862(data, player):
 def rob_treasure_reward_863(data, player):
     """选择战利品"""
     response = rob_treasure_pb2.RobTreasureRewardResponse()
-
+    player.rob_treasure.can_receive = 10001
     if not player.rob_treasure.can_receive:
         logger.error('rob_treasure_reward_863, can not receive')
         response.res.result = False
@@ -240,18 +248,25 @@ def rob_treasure_reward_863(data, player):
         return response.SerializeToString()
 
     indiana_conf = game_configs.indiana_config.get('indiana').get(player.rob_treasure.can_receive)
+    print indiana_conf.reward, '==================reward big id '
     common_bag = BigBag(indiana_conf.reward)
     drops = common_bag.get_drop_items()
+    print drops, "=======================drops", type(drops)
 
     # drops = []
     # common_bag = BigBag(self._common_drop)
     # common_drop = common_bag.get_drop_items()
     # drops.extend(common_drop)
 
-    gain_items = parse({103: [1, 1, chip_id]})
-    return_data = gain(player, gain_items,
+    x = [0, 1, 2]
+    random.shuffle(x)
+    return_data = gain(player, [drops[x[0]]],
                        const.ROB_TREASURE_REWARD)
     get_return(player, return_data, response.gain)
+
+    return_data = gain(player, [drops[x[1]], drops[x[2]]],
+                       const.ROB_TREASURE_REWARD)
+    get_return(player, return_data, response.look_gain)
 
     player.rob_treasure.can_receive = 0
     player.rob_treasure.save_data()
@@ -273,3 +288,16 @@ def rob_treasure_reward_863(data, player):
     player.rob_treasure.refresh_time = now
     player.pvp.reset_rob_treasure()
     player.rob_treasure.save_data()
+
+
+@remoteserviceHandle('gate')
+def buy_truce_item_866(data, player):
+    """宝物饰品强化"""
+    args = rob_treasure_pb2.RobTreasureEnhanceRequest()
+    args.ParseFromString(data)
+    no = args.no
+    use_nos = args.use_no
+    response = rob_treasure_pb2.RobTreasureEnhanceResponse()
+
+    response.res.result = True
+    return response.SerializeToString()

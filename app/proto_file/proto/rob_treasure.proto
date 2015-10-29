@@ -20,7 +20,7 @@ message RobTreasureTruceResponse{
     required CommonResponse res = 1;
     optional int32 start_truce = 2;  //开始休战时间戳
     optional int32 truce_item_num = 3;  //使用的休战道具个数
-    required int32 truce_item_num_day = 4;  //今天已经使用的休战道具个数
+    optional int32 truce_item_num_day = 4;  //今天已经使用的休战道具个数
     optional GameResourcesResponse consume = 5;
 }
 
@@ -62,14 +62,14 @@ message PlayerRobTreasureInfo{
 message RefreshRobTreasureResponse{
     required CommonResponse res = 1;
     repeated PlayerRobTreasureInfo player_info = 2;  //玩家信息
-    required int32 refresh_time = 3;  //列表刷新时间
+    optional int32 refresh_time = 3;  //列表刷新时间
 }
 
 //863 选择战利品
 message RobTreasureRewardResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
-    repeated GameResourcesResponse look_gain = 3;
+    optional GameResourcesResponse look_gain = 3;
 }
 
 // 865
