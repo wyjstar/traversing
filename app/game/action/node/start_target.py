@@ -196,7 +196,6 @@ def get_target_info1(player, target_id, day):
             else:
                 return {'state': 1, 'jindu': target_info[1]}
     elif target_conf.type == 36:
-        equipments = player.equipment_component.get_equipment()
         jindu = 0
 
         for equipment_id in player.line_up_component.on_equipment_ids:
