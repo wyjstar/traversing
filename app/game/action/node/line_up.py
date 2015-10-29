@@ -244,8 +244,9 @@ def unpar_upgrade_705(pro_data, player):
     response = CommonResponse()
     response.result = True
     _line_up = player.line_up_component
-    resource1 = game_configs.skill_peerless_grade.get(_line_up._unpar_level).resource1
-    resource2 = game_configs.skill_peerless_grade.get(_line_up._unpar_level).resource2
+    peerless_grade_info = game_configs.skill_peerless_grade_config.get(_line_up._unpar_level)
+    resource1 = peerless_grade_info.resource1
+    resource2 = peerless_grade_info.resource2
     if not is_afford(player, resource1) or not is_afford(player, resource2):
         logger.error("resource not enough!")
         response.result = False
