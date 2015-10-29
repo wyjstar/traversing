@@ -367,7 +367,8 @@ def get_target_info_1827(data, player):
 
 
 def target_update(player, conditions):
-    print conditions, '==============a================='
+    logger.debug("target_update, conditions:", conditions)
+
     # 第几天登录
     if player.base_info.id < 10000:
         return
@@ -396,5 +397,5 @@ def target_update(player, conditions):
                 remote_gate.push_object_remote(1841,
                                                u'',
                                                [player.dynamic_id])
-                print '====================================================111'
+                logger.debug("target_update, push message")
                 return
