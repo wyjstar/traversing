@@ -385,6 +385,7 @@ def skill_attr(hero, hero_info, skill_ids):
             ("ductilityB", "ductilityB")
             )
     for skill_id in skill_ids:
+        if not skill_id: continue
 
         skill_buff_ids = game_configs.skill_config.get(skill_id).get("group")
         for skill_id in skill_buff_ids:
