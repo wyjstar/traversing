@@ -159,8 +159,8 @@ class CharacterFinanceComponent(Component):
             self._finances[const.GOLD] += num
         if reason:
             tlog_action.log('ItemFlow', self.owner, const.ADD, const.RESOURCE, num,
-                            2, 0, reason, self._finances[const.CONSUME_GOLD], '')
-            tlog_action.log('MoneyFlow', self.owner, self._finances[const.CONSUME_GOLD],
+                            2, 0, reason, self._finances[const.GOLD], '')
+            tlog_action.log('MoneyFlow', self.owner, self._finances[const.GOLD],
                             num, reason, const.ADD, 2)
 
     def consume_gold(self, num, reason):
@@ -173,8 +173,8 @@ class CharacterFinanceComponent(Component):
         self._finances[const.GOLD] -= num
         if reason:
             tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
-                            2, 0, reason, self._finances[const.CONSUME_GOLD], '')
-            tlog_action.log('MoneyFlow', self.owner, self._finances[const.CONSUME_GOLD],
+                            2, 0, reason, self._finances[const.GOLD], '')
+            tlog_action.log('MoneyFlow', self.owner, self._finances[const.GOLD],
                             num, reason, const.REDUCE, 2)
         return True
 
