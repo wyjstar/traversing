@@ -27,6 +27,7 @@ class PvpStageLogic():
 
         print("hero_self_attr_origin", hero_self_attr)
         for attr_info in add_buffs.values():
+            if not attr_info[0]: continue
             attr_name = attr_type.get(int(attr_info[0]))
             if attr_info[1] == 2:
                 lucky_add = hero_self_attr[attr_name] * attr_info[2]
