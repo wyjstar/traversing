@@ -101,9 +101,9 @@ def shop_oper(pro_data, player, reason):
                 price = shop_item.alternativeConsume
                 result = is_afford(player, price)
                 if not result.get('result'):
-                    response.result = False
-                    response.result_no = result.get('result_no')
-                    response.message = u'消费不足2！'
+                    response.res.result = False
+                    response.res.result_no = result.get('result_no')
+                    response.res.message = u'消费不足2！'
                     return response.SerializeToString()
 
     player_type_shop = player.shop.get_shop_data(shop_item.get('type'))
