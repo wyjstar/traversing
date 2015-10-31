@@ -133,27 +133,14 @@ const.SHOP_BUY_GIFT_PACK = 14  # 商城,购买礼包
 const.SHOP_BUY_ITEM = 15  # 商城购买道具
 const.SHOP_DRAW_HERO = 16  # 商城抽英雄
 const.SHOP_DRAW_EQUIPMENT = 17  # 商城抽装备
-const.RECHARGE = 33  # rechage
+const.RECHARGE = 33  # 充值掉落
 const.ARENA_WIN = 32  # 竞技场获胜
-const.FRIEND_REVENGE = 34  # 竞技场获胜
+const.FRIEND_REVENGE = 34  # pvp复仇
 const.PVP_OVERCOME = 35  # 竞技场获胜
 const.WORLD_BOSS_AWARD = 1701  # 世界boss奖励
-# const.COMMON_BUY = 18  # 通用商城购买
 const.LIVELY_REWARD = 40  # 好友活跃度奖励
-const.FIRST_RECHARGE = 2204 # 历史充值
+const.FIRST_RECHARGE = 2204  # 历史充值
 
-#1：商城良将寻访
-#2：商城装备宝箱（作废）
-#3：商城道具
-#4：商城礼包
-#5：商城神将寻访
-#6：商城神兵寻访（作废）
-#7：密境商店
-#8：风物志商店（作废）
-#9：武魂商店
-#10：竞技场商店
-#11：熔炼商店
-#12：抽装备商店
 const.COMMON_BUY = 18  # 通用商城购买
 const.COMMON_BUY_ITEM = 1803  # 通用商城购买道具
 const.COMMON_BUY_GIFT = 1804  # 通用商城购买礼包
@@ -182,7 +169,6 @@ const.TOMORROW_GIFT = 36  # 次日奖励
 const.BUY_COIN = 1406  # 招财进宝
 const.ReceivePraiseGift = 33
 const.PraiseGift = 39
-const.StageChestGift = 36
 const.LIMIT_HERO = 37
 const.TASK = 38
 const.ACT20 = 41
@@ -210,6 +196,7 @@ const.INHERIT_EQUIPMENT = 62  # 装备传承
 const.INHERIT_UPARA = 63  # 无双传承
 const.ENCOURAGE_HEROS = 64  # pvb鼓舞士气
 const.PVB_REBORN = 65  # pvb复活
+const.StageChestGift = 66  # 关卡宝箱
 
 
 const.LOGIN_GIFT_CONTINUS = 8061

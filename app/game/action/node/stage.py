@@ -623,9 +623,9 @@ def get_award(pro_data, player):
                     response.res.result_no = 862
                     return response.SerializePartialToString()
                 player.stage_component.save_data()
-                consume(player, star_price, const.STAGE_SWEEP)  # 消耗
+                consume(player, star_price, const.CHAPTER_AWARD)  # 消耗
                 need_gold = get_consume_gold_num(star_price)
-                player.finance.consume_gold(need_gold, const.STAGE_SWEEP)
+                player.finance.consume_gold(need_gold, const.CHAPTER_AWARD)
                 player.finance.save_data()
 
     response.res.result = True
