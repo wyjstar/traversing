@@ -86,7 +86,9 @@ def update_excel(args):
         url = args['excel_url']
     else:
         logger.error("excel_url not exists!!!")
-        url="http://192.168.1.60:2600/static/upload/server_cfg_1435338130"
+        # url="http://192.168.1.60:2600/static/upload/server_cfg_1435338130"
+        return {'success': 0, 'message': 1}
+
     res = urllib.urlretrieve(url, '/tmp/config.zip')
     print res
     print("update_excell=========2")
