@@ -59,6 +59,10 @@ class CharacterRobTreasureComponent(Component):
             return self._truce
         return [0, 0]
 
+    @truce.setter
+    def truce(self, v):
+        self._truce = v
+
     @property
     def truce_item_num_day(self):
         if is_today(self._truce_item[1]):
