@@ -79,7 +79,7 @@ class CharacterRobTreasureComponent(Component):
             self._truce[0] += num
         else:
             self._truce = [num, now]
-        return self._truce[0], self._truce[1], self._truce_item[1]
+        return self._truce[0], self._truce[1], self._truce_item[0]
 
     def get_target_color_info(self, target_id):
         target_ids = self.owner.pvp.rob_treasure
