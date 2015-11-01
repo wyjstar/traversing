@@ -41,7 +41,6 @@ def rob_treasure_truce_859(data, player):
         response.res.result = False
         response.res.result_no = is_afford_res.get('result_no')
         return response.SerializeToString()
-    print num, '======================-=-=-===num'
 
     truce_item_num_day = player.rob_treasure.truce_item_num_day
     use_truce_item_max = game_configs.vip_config. \
@@ -81,7 +80,6 @@ def rob_treasure_init_858(data, player):
 
     deal_player_infos(player, response)
     response.refresh_time = player.rob_treasure.refresh_time
-    print response, '============================='
     return response.SerializeToString()
 
 
@@ -91,12 +89,10 @@ def compose_rob_treasure_860(data, player):
     args = rob_treasure_pb2.ComposeTreasureRequest()
     args.ParseFromString(data)
     treasure_id = args.treasure_id
-    print treasure_id, '=============================treasure id'
 
     response = rob_treasure_pb2.ComposeTreasureResponse()
 
     chips = game_configs.chip_config.get('map').get(treasure_id)
-    print chips, '===================chips'
 
     for chip_no in chips:
         chip = player.equipment_chip_component.get_chip(chip_no)
@@ -126,7 +122,6 @@ def compose_rob_treasure_860(data, player):
     equipment_obj.update_pb(equ)
 
     response.res.result = True
-    print response, '=========================='
     return response.SerializeToString()
 
 
@@ -163,7 +158,6 @@ def buy_truce_item_861(data, player):
 
 def deal_player_infos(player, response):
     player_ids = player.pvp.rob_treasure
-    print '===========================,player_ids:', player_ids
     rank_name, last_rank_name = rank_helper.get_power_rank_name()
     for player_id, ap in player_ids:
         if player_id >= 10000:
@@ -241,7 +235,6 @@ def refresh_rob_treasure_862(data, player):
 def rob_treasure_reward_863(data, player):
     """选择战利品"""
     response = rob_treasure_pb2.RobTreasureRewardResponse()
-    print player.rob_treasure.can_receive, '==========================================rob_treasure_reward_863'
     if not player.rob_treasure.can_receive:
         logger.error('rob_treasure_reward_863, can not receive')
         response.res.result = False
@@ -249,10 +242,8 @@ def rob_treasure_reward_863(data, player):
         return response.SerializeToString()
 
     indiana_conf = game_configs.indiana_config.get('indiana').get(player.rob_treasure.can_receive)
-    print indiana_conf.reward, '==================reward big id '
     common_bag = BigBag(indiana_conf.reward)
     drops = common_bag.get_drop_items()
-    print drops, "=======================drops", type(drops)
 
     # drops = []
     # common_bag = BigBag(self._common_drop)
@@ -277,7 +268,6 @@ def rob_treasure_reward_863(data, player):
     player.rob_treasure.save_data()
 
     response.res.result = True
-    print response, '=============================选择战利品'
     return response.SerializeToString()
 
 
@@ -299,7 +289,6 @@ def rob_treasure_enhance_866(data, player):
         return response.SerializePartialToString()
 
     response.res.result = True
-    print response, '==================================866'
     return response.SerializeToString()
 
 
@@ -344,7 +333,6 @@ def enhance_treasure(no, use_nos, player):
     attr_v_keys = attr_variety.keys()
     attr_v_keys.sort()
     before_attr_id = 0
-    print attr_v_keys, '====================================121'
 
     for x in attr_v_keys:
         if equ_level <= int(x)-1:
@@ -353,7 +341,6 @@ def enhance_treasure(no, use_nos, player):
             break
 
     while level_max > equ_level and all_max_level > equ_level:
-        print all_exp, equ_level, all_max_level, '==================================111'
         str_config_obj = game_configs.equipment_strengthen_config.get(equ_level)
         up_level_exp = str_config_obj.get(key_str)
         if all_exp > (up_level_exp-equ_exp):
@@ -363,7 +350,6 @@ def enhance_treasure(no, use_nos, player):
         else:
             equ_exp += all_exp
             break
-    print equ_exp, equ_level, '==============================equ exp equ level'
     treasure_obj.attribute.exp = equ_exp
     treasure_obj.attribute.strengthen_lv = equ_level
 

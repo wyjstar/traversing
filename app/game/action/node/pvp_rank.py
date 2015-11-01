@@ -691,7 +691,6 @@ def GetPvpOvercomeBuff_1511(data, player):
         player.pvp.pvp_overcome_buff_init[request.index] = _buff_data
         player.pvp.save_data()
 
-    print player.pvp.pvp_overcome_buff_init
     for star, _, bt, vt, value in player.pvp.pvp_overcome_buff_init[request.index]:
         res_buff = response.buff.add()
         res_buff.index = request.index
@@ -789,7 +788,6 @@ def pvp_rob_treasure_864(data, player):
             flag = 1
             break
 
-    print uid, player_ids, '================uid playerids', chip_id
     if not flag:
         logger.error('pvp_rob_treasure_864, uid error')
         response.res.result = False

@@ -88,7 +88,6 @@ class CharacterRobTreasureComponent(Component):
             if target_id == id:
                 break
             index += 1
-        print '======================index:', index
         types = game_configs.base_config.get('indianaMatch')
         for _id in types:
             item1 = game_configs.arena_fight_config.get(_id)
