@@ -867,7 +867,7 @@ def deal_target_player(player, target_id, chip_id):
         logger.error('deal_target_player, player id error')
         return
 
-    target_data = player_data.hmget(['equipment_chips'])
+    target_data = target_data.hmget(['equipment_chips'])
 
     chips = target_data.get('equipment_chips')
     chips_obj = {}
