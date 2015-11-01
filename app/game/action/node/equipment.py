@@ -73,13 +73,13 @@ def enhance_equipment_402(pro_data, player):
 
     enhance_record = enhance_info.get('enhance_record')
 
-    #flag = 1
-    #data_format.cost_coin = 0
+    # flag = 1
+    # data_format.cost_coin = 0
     for before_lv, after_lv, enhance_cost in enhance_record:
         data_format = response.data.add()
-        #if flag == 1:
-            #data_format.before_lv = before_lv
-            #flag = 2
+        # if flag == 1:
+        #     data_format.before_lv = before_lv
+        #     flag = 2
         data_format.before_lv = before_lv
         data_format.after_lv = after_lv
         data_format.cost_coin = enhance_cost
@@ -88,8 +88,8 @@ def enhance_equipment_402(pro_data, player):
                         enhance_info.get('equipment_no'),
                         equipment_id, before_lv, after_lv)
 
-    logger.debug(response.data)
-    logger.debug("response.data===================")
+    # logger.debug(response.data)
+    # logger.debug("response.data===================")
     response.num = enhance_info.get("num")
 
     # 更新 七日奖励
@@ -170,7 +170,9 @@ def melting_equipment_405(pro_data, player):
 
     total_strength_coin = 0
     for equipment_id in equipment_ids:
-        total_strength_coin += melting_equipment(equipment_id, response, player)
+        total_strength_coin += melting_equipment(equipment_id,
+                                                 response,
+                                                 player)
 
     player.finance.coin += total_strength_coin
     player.finance.save_data()
@@ -246,7 +248,8 @@ def enhance_equipment(equipment_id, enhance_type, player):
     # print equipment_obj, "equipment_obj"
 
     if enhance_type == 2 and not player.base_info.equipment_strength_one_key:
-        logger.debug('enhance_equipment_vip_error!%d' % player.base_info.equipment_strength_one_key)
+        logger.debug('enhance_equipment_vip_error!%d' %
+                     player.base_info.equipment_strength_one_key)
         return {'result': False, 'result_no': 403, 'message': u''}
 
     if not equipment_obj:
@@ -289,7 +292,6 @@ def enhance_equipment(equipment_id, enhance_type, player):
             current_strength_lv = equipment_obj.attribute.strengthen_lv
             enhance_cost = equipment_obj.attribute.enhance_cost  # 强化消耗
             curr_coin = player.finance.coin  # 用户金币
-
 
     print equipment_obj.enhance_record
     equipment_obj.enhance_record.enhance_record.extend(enhance_record)
@@ -370,8 +372,6 @@ def melting_equipment(equipment_id, response, player):
 
     strength_coin = int(strength_coin*game_configs.base_config.get("equRefundRatio"))
     return strength_coin
-
-
 
 
 def awakening_equipment(equipment_id, player):

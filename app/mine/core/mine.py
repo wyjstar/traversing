@@ -512,26 +512,20 @@ class MineData(object):
         return 0
 
     def harvest(self, uid, seq):
-        if not self.lock_mine(uid, seq):
-            return False, {}
-        try:
-            self.get_detail_info(seq)
-            normal = {}
-            lucky = {}
-            # print self._normal, self._lucky
-            for k, v in self.mines[seq]._normal.items():
-                normal[k] = v
-                self.mines[seq]._normal[k] = 0
-            for k, v in self.mines[seq]._lucky.items():
-                lucky[k] = v
-                self.mines[seq]._lucky[k] = 0
+        self.get_cur_data(now)
+        self.get_detail_info(seq)
+        normal = {}
+        lucky = {}
+        # print self._normal, self._lucky
+        for k, v in self.mines[seq]._normal.items():
+            normal[k] = v
+            self.mines[seq]._normal[k] = 0
+        for k, v in self.mines[seq]._lucky.items():
+            lucky[k] = v
+            self.mines[seq]._lucky[k] = 0
 
-            self.mines[seq]._status = 3
-            self.save_data(seq)
-        except Exception, e:
-            self.unlock_mine(uid, seq)
-            return False, {}
-        self.unlock_mine(uid, seq)
+        self.mines[seq]._status = 3
+        self.save_data(seq)
 
         return True, normal, lucky
 

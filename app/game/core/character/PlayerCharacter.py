@@ -48,7 +48,7 @@ class PlayerCharacter(object):
         a['stamina'] = component.CharacterStaminaComponent(self)
         a['shop'] = component.CharacterShopComponent(self)
         a['brew'] = component.CharacterBrewComponent(self)
-        a['mine'] = component.UserMine(self)
+        a['mine'] = component.CharacterMine(self)
         a['stone'] = component.UserStone(self)
         a['travel'] = component.CharacterTravelComponent(self)
         a['runt'] = component.CharacterRuntComponent(self)

@@ -10,3 +10,5 @@ tb_character_info = RedisObject('tb_character_info')
 tb_guild_info = RedisObject('tb_guild_info')
 # 公会名表
 tb_pvp_rank = RedisObject('tb_pvp_rank')
+# mine data
+tb_mine = RedisObject('tb_mine')
