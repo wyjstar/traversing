@@ -586,3 +586,8 @@ class CharacterBaseInfoComponent(Component):
             return False
         return True
 
+    @property
+    def buy_energy_max(self):
+        """每日购买精力上限"""
+        vip_content = game_configs.vip_config.get(self._vip_level)
+        return vip_content.buyEnergyMax

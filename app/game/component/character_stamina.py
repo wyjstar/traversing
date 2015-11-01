@@ -47,6 +47,8 @@ class CharacterStaminaComponent(Component):
         stamina_pb.resource_type = const.HJQYFIGHTTOKEN  # 讨伐令
         stamina_pb = self._stamina.stamina.add()         #
         stamina_pb.resource_type = const.SHOE            # 鞋
+        stamina_pb = self._stamina.stamina.add()
+        stamina_pb.resource_type = const.ENERGY         # 精力
 
         return dict(stamina=self._stamina.SerializeToString())
 
@@ -133,6 +135,8 @@ class CharacterStaminaComponent(Component):
             can_buy_times = player.base_info.buy_hjqy_max
         elif resource_type == const.SHOE: # 鞋子
             can_buy_times = player.base_info.buy_shoe_max
+        elif resource_type == const.ENERGY: # 精力
+            can_buy_times = player.base_info.buy_energy_max
         return dict(max_value=max_value,
                 one_buy_value=one_buy_value,
                 recover_period=recover_period,
