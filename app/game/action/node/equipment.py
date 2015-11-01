@@ -37,7 +37,6 @@ def get_equipments_401(pro_data, player):
         equipment_add = response.equipment.add()
         obj.update_pb(equipment_add)
 
-    print response, '====================================='
     return response.SerializePartialToString()
 
 

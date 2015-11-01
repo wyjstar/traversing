@@ -839,6 +839,7 @@ def pvp_rob_treasure_864(data, player):
     if fight_result:
 
         player.rob_treasure.can_receive = indiana_conf.id
+        player.rob_treasure.truce = [0, 1]
         player.rob_treasure.save_data()
         if indiana_conf.probability >= random.random():
 
