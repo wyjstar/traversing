@@ -841,7 +841,6 @@ def pvp_rob_treasure_864(data, player):
 
     return_data = consume(player, price, const.ROB_TREASURE)  # 消耗
     get_return(player, return_data, response.consume)
-    player.pvp.reset_rob_treasure()
 
     fight_result = pvp_fight(player, uid, [], 0, response,
                              is_copy_unit=True)
@@ -863,6 +862,7 @@ def pvp_rob_treasure_864(data, player):
 
             # 处理被打玩家
             deal_target_player(player, uid, chip_id)
+    player.pvp.reset_rob_treasure()
 
     response.res.result = True
 
@@ -905,7 +905,6 @@ def deal_target_player(player, target_id, chip_id):
 
 
 def get_indiana_conf(player, target_id, chip_conf):
-    print '=============================$$$$$$$$$1:', target_id
     color_info = player.rob_treasure.get_target_color_info(target_id)
     quality = chip_conf.quality
     treasure_conf = game_configs.equipment_config.get(chip_conf.combineResult)

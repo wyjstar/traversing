@@ -87,19 +87,15 @@ class CharacterRobTreasureComponent(Component):
 
     def get_target_color_info(self, target_id):
         target_ids = self.owner.pvp.rob_treasure
-        print '=============================$$$$$$$$$2:', target_ids
         index = 1
         for id, ap in target_ids:
             if target_id == id:
                 break
             index += 1
         types = game_configs.base_config.get('indianaMatch')
-        print '=============================$$$$$$$$$3:', types, index
         for _id in types:
-            print '=============================$$$$$$$$$3:', _id, index
             item1 = game_configs.arena_fight_config.get(_id)
             item = CommonItem(item1)
-            print '=============================$$$$$$$$$4:', item
             if len(item.play_rank) == 2 and item.play_rank[0] <= index <= item.play_rank[1]:
                 return item
             elif len(item.play_rank) == 1 and item.play_rank[0] == index:
