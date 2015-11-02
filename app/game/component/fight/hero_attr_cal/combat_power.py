@@ -40,7 +40,7 @@ def hero_self_attr(player, hero, stage=None):
     # 符文
     runt_attr = hero.runt_attr()
     # awake_percent
-    print("hero.awake_level %s" % hero.awake_level)
+    # print("hero.awake_level %s" % hero.awake_level)
     addition = game_configs.awake_config.get(hero.awake_level).get("addition")
 
     all_vars = dict(
@@ -365,7 +365,7 @@ def hero_lineup_attr(player, hero, line_up_slot_no, stage=None):
             )
 
 def skill_attr(hero, hero_info, skill_ids):
-    print("skill_attr:skill_ids %s" % skill_ids)
+    # print("skill_attr:skill_ids %s" % skill_ids)
     attr = {}
     formulas = (
             ("hpB_1", "hp"),

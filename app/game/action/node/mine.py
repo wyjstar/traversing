@@ -6,7 +6,6 @@ Created on 2014-11-24
 """
 from app.proto_file import mine_pb2
 from app.proto_file import common_pb2
-from app.proto_file import line_up_pb2
 from app.game.core import item_group_helper
 from app.game.core.drop_bag import BigBag
 from app.game.redis_mode import tb_character_info
@@ -19,11 +18,8 @@ from shared.utils.const import const
 from shared.db_opear.configs_data import game_configs
 from shared.db_opear.configs_data.common_item import CommonGroupItem
 
-from app.game.component.character_line_up import CharacterLineUpComponent
-from app.game.component.line_up.line_up_slot import LineUpSlotComponent
-from app.game.component.line_up.equipment_slot import EquipmentSlotComponent
-from app.game.action.node.line_up import line_up_info_detail
-from app.game.action.node._fight_start_logic import pve_process, pve_process_check
+from app.game.action.node._fight_start_logic import pve_process_check
+from app.game.action.node._fight_start_logic import pve_process
 from app.game.action.node._fight_start_logic import pvp_process
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.battle.server_process import get_seeds
@@ -32,8 +28,19 @@ from app.game.core.task import hook_task, CONDITIONId
 from shared.utils import xtime
 from app.game.action.node.start_target import target_update
 from app.game.component.mine.user_mine import MineType
+from app.game.action.node.line_up import line_up_info
+from app.game.action.node.pvp_rank import get_pvp_data
 
 remote_gate = GlobalObject().remote.get('gate')
+
+
+def get_blue_units(uid):
+    record = get_pvp_data(uid)
+    if not record:
+        logger.error('player id is not found:%s', uid)
+        return None
+
+    return record
 
 
 def mine_status(player, response):
@@ -130,7 +137,7 @@ def query_1240(data, player):
     response = mine_pb2.mineUpdate()
     mine_status(player, response)
     player.mine.save_data()
-    print '1240-response', response
+    logger.debug('1240-response:%s', response)
     return response.SerializePartialToString()
 
 
@@ -142,9 +149,9 @@ def search_1241(data, player):
     request.ParseFromString(data)
     response = mine_pb2.searchResponse()
     response.position = request.position
-    print 'response.position', response.position
+    logger.debug('response.position:%s', response.position)
     if player.mine.can_search(request.position):
-        player.mine.search_mine(request.position, mine_boss)
+        player.mine.search_mine(request.position)
         player.mine.save_data()
         one_mine = player.mine.mine_info(request.position)
         one_mine_info(player, one_mine, response.mine)
@@ -194,13 +201,14 @@ def reset_1242(data, player):
                 response.res.message = u'消费不足！'
             else:
                 need_gold = item_group_helper.get_consume_gold_num([price])
+
                 def func():
-                    consume_return_data = item_group_helper.consume(player,
-                                                                    [price],
-                                                                    const.MINE_RESET)  # 消耗
+                    consume_data = item_group_helper.consume(player,
+                                                             [price],
+                                                             const.MINE_RESET)
                     item_group_helper.get_return(player,
-                                                consume_return_data,
-                                                response.consume)
+                                                 consume_data,
+                                                 response.consume)
                     player.mine.reset_map()
                     mine_status(player, response.mine)
                     response.res.result = True
@@ -217,171 +225,51 @@ def query_1243(data, player):
     response = mine_pb2.mineDetail()
     response.position = request.position
     detail_info = player.mine.detail_info(request.position)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, acc_times = detail_info
-    # print 'query 1243', normal, lucky
-    if ret == 0:
-        response.res.result = True
-        mstatus = player.mine.mine_info(request.position)
-        one_mine_info(player, mstatus, response.mine)
-        response.limit = limit
-        for sid, num in normal.items():
-            one_type = response.normal.add()
-            one_type.stone_id = int(sid)
-            one_type.stone_num = num
 
-        for sid, num in lucky.items():
-            one_type = response.lucky.add()
-            one_type.stone_id = int(sid)
-            one_type.stone_num = num
+    # print detail_info
+    last_increase = detail_info.get('increase', 0)
+    stype = detail_info['type']
+    mine_item = game_configs.mine_config[detail_info['mine_id']]
+    limit = mine_item.outputLimited
+    normal = detail_info['normal']
+    lucky = detail_info['lucky']
+    guard_time = detail_info.get('guard_time', 0)
+    stage_id = detail_info.get('stage_id', 0)
 
-        response.increase = int(last_increase)
-        if stype == 2:
-            response.stage_id = int(lineup)
-        if stype == 1:
-            if acc_times is not None:
-                response.accelerate_times = acc_times
-            if lineup is not None:
-                response.lineup.ParseFromString(lineup)
+    response.res.result = True
+    mstatus = player.mine.mine_info(request.position)
+    one_mine_info(player, mstatus, response.mine)
+    response.limit = limit
+    for sid, num in normal.items():
+        one_type = response.normal.add()
+        one_type.stone_id = int(sid)
+        one_type.stone_num = num
 
-        mid = player.mine.mid(request.position)
-        main_mine = game_configs.mine_config.get(mid)
+    for sid, num in lucky.items():
+        one_type = response.lucky.add()
+        one_type.stone_id = int(sid)
+        one_type.stone_num = num
 
-        response.genUnit = int((60 / main_mine.timeGroup1) * main_mine.outputGroup1)
-        response.rate = main_mine.increase
-        response.incrcost = main_mine.increasePrice
-        response.guard_time = int(guard_time)
-    else:
-        response.res.result = False
-        response.res.result_no = ret
+    response.increase = int(last_increase)
+    if stype == 2:
+        response.stage_id = int(stage_id)
+        line_up_info(player, response.lineup)
+    if stype == 1:
+        response.accelerate_times = detail_info.get('accelerate_times', 0)
+        _uid = detail_info['uid']
+        char_obj = tb_character_info.getObj(_uid)
+        if char_obj.exists():
+            lineup = char_obj.hget('copy_slots')
+            response.lineup.ParseFromString(lineup)
 
-    player.mine.save_data()
-    print '1243-response', response.mine, response.mine.nickname
-    return response.SerializePartialToString()
+    mid = player.mine.mid(request.position)
+    mine_item = game_configs.mine_config.get(mid)
 
+    response.genUnit = int((60 / mine_item.timeGroup1) * mine_item.outputGroup1)
+    response.rate = mine_item.increase
+    response.incrcost = mine_item.increasePrice
+    response.guard_time = int(guard_time)
 
-def save_guard(player, position, info):
-    """ 驻守矿点 """
-    result_code = player.mine.save_guard(position, info)
-    return result_code
-
-
-@remoteserviceHandle('gate')
-def guard_1244(data, player):
-    """ 驻守矿点 """
-    request = mine_pb2.MineGuardRequest()
-    request.ParseFromString(data)
-    # print request
-    response = common_pb2.CommonResponse()
-    __skill = request.best_skill_id
-    __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
-
-    # 阵容顺序
-    line_up_order = []  # {hero_id:pos}
-    for line in request.lineup:
-        line_up_order.append(line)
-    if len(line_up_order) != 6:
-        logger.error("line up order length error %s !" % len(line_up_order))
-        response.result = False
-        response.result_no = 124401
-        return response.SerializePartialToString()
-
-    # 取消原来已经驻守的武将
-    info = get_save_guard(player, request.pos)
-    if info and info.get("line_up"):
-        str_line_up = info.get("line_up")
-        line_up_response = line_up_pb2.LineUpResponse()
-        line_up_response.ParseFromString(str_line_up)
-        for slot in line_up_response.slot:
-            if not slot.hero.hero_no:
-                continue
-            hero = player.hero_component.get_hero(slot.hero.hero_no)
-            hero.is_guard = False
-            hero.save_data()
-            for equ_slot in slot.equs:
-                equip = player.equipment_component.get_equipment(equ_slot.equ.id)
-                if not equip:
-                    continue
-                equip.attribute.is_guard = False
-                equip.save_data()
-
-    # 构造阵容组件
-    character_line_up = CharacterLineUpComponent(player)
-    save_slot = {}
-    for slot in request.line_up_slots:
-        if not slot.hero_no:
-            continue
-        line_up_slot = LineUpSlotComponent(character_line_up,
-                                           slot.slot_no,
-                                           activation=True,
-                                           hero_no=slot.hero_no)
-        save_slot[slot.hero_no] = []
-        for equipment_slot in slot.equipment_slots:
-            temp_slot = EquipmentSlotComponent(line_up_slot,
-                                               equipment_slot.slot_no,
-                                               activation=True,
-                                               equipment_id=equipment_slot.equipment_id)
-
-            line_up_slot.equipment_slots[equipment_slot.slot_no] = temp_slot
-            # 标记装备已驻守
-            logger.debug(equipment_slot.equipment_id)
-            equip = player.equipment_component.get_equipment(equipment_slot.equipment_id)
-            if not equip:
-                continue
-            equip.attribute.is_guard = True
-            equip.save_data()
-            save_slot[slot.hero_no].append(equipment_slot.equipment_id)
-
-        character_line_up.line_up_slots[slot.slot_no] = line_up_slot
-        logger.debug(line_up_slot.hero_slot.hero_no)
-        logger.debug("hero_no")
-
-        # 标记武将已驻守
-        hero = player.hero_component.get_hero(slot.hero_no)
-        hero.is_guard = True
-        hero.save_data()
-    battle_units = {}  # 需要保存的阵容信息
-    for no, slot in character_line_up.line_up_slots.items():
-        unit = slot.slot_attr
-
-        if unit:
-            logger.debug("unit:"+str(unit.unit_no))
-            battle_units[no] = unit
-
-    line_up_response = line_up_pb2.LineUpResponse()
-    for temp in line_up_order:
-        line_up_response.order.append(temp)
-    line_up_info_detail(character_line_up.line_up_slots, {}, line_up_response)
-    add_unpar = line_up_response.unpars.add()
-    add_unpar.unpar_id = __skill
-    add_unpar.unpar_level = __skill_level
-
-    # 风物志
-    player.travel_component.update_travel_item(line_up_response)
-
-    # 公会等级
-    line_up_response.guild_level = player.guild.get_guild_level()
-
-    info = {}
-    info["battle_units"] = battle_units
-    info["best_skill_id"] = __skill
-    info["best_skill_no"] = __best_skill_no
-    info["best_skill_level"] = __skill_level
-    info["level"] = player.base_info.level
-    info["nickname"] = player.base_info.base_name
-    info["character_id"] = player.base_info.id
-    info["line_up"] = line_up_response.SerializePartialToString()
-
-    logger.debug(request)
-    logger.debug("guard-----------------")
-    result_code = save_guard(player, request.pos, info)
-    if result_code:
-        response.result = False
-        response.result_no = result_code
-        return response.SerializePartialToString()
-
-    player.mine.save_slot(request.pos, save_slot)
-
-    response.result = True
     player.mine.save_data()
     return response.SerializePartialToString()
 
@@ -416,29 +304,31 @@ def harvest_1245(data, player):
     response = mine_pb2.drawStones()
     response.position = request.position
     detail_info = player.mine.detail_info(request.position)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, acc_times = detail_info
+    normal = detail_info['normal']
+    lucky = detail_info['lucky']
+
     num = sum(normal.values()) + sum(lucky.values())
     if player.runt.bag_is_full(num):
         response.res.result = False
-        response.res.result_no = 12451
+        response.res.result_no = 124501
         logger.error('mine harvest bag is full!')
         return response.SerializePartialToString()
+
     normal, lucky = player.mine.harvest(request.position)
-    # print 'stones', stones
     if normal:
         if not add_stones(player, normal, response.normal):
             response.res.result = False
-            response.res.result_no = 12452
+            response.res.result_no = 124502
             logger.error('mine harvest add stones fail!')
             return response.SerializePartialToString()
         if not add_stones(player, lucky, response.lucky):
             response.res.result = False
-            response.res.result_no = 12452
+            response.res.result_no = 124503
             logger.error('mine harvest add stones fail!')
             return response.SerializePartialToString()
     else:
         response.res.result = False
-        response.res.result_no = 12450
+        response.res.result_no = 124504
         response.res.message = u"没有可以领取的符文石"
         logger.error('mine harvest no stones to harvest!')
         return response.SerializePartialToString()
@@ -447,7 +337,7 @@ def harvest_1245(data, player):
     player.runt.save()
     hook_task(player, CONDITIONId.GAIN_RUNT, 1)
     response.res.result = True
-    print 'mine harvest', response
+    logger.debug('mine harvest:%s', response)
     return response.SerializePartialToString()
 
 
@@ -509,10 +399,14 @@ def exchange_1248(data, player):
     need_gold = item_group_helper.get_consume_gold_num(shop_item.discountPrice)
 
     def func():
-        consume_return_data = item_group_helper.consume(player, shop_item.discountPrice, const.MINE_EXCHANGE)  # 消耗
-        return_data = item_group_helper.gain(player, shop_item.gain, const.MINE_EXCHANGE)  # 获取
+        consume_data = item_group_helper.consume(player,
+                                                 shop_item.discountPrice,
+                                                 const.MINE_EXCHANGE)  # 消耗
+        return_data = item_group_helper.gain(player,
+                                             shop_item.gain,
+                                             const.MINE_EXCHANGE)  # 获取
         # extra_return_data = gain(player, shop_item.extra_gain)  # 额外获取
-        item_group_helper.get_return(player, consume_return_data, response.consume)
+        item_group_helper.get_return(player, consume_data, response.consume)
         item_group_helper.get_return(player, return_data, response.gain)
         # get_return(player, extra_return_data, response)
         player.mine.buy_shop(request.position, request.shop_id)
@@ -569,14 +463,18 @@ def acc_mine_1250(data, player):
     response = mine_pb2.IncreaseResponse()
 
     detail_info = player.mine.detail_info(request.position)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, acc_times = detail_info
+    last_increase = detail_info['increase']
+
     now = xtime.timestamp()
     main_mine = game_configs.mine_config.get(10001)
     if last_increase + main_mine.increasTime * 60 - now > main_mine.increasMaxTime * 60:
         response.res.result = True
         response.result_no = 12501
         return response.SerializePartialToString()
-    increasePrice = player.mine.price(request.position)
+
+    mine_item = game_configs.mine_config[detail_info['mine_id']]
+    increasePrice = mine_item.increasePrice
+
     price = CommonGroupItem(0, increasePrice, increasePrice, const.GOLD)
     result = item_group_helper.is_afford(player, [price])  # 校验
     if not result.get('result'):
@@ -590,11 +488,15 @@ def acc_mine_1250(data, player):
     need_gold = item_group_helper.get_consume_gold_num([price])
 
     def func():
-        consume_return_data = item_group_helper.consume(player, [price], const.MINE_ACC)  # 消耗
-        item_group_helper.get_return(player, consume_return_data, response.consume)
+        consume_return_data = item_group_helper.consume(player,
+                                                        [price],
+                                                        const.MINE_ACC)
+        item_group_helper.get_return(player,
+                                     consume_return_data,
+                                     response.consume)
 
     player.pay.pay(need_gold, const.MINE_ACC, func)
-    last_time = player.mine.acc_mine()
+    last_time = player.mine.increase_mine()
     player.mine.save_data()
 
     response.position = 0
@@ -602,51 +504,67 @@ def acc_mine_1250(data, player):
     return response.SerializePartialToString()
 
 
-def process_mine_result(player, position, result, response, stype, hold=1):
+def process_mine_result(player, position, fight_result,
+                        response, stype, hold=1):
     """
     玩家占领其他人的野怪矿，更新矿点数据，给玩家发送奖励，给被占领玩家发送奖励
     @param gain: true or false
     """
-    # print 'process_mine_result', position, response, result, stype
-
-    normal, lucky, target, nickname = player.mine.settle(position, result, hold)
+    result = player.mine.settle(position, fight_result, hold)
+    normal = result['normal']
+    lucky = result['lucky']
 
     if stype != 1:
         return
+    # print 'process mine result:', normal, lucky
 
-    if result is not True:
-        send_mail(conf_id=122, receive_id=target, nickname=nickname )
+    target = result['old_uid']
+    nickname = result['old_nickname']
+
+    if fight_result is not True:
+        send_mail(conf_id=122, receive_id=target, nickname=nickname)
         return
 
-#     warFogLootRatio = game_configs.base_config['warFogLootRatio']
-    harvest_stone = {}
-    harvest_stone.update(normal)
-    harvest_stone.update(lucky)
+    warFogLootRatio = game_configs.base_config['warFogLootRatio']
+    normal_a = {}
+    normal_b = {}
+    lucky_a = {}
+    lucky_b = {}
 
-    harvest_a = {}
-    harvest_b = {}
-#     for k, v in harvest_stone.items():
-#         if v > 0:
-#             harvest_b[k] = int(v * warFogLootRatio)
-#             harvest_a[k] = v - harvest_b[k]
+    for k, v in normal.items():
+        if v > 0:
+            normal_a[k] = int(v*warFogLootRatio)
+            normal_b[k] = v - int(v*warFogLootRatio)
+
+    for k, v in lucky.items():
+        if v > 0:
+            lucky_a[k] = int(v*warFogLootRatio)
+            lucky_b[k] = v - int(v*warFogLootRatio)
 
     prize = []
     prize_num = 0
-    for k, v in harvest_stone.items():
-        if v > 0:
-            prize.append({108: [v, v, k]})
-            prize_num += v
-    logger.debug('pvp mine total:%s a:%s b:%s prize:%s',
-                 harvest_stone, harvest_a, harvest_b, prize)
+    for k, v in normal_b.items():
+        prize.append({106: [v, v, k]})
+        prize_num += v
+    for k, v in lucky_b.items():
+        prize.append({106: [v, v, k]})
+        prize_num += v
 
-    if not add_stones(player, harvest_stone, response.gain):
+    logger.debug('pvp mine total:normal %s-%s lucky %s-%s prize:%s',
+                 normal_a, normal_b, lucky_a, lucky_b, prize)
+
+    if not add_stones(player, normal_a, response.gain):
         response.res.result = False
         response.res.result_no = 824
-        logger.debug('add_stones fail!!!!!!')
+        logger.error('add_stones fail!!!!!!')
+    if not add_stones(player, lucky_a, response.gain):
+        response.res.result = False
+        response.res.result_no = 824
+        logger.error('add_stones fail!!!!!!')
 
     mail_id = game_configs.base_config.get('warFogRobbedMail')
     send_mail(conf_id=mail_id, receive_id=target, rune_num=prize_num,
-              nickname=player.base_info.base_name)
+              prize=prize, nickname=player.base_info.base_name)
 
 
 @remoteserviceHandle('gate')
@@ -656,11 +574,14 @@ def settle_1252(data, player):
     request.ParseFromString(data)
     pos = request.pos
     result = request.result
-    mine_info = get_mine_info(player, pos)
-    mine_type = mine_info.get("mine_type")  # 根据矿所在位置判断pve or pvp
-    print("pos %s, mine_info %s" % (pos, mine_type))
-    if mine_type == 0 and not pve_process_check(player, result, request.steps, const.BATTLE_MINE_PVE):
-        logger.error("mine pve_process_check error!=================")
+    is_pvp = player.mine.is_pvp(pos)  # 根据矿所在位置判断pve or pvp
+    logger.debug("pos %s, mine_info %s" % (pos, is_pvp))
+    pve_check_result = pve_process_check(player,
+                                         result,
+                                         request.steps,
+                                         const.BATTLE_MINE_PVE)
+    if is_pvp is False and not pve_check_result:
+        logger.error("mine pve_process_check error!!!!!")
         res = response.res
         res.result = False
         res.result_no = 9041
@@ -693,16 +614,13 @@ def battle_1253(data, player):
 
     logger.debug("%s pos" % pos)
 
-    mine_info = get_mine_info(player, pos)
+    mine_info = player.mine.get_info(pos)
     response = mine_pb2.MineBattleResponse()
 
-    mine_type = mine_info.get("mine_type")  # 根据矿所在位置判断pve or pvp
+    is_pvp = player.mine.is_pvp(pos)  # 根据矿所在位置判断pve or pvp
     # print mine_info, "*"*80
-    # detail_info = player.mine.detail_info(request.pos)
-    # print detail_info, '='*18
-    # print request
-    # print("mine battle", mine_type)
-    if mine_type == 0:
+    detail_info = player.mine.detail_info(request.pos)
+    if not is_pvp:
         # pve
         stage_id = mine_info.get("stage_id")        # todo: 根据pos获取关卡id
         stage_type = 8                              # 关卡类型
@@ -729,19 +647,22 @@ def battle_1253(data, player):
         player.fight_cache_component.stage_info = stage_info
         response.seed1 = seed1
         response.seed2 = seed2
-        print red_units, blue_units
+        # print red_units, blue_units
 
-    elif mine_type == 1:
+    else:
         # pvp
-        mine_lock = player.mine.start(request.pos)
-        if not mine_lock:
+        normal = detail_info['normal']
+        lucky = detail_info['lucky']
+        num = sum(normal.values()) + sum(lucky.values())
+        if player.runt.bag_is_full(num):
             response.res.result = False
-            logger.error('mine lock!!!')
+            response.res.result_no = 125308
+            logger.error('mine harvest bag is full!')
             return response.SerializePartialToString()
 
         player.fight_cache_component.stage_id = 0
         red_units = player.fight_cache_component.get_red_units()
-        blue_data = player.mine._mine[request.pos].get_blue_units()
+        blue_data = get_blue_units(detail_info['uid'])
         blue_units = blue_data.get('copy_units')
         seed1, seed2 = get_seeds()
         if not blue_units:
@@ -780,44 +701,8 @@ def battle_1253(data, player):
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
     response.hold = request.hold
-    print 'battle_1253:', response
+    logger.debug('battle_1253:%s', response)
     return response.SerializePartialToString()
-
-
-def get_mine_info(player, pos):
-    """根据pos获取关卡info.
-    矿的类型：mine type 0/1
-    如果野怪驻守的矿：关卡id
-    玩家驻守的矿：
-    """
-    mine_info = player.mine.get_info(pos)
-    return mine_info
-
-
-def get_save_guard(player, pos):
-    """ 获取保存的驻守信息 """
-    info = player.mine.get_guard_info(pos)
-    if info is None:
-        return {}
-    return info
-
-
-def mine_boss():
-    result = remote_gate['world'].trigger_mine_boss_remote()
-    return result
-
-# @remoteserviceHandle('gate')
-# def trigger_mine_boss_1259(data, player):
-#     """
-#     仅供测试，触发秘境boss
-#     return {"result":True, "boss_id": boss_id}
-#     """
-#
-#     result = remote_gate['world'].trigger_mine_boss_remote()
-#     assert result, "trigger_mine_boss"
-#     response = common_pb2.CommonResponse()
-#     response.result = True
-#     return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')
@@ -828,11 +713,8 @@ def mine_accelerate_1254(data, player):
     pos = request.pos                    # 矿所在位置
     response = mine_pb2.MineAccelerateResponse()
 
-    detail_info = player.mine.detail_info(pos)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, acc_times = detail_info
-
-    need_gold = player.mine._mine[pos].get_acc_time_gold()
-    if need_gold == 0:
+    need_gold = player.mine.get_acc_time_gold(pos)
+    if need_gold <= 0:
         logger.error('gold num error:%s', need_gold)
         response.res.result = False
         response.res.result_no = 125401
@@ -848,9 +730,8 @@ def mine_accelerate_1254(data, player):
         item_group_helper.get_return(player,
                                      consume_return_data,
                                      response.consume)
-        player.mine._mine[pos].acc_mine_time()
+        response.res.result = player.mine.acc_mine_time(pos)
 
     player.pay.pay(need_gold, const.MINE_ACC, func)
-    response.res.result = True
-    print response
+    logger.debug('mine accelerate:%s', response)
     return response.SerializePartialToString()

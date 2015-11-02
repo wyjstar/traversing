@@ -25,8 +25,8 @@ def net_conn_lost_remote(player):
 
     remote_gate['push'].online_offline_remote(player.base_info.id, 0)
     detail_info = player.mine.detail_info(0)
-    ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, _ = detail_info
-    stones = sum(normal.values()) + sum(lucky.values())
+    # ret, stype, last_increase, limit, normal, lucky, lineup, guard_time, _ = detail_info
+    stones = sum(detail_info['normal'].values()) + sum(detail_info['lucky'].values())
     outputGroup1 = game_configs.mine_config[10001].outputGroup1
     timeGroup1 = game_configs.mine_config[10001].timeGroup1
     outputLimited = game_configs.mine_config[10001].outputLimited
@@ -38,8 +38,8 @@ def net_conn_lost_remote(player):
     txt = game_configs.push_config[1005].text
     message = game_configs.language_config.get(str(txt)).get('cn')
     remote_gate['push'].add_push_message_remote(player.base_info.id,
-                                        5, message,
-                                        int(time.time())+time_add)
+                                                5, message,
+                                                int(time.time())+time_add)
 
     stamina = player.stamina.stamina
     max = game_configs.base_config['max_of_vigor']

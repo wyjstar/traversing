@@ -107,7 +107,7 @@ if __name__ == '__main__':
                         t_hero.level = level
                 hero_levels = player.line_up_component.hero_levels
                 red_units = player.fight_cache_component.red_unit
-                print red_units
+                # print red_units
                 red_units = red_units
                 slots = line_up_info(player).SerializeToString()
                 ap = int(player.line_up_component.combat_power)
@@ -143,7 +143,7 @@ if __name__ == '__main__':
                         t_hero.level = level
                 hero_levels = player.line_up_component.hero_levels
                 red_units = player.fight_cache_component.red_unit
-                print red_units
+                # print red_units
                 red_units = red_units
                 slots = line_up_info(player).SerializeToString()
                 ap = int(player.line_up_component.combat_power)
