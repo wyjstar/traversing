@@ -38,7 +38,7 @@ def gm():
     print("gm================")
     response = {}
     res = {}
-    admin_command = ['update_excel', 'get_user_info', 'send_mail',
+    admin_command = ['reset_star_gift', 'update_excel', 'get_user_info', 'send_mail',
                      'get_user_hero_chips', 'get_user_eq_chips',
                      'get_user_finances', 'get_user_items',
                      'get_user_guild_info', 'get_user_heros',
@@ -66,6 +66,15 @@ def gm():
     logger.info('######################################,server2gm:%s', res)
 
     return json.dumps(res)
+
+
+def reset_star_gift(args):
+    uids = tb_character_info.smem('all')
+    for uid in uids:
+        character_obj = tb_character_info.getObj(uid)
+        data = {'award_info': {}}
+        character_obj.hmset(data)
+    return {"success": 1}
 
 
 def update_server_list(args):
