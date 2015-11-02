@@ -829,6 +829,7 @@ def pvp_rob_treasure_864(data, player):
 
     return_data = consume(player, price, const.ROB_TREASURE)  # 消耗
     get_return(player, return_data, response.consume)
+    player.pvp.reset_rob_treasure()
 
     fight_result = pvp_fight(player, uid, [], 0, response,
                              is_copy_unit=True)
@@ -848,15 +849,12 @@ def pvp_rob_treasure_864(data, player):
                                const.ROB_TREASURE)
             get_return(player, return_data, response.gain)
 
-            player.pvp.reset_rob_treasure()
-
             # 处理被打玩家
             deal_target_player(player, uid, chip_id)
 
     response.res.result = True
 
-    logger.debug("red_units: %s" % response.red)
-    logger.debug("response ==================== ::: %s" % response)
+    logger.debug("response ==================== : %s" % response)
     return response.SerializeToString()
 
 
