@@ -184,14 +184,15 @@ class Pusher(object):
 #                 print e
 
     def gen_task(self):
-        push_config = game_configs.push_config
-        for push in push_config.values():
-            if push.event == 2:
-                self.gen_2(push.id)
-            if push.event == 4:
-                self.gen_4(push.id)
-            if push.event == 6:
-                self.gen_2(push.id)
+        pass
+        # push_config = game_configs.push_config
+        # for push in push_config.values():
+        #     if push.event == 2:
+        #         self.gen_2(push.id)
+        #     if push.event == 4:
+        #         self.gen_4(push.id)
+        #     if push.event == 6:
+        #         self.gen_2(push.id)
 
     def gen_2(self, pid):
         push_config = game_configs.push_config[pid]

@@ -3,6 +3,10 @@
 """
 Copyright ? 1998 - 2013 Tencent. All Rights Reserved. 腾讯公司 版权所有
 """
+import sys
+reload(sys)
+
+sys.setdefaultencoding('utf8')
 
 import json
 import httplib
