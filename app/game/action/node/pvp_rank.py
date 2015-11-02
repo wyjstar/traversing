@@ -873,7 +873,7 @@ def deal_target_player(player, target_id, chip_id):
     chips_obj = {}
     for chip_id_x, chip_num in chips.items():
         equipment_chip = EquipmentChip(chip_id_x, chip_num)
-        chips_obj[chip_no] = equipment_chip
+        chips_obj[chip_id_x] = equipment_chip
 
     chip_obj = chips_obj.get(chip_id)
     if not chip_obj or chip_obj.chip_num == 0:
