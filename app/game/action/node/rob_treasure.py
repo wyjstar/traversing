@@ -363,7 +363,6 @@ def enhance_treasure(no, use_nos, player):
         mainAttr, minorAttr, prefix, equip_attr_id = init_equipment_attr(treasure_obj.base_info.equipment_no, after_attr_id)
         treasure_obj.attribute.main_attr = mainAttr
         treasure_obj.attribute.minor_attr = minorAttr
-        treasure_obj.attribute.prefix = prefix
         treasure_obj.attribute.attr_id = equip_attr_id
     treasure_obj.save_data()
     for use_no in use_nos:
