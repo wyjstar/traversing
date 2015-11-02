@@ -221,11 +221,11 @@ def refresh_rob_treasure_862(data, player):
         response.res.result_no = 800
         return response.SerializeToString()
 
-    deal_player_infos(player, response)
     response.refresh_time = now
     player.rob_treasure.refresh_time = now
     player.pvp.reset_rob_treasure()
     player.rob_treasure.save_data()
+    deal_player_infos(player, response)
 
     response.res.result = True
     return response.SerializeToString()
