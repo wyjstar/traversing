@@ -174,7 +174,7 @@ def deal_player_infos(player, response):
             player_pb.id = player_info.get('id')
             player_pb.nickname = player_info.get('nickname', 'nickname')
             player_pb.vip_level = player_info.get('vip_level')
-            if player_info.get('guild_id'):
+            if player_info.get('guild_id') and type(player_info.get('guild_id')) is types.StringType:
                 player_pb.guild_id = player_info.get('guild_id')
 
             player_heads = Heads_DB()
