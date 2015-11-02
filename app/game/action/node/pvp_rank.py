@@ -893,6 +893,7 @@ def deal_target_player(player, target_id, chip_id):
 
 
 def get_indiana_conf(player, target_id, chip_conf):
+    print '=============================$$$$$$$$$1:', target_id
     color_info = player.rob_treasure.get_target_color_info(target_id)
     quality = chip_conf.quality
     treasure_conf = game_configs.equipment_config.get(chip_conf.combineResult)
