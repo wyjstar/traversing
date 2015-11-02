@@ -22,6 +22,7 @@ from app.proto_file.db_pb2 import Heads_DB
 from app.game.core import rank_helper
 from app.game.core.item_group_helper import gain, get_return
 from app.game.core.equipment.equipment import init_equipment_attr
+import types
 
 
 @remoteserviceHandle('gate')
