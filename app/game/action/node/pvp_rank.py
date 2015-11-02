@@ -30,6 +30,7 @@ from app.game.component.fight.stage_logic.pvp_stage import PvpStageLogic
 from app.game.redis_mode import tb_guild_info
 from app.game.core.equipment.equipment_chip import EquipmentChip
 from shared.db_opear.configs_data.data_helper import parse
+import types
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -68,7 +69,7 @@ def _with_pvp_info(response, character_id):
 
         response.vip_level = data.get('vip_level')
         g_id = data.get('guild_id')
-        if g_id:
+        if g_id and type(g_id) is types.StringType:
             response.guild_name = tb_guild_info.getObj(g_id).hget('name')
 
     elif robot_obj.hexists(character_id):
