@@ -25,6 +25,7 @@ def push_all_object_remote(topicID, msg):
     topicID: 为协议号。
     msg: 发送的消息。
     """
+    print("push_all_object_remote===========")
     GlobalObject().netfactory.pushAllObject(topicID, msg)
 
 
