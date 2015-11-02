@@ -11,13 +11,13 @@ import time
 class Stage(object):
     """关卡
     """
-    def __init__(self, stage_id, attacks=0, state=-1, reset=[0, int(time.time())],
+    def __init__(self, stage_id, attacks=0, state=-1, reset=None,
                  drop_num=0, chest_state=0):
         self._stage_id = stage_id   # 关卡编号
         self._attacks = attacks     # 攻击次数
         self._state = state         # 关卡状态 -2: 未开启 -1：已开启但没打 0：输 1：赢
         self._chest_state = chest_state         # 关卡宝箱状态 0: 未开启 1：已开启
-        self._reset = reset         # 次数重置 【重置次数， 时间】
+        self._reset = reset if reset else [0, int(time.time())]  # 次数重置 【重置次数， 时间】
         self._drop_num = drop_num   # 本关卡掉落包数量, 当战斗失败时设置,防止玩家强退，来刷最大掉落数
 
     @property
@@ -92,11 +92,11 @@ class Stage(object):
 class StageAward(object):
     """关卡奖励
     """
-    def __init__(self, chapter_id, dragon_gift=-1, award_info=[], already_gift=[]):
+    def __init__(self, chapter_id, dragon_gift=-1, award_info=None, already_gift=None):
         self._chapter_id = chapter_id  # 章节编号
-        self._award_info = award_info  # 奖励领取信息 list -1:奖励没达成 0：奖励达成没有领取 1：已经领取
-        self._dragon_gift = dragon_gift  # 龙纹奖励 int -1:奖励没达成 0：奖励达成没有领取 1：已经领取
-        self._already_gift = already_gift  # 已领奖励
+        self._award_info = award_info  if award_info else [] # 奖励领取信息 list -1:奖励没达成 0：奖励达成没有领取 1：已经领取
+        self._dragon_gift = dragon_gift # 龙纹奖励 int -1:奖励没达成 0：奖励达成没有领取 1：已经领取
+        self._already_gift = already_gift if already_gift else []  # 已领奖励
 
     @property
     def chapter_id(self):
@@ -111,10 +111,6 @@ class StageAward(object):
     @property
     def already_gift(self):
         return self._already_gift
-
-    @already_gift.setter
-    def already_gift(self, v):
-        self._already_gift = v
 
     @property
     def dragon_gift(self):
