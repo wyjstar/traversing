@@ -10,7 +10,7 @@ from shared.db_opear.configs_data import game_configs
 def init_equipment_chip(player):
 
     for k, val in game_configs.chip_config.get('chips').items():
-        if val.get('type') == 1:
+        if val.get('type') == 1 or val.get('combineResult') == 0 :
             continue
         equipment_chip = EquipmentChip(int(k), 1000)
         player.equipment_chip_component.add_chip(equipment_chip)
