@@ -10,7 +10,6 @@ import random
 
 
 def random_pick(odds_dict, num_top=1):
-    pick_result = None
     x = random.uniform(0, num_top)
     odds_cur = 0.0
     for item, item_odds in odds_dict.items():
@@ -18,15 +17,14 @@ def random_pick(odds_dict, num_top=1):
             continue
         odds_cur += item_odds
         if x <= odds_cur:
-            pick_result = item
-            break
-    return pick_result
+            return item
+    return None
 
 
 def gen_stone(num, odds_dict, limit, store, now_data):
     # 发放符文石
     if now_data >= limit:
-        logger.error('gen_stone:%s >= %s', now_data, limit)
+        logger.debug('gen_stone:%s >= %s', now_data, limit)
         return store
     for _ in range(0, num):
         stone_id = random_pick(odds_dict, sum(odds_dict.values()))
@@ -87,9 +85,7 @@ def compute(mine_id, increase, dur, per, now, harvest, harvest_end):
 def get_cur(mine_id, now_data, harvest, start, end, now, increase, stype):
     # 结算到当前的产出
     mine = game_configs.mine_config.get(mine_id)
-    if now_data >= mine.outputLimited:
-        logger.error('get_cur:%s > %s', now_data, mine.outputLimited)
-        now_data = mine.outputLimited
+    now_data = min(now_data, mine.outputLimited)
     if stype == 1:
         num, last = compute(mine_id,
                             increase,

@@ -15,6 +15,7 @@ from gfirefly.server.logobj import logger
 from mine.monster_mine import MineOpt
 from gfirefly.server.globalobject import GlobalObject
 from shared.common_logic.mine import get_cur_data
+from shared.common_logic.mine import random_pick
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -34,38 +35,7 @@ def mine_boss():
     return result
 
 
-def random_pick(odds_dict, num_top=1):
-    pick_result = None
-    x = random.uniform(0, num_top)
-    odds_cur = 0.0
-    for item, item_odds in odds_dict.items():
-        if item_odds == 0:
-            continue
-        odds_cur += item_odds
-        if x <= odds_cur:
-            pick_result = item
-            break
-    return pick_result
-
-
-def can_reset(mine, uid):
-    """
-    可重置规则
-    神秘商人，巨龙宝箱，副本
-    自己的已枯竭的矿
-    非自己的矿
-    """
-    if mine['type'] in [2, 4, 5]:
-        return True
-    if mine['type'] == 1 and mine['status'] == 3:
-        return True
-    if mine['type'] == 1 and mine['uid'] != uid:
-        return True
-    return False
-
-
 def get_user_mines(uid):
-    # print 'get_user_mines', uid
     mine_obj = tb_character_info.getObj(uid)
     user_mines = mine_obj.hget('mine')
     mines = user_mines.values()
@@ -424,11 +394,22 @@ class CharacterMine(Component):
             return price_list[self._reset_times]
 
     def reset_map(self):
-        """ 重置地图 """
+        """
+        可重置规则
+        神秘商人，巨龙宝箱，副本
+        自己的已枯竭的矿
+        非自己的矿
+        """
+        uid = self.owner.base_info.id
         for pos in self._mine.keys():
             _mine = detail_info(self._mine[pos])
-            if can_reset(_mine, self.owner.base_info.id):
+            if _mine['type'] in [2, 4, 5]:
                 del self._mine[pos]
+            elif _mine['type'] == 1 and _mine['status'] == 3:
+                del self._mine[pos]
+            elif _mine['type'] == 1 and _mine['uid'] != uid:
+                del self._mine[pos]
+
         self._reset_times += 1
 
     def search_mine(self, position):
