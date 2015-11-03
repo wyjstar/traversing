@@ -405,7 +405,10 @@ class CharacterMine(Component):
         reset_pos = []
         for pos in self._mine.keys():
             _mine = detail_info(self._mine[pos])
-            if _mine['type'] in [2, 4, 5]:
+            if _mine['type'] in [MineType.MONSTER_FIELD,
+                                 MineType.SHOP,
+                                 MineType.COPY,
+                                 MineType.CHEST]:
                 reset_pos.append(pos)
                 del self._mine[pos]
             elif _mine['type'] == 1 and _mine['status'] == 3:
