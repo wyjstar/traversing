@@ -67,6 +67,7 @@ def hero_upgrade_with_item_103(data, player):
     target_update(player, [31])
     return response.SerializeToString()
 
+
 def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
     """docstring for hero_upgrade_with_item_logic"""
     exp_item = player.item_package.get_item(exp_item_no)
@@ -83,10 +84,11 @@ def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
     afterlevel = hero.level
     hero.save_data()
     changelevel = afterlevel-beforelevel
-    if changelevel:
-        tlog_action.log('HeroUpgrade', player, hero_no, changelevel, afterlevel)
+    tlog_action.log('HeroUpgrade', player, hero_no, changelevel, afterlevel, 2,
+                    exp_item_num, 0, 0, exp_item_no)
     player.item_package.consume_item(exp_item_no, exp_item_num)
     return {"result": True, "hero": hero}
+
 
 @remoteserviceHandle('gate')
 def one_key_hero_upgrade_with_item_120(data, player):
@@ -157,8 +159,13 @@ def one_key_hero_upgrade_logic(hero_no, player):
             total_exp += big_exp
             big_exp_num = i + 1
 
+    beforelevel = hero.level
     hero.upgrade(small_exp * small_exp_num + middle_exp * middle_exp_num + big_exp * big_exp_num, player.base_info.level)
     hero.save_data()
+    afterlevel = hero.level
+    changelevel = afterlevel-beforelevel
+    tlog_action.log('HeroUpgrade', player, hero_no, changelevel, afterlevel, 3,
+                    small_exp_num, middle_exp_num, big_exp_num, 0)
 
     player.item_package.consume_item(10001, small_exp_num)
     player.item_package.consume_item(10002, middle_exp_num)

@@ -367,7 +367,8 @@ def auto_travel(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 def hero_upgrade(GameSvrId=0, dtEventTime=0, GameAppID=0,
                  PlatID=0, OpenID=0, HeroId=0, ChangeLevel=0,
-                 Level=0):
+                 Level=0, Type, ExpItemNum1=0, ExpItemNum2=0,
+                 ExpItemNum3=0, ExpItemNo=0):
 
     message = ['HeroUpgrade']
 
@@ -380,6 +381,11 @@ def hero_upgrade(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(HeroId)
     message.append(ChangeLevel)
     message.append(Level)
+    message.append(Type)
+    message.append(ExpItemNum1)
+    message.append(ExpItemNum2)
+    message.append(ExpItemNum3)
+    message.append(ExpItemNo)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

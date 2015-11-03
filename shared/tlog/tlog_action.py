@@ -277,7 +277,8 @@ def hero_refine(player_data, hero_id, refine):
                        HeroId=hero_id)
 
 
-def hero_upgrade(player_data, hero_id, change_level, level):
+def hero_upgrade(player_data, hero_id, change_level, level, type,
+                 exp_item_num1, exp_item_num2, exp_item_num3, exp_item_num):
 
     log4tx.hero_upgrade(GameSvrId=game_server_id,
                         dtEventTime=xtime.strdatetime(),
@@ -286,7 +287,12 @@ def hero_upgrade(player_data, hero_id, change_level, level):
                         PlatID=plat_id,
                         Level=level,
                         ChangeLevel=change_level,
-                        HeroId=hero_id)
+                        HeroId=hero_id,
+                        Type=type,
+                        ExpItemNum1=exp_item_num1,
+                        ExpItemNum2=exp_item_num2,
+                        ExpItemNum3=exp_item_num3,
+                        ExpItemNo=exp_item_ng_ido)
 
 
 def recharge(player_data, isfirst, recharege_id):
