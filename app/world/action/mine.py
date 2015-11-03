@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 """
-created by server on 14-5-20下午12:11.
+created by spinx on 15-11-2
 """
-from app.mine.service.node.minegateservice import nodeservice_handle
+from gfirefly.server.globalobject import rootserviceHandle
 from gfirefly.dbentrust.redis_mode import RedisObject
 from gfirefly.server.logobj import logger
 from shared.common_logic.mine import get_cur_data
@@ -24,7 +24,7 @@ print seq_index
 print 'load mine', user_mine
 
 
-@nodeservice_handle
+@rootserviceHandle
 def mine_add_field_remote(uid, data):
     """
     玩家攻占野怪矿
@@ -46,7 +46,7 @@ def mine_add_field_remote(uid, data):
     return seq
 
 
-@nodeservice_handle
+@rootserviceHandle
 def mine_settle_remote(uid, seq, fight_result, nickname, hold):
     result = {'result': True, 'normal': {}, 'lucky': {}}
 
@@ -97,7 +97,7 @@ def mine_settle_remote(uid, seq, fight_result, nickname, hold):
     return cPickle.dumps(result)
 
 
-@nodeservice_handle
+@rootserviceHandle
 def mine_harvest_remote(uid, seq):
     result = {'result': True, 'normal': {}, 'lucky': {}}
 
@@ -127,7 +127,7 @@ def mine_harvest_remote(uid, seq):
     return cPickle.dumps(result)
 
 
-@nodeservice_handle
+@rootserviceHandle
 def acc_mine_time_remote(uid, seq, change_time):
     if type(seq) is unicode:
         seq = seq.encode('utf-8')
