@@ -225,6 +225,10 @@ def gain(player, item_group, reason,
                 player.runt.stone1 += num
                 player.runt.save()
                 after_num = player.runt.stone1
+            elif item_no == const.TEAM_EXPERIENCE:
+                player.base_info.addexp(num, reason)
+                player.base_info.save_data()
+                after_num = player.base_info.exp
             else:
                 player.finance.add(item_no, num)
                 player.finance.save_data()
