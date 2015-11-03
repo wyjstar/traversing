@@ -368,7 +368,7 @@ class CharacterMine(Component):
         if self._reset_times >= self.owner.base_info.war_refresh_times:
             logger.debug('war fog refresh time:%s-%s',
                          self._reset_times,
-                         self.base_info.war_refresh_times)
+                         self.owner.base_info.war_refresh_times)
             return False
         if len(self._mine) < game_configs.base_config['warFogStrongpointNum']:
             logger.debug('war fog strong num:%s-%s',
