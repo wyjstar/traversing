@@ -65,7 +65,7 @@ def log_init(log_path):
     datefmt = '%Y-%m-%d %I:%M:%S %p'
     fmt = '%(asctime)s-[%(levelname)s]-[' + file_name + ']: %(message)s'
 
-    _logger.setLevel(logging.DEBUG)
+    _logger.setLevel(logging.ERROR)
     fh = logging.FileHandler(log_path)
     fh.setLevel(logging.INFO)
     fh.setFormatter(Formatter(fmt, datefmt))
@@ -80,7 +80,6 @@ def log_init(log_path):
     uh.setLevel(logging.CRITICAL)
     uh.setFormatter('%(message)s')
     # _logger.addHandler(uh)
-
 
 
 def log_init_debug_cal():
@@ -106,5 +105,5 @@ def log_init_only_out():
 
 logger = logging.getLogger(logger_name)
 logger_cal = logging.getLogger(logger_name+"_cal")
-#logger_cal.setLevel(logging.DEBUG)
-#log_init_debug_cal()
+# logger_cal.setLevel(logging.DEBUG)
+# log_init_debug_cal()
