@@ -182,7 +182,6 @@ class CharacterPvpComponent(Component):
         if [0, 0] in ids:
             ids.remove([0, 0])
         self._rob_treasure = ids
-        self.save_data()
 
     def reset_overcome(self):
         _times = self.pvp_overcome_refresh_count + 1
