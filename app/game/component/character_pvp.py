@@ -62,10 +62,13 @@ class CharacterPvpComponent(Component):
         self._pvp_high_rank_award = []  # 已经领取的玩家pvp排名奖励
         self._pvp_arena_players = []
         self._pvp_upstage_challenge_rank = 0
-
         self._rob_treasure = []
 
     def init_data(self, character_info):
+        if not character_info.get('pvp_rob_treasure'):
+            self.reset_rob_treasure()
+        else:
+            self._rob_treasure = character_info.get('pvp_rob_treasure')
         self._pvp_overcome = character_info['pvp_overcome']
         self._pvp_overcome_current = character_info['pvp_overcome_current']
         self._pvp_overcome_refresh_time = character_info['pvp_overcome_refresh_time']
@@ -92,7 +95,6 @@ class CharacterPvpComponent(Component):
 
         self.save_data()
         # self.reset_overcome()
-        self.reset_rob_treasure()
 
     def save_data(self):
         character_info = tb_character_info.getObj(self.owner.base_info.id)
@@ -113,10 +115,12 @@ class CharacterPvpComponent(Component):
                     pvp_overcome_stars=self._pvp_overcome_stars,
                     pvp_overcome_buff_init=self._pvp_overcome_buff_init,
                     pvp_overcome_buff=self._pvp_overcome_buff,
-                    pvp_overcome_failed=self._pvp_overcome_failed)
+                    pvp_overcome_failed=self._pvp_overcome_failed,
+                    pvp_rob_treasure=self._rob_treasure)
         character_info.hmset(data)
 
     def new_data(self):
+        self.reset_rob_treasure()
         data = dict(pvp_overcome=self._pvp_overcome,
                     pvp_overcome_current=self._pvp_overcome_current,
                     pvp_overcome_refresh_time=self.pvp_overcome_refresh_time,
@@ -133,7 +137,8 @@ class CharacterPvpComponent(Component):
                     pvp_overcome_stars=self._pvp_overcome_stars,
                     pvp_overcome_buff_init=self._pvp_overcome_buff_init,
                     pvp_overcome_buff=self._pvp_overcome_buff,
-                    pvp_overcome_failed=self._pvp_overcome_failed)
+                    pvp_overcome_failed=self._pvp_overcome_failed,
+                    pvp_rob_treasure=self._rob_treasure)
         return data
 
     def check_time(self):
