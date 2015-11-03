@@ -23,7 +23,7 @@ def get_stage_by_stage_type(stage_type, stage_id, player):
         return ActStageLogic(player, stage_id, 4)
     elif stage_type == 5:  # exp 活动关卡
         return ActStageLogic(player, stage_id, 5)
-    elif stage_type == 9:  # 游历
+    elif stage_type == 10:  # 游历
         return TravelStageLogic(player, stage_id)
     elif stage_type == 8:  # 秘境
         return BaseStageLogic(player, stage_id)
