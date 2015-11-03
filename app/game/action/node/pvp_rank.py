@@ -338,8 +338,7 @@ def pvp_fight_request_1505(data, player):
         before_player_rank = int(tb_pvp_rank.getObj('incr').incr())
         tb_pvp_rank.zadd(before_player_rank, player.base_info.id)
         player.pvp.pvp_high_rank = before_player_rank
-
-    if before_player_rank != request.self_rank:
+    elif before_player_rank != request.self_rank:
         logger.error('pvp self rank changed!!%s-%s',
                      before_player_rank, request.self_rank)
         response.res.result = False
