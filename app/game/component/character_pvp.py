@@ -175,8 +175,11 @@ class CharacterPvpComponent(Component):
                     num = x
 
         print '========================num', num
+        power = character_info.hget('attackPoint')
+        if not power:
+            power = self.owner.line_up_component.combat_power
         ids = get_player_ids(self.owner.base_info.id,
-                             int(character_info.hget('attackPoint')),
+                             power,
                              types, num)
         print '=====================================ids:', ids
         if [0, 0] in ids:
