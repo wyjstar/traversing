@@ -186,6 +186,9 @@ def update_condition(player, cid, num):
 
 
 def hook_task(player, cid, num, is_lively=False, proto_data=''):
+
+    player.task.update()
+
     conf_tids = game_configs.achievement_config.get('conditions').get(cid)
     if not conf_tids:
         conf_tids = []
@@ -325,6 +328,9 @@ CHEAK_CONDITION_RANK = [25, 26]
 
 
 def check_condition(player, condition_conf, task_type):
+
+    player.task.update()
+
     cid = condition_conf[0]
     if cid in CHECK_CONDITION_MAP:
         fun = CHECK_CONDITION_MAP[cid]

@@ -12,7 +12,10 @@ tb_character_info = RedisObject('tb_character_info')
 def add_level_rank_info(instance, users):
     for uid in users:
         character_obj = tb_character_info.getObj(uid)
-        character_info = character_obj.hmget(['level', 'attackPoint'])
+        character_info = character_obj.hmget(['level', 'attackPoint',
+                                              'nickname'])
+        if not character_info['nickname']:
+            continue
         if character_info['attackPoint']:
             rank_value = int(character_info['attackPoint'])
         else:
@@ -25,7 +28,10 @@ def add_level_rank_info(instance, users):
 def add_power_rank_info(instance, users):
     for uid in users:
         character_obj = tb_character_info.getObj(uid)
-        character_info = character_obj.hmget(['level', 'attackPoint'])
+        character_info = character_obj.hmget(['level', 'attackPoint',
+                                              'nickname'])
+        if not character_info['nickname']:
+            continue
         if character_info['attackPoint']:
             rank_value = int(character_info['attackPoint'])
         else:
@@ -39,7 +45,9 @@ def add_star_rank_info(instance, users):
     for uid in users:
         character_obj = tb_character_info.getObj(uid)
         character_info = character_obj.hmget(['level', 'stage_progress',
-                                              'star_num'])
+                                              'star_num', 'nickname'])
+        if not character_info['nickname']:
+            continue
         star_num_list = character_info['star_num']
         star_num = 0
         for x in star_num_list:
