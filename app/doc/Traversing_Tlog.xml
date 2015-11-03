@@ -1,278 +1,278 @@
 <?xml version="1.0"?>
 <metalib tagsetversion="1" name="Log" version="2">
     <!--
-	*****************************************************************
-	Common Base Tlog
-	*****************************************************************
-	-->
-	
+    *****************************************************************
+    Common Base Tlog
+    *****************************************************************
+    -->
+    
   <!--玩家注册表-->
   <struct name="PlayerRegister"  version="1" desc="玩家注册">
-    <entry name="GameSvrId"			type="string"		size="25"						desc="登录的游戏服务器编号" />
-    <entry name="dtEventTime"		type="datetime"										desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-    <entry name="GameAppID"			type="string"		size="32"						desc="游戏APPID" />
-    <entry name="PlatID"			type="int"						defaultvalue="0"	desc="ios 0 /android 1"/>
-    <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-    <entry name="ClientVersion"		type="string"		size="64"	defaultvalue="NULL" desc="客户端版本"/>
-    <entry name="SystemSoftware"	type="string"		size="64"	defaultvalue="NULL" desc="移动终端操作系统版本"/>
-    <entry name="SystemHardware"	type="string"		size="64"	defaultvalue="NULL" desc="移动终端机型"/>
-    <entry name="TelecomOper"		type="string"		size="64"	defaultvalue="NULL" desc="运营商"/>
-    <entry name="Network"			type="string"		size="64"	defaultvalue="NULL" desc="3G/WIFI/2G"/>
-    <entry name="ScreenWidth"		type="int"						defaultvalue="0"	desc="显示屏宽度"/>
-    <entry name="ScreenHight"		type="int"						defaultvalue="0"	desc="显示屏高度"/>
-    <entry name="Density"			type="float"					defaultvalue="0"	desc="像素密度"/>
-    <entry name="RegChannel"		type="int"						defaultvalue="0"	desc="注册渠道"/>
-    <entry name="UUID"				type="string"		size="64"	defaultvalue="NULL" desc="MAC地址"/>
-    <entry name="CpuHardware"		type="string"		size="64"	defaultvalue="NULL" desc="cpu类型|频率|核数"/>
-    <entry name="Memory"			type="int"						defaultvalue="0"	desc="内存信息单位M"/>
-    <entry name="GLRender"			type="string"		size="64"	defaultvalue="NULL" desc="opengl render信息"/>
-    <entry name="GLVersion"			type="string"		size="255"	defaultvalue="NULL" desc="opengl版本信息"/>
-    <entry name="DeviceId"			type="string"		size="64"	defaultvalue="NULL"	desc="设备ID"/>
-	<entry name="Nickname"			type="string"		size="64"	defaultvalue="NULL"	desc="用户昵称"/>
-	<entry name="IP"			    type="string"		size="64"	defaultvalue="NULL"	desc="ip"/>
+    <entry name="GameSvrId"         type="string"        size="25"                        desc="登录的游戏服务器编号" />
+    <entry name="dtEventTime"       type="datetime"                                        desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+    <entry name="GameAppID"         type="string"        size="32"                        desc="游戏APPID" />
+    <entry name="PlatID"            type="int"                        defaultvalue="0"    desc="ios 0 /android 1"/>
+    <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+    <entry name="ClientVersion"     type="string"        size="64"    defaultvalue="NULL" desc="客户端版本"/>
+    <entry name="SystemSoftware"    type="string"        size="64"    defaultvalue="NULL" desc="移动终端操作系统版本"/>
+    <entry name="SystemHardware"    type="string"        size="64"    defaultvalue="NULL" desc="移动终端机型"/>
+    <entry name="TelecomOper"       type="string"        size="64"    defaultvalue="NULL" desc="运营商"/>
+    <entry name="Network"           type="string"        size="64"    defaultvalue="NULL" desc="3G/WIFI/2G"/>
+    <entry name="ScreenWidth"       type="int"                        defaultvalue="0"    desc="显示屏宽度"/>
+    <entry name="ScreenHight"       type="int"                        defaultvalue="0"    desc="显示屏高度"/>
+    <entry name="Density"           type="float"                      defaultvalue="0"    desc="像素密度"/>
+    <entry name="RegChannel"        type="int"                        defaultvalue="0"    desc="注册渠道"/>
+    <entry name="UUID"              type="string"        size="64"    defaultvalue="NULL" desc="MAC地址"/>
+    <entry name="CpuHardware"       type="string"        size="64"    defaultvalue="NULL" desc="cpu类型|频率|核数"/>
+    <entry name="Memory"            type="int"                        defaultvalue="0"    desc="内存信息单位M"/>
+    <entry name="GLRender"          type="string"        size="64"    defaultvalue="NULL" desc="opengl render信息"/>
+    <entry name="GLVersion"         type="string"        size="255"    defaultvalue="NULL" desc="opengl版本信息"/>
+    <entry name="DeviceId"          type="string"        size="64"    defaultvalue="NULL"  desc="设备ID"/>
+    <entry name="Nickname"          type="string"        size="64"    defaultvalue="NULL"  desc="用户昵称"/>
+    <entry name="IP"                type="string"        size="64"    defaultvalue="NULL"  desc="ip"/>
   </struct>
   
    <!--玩家登录表-->
    <struct  name="PlayerLogin"  version="1" desc="玩家登陆">
-    <entry name="GameSvrId"         type="string"		size="25"							desc="登录的游戏服务器编号" />
-    <entry name="dtEventTime"		type="datetime"											desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-    <entry name="GameAppID"         type="string"		size="32"							desc="游戏APPID" />
-    <entry name="PlatID"			type="int"						defaultvalue="0"		desc="ios 0/android 1"/>
-    <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-    <entry name="Level"             type="int"												desc="等级" />
-	<entry name="PlayerFriendsNum"  type="int"												desc="玩家好友数量"/>
-    <entry name="ClientVersion"		type="string"		size="64"	defaultvalue="NULL"		desc="客户端版本"/>
-    <entry name="SystemSoftware"	type="string"		size="64"	defaultvalue="NULL"		desc="移动终端操作系统版本"/>
-    <entry name="SystemHardware"	type="string"		size="64"	defaultvalue="NULL"		desc="移动终端机型"/>
-    <entry name="TelecomOper"		type="string"		size="64"	defaultvalue="NULL"		desc="运营商"/>
-    <entry name="Network"			type="string"		size="64"	defaultvalue="NULL"		desc="3G/WIFI/2G"/>
-    <entry name="ScreenWidth"		type="int"						defaultvalue="0"		desc="显示屏宽度"/>
-    <entry name="ScreenHight"		type="int"						defaultvalue="0"		desc="显示屏高度"/>
-    <entry name="Density"			type="float"					defaultvalue="0"		desc="像素密度"/>
-    <entry name="LoginChannel"		type="int"						defaultvalue="0"		desc="登录渠道"/>
-    <entry name="UUID"				type="string"		size="64"	defaultvalue="NULL"		desc="MAC地址"/>
-    <entry name="CpuHardware"		type="string"		size="64"	defaultvalue="NULL"		desc="cpu类型|频率|核数"/>
-    <entry name="Memory"			type="int"						defaultvalue="0"		desc="内存信息单位M"/>
-    <entry name="GLRender"			type="string"		size="64"	defaultvalue="NULL"		desc="opengl render信息"/>
-    <entry name="GLVersion"			type="string"		size="255"	defaultvalue="NULL"		desc="opengl版本信息"/>
-    <entry name="DeviceId"			type="string"		size="64"	defaultvalue="NULL"		desc="设备ID"/>
-	<entry name="IP"			    type="string"		size="64"	defaultvalue="NULL"	desc="ip"/>
+    <entry name="GameSvrId"         type="string"        size="25"                            desc="登录的游戏服务器编号" />
+    <entry name="dtEventTime"       type="datetime"                                           desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+    <entry name="GameAppID"         type="string"        size="32"                            desc="游戏APPID" />
+    <entry name="PlatID"            type="int"                        defaultvalue="0"        desc="ios 0/android 1"/>
+    <entry name="OpenID"            type="string"        size="64"                            desc="用户OPENID号" />
+    <entry name="Level"             type="int"                                                desc="等级" />
+    <entry name="PlayerFriendsNum"  type="int"                                                desc="玩家好友数量"/>
+    <entry name="ClientVersion"     type="string"        size="64"    defaultvalue="NULL"     desc="客户端版本"/>
+    <entry name="SystemSoftware"    type="string"        size="64"    defaultvalue="NULL"     desc="移动终端操作系统版本"/>
+    <entry name="SystemHardware"    type="string"        size="64"    defaultvalue="NULL"     desc="移动终端机型"/>
+    <entry name="TelecomOper"       type="string"        size="64"    defaultvalue="NULL"     desc="运营商"/>
+    <entry name="Network"           type="string"        size="64"    defaultvalue="NULL"     desc="3G/WIFI/2G"/>
+    <entry name="ScreenWidth"       type="int"                        defaultvalue="0"        desc="显示屏宽度"/>
+    <entry name="ScreenHight"       type="int"                        defaultvalue="0"        desc="显示屏高度"/>
+    <entry name="Density"           type="float"                      defaultvalue="0"        desc="像素密度"/>
+    <entry name="LoginChannel"      type="int"                        defaultvalue="0"        desc="登录渠道"/>
+    <entry name="UUID"              type="string"        size="64"    defaultvalue="NULL"     desc="MAC地址"/>
+    <entry name="CpuHardware"       type="string"        size="64"    defaultvalue="NULL"     desc="cpu类型|频率|核数"/>
+    <entry name="Memory"            type="int"                        defaultvalue="0"        desc="内存信息单位M"/>
+    <entry name="GLRender"          type="string"        size="64"    defaultvalue="NULL"     desc="opengl render信息"/>
+    <entry name="GLVersion"         type="string"        size="255"    defaultvalue="NULL"    desc="opengl版本信息"/>
+    <entry name="DeviceId"          type="string"        size="64"    defaultvalue="NULL"     desc="设备ID"/>
+    <entry name="IP"                type="string"        size="64"    defaultvalue="NULL"     desc="ip"/>
   </struct>
   
   <!--玩家登出表-->
   <struct name="PlayerLogout" version="1" desc="玩家登出">
-    <entry name="GameSvrId"          type="string"      size="25"							desc="登录的游戏服务器编号" />
-    <entry name="dtEventTime"		 type="datetime"										desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-    <entry name="GameAppID"          type="string"		size="32"							desc="游戏APPID" />
-    <entry name="PlatID"			 type="int"						defaultvalue="0"		desc="ios 0/android 1"/>
-    <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-    <entry name="OnlineTime"		 type="int"												desc="本次登录在线时间(秒)" />
-    <entry name="Level"				 type="int"												desc="等级" />
-    <entry name="PlayerFriendsNum"   type="int"												desc="玩家好友数量"/>
-    <entry name="ClientVersion"		 type="string"		size="64"	defaultvalue="NULL"		desc="客户端版本"/>
-    <entry name="SystemSoftware"	 type="string"		size="64"	defaultvalue="NULL"		desc="移动终端操作系统版本"/>
-    <entry name="SystemHardware"	 type="string"		size="64"	defaultvalue="NULL"		desc="移动终端机型"/>
-    <entry name="TelecomOper"		 type="string"		size="64"	defaultvalue="NULL"		desc="运营商"/>
-    <entry name="Network"			 type="string"		size="64"	defaultvalue="NULL"		desc="3G/WIFI/2G"/>
-    <entry name="ScreenWidth"		 type="int"						defaultvalue="0"		desc="显示屏宽度"/>
-    <entry name="ScreenHight"		 type="int"						defaultvalue="0"		desc="显示高度"/>
-    <entry name="Density"			 type="float"					defaultvalue="0"		desc="像素密度"/>
-    <entry name="LoginChannel"		 type="int"						defaultvalue="0"		desc="登录渠道"/>
-    <entry name="UUID"				 type="string"		size="64"	defaultvalue="NULL"		desc="MAC地址"/>
-    <entry name="CpuHardware"		 type="string"		size="64"	defaultvalue="NULL"		desc="cpu类型|频率|核数"/>
-    <entry name="Memory"			 type="int"						defaultvalue="0"		desc="内存信息单位M"/>
-    <entry name="GLRender"			 type="string"		size="64"	defaultvalue="NULL"		desc="opengl render信息"/>
-    <entry name="GLVersion"			 type="string"		size="255"	defaultvalue="NULL"		desc="opengl版本信息"/>
-    <entry name="DeviceId"			 type="string"		size="64"	defaultvalue="NULL"		desc="设备ID"/>
+    <entry name="GameSvrId"          type="string"        size="25"                         desc="登录的游戏服务器编号" />
+    <entry name="dtEventTime"        type="datetime"                                        desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+    <entry name="GameAppID"          type="string"        size="32"                         desc="游戏APPID" />
+    <entry name="PlatID"             type="int"                        defaultvalue="0"     desc="ios 0/android 1"/>
+    <entry name="OpenID"             type="string"        size="64"                         desc="用户OPENID号" />
+    <entry name="OnlineTime"         type="int"                                             desc="本次登录在线时间(秒)" />
+    <entry name="Level"              type="int"                                             desc="等级" />
+    <entry name="PlayerFriendsNum"   type="int"                                             desc="玩家好友数量"/>
+    <entry name="ClientVersion"      type="string"        size="64"    defaultvalue="NULL"  desc="客户端版本"/>
+    <entry name="SystemSoftware"     type="string"        size="64"    defaultvalue="NULL"  desc="移动终端操作系统版本"/>
+    <entry name="SystemHardware"     type="string"        size="64"    defaultvalue="NULL"  desc="移动终端机型"/>
+    <entry name="TelecomOper"        type="string"        size="64"    defaultvalue="NULL"  desc="运营商"/>
+    <entry name="Network"            type="string"        size="64"    defaultvalue="NULL"  desc="3G/WIFI/2G"/>
+    <entry name="ScreenWidth"        type="int"                        defaultvalue="0"     desc="显示屏宽度"/>
+    <entry name="ScreenHight"        type="int"                        defaultvalue="0"     desc="显示高度"/>
+    <entry name="Density"            type="float"                      defaultvalue="0"     desc="像素密度"/>
+    <entry name="LoginChannel"       type="int"                        defaultvalue="0"     desc="登录渠道"/>
+    <entry name="UUID"               type="string"        size="64"    defaultvalue="NULL"  desc="MAC地址"/>
+    <entry name="CpuHardware"        type="string"        size="64"    defaultvalue="NULL"  desc="cpu类型|频率|核数"/>
+    <entry name="Memory"             type="int"                        defaultvalue="0"     desc="内存信息单位M"/>
+    <entry name="GLRender"           type="string"        size="64"    defaultvalue="NULL"  desc="opengl render信息"/>
+    <entry name="GLVersion"          type="string"        size="255"   defaultvalue="NULL"  desc="opengl版本信息"/>
+    <entry name="DeviceId"           type="string"        size="64"    defaultvalue="NULL"  desc="设备ID"/>
   </struct>
   
    <!--游戏货币流水表,只是记录充值币和游戏币关联的流水，(类似货币的交易记录无需记录)-->
   <struct name="MoneyFlow" version="1" desc="货币流水">
-    <entry name="GameSvrId"        type="string"      size="25"							desc="登录的游戏服务器编号" />
-    <entry name="dtEventTime"      type="datetime"										desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-  	<entry name="Sequence"		   type="int"											desc="用于关联一次动作产生多条不同类型的货币流动日志" />
-    <entry name="GameAppID"        type="string"      size="32"							desc="游戏APPID" />
-    <entry name="PlatID"		   type="int"						defaultvalue="0"	desc="ios 0/android 1"/>
-    <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-	<entry name="Level"            type="int"											desc="玩家等级" />
-    <entry name="AfterMoney"       type="bigint"       									desc="动作后的金钱数" />
-    <entry name="Money"            type="bigint"       									desc="动作涉及的金钱数" />
-    <entry name="Reason"           type="int"       									desc="本文档最后的流水原因" />
-    <entry name="SubReason"        type="int"       									desc="货币流动二级原因" />
-	<entry name="ReasonEventID"	   type="int"       									desc="原因事件唯一ID，如果是关卡就是战斗唯一编号" />
-	<entry name="AddOrReduce"      type="int"											desc="增加还是减少 0增加1减少" />
-	<entry name="MoneyType"        type="int"											desc="钱的类型MONEYTYPE 1金币2元宝" />
-	<entry name="itemId"           type="string"      size="32"							desc="消耗点类型，只有在消耗的时候才记录，否则为0" />
-	<entry name="itemAmount"       type="int"       									desc="消耗点数量，只有在消耗的时候才记录，否则为0" />
+    <entry name="GameSvrId"        type="string"      size="25"                         desc="登录的游戏服务器编号" />
+    <entry name="dtEventTime"      type="datetime"                                      desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+    <entry name="Sequence"         type="int"                                           desc="用于关联一次动作产生多条不同类型的货币流动日志" />
+    <entry name="GameAppID"        type="string"      size="32"                         desc="游戏APPID" />
+    <entry name="PlatID"           type="int"                        defaultvalue="0"   desc="ios 0/android 1"/>
+    <entry name="OpenID"           type="string"      size="64"                         desc="用户OPENID号" />
+    <entry name="Level"            type="int"                                           desc="玩家等级" />
+    <entry name="AfterMoney"       type="bigint"                                        desc="动作后的金钱数" />
+    <entry name="Money"            type="bigint"                                        desc="动作涉及的金钱数" />
+    <entry name="Reason"           type="int"                                           desc="本文档最后的流水原因" />
+    <entry name="SubReason"        type="int"                                           desc="货币流动二级原因" />
+    <entry name="ReasonEventID"    type="int"                                           desc="原因事件唯一ID，如果是关卡就是战斗唯一编号" />
+    <entry name="AddOrReduce"      type="int"                                           desc="增加还是减少 0增加1减少" />
+    <entry name="MoneyType"        type="int"                                           desc="钱的类型MONEYTYPE 1金币2元宝" />
+    <entry name="itemId"           type="string"      size="32"                         desc="消耗点类型，只有在消耗的时候才记录，否则为0" />
+    <entry name="itemAmount"       type="int"                                           desc="消耗点数量，只有在消耗的时候才记录，否则为0" />
   </struct>
 
    <!--道具流水表-->
   <struct name="ItemFlow" version="1" desc="道具流水表">
-	<entry name="GameSvrId"				type="string"		size="25"						desc="登录的游戏服务器编号" />
-	<entry name="dtEventTime"			type="datetime"										desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-	<entry name="Sequence"				type="int"											desc="用于关联一次动作产生多条不同类型的道具流动日志" />
-	<entry name="GameAppID"				type="string"		size="32"						desc="游戏APPID" />
-	<entry name="PlatID"				type="int"						defaultvalue="0"	desc="ios 0/android 1"/>
-    <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-	<entry name="ItemType"				type="int"											desc="道具类型" />
-	<entry name="ItemId"				type="int"											desc="道具ID" />
-	<entry name="AfterCount"			type="int"											desc="动作后的物品存量" />
-	<entry name="Count"					type="int"											desc="动作涉及的物品数量" />
-	<entry name="Reason"				type="int"       									desc="本文档最后的流水原因因" />
-	<entry name="SubReason"				type="int"       									desc="道具流动二级原因" />
-	<entry name="ReasonEventID"			type="string"      size="64" 						desc="原因事件唯一ID" />
-	<entry name="AddOrReduce"           type="int"											desc="增加还是减少0增加1减少" />
-	<entry name="ItId"                  type="string"		size="50"						desc="用户道具ID" />
+    <entry name="GameSvrId"              type="string"        size="25"                        desc="登录的游戏服务器编号" />
+    <entry name="dtEventTime"            type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+    <entry name="Sequence"               type="int"                                            desc="用于关联一次动作产生多条不同类型的道具流动日志" />
+    <entry name="GameAppID"              type="string"        size="32"                        desc="游戏APPID" />
+    <entry name="PlatID"                 type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+    <entry name="OpenID"                 type="string"        size="64"                        desc="用户OPENID号" />
+    <entry name="ItemType"               type="int"                                            desc="道具类型" />
+    <entry name="ItemId"                 type="int"                                            desc="道具ID" />
+    <entry name="AfterCount"             type="int"                                            desc="动作后的物品存量" />
+    <entry name="Count"                  type="int"                                            desc="动作涉及的物品数量" />
+    <entry name="Reason"                 type="int"                                            desc="本文档最后的流水原因因" />
+    <entry name="SubReason"              type="int"                                            desc="道具流动二级原因" />
+    <entry name="ReasonEventID"          type="string"        size="64"                        desc="原因事件唯一ID" />
+    <entry name="AddOrReduce"            type="int"                                            desc="增加还是减少0增加1减少" />
+    <entry name="ItId"                   type="string"        size="50"                        desc="用户道具ID" />
   </struct>  
   
   <!--道具消费流水表,只是记录商城的道具-->
   
    <struct name="ItemMoneyFlow" version="1" desc="道具消费流水">
-      <entry name="GameSvrId"            type="string"       size="25"							desc="登录的游戏服务器编号" />
-      <entry name="dtEventTime"          type="datetime"										desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-	  <entry name="Sequence"			 type="int"												desc="用于关联一次购买产生多条不同类型的货币日志" />
-      <entry name="GameAppID"            type="string"       size="32"							desc="游戏APPID" />
-      <entry name="PlatID"               type="int"							defaultvalue="0"    desc="ios 0/android 1"/>
-      <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-	  <entry name="ItemType"             type="int"												desc="道具类型" />
-      <entry name="ItemId"               type="int"												desc="道具ID" />
-      <entry name="Count"                type="int"												desc="数量" />
-      <entry name="Money"                type="int"												desc="钱" />
-      <entry name="Level"                type="int"												desc="玩家等级" />
-	  <entry name="MoneyType"            type="int"												desc="钱的类型MONEYTYPE" />
-      <entry name="DiscountMoney"        type="int"										        desc="折扣后，钱" />
-	  <entry name="DiscountMoneyType"    type="int"										        desc="折扣后，钱的类型MONEYTYPE" />
-      <entry name="LimitVipEveryday"    type="string"		size="64"					        desc="vip每日购买上限[20,30,40]" />
-      <entry name="LimitVip"             type="string"		size="64"					        desc="vip购买上限[20,30,40]" />
-      <entry name="IsDiscount"           type="int"		             					        desc="是否折扣" />
+      <entry name="GameSvrId"            type="string"       size="25"                            desc="登录的游戏服务器编号" />
+      <entry name="dtEventTime"          type="datetime"                                          desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+      <entry name="Sequence"             type="int"                                               desc="用于关联一次购买产生多条不同类型的货币日志" />
+      <entry name="GameAppID"            type="string"       size="32"                            desc="游戏APPID" />
+      <entry name="PlatID"               type="int"                           defaultvalue="0"    desc="ios 0/android 1"/>
+      <entry name="OpenID"               type="string"       size="64"                            desc="用户OPENID号" />
+      <entry name="ItemType"             type="int"                                               desc="道具类型" />
+      <entry name="ItemId"               type="int"                                               desc="道具ID" />
+      <entry name="Count"                type="int"                                               desc="数量" />
+      <entry name="Money"                type="int"                                               desc="钱" />
+      <entry name="Level"                type="int"                                               desc="玩家等级" />
+      <entry name="MoneyType"            type="int"                                               desc="钱的类型MONEYTYPE" />
+      <entry name="DiscountMoney"        type="int"                                               desc="折扣后，钱" />
+      <entry name="DiscountMoneyType"    type="int"                                               desc="折扣后，钱的类型MONEYTYPE" />
+      <entry name="LimitVipEveryday"     type="string"        size="64"                           desc="vip每日购买上限[20,30,40]" />
+      <entry name="LimitVip"             type="string"        size="64"                           desc="vip购买上限[20,30,40]" />
+      <entry name="IsDiscount"           type="int"                                               desc="是否折扣" />
   </struct> 
   
   
     <!--单局流水表-->
     <struct name="RoundFlow" version="1" desc="单局结束数据流水">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-        <entry name="BattleID" type="int" desc="本局ID,关卡ID" />
-        <entry name="BattleType" type="int" desc="战斗类型 BATTLETYPE，1剧情2精英3活动4游历" />
-        <entry name="isQuick" type="int" desc="是否扫荡 QUICKTYPE，1是，0不是" />
-        <entry name="Result" type="int" desc="单局结果 BATTLERESULT，1成功0失败" />
-        <entry name="Score" type="int" desc="本局分数,,我们游戏没有" />
-        <entry name="Rank" type="int" desc="排名，只有pvp有这个值" />
-        <entry name="Gold" type="int" desc="金币， 去查数值表" />
-		<entry name="ExpChange" type="int"	desc="获得经验，去查数值表" />
-		<entry name="BattleSoleId" type="string" size="64" desc="战斗唯一id，无" />
+        <entry name="GameSvrId"           type="string"     size="25"                           desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"         type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"           type="string"     size="32"                           desc="游戏APPID" />
+        <entry name="PlatID"              type="int"        defaultvalue="0"                    desc="ios 0/android 1" />
+        <entry name="OpenID"              type="string"     size="64"                           desc="用户OPENID号" />
+        <entry name="BattleID"            type="int"                                            desc="本局ID,关卡ID" />
+        <entry name="BattleType"          type="int"                                            desc="战斗类型 BATTLETYPE，1剧情2精英3活动4游历" />
+        <entry name="isQuick"             type="int"                                            desc="是否扫荡 QUICKTYPE，1是，0不是" />
+        <entry name="Result"              type="int"                                            desc="单局结果 BATTLERESULT，1成功0失败" />
+        <entry name="Score"               type="int"                                            desc="本局分数,,我们游戏没有" />
+        <entry name="Rank"                type="int"                                            desc="排名，只有pvp有这个值" />
+        <entry name="Gold"                type="int"                                            desc="金币， 去查数值表" />
+        <entry name="ExpChange"           type="int"                                            desc="获得经验，去查数值表" />
+        <entry name="BattleSoleId"        type="string"     size="64"                           desc="战斗唯一id，无" />
     </struct>  
 
   
-	<!--人物等级流水表-->
+    <!--人物等级流水表-->
 
-	<struct name="PlayerExpFlow" version="1" desc="人物等级流水表">
-		<entry name="GameSvrId"          type="string"        size="25"						desc="登录的游戏服务器编号" />
-		<entry name="dtEventTime"        type="datetime"									desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-		<entry name="GameAppID"          type="string"		  size="32"						desc="游戏APPID" />
-		<entry name="PlatID"			 type="int"						defaultvalue="0"	desc="ios 0/android 1"/>
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-		<entry name="ExpChange"          type="int"											desc="经验变化" />
-		<entry name="BeforeLevel"        type="int"											desc="动作前等级" />
-		<entry name="AfterLevel"         type="int"											desc="动作后等级" />
-		<entry name="Time"				 type="int"											desc="升级所用时间" />
-		<entry name="Reason"             type="int"       									desc="本文档最后的流水原因" />
-		<entry name="SubReason"          type="int"       									desc="经验流动二级原因" />
-		<entry name="Exp"                type="int"       									desc="玩家当前经验值" />
+    <struct name="PlayerExpFlow" version="1" desc="人物等级流水表">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="ExpChange"          type="int"                                            desc="经验变化" />
+        <entry name="BeforeLevel"        type="int"                                            desc="动作前等级" />
+        <entry name="AfterLevel"         type="int"                                            desc="动作后等级" />
+        <entry name="Time"               type="int"                                            desc="升级所用时间" />
+        <entry name="Reason"             type="int"                                            desc="本文档最后的流水原因" />
+        <entry name="SubReason"          type="int"                                            desc="经验流动二级原因" />
+        <entry name="Exp"                type="int"                                            desc="玩家当前经验值" />
   </struct>
   
-	<!--服务器状态日志-->
+    <!--服务器状态日志-->
     <struct name="GameSvrState" version="1" desc="(必填)服务器状态流水，每分钟一条日志">
-        <entry name="dtEventTime" type="datetime" desc="(必填)格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="vGameIP" type="string" size="32" desc="(必填)服务器IP:PORT" />
+        <entry name="dtEventTime"       type="datetime"                                        desc="(必填)格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="vGameIP"           type="string"         size="32"                        desc="(必填)服务器IP:PORT" />
     </struct>  
   
   
   
-	<!--//////////////////////////////////////////////
-	//////////////客户端TLOG配置////////////////////////
-   /////////////////////////////////////////////////-->	 
+    <!--//////////////////////////////////////////////
+    //////////////客户端TLOG配置////////////////////////
+   /////////////////////////////////////////////////-->     
    
-	<!--//////////////////////////////////////////////
-	//////////////崩溃日志表////////////////////////
-   /////////////////////////////////////////////////-->	  
+    <!--//////////////////////////////////////////////
+    //////////////崩溃日志表////////////////////////
+   /////////////////////////////////////////////////-->      
     <struct name="ClientException" version="1" desc="崩溃日志表">
-		<entry name="UUID" type="string" size="64" defaultvalue="NULL" desc="设备唯一标识id" />
-		<entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-		<entry name="ClientVersion" type="string" size="64" defaultvalue="NULL" desc="客户端版本" />
-		<entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-		<entry name="SystemHardware" type="string" size="64" defaultvalue="NULL" desc="移动终端机型" />
-		<entry name="SystemSoftware" type="string" size="64" defaultvalue="NULL" desc="移动终端操作系统版本" />
+        <entry name="UUID"           type="string"     size="64" defaultvalue="NULL"      desc="设备唯一标识id" />
+        <entry name="dtEventTime"    type="datetime"                    desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="ClientVersion"  type="string"     size="64" defaultvalue="NULL"      desc="客户端版本" />
+        <entry name="PlatID"         type="int"                  defaultvalue="0"         desc="ios 0/android 1" />
+        <entry name="SystemHardware" type="string"     size="64" defaultvalue="NULL"      desc="移动终端机型" />
+        <entry name="SystemSoftware" type="string"     size="64" defaultvalue="NULL"      desc="移动终端操作系统版本" />
     </struct>
-	
-	<!--游戏事件表-->
+    
+    <!--游戏事件表-->
     <struct name="ClientEvent" version="1" desc="游戏事件表">
-		<entry name="UUID" type="string" size="64" defaultvalue="NULL" desc="设备唯一标识id" />
-		<entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-		<entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-		<entry name="EventName" type="string" size="64" defaultvalue="NULL" desc="事件名称" />
+        <entry name="UUID"           type="string"     size="64" defaultvalue="NULL"      desc="设备唯一标识id" />
+        <entry name="dtEventTime"    type="datetime"                                      desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="PlatID"         type="int"                  defaultvalue="0"         desc="ios 0/android 1" />
+        <entry name="EventName"      type="string"     size="64" defaultvalue="NULL"      desc="事件名称" />
     </struct>
 
-	<!--阵容变化表-->
+    <!--阵容变化表-->
 
-	<struct name="LineUpChange" version="1" desc="阵容变化表">
-		<entry name="GameSvrId"          type="string"        size="25"						desc="登录的游戏服务器编号" />
-		<entry name="dtEventTime"        type="datetime"									desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-		<entry name="GameAppID"          type="string"		  size="32"						desc="游戏APPID" />
-		<entry name="PlatID"			 type="int"						defaultvalue="0"	desc="ios 0/android 1"/>
+    <struct name="LineUpChange" version="1" desc="阵容变化表">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                    desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"          size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
 
-		<entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-		<entry name="Slot"               type="int"											desc="位置" />
-		<entry name="HeroId"             type="int"											desc="动作前英雄id" />
-        <entry name="AfterHeroId"        type="int"											desc="动作后英雄id" />
-        <entry name="ChangeType"        type="int"											desc="变化类型0阵容1助威" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="Slot"               type="int"                                            desc="位置" />
+        <entry name="HeroId"             type="int"                                            desc="动作前英雄id" />
+        <entry name="AfterHeroId"        type="int"                                            desc="动作后英雄id" />
+        <entry name="ChangeType"        type="int"                                            desc="变化类型0阵容1助威" />
     </struct>
 
-	<!--武将突破-->
+    <!--武将突破-->
 
-	<struct name="HeroBreak" version="1" desc="武将突破">
-		<entry name="GameSvrId"          type="string"        size="25"						desc="登录的游戏服务器编号" />
-		<entry name="dtEventTime"        type="datetime"									desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-		<entry name="GameAppID"          type="string"		  size="32"						desc="游戏APPID" />
-		<entry name="PlatID"			 type="int"						defaultvalue="0"	desc="ios 0/android 1"/>
+    <struct name="HeroBreak" version="1" desc="武将突破">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                    desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"          size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
 
-		<entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-		<entry name="HeroId"               type="int"											desc="英雄ID" />
-		<entry name="Level"              type="int"											desc="动作后突破等级" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="HeroId"               type="int"                                            desc="英雄ID" />
+        <entry name="Level"              type="int"                                            desc="动作后突破等级" />
     </struct>
 
-	<!--武将镶嵌宝石-->
+    <!--武将镶嵌宝石-->
 
-	<struct name="HeroRuntSet" version="1" desc="武将镶嵌宝石">
-		<entry name="GameSvrId"          type="string"        size="25"						desc="登录的游戏服务器编号" />
-		<entry name="dtEventTime"        type="datetime"									desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-		<entry name="GameAppID"          type="string"		  size="32"						desc="游戏APPID" />
-		<entry name="PlatID"			 type="int"						defaultvalue="0"	desc="ios 0/android 1"/>
+    <struct name="HeroRuntSet" version="1" desc="武将镶嵌宝石">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                    desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"          size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
 
-		<entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-		<entry name="HeroId"               type="int"											desc="英雄ID" />
-		<entry name="Now"               type="int"											desc="时间戳，标记同一次镶嵌" />
-		<entry name="RuntNo"              type="int"											desc="宝石编号" />
-		<entry name="RuntPo"              type="int"											desc="镶嵌位置" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="HeroId"               type="int"                                            desc="英雄ID" />
+        <entry name="Now"               type="int"                                            desc="时间戳，标记同一次镶嵌" />
+        <entry name="RuntNo"              type="int"                                            desc="宝石编号" />
+        <entry name="RuntPo"              type="int"                                            desc="镶嵌位置" />
     </struct>
 
-	<!--传承-->
+    <!--传承-->
 
-	<struct name="Inherit" version="1" desc="传承">
-		<entry name="GameSvrId"          type="string"        size="25"						desc="登录的游戏服务器编号" />
-		<entry name="dtEventTime"        type="datetime"									desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-		<entry name="GameAppID"          type="string"		  size="32"						desc="游戏APPID" />
-		<entry name="PlatID"			 type="int"						defaultvalue="0"	desc="ios 0/android 1"/>
+    <struct name="Inherit" version="1" desc="传承">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                    desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"          size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
 
-		<entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
-		<entry name="InheritType"        type="int"											desc="传承类型1武将2装备3无双" />
-		<entry name="OriginId"           type="int"											desc="材料id" />
-		<entry name="OriginItemId"        type="string"			size="64"							desc="模型id" />
-        <entry name="TargetId"           type="int"											desc="目标id" />
-		<entry name="TargetItemId"        type="string"		size="64"						desc="模型id" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="InheritType"        type="int"                                            desc="传承类型1武将2装备3无双" />
+        <entry name="OriginId"           type="int"                                            desc="材料id" />
+        <entry name="OriginItemId"        type="string"            size="64"                            desc="模型id" />
+        <entry name="TargetId"           type="int"                                            desc="目标id" />
+        <entry name="TargetItemId"        type="string"        size="64"                        desc="模型id" />
     </struct>
 
     <!--单局流水表-->
@@ -281,7 +281,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="StageID" type="int" desc="关卡ID" />
         <entry name="Result" type="int" desc="单局结果1成功0失败" />
@@ -293,7 +293,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="StageID" type="int" desc="关卡ID" />
         <entry name="Times" type="int" desc="扫荡次数" />
@@ -306,7 +306,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
         <entry name="UserLevel" type="int"  desc="玩家等级" />
@@ -318,7 +318,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
         <entry name="BeHandler" type="int" desc="被处理玩家ID" />
@@ -331,7 +331,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
     </struct>
@@ -342,7 +342,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
         <entry name="TargetId" type="int" desc="被转让玩家ID" />
@@ -354,7 +354,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
         <entry name="TargetId" type="int" desc="被踢出玩家ID" />
@@ -366,7 +366,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
         <entry name="BeID" type="int" desc="被顶下玩家ID" />
@@ -378,7 +378,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
         <entry name="WorshipType" type="int" desc="膜拜类型" />
@@ -390,7 +390,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="Stage" type="int" desc="章节" />
         <entry name="EventId" type="int" desc="事件ID" />
@@ -405,7 +405,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="Stage" type="int" desc="章节" />
         <entry name="Time" type="int" desc="自动游历时间" />
@@ -417,7 +417,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="HeroId" type="int" desc="英雄ID" />
     </struct>
@@ -428,7 +428,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="HeroId" type="int" desc="英雄ID" />
         <entry name="Refine" type="int" desc="练体穴位" />
@@ -440,7 +440,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="HeroId" type="int" desc="英雄ID" />
         <entry name="ChangeLevel" type="int" desc="改变等级" />
@@ -458,7 +458,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="Isfirst" type="int" desc="是不是首充" />
         <entry name="RechargeId" type="int" desc="充值ID" />
@@ -470,7 +470,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="Sequence" type="int" desc="传来的新手引导步数" />
         <entry name="MySequence" type="int" desc="已存的新手引导步数" />
@@ -492,7 +492,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="EquipmentNo" type="int" desc="装备编号,配置ID" />
         <entry name="EquipmentId" type="int" desc="装备ID,唯一uuid" />
@@ -506,7 +506,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="EquipmentNo" type="int" desc="装备编号,配置ID" />
         <entry name="EquipmentId" type="int" desc="装备ID,唯一uuid" />
@@ -518,7 +518,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="EquipmentNo" type="int" desc="装备编号,配置ID" />
         <entry name="EquipmentId" type="int" desc="装备ID,唯一uuid" />
@@ -535,9 +535,9 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"			type="string"		size="64"						desc="用户OPENID号" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
-        <entry name="Nickname"    type="string"    size="64"	defaultvalue="NULL"	desc="用户昵称"/>
+        <entry name="Nickname"    type="string"    size="64"    defaultvalue="NULL"    desc="用户昵称"/>
     </struct>
 
     <!--七日活动领取奖励-->
@@ -546,7 +546,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="TargetID"  type="int"  desc="目标id"/>
     </struct>
@@ -557,7 +557,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="Day"  type="int"  desc="签到天数"/>
         <entry name="IsVip"  type="int"  desc="是不是vip，vip奖励双倍，1是0不是"/>
@@ -570,7 +570,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="Day"  type="int"  desc="累积天数"/>
     </struct>
@@ -581,7 +581,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="Day"  type="int"  desc="补签天"/>
         <entry name="Day1"  type="int"  desc="补签后累积签到天数"/>
@@ -594,7 +594,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="BoxID"  type="int"  desc="宝箱id"/>
     </struct>
@@ -605,7 +605,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="GiftID"  type="int"  desc="奖励ID"/>
     </struct>
@@ -616,7 +616,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="ActivityID"  type="int"  desc="奖励ID"/>
     </struct>
@@ -627,7 +627,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="Stamina"  type="int"  desc="领取后玩家体力"/>
     </struct>
@@ -638,7 +638,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="ActivityID"  type="int"  desc="活动ID"/>
         <entry name="Arg"  type="int"  desc="当前战力或当前通关最高关卡"/>
@@ -650,7 +650,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="ActivityID"  type="int"  desc="奖励ID"/>
         <entry name="Level"  type="int"  desc="当前玩家等级"/>
@@ -662,7 +662,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="TaskID"  type="int"  desc="分享的任务ID"/>
         <entry name="ShareType"  type="int"  desc="平台编号(1:QQ; 2:QQ空间; 3:微信; 4:朋友圈)"/>
@@ -674,7 +674,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="RebateID"  type="int"  desc="返利卡ID"/>
     </struct>
@@ -685,7 +685,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="NeedGold"  type="int"  desc="需要的元宝数量"/>
         <entry name="BuyTimes"  type="int"  desc="招财次数"/>
@@ -698,7 +698,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="ActivityID"  type="int"  desc="活动ID"/>
         <entry name="ExchangeNum"  type="int"  desc="兑换个数"/>
@@ -710,7 +710,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="StageID"  type="int"  desc="关卡ID"/>
         <entry name="HJQYStageID"  type="int"  desc="hjqy关卡id"/>
@@ -722,7 +722,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="BossID"  type="int"  desc="boss id"/>
         <entry name="IsKill"  type="int"  desc="是否杀死 1杀死0没杀死"/>
@@ -734,7 +734,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="StageID"  type="int"  desc="关卡ID"/>
     </struct>
@@ -745,7 +745,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="ChapterID"  type="int"  desc="章节ID"/>
         <entry name="AwardType"  type="int"  desc="奖励类型0 1 2对应7 14 21 星奖励"/>
@@ -757,7 +757,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="RandomNum"  type="int"  desc="倍数"/>
         <entry name="Times"  type="int"  desc="获取概率的次数"/>
@@ -770,7 +770,7 @@
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
         <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"	type="string"   size="64"   desc="用户OPENID号" />
+        <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="RandomNum"  type="int"  desc="倍数"/>
         <entry name="DealType"  type="int"  desc="处理类型，1领取2放弃"/>
