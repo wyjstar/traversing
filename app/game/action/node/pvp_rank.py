@@ -863,6 +863,7 @@ def pvp_rob_treasure_864(data, player):
             # 处理被打玩家
             deal_target_player(player, uid, chip_id)
     player.pvp.reset_rob_treasure()
+    player.pvp.save_data()
 
     response.res.result = True
 
