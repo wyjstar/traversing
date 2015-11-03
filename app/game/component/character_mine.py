@@ -62,7 +62,8 @@ def player_mine_create(mine, uid, nickname, level, lively):
     if len(rule) < 8:
         return False
 
-    isplayer, _, lowlevel, highlevel, minus, add, lowswordrate, highswordrate = rule
+    isplayer, _, lowlevel, highlevel,\
+        minus, add, lowswordrate, highswordrate = rule
     if isplayer == 0:
         return False
 
@@ -115,7 +116,7 @@ def draw_stones(mine, uid):
         return normal, lucky
 
     if mine['type'] == MineType.PLAYER_FIELD:
-        result = remote_gate['mine'].mine_harvest_remote(uid, mine['seq'])
+        result = remote_gate['world'].mine_harvest_remote(uid, mine['seq'])
         result = cPickle.loads(result)
         return result.get('normal'), result.get('lucky')
 
@@ -164,11 +165,11 @@ def acc_mine(mine):
 
 def settle(mine, uid=None, result=True, nickname=None, hold=1):
     if mine['type'] == MineType.PLAYER_FIELD:
-        result = remote_gate['mine'].mine_settle_remote(uid,
-                                                        mine['seq'],
-                                                        result,
-                                                        nickname,
-                                                        hold)
+        result = remote_gate['world'].mine_settle_remote(uid,
+                                                         mine['seq'],
+                                                         result,
+                                                         nickname,
+                                                         hold)
         result = cPickle.loads(result)
         logger.debug('remote_gate result:%s', result)
 
@@ -193,8 +194,8 @@ def settle(mine, uid=None, result=True, nickname=None, hold=1):
         player_field['last_time'] = _now + mine_item.timeLimited1 * 60
         player_field['status'] = 1
 
-        seq = remote_gate['mine'].mine_add_field_remote(uid,
-                                                        player_field)
+        seq = remote_gate['world'].mine_add_field_remote(uid,
+                                                         player_field)
         if seq == 0:
             logger.error('mine add field remote failed:%s', seq)
             return player_field, {'result': False, 'normal': {}, 'lucky': {}}
@@ -618,9 +619,9 @@ class CharacterMine(Component):
         _uid = self.owner.base_info.id
         _mine = self._mine[pos]
         change_time = game_configs.base_config.get('stoneReduceTime') * 60
-        result = remote_gate['mine'].acc_mine_time_remote(_uid,
-                                                          _mine['seq'],
-                                                          change_time)
+        result = remote_gate['world'].acc_mine_time_remote(_uid,
+                                                           _mine['seq'],
+                                                           change_time)
         if result:
             _mine['accelerate_times'] = _mine.get('accelerate_times', 0) + 1
             self.save_data()
