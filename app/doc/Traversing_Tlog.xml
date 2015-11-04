@@ -231,34 +231,6 @@
         <entry name="ChangeType"        type="int"                                            desc="变化类型0阵容1助威" />
     </struct>
 
-    <!--武将突破-->
-
-    <struct name="HeroBreak" version="1" desc="武将突破">
-        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime"        type="datetime"                                    desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID"          type="string"          size="32"                        desc="游戏APPID" />
-        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
-
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-        <entry name="HeroId"               type="int"                                            desc="英雄ID" />
-        <entry name="Level"              type="int"                                            desc="动作后突破等级" />
-    </struct>
-
-    <!--武将镶嵌宝石-->
-
-    <struct name="HeroRuntSet" version="1" desc="武将镶嵌宝石">
-        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime"        type="datetime"                                    desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID"          type="string"          size="32"                        desc="游戏APPID" />
-        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
-
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-        <entry name="HeroId"               type="int"                                            desc="英雄ID" />
-        <entry name="Now"               type="int"                                            desc="时间戳，标记同一次镶嵌" />
-        <entry name="RuntNo"              type="int"                                            desc="宝石编号" />
-        <entry name="RuntPo"              type="int"                                            desc="镶嵌位置" />
-    </struct>
-
     <!--传承-->
 
     <struct name="Inherit" version="1" desc="传承">
@@ -420,36 +392,6 @@
         <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="HeroId" type="int" desc="英雄ID" />
-    </struct>
-
-    <!--武将练体-->
-    <struct name="HeroRefine" version="1" desc="武将练体">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="HeroId" type="int" desc="英雄ID" />
-        <entry name="Refine" type="int" desc="练体穴位" />
-    </struct>
-
-    <!--武将升级-->
-    <struct name="HeroUpgrade" version="1" desc="武将升级">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="HeroId" type="int" desc="英雄ID" />
-        <entry name="ChangeLevel" type="int" desc="改变等级" />
-        <entry name="Level" type="int" desc="升级后等级" />
-        <entry name="Type" type="int" desc="升级方式 1关卡2升级3一键升级" />
-        <entry name="ExpItemNum1" type="int" desc="使用物品个数小" />
-        <entry name="ExpItemNum2" type="int" desc="使用物品个数中" />
-        <entry name="ExpItemNum3" type="int" desc="使用物品个数大" />
-        <entry name="ExpItemNo" type="int" desc="使用物品ID" />
     </struct>
 
     <!--充值流水-->
@@ -777,8 +719,110 @@
         <entry name="ChapterID"  type="int"  desc="章节ID"/>
     </struct>
 
-</metalib>
 
+
+    <!--===================================================-->
+    <!--终极迭代一期-->
+    <!--===================================================-->
+
+    <!--武将升级-->
+    <struct name="HeroUpgrade" version="1" desc="武将升级">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="HeroId" type="int" desc="英雄ID" />
+        <entry name="ChangeLevel" type="int" desc="改变等级" />
+        <entry name="Level" type="int" desc="升级后等级" />
+        <entry name="Type" type="int" desc="升级方式 1关卡2升级3一键升级" />
+        <entry name="ExpItemNum1" type="int" desc="使用物品个数小" />
+        <entry name="ExpItemNum2" type="int" desc="使用物品个数中" />
+        <entry name="ExpItemNum3" type="int" desc="使用物品个数大" />
+        <entry name="ExpItemNo" type="int" desc="使用物品ID" />
+    </struct>
+
+    <!--武将突破-->
+
+    <struct name="HeroBreak" version="1" desc="武将突破">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                    desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"          size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="HeroId"               type="int"                                            desc="英雄ID" />
+        <entry name="Level"              type="int"                                            desc="动作后突破等级" />
+    </struct>
+
+    <!--武将练体-->
+    <struct name="HeroRefine" version="1" desc="武将练体">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="HeroId" type="int" desc="英雄ID" />
+        <entry name="Refine" type="int" desc="练体穴位" />
+    </struct>
+
+    <!--武将镶嵌宝石-->
+
+    <struct name="HeroRuntSet" version="1" desc="武将镶嵌宝石">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="HeroId"             type="int"                                            desc="英雄ID" />
+        <entry name="Now"                type="int"                                            desc="时间戳，标记同一次镶嵌" />
+        <entry name="RuntNo"             type="string"        size="64"                        desc="宝石编号" />
+        <entry name="RuntPo"             type="int"                                            desc="镶嵌位置" />
+        <entry name="RuntID"             type="int"                                            desc="宝石ID" />
+    </struct>
+
+
+    <!--武将摘除宝石-->
+
+    <struct name="HeroRuntPick" version="1" desc="武将摘除宝石">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="HeroId"             type="int"                                            desc="英雄ID" />
+        <entry name="RuntType"           type="int"                                            desc="宝石槽类型" />
+        <entry name="Now"                type="int"                                            desc="时间戳，标记同一次镶嵌" />
+        <entry name="RuntNo"             type="string"        size="64"                        desc="宝石编号" />
+        <entry name="RuntPo"             type="int"                                            desc="镶嵌位置,如果为0是一键摘除" />
+        <entry name="RuntID"             type="int"                                            desc="宝石ID" />
+    </struct>
+
+    <!--合成宝石-->
+
+    <struct name="MakeRunt" version="1" desc="合成宝石">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="RuntID1"             type="int"                                            desc="宝石ID" />
+        <entry name="RuntID2"             type="int"                                            desc="宝石ID" />
+        <entry name="RuntID3"             type="int"                                            desc="宝石ID" />
+        <entry name="RuntID4"             type="int"                                            desc="宝石ID" />
+        <entry name="RuntID5"             type="int"                                            desc="宝石ID" />
+        <entry name="Num"                 type="int"                                            desc="加持符个数" />
+        <entry name="ResRuntID"           type="int"                                            desc="获得的宝石ID" />
+        <entry name="ResRuntNo"           type="string"        size="64"                        desc="获得的宝石编号" />
+    </struct>
+
+</metalib>
 
 <!--
 

@@ -482,6 +482,7 @@ def hero_sacrifice_oper(heros, player):
 
 @remoteserviceHandle('gate')
 def hero_awake_121(data, player):
+    """觉醒"""
     request = hero_request_pb2.HeroAwakeRequest()
     request.ParseFromString(data)
     response = hero_response_pb2.HeroAwakeResponse()
@@ -570,10 +571,3 @@ def do_hero_awake(player, hero_no, awake_item_num, response):
     response.awake_item_num = hero.awake_item_num
 
     return {'result': True}
-
-
-
-
-
-
-

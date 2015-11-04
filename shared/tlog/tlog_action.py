@@ -669,6 +669,58 @@ def deal_star_random(player_data, random_num, deal_type, chapter_id):
                             DealType=deal_type)
 
 
+def hero_runt_set(player_data, hero_id, now, runt_no, runt_po, runt_id):
+
+    log4tx.hero_runt_set(GameSvrId=game_server_id,
+                         dtEventTime=xtime.strdatetime(),
+                         GameAppID=game_app_id,
+                         OpenID=player_data.base_info.id,
+                         PlatID=plat_id,
+
+                         HeroId=hero_id,
+                         Now=now,
+                         RuntNo=runt_no,
+                         RuntPo=runt_po,
+                         RuntID=runt_id)
+
+
+def hero_runt_pick(player_data, hero_id, runt_type, now,
+                   runt_no, runt_po, runt_id):
+
+    log4tx.hero_runt_pick(GameSvrId=game_server_id,
+                          dtEventTime=xtime.strdatetime(),
+                          GameAppID=game_app_id,
+                          OpenID=player_data.base_info.id,
+                          PlatID=plat_id,
+
+                          HeroId=hero_id,
+                          RuntType=runt_type,
+                          Now=now,
+                          RuntNo=runt_no,
+                          RuntPo=runt_po,
+                          RuntID=runt_id)
+
+
+def make_runt(player_data, runt_id1, runt_id2, runt_id3,
+              runt_id4, runt_id5, num, res_runt_id,
+              res_runt_no):
+
+    log4tx.make_runt(GameSvrId=game_server_id,
+                     dtEventTime=xtime.strdatetime(),
+                     GameAppID=game_app_id,
+                     OpenID=player_data.base_info.id,
+                     PlatID=plat_id,
+
+                     RuntID1=runt_id1,
+                     RuntID2=runt_id2,
+                     RuntID3=runt_id3,
+                     RuntID4=runt_id4,
+                     RuntID5=runt_id5,
+                     Num=num,
+                     ResRuntID=res_runt_id,
+                     ResRuntNo=res_runt_no)
+
+
 # TLOG分类打印函数
 tlog_funcs = {}
 tlog_funcs['PlayerLogin'] = player_login
@@ -724,6 +776,9 @@ tlog_funcs['OpenChest'] = open_chest
 tlog_funcs['OpenStarChest'] = open_star_chest
 tlog_funcs['StarRandom'] = star_random
 tlog_funcs['DealStarRandom'] = deal_star_random
+tlog_funcs['HeroRuntSet'] = hero_runt_set
+tlog_funcs['HeroRuntPick'] = hero_runt_pick
+tlog_funcs['MakeRunt'] = make_runt
 
 
 def log(mod, *args, **kwds):

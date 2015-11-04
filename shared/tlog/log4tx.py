@@ -1165,3 +1165,80 @@ def deal_star_random(GameSvrId=0, dtEventTime=0, GameAppID=0,
     logclient.gethandler().send_msg(sendmsg + '\n')
     if debug:
         print sendmsg
+
+
+def hero_runt_set(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                  PlatID=0, OpenID=0, HeroId=0,
+                  Now=0, RuntNo=0, RuntPo=0, RuntID=0):
+
+    message = ['HeroRuntSet']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(HeroId)
+    message.append(Now)
+    message.append(RuntNo)
+    message.append(RuntPo)
+    message.append(RuntID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def hero_runt_pick(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                   PlatID=0, OpenID=0, HeroId=0, RuntType=0,
+                   Now=0, RuntNo=0, RuntPo=0, RuntID=0):
+
+    message = ['HeroRuntPick']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(HeroId)
+    message.append(RuntType)
+    message.append(Now)
+    message.append(RuntNo)
+    message.append(RuntPo)
+    message.append(RuntID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def make_runt(GameSvrId=0, dtEventTime=0, GameAppID=0,
+              PlatID=0, OpenID=0, RuntID1=0, RuntID2=0,
+              RuntID3=0, RuntID4=0, RuntID5=0, Num=0,
+              ResRuntID=0, ResRuntNo=0):
+
+    message = ['MakeRunt']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(RuntID1)
+    message.append(RuntID2)
+    message.append(RuntID3)
+    message.append(RuntID4)
+    message.append(RuntID5)
+    message.append(Num)
+    message.append(ResRuntID)
+    message.append(ResRuntNo)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
