@@ -16,7 +16,7 @@ import cPickle
 import time
 from gfirefly.server.globalobject import GlobalObject
 from app.proto_file.db_pb2 import WorldBossAwardDB
-#from shared.utils.mail_helper import deal_mail
+from shared.utils.mail_helper import deal_mail
 from shared.utils.date_util import str_time_to_timestamp
 from app.world.action.gateforwarding import push_all_object_message
 from app.proto_file.notice_pb2 import NoticeResponse
@@ -24,7 +24,7 @@ from shared.utils.random_pick import random_pick_with_weight
 from shared.utils.date_util import string_to_timestamp
 #from shared.utils.const import const
 from shared.common_logic.lucky_hero import update_lucky_hero
-from app.game.core.mail_helper import send_mail
+#from app.game.core.mail_helper import send_mail
 
 def get_remote_gate():
     """docstring for get_remote_gate"""
@@ -32,6 +32,10 @@ def get_remote_gate():
 
 tb_boss = RedisObject('tb_worldboss')
 
+def send_mail(conf_id, receive_id):
+        mail_data, _ = deal_mail(conf_id=conf_id, receive_id=int(receive_id))
+        get_remote_gate().push_message_to_transit_remote('receive_mail_remote',
+                                                   int(receive_id), mail_data)
 
 class WorldBoss(BaseBoss):
     """docstring for WorldBoss"""
