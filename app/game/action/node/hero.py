@@ -526,6 +526,8 @@ def do_hero_awake(player, hero_no, awake_item_num, response):
     left_awake_item = awake_item_num
 
 
+    before_num = hero.awake_item_num
+
     while left_awake_item >= singleConsumptionNum:
         # consume
         if not is_afford(player, singleConsumption) or \
@@ -550,7 +552,7 @@ def do_hero_awake(player, hero_no, awake_item_num, response):
                     is_trigger = True
                     break
 
-        if is_trigger: # 触发满级概率
+        if is_trigger:  # 触发满级概率
             logger.debug("is_trigger!")
             hero.awake_exp = 0
             hero.awake_level += 1
@@ -564,10 +566,12 @@ def do_hero_awake(player, hero_no, awake_item_num, response):
 
         left_awake_item -= singleConsumptionNum
 
-    #actual_consume_item_num = 0
+    # actual_consume_item_num = 0
     hero.save_data()
     response.awake_level = hero.awake_level
     response.awake_exp = hero.awake_exp
     response.awake_item_num = hero.awake_item_num
+    use_num = hero.awake_item_num - before_num
+    tlog_action.log('HeroAwake', player, hero_no, use_num, hero.awake_level-1)
 
     return {'result': True}

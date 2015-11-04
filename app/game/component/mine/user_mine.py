@@ -886,10 +886,10 @@ class UserMine(Component):
         vip_add = self.owner.base_info.war_refresh_times
         free_everyday = game_configs.base_config['totemRefreshFreeTimes']
         if self._reset_times >= vip_add + free_everyday:
-            return False
+            return False, self._mine
         if len(self._mine) < game_configs.base_config['warFogStrongpointNum']:
-            return False
-        return True
+            return False, self._mine
+        return True, self._mine
 
     def reset_price(self):
         price_list = game_configs.base_config['warFogRefreshPrice']
@@ -906,6 +906,9 @@ class UserMine(Component):
                 del self._mine[pos]
                 self._update = True
         self._reset_times += 1
+
+    def get_reset_times(self):
+        return self._reset_times
 
     def search_mine(self, position, func):
         if position in self._mine:

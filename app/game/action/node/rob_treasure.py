@@ -23,6 +23,7 @@ from app.game.core import rank_helper
 from app.game.core.item_group_helper import gain, get_return
 from app.game.core.equipment.equipment import init_equipment_attr
 import types
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -57,6 +58,7 @@ def rob_treasure_truce_859(data, player):
                           multiple=num)
     get_return(player, return_data, response.consume)
     player.rob_treasure.save_data()
+    tlog_action.log('RobTreasureTruce', player, num, use_num_day)
 
     response.truce_item_num = use_num
     response.start_truce = use_time
@@ -122,6 +124,7 @@ def compose_rob_treasure_860(data, player):
     equ = response.equ
     equipment_obj.update_pb(equ)
 
+    tlog_action.log('ComposeTreasure', player, equipment_obj.base_info.id, treasure_id)
     response.res.result = True
     return response.SerializeToString()
 

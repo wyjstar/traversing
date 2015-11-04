@@ -847,11 +847,13 @@ def open_chest_1811(pro_data, player):
     stage_id = request.stage_id
     response = stage_response_pb2.OpenStageChestResponse()
 
+    stage_type = 1
     if game_configs.stage_config.get('stages').get(stage_id):
         stage_config = game_configs.stage_config.get(
             'stages').get(stage_id)
     if game_configs.special_stage_config.get(
             'elite_stages').get(stage_id):
+        stage_type = 2
         stage_config = game_configs.special_stage_config.get(
             'elite_stages').get(stage_id)
 
@@ -877,7 +879,7 @@ def open_chest_1811(pro_data, player):
 
     stage_obj.chest_state = 1
     player.stage_component.save_data()
-    tlog_action.log('OpenChest', player, stage_id)
+    tlog_action.log('OpenChest', player, stage_id, stage_type)
 
     response.res.result = True
     # logger.debug(response)
@@ -1014,6 +1016,8 @@ def elite_stage_times_reset_1845(pro_data, player):
         player.stage_component.save_data()
 
     player.pay.pay(need_gold, const.GUILD_CREATE, func)
+    tlog_action.log('BuyEliteStageTimes', player, player.stage_component.elite_stage_info[1],
+                    1, need_gold)
 
     response.res.result = True
     return response.SerializePartialToString()

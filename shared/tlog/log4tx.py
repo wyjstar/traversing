@@ -1086,7 +1086,7 @@ def battle_hjqy(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def open_chest(GameSvrId=0, dtEventTime=0, GameAppID=0,
-               PlatID=0, OpenID=0, StageID=0):
+               PlatID=0, OpenID=0, StageID=0, StageType=0):
 
     message = ['OpenChest']
 
@@ -1097,6 +1097,7 @@ def open_chest(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(StageID)
+    message.append(StageType)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -1192,7 +1193,7 @@ def hero_runt_set(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def hero_runt_pick(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                   PlatID=0, OpenID=0, HeroId=0, RuntType=0,
+                   PlatID=0, OpenID=0, HeroID=0, RuntType=0,
                    Now=0, RuntNo=0, RuntPo=0, RuntID=0):
 
     message = ['HeroRuntPick']
@@ -1203,7 +1204,7 @@ def hero_runt_pick(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(PlatID)
     message.append(OpenID)
 
-    message.append(HeroId)
+    message.append(HeroID)
     message.append(RuntType)
     message.append(Now)
     message.append(RuntNo)
@@ -1237,6 +1238,266 @@ def make_runt(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(Num)
     message.append(ResRuntID)
     message.append(ResRuntNo)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def hero_awake(GameSvrId=0, dtEventTime=0, GameAppID=0,
+               PlatID=0, OpenID=0, HeroID=0, Num=0,
+               Level=0):
+
+    message = ['HeroAwake']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(HeroID)
+    message.append(Num)
+    message.append(Level)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def buy_elite_stage_times(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                          PlatID=0, OpenID=0, BuyTimes=0, Num=0,
+                          GoldNum=0):
+
+    message = ['BuyEliteStageTimes']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(BuyTimes)
+    message.append(Num)
+    message.append(GoldNum)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def pvp_daily_award(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                    PlatID=0, OpenID=0, MailID=0, Rank=0):
+
+    message = ['PvpDailyAward']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(MailID)
+    message.append(Rank)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def mine_harvest(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                 PlatID=0, OpenID=0, Position=0, Normal=0, Lucky=0):
+
+    message = ['MineHarvest']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Position)
+    message.append(Normal)
+    message.append(Lucky)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def mine_acc(GameSvrId=0, dtEventTime=0, GameAppID=0,
+             PlatID=0, OpenID=0, LastTime=0):
+
+    message = ['MineAcc']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(LastTime)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def mine_accelerate(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                    PlatID=0, OpenID=0, GoldNum=0):
+
+    message = ['MineAccelerate']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GoldNum)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def mine_box(GameSvrId=0, dtEventTime=0, GameAppID=0,
+             PlatID=0, OpenID=0):
+
+    message = ['MineBox']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def mine_reset(GameSvrId=0, dtEventTime=0, GameAppID=0,
+               PlatID=0, OpenID=0, ResetTimes=0):
+
+    message = ['MineReset']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ResetTimes)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def overcome_reset(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                   PlatID=0, OpenID=0, ResetTimes=0):
+
+    message = ['OvercomeReset']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ResetTimes)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def overcome_award(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                   PlatID=0, OpenID=0, Index=0):
+
+    message = ['OvercomeAward']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Index)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def overcome_Buy_Buff(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                      PlatID=0, OpenID=0, Num=0, BuffType=0,
+                      ValueType=0, Value=0):
+
+    message = ['OvercomeBuyBuff']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Num)
+    message.append(BuffType)
+    message.append(ValueType)
+    message.append(Value)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def compose_treasure(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                     PlatID=0, OpenID=0, EquNo=0, EquID=0):
+
+    message = ['ComposeTreasure']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(EquNo)
+    message.append(EquID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def rob_treasure_truce(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                       PlatID=0, OpenID=0, Num=0, NumDay=0):
+
+    message = ['RobTreasureTruce']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Num)
+    message.append(NumDay)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

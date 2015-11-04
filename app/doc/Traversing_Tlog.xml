@@ -679,6 +679,7 @@
         <entry name="OpenID"    type="string"   size="64"   desc="用户OPENID号" />
 
         <entry name="StageID"  type="int"  desc="关卡ID"/>
+        <entry name="StageType"  type="int"  desc="关卡type, 1剧情2试炼(精英)"/>
     </struct>
 
     <!--获取星星宝箱-->
@@ -722,7 +723,7 @@
 
 
     <!--===================================================-->
-    <!--终极迭代一期-->
+    <!--终极迭代二期-->
     <!--===================================================-->
 
     <!--武将升级-->
@@ -822,8 +823,185 @@
         <entry name="ResRuntNo"           type="string"        size="64"                        desc="获得的宝石编号" />
     </struct>
 
-</metalib>
+    <!--武将觉醒-->
 
+    <struct name="HeroAwake" version="1" desc="武将觉醒">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="HeroID"             type="int"                                            desc="武将ID" />
+        <entry name="Num"                type="int"                                            desc="实际使用觉醒单数量" />
+        <entry name="Level"              type="int"                                            desc="之前的觉醒等级，之后的为此等级加1" />
+    </struct>
+
+    <!--购买试炼次数-->
+
+    <struct name="BuyEliteStageTimes" version="1" desc="购买试炼次数">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="BuyTimes"           type="int"                                            desc="今日购买次数" />
+        <entry name="Num"                type="int"                                            desc="购买数量" />
+        <entry name="GoldNum"            type="int"                                            desc="消耗元宝数量" />
+    </struct>
+
+    <!--发送擂台排行奖励-->
+    <struct name="PvpDailyAward" version="1" desc="发送擂台排行奖励">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="MailID"             type="int"                                            desc="邮件ID" />
+        <entry name="Rank"               type="int"                                            desc="排行" />
+
+    </struct>
+
+    <!--秘境收获-->
+
+    <struct name="MineHarvest" version="1" desc="秘境收获">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="Position"           type="int"                                            desc="收获位置0为主矿 其他为占领矿" />
+        <entry name="Normal"             type="string"        size="128"                       desc="正常产出{id:num, id:num}" />
+        <entry name="Lucky"              type="string"        size="128"                       desc="幸运产出{id:num, id:num}" />
+    </struct>
+
+    <!--秘境增产-->
+
+    <struct name="MineAcc" version="1" desc="秘境增产">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="LastTime"           type="int"                                            desc="剩余增产时间, 其他信息在mine表的10001行" />
+
+    </struct>
+
+    <!--秘境加速-->
+
+    <struct name="MineAccelerate" version="1" desc="秘境加速">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="GoldNum"            type="int"                                            desc="消耗元宝数量" />
+
+    </struct>
+
+    <!--秘境宝箱领取-->
+
+    <struct name="MineBox" version="1" desc="秘境宝箱领取">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+    </struct>
+
+    <!--秘境重置-->
+
+    <struct name="MineReset" version="1" desc="秘境重置">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="ResetTimes"         type="int"                                            desc="今日重置次数" />
+
+    </struct>
+
+    <!--过关斩将重置-->
+
+    <struct name="OvercomeReset" version="1" desc="过关斩将重置">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="ResetTimes"         type="int"                                            desc="今日重置次数" />
+
+    </struct>
+
+    <!--过关斩将领取奖励-->
+
+    <struct name="OvercomeReset" version="1" desc="过关斩将领取奖励">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="Index"              type="int"                                            desc="数值表ID" />
+
+    </struct>
+
+    <!--过关斩将增益兑换-->
+
+    <struct name="OvercomeBuyBuff" version="1" desc="过关斩将增益兑换">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="Num"                type="int"                                            desc="消耗数量" />
+        <entry name="BuffType"           type="int"                                            desc="buff类型" />
+        <entry name="ValueType"          type="int"                                            desc="buff值类型" />
+        <entry name="Value"              type="int"                                            desc="buff值" />
+
+    </struct>
+
+    <!--宝物合成-->
+
+    <struct name="ComposeTreasure" version="1" desc="宝物合成">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="EquNo"              type="string"        size="32"                        desc="宝物编号" />
+        <entry name="EquID"              type="int"                                            desc="宝物ID" />
+
+    </struct>
+
+    <!--夺宝休战-->
+
+    <struct name="ComposeTreasure" version="1" desc="宝物合成">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="Num"                type="int"                                            desc="使用休战符数量" />
+        <entry name="NumDay"             type="int"                                            desc="今日使用数量" />
+
+    </struct>
+
+
+</metalib>
 <!--
 
 # ========t_log=============

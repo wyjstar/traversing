@@ -31,6 +31,7 @@ from app.game.redis_mode import tb_guild_info
 from app.game.core.equipment.equipment_chip import EquipmentChip
 from shared.db_opear.configs_data.data_helper import parse
 import types
+from shared.tlog import tlog_action
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -647,6 +648,7 @@ def PvpOvercomAward_1510(data, player):
     get_return(player, return_data, response.gain)
     player.pvp.pvp_overcome_awards.append(request.index)
     player.pvp.save_data()
+    tlog_action.log('OvercomeAward', player, request.index)
 
     response.res.result = True
     return response.SerializePartialToString()
@@ -758,6 +760,7 @@ def BuyPvpOvercomeBuff_1512(data, player):
     res_buff.buff_type = bt
     res_buff.value_type = vt
     res_buff.value = value
+    tlog_action.log('OvercomeBuyBuff', player, star, bt, vt, value)
 
     response.res.result = True
     return response.SerializePartialToString()
