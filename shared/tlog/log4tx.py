@@ -367,7 +367,7 @@ def auto_travel(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 def hero_upgrade(GameSvrId=0, dtEventTime=0, GameAppID=0,
                  PlatID=0, OpenID=0, HeroId=0, ChangeLevel=0,
-                 Level=0, Type, ExpItemNum1=0, ExpItemNum2=0,
+                 Level=0, Type=0, ExpItemNum1=0, ExpItemNum2=0,
                  ExpItemNum3=0, ExpItemNo=0):
 
     message = ['HeroUpgrade']
