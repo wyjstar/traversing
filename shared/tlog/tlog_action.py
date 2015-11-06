@@ -724,15 +724,15 @@ def make_runt(player_data, runt_id1, runt_id2, runt_id3,
 
 def hero_awake(player_data, hero_id, num, level):
 
-    log4tx.make_runt(GameSvrId=game_server_id,
-                     dtEventTime=xtime.strdatetime(),
-                     GameAppID=game_app_id,
-                     OpenID=player_data.base_info.id,
-                     PlatID=plat_id,
+    log4tx.hero_awake(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
 
-                     HeroID=hero_id,
-                     Num=num,
-                     Level=level)
+                      HeroID=hero_id,
+                      Num=num,
+                      Level=level)
 
 
 def buy_elite_stage_times(player_data, buy_times, num, gold_num):
