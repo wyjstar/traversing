@@ -138,7 +138,7 @@ def runt_pick_842(data, player):
         runt_info1 = copy.copy(runt_info)
         del runt_info1[0]
         player.runt.m_runt[runt_info[0]] = runt_info1
-        tlog_action.log('HeroRuntSet', player, hero_no, runt_type,
+        tlog_action.log('HeroRuntPick', player, hero_no, runt_type,
                         now, runt_info[0], runt_po, runt_info1[0])
 
     if runt_po:
@@ -364,7 +364,7 @@ def make_runt_857(data, player):
         runt_info = player.runt.m_runt.get(runt_no)
 
         runt_ids[flag] = runt_info[0]
-        flag += 0
+        flag += 1
 
         if not runt_info:
             logger.error('make_runt_857,runt no dont find,runt no:%s', runt_no)
