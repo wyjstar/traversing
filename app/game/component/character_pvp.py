@@ -207,7 +207,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_buff = {}
         self._pvp_overcome_failed = False
         self.save_data()
-        tlog_action.log('OvercomeReset', player, self._pvp_overcome_refresh_count)
+        tlog_action.log('OvercomeReset', self.owner, self._pvp_overcome_refresh_count)
         return True
 
     def get_overcome_id(self, index):

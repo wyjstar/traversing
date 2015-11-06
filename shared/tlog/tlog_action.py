@@ -278,7 +278,7 @@ def hero_refine(player_data, hero_id, refine):
 
 
 def hero_upgrade(player_data, hero_id, change_level, level, type,
-                 exp_item_num1, exp_item_num2, exp_item_num3, exp_item_num):
+                 exp_item_num1, exp_item_num2, exp_item_num3, exp_item_no):
 
     log4tx.hero_upgrade(GameSvrId=game_server_id,
                         dtEventTime=xtime.strdatetime(),
@@ -292,7 +292,7 @@ def hero_upgrade(player_data, hero_id, change_level, level, type,
                         ExpItemNum1=exp_item_num1,
                         ExpItemNum2=exp_item_num2,
                         ExpItemNum3=exp_item_num3,
-                        ExpItemNo=exp_item_ng_ido)
+                        ExpItemNo=exp_item_no)
 
 
 def recharge(player_data, isfirst, recharege_id):
@@ -760,7 +760,7 @@ def pvp_daily_award(open_id, mail_id, rank):
                            Rank=rank)
 
 
-def mine_harvest(player_data, positio, normal, lucky):
+def mine_harvest(player_data, position, normal, lucky):
 
     log4tx.mine_harvest(GameSvrId=game_server_id,
                         dtEventTime=xtime.strdatetime(),

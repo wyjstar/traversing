@@ -19,6 +19,7 @@ from shared.utils.pyuuid import get_uuid
 import copy
 from shared.utils.const import const
 from app.game.action.node.start_target import target_update
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
