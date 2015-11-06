@@ -363,7 +363,7 @@ def make_runt_857(data, player):
     for runt_no in runts:
         runt_info = player.runt.m_runt.get(runt_no)
 
-        runt_ids[flag] = runt_info[0]
+        runt_ids[flag] = runt_no
         flag += 1
 
         if not runt_info:
