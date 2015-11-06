@@ -813,14 +813,14 @@
 
         <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
 
-        <entry name="RuntID1"            type="string"        size="64"                         desc="宝石ID" />
-        <entry name="RuntID2"            type="string"        size="64"                         desc="宝石ID" />
-        <entry name="RuntID3"            type="string"        size="64"                         desc="宝石ID" />
-        <entry name="RuntID4"            type="string"        size="64"                         desc="宝石ID" />
-        <entry name="RuntID5"            type="string"        size="64"                         desc="宝石ID" />
-        <entry name="Num"                type="int"                                             desc="加持符个数" />
-        <entry name="ResRuntID"          type="int"                                             desc="获得的宝石ID" />
-        <entry name="ResRuntNo"          type="string"        size="64"                         desc="获得的宝石编号" />
+        <entry name="RuntID1"             type="int"                                            desc="宝石ID" />
+        <entry name="RuntID2"             type="int"                                            desc="宝石ID" />
+        <entry name="RuntID3"             type="int"                                            desc="宝石ID" />
+        <entry name="RuntID4"             type="int"                                            desc="宝石ID" />
+        <entry name="RuntID5"             type="int"                                            desc="宝石ID" />
+        <entry name="Num"                 type="int"                                            desc="加持符个数" />
+        <entry name="ResRuntID"           type="int"                                            desc="获得的宝石ID" />
+        <entry name="ResRuntNo"           type="string"        size="64"                        desc="获得的宝石编号" />
     </struct>
 
     <!--武将觉醒-->
