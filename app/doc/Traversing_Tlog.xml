@@ -988,7 +988,7 @@
 
     <!--夺宝休战-->
 
-    <struct name="ComposeTreasure" version="1" desc="宝物合成">
+    <struct name="RobTreasureTruce" version="1" desc="宝物合成">
         <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
         <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
