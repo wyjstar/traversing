@@ -9,6 +9,7 @@ from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from app.proto_file.db_pb2 import Heads_DB
 from app.proto_file import pvp_rank_pb2
+from app.proto_file import rob_treasure_pb2
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
 from app.game.action.node._fight_start_logic import assemble
@@ -905,7 +906,7 @@ def deal_target_player(player, target_id, chip_id):
         target_data.hset('equipment_chips', props)
 
     mail_arg1 = [{104: [1, 1, chip_id]}]
-    send_mail(conf_id=10000000, receive_id=p_id, arg1=str(mail_arg1))
+    send_mail(conf_id=701, nickname=player.base_info.base_name, arg1=str(mail_arg1))
 
 
 def get_indiana_conf(player, target_id, chip_conf):
@@ -934,7 +935,7 @@ def modify_equ_chip_remote(data, player):
     chip.chip_num -= 1
     player.equipment_chip_component.save_data()
 
-    proto_data = pvp_rank_pb2.BeRobTreasure()
+    proto_data = rob_treasure_pb2.BeRobTreasure()
     proto_data.chip_id = chip_id
     remote_gate.push_object_remote(865,
                                    proto_data.SerializeToString(),
