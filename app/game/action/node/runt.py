@@ -19,6 +19,7 @@ from shared.utils.pyuuid import get_uuid
 import copy
 from shared.utils.const import const
 from app.game.action.node.start_target import target_update
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -62,12 +63,15 @@ def runt_set_841(data, player):
             response.res.result_no = 825
             return response.SerializeToString()
 
+    now = int(time.time())
     for runt_set_info in runt_set_infos:
         runt_po = runt_set_info.runt_po
         runt_no = runt_set_info.runt_no
         runt_info = player.runt.m_runt.get(runt_no)
         hero.runt.get(runt_type)[runt_po] = [runt_no] + runt_info
         player.runt.reduce_runt(runt_no)
+        tlog_action.log('HeroRuntSet', player, hero_no, now,
+                        runt_no, runt_po, runt_info[0])
 
     target_update(player, [40])
     hero.save_data()
@@ -109,6 +113,7 @@ def runt_pick_842(data, player):
         runts = [runt_info]
 
     else:
+        runt_po = 0
         if not hero.runt.get(runt_type):
             response.res.result = False
             response.res.result_no = 823  # 符文不存在
@@ -128,10 +133,13 @@ def runt_pick_842(data, player):
         response.res.result_no = 824
         return response.SerializeToString()
 
+    now = int(time.time())
     for runt_info in runts:
         runt_info1 = copy.copy(runt_info)
         del runt_info1[0]
         player.runt.m_runt[runt_info[0]] = runt_info1
+        tlog_action.log('HeroRuntPick', player, hero_no, runt_type,
+                        now, runt_info[0], runt_po, runt_info1[0])
 
     if runt_po:
         del hero.runt[runt_type][runt_po]
@@ -350,8 +358,14 @@ def make_runt_857(data, player):
 
 
     runt_conf = None
+    runt_ids = [0, 0, 0, 0, 0]
+    flag = 0
     for runt_no in runts:
         runt_info = player.runt.m_runt.get(runt_no)
+
+        runt_ids[flag] = runt_info[0]
+        flag += 1
+
         if not runt_info:
             logger.error('make_runt_857,runt no dont find,runt no:%s', runt_no)
             response.res.result = False
@@ -391,7 +405,12 @@ def make_runt_857(data, player):
     runt_info = player.runt.m_runt.get(new_runt_no)
     runt_pb = response.runt
     [runt_id, main_attr, minor_attr] = runt_info
-    player.runt.deal_runt_pb(new_runt_no, runt_id, main_attr, minor_attr, runt_pb)
+    player.runt.deal_runt_pb(new_runt_no, runt_id, main_attr,
+                             minor_attr, runt_pb)
+
+    tlog_action.log('MakeRunt', player, runt_ids[0], runt_ids[1],
+                    runt_ids[2], runt_ids[3], runt_ids[4], num, runt_id,
+                    new_runt_no)
 
     player.runt.save()
     response.res.result = True

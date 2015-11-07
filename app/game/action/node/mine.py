@@ -32,6 +32,7 @@ from app.game.core.task import hook_task, CONDITIONId
 from shared.utils import xtime
 from app.game.action.node.start_target import target_update
 from app.game.component.mine.user_mine import MineType
+from shared.tlog import tlog_action
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -206,6 +207,7 @@ def reset_1242(data, player):
                     response.res.result = True
                 player.pay.pay(need_gold, const.MINE_RESET, func)
     player.mine.save_data()
+    tlog_action.log('MineReset', player, player.mine.get_reset_times())
     return response.SerializePartialToString()
 
 
@@ -446,6 +448,7 @@ def harvest_1245(data, player):
     player.mine.save_data()
     player.runt.save()
     hook_task(player, CONDITIONId.GAIN_RUNT, 1)
+    tlog_action.log('MineHarvest', player, request.position, str(normal), str(lucky))
     response.res.result = True
     print 'mine harvest', response
     return response.SerializePartialToString()
@@ -556,6 +559,7 @@ def reward_1249(data, player):
     drop_id = game_configs.base_config['warFogChest']
     add_items(player, items.gain, [drop_id])
     # print 'reward_1249-response', response
+    tlog_action.log('MineBox', player)
     return response.SerializePartialToString()
 
 
@@ -596,6 +600,7 @@ def acc_mine_1250(data, player):
     player.pay.pay(need_gold, const.MINE_ACC, func)
     last_time = player.mine.acc_mine()
     player.mine.save_data()
+    tlog_action.log('MineAcc', player, last_time)
 
     response.position = 0
     response.last_time = int(last_time)
@@ -851,6 +856,7 @@ def mine_accelerate_1254(data, player):
         player.mine._mine[pos].acc_mine_time()
 
     player.pay.pay(need_gold, const.MINE_ACC, func)
+    tlog_action.log('MineAccelerate', player, need_gold)
     response.res.result = True
     print response
     return response.SerializePartialToString()

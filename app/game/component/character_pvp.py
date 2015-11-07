@@ -15,6 +15,7 @@ from gfirefly.dbentrust.redis_mode import RedisObject
 from app.game.action.node.start_target import target_update
 tb_rank = RedisObject('tb_rank')
 from shared.db_opear.configs_data.common_item import CommonItem
+from shared.tlog import tlog_action
 
 
 tb_robot2 = tb_character_info.getObj('robot2')
@@ -213,6 +214,7 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_buff = {}
         self._pvp_overcome_failed = False
         self.save_data()
+        tlog_action.log('OvercomeReset', self.owner, self._pvp_overcome_refresh_count)
         return True
 
     def get_overcome_id(self, index):

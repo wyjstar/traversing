@@ -126,3 +126,4 @@ def pvp_daily_award():
                                  result, k, mail_data)
         else:
             message_cache.cache('receive_mail_remote', character_id, mail_data)
+        tlog_action.log('PvpDailyAward', character_id, mail_id, rank)

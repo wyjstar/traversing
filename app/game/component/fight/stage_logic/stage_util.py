@@ -50,7 +50,7 @@ def settle(player, result, response, conf, stage_type=0, star_num=0):
             changelevel = afterlevel-beforelevel
             hero.save_data()
             if changelevel:
-                tlog_action.log('HeroUpgrade', player, hero.hero_no, changelevel, afterlevel)
+                tlog_action.log('HeroUpgrade', player, hero.hero_no, changelevel, afterlevel, 1, 0, 0, 0, 0)
             hero.save_data()
 
     # 更新等级相关属性

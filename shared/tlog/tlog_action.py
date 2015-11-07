@@ -277,7 +277,8 @@ def hero_refine(player_data, hero_id, refine):
                        HeroId=hero_id)
 
 
-def hero_upgrade(player_data, hero_id, change_level, level):
+def hero_upgrade(player_data, hero_id, change_level, level, type,
+                 exp_item_num1, exp_item_num2, exp_item_num3, exp_item_no):
 
     log4tx.hero_upgrade(GameSvrId=game_server_id,
                         dtEventTime=xtime.strdatetime(),
@@ -286,7 +287,12 @@ def hero_upgrade(player_data, hero_id, change_level, level):
                         PlatID=plat_id,
                         Level=level,
                         ChangeLevel=change_level,
-                        HeroId=hero_id)
+                        HeroId=hero_id,
+                        Type=type,
+                        ExpItemNum1=exp_item_num1,
+                        ExpItemNum2=exp_item_num2,
+                        ExpItemNum3=exp_item_num3,
+                        ExpItemNo=exp_item_no)
 
 
 def recharge(player_data, isfirst, recharege_id):
@@ -614,7 +620,7 @@ def battle_hjqy(player_data, boss_id, is_kill):
                        IsKill=is_kill)
 
 
-def open_chest(player_data, stage_id):
+def open_chest(player_data, stage_id, stage_type):
 
     log4tx.open_chest(GameSvrId=game_server_id,
                       dtEventTime=xtime.strdatetime(),
@@ -622,7 +628,8 @@ def open_chest(player_data, stage_id):
                       OpenID=player_data.base_info.id,
                       PlatID=plat_id,
 
-                      StageID=stage_id)
+                      StageID=stage_id,
+                      StageType=stage_type)
 
 
 def open_star_chest(player_data, chapter_id, award_type):
@@ -663,7 +670,207 @@ def deal_star_random(player_data, random_num, deal_type, chapter_id):
                             DealType=deal_type)
 
 
+def hero_runt_set(player_data, hero_id, now, runt_no, runt_po, runt_id):
+
+    log4tx.hero_runt_set(GameSvrId=game_server_id,
+                         dtEventTime=xtime.strdatetime(),
+                         GameAppID=game_app_id,
+                         OpenID=player_data.base_info.id,
+                         PlatID=plat_id,
+
+                         HeroId=hero_id,
+                         Now=now,
+                         RuntNo=runt_no,
+                         RuntPo=runt_po,
+                         RuntID=runt_id)
+
+
+def hero_runt_pick(player_data, hero_id, runt_type, now,
+                   runt_no, runt_po, runt_id):
+
+    log4tx.hero_runt_pick(GameSvrId=game_server_id,
+                          dtEventTime=xtime.strdatetime(),
+                          GameAppID=game_app_id,
+                          OpenID=player_data.base_info.id,
+                          PlatID=plat_id,
+
+                          HeroID=hero_id,
+                          RuntType=runt_type,
+                          Now=now,
+                          RuntNo=runt_no,
+                          RuntPo=runt_po,
+                          RuntID=runt_id)
+
+
+def make_runt(player_data, runt_id1, runt_id2, runt_id3,
+              runt_id4, runt_id5, num, res_runt_id,
+              res_runt_no):
+
+    log4tx.make_runt(GameSvrId=game_server_id,
+                     dtEventTime=xtime.strdatetime(),
+                     GameAppID=game_app_id,
+                     OpenID=player_data.base_info.id,
+                     PlatID=plat_id,
+
+                     RuntID1=runt_id1,
+                     RuntID2=runt_id2,
+                     RuntID3=runt_id3,
+                     RuntID4=runt_id4,
+                     RuntID5=runt_id5,
+                     Num=num,
+                     ResRuntID=res_runt_id,
+                     ResRuntNo=res_runt_no)
+
+
+def hero_awake(player_data, hero_id, num, level):
+
+    log4tx.hero_awake(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+
+                      HeroID=hero_id,
+                      Num=num,
+                      Level=level)
+
+
+def buy_elite_stage_times(player_data, buy_times, num, gold_num):
+
+    log4tx.buy_elite_stage_times(GameSvrId=game_server_id,
+                                 dtEventTime=xtime.strdatetime(),
+                                 GameAppID=game_app_id,
+                                 OpenID=player_data.base_info.id,
+                                 PlatID=plat_id,
+
+                                 BuyTimes=buy_times,
+                                 Num=num,
+                                 GoldNum=gold_num)
+
+
+def pvp_daily_award(open_id, mail_id, rank):
+
+    log4tx.pvp_daily_award(GameSvrId=game_server_id,
+                           dtEventTime=xtime.strdatetime(),
+                           GameAppID=game_app_id,
+                           PlatID=plat_id,
+
+                           OpenID=open_id,
+                           MailID=mail_id,
+                           Rank=rank)
+
+
+def mine_harvest(player_data, position, normal, lucky):
+
+    log4tx.mine_harvest(GameSvrId=game_server_id,
+                        dtEventTime=xtime.strdatetime(),
+                        GameAppID=game_app_id,
+                        OpenID=player_data.base_info.id,
+                        PlatID=plat_id,
+
+                        Position=position,
+                        Normal=normal,
+                        Lucky=lucky)
+
+
+def mine_acc(player_data, last_time):
+
+    log4tx.mine_acc(GameSvrId=game_server_id,
+                    dtEventTime=xtime.strdatetime(),
+                    GameAppID=game_app_id,
+                    OpenID=player_data.base_info.id,
+                    PlatID=plat_id,
+
+                    LastTime=last_time)
+
+
+def mine_accelerate(player_data, GoldNum):
+
+    log4tx.mine_accelerate(GameSvrId=game_server_id,
+                           dtEventTime=xtime.strdatetime(),
+                           GameAppID=game_app_id,
+                           OpenID=player_data.base_info.id,
+                           PlatID=plat_id,
+
+                           GoldNum=gold_num)
+
+
+def mine_box(player_data):
+
+    log4tx.mine_box(GameSvrId=game_server_id,
+                    dtEventTime=xtime.strdatetime(),
+                    GameAppID=game_app_id,
+                    OpenID=player_data.base_info.id,
+                    PlatID=plat_id)
+
+
+def mine_reset(player_data, reset_times):
+
+    log4tx.mine_reset(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      ResetTimes=reset_times)
+
+
+def overcome_reset(player_data, reset_times):
+
+    log4tx.overcome_reset(GameSvrId=game_server_id,
+                          dtEventTime=xtime.strdatetime(),
+                          GameAppID=game_app_id,
+                          OpenID=player_data.base_info.id,
+                          PlatID=plat_id,
+                          ResetTimes=reset_times)
+
+
+def overcome_award(player_data, index):
+
+    log4tx.overcome_award(GameSvrId=game_server_id,
+                          dtEventTime=xtime.strdatetime(),
+                          GameAppID=game_app_id,
+                          OpenID=player_data.base_info.id,
+                          PlatID=plat_id,
+                          Index=index)
+
+
+def overcome_Buy_Buff(player_data, num, buff_type, value_type, value):
+
+    log4tx.overcome_Buy_Buff(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+                             Num=num,
+                             BuffType=buff_type,
+                             ValueType=value_type,
+                             Value=value)
+
+
+def compose_treasure(player_data, equ_no, equ_id):
+
+    log4tx.compose_treasure(GameSvrId=game_server_id,
+                            dtEventTime=xtime.strdatetime(),
+                            GameAppID=game_app_id,
+                            OpenID=player_data.base_info.id,
+                            PlatID=plat_id,
+                            EquNo=equ_no,
+                            EquID=equ_id)
+
+
+def rob_treasure_truce(player_data, num, num_day):
+
+    log4tx.rob_treasure_truce(GameSvrId=game_server_id,
+                              dtEventTime=xtime.strdatetime(),
+                              GameAppID=game_app_id,
+                              OpenID=player_data.base_info.id,
+                              PlatID=plat_id,
+                              Num=num,
+                              NumDay=num_day)
+
+
 # TLOG分类打印函数
+
 tlog_funcs = {}
 tlog_funcs['PlayerLogin'] = player_login
 tlog_funcs['PlayerLogout'] = player_logout
@@ -718,6 +925,22 @@ tlog_funcs['OpenChest'] = open_chest
 tlog_funcs['OpenStarChest'] = open_star_chest
 tlog_funcs['StarRandom'] = star_random
 tlog_funcs['DealStarRandom'] = deal_star_random
+tlog_funcs['HeroRuntSet'] = hero_runt_set
+tlog_funcs['HeroRuntPick'] = hero_runt_pick
+tlog_funcs['MakeRunt'] = make_runt
+tlog_funcs['HeroAwake'] = hero_awake
+tlog_funcs['BuyEliteStageTimes'] = buy_elite_stage_times
+tlog_funcs['PvpDailyAward'] = pvp_daily_award
+tlog_funcs['MineHarvest'] = mine_harvest
+tlog_funcs['MineAcc'] = mine_acc
+tlog_funcs['MineAccelerate'] = mine_accelerate
+tlog_funcs['MineBox'] = mine_box
+tlog_funcs['MineReset'] = mine_reset
+tlog_funcs['OvercomeReset'] = overcome_reset
+tlog_funcs['OvercomeAward'] = overcome_award
+tlog_funcs['OvercomeBuyBuff'] = overcome_Buy_Buff
+tlog_funcs['ComposeTreasure'] = compose_treasure
+tlog_funcs['RobTreasureTruce'] = rob_treasure_truce
 
 
 def log(mod, *args, **kwds):

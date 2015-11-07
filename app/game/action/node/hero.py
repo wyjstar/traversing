@@ -67,6 +67,7 @@ def hero_upgrade_with_item_103(data, player):
     target_update(player, [31])
     return response.SerializeToString()
 
+
 def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
     """docstring for hero_upgrade_with_item_logic"""
     exp_item = player.item_package.get_item(exp_item_no)
@@ -83,10 +84,11 @@ def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
     afterlevel = hero.level
     hero.save_data()
     changelevel = afterlevel-beforelevel
-    if changelevel:
-        tlog_action.log('HeroUpgrade', player, hero_no, changelevel, afterlevel)
+    tlog_action.log('HeroUpgrade', player, hero_no, changelevel, afterlevel, 2,
+                    exp_item_num, 0, 0, exp_item_no)
     player.item_package.consume_item(exp_item_no, exp_item_num)
     return {"result": True, "hero": hero}
+
 
 @remoteserviceHandle('gate')
 def one_key_hero_upgrade_with_item_120(data, player):
@@ -157,8 +159,13 @@ def one_key_hero_upgrade_logic(hero_no, player):
             total_exp += big_exp
             big_exp_num = i + 1
 
+    beforelevel = hero.level
     hero.upgrade(small_exp * small_exp_num + middle_exp * middle_exp_num + big_exp * big_exp_num, player.base_info.level)
     hero.save_data()
+    afterlevel = hero.level
+    changelevel = afterlevel-beforelevel
+    tlog_action.log('HeroUpgrade', player, hero_no, changelevel, afterlevel, 3,
+                    small_exp_num, middle_exp_num, big_exp_num, 0)
 
     player.item_package.consume_item(10001, small_exp_num)
     player.item_package.consume_item(10002, middle_exp_num)
@@ -475,6 +482,7 @@ def hero_sacrifice_oper(heros, player):
 
 @remoteserviceHandle('gate')
 def hero_awake_121(data, player):
+    """觉醒"""
     request = hero_request_pb2.HeroAwakeRequest()
     request.ParseFromString(data)
     response = hero_response_pb2.HeroAwakeResponse()
@@ -518,6 +526,8 @@ def do_hero_awake(player, hero_no, awake_item_num, response):
     left_awake_item = awake_item_num
 
 
+    before_num = hero.awake_item_num
+
     while left_awake_item >= singleConsumptionNum:
         # consume
         if not is_afford(player, singleConsumption) or \
@@ -542,7 +552,7 @@ def do_hero_awake(player, hero_no, awake_item_num, response):
                     is_trigger = True
                     break
 
-        if is_trigger: # 触发满级概率
+        if is_trigger:  # 触发满级概率
             logger.debug("is_trigger!")
             hero.awake_exp = 0
             hero.awake_level += 1
@@ -556,17 +566,12 @@ def do_hero_awake(player, hero_no, awake_item_num, response):
 
         left_awake_item -= singleConsumptionNum
 
-    #actual_consume_item_num = 0
+    # actual_consume_item_num = 0
     hero.save_data()
     response.awake_level = hero.awake_level
     response.awake_exp = hero.awake_exp
     response.awake_item_num = hero.awake_item_num
+    use_num = hero.awake_item_num - before_num
+    tlog_action.log('HeroAwake', player, hero_no, use_num, hero.awake_level-1)
 
     return {'result': True}
-
-
-
-
-
-
-
