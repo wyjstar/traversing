@@ -854,8 +854,8 @@ def compose_treasure(player_data, equ_no, equ_id):
                             GameAppID=game_app_id,
                             OpenID=player_data.base_info.id,
                             PlatID=plat_id,
-                            EueNo=equ_no,
-                            EueID=equ_id)
+                            EquNo=equ_no,
+                            EquID=equ_id)
 
 
 def rob_treasure_truce(player_data, num, num_day):
