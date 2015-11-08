@@ -352,6 +352,7 @@ def pvp_fight_request_1505(data, player):
 
     rank_incr = 0
     response.top_rank = player.pvp.pvp_high_rank
+    response.cur_rank = player.pvp.before_player_rank
     if fight_result:
         logger.debug("fight result:True:%s:%s",
                      before_player_rank, challenge_rank)
