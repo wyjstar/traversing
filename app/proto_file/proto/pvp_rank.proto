@@ -84,7 +84,7 @@ message PvpFightResponse{
     optional GameResourcesResponse award2 = 14;
     optional int32 rank_incr = 15;
     optional GameResourcesResponse consume = 16;
-    optional int32 cur_rank = 17;
+    optional int32 before_rank = 17;
 }
 
 message PvpOvercomeAwardRequest{
