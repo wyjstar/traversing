@@ -143,7 +143,7 @@ class CharacterPay(Component):
             response.res.result = True
             response.gold = self._owner.finance.gold
             response.vip_level = self._owner.base_info.vip_level
-            remote_gate.push_message_remote(2001, self._owner.base_info.id, response.SerializePartialToString())
+            remote_gate.push_object_remote(2001, response.SerializePartialToString(), self._owner.base_info.id)
         else:
             self.loop_times += 1
             reactor.callLater(30*self.loop_times, self.recharge)
