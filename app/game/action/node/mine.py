@@ -622,6 +622,11 @@ def settle_1252(data, player):
         return response.SerializePartialToString()
     # todo: set settle time to calculate acc_mine
     process_mine_result(player, pos, result, None, 0, 1)
+    # 7日奖励 占领矿点
+    if player.start_target.is_underway():
+        player.start_target.condition_add(41, 1)
+        player.start_target.save_data()
+
     response.result = True
     return response.SerializePartialToString()
 

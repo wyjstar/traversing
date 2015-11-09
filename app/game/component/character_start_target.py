@@ -45,7 +45,13 @@ class CharacterStartTargetComponent(Component):
 
     def condition_update(self, type, v):
         if self._conditions[type] and self._conditions[type] > v:
-            return
+            pass
+        else:
+            self._conditions[type] = v
+
+    def condition_add(self, type, v):
+        if self._conditions[type]:
+            self._conditions[type] += v
         else:
             self._conditions[type] = v
 
@@ -80,7 +86,7 @@ class CharacterStartTargetComponent(Component):
             day = 365 - time.localtime(register_time).tm_yday + \
                 time.localtime().tm_yday + 1
         if day and day <= 7:
-            is_open = 1
+            is_underway = 1
         return is_underway, day
 
     def update_29(self):

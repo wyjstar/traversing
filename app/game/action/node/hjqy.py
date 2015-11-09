@@ -189,6 +189,7 @@ def battle_2103(pro_data, player):
             hjqy_damage_hp_remote(player.base_info.id)
         player.start_target.condition_update(38, current_damage_hp)
         player.start_target.condition_update(39, all_current_damage_hp)
+        player.start_target.save_data()
 
     return response.SerializePartialToString()
 
