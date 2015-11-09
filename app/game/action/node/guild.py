@@ -1170,14 +1170,14 @@ def deal_invite_join_1804(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    player.mail_component.delete_mails([args.mail_id])
+    # player.mail_component.delete_mails([args.mail_id])
 
     if not guild_obj.invite_join.get(player.base_info.id):
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
 
-    del guild_obj.invite_join[player.base_info.id]
+    # del guild_obj.invite_join[player.base_info.id]
 
     if res:
         m_exit_time = player.guild.exit_time
@@ -1191,6 +1191,9 @@ def deal_invite_join_1804(data, player):
             response.spare_time = game_configs.base_config.get('exit_time') \
                 - the_time
             return response.SerializeToString()
+
+        player.mail_component.delete_mails([args.mail_id])
+        del guild_obj.invite_join[player.base_info.id]
 
         if player.guild.g_id != 0:
             response.res.result = False
@@ -1231,6 +1234,9 @@ def deal_invite_join_1804(data, player):
                                                 player.guild.g_id)
 
         player.guild.save_data()
+    else:
+        player.mail_component.delete_mails([args.mail_id])
+        del guild_obj.invite_join[player.base_info.id]
 
     guild_obj.save_data()
 
