@@ -1163,6 +1163,7 @@ def deal_invite_join_1804(data, player):
 
     data1 = tb_guild_info.getObj(guild_id).hgetall()
     if not data1:
+        player.mail_component.delete_mails([args.mail_id])
         response.res.result = False
         response.res.result_no = 844
         # response.res.message = "公会ID错误"
