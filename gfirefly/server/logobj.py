@@ -65,9 +65,9 @@ def log_init(log_path):
     datefmt = '%Y-%m-%d %I:%M:%S %p'
     fmt = '%(asctime)s-[%(levelname)s]-[' + file_name + ']: %(message)s'
 
-    _logger.setLevel(logging.ERROR)
+    _logger.setLevel(logging.DEBUG)
     fh = logging.FileHandler(log_path)
-    fh.setLevel(logging.INFO)
+    fh.setLevel(logging.ERROR)
     fh.setFormatter(Formatter(fmt, datefmt))
     _logger.addHandler(fh)
 
