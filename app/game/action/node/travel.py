@@ -195,6 +195,11 @@ def travel_settle_833(data, player):
 
     event_info = game_configs.travel_event_config.get('events').get(args.event_id%xs)
     if event_info.type == 1:
+        if not event_cache[2]:
+            logger.error('event_cache[2] not find: %s' % event_cache)
+            response.res.result = False
+            response.res.result_no = 800
+            return response.SerializeToString()
         if int(time.time()) - event_cache[2] < \
                 event_info.parameter.items()[0][0]:
             response.res.result = False

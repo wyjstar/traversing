@@ -7,6 +7,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import rootserviceHandle
 from app.gate.action.root.netforwarding import to_transit
+from gfirefly.dbentrust import util
 
 childsman = GlobalObject().root.childsmanager
 groot = GlobalObject().root
@@ -59,3 +60,8 @@ def push_message_to_transit_remote(key, character_id, *args):
 @rootserviceHandle
 def kick_by_id_remote(msg, pid):
     return groot.child('net').kick_by_id_remote(msg, pid)
+
+
+@rootserviceHandle
+def getOneRecordInfo_remote(tb_name, prere):
+    return util.GetOneRecordInfo('tb_account', prere)
