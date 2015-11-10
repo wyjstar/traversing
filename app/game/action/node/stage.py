@@ -530,7 +530,6 @@ def stage_sweep(stage_id, times, player, sweep_type):
                 drop.extend(common_drop)
 
             fight_cache_component.get_stage_drop(stage_config, drop)
-            drops = response.drops.add()
 
             if is_open:
                 data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id, part_multiple=part_multiple)
