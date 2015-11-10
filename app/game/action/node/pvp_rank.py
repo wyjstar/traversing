@@ -906,7 +906,8 @@ def deal_target_player(player, target_id, chip_id):
         target_data.hset('equipment_chips', props)
 
     mail_arg1 = [{104: [1, 1, chip_id]}]
-    send_mail(conf_id=701, nickname=player.base_info.base_name, arg1=str(mail_arg1))
+    send_mail(conf_id=701,  receive_id=target_id,
+              nickname=player.base_info.base_name, arg1=str(mail_arg1))
 
 
 def get_indiana_conf(player, target_id, chip_conf):
