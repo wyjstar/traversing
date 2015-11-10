@@ -308,7 +308,7 @@ def gain(player, item_group, reason,
             for _ in range(num):
                 itid = item_no
                 equipment = player.equipment_component.add_equipment(itid, lucky_attr_id)
-                item_no = equipment.base_info.id
+                equ_item_no = equipment.base_info.id
                 after_num = player.equipment_component.get_equipment_num(itid)
                 notice_item = game_configs.notes_config.get(2004)
                 if reason == const.COMMON_BUY_PVP and equipment.equipment_config_info.quality in notice_item.parameter1:
@@ -322,7 +322,7 @@ def gain(player, item_group, reason,
                 if reason == const.COMMON_BUY_EQUIPMENT and equipment.equipment_config_info.quality in notice_item.parameter1:
                     push_notice(2006, player_name=player.base_info.base_name, equipment_no=itid)
 
-                result.append([type_id, 1, item_no])
+                result.append([type_id, 1, equ_item_no])
                 tlog_action.log('ItemFlow', player, const.ADD, type_id, 1,
                                 itid, item_no, reason, after_num, event_id)
 
