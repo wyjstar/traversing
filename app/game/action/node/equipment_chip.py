@@ -12,6 +12,8 @@ def get_equipment_chips_407(pro_data, player):
     """
     response = GetEquipmentChipsResponse()
     for equipment_chip in player.equipment_chip_component.get_all():
+        if equipment_chip.chip_num == 0:
+            continue
         equipment_chip_pb = response.equipment_chips.add()
         equipment_chip.update_pb(equipment_chip_pb)
     return response.SerializePartialToString()

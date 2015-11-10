@@ -388,7 +388,7 @@ class CharacterFightCacheComponent(Component):
                 common_drop = common_bag.get_drop_items()
                 drops.extend(common_drop)
             if stage_info.type == 1 or stage_info.type == 14:
-                get_stage_drop(self._owner, stage_info, drops)
+                self.get_stage_drop(stage_info, drops)
                 self.owner.stage_component.save_data()
             else:
                 if self._elite_drop:
@@ -517,40 +517,39 @@ class CharacterFightCacheComponent(Component):
         break_hero_obj.hero_no = target_hero_no
         return break_hero_obj
 
+    def get_stage_drop(self, stage_conf, drops):
+        stage_obj = self.owner.stage_component.get_stage(stage_conf.id)
 
-def get_stage_drop(player, stage_conf, drops):
-    stage_obj = player.stage_component.get_stage(stage_conf.id)
+        elite_drop_stage, elite_drop2_stage = stage_obj.have_elite_drop(stage_conf)
+        # stage_obj.attack_times += 1
 
-    elite_drop_stage, elite_drop2_stage = stage_obj.have_elite_drop(stage_conf)
-    # stage_obj.attack_times += 1
+        if elite_drop2_stage and stage_conf.eliteDrop2:  # 掉落保底
+            elite_bag = BigBag(stage_conf.eliteDrop2)
+            elite_drop2 = elite_bag.get_drop_items()
+            drops.extend(elite_drop2)
 
-    if elite_drop2_stage and stage_conf.eliteDrop2:  # 掉落保底
-        elite_bag = BigBag(stage_conf.eliteDrop2)
-        elite_drop2 = elite_bag.get_drop_items()
-        drops.extend(elite_drop2)
-
-    if not elite_drop_stage or not stage_conf.eliteDrop:
-        return
-
-    if stage_conf.type == 1:
-        elite_bag = BigBag(stage_conf.eliteDrop)
-        elite_drop = elite_bag.get_drop_items()
-        drops.extend(elite_drop)
-        if elite_drop:
-            stage_obj.elite_drop_times += 1
-    else:
-        if elite_drop2_stage:
-            return
-        # 根据条件得到概率
-        elite_drop2_condition_state = get_elite_drop2_condition_state(player, stage_conf)
-        if not elite_drop2_condition_state:
+        if not elite_drop_stage or not stage_conf.eliteDrop:
             return
 
-        elite_bag = BigBag(stage_conf.eliteDrop)
-        elite_drop = elite_bag.get_drop_items()
-        drops.extend(elite_drop)
-        if elite_drop:
-            stage_obj.elite_drop_times += 1
+        if stage_conf.type == 1:
+            elite_bag = BigBag(stage_conf.eliteDrop)
+            elite_drop = elite_bag.get_drop_items()
+            drops.extend(elite_drop)
+            if elite_drop:
+                stage_obj.elite_drop_times += 1
+        else:
+            if elite_drop2_stage:
+                return
+            # 根据条件得到概率
+            elite_drop2_condition_state = get_elite_drop2_condition_state(self.owner, stage_conf)
+            if not elite_drop2_condition_state:
+                return
+
+            elite_bag = BigBag(stage_conf.eliteDrop)
+            elite_drop = elite_bag.get_drop_items()
+            drops.extend(elite_drop)
+            if elite_drop:
+                stage_obj.elite_drop_times += 1
 
 
 def get_elite_drop2_condition_state(player, stage_conf):

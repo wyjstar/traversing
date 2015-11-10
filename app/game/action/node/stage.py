@@ -518,19 +518,8 @@ def stage_sweep(stage_id, times, player, sweep_type):
                 break
         for _ in range(times):
             drop = []
+            fight_cache_component.get_stage_drop(stage_config, drop)
             drops = response.drops.add()
-            low = stage_config.low
-            high = stage_config.high
-            drop_num = random.randint(low, high)
-
-            for __ in range(drop_num):
-                common_bag = BigBag(stage_config.commonDrop)
-                common_drop = common_bag.get_drop_items()
-                drop.extend(common_drop)
-
-            elite_bag = BigBag(stage_config.eliteDrop)
-            elite_drop = elite_bag.get_drop_items()
-            drop.extend(elite_drop)
 
             if is_open:
                 data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id, part_multiple=part_multiple)
@@ -561,7 +550,8 @@ def stage_sweep(stage_id, times, player, sweep_type):
                     changelevel = afterlevel-beforelevel
                     hero.save_data()
                     if changelevel:
-                        tlog_action.log('HeroUpgrade', player, hero.hero_no, changelevel, afterlevel)
+                        tlog_action.log('HeroUpgrade', player, hero_no, changelevel,
+                                        afterlevel, 3, 0, 0, 0, 0)
             # 玩家金钱
             player.finance.coin += stage_config.currency
             # 玩家经验
@@ -572,7 +562,8 @@ def stage_sweep(stage_id, times, player, sweep_type):
         # hook task
         hook_task(player, CONDITIONId.ANY_STAGE, times)
         logger.debug("sweep time %s %s" % (times, sweep_item))
-        return_data = consume(player, sweep_item, const.STAGE_SWEEP, multiple=times)
+        return_data = consume(player, sweep_item, const.STAGE_SWEEP,
+                              multiple=times)
         get_return(player, return_data, response.consume)
 
         player.stage_component.get_stage(stage_id).attacks += times
