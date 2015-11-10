@@ -518,6 +518,17 @@ def stage_sweep(stage_id, times, player, sweep_type):
                 break
         for _ in range(times):
             drop = []
+
+            drops = response.drops.add()
+            low = stage_config.low
+            high = stage_config.high
+            drop_num = random.randint(low, high)
+
+            for __ in range(drop_num):
+                common_bag = BigBag(stage_config.commonDrop)
+                common_drop = common_bag.get_drop_items()
+                drop.extend(common_drop)
+
             fight_cache_component.get_stage_drop(stage_config, drop)
             drops = response.drops.add()
 
