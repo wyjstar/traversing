@@ -306,8 +306,8 @@ def gain(player, item_group, reason,
 
         elif type_id == const.EQUIPMENT:
             for _ in range(num):
-                equipment = player.equipment_component.add_equipment(item_no, lucky_attr_id)
                 itid = item_no
+                equipment = player.equipment_component.add_equipment(itid, lucky_attr_id)
                 item_no = equipment.base_info.id
                 after_num = player.equipment_component.get_equipment_num(itid)
                 notice_item = game_configs.notes_config.get(2004)
@@ -361,10 +361,9 @@ def gain(player, item_group, reason,
             player.travel_component.save()
 
         elif type_id == const.RUNT:
-            itid = item_no
             for _ in range(num):
-                item_no = player.runt.add_runt(item_no)
-                result.append([type_id, 1, item_no])
+                runt_id = player.runt.add_runt(item_no)
+                result.append([type_id, 1, runt_id])
             player.runt.save()
             after_num = player.runt.get_runt_num(item_no)
 
@@ -383,10 +382,6 @@ def gain(player, item_group, reason,
             result.append([type_id, num, item_no])
 
         # ====tlog======
-        if type_id in [const.RUNT]:
-            a = itid
-            itid = item_no
-            item_no = a
         if type_id != const.TEAM_EXPERIENCE and type_id != const.EQUIPMENT and type_id != const.HERO:
             tlog_action.log('ItemFlow', player, const.ADD, type_id, num,
                             item_no, itid, reason, after_num, event_id)
