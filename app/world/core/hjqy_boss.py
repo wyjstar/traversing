@@ -5,7 +5,7 @@ created by wzp.
 """
 from shared.db_opear.configs_data import game_configs
 from shared.utils.date_util import get_current_timestamp
-from shared.utils.date_util import str_time_period_to_timestamp, is_expired, string_to_timestamp_hms
+from shared.utils.date_util import str_time_period_to_timestamp, is_expired
 from gfirefly.server.logobj import logger
 from gfirefly.dbentrust.redis_mode import RedisObject
 from shared.utils.ranking import Ranking
@@ -38,10 +38,6 @@ class HjqyBossManager(object):
             boss.init_data(data)
             self._bosses[boss_id] = boss
         self._rank_instance = Ranking.instance("HjqyBossDamage")
-        hjqyDayPointsTime = game_configs.base_config.get("hjqyDayPointsTime")
-        send_rank_reward_time = string_to_timestamp_hms(hjqyDayPointsTime)
-        send_rank_reward_time = send_rank_reward_time + 24*60*60
-        reactor.callLater(send_rank_reward_time - get_current_timestamp() + 1, self.send_rank_reward_mails)
 
 
     def add_boss(self, player_id, nickname, blue_units, stage_id):
@@ -107,7 +103,6 @@ class HjqyBossManager(object):
         """
         排行奖励
         """
-        reactor.callLater(60*60*24, self.send_rank_reward_mails) # 第二天执行
         logger.debug("hjqy send_award_top_ten===========")
         award_info = game_configs.base_config.get("hjqyDayReward")
         for up, down, mail_id in award_info.values():

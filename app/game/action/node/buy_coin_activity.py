@@ -49,28 +49,24 @@ def buy_coin_activity_1406(data, player):
 
     # 获取 need_gold
     act_confs = game_configs.activity_config.get(26, [])
-    is_open = 0
     xs = 1
-    add_times = 0
     for act_conf in act_confs:
         if player.base_info.is_activiy_open(act_conf.id):
-            is_open = 1
-            add_times = act_conf.parameterA
             xs = act_conf.parameterB
             free_times += act_conf.parameterA
-            buy_times -= act_conf.parameterA
-            if buy_times < 0:
-                buy_times = 0
+            if act_conf.parameterC[0] <= buy_times:
+                xs = 1
+
             break
     for k in sorted(buy_times_price.keys(), reverse=True):
         if buy_times >= k:
             need_gold = buy_times_price[k]
             break
 
-    #if free_times > buy_times:
-        #need_gold = 0
+    if free_times > buy_times:
+        need_gold = 0
+    logger.debug("need_gold %s, free_times %s, all_buy_times %s, xs %s" % (need_gold, free_times, all_buy_times, xs))
 
-    logger.debug("buy times: %s need_gold: %s" % (buy_times, need_gold))
     if need_gold > player.finance.gold:
         logger.error("buy_coin_activity_1406: gold not enough %s, %s" % (need_gold, player.finance.gold))
         response.res.result = False
@@ -101,10 +97,7 @@ def buy_coin_activity_1406(data, player):
         player.buy_coin.buy_times = all_buy_times + 1
         player.buy_coin.last_time = get_current_timestamp()
         player.buy_coin.save_data()
-        if is_open:
-            add_coin_nums = coin_nums * xs
-        else:
-            add_coin_nums = coin_nums
+        add_coin_nums = coin_nums * xs
 
         player.finance.add_coin(int(add_coin_nums), const.BUY_COIN_ACT)
         player.finance.save_data()
