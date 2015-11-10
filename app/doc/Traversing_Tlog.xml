@@ -927,6 +927,7 @@
 
         <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
         <entry name="ResetTimes"         type="int"                                            desc="今日重置次数" />
+        <entry name="ResetPos"           type="string"        size="64"                        desc="重置位置  例：[1,2,3]" />
 
     </struct>
 

@@ -804,14 +804,15 @@ def mine_box(player_data):
                     PlatID=plat_id)
 
 
-def mine_reset(player_data, reset_times):
+def mine_reset(player_data, reset_times, reset_pos):
 
     log4tx.mine_reset(GameSvrId=game_server_id,
                       dtEventTime=xtime.strdatetime(),
                       GameAppID=game_app_id,
                       OpenID=player_data.base_info.id,
                       PlatID=plat_id,
-                      ResetTimes=reset_times)
+                      ResetTimes=reset_times,
+                      ResetPos=reset_pos)
 
 
 def overcome_reset(player_data, reset_times):

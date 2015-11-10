@@ -1386,7 +1386,7 @@ def mine_box(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def mine_reset(GameSvrId=0, dtEventTime=0, GameAppID=0,
-               PlatID=0, OpenID=0, ResetTimes=0):
+               PlatID=0, OpenID=0, ResetTimes=0, ResetPos=0):
 
     message = ['MineReset']
 
@@ -1397,6 +1397,7 @@ def mine_reset(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(ResetTimes)
+    message.append(ResetPos)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

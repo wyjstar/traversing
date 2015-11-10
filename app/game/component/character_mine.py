@@ -401,16 +401,21 @@ class CharacterMine(Component):
         非自己的矿
         """
         uid = self.owner.base_info.id
+        reset_pos = []
         for pos in self._mine.keys():
             _mine = detail_info(self._mine[pos])
             if _mine['type'] in [2, 4, 5]:
+                reset_pos.append(pos)
                 del self._mine[pos]
             elif _mine['type'] == 1 and _mine['status'] == 3:
+                reset_pos.append(pos)
                 del self._mine[pos]
             elif _mine['type'] == 1 and _mine['uid'] != uid:
+                reset_pos.append(pos)
                 del self._mine[pos]
 
         self._reset_times += 1
+        return reset_pos
 
     def search_mine(self, position):
         if position in self._mine:

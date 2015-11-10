@@ -178,9 +178,10 @@ def reset_1242(data, player):
     response = mine_pb2.resetResponse()
     response.free = request.free
     # print '1242-request', request
+    reset_pos = []
     if request.free == 1:
         if player.mine.can_reset_free():
-            player.mine.reset_map()
+            reset_pos = player.mine.reset_map()
             mine_status(player, response.mine)
             response.res.result = True
         else:
@@ -210,12 +211,13 @@ def reset_1242(data, player):
                     item_group_helper.get_return(player,
                                                  consume_data,
                                                  response.consume)
-                    player.mine.reset_map()
+                    reset_pos = player.mine.reset_map()
                     mine_status(player, response.mine)
                     response.res.result = True
                 player.pay.pay(need_gold, const.MINE_RESET, func)
     player.mine.save_data()
-    tlog_action.log('MineReset', player, player.mine.get_reset_times())
+    tlog_action.log('MineReset', player, player.mine.get_reset_times(),
+                    str(reset_pos))
     return response.SerializePartialToString()
 
 
