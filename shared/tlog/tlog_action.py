@@ -784,7 +784,7 @@ def mine_acc(player_data, last_time):
                     LastTime=last_time)
 
 
-def mine_accelerate(player_data, GoldNum):
+def mine_accelerate(player_data, gold_num):
 
     log4tx.mine_accelerate(GameSvrId=game_server_id,
                            dtEventTime=xtime.strdatetime(),
