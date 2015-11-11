@@ -32,8 +32,8 @@ def get_remote_gate():
 
 tb_boss = RedisObject('tb_worldboss')
 
-def send_mail(conf_id, receive_id):
-        mail_data, _ = deal_mail(conf_id=conf_id, receive_id=int(receive_id))
+def send_mail(conf_id, receive_id, rank=0, damage=0):
+        mail_data, _ = deal_mail(conf_id=conf_id, receive_id=int(receive_id), rank=rank, integral=damage)
         get_remote_gate().push_message_to_transit_remote('receive_mail_remote',
                                                    int(receive_id), mail_data)
 
@@ -200,7 +200,7 @@ class WorldBoss(BaseBoss):
             for k, v in enumerate(ranks):
                 player_id, val = v
                 logger.debug("send_award_top_ten: player_id %s, value %s, mail_id %s" % (player_id, v, mail_id))
-                send_mail(conf_id=mail_id, receive_id=player_id)
+                send_mail(conf_id=mail_id, receive_id=player_id, rank=k+1)
                 #self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id, k+up)
 
     def send_award_add_up(self):
@@ -217,7 +217,7 @@ class WorldBoss(BaseBoss):
                 logger.debug("percent %s hp_max %s damage %s actual damage %s" % (reward_info[0], hp_max, reward_info[0]*hp_max, v))
                 if hp_max * reward_info[0] < v:
 
-                    send_mail(conf_id=reward_info[1], receive_id=player_id)
+                    send_mail(conf_id=reward_info[1], receive_id=player_id, damage=int(v))
                     #self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
                     break
                 else:
