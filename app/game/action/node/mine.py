@@ -216,7 +216,9 @@ def reset_1242(data, player):
                     response.res.result = True
                 player.pay.pay(need_gold, const.MINE_RESET, func)
     player.mine.save_data()
-    tlog_action.log('MineReset', player, player.mine.get_reset_times(),
+
+    reset_times, _, _ = player.mine.reset_times
+    tlog_action.log('MineReset', player, reset_times,
                     str(reset_pos))
     return response.SerializePartialToString()
 
