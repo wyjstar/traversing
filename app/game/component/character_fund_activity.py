@@ -73,7 +73,7 @@ class CharacterFundActivity(Component):
             if self._data[aid]['state'] == 1:
                 set_date = set(self._data[aid]['accumulate_days'])
                 set_date.add(_date_now)
-                self._data[aid] = list(set_date)
+                self._data[aid]['accumulate_days'] = list(set_date)
         self.save_data()
 
     def check_precondition(self):
