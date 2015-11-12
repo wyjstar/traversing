@@ -23,3 +23,13 @@ message GetActInfoResponse{
     optional int32 times = 3;
     optional int32 act_type = 4;
 }
+
+message FundActivityInfo{
+	optional int32 act_id = 1;
+	optional int32 state = 2;
+	optional int32 accumulate_days = 3;
+}
+
+message GetFundActivityResponse{
+	repeated FundActivityInfo info = 1;
+}

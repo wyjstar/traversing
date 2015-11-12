@@ -8,6 +8,8 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from shared.db_opear.configs_data.data_helper import parse
+from shared.db_opear.configs_data.common_item import CommonGroupItem
+from app.game.core import item_group_helper
 
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import consume
@@ -146,4 +148,129 @@ def get_activity_28_gift_1834(data, player):
     tlog_action.log('GodHeroExchange', player, activity_id, quantity)
 
     response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_fund_activity_1840(data, player):
+    request = activity_pb2.GetActGiftRequest()
+    request.ParseFromString(data)
+    activity_id = request.act_id
+    response = activity_pb2.GetActGiftResponse()
+    response.res.result = False
+
+    act_item = game_configs.activity_config.get(activity_id)
+    if act_item is None:
+        logger.error('not found activity id:%s--%s', activity_id,
+                     player.fund.fund_info.keys())
+        response.res.result_no = 184000
+        return response.SerializeToString()
+
+    if activity_id not in player.fund.fund_info:
+        logger.error('not found activity id:%s--%s', activity_id,
+                     player.fund.fund_info.keys())
+        response.res.result_no = 184001
+        return response.SerializeToString()
+
+    fund = player.fund.fund_info[activity_id]
+    if fund['is_open'] is False:
+        logger.error('activity id:%s is not open', activity_id)
+        response.res.result_no = 184002
+        return response.SerializeToString()
+
+    if fund['state'] != 0:
+        logger.error('activity id:%s is draw', activity_id)
+        response.res.result_no = 184003
+        return response.SerializeToString()
+
+    if len(fund['accumulate_days']) < int(act_item.parameterA):
+        logger.error('activity accumulate days not enough:%s-%s',
+                     int(act_item.parameterA), fund['accumulate_days'])
+        response.res.result_no = 184004
+        return response.SerializeToString()
+
+    if act_item.parameterB > player.base_info.level:
+        logger.error('activity level error:%s-%s',
+                     act_item.parameterB, player.base_info.level)
+        response.res.result_no = 184005
+        return response.SerializeToString()
+
+    if len(act_item.parameterC) == 0 and \
+            act_item.parameterC[0] > player.line_up_component.hight_power:
+        logger.error('activity ap error:%s-%s',
+                     player.line_up_component.hight_power,
+                     act_item.parameterC[0])
+        response.res.result_no = 184005
+        return response.SerializeToString()
+
+    if len(act_item.parameterD) == 0 and \
+       player.stage_component.get_stage(act_item.parameterD[0]).state != 1:
+        logger.error('activity stage:%s is not open',
+                     act_item.parameterD[0])
+        response.res.result_no = 184005
+        return response.SerializeToString()
+
+    return_data = gain(player,
+                       act_item.reward,
+                       const.act_28)
+    get_return(player, return_data, response.gain)
+
+    response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def activate_fund_activity_1841(data, player):
+    request = activity_pb2.GetActGiftRequest()
+    request.ParseFromString(data)
+    activity_id = request.act_id
+    response = activity_pb2.GetActGiftResponse()
+    response.res.result = False
+
+    act_item = game_configs.activity_config.get(activity_id)
+    if act_item is None:
+        logger.error('not found activity id:%s--%s', activity_id,
+                     player.fund.fund_info.keys())
+        response.res.result_no = 184100
+        return response.SerializeToString()
+
+    if act_item.parameterB == 0:
+        logger.error('no need activate this activity:%s', activity_id)
+        response.res.result_no = 184101
+        return response.SerializeToString()
+
+    need_gold = act_item.parameterB
+    price = []
+    price.append(CommonGroupItem(const.COIN, need_gold, need_gold, const.GOLD))
+
+    def func():
+        consume_return_data = item_group_helper.consume(player,
+                                                        price,
+                                                        const.MINE_ACC)
+        item_group_helper.get_return(player,
+                                     consume_return_data,
+                                     response.consume)
+    player.pay.pay(need_gold, const.FUND, func)
+
+    fund = player.fund.fund_info[activity_id]
+    if fund is None:
+        logger.error('activity:%s is not exist', activity_id)
+        response.res.result_no = 184102
+        return response.SerializeToString()
+
+    response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_fund_activity_info_1854(data, player):
+    response = activity_pb2.FundActivityInfo()
+
+    info = player.fund.fund_info
+    for k, v in info.items():
+        act = response.info.add()
+        act.act_id = k
+        act.state = v['state']
+        act.accumulate_days = len(v['accumulate_days'])
+
     return response.SerializeToString()

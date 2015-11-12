@@ -10,7 +10,9 @@ from app.game.redis_mode import tb_character_info
 from app.proto_file.db_pb2 import Heads_DB
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
-from shared.utils.date_util import get_current_timestamp, string_to_timestamp_hms, days_to_current
+from shared.utils.date_util import days_to_current
+from shared.utils.date_util import get_current_timestamp
+from shared.utils.date_util import string_to_timestamp_hms
 import time
 import uuid
 from app.game.core.task import hook_task, CONDITIONId
@@ -44,6 +46,7 @@ class CharacterBaseInfoComponent(Component):
         self._google_consume_data = ''
         self._apple_transaction_id = ''
         self._first_recharge_ids = []
+        self._max_single_recharge = 0  # 累积充值
         self._recharge = 0  # 累积充值
         self._gen_balance = 0  # 累积赠送
         self._login_time = int(time.time())  # 登录时间
@@ -51,10 +54,10 @@ class CharacterBaseInfoComponent(Component):
         self._battle_speed = 1
         self._plat_id = -1
         self._is_open_next_day_activity = False
-        self._first_recharge_activity = -1 # -1 没领 1 领过
+        self._first_recharge_activity = -1  # -1 没领 1 领过
         self._story_id = 0
-        self._button_one_time = [0] * 3 # 0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
-        self._hero_awake_time = int(time.time()) # 武将觉醒时间，用于次日清除相关武将觉醒进度。
+        self._button_one_time = [0] * 3  # 0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
+        self._hero_awake_time = int(time.time())  # 武将觉醒时间，用于次日清除相关武将觉醒进度。
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -86,6 +89,7 @@ class CharacterBaseInfoComponent(Component):
         self._first_recharge_activity = character_info.get('first_recharge_activity', False)
         self._button_one_time = character_info.get('button_one_time', [0,0,0])
         self._hero_awake_time = character_info.get('hero_awake_time', int(time.time()))
+        self._max_single_recharge = character_info.get('max_single_recharge', 0)
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -120,6 +124,7 @@ class CharacterBaseInfoComponent(Component):
                     story_id=self._story_id,
                     button_one_time=self._button_one_time,
                     hero_awake_time=self._hero_awake_time,
+                    max_single_recharge=self._max_single_recharge,
                     )
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
@@ -528,6 +533,14 @@ class CharacterBaseInfoComponent(Component):
         self._recharge = value
 
     @property
+    def max_single_recharge(self):
+        return self._max_single_recharge
+
+    @max_single_recharge.setter
+    def max_single_recharge(self, value):
+        self._max_single_recharge = value
+
+    @property
     def gen_balance(self):
         return self._gen_balance
 
@@ -596,3 +609,7 @@ class CharacterBaseInfoComponent(Component):
         """每日购买精力上限"""
         vip_content = game_configs.vip_config.get(self._vip_level)
         return vip_content.buyEnergyMax
+
+    @property
+    def num_gold_comsume(self):
+        return self._recharge + self._gen_balance - self.owner.finance.gold
