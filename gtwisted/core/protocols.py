@@ -42,7 +42,6 @@ class BaseProtocol(Greenlet):
         self.connectionMade()
         try:
             while True:
-                print self.transport
                 data = self.transport.recv(1024)
                 if not data:
                     break

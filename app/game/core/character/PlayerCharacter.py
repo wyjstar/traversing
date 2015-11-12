@@ -276,3 +276,14 @@ class PlayerCharacter(object):
     @property
     def act(self):
         return self._components['act']
+
+    def set_level_related(self, level=0):
+        """docstring for set_level"""
+        if level:
+            self.base_info._level = level
+            self.base_info.save_data()
+
+        #更新卡槽位
+        self.line_up_component.update_slot_activation()
+        self.line_up_component.save_data(['line_up_slots', 'sub_slots'])
+
