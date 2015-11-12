@@ -255,6 +255,7 @@ def activate_fund_activity_1851(data, player):
                                      response.consume)
     player.pay.pay(need_gold, const.FUND, func)
 
+    fund['consume'] = need_gold
     player.fund_activity.save_data()
     response.res.result = True
     return response.SerializeToString()

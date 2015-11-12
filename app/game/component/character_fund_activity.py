@@ -81,7 +81,7 @@ class CharacterFundActivity(Component):
             act_item = game_configs.activity_config[k]
             # if v.get('state', 0) == 1:
             #     continue
-            if act_item.parameterB < v['consume']:
+            if act_item.parameterB > v['consume']:
                 continue
             base_info = self.owner.base_info
             if int(act_item.parameterA) > base_info.vip_level:
