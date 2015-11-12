@@ -229,6 +229,19 @@ def get_prize_1306(proto_data, player):
         response.res.result = False
         response.res.result_no = 863
         return response.SerializePartialToString()
+
+    if isinstance(eval(mail.prize), list):
+        num = 0
+        for xx in eval(mail.prize):
+            for x in xx.items():
+                if int(x[0]) == 108:
+                    num += int(x[1][1])
+
+    if player.runt.bag_is_full(num):
+        response.res.result = False
+        response.res.result_no = 824
+        return response.SerializePartialToString()
+
     mail.is_got_prize = True
     player.mail_component.save_mail(mail_id)
 

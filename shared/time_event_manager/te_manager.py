@@ -42,7 +42,6 @@ class TEManager(object):
         self._events = v
 
     def deal_event(self, the_time=0):
-        print("deal_event==============")
         now = int(time.time())
         next_time = 0
         for x, _ in self._events.items():
