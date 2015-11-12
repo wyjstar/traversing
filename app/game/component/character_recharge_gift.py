@@ -62,6 +62,8 @@ class CharacterRechargeGift(Component):
         self.save_data()
         logger.debug(self._recharge)
 
+        self.owner.fund.recharge(recharge)
+
     def type_process(self, activity, recharge):
         activity_id = activity.get('id')
         # isopen = activity.get('is_open')
@@ -73,7 +75,8 @@ class CharacterRechargeGift(Component):
         str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
                                           _time_now_struct.tm_mon,
                                           _time_now_struct.tm_mday)
-        _date_now = int(time.mktime(time.strptime(str_time, '%Y-%m-%d %H:%M:%S')))
+        _date_now = int(time.mktime(time.strptime(str_time,
+                                                  '%Y-%m-%d %H:%M:%S')))
         _time_now = int(time.time())
         _str_activity_period = activity.get('parameterT')
 
@@ -212,28 +215,30 @@ class CharacterRechargeGift(Component):
         isfirst = 0
         if not is_tencent:
             return_data = gain(self._owner, recharge_item.get('setting'),
-                            const.RECHARGE)  # 获取
+                               const.RECHARGE)  # 获取
             get_return(self._owner, return_data, response.gain)
         if recharge_item.get('type') == 2:
             logger.debug("recharge_gain========")
             rebate_call(self._owner, recharge_item)
-            self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
+            self._owner.recharge.send_mail(recharge_item)  # 发送奖励邮件
         else:
-            rres = self._owner.base_info.first_recharge(recharge_item, response)
+            rres = self._owner.base_info.first_recharge(recharge_item,
+                                                        response)
             if rres:
-                #首次充值
+                # 首次充值
                 isfirst = 1
-                self._owner.recharge.send_mail(recharge_item) #发送奖励邮件
+                self._owner.recharge.send_mail(recharge_item)  # 发送奖励邮件
 
         tlog_action.log('Recharge', self._owner, isfirst,
                         recharge_item.get('id'))
 
-        charge_num = recharge_item.get('activity') # 充值元宝数量
+        charge_num = recharge_item.get('activity')  # 充值元宝数量
         # vip
         self._owner.base_info.recharge += charge_num
+        self._owner.base_info.max_single_recharge = max(charge_num, self._owner.base_info.max_single_recharge)
         self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
 
         # 活动
         self._owner.recharge.charge(charge_num)
         if not is_tencent:
-            self._owner.recharge.get_recharge_response(response.info) # recharge
+            self._owner.recharge.get_recharge_response(response.info)  # recharge
