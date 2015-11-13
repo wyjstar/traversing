@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='activity.proto',
   package='',
-  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"5\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"\x81\x01\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"m\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05\x12\x10\n\x08\x61\x63t_type\x18\x04 \x01(\x05')
+  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"5\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"\x81\x01\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"m\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05\x12\x10\n\x08\x61\x63t_type\x18\x04 \x01(\x05\"y\n\x10\x46undActivityInfo\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x01(\x05\x12\r\n\x05state\x18\x02 \x01(\x05\x12\x17\n\x0f\x61\x63\x63umulate_days\x18\x03 \x01(\x05\x12\x10\n\x08recharge\x18\x04 \x01(\x05\x12\x1b\n\x13max_single_recharge\x18\x05 \x01(\x05\":\n\x17GetFundActivityResponse\x12\x1f\n\x04info\x18\x01 \x03(\x0b\x32\x11.FundActivityInfo')
 
 
 
@@ -172,14 +172,101 @@ _GETACTINFORESPONSE = _descriptor.Descriptor(
   serialized_end=367,
 )
 
+
+_FUNDACTIVITYINFO = _descriptor.Descriptor(
+  name='FundActivityInfo',
+  full_name='FundActivityInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='act_id', full_name='FundActivityInfo.act_id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='state', full_name='FundActivityInfo.state', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='accumulate_days', full_name='FundActivityInfo.accumulate_days', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='recharge', full_name='FundActivityInfo.recharge', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='max_single_recharge', full_name='FundActivityInfo.max_single_recharge', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=369,
+  serialized_end=490,
+)
+
+
+_GETFUNDACTIVITYRESPONSE = _descriptor.Descriptor(
+  name='GetFundActivityResponse',
+  full_name='GetFundActivityResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='info', full_name='GetFundActivityResponse.info', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=492,
+  serialized_end=550,
+)
+
 _GETACTGIFTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GETACTGIFTRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _GETACTGIFTRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _GETACTINFORESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_GETFUNDACTIVITYRESPONSE.fields_by_name['info'].message_type = _FUNDACTIVITYINFO
 DESCRIPTOR.message_types_by_name['GetActGiftRequest'] = _GETACTGIFTREQUEST
 DESCRIPTOR.message_types_by_name['GetActGiftResponse'] = _GETACTGIFTRESPONSE
 DESCRIPTOR.message_types_by_name['GetActInfoRequese'] = _GETACTINFOREQUESE
 DESCRIPTOR.message_types_by_name['GetActInfoResponse'] = _GETACTINFORESPONSE
+DESCRIPTOR.message_types_by_name['FundActivityInfo'] = _FUNDACTIVITYINFO
+DESCRIPTOR.message_types_by_name['GetFundActivityResponse'] = _GETFUNDACTIVITYRESPONSE
 
 class GetActGiftRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -204,6 +291,18 @@ class GetActInfoResponse(_message.Message):
   DESCRIPTOR = _GETACTINFORESPONSE
 
   # @@protoc_insertion_point(class_scope:GetActInfoResponse)
+
+class FundActivityInfo(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _FUNDACTIVITYINFO
+
+  # @@protoc_insertion_point(class_scope:FundActivityInfo)
+
+class GetFundActivityResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _GETFUNDACTIVITYRESPONSE
+
+  # @@protoc_insertion_point(class_scope:GetFundActivityResponse)
 
 
 # @@protoc_insertion_point(module_scope)

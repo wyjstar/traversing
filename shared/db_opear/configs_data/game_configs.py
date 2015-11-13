@@ -186,8 +186,5 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    #print ggzj_config
-    print skill_peerless_effect_config
-    print skill_peerless_grade_config
-    #print arena_fight_config
-    #print awake_config
+    for v in activity_config[4]:
+        print v

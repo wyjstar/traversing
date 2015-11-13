@@ -40,7 +40,7 @@ def mine_add_field_remote(uid, data):
         logger.error('seq is exist:%s', seq)
         return 0
 
-    user_mine[seq] = data
+    user_mine[int(seq)] = data
 
     tb_mine.hset(seq, data)
     return seq
@@ -53,14 +53,11 @@ def mine_settle_remote(uid, seq, fight_result, nickname, hold):
     logger.debug('settle %s %s %s %s %s',
                  seq, fight_result, uid, nickname, hold)
 
-    if type(seq) is unicode:
-        seq = seq.encode('utf-8')
-
     if seq not in user_mine:
         print 'not in ', seq, type(seq)
         for s in user_mine:
             print '__', s, type(s)
-    _mine = user_mine[seq]
+    _mine = user_mine[int(seq)]
 
     if uid == _mine['uid']:
         logger.error('mine settle remote uid is same: %s-%s',
@@ -101,10 +98,7 @@ def mine_settle_remote(uid, seq, fight_result, nickname, hold):
 def mine_harvest_remote(uid, seq):
     result = {'result': True, 'normal': {}, 'lucky': {}}
 
-    if type(seq) is unicode:
-        seq = seq.encode('utf-8')
-
-    _mine = user_mine[seq]
+    _mine = user_mine[int(seq)]
 
     if uid != _mine['uid']:
         logger.error('mine harvest remote uid changed:%s-%s',
@@ -129,10 +123,7 @@ def mine_harvest_remote(uid, seq):
 
 @rootserviceHandle
 def acc_mine_time_remote(uid, seq, change_time):
-    if type(seq) is unicode:
-        seq = seq.encode('utf-8')
-
-    _mine = user_mine[seq]
+    _mine = user_mine[int(seq)]
 
     if uid != _mine['uid']:
         logger.error('acc mine time uid changed:%s-%s',
