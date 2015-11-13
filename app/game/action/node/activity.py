@@ -162,17 +162,17 @@ def get_fund_activity_1840(data, player):
     act_item = game_configs.activity_config.get(activity_id)
     if act_item is None:
         logger.error('not found activity id:%s--%s', activity_id,
-                     player.fund.fund_info.keys())
+                     player.fund_activity.fund_info.keys())
         response.res.result_no = 184000
         return response.SerializeToString()
 
-    if activity_id not in player.fund.fund_info:
+    if activity_id not in player.fund_activity.fund_info:
         logger.error('not found activity id:%s--%s', activity_id,
-                     player.fund.fund_info.keys())
+                     player.fund_activity.fund_info.keys())
         response.res.result_no = 184001
         return response.SerializeToString()
 
-    fund = player.fund.fund_info[activity_id]
+    fund = player.fund_activity.fund_info[activity_id]
     if fund['is_open'] is False:
         logger.error('activity id:%s is not open', activity_id)
         response.res.result_no = 184002
@@ -195,7 +195,7 @@ def get_fund_activity_1840(data, player):
         response.res.result_no = 184005
         return response.SerializeToString()
 
-    if len(act_item.parameterC) == 0 and \
+    if len(act_item.parameterC) == 1 and \
             act_item.parameterC[0] > player.line_up_component.hight_power:
         logger.error('activity ap error:%s-%s',
                      player.line_up_component.hight_power,
@@ -203,7 +203,7 @@ def get_fund_activity_1840(data, player):
         response.res.result_no = 184005
         return response.SerializeToString()
 
-    if len(act_item.parameterD) == 0 and \
+    if len(act_item.parameterD) == 1 and \
        player.stage_component.get_stage(act_item.parameterD[0]).state != 1:
         logger.error('activity stage:%s is not open',
                      act_item.parameterD[0])
@@ -230,7 +230,7 @@ def activate_fund_activity_1841(data, player):
     act_item = game_configs.activity_config.get(activity_id)
     if act_item is None:
         logger.error('not found activity id:%s--%s', activity_id,
-                     player.fund.fund_info.keys())
+                     player.fund_activity.fund_info.keys())
         response.res.result_no = 184100
         return response.SerializeToString()
 
@@ -252,7 +252,7 @@ def activate_fund_activity_1841(data, player):
                                      response.consume)
     player.pay.pay(need_gold, const.FUND, func)
 
-    fund = player.fund.fund_info[activity_id]
+    fund = player.fund_activity.precondition.get(activity_id)
     if fund is None:
         logger.error('activity:%s is not exist', activity_id)
         response.res.result_no = 184102
@@ -264,10 +264,12 @@ def activate_fund_activity_1841(data, player):
 
 @remoteserviceHandle('gate')
 def get_fund_activity_info_1854(data, player):
-    response = activity_pb2.FundActivityInfo()
+    response = activity_pb2.GetFundActivityResponse()
 
-    info = player.fund.fund_info
+    info = player.fund_activity.fund_info
+    print info
     for k, v in info.items():
+        print k, v
         act = response.info.add()
         act.act_id = k
         act.state = v['state']

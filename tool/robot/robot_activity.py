@@ -189,3 +189,34 @@ class RobotActivity(Robot):
         response.ParseFromString(message)
         print response
         self.on_command_finish()
+
+    def command_get_fund_activity_gift(self, activity_id):
+        request = activity_pb2.GetActGiftRequest()
+        request.act_id = int(activity_id)
+        self.send_message(request, 1840)
+
+    def none_1840(self, message):
+        response = activity_pb2.GetActGiftResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_get_activate_activity_gift(self, activity_id):
+        request = activity_pb2.GetActGiftRequest()
+        request.act_id = int(activity_id)
+        self.send_message(request, 1841)
+
+    def none_1841(self, message):
+        response = activity_pb2.GetActGiftResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()
+
+    def command_get_fund_activity_info(self):
+        self.send_message(None, 1854)
+
+    def none_1854(self, message):
+        response = activity_pb2.GetFundActivityResponse()
+        response.ParseFromString(message)
+        print response
+        self.on_command_finish()

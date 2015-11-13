@@ -17,21 +17,24 @@ class CharacterFundActivity(Component):
         self._precondition = {}
 
     def init_data(self, character_info):
-        self._data = character_info.get('data', {})
-        self._precondition = character_info.get('precondition', {})
+        fund_data = character_info.get('fund_activity', {})
+        self._data = fund_data.get('data', {})
+        self._precondition = fund_data.get('precondition', {})
         self.check_time()
         self.check_precondition()
+        print 'data==========', self._data
+        print 'precondition==========', self._precondition
 
     def save_data(self):
         activity = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(data=self._data,
                     precondition=self._precondition)
-        activity.hset('func_activity', data)
+        activity.hset('fund_activity', data)
 
     def new_data(self):
         data = dict(data=self._data,
                     precondition=self._precondition)
-        return {'func_activity': data}
+        return {'fund_activity': data}
 
     def check_time(self):
         _time_now_struct = time.localtime()
@@ -70,6 +73,7 @@ class CharacterFundActivity(Component):
                 set_date = set(self._data[aid]['accumulate_days'])
                 set_date.add(_date_now)
                 self._data[aid] = list(set_date)
+        self.save_data()
 
     def check_precondition(self):
         print self._precondition
@@ -77,9 +81,9 @@ class CharacterFundActivity(Component):
             act_item = game_configs.activity_config[k]
             if act_item.parameterB < v['consume']:
                 continue
-            base_info = self.owner.base_info
-            if int(act_item.parameterA) > base_info.vip_level:
-                continue
+            # base_info = self.owner.base_info
+            # if int(act_item.parameterA) > base_info.vip_level:
+            #     continue
             if act_item.premise != 0:
                 act_item2 = game_configs.activity_config.get(act_item.premise)
                 if act_item2 is None:
@@ -94,6 +98,7 @@ class CharacterFundActivity(Component):
             self.activate(act_item.get('id'))
 
     def activate(self, aid):
+        logger.debug('fund activity activated:%s', aid)
         for k, v in self._data.items():
             act_item = game_configs.activity_config.get(k)
             if act_item is None:
@@ -105,8 +110,13 @@ class CharacterFundActivity(Component):
         for k, v in self._precondition.items():
             v['recharge'] += num
             v['max_single_recharge'] = max(num, v['max_single_recharge'])
-        print 'fund recharge :', self._precondition
 
     @property
     def fund_info(self):
+        self.check_precondition()
         return self._data
+
+    @property
+    def precondition(self):
+        self.check_precondition()
+        return self._precondition
