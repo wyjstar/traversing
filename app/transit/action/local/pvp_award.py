@@ -15,6 +15,7 @@ import time
 import traceback
 from shared.utils.mail_helper import deal_mail
 from gfirefly.dbentrust.redis_mode import RedisObject
+from shared.tlog import tlog_action
 
 tb_pvp_rank = RedisObject('tb_pvp_rank')
 

@@ -31,6 +31,7 @@ from app.game.component.mine.user_mine import MineType
 from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
 from app.game.action.node.pvp_rank import get_pvp_data
+import time
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -506,7 +507,8 @@ def acc_mine_1250(data, player):
     player.pay.pay(need_gold, const.MINE_ACC, func)
     last_time = player.mine.increase_mine()
     player.mine.save_data()
-    tlog_action.log('MineAcc', player, last_time)
+    tlog_action.log('MineAcc', player, time.strftime("%Y-%m-%d %X",
+                    time.localtime(int(last_time))))
 
     response.position = 0
     response.last_time = int(last_time)

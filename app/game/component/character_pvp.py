@@ -181,7 +181,7 @@ class CharacterPvpComponent(Component):
             power = 100
         ids = get_player_ids(self.owner.base_info.id,
                              power,
-                             types, num)
+                             types, num+1)
         print '=====================================ids:', ids
         if [0, 0] in ids:
             ids.remove([0, 0])

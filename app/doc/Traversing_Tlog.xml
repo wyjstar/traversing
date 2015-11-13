@@ -737,7 +737,7 @@
         <entry name="HeroId" type="int" desc="英雄ID" />
         <entry name="ChangeLevel" type="int" desc="改变等级" />
         <entry name="Level" type="int" desc="升级后等级" />
-        <entry name="Type" type="int" desc="升级方式 1关卡2升级3一键升级" />
+        <entry name="Type" type="int" desc="升级方式 1关卡2升级3一键升级 类型为2升级时 消耗个数记录再ExpItemNum1 物品ID记录再ExpItemNo.如果类型为3 分别记录三个物品的消耗个数" />
         <entry name="ExpItemNum1" type="int" desc="使用物品个数小" />
         <entry name="ExpItemNum2" type="int" desc="使用物品个数中" />
         <entry name="ExpItemNum3" type="int" desc="使用物品个数大" />
@@ -889,7 +889,7 @@
         <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
 
         <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
-        <entry name="LastTime"           type="int"                                            desc="剩余增产时间, 其他信息在mine表的10001行" />
+        <entry name="LastTime"           type="string"        size="64"                        desc="增产到期时间'2015-11-11 14:12:53' , 其他信息在mine表的10001行" />
 
     </struct>
 
