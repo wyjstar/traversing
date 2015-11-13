@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='activity.proto',
   package='',
-  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"5\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"\x81\x01\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"m\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05\x12\x10\n\x08\x61\x63t_type\x18\x04 \x01(\x05\"J\n\x10\x46undActivityInfo\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x01(\x05\x12\r\n\x05state\x18\x02 \x01(\x05\x12\x17\n\x0f\x61\x63\x63umulate_days\x18\x03 \x01(\x05\":\n\x17GetFundActivityResponse\x12\x1f\n\x04info\x18\x01 \x03(\x0b\x32\x11.FundActivityInfo')
+  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"5\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"\x81\x01\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"m\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05\x12\x10\n\x08\x61\x63t_type\x18\x04 \x01(\x05\"y\n\x10\x46undActivityInfo\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x01(\x05\x12\r\n\x05state\x18\x02 \x01(\x05\x12\x17\n\x0f\x61\x63\x63umulate_days\x18\x03 \x01(\x05\x12\x10\n\x08recharge\x18\x04 \x01(\x05\x12\x1b\n\x13max_single_recharge\x18\x05 \x01(\x05\":\n\x17GetFundActivityResponse\x12\x1f\n\x04info\x18\x01 \x03(\x0b\x32\x11.FundActivityInfo')
 
 
 
@@ -201,6 +201,20 @@ _FUNDACTIVITYINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='recharge', full_name='FundActivityInfo.recharge', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='max_single_recharge', full_name='FundActivityInfo.max_single_recharge', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -211,7 +225,7 @@ _FUNDACTIVITYINFO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=369,
-  serialized_end=443,
+  serialized_end=490,
 )
 
 
@@ -238,8 +252,8 @@ _GETFUNDACTIVITYRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=445,
-  serialized_end=503,
+  serialized_start=492,
+  serialized_end=550,
 )
 
 _GETACTGIFTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE

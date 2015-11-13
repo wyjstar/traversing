@@ -277,6 +277,8 @@ def get_fund_activity_info_1854(data, player):
         act = response.info.add()
         act.act_id = k
         act.state = v.get('state', 0)
+        act.recharge = v.get('recharge', 0)
+        act.max_single_recharge = v.get('max_single_recharge', 0)
 
     print 'get_fund_activity_info_1854:', response
     return response.SerializeToString()

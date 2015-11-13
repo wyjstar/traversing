@@ -28,6 +28,8 @@ message FundActivityInfo{
 	optional int32 act_id = 1;
 	optional int32 state = 2;
 	optional int32 accumulate_days = 3;
+	optional int32 recharge = 4;
+	optional int32 max_single_recharge = 5;
 }
 
 message GetFundActivityResponse{
