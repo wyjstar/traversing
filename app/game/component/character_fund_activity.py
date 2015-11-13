@@ -77,11 +77,10 @@ class CharacterFundActivity(Component):
         self.save_data()
 
     def check_precondition(self):
-        print self._precondition
         for k, v in self._precondition.items():
             act_item = game_configs.activity_config[k]
-            if v.get('state', 0) == 1:
-                continue
+            # if v.get('state', 0) == 1:
+            #     continue
             if act_item.parameterB < v['consume']:
                 continue
             base_info = self.owner.base_info
@@ -105,6 +104,8 @@ class CharacterFundActivity(Component):
     def activate(self, aid):
         logger.debug('fund activity activated:%s', aid)
         for k, v in self._data.items():
+            if v['state'] != 0:
+                continue
             act_item = game_configs.activity_config.get(k)
             if act_item is None:
                 continue

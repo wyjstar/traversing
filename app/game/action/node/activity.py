@@ -236,6 +236,12 @@ def activate_fund_activity_1851(data, player):
         response.res.result_no = 185101
         return response.SerializeToString()
 
+    fund = player.fund_activity.precondition.get(activity_id)
+    if fund is None:
+        logger.error('activity:%s is not exist', activity_id)
+        response.res.result_no = 185102
+        return response.SerializeToString()
+
     need_gold = act_item.parameterB
     price = []
     price.append(CommonGroupItem(const.COIN, need_gold, need_gold, const.GOLD))
@@ -249,12 +255,7 @@ def activate_fund_activity_1851(data, player):
                                      response.consume)
     player.pay.pay(need_gold, const.FUND, func)
 
-    fund = player.fund_activity.precondition.get(activity_id)
-    if fund is None:
-        logger.error('activity:%s is not exist', activity_id)
-        response.res.result_no = 185102
-        return response.SerializeToString()
-
+    player.fund_activity.save_data()
     response.res.result = True
     return response.SerializeToString()
 
