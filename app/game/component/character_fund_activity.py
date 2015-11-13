@@ -20,6 +20,7 @@ class CharacterFundActivity(Component):
         fund_data = character_info.get('fund_activity', {})
         self._data = fund_data.get('data', {})
         self._precondition = fund_data.get('precondition', {})
+        # self.recharge(500)
         self.check_time()
         self.check_precondition()
         print 'data==========', self._data
@@ -47,7 +48,8 @@ class CharacterFundActivity(Component):
         for act_item in game_configs.activity_config[50]:
             if act_item.get('id') not in self._precondition and \
                     self.owner.base_info.is_activiy_open(act_item.get('id')):
-                act_data = dict(recharge=0,
+                act_data = dict(state=0,
+                                recharge=0,
                                 max_single_recharge=0,
                                 consume=0)
                 self._precondition[act_item.get('id')] = act_data
@@ -60,8 +62,7 @@ class CharacterFundActivity(Component):
         for act_item in game_configs.activity_config[51]:
             if act_item.get('id') not in self._data and \
                     self.owner.base_info.is_activiy_open(act_item.get('id')):
-                act_data = dict(is_open=False,
-                                state=0,
+                act_data = dict(state=0,
                                 accumulate_days=[])
                 self._data[act_item.get('id')] = act_data
 
@@ -69,7 +70,7 @@ class CharacterFundActivity(Component):
             if not self.owner.base_info.is_activiy_open(aid):
                 logger.info('activity id:%s is close', aid)
                 del self._data[aid]
-            if self._data[aid]['is_open'] is True:
+            if self._data[aid]['state'] == 1:
                 set_date = set(self._data[aid]['accumulate_days'])
                 set_date.add(_date_now)
                 self._data[aid] = list(set_date)
@@ -79,11 +80,13 @@ class CharacterFundActivity(Component):
         print self._precondition
         for k, v in self._precondition.items():
             act_item = game_configs.activity_config[k]
+            if v.get('state', 0) == 1:
+                continue
             if act_item.parameterB < v['consume']:
                 continue
-            # base_info = self.owner.base_info
-            # if int(act_item.parameterA) > base_info.vip_level:
-            #     continue
+            base_info = self.owner.base_info
+            if int(act_item.parameterA) > base_info.vip_level:
+                continue
             if act_item.premise != 0:
                 act_item2 = game_configs.activity_config.get(act_item.premise)
                 if act_item2 is None:
@@ -95,6 +98,8 @@ class CharacterFundActivity(Component):
             if len(act_item.parameterD) == 1 and \
                     act_item.parameterD[0] > v['max_single_recharge']:
                 continue
+
+            v['state'] = 1
             self.activate(act_item.get('id'))
 
     def activate(self, aid):
@@ -104,7 +109,7 @@ class CharacterFundActivity(Component):
             if act_item is None:
                 continue
             if act_item.get('premise') == aid:
-                v['is_open'] = True
+                v['state'] = 1
 
     def recharge(self, num):
         for k, v in self._precondition.items():
