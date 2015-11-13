@@ -244,6 +244,7 @@ def hero_refine_118(data, player):
     response.res.result = res.get('result')
     if res.get('result_no'):
         response.res.result_no = res.get('result_no')
+    logger.debug(response)
     return response.SerializeToString()
 
 
@@ -252,17 +253,22 @@ def do_hero_refine(player, hero_no, refine, response):
     _refine_item = game_configs.seal_config.get(refine)
     if not hero:
         logger.error('cant find hero:%s', hero_no)
-        return {'result': False}
+        return {'result': False, 'result_no': 11801}
     if not _refine_item:
         logger.error('cant find refine item:%s', refine)
-        return {'result': False}
+        return {'result': False, 'result_no': 11802}
+
+    current_refine_item = game_configs.seal_config.get(hero.refine)
+    if current_refine_item and _refine_item.id != current_refine_item.get('next'):
+        logger.error('not next refine item:%s', refine)
+        return {'result': False, 'result_no': 11803}
 
     result = is_afford(player, _refine_item.expend)  # 校验
     if not result.get('result'):
         logger.error('cant afford refine:%s:cur%s',
                      _refine_item.expend,
                      player.brew.nectar)
-        return {'result': False}
+        return {'result': False, 'result_no': 11804}
 
     tlog_action.log('HeroRefine', player, hero_no, refine)
 
