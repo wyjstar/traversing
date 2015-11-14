@@ -69,19 +69,22 @@ message GetGuildInfoResponse{
     required CommonResponse res = 1;
 
     optional int32 g_id = 2;    //id
-    optional bytes name = 3;    //名
+    optional string name = 3;    //名
     optional int32 member_num = 4;   //人数
-    optional int32 level = 5;   //等级
-    optional int32 exp = 6;     //经验
-    optional bytes call = 7;    //公告
+    // optional int32 level = 5;   //等级
+    optional int32 contribution = 6;     //建设值
+    optional string call = 7;    //公告
     optional int32 icon_id = 8;   //军团徽章
+
     optional string captain_name = 9;   //团长name
     optional int32 captain_level = 10;   //团长level
     optional int32 captain_power = 11;   //团长战力
+
     optional int32 zan_num = 12;   //今日赞数量
     optional int32 zan_state = 13;   //今天有没有赞过
     optional int32 position = 14;   //我的职位
-    optional int32 have_apply = 15;   //有没有加军团申请
+    optional int32 have_apply = 15;   //有没有加军团申请 0 or 1
+
     optional int32 captain_vip_level = 16;   //团长vip等级
     optional int32 captain_icon = 17;   //团长头像
     optional int32 luck_num = 18;   //福运
@@ -90,6 +93,22 @@ message GetGuildInfoResponse{
     optional int32 captain_zan_receive_state = 21;   //团长赞领取状态
     repeated int32 bless_gift = 22;   //已经领取的祈福奖励
     optional int32 my_guild_rank = 23;
+    optional int32 my_contribution = 24;
+    optional int32 my_day_contribution = 25;
+    repeated BuildInfo build_info = 26;
+}
+
+message BuildInfo{
+    required BuildType = 1;
+    required BuildLevel = 2;
+}
+
+message UpBuildRequest{
+    required BuildType = 1
+}
+
+message UpBuildResponse{
+    required CommonResponse res = 1;
 }
 
 // 修改公告 command：804
@@ -132,8 +151,8 @@ message RoleInfo
     required string name = 2;    //名
     required int32 level = 3;   //等级
     required int32 position = 4;   //职位
-    required int32 all_contribution = 5;   //总贡献
-    required int32 contribution = 6;   //今日贡献
+    required int32 day_contribution = 5;   //今日的贡献
+    required int32 contribution = 6;   //剩余的贡献
     required int32 fight_power = 7;   //战斗力
     required int32 is_online = 8;  //是否在线，1在线，0不在线
     optional int32 user_icon = 9;   //玩家头像
@@ -252,4 +271,65 @@ message AppointResponse{
 // 1815
 message PositionChange{
     required int32 position = 1;
+}
+
+// 获取圣兽模块信息
+message GuildAnimalsInfoResponse{
+    required int32 SkillPoints = 1;
+    repeated GuildSkill guild_skill = 2;
+    required int32 summon_times = 3;  // 军团已经召唤次数
+    // required int32 attack_times = 4;  // 今日我打圣兽次数
+    repeated GuildAnimal guild_animal = 5;
+}
+
+message GuildSkill{
+    required SkillType = 1;
+    required SkillLevel = 2;
+}
+
+message GuildAnimal{
+    required int32 player_id = 1;
+    required string player_name = 2;
+    required int32 hp = 3;
+    required int32 all_hp = 8;
+    required string animal_id = 4;  // 唯一ID
+    required int32 stage_id = 5;  // 关卡ID
+    required int32 start_time = 6;
+    required int32 last_time = 7;  // 我上次打的时间
+}
+
+// 召唤圣兽
+message SummonGuildAnimalRequest{
+    required AnimalType = 1;
+}
+
+// 召唤圣兽
+message SummonGuildAnimalResponse{
+    required CommonResponse res = 1;
+    required GuildAnimal guild_animal = 2;
+}
+
+// 打圣兽
+message AttackGuildAnimalRequest{
+    required string animal_id = 4;  // 唯一ID
+}
+
+// 打圣兽
+message AttackGuildAnimalResponse{
+    required CommonResponse res = 1;
+    required string animal_id = 2;  // 唯一ID
+    required int32 hp = 3;
+    optional GameResourcesResponse gain = 4;
+}
+
+// 军团技能升级
+message UpGuildSkillRequest{
+    required int32 skill_type = 1;
+}
+
+// 军团技能升级
+message UpGuildSkillResponse{
+    required CommonResponse res = 1;
+    repeated BattleUnit red = 2;
+    repeated BattleUnit blue = 3;
 }
