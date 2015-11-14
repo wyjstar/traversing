@@ -73,6 +73,7 @@ def pvb_get_before_fight_info_remote(player_id, boss_id):
 def update_rank_items(k, rank_item_pb, rank_item):
     rank_item_pb.nickname = rank_item.get("nickname", "")
     rank_item_pb.level = rank_item.get("level", 0)
+    rank_item_pb.vip_level = rank_item.get("vip_level", 0)
     rank_item_pb.now_head = rank_item.get("now_head", 0) #rank_item.get("first_hero_no", 0)
     rank_item_pb.demage_hp = int(rank_item.get("demage_hp", 0))
     if rank_item.get("line_up_info"):

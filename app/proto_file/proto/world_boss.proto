@@ -14,6 +14,7 @@ message PvbRankItem{
     optional LineUpResponse line_up_info = 5; //阵容信息
     optional int32 player_id = 6; // 玩家id
     optional int32 rank_no = 7; // 排名
+    optional int32 vip_level = 8;//vip等级
 }
 
 message PvbBeforeInfoResponse{

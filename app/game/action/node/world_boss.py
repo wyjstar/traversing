@@ -87,6 +87,7 @@ def get_fight_info(data, player):
         logger.debug("debuff_skill %s, debuff_skill_no %s" % (debuff_skill, debuff_skill_no))
     response.debuff_skill_no = boss.debuff_skill_no
     player.world_boss.save_data()
+    logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
 
@@ -296,6 +297,7 @@ def pvb_fight_start_1705(pro_data, player):
     # mock fight.
     player_info = {}
     player_info["player_id"] = player.base_info.id
+    player_info["vip_level"] = player.base_info.vip_level
     player_info["now_head"] = player.base_info.heads.now_head
     player_info["nickname"] = player.base_info.base_name
     player_info["level"] = player.base_info.level
