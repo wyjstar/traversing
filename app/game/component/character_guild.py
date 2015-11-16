@@ -19,11 +19,13 @@ class CharacterGuildComponent(Component):
         super(CharacterGuildComponent, self).__init__(owner)
         self._g_id = 0  # 公会id
         self._position = 3  # 职务
+
         self._contribution = 0  # 贡献
         self._all_contribution = 0  # 总贡献
         self._today_contribution = 0  # 今日贡献
+
         self._exit_time = 1  # 上次退出公会时间
-        self._praise = [0, 1]  # 点赞状态（0没点，1点），时间
+        self._praise = [0, 1]  # 点赞状态次数，时间
         self._bless = [0, [], 0, 1]  # 祈福次数,领取的祈福奖励，今日贡献时间
         self._apply_guilds = []  # 已经申请过的军团
         self._guild_rank_flag = 0  # 推荐列表，已经查询到的redis排行标记
@@ -62,6 +64,11 @@ class CharacterGuildComponent(Component):
                 'apply_guilds': self._apply_guilds,
                 'exit_time': self._exit_time}
         return data
+
+    def deal_create_guild(self, g_id):
+        self._g_id = g_id
+        self.position = 1
+        self._aaaa
 
     def get_guild_level(self):
         if self._g_id == "no":

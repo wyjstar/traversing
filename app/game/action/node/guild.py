@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 """
-created by server on 14-7-17下午4:50.
+created by cui
 """
 import re
 import time
 from app.game.core.PlayersManager import PlayersManager
-from app.game.core.guild import Guild
+from shared.common_logic.guild import Guild
 from app.proto_file.guild_pb2 import *
 from app.game.redis_mode import tb_guild_info
 from app.game.redis_mode import tb_character_info
@@ -83,7 +83,7 @@ def create_guild_801(data, player):
 
     # 判断有没有重名
     guild_name_data = tb_guild_info.getObj('names')
-    _result = guild_name_data.hsetnx(g_name, '')
+    _result = guild_name_data.hget(g_name)
     if not _result:
         response.res.result = False
         # response.res.message = "此名已存在"
@@ -92,29 +92,37 @@ def create_guild_801(data, player):
 
     def func():
         # 创建公会
+        create_res = remote_gate['world'].create_guild_remote(p_id,
+                                                              g_name,
+                                                              icon_id)
+        create_res = cPickle.loads(create_res)
+        if not create_res.get('res'):
+            raise ValueError("Guild name repeat!")
+            return
+
+        guild_info = create_res.get('guild_info')
+        rank_helper.add_rank_info('GuildLevel', guild_info.get('g_id'), 1)
+
         do_del_player_apply(p_id, player.guild.apply_guilds, 0)
-        guild_obj = Guild()
-        guild_obj.create_guild(p_id, g_name, icon_id)
+        remote_gate['world'].del_player_apply_remote(p_id,
+                                                     player.guild.apply_guilds)
 
-        guild_name_data.hmset({g_name: guild_obj.g_id})
-        rank_helper.add_rank_info('GuildLevel', guild_obj.g_id, 1)
-
-        player.guild.g_id = guild_obj.g_id
-        player.guild.contribution = 0
-        player.guild.all_contribution = 0
+        player.guild.g_id = guild_info.get('g_id')
         player.guild.today_contribution = 0
         player.guild.position = 1
-        player.guild.praise = [0, int(time.time())]
-        player.guild.bless = [0, [], 0, int(time.time())]
-        player.guild.exit_time = 1
         player.guild.apply_guilds = []
         player.guild.save_data()
-        guild_obj.save_data()
+
         # 加入公会聊天
         remote_gate.login_guild_chat_remote(player.dynamic_id,
                                             player.guild.g_id)
+
     need_gold = game_configs.base_config.get('create_money')
-    player.pay.pay(need_gold, const.GUILD_CREATE, func)
+    if not player.pay.pay(need_gold, const.GUILD_CREATE, func):
+        response.res.result = False
+        response.res.result_no = 800
+        logger.error('create_guild error! pid:%d' % p_id)
+        return response.SerializeToString()
 
     response.res.result = True
     tlog_action.log('CreatGuild', player, player.guild.g_id,
@@ -124,7 +132,7 @@ def create_guild_801(data, player):
 
 @remoteserviceHandle('gate')
 def join_guild_802(data, player):
-    """加入公会 """
+    """申请加入公会 """
     p_id = player.base_info.id
     args = JoinGuildRequest()
     args.ParseFromString(data)
@@ -136,69 +144,46 @@ def join_guild_802(data, player):
 
     if m_exit_time != 1 and the_time < \
             game_configs.base_config.get('exit_time'):
+        # "退出公会半小时内不可加入公会"
         response.res.result = False
         response.res.result_no = 842
-        # response.message = "退出公会半小时内不可加入公会"
         response.spare_time = game_configs.base_config.get('exit_time') \
             - the_time
         return response.SerializeToString()
 
     open_stage_id = game_configs.base_config.get('guildOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:
+        # "未完成指定关卡"
         response.res.result = False
-        # response.res.message = "未完成指定关卡"
         response.res.result_no = 837
         return response.SerializeToString()
 
     if m_g_id != 0:
+        # "您已加入公会"
         response.res.result = False
-        # response.res.message = "您已加入公会"
         response.res.result_no = 843
         return response.SerializeToString()
-
-    data1 = tb_guild_info.getObj(g_id).hgetall()
-
-    if not data1:
-        response.res.result = False
-        # response.res.message = "公会ID错误"
-        response.res.result_no = 844
-        return response.SerializeToString()
-
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
-    p_list = guild_obj.p_list
-    captain_id = p_list.get(1)[0]
 
     if g_id in player.guild.apply_guilds:
         # 已经申请过此军团
         response.res.result = False
         response.res.result_no = 861
-        # 861: 已经申请过此军团
         return response.SerializeToString()
 
-    if len(guild_obj.apply) >= game_configs.base_config.get('guildApplyMaxNum'):
+    data1 = tb_guild_info.getObj(g_id).hgetall()
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id)
+    remote_res = cPickle.loads(remote_res)
+    if not remote_res.get('res'):
         response.res.result = False
-        # response.res.message = "军团申请人数已满"
-        response.res.result_no = 859
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    if guild_obj.get_p_num() >= game_configs.guild_config. \
-            get(guild_obj.level).p_max:
-        response.res.result = False
-        # response.res.message = "公会已满员"
-        response.res.result_no = 845
-        return response.SerializeToString()
-    else:
-        remote_gate.is_online_remote(
-            'modify_user_guild_info_remote',
-            captain_id, {'cmd': 'join_guild'})
+    remote_gate.is_online_remote(
+        'modify_user_guild_info_remote',
+        captain_id, {'cmd': 'join_guild'})
 
-        player.guild.apply_guilds.append(g_id)
-        guild_obj.join_guild(p_id)
-        # guild_obj.apply.append(p_id)
-        guild_obj.save_data()
-        player.guild.save_data()
+    player.guild.apply_guilds.append(g_id)
+    player.guild.save_data()
 
     response.res.result = True
     return response.SerializeToString()
@@ -225,7 +210,7 @@ def exit_guild_803(data, player):
         # response.res.message = "公会ID错误"
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
     position = player.guild.position
     p_list = guild_obj.p_list
@@ -368,7 +353,7 @@ def editor_call_804(data, player):
         response.res.result_no = 844
         # response.res.message = "公会ID错误"
         return response.SerializeToString()
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
 
     position = player.guild.position
@@ -412,7 +397,7 @@ def deal_apply_805(data, player):
         # response.res.message = "公会ID错误"
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
     if res_type == 1:
         p_ids = args.p_ids
@@ -514,10 +499,10 @@ def del_player_apply(p_id, guild_id):
 
 def do_del_player_apply(p_id, apply_guilds, guild_id):
     for g_id in apply_guilds:
-        if g_id == guild_id:
-            continue
+        # if g_id == guild_id:
+        #     continue
         guild_data = tb_guild_info.getObj(g_id).hgetall()
-        guild_obj = Guild()
+        guild_obj = Guild(tb_guild_info)
         guild_obj.init_data(guild_data)
         if p_id in guild_obj.apply:
             guild_obj.apply.remove(p_id)
@@ -556,7 +541,7 @@ def change_president_806(data, player):
         # response.res.message = "您不是会长"
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
 
     p_list = guild_obj.p_list
@@ -619,7 +604,7 @@ def kick_807(data, player):
         return response.SerializeToString()
 
     data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
     p_list = guild_obj.p_list
     for p_id in p_ids:
@@ -830,7 +815,7 @@ def get_guild_rank_810(data, player):
 def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
     data1 = tb_guild_info.getObj(g_id).hgetall()
     # if data1:
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
     if rank_type == 2 and guild_obj.get_p_num() >= \
             game_configs.guild_config.get(guild_obj.level).p_max:
@@ -878,7 +863,7 @@ def get_role_list_811(data, player):
         # response.res.message = "id error"
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
 
     guild_p_list = guild_obj.p_list
@@ -1019,7 +1004,7 @@ def get_apply_list_813(data, player):
         # response.res.message = "id error"
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
 
     guild_apply = guild_obj.apply
@@ -1081,7 +1066,7 @@ def invite_join_1803(data, player):
         # response.res.message = "您不是会长"
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
 
     guild_p_max = game_configs.guild_config.get(guild_obj.level).p_max
@@ -1169,7 +1154,7 @@ def deal_invite_join_1804(data, player):
         # response.res.message = "公会ID错误"
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
     # player.mail_component.delete_mails([args.mail_id])
 
@@ -1262,7 +1247,7 @@ def praise_1807(data, player):
         response.res.result_no = 851
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
 
@@ -1309,7 +1294,7 @@ def captailn_receive_1806(data, player):
         response.res.result_no = 849
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
 
@@ -1357,7 +1342,7 @@ def get_bless_gift_1808(data, player):
         # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
 
@@ -1404,7 +1389,7 @@ def find_guild_1809(data, player):
         guild_data = guild_obj.hgetall()
         guild_rank = response.guild_info
 
-        guild_obj = Guild()
+        guild_obj = Guild(tb_guild_info)
         guild_obj.init_data(guild_data)
 
         rank_no = rank_helper.get_rank_by_key('GuildLevel',
@@ -1453,7 +1438,7 @@ def appoint_1810(data, player):
         # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    guild_obj = Guild()
+    guild_obj = Guild(tb_guild_info)
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
 

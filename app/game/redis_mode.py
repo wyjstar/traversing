@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 """
-created by server on 14-6-10下午9:09.
 """
 from gfirefly.dbentrust.redis_mode import RedisObject
 

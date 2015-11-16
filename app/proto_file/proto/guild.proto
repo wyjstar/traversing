@@ -72,29 +72,33 @@ message GetGuildInfoResponse{
     optional string name = 3;    //名
     optional int32 member_num = 4;   //人数
     // optional int32 level = 5;   //等级
-    optional int32 contribution = 6;     //建设值
+    optional int32 contribution = 6;     //军团的建设值
+    optional int32 all_contribution = 5;     //军团的建设值
     optional string call = 7;    //公告
     optional int32 icon_id = 8;   //军团徽章
 
     optional string captain_name = 9;   //团长name
     optional int32 captain_level = 10;   //团长level
     optional int32 captain_power = 11;   //团长战力
+    optional int32 captain_zan_num = 12;   //团长集赞次数
+    optional int32 captain_vip_level = 16;   //团长vip等级
+    optional int32 captain_icon = 17;   //团长头像
+    optional int32 captain_zan_receive_state = 21;   //团长赞领取状态
 
-    optional int32 zan_num = 12;   //今日赞数量
-    optional int32 zan_state = 13;   //今天有没有赞过
+    optional int32 zan_num = 13;   // 我今日已经赞的次数
+    optional int32 last_zan_time = 27;   // 最后赞时间
     optional int32 position = 14;   //我的职位
     optional int32 have_apply = 15;   //有没有加军团申请 0 or 1
 
-    optional int32 captain_vip_level = 16;   //团长vip等级
-    optional int32 captain_icon = 17;   //团长头像
     optional int32 luck_num = 18;   //福运
     optional int32 bless_num = 19;   //祈福人数
     optional int32 bless_state = 20;   //今天有没有祈福
-    optional int32 captain_zan_receive_state = 21;   //团长赞领取状态
     repeated int32 bless_gift = 22;   //已经领取的祈福奖励
+
     optional int32 my_guild_rank = 23;
-    optional int32 my_contribution = 24;
-    optional int32 my_day_contribution = 25;
+    optional int32 my_contribution = 24;  //我的剩余贡献值
+    optional int32 my_all_contribution = 28;  //我的总贡献值
+    optional int32 my_day_contribution = 25;  //我的今日共贡献值
     repeated BuildInfo build_info = 26;
 }
 
@@ -202,7 +206,7 @@ message InviteJoinResponse{
 // 处理 邀请加入军团command：1804
 message DealInviteJoinRequest{
 	required int32 res = 1;  //1 or 0 ，同意or 拒绝
-    optional string guild_id = 2;  //guild id
+    optional int32 guild_id = 2;  //guild id
     optional string mail_id = 3;
 }
 
@@ -330,6 +334,4 @@ message UpGuildSkillRequest{
 // 军团技能升级
 message UpGuildSkillResponse{
     required CommonResponse res = 1;
-    repeated BattleUnit red = 2;
-    repeated BattleUnit blue = 3;
 }
