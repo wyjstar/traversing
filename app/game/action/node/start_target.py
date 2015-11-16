@@ -64,10 +64,16 @@ def get_target_info_1826(data, player):
 
 
 def get_target_info(player, target_id, day):
-    info = get_target_info1(player, target_id, day)
-    if info.get('jindu'):
-        a = info.get('jindu')
-        info['jindu'] = int(a)
+    if player.start_target.is_underway():
+        info = get_target_info1(player, target_id, day)
+        if info.get('jindu'):
+            a = info.get('jindu')
+            info['jindu'] = int(a)
+    else:
+        target_info = player.start_target.target_info.get(target_id)
+        info = {'state': target_info[0]}
+        if len(target_info) == 2:
+            info['jindu'] = int(target_info[1])
     return info
 
 
