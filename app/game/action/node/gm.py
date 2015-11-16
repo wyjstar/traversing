@@ -16,7 +16,9 @@ from test.init_data.mock_heros import init_hero
 from test.init_data.mock_hero_chips import init_hero_chip
 from test.init_data.mock_equipment import init_equipment
 from test.init_data.mock_equipment_chip import init_equipment_chip
+from test.init_data.mock_runt import init_runt
 from test.init_data.mock_item import init_item
+from test.init_data.mock_travel_item import init_travel_item
 from shared.db_opear.configs_data import game_configs
 import cPickle
 # from app.proto_file.gm_pb2 import *
@@ -157,9 +159,20 @@ def add_level_remote(data, player):
 
 
 @remoteserviceHandle('gate')
+def init_travel_item_remote(data, player):
+    init_travel_item(player)
+    return {'success': 1}
+
+@remoteserviceHandle('gate')
+def runt_remote(data, player):
+    init_runt(player)
+    return {'success': 1}
+
+
+@remoteserviceHandle('gate')
 def gain_remote(data, player):
     args = cPickle.loads(data)
-    gain_info= parse(eval(args.get('gain')))
+    gain_info = parse(eval(args.get('gain')))
     gain(player, gain_info, const.GM)
     return {'success': 1}
 
