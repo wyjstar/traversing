@@ -6,28 +6,29 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 import random
 import time
+from gfirefly.dbentrust.redis_mode import RedisObject
+
+tb_guild_info = RedisObject('tb_guild_info')
 
 
 class Guild(object):
     """公会
     """
-    def __init__(self, tb_guild_info):
+    def __init__(self):
         """
         """
         self._name = 0  # 名
         self._g_id = 0  # id
-        self._p_num = 1  # 人数
         self._contribution = 0  # 当前建设值
         self._all_contribution = 0  # 总建设值
         self._call = ''  # 公告
         self._p_list = {}  # 成员信息
         self._apply = []  # 加入申请
-        self._invite_join = {}  # {id:time, id:time}
+        self._invite_join = {}  # {id:time, id:time} 邀请加入
         self._icon_id = 0  # 军团头像
         self._bless = [0, 0, 1]  # 祈福人数,福运,时间
         self._praise = [0, 0, 0, 1]  # 点赞次数,团长奖励领取状态，累计金钱，时间
         self._build = {}  # 建筑等级 {建筑类型：建筑等级}
-        self._tb_guild_info = tb_guild_info
 
     @property
     def info(self):
@@ -51,19 +52,19 @@ class Guild(object):
         return data
 
     def create_guild(self, p_id, name, icon_id):
-        g_id = self._tb_guild_info.getObj('incr').incr()
+        g_id = tb_guild_info.getObj('incr').incr()
 
         self._name = name
         self._g_id = g_id
         self._icon_id = icon_id
         self._p_list = {1: [p_id]}
 
-        guild_obj = self._tb_guild_info.getObj(self._g_id)
+        guild_obj = tb_guild_info.getObj(self._g_id)
         guild_obj.new(self._info)
         return g_id
 
     def save_data(self):
-        guild_data = self._tb_guild_info.getObj(self._g_id)
+        guild_data = tb_guild_info.getObj(self._g_id)
         guild_data.hmset(self._info)
 
     def init_data(self, data):
@@ -86,15 +87,31 @@ class Guild(object):
         #     self._apply.pop(0)
         self._apply.append(p_id)
 
+    def get_position(self, p_id):
+        for position, p_list in self._p_list.items():
+            if p_id in p_list:
+                return position
+        else:
+            return 0
+
     def exit_guild(self, p_id, position):
-        self._p_num -= 1
-        position_p_list = self._p_list.get(position)
-        position_p_list.remove(p_id)
-        self._p_list.update({position: position_p_list})
+        # 人数减去1
+        # position_p_list = self._p_list.get(position)
+        # position_p_list.remove(p_id)
+        # self._p_list.update({position: position_p_list})
+        self._p_list.get(position).remote(p_id)
 
     def delete_guild(self):
-        guild_obj = self._tb_guild_info.getObj(self._g_id)
+        guild_obj = tb_guild_info.getObj(self._g_id)
         guild_obj.delete()
+
+    def change_position(self, p_id, position, position1):
+        '''
+        position 原
+        position1 后
+        '''
+        self._p_list.get(position).remote(p_id)
+        self._p_list.get(position1).append(p_id)
 
     def editor_call(self, call):
         self._call = call

@@ -18,7 +18,7 @@ class CharacterGuildComponent(Component):
     def __init__(self, owner):
         super(CharacterGuildComponent, self).__init__(owner)
         self._g_id = 0  # 公会id
-        self._position = 3  # 职务
+        # self._position = 3  # 职务
 
         self._contribution = 0  # 贡献
         self._all_contribution = 0  # 总贡献
@@ -35,7 +35,6 @@ class CharacterGuildComponent(Component):
         初始化公会组件
         """
         self._g_id = character_info.get("guild_id")
-        self._position = character_info.get("position")
         self._contribution = character_info.get("contribution")
         self._all_contribution = character_info.get("all_contribution")
         self._bless = character_info.get('bless')
@@ -46,7 +45,6 @@ class CharacterGuildComponent(Component):
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
         data_obj.hmset({'guild_id': self._g_id,
-                        'position': self._position,
                         'contribution': self._contribution,
                         'all_contribution': self._all_contribution,
                         'bless': self._bless,
@@ -56,7 +54,6 @@ class CharacterGuildComponent(Component):
 
     def new_data(self):
         data = {'guild_id': self._g_id,
-                'position': self._position,
                 'contribution': self._contribution,
                 'all_contribution': self._all_contribution,
                 'bless': self._bless,
@@ -119,14 +116,6 @@ class CharacterGuildComponent(Component):
     @apply_guilds.setter
     def apply_guilds(self, v):
         self._apply_guilds = v
-
-    @property
-    def position(self):
-        return self._position
-
-    @position.setter
-    def position(self, position):
-        self._position = position
 
     @property
     def exit_time(self):

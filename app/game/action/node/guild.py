@@ -195,78 +195,53 @@ def exit_guild_803(data, player):
     p_id = player.base_info.id
     dynamicid = player.dynamic_id
     response = ExitGuildResponse()
-    m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
+    g_id = player.guild.g_id
 
-    if m_g_id == 0:
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, p_id)
+    remote_res = cPickle.loads(remote_res)
+    if not remote_res.get('res'):
         response.res.result = False
-        response.res.result_no = 846
-        # response.res.message = "您还未加入公会"
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    if not data1:
-        response.res.result = False
-        response.res.result_no = 844
-        # response.res.message = "公会ID错误"
-        return response.SerializeToString()
-
-    guild_obj = Guild(tb_guild_info)
-    guild_obj.init_data(data1)
-    position = player.guild.position
-    p_list = guild_obj.p_list
-    position_p = p_list.get(position)
-    if p_id not in position_p:
-        response.res.result = False
-        response.res.result_no = 850
-        # response.res.message = "您不在此公会"
-        return response.SerializeToString()
-
-    if guild_obj.get_p_num() == 1:
+    if remote_res.get('no') == 1:
         # 解散公会
-        # 删除公会名字
-        guild_name_data = tb_guild_info.getObj('names')
-        if guild_name_data.hexists(guild_obj.name):
-            guild_name_data.hdel(guild_obj.name)
-
-        # 解散公会，删除公会聊天室
-        remote_gate.del_guild_room_remote(player.guild.g_id)
+        # 删除公会聊天室
+        remote_gate.del_guild_room_remote(g_id)
         # 删除排行
-        rank_helper.remove_rank('GuildLevel', player.guild.g_id)
+        rank_helper.remove_rank('GuildLevel', g_id)
         # 删除申请加入军团玩家的申请信息
-        del_apply_cache(guild_obj)
-        # 删除军团
-        guild_obj.delete_guild()
-        send_mail(conf_id=304, receive_id=p_id, guild_name=guild_obj.name)
-
-    else:
-        if position == 1:
-            response.res.result = False
-            response.res.result_no = 857
-            # response.res.message = "军团人数大于1，团长不可以退出军团"
-            return response.SerializeToString()
-        else:  # position != 1:
-            guild_obj.exit_guild(p_id, position)
-            guild_obj.save_data()
-            # 退出公会聊天
-            remote_gate.logout_guild_chat_remote(dynamicid)
-        send_mail(conf_id=305, receive_id=p_id, guild_name=guild_obj.name)
+        del_apply_cache(remote_res.get('apply_ids'))
+        mail_id = 304
+    elif remote_res.get('no') == 2:
+        # 团长转让
+        # 退出公会聊天
+        remote_gate.logout_guild_chat_remote(dynamicid)
+        mail_id = 304
+    else:  # no == 3
+        # 非团长退出
+        # 退出公会聊天
+        remote_gate.logout_guild_chat_remote(dynamicid)
         player.guild.exit_time = int(time.time())
+        mail_id = 305
+
+    send_mail(mail_id, receive_id=p_id,
+              guild_name=remote_res.get('guild_name'))
 
     player.guild.g_id = 0
     player.guild.contribution = 0
     player.guild.all_contribution = 0
     player.guild.today_contribution = 0
     player.guild.position = 3
-    player.guild.g_id = 0
     player.guild.save_data()
 
     response.res.result = True
-    tlog_action.log('ExitGuild', player, m_g_id)
+    tlog_action.log('ExitGuild', player, g_id)
     return response.SerializeToString()
 
 
-def del_apply_cache(guild_obj):
-    for p_id in guild_obj.apply:
+def del_apply_cache(apply_ids):
+    for p_id in apply_ids:
         if not netforwarding.push_message('del_apply_cache_remote',
                                           p_id, guild_obj.g_id):
             logger.error('del_apply_cache push message fail id:%d' % p_id)
@@ -337,6 +312,8 @@ def modify_user_guild_info_remote(data, player):
 @remoteserviceHandle('gate')
 def editor_call_804(data, player):
     """编辑公告 """
+    return
+    # TODO
     p_id = player.base_info.id
     args = EditorCallRequest()
     args.ParseFromString(data)
@@ -353,7 +330,7 @@ def editor_call_804(data, player):
         response.res.result_no = 844
         # response.res.message = "公会ID错误"
         return response.SerializeToString()
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
 
     position = player.guild.position
@@ -397,7 +374,7 @@ def deal_apply_805(data, player):
         # response.res.message = "公会ID错误"
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
     if res_type == 1:
         p_ids = args.p_ids
@@ -502,7 +479,7 @@ def do_del_player_apply(p_id, apply_guilds, guild_id):
         # if g_id == guild_id:
         #     continue
         guild_data = tb_guild_info.getObj(g_id).hgetall()
-        guild_obj = Guild(tb_guild_info)
+        guild_obj = Guild()
         guild_obj.init_data(guild_data)
         if p_id in guild_obj.apply:
             guild_obj.apply.remove(p_id)
@@ -512,6 +489,8 @@ def do_del_player_apply(p_id, apply_guilds, guild_id):
 @remoteserviceHandle('gate')
 def change_president_806(data, player):
     """转让会长 """
+    return
+    # TODO
     dynamicid = player.dynamic_id
     p_id = player.base_info.id
     args = ChangePresidentRequest()
@@ -541,7 +520,7 @@ def change_president_806(data, player):
         # response.res.message = "您不是会长"
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
 
     p_list = guild_obj.p_list
@@ -592,6 +571,8 @@ def change_president_806(data, player):
 @remoteserviceHandle('gate')
 def kick_807(data, player):
     """踢人 """
+    return
+    # TODO
     args = KickRequest()
     args.ParseFromString(data)
     response = KickResponse()
@@ -604,7 +585,7 @@ def kick_807(data, player):
         return response.SerializeToString()
 
     data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
     p_list = guild_obj.p_list
     for p_id in p_ids:
@@ -652,6 +633,8 @@ def kick_807(data, player):
 @remoteserviceHandle('gate')
 def bless_809(data, player):
     """膜拜 """
+    return
+    # TODO
     args = BlessRequest()
     args.ParseFromString(data)
     response = BlessResponse()
@@ -815,7 +798,7 @@ def get_guild_rank_810(data, player):
 def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
     data1 = tb_guild_info.getObj(g_id).hgetall()
     # if data1:
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
     if rank_type == 2 and guild_obj.get_p_num() >= \
             game_configs.guild_config.get(guild_obj.level).p_max:
@@ -848,6 +831,8 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
 @remoteserviceHandle('gate')
 def get_role_list_811(data, player):
     """角色列表 """
+    return
+    # TODO
     response = GetGuildMemberListResponse()
     m_g_id = player.guild.g_id
     if m_g_id == 0:
@@ -863,7 +848,7 @@ def get_role_list_811(data, player):
         # response.res.message = "id error"
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
 
     guild_p_list = guild_obj.p_list
@@ -1004,7 +989,7 @@ def get_apply_list_813(data, player):
         # response.res.message = "id error"
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
 
     guild_apply = guild_obj.apply
@@ -1045,6 +1030,8 @@ def be_change_president_1801(is_online, player):
 @remoteserviceHandle('gate')
 def invite_join_1803(data, player):
     """邀请加入军团 """
+    return
+    # TODO
     args = InviteJoinRequest()
     args.ParseFromString(data)
     response = InviteJoinResponse()
@@ -1066,7 +1053,7 @@ def invite_join_1803(data, player):
         # response.res.message = "您不是会长"
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
 
     guild_p_max = game_configs.guild_config.get(guild_obj.level).p_max
@@ -1139,6 +1126,8 @@ def invite_join_1803(data, player):
 @remoteserviceHandle('gate')
 def deal_invite_join_1804(data, player):
     """处理邀请加入军团 """
+    return
+    # TODO
     args = DealInviteJoinRequest()
     args.ParseFromString(data)
     response = DealInviteJoinResResponse()
@@ -1154,7 +1143,7 @@ def deal_invite_join_1804(data, player):
         # response.res.message = "公会ID错误"
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
     # player.mail_component.delete_mails([args.mail_id])
 
@@ -1232,6 +1221,8 @@ def deal_invite_join_1804(data, player):
 @remoteserviceHandle('gate')
 def praise_1807(data, player):
     """点赞 """
+    return
+    # TODO
     response = ZanResResponse()
 
     m_g_id = player.guild.g_id
@@ -1247,7 +1238,7 @@ def praise_1807(data, player):
         response.res.result_no = 851
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
 
@@ -1279,6 +1270,8 @@ def praise_1807(data, player):
 @remoteserviceHandle('gate')
 def captailn_receive_1806(data, player):
     """团长领取赞的奖励 """
+    return
+    # TODO
     response = ReceiveResponse()
 
     m_g_id = player.guild.g_id
@@ -1294,7 +1287,7 @@ def captailn_receive_1806(data, player):
         response.res.result_no = 849
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
 
@@ -1321,6 +1314,8 @@ def captailn_receive_1806(data, player):
 @remoteserviceHandle('gate')
 def get_bless_gift_1808(data, player):
     """领取祈福的奖励 """
+    return
+    # TODO
     args = GetBlessGiftRequest()
     args.ParseFromString(data)
     response = GetBlessGiftResponse()
@@ -1342,7 +1337,7 @@ def get_bless_gift_1808(data, player):
         # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
 
@@ -1372,6 +1367,8 @@ def get_bless_gift_1808(data, player):
 @remoteserviceHandle('gate')
 def find_guild_1809(data, player):
     """搜索军团 """
+    return
+    # TODO
     args = FindGuildRequest()
     args.ParseFromString(data)
     response = FindGuildResponse()
@@ -1389,7 +1386,7 @@ def find_guild_1809(data, player):
         guild_data = guild_obj.hgetall()
         guild_rank = response.guild_info
 
-        guild_obj = Guild(tb_guild_info)
+        guild_obj = Guild()
         guild_obj.init_data(guild_data)
 
         rank_no = rank_helper.get_rank_by_key('GuildLevel',
@@ -1424,6 +1421,8 @@ def find_guild_1809(data, player):
 @remoteserviceHandle('gate')
 def appoint_1810(data, player):
     """任命 """
+    return
+    # TODO
     args = AppointRequest()
     args.ParseFromString(data)
     response = AppointResponse()
@@ -1438,7 +1437,7 @@ def appoint_1810(data, player):
         # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    guild_obj = Guild(tb_guild_info)
+    guild_obj = Guild()
     guild_obj.init_data(data1)
     guild_config = game_configs.guild_config.get(guild_obj.level)
 
