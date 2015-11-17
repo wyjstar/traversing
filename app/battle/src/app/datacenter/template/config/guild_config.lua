@@ -12,7 +12,7 @@ guild_config={
 ,  ["10"] = {
   [1] = 5001,}
 ,}
-,  ["profit_hp"] = 400,  ["p_max"] = 20,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 400,  ["p_max"] = 20,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 30,  [2] = 30,  [3] = 2,}
 ,}
@@ -34,7 +34,7 @@ guild_config={
 ,  ["44"] = {
   [1] = 5014,}
 ,}
-,  ["profit_hp"] = 1100,  ["p_max"] = 22,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 1100,  ["p_max"] = 22,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 33,  [2] = 33,  [3] = 2,}
 ,}
@@ -56,7 +56,7 @@ guild_config={
 ,  ["48"] = {
   [1] = 5024,}
 ,}
-,  ["profit_hp"] = 2200,  ["p_max"] = 24,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 2200,  ["p_max"] = 24,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 36,  [2] = 36,  [3] = 2,}
 ,}
@@ -78,7 +78,7 @@ guild_config={
 ,  ["13"] = {
   [1] = 5001,}
 ,}
-,  ["profit_hp"] = 3700,  ["p_max"] = 27,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 3700,  ["p_max"] = 27,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 40,  [2] = 40,  [3] = 2,}
 ,}
@@ -100,7 +100,7 @@ guild_config={
 ,  ["45"] = {
   [1] = 5043,}
 ,}
-,  ["profit_hp"] = 5500,  ["p_max"] = 30,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 5500,  ["p_max"] = 30,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 46,  [2] = 46,  [3] = 2,}
 ,}
@@ -122,7 +122,7 @@ guild_config={
 ,  ["68"] = {
   [1] = 5054,}
 ,}
-,  ["profit_hp"] = 7700,  ["p_max"] = 34,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 7700,  ["p_max"] = 34,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 52,  [2] = 52,  [3] = 2,}
 ,}
@@ -144,7 +144,7 @@ guild_config={
 ,  ["57"] = {
   [1] = 5063,}
 ,}
-,  ["profit_hp"] = 10200,  ["p_max"] = 38,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 10200,  ["p_max"] = 38,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 58,  [2] = 58,  [3] = 2,}
 ,}
@@ -166,7 +166,7 @@ guild_config={
 ,  ["63"] = {
   [1] = 5073,}
 ,}
-,  ["profit_hp"] = 13100,  ["p_max"] = 42,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 13100,  ["p_max"] = 42,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 64,  [2] = 64,  [3] = 2,}
 ,}
@@ -188,7 +188,7 @@ guild_config={
 ,  ["69"] = {
   [1] = 5083,}
 ,}
-,  ["profit_hp"] = 16400,  ["p_max"] = 46,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 16400,  ["p_max"] = 46,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 70,  [2] = 70,  [3] = 2,}
 ,}
@@ -210,7 +210,7 @@ guild_config={
 ,  ["75"] = {
   [1] = 5093,}
 ,}
-,  ["profit_hp"] = 20000,  ["p_max"] = 50,  ["collectSupportGift"] = {
+,  ["type"] = 1,  ["profit_hp"] = 20000,  ["p_max"] = 50,  ["collectSupportGift"] = {
   ["107"] = {
   [1] = 80,  [2] = 80,  [3] = 2,}
 ,}
