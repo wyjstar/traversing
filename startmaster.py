@@ -31,6 +31,8 @@ if __name__ == "__main__":
     except Exception, e:
         print("gm is not running!")
 
+    os.system("cp -r config/lua/ app/battle/src/app/datacenter/template/config/")
+
     #if os.path.exists('/tmp/excel_cpickle'):
         #os.system("cp /tmp/excel_cpickle config/excel_cpickle")
         #os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
