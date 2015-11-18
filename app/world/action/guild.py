@@ -249,7 +249,6 @@ def up_build_remote(g_id, p_id, build_type):
     guild_obj.build = build_info
     guild_obj.contribution -= build_conf.exp
     guild_obj.save_data()
-    print guild_obj.build, '===================build info'
 
     return {'res': True}
 
@@ -268,7 +267,6 @@ def praise_remote(g_id, p_id):
 
     headSworShip = build_conf.headSworShip
     money_num = random.randint(headSworShip[0], headSworShip[1])
-    print money_num, '===============================add money num'
     guild_obj.add_praise_money(money_num)
     guild_obj.save_data()
     return {'res': True, 'build_level': build_level,
@@ -296,7 +294,6 @@ def captailn_receive_remote(g_id, p_id):
         return {'res': False, 'no': 800}
 
     guild_obj.receive_praise_money()
-    print guild_obj.praise_money, '===========praise money'
     guild_obj.save_data()
     return {'res': True, 'build_level': build_level,
             'money_num': guild_obj.praise_money}
@@ -314,7 +311,6 @@ def bless_remote(g_id, p_id, bless_type):
     build_level = guild_obj.build.get(2)
     build_conf = game_configs.guild_config.get(2)[build_level]
     worship_info = build_conf.guild_worship.get(bless_type)
-    print worship_info, '================worshipiinfo'
 
     guild_obj.do_bless(worship_info[2], worship_info[3])
     guild_obj.save_data()
@@ -385,7 +381,6 @@ def mine_seek_help_list_remote(g_id, p_id):
     p_ids = []
     for _, x in guild_obj.p_list.items():
         p_ids += x
-    print guild_obj.mine_help, '======================aaa2', p_ids
     for _time, [mine_id, u_id, times] in guild_obj.mine_help.items():
         if u_id not in p_ids:
             del guild_obj.mine_help[_time]
@@ -420,7 +415,6 @@ def mine_help_remote(g_id, p_id, seek_time, already_helps):
     p_ids = []  # 所有的成员ID
     for _, x in guild_obj.p_list.items():
         p_ids += x
-    print guild_obj.mine_help, '======================aaa2', p_ids
     for _time, [mine_id, u_id, times] in guild_obj.mine_help.items():
         if u_id not in p_ids:
             del guild_obj.mine_help[_time]

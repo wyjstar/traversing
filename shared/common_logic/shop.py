@@ -51,7 +51,6 @@ def get_shop_item_ids(shop_type, luck_num):
     if not shop_item:
         raise Exception('error shop type:%s' % shop_type)
     item_num = shop_item.get('itemNum')
-    print items, '============================================= get shop item ids'
     if item_num == -1:
         return items.keys()
     if not items:
@@ -132,7 +131,6 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
             # response.limit_item_max_num = limit_num
 
     if shop_item.dutyFree:
-        print build_level, '===========build_level'
         limit_num = shop_item.dutyFree.get(build_level, 0)
         limit_type = 'guild_items'
         shop_id_buyed_num = shop['guild_items'].get(shop_id, 0)
@@ -145,7 +143,6 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
             # response.limit_item_max_num = limit_num
 
     if shop_item.contribution:
-        print build_level, '===========build_level'
         limit_num = shop_item.contribution.get(build_level, 0)
         limit_type = 'items'
         shop_id_buyed_num = shop['items'].get(shop_id, 0)
