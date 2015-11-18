@@ -21,9 +21,11 @@ if __name__ == "__main__":
         os.system("mkdir app/logs")
 
     try:
-        res = urllib.urlretrieve("http://127.0.0.1:2600/static/upload/", '/tmp/config.zip')
-        print res
-        print("update_excell=========2")
+        f = urllib.urlopen("http://127.0.0.1:2600/GameInfo/GetConfigUrl")
+        url = f.readlines()[0]
+        res = urllib.urlretrieve(url, '/tmp/config.zip')
+        #print res
+        print("update_excell=========")
         os.system("cd /tmp; unzip -o config.zip")
         os.system("cp /tmp/excel_cpickle config/excel_cpickle")
         os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
@@ -36,6 +38,8 @@ if __name__ == "__main__":
         #os.system("cp /tmp/excel_cpickle config/excel_cpickle")
         #os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
 
+    import sys
+    print(sys.exit())
 
     if os.path.exists('/tmp/server_list.json'):
         os.system("cp /tmp/server_list.json server_list.json")
