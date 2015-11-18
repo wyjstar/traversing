@@ -24,10 +24,6 @@ function FMUnitSkill:ctor(unit, unit_info, mp_info)
         self:get_skill_buff(self.normal_skill_info["group"])
 
     print("main_normal_skill_buff==========="..self.unit_no)
-    if self.unit_no == 10048 then
-        print("main_normal_skill_buff===========")
-        -- table.print(self.main_normal_skill_buff)
-    end
     
 
     self.mp_skill_info = self.soldierTemplate:getSkillTempLateById(unit_info.rageSkill)

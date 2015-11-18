@@ -49,7 +49,7 @@ function initData(_process)
         or process.fight_type == TYPE_STAGE_ACTIVITY 
         or process.fight_type == TYPE_TRAVEL then
         return initStageData(data)
-    elseif process.fight_type == TYPE_PVP then
+    elseif process.fight_type == TYPE_PVP or process.fight_type == TYPE_TREASURE then
         return initPvpData(data)
     elseif process.fight_type == TYPE_MINE_OTHERUSER
         or process.fight_type == TYPE_MINE_MONSTER then
@@ -528,7 +528,6 @@ function constructBattleUnit(data, side, is_last_round)
     unit.unit_name = ""
     unit.no = data.no
     unit.hp = data.hp
-    print("world boss hp", unit.hp, unit.hp_max)
     --unit.hp_max = data.hp_max
     unit.hp_max = data.hp_max
     unit.atk = data.atk
@@ -595,9 +594,9 @@ function constructBattleUnit(data, side, is_last_round)
         unit.unit_info = unit_info                       -- 配置信息
         unit.unit_type = UNIT_TYPE_HERO
         if not SERVER_CODE then
-            local pictureName, res = soldierTemplate:getHeroImageName(unit.no,unit.break_level)
+            local pictureName, res = soldierTemplate:getHeroImageName(unit.no,unit.break_level,true)
             if unit.is_break or unit.is_awake then --乱入前武将图片
-                local originPictureName,orires = soldierTemplate:getHeroImageName(unit.origin_no,unit.break_level)
+                local originPictureName,orires = soldierTemplate:getHeroImageName(unit.origin_no,unit.break_level,true)
                 unit.originPictureName = originPictureName
             end
 
@@ -665,7 +664,7 @@ function constructBuddySkill(data)
     --local pos = 12
     --local unit = constructBattleUnitWithTemplate(data, pos, unit_level, 0, false, false)
     print("constructBuddySkill:=====")
-    table.print(data)
+    -- table.print(data)
     local unit = constructBattleUnit(data, "red")
     if not unit then
         return nil

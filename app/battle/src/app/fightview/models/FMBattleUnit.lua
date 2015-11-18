@@ -113,7 +113,7 @@ function FMBattleUnit:get_break_skill_nos()
     for i = 1, break_level do 
         local break_str = "break" ..  i 
         local break_skill_id = self.unit_info[break_str]
-        print("break_skill_id:======",break_skill_id)
+        -- print("break_skill_id:======",break_skill_id)
         if break_skill_id ~= 0 then
             table.insert(skill_ids, break_skill_id)
         end
