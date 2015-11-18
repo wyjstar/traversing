@@ -748,13 +748,11 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
 
     remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, 0)
     if not remote_res.get('result'):
-        print 'deal guild rank ====================3', remote_res
         return False
     guild_info = remote_res.get('guild_info')
 
     if rank_type == 2 and guild_info.get('p_num') >= \
             game_configs.guild_config.get(1).get(guild_info.get('build')[1]).p_max:
-        print 'deal guild rank ====================2'
         return False
     guild_rank = response.guild_rank.add()
     guild_rank.g_id = guild_info.get('id')
@@ -778,7 +776,6 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
         guild_rank.be_apply = 1
     else:
         guild_rank.be_apply = 0
-    print 'deal guild rank ====================1'
     return True
 
 
@@ -786,32 +783,21 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
 def get_role_list_811(data, player):
     """角色列表 """
     response = GetGuildMemberListResponse()
-    m_g_id = player.guild.g_id
-    if m_g_id == 0:
+    g_id = player.guild.g_id
+    if g_id == 0:
         response.res.result = False
         response.res.result_no = 846
         # response.res.message = "没有公会"
         return response.SerializeToString()
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, 0)
+    if not remote_res.get('result'):
+        return False
+    guild_info = remote_res.get('guild_info')
 
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1:
-        response.res.result = False
-        response.res.result_no = 844
-        # response.res.message = "id error"
-        return response.SerializeToString()
-
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
-    guild_p_list = guild_obj.p_list
+    guild_p_list = guild_info.get('p_list')
     print guild_p_list, '================guild p list '
-    if not guild_p_list.values():
-        response.res.result = False
-        response.res.result_no = 800
-        # response.message = "p list is none"
-        return response.SerializeToString()
 
-    for p_list in guild_p_list.values():
+    for position, p_list in guild_p_list.items():
         for role_id in p_list:
             character_info = tb_character_info.getObj(role_id).hgetall()
             if not character_info:
@@ -825,7 +811,7 @@ def get_role_list_811(data, player):
                 role_info.name = u'无名'
             role_info.level = character_info['level']
 
-            role_info.position = guild_obj.get_position(role_id)
+            role_info.position = position
             role_info.all_contribution = \
                 character_info['all_contribution']
             role_info.contribution = character_info['contribution']
@@ -868,29 +854,23 @@ def get_guild_info_812(data, player):
         response.res.result_no = 846
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObj(g_id).hgetall()
-    if not data1:
-        # "公会ID错误"
-        logger.error('get_guild_info_812, guild error')
-        response.res.result = False
-        response.res.result_no = 844
-        return response.SerializeToString()
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, player.base_info.id)
+    if not remote_res.get('result'):
+        return False
+    guild_info = remote_res.get('guild_info')
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
-    position = guild_obj.get_position(player.base_info.id)
-    response.g_id = g_id
-    response.name = guild_obj.name
-    response.member_num = guild_obj.p_num
-    response.contribution = guild_obj.contribution
-    response.all_contribution = guild_obj.all_contribution
-    response.icon_id = guild_obj.icon_id
-    response.call = guild_obj.call
+    position = remote_res.get('position')
+    response.g_id = guild_info.get('id')
+    response.name = guild_info.get('name')
+    response.member_num = guild_info.get('p_num')
+    response.contribution = guild_info.get('contribution')
+    response.all_contribution = guild_info.get('all_contribution')
+    response.icon_id = guild_info.get('icon_id')
+    response.call = guild_info.get('call')
     response.position = position
-    response.all_zan_num = guild_obj.praise_num
-    response.zan_money = guild_obj.praise_money
-    for build_type, build_level in guild_obj.build.items():
+    response.all_zan_num = guild_info.get('praise_num')
+    response.zan_money = guild_info.get('praise_money')
+    for build_type, build_level in guild_info.get('build').items():
         build_info_pb = response.build_info.add()
         build_info_pb.build_type = build_type
         build_info_pb.build_level = build_level
@@ -902,9 +882,9 @@ def get_guild_info_812(data, player):
     response.last_zan_time = player.guild.praise_time
     response.zan_num = player.guild.praise_num
 
-    response.luck_num = guild_obj.bless_luck_num
+    response.luck_num = guild_info.get('bless_luck_num')
     response.bless_num = player.guild.bless_times
-    response.guild_bless_times = guild_obj.bless_num
+    response.guild_bless_times = guild_info.get('bless_num')
 
     for bless_gift_no in player.guild.bless_gifts:
         response.bless_gift.append(bless_gift_no)
@@ -919,7 +899,7 @@ def get_guild_info_812(data, player):
         response.captain_icon = player.base_info.head
 
     else:
-        president_id = guild_obj.p_list.get(1)[0]
+        president_id = guild_info.get('p_list').get(1)[0]
         character_info = tb_character_info.getObj(president_id).hgetall()
         if character_info:
             response.captain_name = character_info['nickname']
@@ -934,13 +914,13 @@ def get_guild_info_812(data, player):
             heads.ParseFromString(character_info['heads'])
             response.captain_icon = heads.now_head
     if position <= 2:
-        if guild_obj.apply:
+        if guild_info.get('apply'):
             response.have_apply = 1
         else:
             response.have_apply = 0
     response.be_mobai_times = player.guild.be_mobai_times
 
-    for skill_type, skill_level in guild_obj.guild_skills.items():
+    for skill_type, skill_level in guild_info.get('guild_skills').items():
         skill_pb = response.guild_skill.add()
         skill_pb.skill_type = skill_type
         skill_pb.skill_level = skill_level

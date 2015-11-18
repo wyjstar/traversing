@@ -24,8 +24,8 @@ class Guild(object):
         """
         self._name = 0                         # 名
         self._g_id = 0                         # id
-        self._contribution = 99999999          # 当前建设值
-        self._all_contribution = 99999999      # 总建设值
+        self._contribution = 0                 # 当前建设值
+        self._all_contribution = 0             # 总建设值
         self._call = ''                        # 公告
         self._p_list = {}                      # 成员信息
         self._apply = []                       # 加入申请
@@ -40,21 +40,14 @@ class Guild(object):
         self._escort_tasks_invite_rob = {}     # 粮草押运任务邀请
         self._guild_boss = GuildBoss()         # 圣兽
         self._guild_boss_trigger_times = 0     # 圣兽触发次数
-        self._guild_boss_reset_time = 0     # 上次圣兽重置时间
+        self._guild_boss_reset_time = 0        # 上次圣兽重置时间
         self._guild_skills = {}                # 军团等级
         self._last_attack_time = 0             # 上次攻击圣兽时间
         self._mine_help = {}                   # {time:[mine_id, u_id]}
-        self._escort_tasks_ids = []     # 任务ids
+        self._escort_tasks_ids = []            # 任务ids
         self._shop_data = {}                   # {shop_type: shop_info}  军团商店
 
         self.init_guild_skills()
-
-    @property
-    def info(self):
-        data = self._info
-        data['p_num'] = self.p_num
-        data['level'] = self.level
-        return data
 
     @property
     def _info(self):
@@ -412,17 +405,31 @@ class Guild(object):
         task.update_reward()
         task.save_data()
 
-    def guild_info(self):
+    @property
+    def guild_data(self):
         data = {'id': self._g_id,
                 'name': self._name,
                 'icon_id': self._icon_id,
                 'p_list': self._p_list,
+                'p_num': self.p_num,
+                'level': self.level,
+                'apply': self._apply,
+                'call': self._call,
+                'build': self.build,
+                'contribution': self._contribution,
+                'all_contribution': self._all_contribution,
+                'praise_num': self.praise_num,
+                'praise_money': self.praise_money,
+                'bless_luck_num': self.bless_luck_num,
+                'bless_num': self.bless_num,
+                'guild_skills': self._guild_skills,
                 }
         return data
 
-    def add_guild_boss(self, stage_id, blue_units, boss_type, trigger_player_id, trigger_player_name):
+    def add_guild_boss(self, stage_id, blue_units, boss_type,
+                       trigger_player_id, trigger_player_name):
         """docstring for add_boss"""
-        logger.debug("add boss %s %s" % ( blue_units, stage_id))
+        logger.debug("add boss %s %s" % (blue_units, stage_id))
         boss = GuildBoss()
         boss._boss_id = get_uuid()
         boss.blue_units = blue_units

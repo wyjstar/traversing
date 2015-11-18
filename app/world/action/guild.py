@@ -56,7 +56,7 @@ def get_guild_info_remote(guild_id, info_name, p_id):
     if info_name:
         res.update({'result': True, info_name: getattr(guild_obj, info_name)})
     else:
-        res.update({'result': True, 'guild_info': guild_obj.info})
+        res.update({'result': True, 'guild_info': guild_obj.guild_data})
     if p_id:
         res.update(dict(position=guild_obj.get_position(p_id)))
     return res
