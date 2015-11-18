@@ -129,7 +129,6 @@ class CharacterShopComponent(Component):
             __shop_data['items'] = {}
             # data['last_refresh_time'] = time.time()
             if shop_item.itemNum > 0:
-                # print shop_item, shop_type
                 __shop_data['item_ids'] = get_shop_item_ids(shop_type,
                                                                 self._shop_data[shop_type]['luck_num'])
             self.save_data()

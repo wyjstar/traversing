@@ -297,7 +297,7 @@ base_config={
 ,}
 ,  ["AnimalOpenTime"] = {
   [1] = {
-  [1] = "01:00",  [2] = "23:00",}
+  [1] = "08:00",  [2] = "18:00",}
 ,}
 ,  ["worldbossHurtRankRewards"] = {
   ["1"] = {
@@ -1058,7 +1058,7 @@ base_config={
 ,  ["awakemax"] = 10010,  ["stageBOpen"] = 100306,  ["getMoneyValue"] = {
   ["60"] = 17888,  ["0"] = 8888,  ["40"] = 14888,  ["50"] = 16888,  ["5"] = 9688,  ["30"] = 12888,  ["45"] = 15888,  ["35"] = 13888,  ["25"] = 11888,  ["15"] = 9988,  ["90"] = 20888,  ["80"] = 19888,  ["20"] = 10888,  ["100"] = 28888,  ["70"] = 18888,  ["10"] = 9888,}
 ,  ["lucky_hero_cycle_times"] = 2,  ["warFogBossGoldcoinInspirePriceMultiple"] = 2,  ["hero_position_open_level"] = {
-  ["1"] = 1,  ["3"] = 3,  ["2"] = 2,  ["5"] = 7,  ["4"] = 5,  ["6"] = 10,}
+  ["1"] = 1,  ["3"] = 3,  ["2"] = 1,  ["5"] = 7,  ["4"] = 5,  ["6"] = 10,}
 ,  ["hjqyItemRate"] = 0.5,  ["create_money"] = 500,  ["totemSpaceNum4"] = 10,  ["cheer_partner_seat1"] = {
   ["1"] = 0.2,}
 ,  ["zhandouli_xishu_b"] = 1,  ["monsterWarriorsFightRound"] = 3,  ["EscortRefreshPrice"] = {
@@ -1097,7 +1097,7 @@ base_config={
 ,}
 ,  ["hjqyExchangeNumber"] = 1,  ["EscortOpenTime"] = {
   [1] = {
-  [1] = "01:00",  [2] = "23:00",}
+  [1] = "08:00",  [2] = "18:00",}
 ,}
 ,  ["friendHelpOpenStage"] = 100102,  ["shopTypeIndex"] = 199,  ["uiIconOpenLevel"] = {
   ["8007"] = 11,  ["8006"] = 6,  ["8004"] = 14,  ["8002"] = 1,  ["8009"] = 7,  ["8005"] = 20,  ["8008"] = 25,  ["8001"] = 1,  ["8003"] = 1,}

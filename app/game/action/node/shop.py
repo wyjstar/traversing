@@ -327,7 +327,6 @@ def shop_buy_505(pro_data, player):
             vip_level = player.base_info.vip_level
             guild_id = player.guild.g_id
             if shop_type in guild_shops:
-                print item_count, '==================================itemcount='
                 res = remote_gate['world'].guild_shop_buy_remote(guild_id, shop_id, item_count, shop_type, vip_level)
                 shop = res.get('shop')
             else:
@@ -385,7 +384,6 @@ def shop_buy_505(pro_data, player):
         player.pay.pay(need_gold, get_reason(shop_item.get('type')), func)
 
     player.shop.save_data()
-    print response, '===================================shop buy'
     return response.SerializeToString()
 
 REASON_HASH = {3: const.COMMON_BUY_ITEM,
@@ -468,7 +466,6 @@ def get_shop_items_508(pro_data, player):
     request = GetShopItems()
     request.ParseFromString(pro_data)
     shop_type = request.shop_type
-    print shop_type, '============================shop_type'
 
     response = GetShopItemsResponse()
 
@@ -480,10 +477,8 @@ def get_shop_items_508(pro_data, player):
 
     if shop_type in guild_shops:
         shopdata = player.guild.get_shop_data(shop_type)
-        print shopdata, '==================guildshop'
     else:
         shopdata = player.shop.get_shop_data(shop_type)
-        print shopdata, '==================playershop'
 
     shop_is_open = player.base_info.vip_shop_open
     _is_open = shop_is_open.get(shop_type, 0)
@@ -517,5 +512,4 @@ def get_shop_items_508(pro_data, player):
     response.luck_num = int(shopdata['luck_num'])
     response.res.result = True
     response.refresh_times = shopdata['refresh_times']
-    print response, '===================================shop list'
     return response.SerializePartialToString()
