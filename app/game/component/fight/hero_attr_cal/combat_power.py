@@ -501,6 +501,7 @@ def combat_power_hero_lineup(player, hero, line_up_slot_no, log_name=""):
     create_log(hero.hero_no)
     line_up_attr = hero_lineup_attr(player, hero, line_up_slot_no)
     line_up_attr["job"] = hero.hero_info.job
+    line_up_attr["hero_info"] = hero.hero_info
     log(hero.hero_no, "武将阵容", "", line_up_attr)
     formula = game_configs.formula_config.get("fightValueArray").get("formula")
     assert formula!=None, "formula can not be None"
