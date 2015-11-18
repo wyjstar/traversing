@@ -23,6 +23,7 @@ function CommonData:ctor(item)
 
 end
 
+
 --初始化定时器
 function CommonData:initTasks()
     --24:00的定时器
@@ -163,6 +164,7 @@ function CommonData:setData(data)
     self.get_stamina_times = data.get_stamina_times     -- 通过邮件获取体力次数
     self.buy_stamina_times = data.buy_stamina_times     -- 购买体力次数
     print("------self.buy_stamina_times--------",self.buy_stamina_times)
+
     self.last_gain_stamina_time = data.last_gain_stamina_time -- 上次获得体力时间
 
 
@@ -182,7 +184,13 @@ function CommonData:setData(data)
         for k,v in pairs(data.buy_times) do --{资源类型,购买次数,上次获得体力时间}
             self.buy_times[v.resource_type] = {resource_type=v.resource_type,buy_stamina_times = v.buy_stamina_times,last_gain_time = v.last_gain_stamina_time}
         end
+        --         --TODO:ADD RES_TYPE.ENERGY
+        -- if self.buy_times[RES_TYPE.ENERGY] == nil then
+        --     self.buy_times[RES_TYPE.ENERGY] = {resource_type=RES_TYPE.ENERGY,buy_stamina_times = 0,last_gain_time = 0}
+        -- end
     end
+    print("buy_times:====>")
+    table.print(self.buy_times)
 
     self:updateSrvTimer()
     self:resRecoverTime()
@@ -323,6 +331,8 @@ function CommonData:setFinance(type_, num)
         self:dispatchEvent(EventName.UPDATE_SILVER)
     elseif type_ == RES_TYPE.QJYL then
         self:dispatchEvent(EventName.UPDATE_QJYL)
+    elseif type_ == RES_TYPE.ENERGY then
+        self:dispatchEvent(EventName.UPDATE_ENERGY) 
     end
 end
 
@@ -519,16 +529,7 @@ function CommonData:setSoul_shop_refresh_times(times)
      self.GameLoginResponse.soul_shop_refresh_times = self.GameLoginResponse.soul_shop_refresh_times + times
 end
 function CommonData:getSoul_shop_refresh_times() return self.GameLoginResponse.soul_shop_refresh_times end
--- 在线时间
--- function CommonData:setOnlineTime(time) self.onlineTimes = time end
--- function CommonData:getOnlineTime()
---     if not self.onlineTimes then
---         return 0
---     end
---     local nowTime = os.time()
---     local diff_time = nowTime - self.client_time
---     return self.onlineTimes + diff_time
--- end
+
 function CommonData:setOnlineTime(time)
     -- cclog("---setOnlineTime-----"..time)
     self.onlineTimes = time
@@ -537,13 +538,6 @@ function CommonData:setOnlineTime(time)
 end
 
 function CommonData:getOnlineTime()
-    -- if not self.onlineTimes then
-    --     return 0
-    -- end
-    -- local nowTime = os.time()
-    -- local diff_time = nowTime - self.getOnlineRec
-    -- return self.onlineTimes + diff_time
-    --在线累计时间 + 服务器当前时间 - 客户端登陆时间
     return self.onlineTimes + self:getTime() - self.server_time
 end
 
@@ -575,11 +569,6 @@ function CommonData:reductionHero_soul(num)
     self:subFinance(RES_TYPE.HERO_SOUL, num)
 end
 
--- -- 减少充值币
--- function CommonData:reductionGlod(num)
---     self.GameLoginResponse.gold = self.GameLoginResponse.gold - num
--- end
-
 --pvp声望
 function CommonData:getPvpStore()
     return self:getFinance(RES_TYPE.PVP_SCROE)  --self.pvp_score
@@ -594,10 +583,6 @@ end
 --玩家id
 function CommonData:setAccountId(cur_id) self.accountId = cur_id end
 function CommonData:getAccountId() return self.accountId end
-
---玩家头像id
--- function CommonData:setAccountId(cur_id) self.accountId = cur_id end
--- function CommonData:getAccountId() return self.accountId end
 
 --玩家昵称
 function CommonData:setUserName(cur_name) 
@@ -681,12 +666,26 @@ function CommonData:getStamina() return self:getFinance(RES_TYPE.STAMINA) end
 
 function CommonData:addStamina(num) 
     self:addFinance(RES_TYPE.STAMINA, num)
-    -- getHomeBasicAttrView():updateStamina()
 end
 
---购买体力次数 (已经无效了)
--- function CommonData:getBuyStaminaTimes() return self.buy_stamina_times end
--- function CommonData:addBuyStaminaTimes() self.buy_stamina_times = self.buy_stamina_times + 1 end
+--[[--
+    获取精力
+]]
+function CommonData:getEnergy()
+    return self:getFinance(RES_TYPE.ENERGY)
+end
+--[[--
+    减少精力
+]]
+function CommonData:subEnergy(num)
+     self:subFinance(RES_TYPE.ENERGY, num)
+end
+--[[--
+    增加精力
+]]
+function CommonData:addEnergy()
+      self:addFinance(RES_TYPE.ENERGY, num)
+end
 
 --元宝
 function CommonData:setGold(cur_gold)
@@ -696,7 +695,6 @@ function CommonData:setGold(cur_gold)
 end
 
 function CommonData:getGold() return self:getFinance(RES_TYPE.GOLD) end --self.gold end
-
 --金币
 function CommonData:setCoin(cur_coin)
     -- self.coin = cur_coin
@@ -1230,8 +1228,6 @@ function CommonData:setPvpOvercomeRefreshCount(idx)
     idx = idx or 0
     if idx < 0 then idx = 0 end
     self.pvp_overcome_refresh_count = idx
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_GGZJ)
 end
 --[[--
 增加过关斩将当前已重置次数
@@ -1240,27 +1236,12 @@ function CommonData:addPvpOvercomeRefreshCount(num)
     num = num or 1
     if num < 1 then num = 1 end
     self.pvp_overcome_refresh_count = self.pvp_overcome_refresh_count + num
-    -- 发送红点消息
-    self:dispatchEvent(EventName.UPDATE_GGZJ)
 end
 --[[--
 得到过关斩将当前已重置次数
 ]]
 function CommonData:getPvpOvercomeRefreshCount()
     return self.pvp_overcome_refresh_count
-end
-
---[[--
-是否过关斩将需要显示红点
-]]
-function CommonData:isPvpRedDotInHome()
-    print("CommonData:isPvpRedDotInHome", self.c_BaseTemplate:getCurBuyGgzjTimes(), self.pvp_overcome_refresh_count)
-    local _isOpen = self:isOpenByType(const.nextDay_openType.HJQY)
-    if _isOpen then
-        return self.c_BaseTemplate:getCurBuyGgzjTimes() - self.pvp_overcome_refresh_count > 0
-    else
-        return false
-    end
 end
 
 --等级
@@ -1305,31 +1286,44 @@ function CommonData:isGiftRedDot()
     return self:isFeastTime(timeCanGet) and not self:isEatFeast(timeCanGet)
 end
 
+
 --[[--
 是否显示经脉红点,如果拥有的琼浆玉露能够完成至少一次点穴,那么显示红点
 ]]
 function CommonData:isJingMaiRedDotInHome()
     print("CommonData:isJingMaiRedDotInHome")
-    -- -- 获取琼浆玉露数量
-    -- local qjyl = self:getFinance(RES_TYPE.QJYL)
-    -- -- 获取下次点穴的消耗
-    -- local heroList = getDataManager():getSoldierData():getSoldierData()
-    -- for k,v in pairs(heroList) do
-    --     if v.hero_no then
-    --         local sealID = getDataManager():getSoldierData():getSealById(v.hero_no)
-    --         sealID = sealID or 0
-    --         print("_LZD:-----1--------", v.hero_no, sealID)
-    --         local nextSealID = getTemplateManager():getSealTemplate():getNext(sealID)
-    --         print("_LZD:-----2--------", v.hero_no, sealID, nextSealID)
-    --         local sealCost = getTemplateManager():getSealTemplate():getExpend(nextSealID)
-    --         if sealCost and sealCost > 0 and qjyl >= sealCost then -- 可以点穴
-    --             return true
-    --         end
-    --     end
-    -- end
+    -- 获取琼浆玉露数量
+    local qjyl = self:getFinance(RES_TYPE.QJYL)
+    -- 获取下次点穴的消耗
+    local heroList = getDataManager():getSoldierData():getSoldierData()
+    for k,v in pairs(heroList) do
+        if v.hero_no then
+            local sealID = getDataManager():getSoldierData():getSealById(v.hero_no)
+            sealID = sealID or 0
+            -- print("_LZD:-----1--------", v.level, v.hero_no, sealID)
+            local nextSealID = getTemplateManager():getSealTemplate():getNext(sealID)
+            local sealCost = getTemplateManager():getSealTemplate():getExpend(nextSealID)
+            local sealLv = getTemplateManager():getSealTemplate():getHeroLevelRestrictions(nextSealID)
+            -- print("_LZD:-----2--------", v.level, sealLv, sealCost, v.hero_no, sealID, nextSealID)
+            if v.level >= sealLv and sealCost and sealCost > 0 and qjyl >= sealCost then -- 可以点穴
+                return true
+            end
+        end
+    end
 
     return false
 end
-
+--[[--
+夺宝是否显示红点
+]]
+function CommonData:getIsDuoBaoRed()
+    local energy =  self:getEnergy()
+    local need = getTemplateManager():getBaseTemplate():getTreasureConsume()
+    if energy >= need then 
+        return true
+    else 
+        return false
+    end 
+end
 return CommonData
 

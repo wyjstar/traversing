@@ -43,12 +43,25 @@ function CustomMatrixTableView:reloadData()
 	    	self._tableView:setVerticalFillOrder(cc.TABLEVIEW_FILL_TOPDOWN)	    	
 	    end
 	    self:addChild(self._tableView)
-	    self._tableView:addBar()
+	    if self._tableView.addBar then self._tableView:addBar() end
 	    self._tableView:registerScriptHandler(handler(self, self.cellSizeForIndex), cc.TABLECELL_SIZE_FOR_INDEX)
 	    self._tableView:registerScriptHandler(handler(self, self.cellSizeAtIndex), cc.TABLECELL_SIZE_AT_INDEX)
 	    self._tableView:registerScriptHandler(handler(self, self.numberOfCells), cc.NUMBER_OF_CELLS_IN_TABLEVIEW)
 	end
 	self._tableView:reloadData()	
+end
+
+--[[--
+	更新每个cell的数据
+]]
+function CustomMatrixTableView:updateAllData()
+	local indexs = self:numberOfCells()
+	for i=0,indexs-1 do
+		local cell = self._tableView:cellAtIndex(i)
+		if cell then
+			self._tableView:updateCellAtIndex(i)
+		end
+	end
 end
 --[[--
 获取cell大小
@@ -57,12 +70,36 @@ function CustomMatrixTableView:cellSizeForIndex(tbl, idx)
 	local size = nil
 	if self._direct == CustomMatrixTableView.DIRECTION_VERTICAL then
 		size = self:getCellSize(idx*self._columns+1)
+		-- table.print(size)
+		print(size.height, (size.width + self._columnSpace)*self._columns-self._columnSpace,self._columns)
 		return size.height, (size.width + self._columnSpace)*self._columns-self._columnSpace		
 	else
 		size = self:getCellSize(idx*self._lines+1)
 		return (size.height + self._lineSpace)*self._lines-self._lineSpace, size.width
 	end
 	return size
+end
+
+--[[--
+	添加一个Cell
+	@param node 父节点
+	@param index 在数据源中的位置
+	@param pos 在node节点中的位置
+]]
+function CustomMatrixTableView:addCell(node, index,pos)
+
+	local item = self:loadCellData(nil, index)
+
+	local x, y = 0, 0
+	--横向排列
+	if self._direct == CustomMatrixTableView.DIRECTION_VERTICAL then
+		x = (pos - 1) * (self:getCellSize(index).width + self._columnSpace)
+	else
+		y = height - pos * (self:getCellSize(index).width+ self._lineSpace)
+	end
+	item:setPosition(cc.p(x, y))
+	item.index = index
+	node:addChild(item)
 end
 
 --[[--
@@ -73,14 +110,24 @@ function CustomMatrixTableView:cellSizeAtIndex(tbl, idx)
 	if cell then
 		local node = cell:getChildren()[1]
 		local children = node:getChildren()
-		for iidx, item in pairs(children) do
-			local index = iidx + idx*self:getNumberOfCells()
-			item:setVisible((index <= self._totalCount))
-			if item:isVisible() then
-				self:loadCellData(item, index)		
+		
+		local count = self:getNumberOfCells()
+
+		for iidx = 1,count do
+			local item = children[iidx]
+			local index = iidx + idx*count
+			if item then
+				item:setVisible((index <= self._totalCount))
+				if item:isVisible() then
+					self:loadCellData(item, index)		
+				end
+			else
+				if index <= self._totalCount then
+					self:addCell(node,index,iidx)
+				end
 			end
 		end
-	else
+	else	
 		cell = cc.TableViewCell:new()
 		local node = game.newLayer()
 		local pos = nil
@@ -96,11 +143,18 @@ function CustomMatrixTableView:cellSizeAtIndex(tbl, idx)
 	    			drag = true
 	    		end 
 		    elseif event == "ended" then
+		    	print("==========click ended=========")
 		    	if not drag then
-					local children = node:getChildren()
-					for _, item in pairs(children) do
-						if item:isVisible() and self._onClickCellFunc and self._onClickCellFunc(item, x, y) then
-							break	
+		    		print("registerScriptTouchHandler====>",x,y,idx)
+		    		local node_pos = node:convertToNodeSpace(pos)
+		    		table.print(node:getBoundingBox())
+		    		if cc.rectContainsPoint(node:getBoundingBox(), node_pos) then
+		    			print("check Node===>")
+						local children = node:getChildren()
+						for _, item in pairs(children) do
+							if item:isVisible() and self._onClickCellFunc and self._onClickCellFunc(item, x, y) then
+								break	
+							end
 						end
 					end			    		
 		    	end	    	
@@ -109,6 +163,7 @@ function CustomMatrixTableView:cellSizeAtIndex(tbl, idx)
 	    node:setTouchEnabled(true)		
 		local height, width = self:cellSizeForIndex(tbl, idx)
 		node:setContentSize(cc.size(width, height))
+
 		if self._offsetx ~= 0 then
 			node:setPosition(cc.p(self._offsetx, 0))
 		end
@@ -118,13 +173,13 @@ function CustomMatrixTableView:cellSizeAtIndex(tbl, idx)
 		local count = 0
 		if self._direct == CustomMatrixTableView.DIRECTION_VERTICAL then
 			if (idx + 1) == self._lines then
-				count= self._totalCount%self._columns
+				count= self._totalCount - idx*self._columns
 			else
 				count= self._columns
 			end
 		else				
 			if (idx + 1) == self._columns then
-				count= self._totalCount%self._lines
+				count= self._totalCount - idx*self._lines
 			else
 				count= self._lines
 			end
@@ -133,16 +188,7 @@ function CustomMatrixTableView:cellSizeAtIndex(tbl, idx)
 		--加载数据
 		for i = 1, count do
 			local index = i + idx*self:getNumberOfCells()
-			local item = self:loadCellData(nil, index)
-			--横向排列
-			if self._direct == CustomMatrixTableView.DIRECTION_VERTICAL then
-				x = (i - 1) * (item:getContentSize().width + self._columnSpace)
-			else
-				y = height - i * (item:getContentSize().height+ self._lineSpace)
-			end
-			item:setPosition(cc.p(x, y))
-			item.index = index
-			node:addChild(item)
+			self:addCell(node,index,i)
 		end		
 	end
 	return cell
@@ -186,6 +232,14 @@ function CustomMatrixTableView:loadCellData(item, idx)
 	if self._loadCellDataFunc then
 		return self._loadCellDataFunc(item, idx)
 	end
+end
+
+function CustomMatrixTableView:getContentOffset()
+	return self._tableView:getContentOffset()
+end
+
+function CustomMatrixTableView:setContentOffset(pos)
+	self._tableView:setContentOffset(pos)
 end
 
 return CustomMatrixTableView

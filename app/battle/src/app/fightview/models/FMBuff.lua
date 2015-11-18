@@ -12,7 +12,7 @@ function FMBuff:ctor(target_side, skill_buff_info, process)
 end
 
 function FMBuff:check_hit(owner)
-    return check_hit(self.skill_buff_info, self.process.attacker.hit, owner.dodge)
+    return check_hit(self.skill_buff_info, self.process.attacker, owner)
 end
 
 function FMBuff:perform_hp_mp_buff(owner)

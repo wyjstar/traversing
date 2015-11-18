@@ -202,12 +202,14 @@ end
 
 ]]
 function CustomScrollView:onTouchEnded(x, y)
-	if self.drag.isTap then
-        self:onTouchEndedWithTap(x, y)
-	else
-        self:onTouchEndedWithoutTap(x, y)
-	end
-    self.drag = {}
+    if self.drag then
+    	if self.drag.isTap then
+            self:onTouchEndedWithTap(x, y)
+    	else
+            self:onTouchEndedWithoutTap(x, y)
+    	end
+        self.drag = {}
+    end
 end
 --[[--
 点中按钮结束
