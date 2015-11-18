@@ -38,8 +38,8 @@ if __name__ == "__main__":
         #os.system("cp /tmp/excel_cpickle config/excel_cpickle")
         #os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
 
-    import sys
-    print(sys.exit())
+    #import sys
+    #print(sys.exit())
 
     if os.path.exists('/tmp/server_list.json'):
         os.system("cp /tmp/server_list.json server_list.json")
