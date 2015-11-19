@@ -1464,22 +1464,16 @@ def appoint_1810(data, player):
     response.res.result = True
     return response.SerializeToString()
 
-"""
+
 @remoteserviceHandle('gate')
-def create_guild_801(data, player):
-    args = CreateGuildRequest()
+def up_build_870(data, player):
+    args = UpBuildRequest()
     args.ParseFromString(data)
-    g_name = args.name
-    icon_id = args.icon_id
-    response = CreateGuildResponse()
+    build_type = args.build_type
+    response = UpBuildResponse()
+
     p_id = player.base_info.id
     g_id = player.guild.g_id
-
-    if game_configs.base_config.get('create_level') > player.base_info.level:
-        response.res.result = False
-        # response.res.message = "等级不够"
-        response.res.result_no = 811
-        return response.SerializeToString()
 
     if game_configs.base_config.get('create_money') > player.finance.gold:
         response.res.result = False
@@ -1563,4 +1557,3 @@ def create_guild_801(data, player):
                     player.base_info.level)
     print response, '===========================222create'
     return response.SerializeToString()
-"""

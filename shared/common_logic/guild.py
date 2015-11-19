@@ -48,7 +48,7 @@ class Guild(object):
                 'call': self._call,
                 'invite_join': self._invite_join,
                 'p_list': self._p_list,
-                'build': self._build,
+                'build': self.build,
                 'apply': self._apply}
         return data
 
@@ -126,7 +126,15 @@ class Guild(object):
 
     @property
     def build(self):
-        return self._build
+        build_info = {}
+        build_conf = game_configs.base_config.get('guild_level')
+        for build_type, build_level in build_conf.items():
+            if build_level >= 1:
+                if self._build.get(build_type):
+                    build_info[build_type] = self._build.get(build_type)
+                else:
+                    build_info[build_type] = build_level
+        return build_info
 
     @build.setter
     def build(self, v):
