@@ -29,7 +29,7 @@ class CharacterLoginGiftComponent(Component):
         data = character_info.get('login_gift')
         self._continuous_day = data.get('continuous_day', {})
         self._continuous_day_num = data.get('continuous_day_num', 0)
-        self._continuous_day = data.get('continuous_7day', {})
+        self._continuous_7day = data.get('continuous_7day', {})
         self._continuous_7day_num = data.get('continuous_7day_num', 0)
         self._cumulative_day_num = data.get('cumulative_day_num', 0)
         self._cumulative_day = data.get('cumulative_day', {})
@@ -68,10 +68,8 @@ class CharacterLoginGiftComponent(Component):
             activity_infos = game_configs.activity_config.get(18)
             for info in activity_infos:
                 self._continuous_7day[info.id] = -1
-            self._continuous_day[18001] = 0
-            self._continuous_day_num = 1
-            if days_to_current(self._owner.base_info.register_time) > 7:
-                self._continuous_7day_num = -1
+            self._continuous_7day[18001] = 0
+            self._continuous_7day_num = 1
 
 
         elif days_to_current(self._last_login) == 1:
@@ -100,6 +98,8 @@ class CharacterLoginGiftComponent(Component):
                     self._cumulative_day[k] = 0
                     break
 
+        if days_to_current(self._owner.base_info.register_time) > 7:
+            self._continuous_7day_num = -1
         self._last_login = get_current_timestamp()
         self.save_data()
 
