@@ -1467,7 +1467,6 @@ def appoint_1810(data, player):
 """
 @remoteserviceHandle('gate')
 def create_guild_801(data, player):
-    """创建公会 """
     args = CreateGuildRequest()
     args.ParseFromString(data)
     g_name = args.name
