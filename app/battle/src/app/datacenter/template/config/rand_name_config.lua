@@ -1,96 +1,96 @@
 rand_name_config={
   [1] = {
-  ["id"] = 1,  ["office"] = "密使",  ["prefix_2"] = "夜行",  ["prefix_1"] = "堕落",}
+  ["prefix_2"] = "夜行",  ["office"] = "密使",  ["prefix_1"] = "堕落",  ["id"] = 1,}
 ,  [2] = {
-  ["id"] = 2,  ["office"] = "太尉",  ["prefix_2"] = "攻城",  ["prefix_1"] = "陨落",}
+  ["prefix_2"] = "攻城",  ["office"] = "太尉",  ["prefix_1"] = "陨落",  ["id"] = 2,}
 ,  [3] = {
-  ["id"] = 3,  ["office"] = "大夫",  ["prefix_2"] = "归乡",  ["prefix_1"] = "凶暴",}
+  ["prefix_2"] = "归乡",  ["office"] = "大夫",  ["prefix_1"] = "凶暴",  ["id"] = 3,}
 ,  [4] = {
-  ["id"] = 4,  ["office"] = "太史",  ["prefix_2"] = "返乡",  ["prefix_1"] = "凶残",}
+  ["prefix_2"] = "返乡",  ["office"] = "太史",  ["prefix_1"] = "凶残",  ["id"] = 4,}
 ,  [5] = {
-  ["id"] = 5,  ["office"] = "长史",  ["prefix_2"] = "偷盗",  ["prefix_1"] = "凶恶",}
+  ["prefix_2"] = "偷盗",  ["office"] = "长史",  ["prefix_1"] = "凶恶",  ["id"] = 5,}
 ,  [6] = {
-  ["id"] = 6,  ["office"] = "侍中",  ["prefix_2"] = "流浪",  ["prefix_1"] = "疯狂",}
+  ["prefix_2"] = "流浪",  ["office"] = "侍中",  ["prefix_1"] = "疯狂",  ["id"] = 6,}
 ,  [7] = {
-  ["id"] = 7,  ["office"] = "侍郎",  ["prefix_2"] = "迷失",  ["prefix_1"] = "野蛮",}
+  ["prefix_2"] = "迷失",  ["office"] = "侍郎",  ["prefix_1"] = "野蛮",  ["id"] = 7,}
 ,  [8] = {
-  ["id"] = 8,  ["office"] = "令尹",  ["prefix_2"] = "逐天",  ["prefix_1"] = "狂暴",}
+  ["prefix_2"] = "逐天",  ["office"] = "令尹",  ["prefix_1"] = "狂暴",  ["id"] = 8,}
 ,  [9] = {
-  ["id"] = 9,  ["office"] = "司马",  ["prefix_2"] = "逐浪",  ["prefix_1"] = "残虐",}
+  ["prefix_2"] = "逐浪",  ["office"] = "司马",  ["prefix_1"] = "残虐",  ["id"] = 9,}
 ,  [10] = {
-  ["id"] = 10,  ["office"] = "刺史",  ["prefix_2"] = "潜伏",  ["prefix_1"] = "狂野",}
+  ["prefix_2"] = "潜伏",  ["office"] = "刺史",  ["prefix_1"] = "狂野",  ["id"] = 10,}
 ,  [11] = {
-  ["id"] = 11,  ["office"] = "太守",  ["prefix_2"] = "伏击",  ["prefix_1"] = "贪婪",}
+  ["prefix_2"] = "伏击",  ["office"] = "太守",  ["prefix_1"] = "贪婪",  ["id"] = 11,}
 ,  [12] = {
-  ["id"] = 12,  ["office"] = "都督",  ["prefix_2"] = "撕裂",  ["prefix_1"] = "机警",}
+  ["prefix_2"] = "撕裂",  ["office"] = "都督",  ["prefix_1"] = "机警",  ["id"] = 12,}
 ,  [13] = {
-  ["id"] = 13,  ["office"] = "巡抚",  ["prefix_2"] = "尖叫",  ["prefix_1"] = "骁勇",}
+  ["prefix_2"] = "尖叫",  ["office"] = "巡抚",  ["prefix_1"] = "骁勇",  ["id"] = 13,}
 ,  [14] = {
-  ["id"] = 14,  ["office"] = "监军",  ["prefix_2"] = "尖啸",  ["prefix_1"] = "迅疾",}
+  ["prefix_2"] = "尖啸",  ["office"] = "监军",  ["prefix_1"] = "迅疾",  ["id"] = 14,}
 ,  [15] = {
-  ["id"] = 15,  ["office"] = "都司",  ["prefix_2"] = "嚎叫",  ["prefix_1"] = "不屈",}
+  ["prefix_2"] = "嚎叫",  ["office"] = "都司",  ["prefix_1"] = "不屈",  ["id"] = 15,}
 ,  [16] = {
-  ["id"] = 16,  ["office"] = "提督",  ["prefix_2"] = "陷落",  ["prefix_1"] = "坚强",}
+  ["prefix_2"] = "陷落",  ["office"] = "提督",  ["prefix_1"] = "坚强",  ["id"] = 16,}
 ,  [17] = {
-  ["id"] = 17,  ["office"] = "都统",  ["prefix_2"] = "探秘",  ["prefix_1"] = "迷茫",}
+  ["prefix_2"] = "探秘",  ["office"] = "都统",  ["prefix_1"] = "迷茫",  ["id"] = 17,}
 ,  [18] = {
-  ["id"] = 18,  ["office"] = "司农",  ["prefix_2"] = "入侵",  ["prefix_1"] = "迷惘",}
+  ["prefix_2"] = "入侵",  ["office"] = "司农",  ["prefix_1"] = "迷惘",  ["id"] = 18,}
 ,  [19] = {
-  ["id"] = 19,  ["office"] = "司空",  ["prefix_2"] = "扫荡",  ["prefix_1"] = "渴求",}
+  ["prefix_2"] = "扫荡",  ["office"] = "司空",  ["prefix_1"] = "渴求",  ["id"] = 19,}
 ,  [20] = {
-  ["id"] = 20,  ["office"] = "尚书",  ["prefix_2"] = "游荡",  ["prefix_1"] = "不息",}
+  ["prefix_2"] = "游荡",  ["office"] = "尚书",  ["prefix_1"] = "不息",  ["id"] = 20,}
 ,  [21] = {
-  ["id"] = 21,  ["office"] = "翰林",  ["prefix_2"] = "搜寻",  ["prefix_1"] = "残酷",}
+  ["prefix_2"] = "搜寻",  ["office"] = "翰林",  ["prefix_1"] = "残酷",  ["id"] = 21,}
 ,  [22] = {
-  ["id"] = 22,  ["office"] = "御史",  ["prefix_2"] = "粉碎",  ["prefix_1"] = "无畏",}
+  ["prefix_2"] = "粉碎",  ["office"] = "御史",  ["prefix_1"] = "无畏",  ["id"] = 22,}
 ,  [23] = {
-  ["id"] = 23,  ["office"] = "都护",  ["prefix_2"] = "毁灭",  ["prefix_1"] = "愤怒",}
+  ["prefix_2"] = "毁灭",  ["office"] = "都护",  ["prefix_1"] = "愤怒",  ["id"] = 23,}
 ,  [24] = {
-  ["id"] = 24,  ["office"] = "上将",  ["prefix_2"] = "劫掠",  ["prefix_1"] = "英勇",}
+  ["prefix_2"] = "劫掠",  ["office"] = "上将",  ["prefix_1"] = "英勇",  ["id"] = 24,}
 ,  [25] = {
-  ["id"] = 25,  ["office"] = "卫将",  ["prefix_2"] = "掠夺",  ["prefix_1"] = "怨恨",}
+  ["prefix_2"] = "掠夺",  ["office"] = "卫将",  ["prefix_1"] = "怨恨",  ["id"] = 25,}
 ,  [26] = {
-  ["id"] = 26,  ["office"] = "飞将",  ["prefix_2"] = "突袭",  ["prefix_1"] = "狂妄",}
+  ["prefix_2"] = "突袭",  ["office"] = "飞将",  ["prefix_1"] = "狂妄",  ["id"] = 26,}
 ,  [27] = {
-  ["id"] = 27,  ["office"] = "",  ["prefix_2"] = "复仇",  ["prefix_1"] = "高傲",}
+  ["prefix_2"] = "复仇",  ["office"] = "",  ["prefix_1"] = "高傲",  ["id"] = 27,}
 ,  [28] = {
-  ["id"] = 28,  ["office"] = "",  ["prefix_2"] = "徘徊",  ["prefix_1"] = "狂乱",}
+  ["prefix_2"] = "徘徊",  ["office"] = "",  ["prefix_1"] = "狂乱",  ["id"] = 28,}
 ,  [29] = {
-  ["id"] = 29,  ["office"] = "",  ["prefix_2"] = "袭击",  ["prefix_1"] = "酷暑",}
+  ["prefix_2"] = "袭击",  ["office"] = "",  ["prefix_1"] = "酷暑",  ["id"] = 29,}
 ,  [30] = {
-  ["id"] = 30,  ["office"] = "",  ["prefix_2"] = "望乡",  ["prefix_1"] = "高温",}
+  ["prefix_2"] = "望乡",  ["office"] = "",  ["prefix_1"] = "高温",  ["id"] = 30,}
 ,  [31] = {
-  ["id"] = 31,  ["office"] = "",  ["prefix_2"] = "焚化",  ["prefix_1"] = "炎热",}
+  ["prefix_2"] = "焚化",  ["office"] = "",  ["prefix_1"] = "炎热",  ["id"] = 31,}
 ,  [32] = {
-  ["id"] = 32,  ["office"] = "",  ["prefix_2"] = "燃烧",  ["prefix_1"] = "灼热",}
+  ["prefix_2"] = "燃烧",  ["office"] = "",  ["prefix_1"] = "灼热",  ["id"] = 32,}
 ,  [33] = {
-  ["id"] = 33,  ["office"] = "",  ["prefix_2"] = "唤风",  ["prefix_1"] = "盛夏",}
+  ["prefix_2"] = "唤风",  ["office"] = "",  ["prefix_1"] = "盛夏",  ["id"] = 33,}
 ,  [34] = {
-  ["id"] = 34,  ["office"] = "",  ["prefix_2"] = "唤魂",  ["prefix_1"] = "热带",}
+  ["prefix_2"] = "唤魂",  ["office"] = "",  ["prefix_1"] = "热带",  ["id"] = 34,}
 ,  [35] = {
-  ["id"] = 35,  ["office"] = "",  ["prefix_2"] = "阴暗",  ["prefix_1"] = "温带",}
+  ["prefix_2"] = "阴暗",  ["office"] = "",  ["prefix_1"] = "温带",  ["id"] = 35,}
 ,  [36] = {
-  ["id"] = 36,  ["office"] = "",  ["prefix_2"] = "唤星",  ["prefix_1"] = "湿润",}
+  ["prefix_2"] = "唤星",  ["office"] = "",  ["prefix_1"] = "湿润",  ["id"] = 36,}
 ,  [37] = {
-  ["id"] = 37,  ["office"] = "",  ["prefix_2"] = "唤血",  ["prefix_1"] = "潮湿",}
+  ["prefix_2"] = "唤血",  ["office"] = "",  ["prefix_1"] = "潮湿",  ["id"] = 37,}
 ,  [38] = {
-  ["id"] = 38,  ["office"] = "",  ["prefix_2"] = "天痕",  ["prefix_1"] = "寒带",}
+  ["prefix_2"] = "天痕",  ["office"] = "",  ["prefix_1"] = "寒带",  ["id"] = 38,}
 ,  [39] = {
-  ["id"] = 39,  ["office"] = "",  ["prefix_2"] = "神恩",  ["prefix_1"] = "深秋",}
+  ["prefix_2"] = "神恩",  ["office"] = "",  ["prefix_1"] = "深秋",  ["id"] = 39,}
 ,  [40] = {
-  ["id"] = 40,  ["office"] = "",  ["prefix_2"] = "神赐",  ["prefix_1"] = "极寒",}
+  ["prefix_2"] = "神赐",  ["office"] = "",  ["prefix_1"] = "极寒",  ["id"] = 40,}
 ,  [41] = {
-  ["id"] = 41,  ["office"] = "",  ["prefix_2"] = "王家",  ["prefix_1"] = "寒冬",}
+  ["prefix_2"] = "王家",  ["office"] = "",  ["prefix_1"] = "寒冬",  ["id"] = 41,}
 ,  [42] = {
-  ["id"] = 42,  ["office"] = "",  ["prefix_2"] = "皇家",  ["prefix_1"] = "深冬",}
+  ["prefix_2"] = "皇家",  ["office"] = "",  ["prefix_1"] = "深冬",  ["id"] = 42,}
 ,  [43] = {
-  ["id"] = 43,  ["office"] = "",  ["prefix_2"] = "高级",  ["prefix_1"] = "冰冷",}
+  ["prefix_2"] = "高级",  ["office"] = "",  ["prefix_1"] = "冰冷",  ["id"] = 43,}
 ,  [44] = {
-  ["id"] = 44,  ["office"] = "",  ["prefix_2"] = "高阶",  ["prefix_1"] = "白夜",}
+  ["prefix_2"] = "高阶",  ["office"] = "",  ["prefix_1"] = "白夜",  ["id"] = 44,}
 ,  [45] = {
-  ["id"] = 45,  ["office"] = "",  ["prefix_2"] = "精英",  ["prefix_1"] = "苍月",}
+  ["prefix_2"] = "精英",  ["office"] = "",  ["prefix_1"] = "苍月",  ["id"] = 45,}
 ,  [46] = {
-  ["id"] = 46,  ["office"] = "",  ["prefix_2"] = "精锐",  ["prefix_1"] = "黑夜",}
+  ["prefix_2"] = "精锐",  ["office"] = "",  ["prefix_1"] = "黑夜",  ["id"] = 46,}
 ,  [47] = {
-  ["id"] = 47,  ["office"] = "",  ["prefix_2"] = "训练",  ["prefix_1"] = "暗月",}
+  ["prefix_2"] = "训练",  ["office"] = "",  ["prefix_1"] = "暗月",  ["id"] = 47,}
 ,}

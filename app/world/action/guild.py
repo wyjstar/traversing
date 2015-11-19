@@ -42,7 +42,7 @@ def create_guild_remote(p_id, g_name, icon_id, apply_guilds):
     guild_name_data.hmset({g_name: guild_obj.g_id})
     del_player_apply(p_id, apply_guilds)
 
-    return {'res': True, 'guild_info': guild_obj.info}
+    return {'res': True, 'guild_info': guild_obj.guild_data}
 
 
 @rootserviceHandle
@@ -60,6 +60,38 @@ def get_guild_info_remote(guild_id, info_name, p_id):
     if p_id:
         res.update(dict(position=guild_obj.get_position(p_id)))
     return res
+
+
+@rootserviceHandle
+def guild_kick_remote(g_id, p_id, be_kick_ids):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('join_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+
+    position = guild_obj.get_position(p_id)
+    kick_list = []
+    p_ids = []
+    for _, x in guild_obj.p_list.items():
+        p_ids += x
+    if not position or position > 2:
+        # 没有权限 或者 不在此军团
+        return {'res': False, 'no': 849}
+    p_list2 = guild_obj.p_list.get(2)
+    p_list3 = guild_obj.p_list.get(3)
+    for be_kick_id in be_kick_ids:
+        if p_list2 and be_kick_id in p_list2 and position == 1:
+            guild_obj.p_list[2].remove(be_kick_id)
+        elif p_list3 and be_kick_id in p_list3:
+            guild_obj.p_list[3].remove(be_kick_id)
+        else:
+            continue
+        kick_list.append(be_kick_id)
+
+    guild_obj.save_data()
+    return {'res': True, 'kick_list': kick_list, 'name': guild_obj.name}
 
 
 @rootserviceHandle

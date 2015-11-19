@@ -153,7 +153,7 @@ class Guild(object):
         # position_p_list = self._p_list.get(position)
         # position_p_list.remove(p_id)
         # self._p_list.update({position: position_p_list})
-        self._p_list.get(position).remote(p_id)
+        self._p_list.get(position).remove(p_id)
 
     def delete_guild(self):
         guild_obj = tb_guild_info.getObj(self._g_id)
@@ -164,7 +164,7 @@ class Guild(object):
         position 原
         position1 后
         '''
-        self._p_list.get(position).remote(p_id)
+        self._p_list.get(position).remove(p_id)
         self._p_list.get(position1).append(p_id)
 
     def editor_call(self, call):

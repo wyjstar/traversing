@@ -1,722 +1,722 @@
 sign_in_config={
   [1] = {
-  ["month"] = 1,  ["id"] = 1,  ["reward"] = {
+  ["times"] = 1,  ["id"] = 1,  ["month"] = 1,  ["vipDouble"] = 1,  ["reward"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 3,}
 ,}
-,  ["times"] = 1,  ["vipDouble"] = 1,}
+,}
 ,  [2] = {
-  ["month"] = 1,  ["id"] = 2,  ["reward"] = {
+  ["times"] = 2,  ["id"] = 2,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 2,}
 ,}
-,  ["times"] = 2,  ["vipDouble"] = 0,}
+,}
 ,  [3] = {
-  ["month"] = 1,  ["id"] = 3,  ["reward"] = {
+  ["times"] = 3,  ["id"] = 3,  ["month"] = 1,  ["vipDouble"] = 2,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 20001,}
 ,}
-,  ["times"] = 3,  ["vipDouble"] = 2,}
+,}
 ,  [4] = {
-  ["month"] = 1,  ["id"] = 4,  ["reward"] = {
+  ["times"] = 4,  ["id"] = 4,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 50000,  [2] = 50000,  [3] = 1,}
 ,}
-,  ["times"] = 4,  ["vipDouble"] = 0,}
+,}
 ,  [5] = {
-  ["month"] = 1,  ["id"] = 5,  ["reward"] = {
+  ["times"] = 5,  ["id"] = 5,  ["month"] = 1,  ["vipDouble"] = 3,  ["reward"] = {
   ["103"] = {
   [1] = 10,  [2] = 10,  [3] = 1010054,}
 ,}
-,  ["times"] = 5,  ["vipDouble"] = 3,}
+,}
 ,  [6] = {
-  ["month"] = 1,  ["id"] = 6,  ["reward"] = {
+  ["times"] = 6,  ["id"] = 6,  ["month"] = 1,  ["vipDouble"] = 4,  ["reward"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 3,}
 ,}
-,  ["times"] = 6,  ["vipDouble"] = 4,}
+,}
 ,  [7] = {
-  ["month"] = 1,  ["id"] = 7,  ["reward"] = {
+  ["times"] = 7,  ["id"] = 7,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 2,}
 ,}
-,  ["times"] = 7,  ["vipDouble"] = 0,}
+,}
 ,  [8] = {
-  ["month"] = 1,  ["id"] = 8,  ["reward"] = {
+  ["times"] = 8,  ["id"] = 8,  ["month"] = 1,  ["vipDouble"] = 5,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 20002,}
 ,}
-,  ["times"] = 8,  ["vipDouble"] = 5,}
+,}
 ,  [9] = {
-  ["month"] = 1,  ["id"] = 9,  ["reward"] = {
+  ["times"] = 9,  ["id"] = 9,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100000,  [2] = 100000,  [3] = 1,}
 ,}
-,  ["times"] = 9,  ["vipDouble"] = 0,}
+,}
 ,  [10] = {
-  ["month"] = 1,  ["id"] = 10,  ["reward"] = {
+  ["times"] = 10,  ["id"] = 10,  ["month"] = 1,  ["vipDouble"] = 6,  ["reward"] = {
   ["103"] = {
   [1] = 10,  [2] = 10,  [3] = 1010054,}
 ,}
-,  ["times"] = 10,  ["vipDouble"] = 6,}
+,}
 ,  [11] = {
-  ["month"] = 1,  ["id"] = 11,  ["reward"] = {
+  ["times"] = 11,  ["id"] = 11,  ["month"] = 1,  ["vipDouble"] = 7,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
-,  ["times"] = 11,  ["vipDouble"] = 7,}
+,}
 ,  [12] = {
-  ["month"] = 1,  ["id"] = 12,  ["reward"] = {
+  ["times"] = 12,  ["id"] = 12,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 2,}
 ,}
-,  ["times"] = 12,  ["vipDouble"] = 0,}
+,}
 ,  [13] = {
-  ["month"] = 1,  ["id"] = 13,  ["reward"] = {
+  ["times"] = 13,  ["id"] = 13,  ["month"] = 1,  ["vipDouble"] = 8,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 20002,}
 ,}
-,  ["times"] = 13,  ["vipDouble"] = 8,}
+,}
 ,  [14] = {
-  ["month"] = 1,  ["id"] = 14,  ["reward"] = {
+  ["times"] = 14,  ["id"] = 14,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 150000,  [2] = 150000,  [3] = 1,}
 ,}
-,  ["times"] = 14,  ["vipDouble"] = 0,}
+,}
 ,  [15] = {
-  ["month"] = 1,  ["id"] = 15,  ["reward"] = {
+  ["times"] = 15,  ["id"] = 15,  ["month"] = 1,  ["vipDouble"] = 9,  ["reward"] = {
   ["103"] = {
   [1] = 10,  [2] = 10,  [3] = 1010054,}
 ,}
-,  ["times"] = 15,  ["vipDouble"] = 9,}
+,}
 ,  [16] = {
-  ["month"] = 1,  ["id"] = 16,  ["reward"] = {
+  ["times"] = 16,  ["id"] = 16,  ["month"] = 1,  ["vipDouble"] = 10,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
-,  ["times"] = 16,  ["vipDouble"] = 10,}
+,}
 ,  [17] = {
-  ["month"] = 1,  ["id"] = 17,  ["reward"] = {
+  ["times"] = 17,  ["id"] = 17,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 2,}
 ,}
-,  ["times"] = 17,  ["vipDouble"] = 0,}
+,}
 ,  [18] = {
-  ["month"] = 1,  ["id"] = 18,  ["reward"] = {
+  ["times"] = 18,  ["id"] = 18,  ["month"] = 1,  ["vipDouble"] = 11,  ["reward"] = {
   ["105"] = {
   [1] = 10,  [2] = 10,  [3] = 20002,}
 ,}
-,  ["times"] = 18,  ["vipDouble"] = 11,}
+,}
 ,  [19] = {
-  ["month"] = 1,  ["id"] = 19,  ["reward"] = {
+  ["times"] = 19,  ["id"] = 19,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 200000,  [2] = 200000,  [3] = 1,}
 ,}
-,  ["times"] = 19,  ["vipDouble"] = 0,}
+,}
 ,  [20] = {
-  ["month"] = 1,  ["id"] = 20,  ["reward"] = {
+  ["times"] = 20,  ["id"] = 20,  ["month"] = 1,  ["vipDouble"] = 12,  ["reward"] = {
   ["103"] = {
   [1] = 10,  [2] = 10,  [3] = 1010054,}
 ,}
-,  ["times"] = 20,  ["vipDouble"] = 12,}
+,}
 ,  [21] = {
-  ["month"] = 1,  ["id"] = 21,  ["reward"] = {
+  ["times"] = 21,  ["id"] = 21,  ["month"] = 1,  ["vipDouble"] = 13,  ["reward"] = {
   ["107"] = {
   [1] = 150,  [2] = 150,  [3] = 3,}
 ,}
-,  ["times"] = 21,  ["vipDouble"] = 13,}
+,}
 ,  [22] = {
-  ["month"] = 1,  ["id"] = 22,  ["reward"] = {
+  ["times"] = 22,  ["id"] = 22,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 150,  [2] = 150,  [3] = 2,}
 ,}
-,  ["times"] = 22,  ["vipDouble"] = 0,}
+,}
 ,  [23] = {
-  ["month"] = 1,  ["id"] = 23,  ["reward"] = {
+  ["times"] = 23,  ["id"] = 23,  ["month"] = 1,  ["vipDouble"] = 14,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 20003,}
 ,}
-,  ["times"] = 23,  ["vipDouble"] = 14,}
+,}
 ,  [24] = {
-  ["month"] = 1,  ["id"] = 24,  ["reward"] = {
+  ["times"] = 24,  ["id"] = 24,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 250000,  [2] = 250000,  [3] = 1,}
 ,}
-,  ["times"] = 24,  ["vipDouble"] = 0,}
+,}
 ,  [25] = {
-  ["month"] = 1,  ["id"] = 25,  ["reward"] = {
+  ["times"] = 25,  ["id"] = 25,  ["month"] = 1,  ["vipDouble"] = 15,  ["reward"] = {
   ["103"] = {
   [1] = 10,  [2] = 10,  [3] = 1010054,}
 ,}
-,  ["times"] = 25,  ["vipDouble"] = 15,}
+,}
 ,  [26] = {
-  ["month"] = 1,  ["id"] = 26,  ["reward"] = {
+  ["times"] = 26,  ["id"] = 26,  ["month"] = 1,  ["vipDouble"] = 15,  ["reward"] = {
   ["107"] = {
   [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
-,  ["times"] = 26,  ["vipDouble"] = 15,}
+,}
 ,  [27] = {
-  ["month"] = 1,  ["id"] = 27,  ["reward"] = {
+  ["times"] = 27,  ["id"] = 27,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 200,  [2] = 200,  [3] = 2,}
 ,}
-,  ["times"] = 27,  ["vipDouble"] = 0,}
+,}
 ,  [28] = {
-  ["month"] = 1,  ["id"] = 28,  ["reward"] = {
+  ["times"] = 28,  ["id"] = 28,  ["month"] = 1,  ["vipDouble"] = 15,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 20003,}
 ,}
-,  ["times"] = 28,  ["vipDouble"] = 15,}
+,}
 ,  [29] = {
-  ["month"] = 1,  ["id"] = 29,  ["reward"] = {
+  ["times"] = 29,  ["id"] = 29,  ["month"] = 1,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,}
-,  ["times"] = 29,  ["vipDouble"] = 0,}
+,}
 ,  [30] = {
-  ["month"] = 1,  ["id"] = 30,  ["reward"] = {
+  ["times"] = 30,  ["id"] = 30,  ["month"] = 1,  ["vipDouble"] = 15,  ["reward"] = {
   ["103"] = {
   [1] = 10,  [2] = 10,  [3] = 1010054,}
 ,}
-,  ["times"] = 30,  ["vipDouble"] = 15,}
+,}
 ,  [31] = {
-  ["month"] = 2,  ["id"] = 31,  ["reward"] = {
+  ["times"] = 1,  ["id"] = 31,  ["month"] = 2,  ["vipDouble"] = 1,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 2,}
 ,}
-,  ["times"] = 1,  ["vipDouble"] = 1,}
+,}
 ,  [32] = {
-  ["month"] = 2,  ["id"] = 32,  ["reward"] = {
+  ["times"] = 2,  ["id"] = 32,  ["month"] = 2,  ["vipDouble"] = 2,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 2,}
 ,}
-,  ["times"] = 2,  ["vipDouble"] = 2,}
+,}
 ,  [33] = {
-  ["month"] = 2,  ["id"] = 33,  ["reward"] = {
+  ["times"] = 3,  ["id"] = 33,  ["month"] = 2,  ["vipDouble"] = 3,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 2,}
 ,}
-,  ["times"] = 3,  ["vipDouble"] = 3,}
+,}
 ,  [34] = {
-  ["month"] = 2,  ["id"] = 34,  ["reward"] = {
+  ["times"] = 4,  ["id"] = 34,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 2,}
 ,}
-,  ["times"] = 4,  ["vipDouble"] = 0,}
+,}
 ,  [35] = {
-  ["month"] = 2,  ["id"] = 35,  ["reward"] = {
+  ["times"] = 5,  ["id"] = 35,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 2,}
 ,}
-,  ["times"] = 5,  ["vipDouble"] = 0,}
+,}
 ,  [36] = {
-  ["month"] = 2,  ["id"] = 36,  ["reward"] = {
+  ["times"] = 6,  ["id"] = 36,  ["month"] = 2,  ["vipDouble"] = 4,  ["reward"] = {
   ["107"] = {
   [1] = 1000,  [2] = 1000,  [3] = 1,}
 ,}
-,  ["times"] = 6,  ["vipDouble"] = 4,}
+,}
 ,  [37] = {
-  ["month"] = 2,  ["id"] = 37,  ["reward"] = {
+  ["times"] = 7,  ["id"] = 37,  ["month"] = 2,  ["vipDouble"] = 5,  ["reward"] = {
   ["107"] = {
   [1] = 1000,  [2] = 1000,  [3] = 1,}
 ,}
-,  ["times"] = 7,  ["vipDouble"] = 5,}
+,}
 ,  [38] = {
-  ["month"] = 2,  ["id"] = 38,  ["reward"] = {
+  ["times"] = 8,  ["id"] = 38,  ["month"] = 2,  ["vipDouble"] = 6,  ["reward"] = {
   ["107"] = {
   [1] = 1000,  [2] = 1000,  [3] = 1,}
 ,}
-,  ["times"] = 8,  ["vipDouble"] = 6,}
+,}
 ,  [39] = {
-  ["month"] = 2,  ["id"] = 39,  ["reward"] = {
+  ["times"] = 9,  ["id"] = 39,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 1000,  [2] = 1000,  [3] = 1,}
 ,}
-,  ["times"] = 9,  ["vipDouble"] = 0,}
+,}
 ,  [40] = {
-  ["month"] = 2,  ["id"] = 40,  ["reward"] = {
+  ["times"] = 10,  ["id"] = 40,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 1000,  [2] = 1000,  [3] = 1,}
 ,}
-,  ["times"] = 10,  ["vipDouble"] = 0,}
+,}
 ,  [41] = {
-  ["month"] = 2,  ["id"] = 41,  ["reward"] = {
+  ["times"] = 11,  ["id"] = 41,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
-,  ["times"] = 11,  ["vipDouble"] = 0,}
+,}
 ,  [42] = {
-  ["month"] = 2,  ["id"] = 42,  ["reward"] = {
+  ["times"] = 12,  ["id"] = 42,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
-,  ["times"] = 12,  ["vipDouble"] = 0,}
+,}
 ,  [43] = {
-  ["month"] = 2,  ["id"] = 43,  ["reward"] = {
+  ["times"] = 13,  ["id"] = 43,  ["month"] = 2,  ["vipDouble"] = 7,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
-,  ["times"] = 13,  ["vipDouble"] = 7,}
+,}
 ,  [44] = {
-  ["month"] = 2,  ["id"] = 44,  ["reward"] = {
+  ["times"] = 14,  ["id"] = 44,  ["month"] = 2,  ["vipDouble"] = 8,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
-,  ["times"] = 14,  ["vipDouble"] = 8,}
+,}
 ,  [45] = {
-  ["month"] = 2,  ["id"] = 45,  ["reward"] = {
+  ["times"] = 15,  ["id"] = 45,  ["month"] = 2,  ["vipDouble"] = 9,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 3,}
 ,}
-,  ["times"] = 15,  ["vipDouble"] = 9,}
+,}
 ,  [46] = {
-  ["month"] = 2,  ["id"] = 46,  ["reward"] = {
+  ["times"] = 16,  ["id"] = 46,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 16,  ["vipDouble"] = 0,}
+,}
 ,  [47] = {
-  ["month"] = 2,  ["id"] = 47,  ["reward"] = {
+  ["times"] = 17,  ["id"] = 47,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 17,  ["vipDouble"] = 0,}
+,}
 ,  [48] = {
-  ["month"] = 2,  ["id"] = 48,  ["reward"] = {
+  ["times"] = 18,  ["id"] = 48,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 18,  ["vipDouble"] = 0,}
+,}
 ,  [49] = {
-  ["month"] = 2,  ["id"] = 49,  ["reward"] = {
+  ["times"] = 19,  ["id"] = 49,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 19,  ["vipDouble"] = 0,}
+,}
 ,  [50] = {
-  ["month"] = 2,  ["id"] = 50,  ["reward"] = {
+  ["times"] = 20,  ["id"] = 50,  ["month"] = 2,  ["vipDouble"] = 10,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 20,  ["vipDouble"] = 10,}
+,}
 ,  [51] = {
-  ["month"] = 2,  ["id"] = 51,  ["reward"] = {
+  ["times"] = 21,  ["id"] = 51,  ["month"] = 2,  ["vipDouble"] = 11,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10001,}
 ,}
-,  ["times"] = 21,  ["vipDouble"] = 11,}
+,}
 ,  [52] = {
-  ["month"] = 2,  ["id"] = 52,  ["reward"] = {
+  ["times"] = 22,  ["id"] = 52,  ["month"] = 2,  ["vipDouble"] = 12,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10001,}
 ,}
-,  ["times"] = 22,  ["vipDouble"] = 12,}
+,}
 ,  [53] = {
-  ["month"] = 2,  ["id"] = 53,  ["reward"] = {
+  ["times"] = 23,  ["id"] = 53,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10001,}
 ,}
-,  ["times"] = 23,  ["vipDouble"] = 0,}
+,}
 ,  [54] = {
-  ["month"] = 2,  ["id"] = 54,  ["reward"] = {
+  ["times"] = 24,  ["id"] = 54,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10001,}
 ,}
-,  ["times"] = 24,  ["vipDouble"] = 0,}
+,}
 ,  [55] = {
-  ["month"] = 2,  ["id"] = 55,  ["reward"] = {
+  ["times"] = 25,  ["id"] = 55,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10001,}
 ,}
-,  ["times"] = 25,  ["vipDouble"] = 0,}
+,}
 ,  [56] = {
-  ["month"] = 2,  ["id"] = 56,  ["reward"] = {
+  ["times"] = 26,  ["id"] = 56,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10002,}
 ,}
-,  ["times"] = 26,  ["vipDouble"] = 0,}
+,}
 ,  [57] = {
-  ["month"] = 2,  ["id"] = 57,  ["reward"] = {
+  ["times"] = 27,  ["id"] = 57,  ["month"] = 2,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10002,}
 ,}
-,  ["times"] = 27,  ["vipDouble"] = 0,}
+,}
 ,  [58] = {
-  ["month"] = 2,  ["id"] = 58,  ["reward"] = {
+  ["times"] = 28,  ["id"] = 58,  ["month"] = 2,  ["vipDouble"] = 13,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10002,}
 ,}
-,  ["times"] = 28,  ["vipDouble"] = 13,}
+,}
 ,  [59] = {
-  ["month"] = 2,  ["id"] = 59,  ["reward"] = {
+  ["times"] = 29,  ["id"] = 59,  ["month"] = 2,  ["vipDouble"] = 14,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10002,}
 ,}
-,  ["times"] = 29,  ["vipDouble"] = 14,}
+,}
 ,  [60] = {
-  ["month"] = 2,  ["id"] = 60,  ["reward"] = {
+  ["times"] = 30,  ["id"] = 60,  ["month"] = 2,  ["vipDouble"] = 15,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10002,}
 ,}
-,  ["times"] = 30,  ["vipDouble"] = 15,}
+,}
 ,  [61] = {
-  ["month"] = 3,  ["id"] = 61,  ["reward"] = {
+  ["times"] = 1,  ["id"] = 61,  ["month"] = 3,  ["vipDouble"] = 1,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10003,}
 ,}
-,  ["times"] = 1,  ["vipDouble"] = 1,}
+,}
 ,  [62] = {
-  ["month"] = 3,  ["id"] = 62,  ["reward"] = {
+  ["times"] = 2,  ["id"] = 62,  ["month"] = 3,  ["vipDouble"] = 2,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10003,}
 ,}
-,  ["times"] = 2,  ["vipDouble"] = 2,}
+,}
 ,  [63] = {
-  ["month"] = 3,  ["id"] = 63,  ["reward"] = {
+  ["times"] = 3,  ["id"] = 63,  ["month"] = 3,  ["vipDouble"] = 3,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10003,}
 ,}
-,  ["times"] = 3,  ["vipDouble"] = 3,}
+,}
 ,  [64] = {
-  ["month"] = 3,  ["id"] = 64,  ["reward"] = {
+  ["times"] = 4,  ["id"] = 64,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10003,}
 ,}
-,  ["times"] = 4,  ["vipDouble"] = 0,}
+,}
 ,  [65] = {
-  ["month"] = 3,  ["id"] = 65,  ["reward"] = {
+  ["times"] = 5,  ["id"] = 65,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 10003,}
 ,}
-,  ["times"] = 5,  ["vipDouble"] = 0,}
+,}
 ,  [66] = {
-  ["month"] = 3,  ["id"] = 66,  ["reward"] = {
+  ["times"] = 6,  ["id"] = 66,  ["month"] = 3,  ["vipDouble"] = 4,  ["reward"] = {
   ["103"] = {
   [1] = 5,  [2] = 5,  [3] = 1010043,}
 ,}
-,  ["times"] = 6,  ["vipDouble"] = 4,}
+,}
 ,  [67] = {
-  ["month"] = 3,  ["id"] = 67,  ["reward"] = {
+  ["times"] = 7,  ["id"] = 67,  ["month"] = 3,  ["vipDouble"] = 5,  ["reward"] = {
   ["103"] = {
   [1] = 5,  [2] = 5,  [3] = 1010043,}
 ,}
-,  ["times"] = 7,  ["vipDouble"] = 5,}
+,}
 ,  [68] = {
-  ["month"] = 3,  ["id"] = 68,  ["reward"] = {
+  ["times"] = 8,  ["id"] = 68,  ["month"] = 3,  ["vipDouble"] = 6,  ["reward"] = {
   ["103"] = {
   [1] = 5,  [2] = 5,  [3] = 1010043,}
 ,}
-,  ["times"] = 8,  ["vipDouble"] = 6,}
+,}
 ,  [69] = {
-  ["month"] = 3,  ["id"] = 69,  ["reward"] = {
+  ["times"] = 9,  ["id"] = 69,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["103"] = {
   [1] = 5,  [2] = 5,  [3] = 1010043,}
 ,}
-,  ["times"] = 9,  ["vipDouble"] = 0,}
+,}
 ,  [70] = {
-  ["month"] = 3,  ["id"] = 70,  ["reward"] = {
+  ["times"] = 10,  ["id"] = 70,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["103"] = {
   [1] = 5,  [2] = 5,  [3] = 1010043,}
 ,}
-,  ["times"] = 10,  ["vipDouble"] = 0,}
+,}
 ,  [71] = {
-  ["month"] = 3,  ["id"] = 71,  ["reward"] = {
+  ["times"] = 11,  ["id"] = 71,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 11,  ["vipDouble"] = 0,}
+,}
 ,  [72] = {
-  ["month"] = 3,  ["id"] = 72,  ["reward"] = {
+  ["times"] = 12,  ["id"] = 72,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 12,  ["vipDouble"] = 0,}
+,}
 ,  [73] = {
-  ["month"] = 3,  ["id"] = 73,  ["reward"] = {
+  ["times"] = 13,  ["id"] = 73,  ["month"] = 3,  ["vipDouble"] = 7,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 13,  ["vipDouble"] = 7,}
+,}
 ,  [74] = {
-  ["month"] = 3,  ["id"] = 74,  ["reward"] = {
+  ["times"] = 14,  ["id"] = 74,  ["month"] = 3,  ["vipDouble"] = 8,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 14,  ["vipDouble"] = 8,}
+,}
 ,  [75] = {
-  ["month"] = 3,  ["id"] = 75,  ["reward"] = {
+  ["times"] = 15,  ["id"] = 75,  ["month"] = 3,  ["vipDouble"] = 9,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 15,  ["vipDouble"] = 9,}
+,}
 ,  [76] = {
-  ["month"] = 3,  ["id"] = 76,  ["reward"] = {
+  ["times"] = 16,  ["id"] = 76,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 7,}
 ,}
-,  ["times"] = 16,  ["vipDouble"] = 0,}
+,}
 ,  [77] = {
-  ["month"] = 3,  ["id"] = 77,  ["reward"] = {
+  ["times"] = 17,  ["id"] = 77,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 7,}
 ,}
-,  ["times"] = 17,  ["vipDouble"] = 0,}
+,}
 ,  [78] = {
-  ["month"] = 3,  ["id"] = 78,  ["reward"] = {
+  ["times"] = 18,  ["id"] = 78,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 7,}
 ,}
-,  ["times"] = 18,  ["vipDouble"] = 0,}
+,}
 ,  [79] = {
-  ["month"] = 3,  ["id"] = 79,  ["reward"] = {
+  ["times"] = 19,  ["id"] = 79,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 7,}
 ,}
-,  ["times"] = 19,  ["vipDouble"] = 0,}
+,}
 ,  [80] = {
-  ["month"] = 3,  ["id"] = 80,  ["reward"] = {
+  ["times"] = 20,  ["id"] = 80,  ["month"] = 3,  ["vipDouble"] = 10,  ["reward"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 7,}
 ,}
-,  ["times"] = 20,  ["vipDouble"] = 10,}
+,}
 ,  [81] = {
-  ["month"] = 3,  ["id"] = 81,  ["reward"] = {
+  ["times"] = 21,  ["id"] = 81,  ["month"] = 3,  ["vipDouble"] = 11,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
-,  ["times"] = 21,  ["vipDouble"] = 11,}
+,}
 ,  [82] = {
-  ["month"] = 3,  ["id"] = 82,  ["reward"] = {
+  ["times"] = 22,  ["id"] = 82,  ["month"] = 3,  ["vipDouble"] = 12,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
-,  ["times"] = 22,  ["vipDouble"] = 12,}
+,}
 ,  [83] = {
-  ["month"] = 3,  ["id"] = 83,  ["reward"] = {
+  ["times"] = 23,  ["id"] = 83,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
-,  ["times"] = 23,  ["vipDouble"] = 0,}
+,}
 ,  [84] = {
-  ["month"] = 3,  ["id"] = 84,  ["reward"] = {
+  ["times"] = 24,  ["id"] = 84,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
-,  ["times"] = 24,  ["vipDouble"] = 0,}
+,}
 ,  [85] = {
-  ["month"] = 3,  ["id"] = 85,  ["reward"] = {
+  ["times"] = 25,  ["id"] = 85,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
-,  ["times"] = 25,  ["vipDouble"] = 0,}
+,}
 ,  [86] = {
-  ["month"] = 3,  ["id"] = 86,  ["reward"] = {
+  ["times"] = 26,  ["id"] = 86,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["101"] = {
   [1] = 1,  [2] = 1,  [3] = 10048,}
 ,}
-,  ["times"] = 26,  ["vipDouble"] = 0,}
+,}
 ,  [87] = {
-  ["month"] = 3,  ["id"] = 87,  ["reward"] = {
+  ["times"] = 27,  ["id"] = 87,  ["month"] = 3,  ["vipDouble"] = 0,  ["reward"] = {
   ["101"] = {
   [1] = 1,  [2] = 1,  [3] = 10048,}
 ,}
-,  ["times"] = 27,  ["vipDouble"] = 0,}
+,}
 ,  [88] = {
-  ["month"] = 3,  ["id"] = 88,  ["reward"] = {
+  ["times"] = 28,  ["id"] = 88,  ["month"] = 3,  ["vipDouble"] = 13,  ["reward"] = {
   ["101"] = {
   [1] = 1,  [2] = 1,  [3] = 10048,}
 ,}
-,  ["times"] = 28,  ["vipDouble"] = 13,}
+,}
 ,  [89] = {
-  ["month"] = 3,  ["id"] = 89,  ["reward"] = {
+  ["times"] = 29,  ["id"] = 89,  ["month"] = 3,  ["vipDouble"] = 14,  ["reward"] = {
   ["101"] = {
   [1] = 1,  [2] = 1,  [3] = 10048,}
 ,}
-,  ["times"] = 29,  ["vipDouble"] = 14,}
+,}
 ,  [90] = {
-  ["month"] = 3,  ["id"] = 90,  ["reward"] = {
+  ["times"] = 30,  ["id"] = 90,  ["month"] = 3,  ["vipDouble"] = 15,  ["reward"] = {
   ["101"] = {
   [1] = 1,  [2] = 1,  [3] = 10048,}
 ,}
-,  ["times"] = 30,  ["vipDouble"] = 15,}
+,}
 ,  [91] = {
-  ["month"] = 4,  ["id"] = 91,  ["reward"] = {
+  ["times"] = 1,  ["id"] = 91,  ["month"] = 4,  ["vipDouble"] = 1,  ["reward"] = {
   ["107"] = {
   [1] = 500,  [2] = 500,  [3] = 1,}
 ,}
-,  ["times"] = 1,  ["vipDouble"] = 1,}
+,}
 ,  [92] = {
-  ["month"] = 4,  ["id"] = 92,  ["reward"] = {
+  ["times"] = 2,  ["id"] = 92,  ["month"] = 4,  ["vipDouble"] = 2,  ["reward"] = {
   ["107"] = {
   [1] = 500,  [2] = 500,  [3] = 1,}
 ,}
-,  ["times"] = 2,  ["vipDouble"] = 2,}
+,}
 ,  [93] = {
-  ["month"] = 4,  ["id"] = 93,  ["reward"] = {
+  ["times"] = 3,  ["id"] = 93,  ["month"] = 4,  ["vipDouble"] = 3,  ["reward"] = {
   ["107"] = {
   [1] = 500,  [2] = 500,  [3] = 1,}
 ,}
-,  ["times"] = 3,  ["vipDouble"] = 3,}
+,}
 ,  [94] = {
-  ["month"] = 4,  ["id"] = 94,  ["reward"] = {
+  ["times"] = 4,  ["id"] = 94,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 500,  [2] = 500,  [3] = 1,}
 ,}
-,  ["times"] = 4,  ["vipDouble"] = 0,}
+,}
 ,  [95] = {
-  ["month"] = 4,  ["id"] = 95,  ["reward"] = {
+  ["times"] = 5,  ["id"] = 95,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 500,  [2] = 500,  [3] = 1,}
 ,}
-,  ["times"] = 5,  ["vipDouble"] = 0,}
+,}
 ,  [96] = {
-  ["month"] = 4,  ["id"] = 96,  ["reward"] = {
+  ["times"] = 6,  ["id"] = 96,  ["month"] = 4,  ["vipDouble"] = 4,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 7,}
 ,}
-,  ["times"] = 6,  ["vipDouble"] = 4,}
+,}
 ,  [97] = {
-  ["month"] = 4,  ["id"] = 97,  ["reward"] = {
+  ["times"] = 7,  ["id"] = 97,  ["month"] = 4,  ["vipDouble"] = 5,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 7,}
 ,}
-,  ["times"] = 7,  ["vipDouble"] = 5,}
+,}
 ,  [98] = {
-  ["month"] = 4,  ["id"] = 98,  ["reward"] = {
+  ["times"] = 8,  ["id"] = 98,  ["month"] = 4,  ["vipDouble"] = 6,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 7,}
 ,}
-,  ["times"] = 8,  ["vipDouble"] = 6,}
+,}
 ,  [99] = {
-  ["month"] = 4,  ["id"] = 99,  ["reward"] = {
+  ["times"] = 9,  ["id"] = 99,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 7,}
 ,}
-,  ["times"] = 9,  ["vipDouble"] = 0,}
+,}
 ,  [100] = {
-  ["month"] = 4,  ["id"] = 100,  ["reward"] = {
+  ["times"] = 10,  ["id"] = 100,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 7,}
 ,}
-,  ["times"] = 10,  ["vipDouble"] = 0,}
+,}
 ,  [101] = {
-  ["month"] = 4,  ["id"] = 101,  ["reward"] = {
+  ["times"] = 11,  ["id"] = 101,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 11,  ["vipDouble"] = 0,}
+,}
 ,  [102] = {
-  ["month"] = 4,  ["id"] = 102,  ["reward"] = {
+  ["times"] = 12,  ["id"] = 102,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 12,  ["vipDouble"] = 0,}
+,}
 ,  [103] = {
-  ["month"] = 4,  ["id"] = 103,  ["reward"] = {
+  ["times"] = 13,  ["id"] = 103,  ["month"] = 4,  ["vipDouble"] = 7,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 13,  ["vipDouble"] = 7,}
+,}
 ,  [104] = {
-  ["month"] = 4,  ["id"] = 104,  ["reward"] = {
+  ["times"] = 14,  ["id"] = 104,  ["month"] = 4,  ["vipDouble"] = 8,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 14,  ["vipDouble"] = 8,}
+,}
 ,  [105] = {
-  ["month"] = 4,  ["id"] = 105,  ["reward"] = {
+  ["times"] = 15,  ["id"] = 105,  ["month"] = 4,  ["vipDouble"] = 9,  ["reward"] = {
   ["105"] = {
   [1] = 5,  [2] = 5,  [3] = 63001,}
 ,}
-,  ["times"] = 15,  ["vipDouble"] = 9,}
+,}
 ,  [106] = {
-  ["month"] = 4,  ["id"] = 106,  ["reward"] = {
+  ["times"] = 16,  ["id"] = 106,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 16,  ["vipDouble"] = 0,}
+,}
 ,  [107] = {
-  ["month"] = 4,  ["id"] = 107,  ["reward"] = {
+  ["times"] = 17,  ["id"] = 107,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 17,  ["vipDouble"] = 0,}
+,}
 ,  [108] = {
-  ["month"] = 4,  ["id"] = 108,  ["reward"] = {
+  ["times"] = 18,  ["id"] = 108,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 18,  ["vipDouble"] = 0,}
+,}
 ,  [109] = {
-  ["month"] = 4,  ["id"] = 109,  ["reward"] = {
+  ["times"] = 19,  ["id"] = 109,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 19,  ["vipDouble"] = 0,}
+,}
 ,  [110] = {
-  ["month"] = 4,  ["id"] = 110,  ["reward"] = {
+  ["times"] = 20,  ["id"] = 110,  ["month"] = 4,  ["vipDouble"] = 10,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 13,}
 ,}
-,  ["times"] = 20,  ["vipDouble"] = 10,}
+,}
 ,  [111] = {
-  ["month"] = 4,  ["id"] = 111,  ["reward"] = {
+  ["times"] = 21,  ["id"] = 111,  ["month"] = 4,  ["vipDouble"] = 11,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 2,}
 ,}
-,  ["times"] = 21,  ["vipDouble"] = 11,}
+,}
 ,  [112] = {
-  ["month"] = 4,  ["id"] = 112,  ["reward"] = {
+  ["times"] = 22,  ["id"] = 112,  ["month"] = 4,  ["vipDouble"] = 12,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 2,}
 ,}
-,  ["times"] = 22,  ["vipDouble"] = 12,}
+,}
 ,  [113] = {
-  ["month"] = 4,  ["id"] = 113,  ["reward"] = {
+  ["times"] = 23,  ["id"] = 113,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 2,}
 ,}
-,  ["times"] = 23,  ["vipDouble"] = 0,}
+,}
 ,  [114] = {
-  ["month"] = 4,  ["id"] = 114,  ["reward"] = {
+  ["times"] = 24,  ["id"] = 114,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 2,}
 ,}
-,  ["times"] = 24,  ["vipDouble"] = 0,}
+,}
 ,  [115] = {
-  ["month"] = 4,  ["id"] = 115,  ["reward"] = {
+  ["times"] = 25,  ["id"] = 115,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 100,  [2] = 100,  [3] = 2,}
 ,}
-,  ["times"] = 25,  ["vipDouble"] = 0,}
+,}
 ,  [116] = {
-  ["month"] = 4,  ["id"] = 116,  ["reward"] = {
+  ["times"] = 26,  ["id"] = 116,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 3,}
 ,}
-,  ["times"] = 26,  ["vipDouble"] = 0,}
+,}
 ,  [117] = {
-  ["month"] = 4,  ["id"] = 117,  ["reward"] = {
+  ["times"] = 27,  ["id"] = 117,  ["month"] = 4,  ["vipDouble"] = 0,  ["reward"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 3,}
 ,}
-,  ["times"] = 27,  ["vipDouble"] = 0,}
+,}
 ,  [118] = {
-  ["month"] = 4,  ["id"] = 118,  ["reward"] = {
+  ["times"] = 28,  ["id"] = 118,  ["month"] = 4,  ["vipDouble"] = 13,  ["reward"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 3,}
 ,}
-,  ["times"] = 28,  ["vipDouble"] = 13,}
+,}
 ,  [119] = {
-  ["month"] = 4,  ["id"] = 119,  ["reward"] = {
+  ["times"] = 29,  ["id"] = 119,  ["month"] = 4,  ["vipDouble"] = 14,  ["reward"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 3,}
 ,}
-,  ["times"] = 29,  ["vipDouble"] = 14,}
+,}
 ,  [120] = {
-  ["month"] = 4,  ["id"] = 120,  ["reward"] = {
+  ["times"] = 30,  ["id"] = 120,  ["month"] = 4,  ["vipDouble"] = 15,  ["reward"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 3,}
 ,}
-,  ["times"] = 30,  ["vipDouble"] = 15,}
+,}
 ,}

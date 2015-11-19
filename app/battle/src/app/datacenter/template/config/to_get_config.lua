@@ -1,1322 +1,1082 @@
 to_get_config={
-  [30100015] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100015,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
+  [40030001] = {
+  ["id"] = 40030001,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 1,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30100031] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100031,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 1,}
+,}
 ,  [30100047] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100047,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
+  ["id"] = 30100047,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
   [1] = 700105,  [2] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100063] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100063,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100079] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100079,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40060001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40060001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 1,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010016] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010016,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010032] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010032,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010048] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010048,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010064] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010064,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100016] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100016,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700103,  [2] = 700104,  [3] = 700105,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100032] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100032,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101502,  [2] = 201404,  [3] = 201506,  [4] = 301602,}
+,}
+,  [30100031] = {
+  ["id"] = 30100031,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
   [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100048] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100048,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700105,  [2] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101004,  [2] = 101204,  [3] = 201104,  [4] = 201304,}
+,}
 ,  [30100064] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100064,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
+  ["id"] = 30100064,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30100080] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100080,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010017] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010017,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010033] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010033,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010049] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010049,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010065] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010065,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40020001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40020001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20030051] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20030051,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 1,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100017] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100017,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700103,  [2] = 700104,  [3] = 700105,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100033] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100033,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700105,  [2] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100049] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100049,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700105,  [2] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100065] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100065,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100081] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100081,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010018] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010018,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010034] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010034,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010050] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010050,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010066] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010066,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40020003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40020003,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40030012] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 1,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40030012,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100018] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100018,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100034] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100034,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100050] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100050,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700105,  [2] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100066] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100066,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010003,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010019] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010019,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010035] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010035,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40020005] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40020005,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100003,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100019] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100019,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100035] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100035,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100051] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100051,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100067] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100067,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010004] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010004,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010020] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010020,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010036] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010036,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010052] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010052,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40050001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 1,  ["everyGift"] = 0,  ["id"] = 40050001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100004] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100004,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100020] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100020,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100036] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100036,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100052] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100052,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100068] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100068,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010005] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010005,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010021] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010021,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010037] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010037,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010053] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010053,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40050003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 1,  ["everyGift"] = 0,  ["id"] = 40050003,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000029] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000029,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000028] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000028,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100005] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100005,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700103,  [2] = 700104,  [3] = 700105,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100021] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100021,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100037] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100037,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100053] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100053,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100069] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100069,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000027] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000027,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010006] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010006,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010022] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010022,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010038] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010038,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010054] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010054,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000026] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000026,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40050005] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 1,  ["everyGift"] = 0,  ["id"] = 40050005,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40010002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 1,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 1,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40010002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000025] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000025,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000024] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000024,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000023] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000023,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100006] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100006,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700103,  [2] = 700104,  [3] = 700105,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100022] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100022,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700105,  [2] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100038] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100038,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100054] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100054,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700105,  [2] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100070] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100070,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000022] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000022,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010007] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010007,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010023] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010023,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010039] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010039,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010055] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010055,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40063002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 1,  ["id"] = 40063002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000020] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000020,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000019] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000019,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000018] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000018,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000017] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000017,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000016] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000016,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20030057] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20030057,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 1,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100023] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100023,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100039] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100039,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100055] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100055,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100071] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100071,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000015] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000015,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010008] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010008,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010024] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010024,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010040] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010040,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010056] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010056,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000014] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000014,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000013] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 1,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000013,  ["seven"] = 0,  ["travel"] = 1,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000012] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000012,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000011] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000011,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000010] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000010,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000009] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000009,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100008] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100008,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100024] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100024,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100040] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100040,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700103,  [2] = 700104,  [3] = 700105,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100056] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100056,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100072] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100072,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000008] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000008,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010009] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010009,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010025] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010025,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010041] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010041,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40040002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 1,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 1,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40040002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000007] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000007,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000006] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000006,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000005] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000005,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000004] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000004,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 1,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000003,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 1,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20030059] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20030059,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 1,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100025] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100025,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100041] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100041,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700103,  [2] = 700104,  [3] = 700105,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
+,}
 ,  [30100057] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100057,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
+  ["id"] = 30100057,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30100073] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100073,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [30100006] = {
+  ["id"] = 30100006,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700103,  [2] = 700104,  [3] = 700105,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100702,  [2] = 100902,  [3] = 200602,  [4] = 200802,}
+,}
+,  [30100080] = {
+  ["id"] = 30100080,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [50000001] = {
-  ["activity"] = 0,  ["getMoney"] = 1,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 1,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 1,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010010] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010010,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010026] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010026,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010042] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010042,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010058] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010058,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30200004] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30200004,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40090001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40090001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40080007] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40080007,  ["seven"] = 1,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40080006] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40080006,  ["seven"] = 1,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40080005] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40080005,  ["seven"] = 1,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20030060] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20030060,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 1,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100010] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100010,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100026] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100026,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100042] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100042,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100058] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100058,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100074] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100074,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40080004] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40080004,  ["seven"] = 1,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010011] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010011,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010027] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010027,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010043] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010043,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40080003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40080003,  ["seven"] = 1,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40080002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40080002,  ["seven"] = 1,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40080001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40080001,  ["seven"] = 1,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40050002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 1,  ["everyGift"] = 0,  ["id"] = 40050002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40050004] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 1,  ["everyGift"] = 0,  ["id"] = 40050004,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40070001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40070001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
+,}
 ,  [40050000] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 1,  ["everyGift"] = 0,  ["id"] = 40050000,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+  ["id"] = 40050000,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 1,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30100011] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100011,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700105,  [2] = 700106,}
-,  ["stage"] = {
+,}
+,  [40050005] = {
+  ["id"] = 40050005,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["equipShop"] = 1,}
-,  [30100027] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100027,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700103,  [2] = 700104,  [3] = 700105,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 1,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 1,}
-,  [30100043] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100043,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
+,}
+,  [40050004] = {
+  ["id"] = 40050004,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["equipShop"] = 1,}
-,  [30100059] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100059,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 1,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100075] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100075,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010012] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010012,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010028] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010028,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010044] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010044,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [50000021] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 1,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 50000021,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
+,}
 ,  [40063001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 1,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 1,  ["id"] = 40063001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+  ["id"] = 40063001,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 1,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 1,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
+,}
+,  [40050003] = {
+  ["id"] = 40050003,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 1,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [40050002] = {
+  ["id"] = 40050002,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 1,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [40050001] = {
+  ["id"] = 40050001,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 1,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [40063002] = {
+  ["id"] = 40063002,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 1,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [40060001] = {
+  ["id"] = 40060001,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 1,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
 ,  [40040003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 1,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40040003,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
+  ["id"] = 40040003,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 1,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [40040001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 1,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 1,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40040001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [40040002] = {
+  ["id"] = 40040002,  ["isStage"] = 1,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 1,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [40030013] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 1,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40030013,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40030011] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 1,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40030011,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40030004] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 1,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40030004,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100012] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100012,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100028] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100028,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700103,  [2] = 700104,  [3] = 700105,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100044] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100044,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100060] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100060,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100076] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100076,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40030003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 1,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40030003,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010013] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010013,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010029] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010029,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010045] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010045,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010061] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010061,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40030002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 1,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40030002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40030001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 1,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40030001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40020006] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40020006,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40020004] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40020004,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40020002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40020002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [40010003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 1,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40010003,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 1,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20030063] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20030063,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 1,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100029] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100029,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100045] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100045,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 1,}
-,  [30100061] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100061,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [30100077] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100077,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
+,}
 ,  [40010001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 1,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 1,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40010001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+  ["id"] = 40010001,  ["isStage"] = 1,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 1,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [20010014] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010014,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [20010011] = {
+  ["id"] = 20010011,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
   [1] = 700101,}
-,  ["stage"] = {
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200405,  [2] = 200701,  [3] = 200805,  [4] = 201101,  [5] = 201205,  [6] = 201501,  [7] = 201605,}
+,}
+,  [40030013] = {
+  ["id"] = 40030013,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 1,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [20010030] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010030,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [20010046] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010046,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
+,}
+,  [40030012] = {
+  ["id"] = 40030012,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 1,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [20010062] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010062,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
-  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30200006] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30200006,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [40030011] = {
+  ["id"] = 40030011,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 1,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30200005] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30200005,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [40030004] = {
+  ["id"] = 40030004,  ["isStage"] = 0,  ["signIn"] = 1,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [40100001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 40100001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [40030003] = {
+  ["id"] = 40030003,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 1,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30200003] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30200003,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [40030002] = {
+  ["id"] = 40030002,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 1,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30200002] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30200002,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [40020006] = {
+  ["id"] = 40020006,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 1,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30200001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30200001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [40020005] = {
+  ["id"] = 40020005,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 1,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30100014] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100014,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [40020004] = {
+  ["id"] = 40020004,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [40020003] = {
+  ["id"] = 40020003,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [40020002] = {
+  ["id"] = 40020002,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100026] = {
+  ["id"] = 30100026,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
   [1] = 700101,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200302,}
+,}
+,  [40010003] = {
+  ["id"] = 40010003,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 1,  ["isActiveStage"] = 1,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 1,  ["isEliteStage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30100030] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100030,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 1,}
-,  [30100046] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100046,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
+,}
+,  [40010002] = {
+  ["id"] = 40010002,  ["isStage"] = 1,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 1,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["equipShop"] = 1,}
-,  [30100062] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100062,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["stage"] = {
+,}
+,  [30100081] = {
+  ["id"] = 30100081,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["equipShop"] = 0,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100079] = {
+  ["id"] = 30100079,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
 ,  [30100078] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 1,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100078,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+  ["id"] = 30100078,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30100013] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100013,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
-  [1] = 700101,}
-,  ["stage"] = {
+,}
+,  [30100077] = {
+  ["id"] = 30100077,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [20010015] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 1,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010015,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100076] = {
+  ["id"] = 30100076,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100075] = {
+  ["id"] = 30100075,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100074] = {
+  ["id"] = 30100074,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100073] = {
+  ["id"] = 30100073,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100072] = {
+  ["id"] = 30100072,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100071] = {
+  ["id"] = 30100071,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100070] = {
+  ["id"] = 30100070,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100069] = {
+  ["id"] = 30100069,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100068] = {
+  ["id"] = 30100068,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100067] = {
+  ["id"] = 30100067,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100066] = {
+  ["id"] = 30100066,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100065] = {
+  ["id"] = 30100065,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100063] = {
+  ["id"] = 30100063,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100062] = {
+  ["id"] = 30100062,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100061] = {
+  ["id"] = 30100061,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100060] = {
+  ["id"] = 30100060,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100059] = {
+  ["id"] = 30100059,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100058] = {
+  ["id"] = 30100058,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010056] = {
+  ["id"] = 20010056,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
   [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
+,}
+,  [20010053] = {
+  ["id"] = 20010053,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [10700016] = {
+  ["id"] = 10700016,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010048] = {
+  ["id"] = 20010048,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010045] = {
+  ["id"] = 20010045,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010062] = {
+  ["id"] = 20010062,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010058] = {
+  ["id"] = 20010058,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010055] = {
+  ["id"] = 20010055,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010054] = {
+  ["id"] = 20010054,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010061] = {
+  ["id"] = 20010061,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010050] = {
+  ["id"] = 20010050,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010046] = {
+  ["id"] = 20010046,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010026] = {
+  ["id"] = 20010026,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100303,  [2] = 300603,}
+,}
+,  [20010023] = {
+  ["id"] = 20010023,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101607,  [2] = 201207,  [3] = 300307,  [4] = 300807,}
+,}
+,  [10700003] = {
+  ["id"] = 10700003,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 1,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010014] = {
+  ["id"] = 20010014,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100401,  [2] = 100505,  [3] = 100801,  [4] = 100905,  [5] = 101201,  [6] = 101305,  [7] = 101601,}
+,}
+,  [20010043] = {
+  ["id"] = 20010043,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100507,  [2] = 100707,  [3] = 201407,  [4] = 301007,}
+,}
+,  [20010042] = {
+  ["id"] = 20010042,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100407,  [2] = 101407,  [3] = 201007,  [4] = 300607,}
+,}
+,  [20010041] = {
+  ["id"] = 20010041,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101507,  [2] = 200307,  [3] = 201107,  [4] = 300707,}
+,}
+,  [20010040] = {
+  ["id"] = 20010040,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100807,  [2] = 200407,  [3] = 201507,  [4] = 301107,}
+,}
+,  [20010036] = {
+  ["id"] = 20010036,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101107,  [2] = 200207,  [3] = 200707,  [4] = 301407,}
+,}
+,  [20010035] = {
+  ["id"] = 20010035,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101207,  [2] = 200507,  [3] = 200807,  [4] = 301507,}
+,}
 ,  [20010031] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 1,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010031,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+  ["id"] = 20010031,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
   [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
-}
-,  ["equipShop"] = 0,}
-,  [20010047] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 1,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 20010047,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 1,  ["isEliteStage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100907,  [2] = 201607,  [3] = 300407,  [4] = 301207,}
+,}
+,  [20030051] = {
+  ["id"] = 20030051,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
   [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 1,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30100001] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 0,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100001,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [20010020] = {
+  ["id"] = 20010020,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100207,  [2] = 100607,  [3] = 201307,  [4] = 300907,}
+,}
+,  [20010039] = {
+  ["id"] = 20010039,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101203,  [2] = 101603,}
+,}
+,  [20010037] = {
+  ["id"] = 20010037,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 301103,  [2] = 301503,}
+,}
+,  [20010028] = {
+  ["id"] = 20010028,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 201103,  [2] = 201503,}
+,}
+,  [20010025] = {
+  ["id"] = 20010025,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101103,  [2] = 101503,}
+,}
+,  [20010024] = {
+  ["id"] = 20010024,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 301003,  [2] = 301403,}
+,}
+,  [20010018] = {
+  ["id"] = 20010018,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 201003,  [2] = 201403,}
+,}
+,  [20010044] = {
+  ["id"] = 20010044,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100307,  [2] = 101007,  [3] = 200607,  [4] = 301307,}
+,}
+,  [20010012] = {
+  ["id"] = 20010012,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
   [1] = 700101,}
-,  ["stage"] = {
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 300405,  [2] = 300701,  [3] = 300805,  [4] = 301101,  [5] = 301205,  [6] = 301501,  [7] = 301605,}
+,}
+,  [20010052] = {
+  ["id"] = 20010052,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 0,}
-,  [30100007] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100007,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
+,}
+,  [20010010] = {
+  ["id"] = 20010010,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100405,  [2] = 100701,  [3] = 100805,  [4] = 101101,  [5] = 101205,  [6] = 101501,  [7] = 101605,}
+,}
+,  [20010009] = {
+  ["id"] = 20010009,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 300305,  [2] = 300601,  [3] = 300705,  [4] = 301001,  [5] = 301105,  [6] = 301401,  [7] = 301505,}
+,}
+,  [20010008] = {
+  ["id"] = 20010008,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200305,  [2] = 200601,  [3] = 200705,  [4] = 201001,  [5] = 201105,  [6] = 201401,  [7] = 201505,}
+,}
+,  [20010007] = {
+  ["id"] = 20010007,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100305,  [2] = 100601,  [3] = 100705,  [4] = 101001,  [5] = 101105,  [6] = 101401,  [7] = 101505,}
+,}
+,  [20010047] = {
+  ["id"] = 20010047,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010064] = {
+  ["id"] = 20010064,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [10700001] = {
+  ["id"] = 10700001,  ["isStage"] = 1,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 1,  ["equRefinery"] = 0,  ["getMoney"] = 1,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [40040001] = {
+  ["id"] = 40040001,  ["isStage"] = 1,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 1,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010004] = {
+  ["id"] = 20010004,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 300803,  [2] = 301203,  [3] = 301603,}
+,}
+,  [20010032] = {
+  ["id"] = 20010032,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100403,  [2] = 300703,}
+,}
+,  [20010006] = {
+  ["id"] = 20010006,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200205,  [2] = 300501,  [3] = 300605,  [4] = 300901,  [5] = 301005,  [6] = 301301,  [7] = 301405,}
+,}
+,  [20010017] = {
+  ["id"] = 20010017,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200401,  [2] = 200505,  [3] = 200801,  [4] = 200905,  [5] = 201201,  [6] = 201305,  [7] = 201601,}
+,}
+,  [20010019] = {
+  ["id"] = 20010019,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 300401,  [2] = 300505,  [3] = 300801,  [4] = 300905,  [5] = 301201,  [6] = 301305,  [7] = 301601,}
+,}
+,  [20010001] = {
+  ["id"] = 20010001,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100103,  [2] = 100501,  [3] = 100605,  [4] = 100901,  [5] = 101005,  [6] = 101301,  [7] = 101405,}
+,}
+,  [20010015] = {
+  ["id"] = 20010015,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 300903,  [2] = 301303,}
+,}
+,  [30100040] = {
+  ["id"] = 30100040,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700103,  [2] = 700104,  [3] = 700105,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200706,  [2] = 200906,  [3] = 300506,  [4] = 300702,}
+,}
+,  [20010016] = {
+  ["id"] = 20010016,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101003,  [2] = 101403,}
+,}
+,  [20010021] = {
+  ["id"] = 20010021,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100203,  [2] = 200503,}
+,}
+,  [20010038] = {
+  ["id"] = 20010038,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100803,  [2] = 300503,}
+,}
+,  [20010022] = {
+  ["id"] = 20010022,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100503,  [2] = 200203,}
+,}
+,  [30100045] = {
+  ["id"] = 30100045,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
   [1] = 700102,  [2] = 700103,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 1,}
+,}
+,  [20010027] = {
+  ["id"] = 20010027,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200303,  [2] = 200603,}
+,}
+,  [20010029] = {
+  ["id"] = 20010029,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100603,  [2] = 300303,}
+,}
+,  [20010002] = {
+  ["id"] = 20010002,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100205,  [2] = 200501,  [3] = 200605,  [4] = 200901,  [5] = 201005,  [6] = 201301,  [7] = 201405,}
+,}
+,  [20010033] = {
+  ["id"] = 20010033,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200403,  [2] = 200703,}
+,}
+,  [30100043] = {
+  ["id"] = 30100043,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700102,  [2] = 700103,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200406,  [2] = 300502,}
+,}
+,  [20010003] = {
+  ["id"] = 20010003,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200803,  [2] = 201203,  [3] = 201603,}
+,}
+,  [30100054] = {
+  ["id"] = 30100054,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700105,  [2] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 201604,  [2] = 301504,  [3] = 301606,}
+,}
+,  [20010005] = {
+  ["id"] = 20010005,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100903,  [2] = 101303,}
+,}
+,  [30100039] = {
+  ["id"] = 30100039,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010065] = {
+  ["id"] = 20010065,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100014] = {
+  ["id"] = 30100014,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200206,}
+,}
+,  [30100041] = {
+  ["id"] = 30100041,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700103,  [2] = 700104,  [3] = 700105,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200606,  [2] = 200806,  [3] = 300604,  [4] = 300706,}
+,}
+,  [20030057] = {
+  ["id"] = 20030057,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 1,  ["stage"] = {
+}
+,}
+,  [20030059] = {
+  ["id"] = 20030059,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 1,  ["stage"] = {
+}
+,}
+,  [20030060] = {
+  ["id"] = 20030060,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 1,  ["stage"] = {
+}
+,}
+,  [30100030] = {
+  ["id"] = 30100030,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700102,  [2] = 700103,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100504,  [2] = 200404,}
+,}
+,  [30100001] = {
+  ["id"] = 30100001,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100201,}
+,}
+,  [30100002] = {
+  ["id"] = 30100002,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100301,}
+,}
+,  [30100003] = {
+  ["id"] = 30100003,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200201,}
+,}
+,  [30100004] = {
+  ["id"] = 30100004,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200301,}
+,}
+,  [30100005] = {
+  ["id"] = 30100005,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700103,  [2] = 700104,  [3] = 700105,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100602,  [2] = 100802,  [3] = 200702,  [4] = 200902,}
+,}
+,  [30100048] = {
+  ["id"] = 30100048,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700105,  [2] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101604,  [2] = 201606,  [3] = 301404,}
+,}
+,  [30100007] = {
+  ["id"] = 30100007,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700102,  [2] = 700103,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100402,  [2] = 200502,}
+,}
+,  [30100008] = {
+  ["id"] = 30100008,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700102,  [2] = 700103,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100502,  [2] = 200402,}
+,}
 ,  [30100009] = {
-  ["activity"] = 0,  ["getMoney"] = 0,  ["heroRefinery"] = 0,  ["indiana"] = 0,  ["isActiveStage"] = 0,  ["arenaShop"] = 1,  ["rechange"] = 0,  ["shopGift"] = 0,  ["soulShop"] = 0,  ["signIn"] = 0,  ["equRefinery"] = 0,  ["coinHero"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["activityGive"] = 0,  ["everyGift"] = 0,  ["id"] = 30100009,  ["seven"] = 0,  ["travel"] = 0,  ["itemShop"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
+  ["id"] = 30100009,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
   [1] = 700104,  [2] = 700105,  [3] = 700106,}
-,  ["stage"] = {
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101002,  [2] = 101202,  [3] = 201102,  [4] = 201302,  [5] = 300802,  [6] = 301006,}
+,}
+,  [30100016] = {
+  ["id"] = 30100016,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700103,  [2] = 700104,  [3] = 700105,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100606,  [2] = 100806,  [3] = 300504,  [4] = 300606,}
+,}
+,  [30100011] = {
+  ["id"] = 30100011,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700105,  [2] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101402,  [2] = 101504,  [3] = 201406,  [4] = 301304,}
+,}
+,  [30100032] = {
+  ["id"] = 30100032,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700104,  [2] = 700105,  [3] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101104,  [2] = 101304,  [3] = 201004,  [4] = 201204,  [5] = 300806,  [6] = 300904,  [7] = 301104,  [8] = 301202,}
+,}
+,  [30100013] = {
+  ["id"] = 30100013,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100306,}
+,}
+,  [20010066] = {
+  ["id"] = 20010066,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
 }
-,  ["equipShop"] = 1,}
+,}
+,  [30100015] = {
+  ["id"] = 30100015,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200306,}
+,}
+,  [30100010] = {
+  ["id"] = 30100010,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700104,  [2] = 700105,  [3] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101102,  [2] = 101302,  [3] = 201002,  [4] = 201202,  [5] = 301002,  [6] = 301206,}
+,}
+,  [30100017] = {
+  ["id"] = 30100017,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700103,  [2] = 700104,  [3] = 700105,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100706,  [2] = 100906,  [3] = 300602,  [4] = 300704,}
+,}
+,  [30100018] = {
+  ["id"] = 30100018,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700102,  [2] = 700103,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100406,  [2] = 300402,}
+,}
+,  [30100019] = {
+  ["id"] = 30100019,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700102,  [2] = 700103,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100506,  [2] = 300406,}
+,}
+,  [30100020] = {
+  ["id"] = 30100020,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700104,  [2] = 700105,  [3] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101006,  [2] = 101206,  [3] = 301004,  [4] = 301302,}
+,}
+,  [30100021] = {
+  ["id"] = 30100021,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700104,  [2] = 700105,  [3] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101106,  [2] = 101306,  [3] = 300804,  [4] = 301102,}
+,}
+,  [30100022] = {
+  ["id"] = 30100022,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700105,  [2] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101404,  [2] = 101506,  [3] = 201502,  [4] = 301402,}
+,}
+,  [30100023] = {
+  ["id"] = 30100023,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100202,}
+,}
+,  [30100024] = {
+  ["id"] = 30100024,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100302,}
+,}
+,  [30100025] = {
+  ["id"] = 30100025,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200202,}
+,}
+,  [40020001] = {
+  ["id"] = 40020001,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100027] = {
+  ["id"] = 30100027,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700103,  [2] = 700104,  [3] = 700105,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100604,  [2] = 100804,  [3] = 200704,  [4] = 200904,}
+,}
+,  [30100028] = {
+  ["id"] = 30100028,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700103,  [2] = 700104,  [3] = 700105,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100704,  [2] = 100904,  [3] = 200604,  [4] = 200804,}
+,}
+,  [30100029] = {
+  ["id"] = 30100029,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700102,  [2] = 700103,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100404,  [2] = 200504,}
+,}
+,  [20030063] = {
+  ["id"] = 20030063,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 1,  ["stage"] = {
+}
+,}
+,  [30100012] = {
+  ["id"] = 30100012,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100206,}
+,}
+,  [30100033] = {
+  ["id"] = 30100033,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700105,  [2] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101406,  [2] = 101602,  [3] = 201402,  [4] = 201504,  [5] = 301306,}
+,}
+,  [30100034] = {
+  ["id"] = 30100034,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100204,  [2] = 300301,}
+,}
+,  [30100035] = {
+  ["id"] = 30100035,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100304,  [2] = 300302,}
+,}
+,  [30100036] = {
+  ["id"] = 30100036,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200204,  [2] = 300304,}
+,}
+,  [30100037] = {
+  ["id"] = 30100037,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200304,  [2] = 300306,}
+,}
+,  [30100038] = {
+  ["id"] = 30100038,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010013] = {
+  ["id"] = 20010013,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200903,  [2] = 201303,}
+,}
+,  [10700002] = {
+  ["id"] = 10700002,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 1,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010030] = {
+  ["id"] = 20010030,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 1,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101307,  [2] = 200907,  [3] = 300507,  [4] = 301607,}
+,}
+,  [30100042] = {
+  ["id"] = 30100042,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700102,  [2] = 700103,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 200506,  [2] = 300404,}
+,}
+,  [20010034] = {
+  ["id"] = 20010034,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,}
+,  ["coinHero"] = 1,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 100703,  [2] = 300403,}
+,}
+,  [30100044] = {
+  ["id"] = 30100044,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700102,  [2] = 700103,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [20010049] = {
+  ["id"] = 20010049,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 1,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+  [1] = 700101,  [2] = 700102,  [3] = 700103,  [4] = 700104,  [5] = 700105,  [6] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 1,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100046] = {
+  ["id"] = 30100046,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700104,  [2] = 700105,  [3] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 201106,  [2] = 201306,  [3] = 300902,  [4] = 300906,  [5] = 301106,  [6] = 301204,  [7] = 301204,}
+,}
+,  [30100049] = {
+  ["id"] = 30100049,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700105,  [2] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 101606,  [2] = 301406,  [3] = 301506,}
+,}
+,  [30100050] = {
+  ["id"] = 30100050,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700105,  [2] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 201602,  [2] = 301502,}
+,}
+,  [30100051] = {
+  ["id"] = 30100051,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700104,  [2] = 700105,  [3] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+  [1] = 201006,  [2] = 201206,}
+,}
+,  [30100052] = {
+  ["id"] = 30100052,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700104,  [2] = 700105,  [3] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100053] = {
+  ["id"] = 30100053,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700104,  [2] = 700105,  [3] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [10700021] = {
+  ["id"] = 10700021,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 1,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100055] = {
+  ["id"] = 30100055,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 0,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 1,  ["arenaShop"] = 1,  ["isEliteStage"] = {
+  [1] = 700104,  [2] = 700105,  [3] = 700106,}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 1,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
+,  [30100056] = {
+  ["id"] = 30100056,  ["isStage"] = 0,  ["signIn"] = 0,  ["featsShop"] = 1,  ["moneyHero"] = 0,  ["itemShop"] = 0,  ["isActiveStage"] = 0,  ["equRefinery"] = 0,  ["getMoney"] = 0,  ["shopGift"] = 0,  ["moneyEqu"] = 0,  ["arenaShop"] = 0,  ["isEliteStage"] = {
+}
+,  ["coinHero"] = 0,  ["pricelessTreasuresShop"] = 0,  ["soulShop"] = 0,  ["rechange"] = 0,  ["activityGive"] = 0,  ["heroRefinery"] = 0,  ["equipShop"] = 0,  ["everyGift"] = 0,  ["stageBreak"] = 0,  ["stage"] = {
+}
+,}
 ,}
