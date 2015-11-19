@@ -32,7 +32,7 @@ class Guild(object):
 
     @property
     def info(self):
-        data = self._info()
+        data = self._info
         data['p_num'] = self.get_p_num()
         return data
 
@@ -40,6 +40,8 @@ class Guild(object):
     def _info(self):
         data = {'id': self._g_id,
                 'name': self._name,
+                'contribution': self._contribution,
+                'all_contribution': self._all_contribution,
                 'icon_id': self._icon_id,
                 'bless': self._bless,
                 'praise': self._praise,
@@ -78,6 +80,7 @@ class Guild(object):
         self._invite_join = data.get("invite_join")
         self._p_list = data.get("p_list")
         self._apply = data.get("apply")
+        self._build = data.get("build")
 
     def join_guild(self, p_id):
         if self._apply.count(p_id) >= 1:
@@ -120,6 +123,30 @@ class Guild(object):
         for p_list in self._p_list.values():
             num += len(p_list)
         return num
+
+    @property
+    def build(self):
+        return self._build
+
+    @build.setter
+    def build(self, v):
+        self._build = v
+
+    @property
+    def all_contribution(self):
+        return self._all_contribution
+
+    @all_contribution.setter
+    def all_contribution(self, v):
+        self._all_contribution = v
+
+    @property
+    def contribution(self):
+        return self._contribution
+
+    @contribution.setter
+    def contribution(self, v):
+        self._contribution = v
 
     @property
     def name(self):

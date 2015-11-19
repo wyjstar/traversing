@@ -61,6 +61,7 @@ def nickname_create_5(request_proto, player):
         response.result_no = 870
         return response.SerializeToString()
 
+    print type(nickname), '===============222'
     player.base_info.base_name = nickname
     player.base_info.save_data()
 

@@ -18,7 +18,7 @@ message GuildRank
 {
     required int32 g_id = 1;    //id
     required int32 rank = 2;    //排名
-    required bytes name = 3;    //名
+    required string name = 3;    //名
     required int32 level = 4;   //等级
     required string president = 5;   //会长
     required int32 p_num = 6;   //人数
@@ -55,7 +55,7 @@ message SelectGuildResponse{
 
 // 创建公会 command：801
 message CreateGuildRequest{
-	required bytes name = 1;  //公会名
+	required string name = 1;  //公会名
 	required int32 icon_id = 2;  //军团图标
 }
 

@@ -23,6 +23,7 @@ from shared.utils.const import const
 from shared.db_opear.configs_data.data_helper import parse
 from app.game.core.mail_helper import send_mail
 from app.game.core import rank_helper
+import cPickle
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -62,7 +63,7 @@ def create_guild_801(data, player):
         return response.SerializeToString()
 
     match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]',
-                      unicode(g_name, "utf-8"))
+                      g_name)
     if match:
         response.res.result = False
         # response.res.message = "公会名不合法"
@@ -84,7 +85,7 @@ def create_guild_801(data, player):
     # 判断有没有重名
     guild_name_data = tb_guild_info.getObj('names')
     _result = guild_name_data.hget(g_name)
-    if not _result:
+    if _result:
         response.res.result = False
         # response.res.message = "此名已存在"
         response.res.result_no = 841  # 名称已存在
@@ -97,7 +98,7 @@ def create_guild_801(data, player):
                                 g_name,
                                 icon_id,
                                 player.guild.apply_guilds)
-        create_res = cPickle.loads(create_res)
+        # create_res = cPickle.loads(create_res)
         if not create_res.get('res'):
             raise ValueError("Guild name repeat!")
             return
@@ -105,7 +106,7 @@ def create_guild_801(data, player):
         guild_info = create_res.get('guild_info')
         rank_helper.add_rank_info('GuildLevel', guild_info.get('g_id'), 1)
 
-        player.guild.g_id = guild_info.get('g_id')
+        player.guild.g_id = guild_info.get('id')
         player.guild.today_contribution = 0
         player.guild.position = 1
         player.guild.apply_guilds = []
@@ -125,6 +126,7 @@ def create_guild_801(data, player):
     response.res.result = True
     tlog_action.log('CreatGuild', player, player.guild.g_id,
                     player.base_info.level)
+    print response, '===========================222create'
     return response.SerializeToString()
 
 
@@ -661,6 +663,9 @@ def get_guild_rank_810(data, player):
     min_rank = args.min_rank
     max_rank = args.max_rank
 
+    response.res.result = True
+    return response.SerializeToString()
+
     if rank_type == 1:
         rank_num = min_rank
         # 得到公会排行
@@ -852,6 +857,7 @@ def get_guild_info_812(data, player):
     g_id = player.guild.g_id
     if g_id == 0:
         # "没有公会"
+        logger.error('get_guild_info_812, guild id == 0')
         response.res.result = False
         response.res.result_no = 846
         return response.SerializeToString()
@@ -859,32 +865,33 @@ def get_guild_info_812(data, player):
     data1 = tb_guild_info.getObj(g_id).hgetall()
     if not data1:
         # "公会ID错误"
+        logger.error('get_guild_info_812, guild error')
         response.res.result = False
         response.res.result_no = 844
         return response.SerializeToString()
 
     guild_obj = Guild()
-    guild_obj.init_data(g_id)
+    guild_obj.init_data(data1)
 
-    position = guild_obj.get_position(p_id)
+    position = guild_obj.get_position(player.base_info.id)
     response.g_id = g_id
-    response.name = guild_obj.name
-    response.member_num = guild_obj.get_p_num
+    response.name = unicode(guild_obj.name)
+    response.member_num = guild_obj.get_p_num()
     response.contribution = guild_obj.contribution
     response.all_contribution = guild_obj.all_contribution
     response.icon_id = guild_obj.icon_id
     response.call = guild_obj.call
     response.position = position
     response.all_zan_num = guild_obj.praise_num
-    response.zan_money = guild_obj.zan_nomey
+    response.zan_money = guild_obj.praise_money
     response.captain_zan_receive_state = guild_obj.receive_praise_state
-    for build_type, build_level in guild_obj.build_info.items():
+    for build_type, build_level in guild_obj.build.items():
         build_info_pb = response.build_info.add()
         build_info_pb.build_type = build_type
         build_info_pb.build_level = build_level
 
     response.my_contribution = player.guild.contribution
-    response.my_all_cantribution = player.guild.all_contribution
+    response.my_all_contribution = player.guild.all_contribution
     response.my_day_contribution = player.guild.today_contribution
 
     response.last_zan_time = player.guild.praise_time
@@ -921,13 +928,14 @@ def get_guild_info_812(data, player):
             heads = Heads_DB()
             heads.ParseFromString(character_info['heads'])
             response.captain_icon = heads.now_head
-    if player.guild.position <= 2:
+    if position <= 2:
         if guild_obj.apply:
             response.have_apply = 1
         else:
             response.have_apply = 0
 
     response.res.result = True
+    print response, '================================================11111'
     return response.SerializeToString()
 
 
@@ -1454,4 +1462,105 @@ def appoint_1810(data, player):
         mail_id = 308
     send_mail(conf_id=mail_id, receive_id=p_id, guild_name=guild_obj.name)
     response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def create_guild_801(data, player):
+    """创建公会 """
+    args = CreateGuildRequest()
+    args.ParseFromString(data)
+    g_name = args.name
+    icon_id = args.icon_id
+    response = CreateGuildResponse()
+    p_id = player.base_info.id
+    g_id = player.guild.g_id
+
+    if game_configs.base_config.get('create_level') > player.base_info.level:
+        response.res.result = False
+        # response.res.message = "等级不够"
+        response.res.result_no = 811
+        return response.SerializeToString()
+
+    if game_configs.base_config.get('create_money') > player.finance.gold:
+        response.res.result = False
+        response.res.result_no = 102
+        return response.SerializeToString()
+
+    if g_id != 0:
+        response.res.result = False
+        response.res.result_no = 843
+        # response.res.message = "您已加入公会"
+        return response.SerializeToString()
+
+    if not g_name or g_name.isdigit():
+        response.res.result = False
+        response.res.result_no = 840  # 军团名不合法
+        return response.SerializeToString()
+
+    match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]',
+                      g_name)
+    if match:
+        response.res.result = False
+        # response.res.message = "公会名不合法"
+        response.res.result_no = 840  # 军团名不合法
+        return response.SerializeToString()
+
+    if trie_tree.check.replace_bad_word(g_name).encode("utf-8") != g_name:
+        response.res.result = False
+        # response.res.message = "公会名不合法"
+        response.res.result_no = 840  # 军团名不合法
+        return response.SerializeToString()
+
+    if len(g_name) > 18:
+        response.res.result = False
+        response.res.message = "名称超过字数限制"
+        response.res.result_no = 840  # 军团名不合法
+        return response.SerializeToString()
+
+    # 判断有没有重名
+    guild_name_data = tb_guild_info.getObj('names')
+    _result = guild_name_data.hget(g_name)
+    if _result:
+        response.res.result = False
+        # response.res.message = "此名已存在"
+        response.res.result_no = 841  # 名称已存在
+        return response.SerializeToString()
+
+    def func():
+        # 创建公会
+        create_res = remote_gate['world']. \
+            create_guild_remote(p_id,
+                                g_name,
+                                icon_id,
+                                player.guild.apply_guilds)
+        # create_res = cPickle.loads(create_res)
+        if not create_res.get('res'):
+            raise ValueError("Guild name repeat!")
+            return
+
+        guild_info = create_res.get('guild_info')
+        rank_helper.add_rank_info('GuildLevel', guild_info.get('g_id'), 1)
+
+        player.guild.g_id = guild_info.get('id')
+        player.guild.today_contribution = 0
+        player.guild.position = 1
+        player.guild.apply_guilds = []
+        player.guild.save_data()
+
+        # 加入公会聊天
+        remote_gate.login_guild_chat_remote(player.dynamic_id,
+                                            player.guild.g_id)
+
+    need_gold = game_configs.base_config.get('create_money')
+    if not player.pay.pay(need_gold, const.GUILD_CREATE, func):
+        response.res.result = False
+        response.res.result_no = 800
+        logger.error('create_guild error! pid:%d' % p_id)
+        return response.SerializeToString()
+
+    response.res.result = True
+    tlog_action.log('CreatGuild', player, player.guild.g_id,
+                    player.base_info.level)
+    print response, '===========================222create'
     return response.SerializeToString()

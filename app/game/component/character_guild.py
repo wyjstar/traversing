@@ -36,7 +36,7 @@ class CharacterGuildComponent(Component):
         self._g_id = character_info.get("guild_id")
         self._contribution = character_info.get("contribution")
         self._all_contribution = character_info.get("all_contribution")
-        self._today_contribution = character_info.get("today_contribution")
+        self._today_contribution = character_info.get("today_contribution", 0)
         self._bless = character_info.get('bless')
         self._praise = character_info.get('praise')
         self._exit_time = character_info.get("exit_time")
@@ -47,6 +47,7 @@ class CharacterGuildComponent(Component):
         data_obj.hmset({'guild_id': self._g_id,
                         'contribution': self._contribution,
                         'all_contribution': self._all_contribution,
+                        'today_contribution': self._today_contribution,
                         'bless': self._bless,
                         'praise': self._praise,
                         'apply_guilds': self._apply_guilds,
@@ -56,6 +57,7 @@ class CharacterGuildComponent(Component):
         data = {'guild_id': self._g_id,
                 'contribution': self._contribution,
                 'all_contribution': self._all_contribution,
+                'today_contribution': self._today_contribution,
                 'bless': self._bless,
                 'praise': self._praise,
                 'apply_guilds': self._apply_guilds,

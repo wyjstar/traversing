@@ -32,14 +32,14 @@ def create_guild_remote(p_id, g_name, icon_id, apply_guilds):
     # 判断有没有重名
     guild_name_data = tb_guild_info.getObj('names')
     _result = guild_name_data.hget(g_name)
-    if not _result:
-        return cPickle.dumps({'res': False})
+    if _result:
+        return {'res': False}
 
     guild_obj = guild_manager_obj.create_guild(p_id, g_name, icon_id)
     guild_name_data.hmset({g_name: guild_obj.g_id})
     del_player_apply(p_id, apply_guilds)
 
-    return cPickle.dumps({'res', True, 'guild_info': guild_obj.info})
+    return {'res': True, 'guild_info': guild_obj.info}
 
 
 @rootserviceHandle
@@ -49,7 +49,7 @@ def get_guild_info_remote(guild_id):
     guild_obj = guild_manager_obj.get_guild_obj(g_id, p_id)
     if not guild_obj:
         return cPickle.dumps({'res': False, 'no': 844})
-    return cPickle.dumps({'res', True, 'guild_info': guild_obj.info})
+    return cPickle.dumps({'res': True, 'guild_info': guild_obj.info})
 
 
 @rootserviceHandle
@@ -59,7 +59,7 @@ def get_my_guild_info_remote(guild_id, p_id):
     guild_obj = guild_manager_obj.get_guild_obj(g_id, p_id)
     if not guild_obj:
         return cPickle.dumps({'res': False, 'no': 844})
-    return cPickle.dumps({'res', True, 'guild_info': guild_obj.info,
+    return cPickle.dumps({'res': True, 'guild_info': guild_obj.info,
                           'position': guild_obj.get_position(p_id)})
 
 
@@ -83,7 +83,7 @@ def join_guild_remote(guild_id, p_id):
 
     guild_obj.join_guild(p_id)
     guild_obj.save_data()
-    return cPickle.dumps({'res', True,
+    return cPickle.dumps({'res': True,
                           'captain_id': guild_obj.p_list.get(1)[0]})
 
 
@@ -110,7 +110,7 @@ def exit_guild_remote(guild_id, p_id):
         guild_manager_obj.delete_guild(guild_obj.g_id)
         return cPickle.dumps({'res': True, 'no': 1,
                               'apply_ids': guild_obj.apply,
-                              'guild_name', guild_obj.name})
+                              'guild_name': guild_obj.name})
     if position == 1:
         p_list = []
         next_position = 0
@@ -128,7 +128,7 @@ def exit_guild_remote(guild_id, p_id):
     guild_obj.save_data()
     return cPickle.dumps({'res': True, 'no': no,
                           'apply_ids': guild_obj.apply,
-                          'guild_name', guild_obj.name})
+                          'guild_name': guild_obj.name})
 
 
 def get_next_captain(p_list):
@@ -168,7 +168,7 @@ def cheak_deal_apply_remote(g_id, p_ids, p_id, deal_type):
             return cPickle.dumps({'res': False, 'no': 845})
 
     return cPickle.dumps({'res': True,
-                          'guild_name', guild_obj.name,
+                          'guild_name': guild_obj.name,
                           'applys': guild_obj.apply})
 
 
