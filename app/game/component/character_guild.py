@@ -135,7 +135,7 @@ class CharacterGuildComponent(Component):
 
     def guild_attr(self):
         guild_level = 1
-        guild_info = game_configs.guild_config.get(guild_level)
+        guild_info = game_configs.guild_config.get(8).get(guild_level)
         if not guild_info:
             return {}
 
