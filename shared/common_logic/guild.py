@@ -46,6 +46,7 @@ class Guild(object):
                 'call': self._call,
                 'invite_join': self._invite_join,
                 'p_list': self._p_list,
+                'build': self._build,
                 'apply': self._apply}
         return data
 
@@ -68,8 +69,8 @@ class Guild(object):
     def init_data(self, data):
         self._g_id = data.get("id")
         self._name = data.get("name")
-        self._level = data.get("level")
-        self._exp = data.get("exp")
+        self._contribution = data.get("contribution")
+        self._all_contribution = data.get("all_contribution")
         self._icon_id = data.get("icon_id")
         self._bless = data.get("bless")
         self._praise = data.get("praise")

@@ -413,7 +413,8 @@ def line_up_info(player, response=None):
     player.travel_component.update_travel_item(response)
 
     # 公会等级
-    response.guild_level = player.guild.get_guild_level()
+    # response.guild_level = player.guild.get_guild_level()
+    response.guild_level = 1
 
     # 无双
     for k, v in player.line_up_component.unpars.items():

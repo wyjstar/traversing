@@ -878,10 +878,14 @@ def get_guild_info_812(data, player):
     response.all_zan_num = guild_obj.praise_num
     response.zan_money = guild_obj.zan_nomey
     response.captain_zan_receive_state = guild_obj.receive_praise_state
+    for build_type, build_level in guild_obj.build_info.items():
+        build_info_pb = response.build_info.add()
+        build_info_pb.build_type = build_type
+        build_info_pb.build_level = build_level
 
-    response.my_contribution = guild_obj.receive_praise_state
-    response.my_all_cantribution = guild_obj.receive_praise_state
-    response.my_day_contribution = guild_obj.receive_praise_state
+    response.my_contribution = player.guild.contribution
+    response.my_all_cantribution = player.guild.all_contribution
+    response.my_day_contribution = player.guild.today_contribution
 
     response.last_zan_time = player.guild.praise_time
     response.zan_num = player.guild.praise_num

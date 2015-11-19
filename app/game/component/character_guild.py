@@ -36,6 +36,7 @@ class CharacterGuildComponent(Component):
         self._g_id = character_info.get("guild_id")
         self._contribution = character_info.get("contribution")
         self._all_contribution = character_info.get("all_contribution")
+        self._today_contribution = character_info.get("today_contribution")
         self._bless = character_info.get('bless')
         self._praise = character_info.get('praise')
         self._exit_time = character_info.get("exit_time")
@@ -67,12 +68,12 @@ class CharacterGuildComponent(Component):
         self._aaaa
 
     @property
-    def guild_rank_flag(self):
-        return self._guild_rank_flag
+    def today_contribution(self):
+        return self._today_contribution
 
-    @guild_rank_flag.setter
-    def guild_rank_flag(self, value):
-        self._guild_rank_flag = value
+    @today_contribution.setter
+    def today_contribution(self, value):
+        self._today_contribution = value
 
     @property
     def praise(self):
@@ -131,7 +132,7 @@ class CharacterGuildComponent(Component):
         self._all_contribution = all_contribution
 
     def guild_attr(self):
-        guild_level = self.get_guild_level()
+        guild_level = 1
         guild_info = game_configs.guild_config.get(guild_level)
         if not guild_info:
             return {}
