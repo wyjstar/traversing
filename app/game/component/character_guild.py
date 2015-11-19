@@ -18,14 +18,13 @@ class CharacterGuildComponent(Component):
     def __init__(self, owner):
         super(CharacterGuildComponent, self).__init__(owner)
         self._g_id = 0  # 公会id
-        # self._position = 3  # 职务
 
         self._contribution = 0  # 贡献
         self._all_contribution = 0  # 总贡献
         self._today_contribution = 0  # 今日贡献
 
         self._exit_time = 1  # 上次退出公会时间
-        self._praise = [0, 1]  # 点赞状态次数，时间
+        self._praise = [0, 1]  # 点赞次数，时间
         self._bless = [0, [], 0, 1]  # 祈福次数,领取的祈福奖励，今日贡献时间
         self._apply_guilds = []  # 已经申请过的军团
         self._guild_rank_flag = 0  # 推荐列表，已经查询到的redis排行标记
@@ -66,16 +65,6 @@ class CharacterGuildComponent(Component):
         self._g_id = g_id
         self.position = 1
         self._aaaa
-
-    def get_guild_level(self):
-        if self._g_id == "no":
-            return 0
-        data = tb_guild_info.getObj(self._g_id).hgetall()
-        if not data:
-            return 0
-        guild_obj = Guild()
-        guild_obj.init_data(data)
-        return guild_obj.level
 
     @property
     def guild_rank_flag(self):
@@ -161,17 +150,27 @@ class CharacterGuildComponent(Component):
         self._contribution = contribution
 
     @property
-    def praise_state(self):
+    def praise_num(self):
         if time.localtime(self._praise[1]).tm_yday != time.localtime().tm_yday:
-            self._praise = [0, int(time.time())]
+            return 0
         return self._praise[0]
 
     @property
+    def praise_time(self):
+        return self._praise[1]
+
+    @property
     def bless_times(self):
-        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
-            self._bless = [0, [], 0, int(time.time())]
+        if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
+            return 0
         return self._bless[0]
 
+    @property
+    def bless_gifts(self):
+        if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
+            return []
+        return self._bless[1]
+
     def bless_update(self):
-        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
+        if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
             self._bless = [0, [], 0, int(time.time())]

@@ -71,11 +71,12 @@ message GetGuildInfoResponse{
     optional int32 g_id = 2;    //id
     optional string name = 3;    //名
     optional int32 member_num = 4;   //人数
-    // optional int32 level = 5;   //等级
     optional int32 contribution = 6;     //军团的建设值
     optional int32 all_contribution = 5;     //军团的建设值
     optional string call = 7;    //公告
     optional int32 icon_id = 8;   //军团徽章
+    optional int32 all_zan_num = 30;   // 军团今日已经赞的次数
+    optional int32 zan_money = 29;   // 军团今日已经赞的次数
 
     optional string captain_name = 9;   //团长name
     optional int32 captain_level = 10;   //团长level

@@ -168,8 +168,7 @@ def join_guild_802(data, player):
         response.res.result_no = 861
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObj(g_id).hgetall()
-    remote_res = remote_gate['world'].get_guild_info_remote(g_id)
+    remote_res = remote_gate['world'].join_guild_remote(g_id, p_id)
     remote_res = cPickle.loads(remote_res)
     if not remote_res.get('res'):
         response.res.result = False
@@ -195,7 +194,7 @@ def exit_guild_803(data, player):
     response = ExitGuildResponse()
     g_id = player.guild.g_id
 
-    remote_res = remote_gate['world'].get_guild_info_remote(g_id, p_id)
+    remote_res = remote_gate['world'].exit_guild_remote(g_id, p_id)
     remote_res = cPickle.loads(remote_res)
     if not remote_res.get('res'):
         response.res.result = False
@@ -850,49 +849,58 @@ def get_role_list_811(data, player):
 def get_guild_info_812(data, player):
     """获取公会信息 """
     response = GetGuildInfoResponse()
-    m_g_id = player.guild.g_id
-    if m_g_id == 0:
+    g_id = player.guild.g_id
+    if g_id == 0:
+        # "没有公会"
         response.res.result = False
         response.res.result_no = 846
-        # response.res.message = "没有公会"
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
+    data1 = tb_guild_info.getObj(g_id).hgetall()
     if not data1:
+        # "公会ID错误"
         response.res.result = False
         response.res.result_no = 844
-        # response.res.message = "公会ID错误"
         return response.SerializeToString()
 
     guild_obj = Guild()
-    guild_obj.init_data(data1)
+    guild_obj.init_data(g_id)
 
-    # response = response.guild_info
-    response.g_id = m_g_id
+    position = guild_obj.get_position(p_id)
+    response.g_id = g_id
     response.name = guild_obj.name
-    response.member_num = guild_obj.p_num
-    response.level = guild_obj.level
-    response.exp = guild_obj.exp
+    response.member_num = guild_obj.get_p_num
+    response.contribution = guild_obj.contribution
+    response.all_contribution = guild_obj.all_contribution
     response.icon_id = guild_obj.icon_id
     response.call = guild_obj.call
-    response.position = player.guild.position
-    response.zan_state = player.guild.praise_state
-    response.zan_num = guild_obj.praise_num
-    response.luck_num = guild_obj.bless_luck_num
-    response.bless_num = guild_obj.bless_num
+    response.position = position
+    response.all_zan_num = guild_obj.praise_num
+    response.zan_money = guild_obj.zan_nomey
+    response.captain_zan_receive_state = guild_obj.receive_praise_state
+
+    response.my_contribution = guild_obj.receive_praise_state
+    response.my_all_cantribution = guild_obj.receive_praise_state
+    response.my_day_contribution = guild_obj.receive_praise_state
+
+    response.last_zan_time = player.guild.praise_time
+    response.zan_num = player.guild.praise_num
+
+    response.luck_num = player.guild.bless_times
+    response.bless_num = player.guild.bless_times
     response.bless_state = player.guild.bless_times
-    for bless_gift_no in player.guild.bless[1]:
+
+    for bless_gift_no in player.guild.bless_gifts:
         response.bless_gift.append(bless_gift_no)
     rank_no = rank_helper.get_rank_by_key('GuildLevel',
-                                          m_g_id)
+                                          g_id)
     response.my_guild_rank = rank_no
-    if player.guild.position == 1:
+    if position == 1:
         response.captain_name = player.base_info.base_name
         response.captain_level = player.base_info.level
         response.captain_power = int(player.line_up_component.combat_power)
         response.captain_vip_level = player.base_info.vip_level
         response.captain_icon = player.base_info.head
-        response.captain_zan_receive_state = guild_obj.receive_praise_state
 
     else:
         president_id = guild_obj.p_list.get(1)[0]
@@ -925,16 +933,16 @@ def get_apply_list_813(data, player):
     response = GetApplyListResponse()
     m_g_id = player.guild.g_id
     if m_g_id == 0:
+        # "没有公会"
         response.res.result = False
         response.res.result_no = 846
-        # response.res.message = "没有公会"
         return response.SerializeToString()
 
     data1 = tb_guild_info.getObj(m_g_id).hgetall()
     if not data1:
+        # "id error"
         response.res.result = False
         response.res.result_no = 844
-        # response.res.message = "id error"
         return response.SerializeToString()
 
     guild_obj = Guild()

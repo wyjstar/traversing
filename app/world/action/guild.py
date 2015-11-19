@@ -46,10 +46,21 @@ def create_guild_remote(p_id, g_name, icon_id, apply_guilds):
 def get_guild_info_remote(guild_id):
     """
     """
-    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    guild_obj = guild_manager_obj.get_guild_obj(g_id, p_id)
     if not guild_obj:
-        return cPickle.dumps({'res': False})
+        return cPickle.dumps({'res': False, 'no': 844})
     return cPickle.dumps({'res', True, 'guild_info': guild_obj.info})
+
+
+@rootserviceHandle
+def get_my_guild_info_remote(guild_id, p_id):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id, p_id)
+    if not guild_obj:
+        return cPickle.dumps({'res': False, 'no': 844})
+    return cPickle.dumps({'res', True, 'guild_info': guild_obj.info,
+                          'position': guild_obj.get_position(p_id)})
 
 
 @rootserviceHandle

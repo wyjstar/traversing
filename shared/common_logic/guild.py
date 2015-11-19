@@ -40,8 +40,6 @@ class Guild(object):
     def _info(self):
         data = {'id': self._g_id,
                 'name': self._name,
-                'level': self._level,
-                'exp': self._exp,
                 'icon_id': self._icon_id,
                 'bless': self._bless,
                 'praise': self._praise,
@@ -212,28 +210,30 @@ class Guild(object):
 
     @property
     def praise_num(self):
-        if time.localtime(self._praise[2]).tm_yday != time.localtime().tm_yday:
-            self._praise = [0, 0, int(time.time())]
-            self.save_data()
+        if time.localtime(self._praise[3]).tm_yday != time.localtime().tm_yday:
+            return 0
         return self._praise[0]
 
     @property
+    def praise_money(self):
+        if time.localtime(self._praise[3]).tm_yday != time.localtime().tm_yday:
+            return 0
+        return self._praise[2]
+
+    @property
     def receive_praise_state(self):
-        if time.localtime(self._praise[2]).tm_yday != time.localtime().tm_yday:
-            self._praise = [0, 0, int(time.time())]
-            self.save_data()
+        if time.localtime(self._praise[3]).tm_yday != time.localtime().tm_yday:
+            return 0
         return self._praise[1]
 
     @property
     def bless_luck_num(self):
         if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
-            self._bless = [0, 0, int(time.time())]
-            self.save_data()
+            return 0
         return self._bless[1]
 
     @property
     def bless_num(self):
         if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
-            self._bless = [0, 0, int(time.time())]
-            self.save_data()
+            return 0
         return self._bless[0]
