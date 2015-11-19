@@ -12,7 +12,7 @@ from shared.db_opear.configs_data.data_helper import convert_keystr2num
 class GuildConfig(object):
     """武将配置类"""
     def __init__(self):
-        self._guild = {}
+        self._guild = {}  # {type:{level:info}, type2:{}}
 
     def parser(self, config_value):
         """解析config到GuildConfig"""
@@ -21,5 +21,8 @@ class GuildConfig(object):
             convert_keystr2num(row.get("cohesion"))
             row["support"] = parse(row.get("support"))
             row["collectSupportGift"] = parse(row.get("collectSupportGift"))
-            self._guild[row.get('level')] = CommonItem(row)
+            if self._guild.get(row.get('type')):
+                self._guild[row.get('type')][row.get('level')] = CommonItem(row)
+            else:
+                self._guild[row.get('type')] = {row.get('level'): CommonItem(row)}
         return self._guild
