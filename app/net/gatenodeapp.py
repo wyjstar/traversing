@@ -19,13 +19,13 @@ def push_object_remote(topicID, msg, sendList):
 
 
 @remoteserviceHandle('gate')
-def push_all_object_remote(topicID, msg):
+def push_all_object_remote_noresult(topicID, msg):
     """
     向全区玩家发送消息。
     topicID: 为协议号。
     msg: 发送的消息。
     """
-    print("push_all_object_remote===========")
+    print("push_all_object_remote_noresult===========")
     GlobalObject().netfactory.pushAllObject(topicID, msg)
 
 

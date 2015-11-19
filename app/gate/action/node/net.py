@@ -35,7 +35,7 @@ def push_all_objects(topic_id, message):
     """
     向全服玩家发送消息
     """
-    groot.child('net').push_all_object_remote(topic_id, message)
+    groot.child('net').push_all_object_remote_noresult(topic_id, message)
 
 
 @rootserviceHandle
