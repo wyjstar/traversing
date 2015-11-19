@@ -1,66 +1,130 @@
 vip_config={
-  [0] = {
-  ["allStrength"] = 0,  ["openSweepTen"] = 0,  ["id"] = 0,  ["shopRefreshTimes"] = 10,  ["eliteCopyTimes"] = 2,  ["openSweep"] = 1,  ["cookingTimes"] = 4,  ["SpeedUpThreeTimes"] = 0,  ["buyGgzjTimes"] = 1,  ["buyArenaTimes"] = 0,  ["description"] = 4800000000,  ["MineIncrease"] = 0,  ["buyStaminaMax"] = 1,  ["worldbossSkip"] = 0,  ["autoTravelGet"] = 0,  ["warFogRefreshNum"] = 2,  ["buyShoeTimes"] = 10,  ["buyGifts"] = 0,  ["guildWorshipTimes"] = 1,  ["buyGetMoneyTimes"] = 2,  ["equipmentStrengthCliTimes"] = {
-  ["2"] = 0.15,}
-,  ["buyhjqyCopyTimes"] = 2,  ["buyStageResetTimes"] = 1,  ["activityCopyTimes"] = 2,  ["rechargeAmount"] = 0,  ["equipmentStrengthOneKey"] = 0,  ["jump"] = 1,}
-,  [1] = {
-  ["allStrength"] = 0,  ["openSweepTen"] = 0,  ["id"] = 1,  ["shopRefreshTimes"] = 20,  ["eliteCopyTimes"] = 3,  ["openSweep"] = 1,  ["cookingTimes"] = 5,  ["SpeedUpThreeTimes"] = 0,  ["buyGgzjTimes"] = 1,  ["buyArenaTimes"] = 0,  ["description"] = 4800000001,  ["MineIncrease"] = 0,  ["buyStaminaMax"] = 2,  ["worldbossSkip"] = 0,  ["autoTravelGet"] = 0,  ["warFogRefreshNum"] = 3,  ["buyShoeTimes"] = 20,  ["buyGifts"] = 0,  ["guildWorshipTimes"] = 1,  ["buyGetMoneyTimes"] = 4,  ["equipmentStrengthCliTimes"] = {
-  ["2"] = 0.15,  ["3"] = 0.05,}
-,  ["buyhjqyCopyTimes"] = 3,  ["buyStageResetTimes"] = 2,  ["activityCopyTimes"] = 3,  ["rechargeAmount"] = 10,  ["equipmentStrengthOneKey"] = 0,  ["jump"] = 1,}
+  [1] = {
+  ["description"] = 4800000001,  ["buyGetMoneyTimes"] = 5,  ["eliteCopyAdditionalTimes"] = 2,  ["buyEnergyMax"] = 2,  ["guildWorShip"] = 1,  ["activityCopyTimes1"] = 3,  ["equipmentStrengthOneKey"] = 0,  ["buyGifts"] = 0,  ["buyRestrictionsShopTime"] = 0,  ["equipmentStrengthCliTimes"] = {
+  ["3"] = 0.05,  ["2"] = 0.15,}
+,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 0,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 20,  ["eliteCopyTimes"] = 3,  ["buyGgzjTimes"] = 1,  ["MineIncrease"] = 0,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 5,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 0,  ["12"] = 5,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 0,  ["buyShoeTimes"] = 20,  ["warFogRefreshNum"] = 3,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 3,  ["cookingTimes"] = 5,  ["guildWorshipTimes"] = 1,  ["allStrength"] = 0,  ["jump"] = 1,  ["id"] = 1,  ["rechargeAmount"] = 10,  ["openSweepTen"] = 0,  ["indiana_TruceTime"] = 6,  ["buyhjqyCopyTimes"] = 3,  ["activityCopyTimes"] = 3,  ["worldbossSkip"] = 0,  ["buyArenaTimes"] = 0,  ["buyStaminaMax"] = 2,  ["shopRefreshTimes"] = 20,  ["shopEquTimes"] = 20,  ["buyStageResetTimes"] = 2,}
 ,  [2] = {
-  ["allStrength"] = 0,  ["openSweepTen"] = 0,  ["id"] = 2,  ["shopRefreshTimes"] = 30,  ["eliteCopyTimes"] = 3,  ["openSweep"] = 1,  ["cookingTimes"] = 5,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 1,  ["buyArenaTimes"] = 5,  ["description"] = 4800000002,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 3,  ["worldbossSkip"] = 0,  ["autoTravelGet"] = 0,  ["warFogRefreshNum"] = 3,  ["buyShoeTimes"] = 30,  ["buyGifts"] = 0,  ["guildWorshipTimes"] = 1,  ["buyGetMoneyTimes"] = 6,  ["equipmentStrengthCliTimes"] = {
-  ["2"] = 0.15,  ["3"] = 0.05,}
-,  ["buyhjqyCopyTimes"] = 3,  ["buyStageResetTimes"] = 2,  ["activityCopyTimes"] = 3,  ["rechargeAmount"] = 100,  ["equipmentStrengthOneKey"] = 0,  ["jump"] = 1,}
+  ["description"] = 4800000002,  ["buyGetMoneyTimes"] = 5,  ["eliteCopyAdditionalTimes"] = 2,  ["buyEnergyMax"] = 3,  ["guildWorShip"] = 1,  ["activityCopyTimes1"] = 3,  ["equipmentStrengthOneKey"] = 0,  ["buyGifts"] = 0,  ["buyRestrictionsShopTime"] = 0,  ["equipmentStrengthCliTimes"] = {
+  ["3"] = 0.05,  ["2"] = 0.15,}
+,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 0,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 30,  ["eliteCopyTimes"] = 3,  ["buyGgzjTimes"] = 1,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 5,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 0,  ["12"] = 5,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 30,  ["warFogRefreshNum"] = 3,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 3,  ["cookingTimes"] = 5,  ["guildWorshipTimes"] = 1,  ["allStrength"] = 0,  ["jump"] = 1,  ["id"] = 2,  ["rechargeAmount"] = 100,  ["openSweepTen"] = 0,  ["indiana_TruceTime"] = 6,  ["buyhjqyCopyTimes"] = 3,  ["activityCopyTimes"] = 3,  ["worldbossSkip"] = 0,  ["buyArenaTimes"] = 5,  ["buyStaminaMax"] = 3,  ["shopRefreshTimes"] = 30,  ["shopEquTimes"] = 30,  ["buyStageResetTimes"] = 2,}
 ,  [3] = {
-  ["allStrength"] = 0,  ["openSweepTen"] = 1,  ["id"] = 3,  ["shopRefreshTimes"] = 40,  ["eliteCopyTimes"] = 3,  ["openSweep"] = 1,  ["cookingTimes"] = 5,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 1,  ["buyArenaTimes"] = 10,  ["description"] = 4800000003,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 4,  ["worldbossSkip"] = 0,  ["autoTravelGet"] = 0,  ["warFogRefreshNum"] = 4,  ["buyShoeTimes"] = 40,  ["buyGifts"] = 0,  ["guildWorshipTimes"] = 1,  ["buyGetMoneyTimes"] = 8,  ["equipmentStrengthCliTimes"] = {
-  ["2"] = 0.15,  ["3"] = 0.03,  ["4"] = 0.02,}
-,  ["buyhjqyCopyTimes"] = 3,  ["buyStageResetTimes"] = 2,  ["activityCopyTimes"] = 3,  ["rechargeAmount"] = 300,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000003,  ["buyGetMoneyTimes"] = 5,  ["eliteCopyAdditionalTimes"] = 2,  ["buyEnergyMax"] = 4,  ["guildWorShip"] = 1,  ["activityCopyTimes1"] = 3,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 0,  ["buyRestrictionsShopTime"] = 0,  ["equipmentStrengthCliTimes"] = {
+  ["4"] = 0.02,  ["3"] = 0.03,  ["2"] = 0.15,}
+,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 40,  ["eliteCopyTimes"] = 3,  ["buyGgzjTimes"] = 1,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 10,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 10,  ["12"] = 10,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 40,  ["warFogRefreshNum"] = 4,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 3,  ["cookingTimes"] = 5,  ["guildWorshipTimes"] = 1,  ["allStrength"] = 0,  ["jump"] = 1,  ["id"] = 3,  ["rechargeAmount"] = 300,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 6,  ["buyhjqyCopyTimes"] = 3,  ["activityCopyTimes"] = 3,  ["worldbossSkip"] = 0,  ["buyArenaTimes"] = 10,  ["buyStaminaMax"] = 4,  ["shopRefreshTimes"] = 40,  ["shopEquTimes"] = 40,  ["buyStageResetTimes"] = 2,}
 ,  [4] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 4,  ["shopRefreshTimes"] = 50,  ["eliteCopyTimes"] = 4,  ["openSweep"] = 1,  ["cookingTimes"] = 5,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 1,  ["buyArenaTimes"] = 15,  ["description"] = 4800000004,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 5,  ["worldbossSkip"] = 0,  ["autoTravelGet"] = 0,  ["warFogRefreshNum"] = 4,  ["buyShoeTimes"] = 50,  ["buyGifts"] = 0,  ["guildWorshipTimes"] = 1,  ["buyGetMoneyTimes"] = 10,  ["equipmentStrengthCliTimes"] = {
-  ["2"] = 0.15,  ["3"] = 0.03,  ["4"] = 0.02,}
-,  ["buyhjqyCopyTimes"] = 4,  ["buyStageResetTimes"] = 2,  ["activityCopyTimes"] = 4,  ["rechargeAmount"] = 500,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000004,  ["buyGetMoneyTimes"] = 9,  ["eliteCopyAdditionalTimes"] = 3,  ["buyEnergyMax"] = 5,  ["guildWorShip"] = 1,  ["activityCopyTimes1"] = 4,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 0,  ["buyRestrictionsShopTime"] = 0,  ["equipmentStrengthCliTimes"] = {
+  ["4"] = 0.02,  ["3"] = 0.03,  ["2"] = 0.15,}
+,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 50,  ["eliteCopyTimes"] = 4,  ["buyGgzjTimes"] = 1,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 10,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 10,  ["12"] = 10,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 50,  ["warFogRefreshNum"] = 4,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 4,  ["cookingTimes"] = 5,  ["guildWorshipTimes"] = 1,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 4,  ["rechargeAmount"] = 500,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 7,  ["buyhjqyCopyTimes"] = 4,  ["activityCopyTimes"] = 4,  ["worldbossSkip"] = 0,  ["buyArenaTimes"] = 15,  ["buyStaminaMax"] = 5,  ["shopRefreshTimes"] = 50,  ["shopEquTimes"] = 50,  ["buyStageResetTimes"] = 2,}
 ,  [5] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 5,  ["shopRefreshTimes"] = 60,  ["eliteCopyTimes"] = 4,  ["openSweep"] = 1,  ["cookingTimes"] = 6,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 1,  ["buyArenaTimes"] = 20,  ["description"] = 4800000005,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 6,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 0,  ["warFogRefreshNum"] = 5,  ["buyShoeTimes"] = 60,  ["buyGifts"] = 40005,  ["guildWorshipTimes"] = 1,  ["buyGetMoneyTimes"] = 12,  ["equipmentStrengthCliTimes"] = {
-  ["2"] = 0.15,  ["4"] = 0.02,  ["3"] = 0.02,  ["5"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 4,  ["buyStageResetTimes"] = 3,  ["activityCopyTimes"] = 4,  ["rechargeAmount"] = 1000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000005,  ["buyGetMoneyTimes"] = 9,  ["eliteCopyAdditionalTimes"] = 3,  ["buyEnergyMax"] = 6,  ["guildWorShip"] = 1,  ["activityCopyTimes1"] = 4,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40005,  ["buyRestrictionsShopTime"] = 0,  ["equipmentStrengthCliTimes"] = {
+  ["5"] = 0.01,  ["4"] = 0.02,  ["3"] = 0.02,  ["2"] = 0.15,}
+,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 60,  ["eliteCopyTimes"] = 4,  ["buyGgzjTimes"] = 1,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 10,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 10,  ["12"] = 10,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 60,  ["warFogRefreshNum"] = 5,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 4,  ["cookingTimes"] = 6,  ["guildWorshipTimes"] = 1,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 5,  ["rechargeAmount"] = 1000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 7,  ["buyhjqyCopyTimes"] = 4,  ["activityCopyTimes"] = 4,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 20,  ["buyStaminaMax"] = 6,  ["shopRefreshTimes"] = 60,  ["shopEquTimes"] = 60,  ["buyStageResetTimes"] = 3,}
 ,  [6] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 6,  ["shopRefreshTimes"] = 70,  ["eliteCopyTimes"] = 4,  ["openSweep"] = 1,  ["cookingTimes"] = 6,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 25,  ["description"] = 4800000006,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 7,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 0,  ["warFogRefreshNum"] = 5,  ["buyShoeTimes"] = 70,  ["buyGifts"] = 40006,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 14,  ["equipmentStrengthCliTimes"] = {
-  ["2"] = 0.15,  ["4"] = 0.02,  ["3"] = 0.02,  ["5"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 4,  ["buyStageResetTimes"] = 3,  ["activityCopyTimes"] = 4,  ["rechargeAmount"] = 2000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000006,  ["buyGetMoneyTimes"] = 9,  ["eliteCopyAdditionalTimes"] = 3,  ["buyEnergyMax"] = 7,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 4,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40006,  ["buyRestrictionsShopTime"] = 8,  ["equipmentStrengthCliTimes"] = {
+  ["5"] = 0.01,  ["4"] = 0.02,  ["3"] = 0.02,  ["2"] = 0.15,}
+,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 70,  ["eliteCopyTimes"] = 4,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 10,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 10,  ["12"] = 10,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 70,  ["warFogRefreshNum"] = 5,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 4,  ["cookingTimes"] = 6,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 6,  ["rechargeAmount"] = 2000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 7,  ["buyhjqyCopyTimes"] = 4,  ["activityCopyTimes"] = 4,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 25,  ["buyStaminaMax"] = 7,  ["shopRefreshTimes"] = 70,  ["shopEquTimes"] = 70,  ["buyStageResetTimes"] = 3,}
 ,  [7] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 7,  ["shopRefreshTimes"] = 80,  ["eliteCopyTimes"] = 4,  ["openSweep"] = 1,  ["cookingTimes"] = 6,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 30,  ["description"] = 4800000007,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 8,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 0,  ["warFogRefreshNum"] = 6,  ["buyShoeTimes"] = 80,  ["buyGifts"] = 40007,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 16,  ["equipmentStrengthCliTimes"] = {
-  ["4"] = 0.02,  ["3"] = 0.02,  ["5"] = 0.01,  ["2"] = 0.14,  ["6"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 4,  ["buyStageResetTimes"] = 3,  ["activityCopyTimes"] = 4,  ["rechargeAmount"] = 3000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000007,  ["buyGetMoneyTimes"] = 13,  ["eliteCopyAdditionalTimes"] = 3,  ["buyEnergyMax"] = 8,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 4,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40007,  ["buyRestrictionsShopTime"] = 10,  ["equipmentStrengthCliTimes"] = {
+  ["3"] = 0.02,  ["2"] = 0.14,  ["5"] = 0.01,  ["4"] = 0.02,  ["6"] = 0.01,}
+,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 80,  ["eliteCopyTimes"] = 4,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 15,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 15,  ["12"] = 15,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 80,  ["warFogRefreshNum"] = 6,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 4,  ["cookingTimes"] = 6,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 7,  ["rechargeAmount"] = 3000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 7,  ["buyhjqyCopyTimes"] = 4,  ["activityCopyTimes"] = 4,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 30,  ["buyStaminaMax"] = 8,  ["shopRefreshTimes"] = 80,  ["shopEquTimes"] = 80,  ["buyStageResetTimes"] = 3,}
 ,  [8] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 8,  ["shopRefreshTimes"] = 90,  ["eliteCopyTimes"] = 5,  ["openSweep"] = 1,  ["cookingTimes"] = 6,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 35,  ["description"] = 4800000008,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 9,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 0,  ["warFogRefreshNum"] = 6,  ["buyShoeTimes"] = 90,  ["buyGifts"] = 40008,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 18,  ["equipmentStrengthCliTimes"] = {
-  ["4"] = 0.02,  ["3"] = 0.02,  ["5"] = 0.01,  ["2"] = 0.14,  ["6"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 5,  ["buyStageResetTimes"] = 3,  ["activityCopyTimes"] = 5,  ["rechargeAmount"] = 5000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000008,  ["buyGetMoneyTimes"] = 13,  ["eliteCopyAdditionalTimes"] = 4,  ["buyEnergyMax"] = 9,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 5,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40008,  ["buyRestrictionsShopTime"] = 10,  ["equipmentStrengthCliTimes"] = {
+  ["3"] = 0.02,  ["2"] = 0.14,  ["5"] = 0.01,  ["4"] = 0.02,  ["6"] = 0.01,}
+,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 90,  ["eliteCopyTimes"] = 5,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 15,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 15,  ["12"] = 15,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 90,  ["warFogRefreshNum"] = 6,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 5,  ["cookingTimes"] = 6,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 8,  ["rechargeAmount"] = 5000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 8,  ["buyhjqyCopyTimes"] = 5,  ["activityCopyTimes"] = 5,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 35,  ["buyStaminaMax"] = 9,  ["shopRefreshTimes"] = 90,  ["shopEquTimes"] = 90,  ["buyStageResetTimes"] = 3,}
 ,  [9] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 9,  ["shopRefreshTimes"] = 100,  ["eliteCopyTimes"] = 5,  ["openSweep"] = 1,  ["cookingTimes"] = 7,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 40,  ["description"] = 4800000009,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 10,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 1,  ["warFogRefreshNum"] = 7,  ["buyShoeTimes"] = 100,  ["buyGifts"] = 40009,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 20,  ["equipmentStrengthCliTimes"] = {
-  ["4"] = 0.02,  ["3"] = 0.02,  ["5"] = 0.01,  ["2"] = 0.13,  ["6"] = 0.01,  ["7"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 5,  ["buyStageResetTimes"] = 3,  ["activityCopyTimes"] = 5,  ["rechargeAmount"] = 10000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000009,  ["buyGetMoneyTimes"] = 13,  ["eliteCopyAdditionalTimes"] = 4,  ["buyEnergyMax"] = 10,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 5,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40009,  ["buyRestrictionsShopTime"] = 10,  ["equipmentStrengthCliTimes"] = {
+  ["3"] = 0.02,  ["2"] = 0.13,  ["5"] = 0.01,  ["4"] = 0.02,  ["7"] = 0.01,  ["6"] = 0.01,}
+,  ["autoTravelGet"] = 1,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 100,  ["eliteCopyTimes"] = 5,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 15,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 15,  ["12"] = 15,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 100,  ["warFogRefreshNum"] = 7,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 5,  ["cookingTimes"] = 7,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 9,  ["rechargeAmount"] = 10000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 8,  ["buyhjqyCopyTimes"] = 5,  ["activityCopyTimes"] = 5,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 40,  ["buyStaminaMax"] = 10,  ["shopRefreshTimes"] = 100,  ["shopEquTimes"] = 100,  ["buyStageResetTimes"] = 3,}
 ,  [10] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 10,  ["shopRefreshTimes"] = 110,  ["eliteCopyTimes"] = 5,  ["openSweep"] = 1,  ["cookingTimes"] = 7,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 45,  ["description"] = 4800000010,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 11,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 1,  ["warFogRefreshNum"] = 7,  ["buyShoeTimes"] = 110,  ["buyGifts"] = 40010,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 22,  ["equipmentStrengthCliTimes"] = {
-  ["4"] = 0.02,  ["3"] = 0.02,  ["5"] = 0.01,  ["2"] = 0.13,  ["6"] = 0.01,  ["7"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 5,  ["buyStageResetTimes"] = 4,  ["activityCopyTimes"] = 5,  ["rechargeAmount"] = 20000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000010,  ["buyGetMoneyTimes"] = 17,  ["eliteCopyAdditionalTimes"] = 4,  ["buyEnergyMax"] = 11,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 5,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40010,  ["buyRestrictionsShopTime"] = 15,  ["equipmentStrengthCliTimes"] = {
+  ["3"] = 0.02,  ["2"] = 0.13,  ["5"] = 0.01,  ["4"] = 0.02,  ["7"] = 0.01,  ["6"] = 0.01,}
+,  ["autoTravelGet"] = 1,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 110,  ["eliteCopyTimes"] = 5,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 15,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 15,  ["12"] = 15,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 110,  ["warFogRefreshNum"] = 7,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 5,  ["cookingTimes"] = 7,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 10,  ["rechargeAmount"] = 20000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 8,  ["buyhjqyCopyTimes"] = 5,  ["activityCopyTimes"] = 5,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 45,  ["buyStaminaMax"] = 11,  ["shopRefreshTimes"] = 110,  ["shopEquTimes"] = 110,  ["buyStageResetTimes"] = 4,}
 ,  [11] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 11,  ["shopRefreshTimes"] = 120,  ["eliteCopyTimes"] = 5,  ["openSweep"] = 1,  ["cookingTimes"] = 7,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 50,  ["description"] = 4800000011,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 12,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 1,  ["warFogRefreshNum"] = 8,  ["buyShoeTimes"] = 120,  ["buyGifts"] = 40011,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 24,  ["equipmentStrengthCliTimes"] = {
-  ["4"] = 0.02,  ["8"] = 0.01,  ["3"] = 0.02,  ["5"] = 0.01,  ["2"] = 0.12,  ["6"] = 0.01,  ["7"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 5,  ["buyStageResetTimes"] = 4,  ["activityCopyTimes"] = 5,  ["rechargeAmount"] = 30000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000011,  ["buyGetMoneyTimes"] = 17,  ["eliteCopyAdditionalTimes"] = 4,  ["buyEnergyMax"] = 12,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 5,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40011,  ["buyRestrictionsShopTime"] = 15,  ["equipmentStrengthCliTimes"] = {
+  ["8"] = 0.01,  ["3"] = 0.02,  ["2"] = 0.12,  ["5"] = 0.01,  ["4"] = 0.02,  ["7"] = 0.01,  ["6"] = 0.01,}
+,  ["autoTravelGet"] = 1,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 120,  ["eliteCopyTimes"] = 5,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 15,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 15,  ["12"] = 15,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 120,  ["warFogRefreshNum"] = 8,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 5,  ["cookingTimes"] = 7,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 11,  ["rechargeAmount"] = 30000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 8,  ["buyhjqyCopyTimes"] = 5,  ["activityCopyTimes"] = 5,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 50,  ["buyStaminaMax"] = 12,  ["shopRefreshTimes"] = 120,  ["shopEquTimes"] = 120,  ["buyStageResetTimes"] = 4,}
 ,  [12] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 12,  ["shopRefreshTimes"] = 130,  ["eliteCopyTimes"] = 5,  ["openSweep"] = 1,  ["cookingTimes"] = 7,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 55,  ["description"] = 4800000012,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 13,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 1,  ["warFogRefreshNum"] = 8,  ["buyShoeTimes"] = 130,  ["buyGifts"] = 40012,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 26,  ["equipmentStrengthCliTimes"] = {
-  ["4"] = 0.02,  ["8"] = 0.01,  ["3"] = 0.02,  ["5"] = 0.01,  ["2"] = 0.12,  ["6"] = 0.01,  ["7"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 5,  ["buyStageResetTimes"] = 4,  ["activityCopyTimes"] = 5,  ["rechargeAmount"] = 40000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000012,  ["buyGetMoneyTimes"] = 17,  ["eliteCopyAdditionalTimes"] = 4,  ["buyEnergyMax"] = 13,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 5,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40012,  ["buyRestrictionsShopTime"] = 15,  ["equipmentStrengthCliTimes"] = {
+  ["8"] = 0.01,  ["3"] = 0.02,  ["2"] = 0.12,  ["5"] = 0.01,  ["4"] = 0.02,  ["7"] = 0.01,  ["6"] = 0.01,}
+,  ["autoTravelGet"] = 1,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 130,  ["eliteCopyTimes"] = 5,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 15,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 15,  ["12"] = 15,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 130,  ["warFogRefreshNum"] = 8,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 5,  ["cookingTimes"] = 7,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 12,  ["rechargeAmount"] = 40000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 8,  ["buyhjqyCopyTimes"] = 5,  ["activityCopyTimes"] = 5,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 55,  ["buyStaminaMax"] = 13,  ["shopRefreshTimes"] = 130,  ["shopEquTimes"] = 130,  ["buyStageResetTimes"] = 4,}
 ,  [13] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 13,  ["shopRefreshTimes"] = 140,  ["eliteCopyTimes"] = 6,  ["openSweep"] = 1,  ["cookingTimes"] = 8,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 60,  ["description"] = 4800000013,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 14,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 1,  ["warFogRefreshNum"] = 9,  ["buyShoeTimes"] = 140,  ["buyGifts"] = 40013,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 28,  ["equipmentStrengthCliTimes"] = {
-  ["4"] = 0.02,  ["8"] = 0.01,  ["3"] = 0.02,  ["5"] = 0.01,  ["2"] = 0.11,  ["6"] = 0.01,  ["9"] = 0.01,  ["7"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 6,  ["buyStageResetTimes"] = 4,  ["activityCopyTimes"] = 6,  ["rechargeAmount"] = 50000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000013,  ["buyGetMoneyTimes"] = 19,  ["eliteCopyAdditionalTimes"] = 5,  ["buyEnergyMax"] = 14,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 6,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40013,  ["buyRestrictionsShopTime"] = 20,  ["equipmentStrengthCliTimes"] = {
+  ["9"] = 0.01,  ["8"] = 0.01,  ["3"] = 0.02,  ["2"] = 0.11,  ["5"] = 0.01,  ["4"] = 0.02,  ["7"] = 0.01,  ["6"] = 0.01,}
+,  ["autoTravelGet"] = 1,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 140,  ["eliteCopyTimes"] = 6,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 20,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 20,  ["12"] = 20,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 140,  ["warFogRefreshNum"] = 9,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 6,  ["cookingTimes"] = 8,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 13,  ["rechargeAmount"] = 50000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 9,  ["buyhjqyCopyTimes"] = 6,  ["activityCopyTimes"] = 6,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 60,  ["buyStaminaMax"] = 14,  ["shopRefreshTimes"] = 140,  ["shopEquTimes"] = 140,  ["buyStageResetTimes"] = 4,}
 ,  [14] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 14,  ["shopRefreshTimes"] = 150,  ["eliteCopyTimes"] = 6,  ["openSweep"] = 1,  ["cookingTimes"] = 8,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 65,  ["description"] = 4800000014,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 15,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 1,  ["warFogRefreshNum"] = 9,  ["buyShoeTimes"] = 150,  ["buyGifts"] = 40014,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 30,  ["equipmentStrengthCliTimes"] = {
-  ["4"] = 0.02,  ["8"] = 0.01,  ["3"] = 0.02,  ["5"] = 0.01,  ["2"] = 0.11,  ["6"] = 0.01,  ["9"] = 0.01,  ["7"] = 0.01,}
-,  ["buyhjqyCopyTimes"] = 6,  ["buyStageResetTimes"] = 4,  ["activityCopyTimes"] = 6,  ["rechargeAmount"] = 100000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000014,  ["buyGetMoneyTimes"] = 19,  ["eliteCopyAdditionalTimes"] = 5,  ["buyEnergyMax"] = 15,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 6,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40014,  ["buyRestrictionsShopTime"] = 20,  ["equipmentStrengthCliTimes"] = {
+  ["9"] = 0.01,  ["8"] = 0.01,  ["3"] = 0.02,  ["2"] = 0.11,  ["5"] = 0.01,  ["4"] = 0.02,  ["7"] = 0.01,  ["6"] = 0.01,}
+,  ["autoTravelGet"] = 1,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 150,  ["eliteCopyTimes"] = 6,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 20,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 20,  ["12"] = 20,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 150,  ["warFogRefreshNum"] = 9,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 6,  ["cookingTimes"] = 8,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 14,  ["rechargeAmount"] = 100000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 9,  ["buyhjqyCopyTimes"] = 6,  ["activityCopyTimes"] = 6,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 65,  ["buyStaminaMax"] = 15,  ["shopRefreshTimes"] = 150,  ["shopEquTimes"] = 150,  ["buyStageResetTimes"] = 4,}
 ,  [15] = {
-  ["allStrength"] = 1,  ["openSweepTen"] = 1,  ["id"] = 15,  ["shopRefreshTimes"] = 160,  ["eliteCopyTimes"] = 6,  ["openSweep"] = 1,  ["cookingTimes"] = 8,  ["SpeedUpThreeTimes"] = 1,  ["buyGgzjTimes"] = 2,  ["buyArenaTimes"] = 70,  ["description"] = 4800000015,  ["MineIncrease"] = 1,  ["buyStaminaMax"] = 16,  ["worldbossSkip"] = 1,  ["autoTravelGet"] = 1,  ["warFogRefreshNum"] = 10,  ["buyShoeTimes"] = 160,  ["buyGifts"] = 40015,  ["guildWorshipTimes"] = 2,  ["buyGetMoneyTimes"] = 32,  ["equipmentStrengthCliTimes"] = {
-  ["4"] = 0.02,  ["8"] = 0.01,  ["10"] = 0.01,  ["5"] = 0.01,  ["9"] = 0.01,  ["6"] = 0.01,  ["3"] = 0.02,  ["7"] = 0.01,  ["2"] = 0.1,}
-,  ["buyhjqyCopyTimes"] = 6,  ["buyStageResetTimes"] = 4,  ["activityCopyTimes"] = 6,  ["rechargeAmount"] = 200000,  ["equipmentStrengthOneKey"] = 1,  ["jump"] = 1,}
+  ["description"] = 4800000015,  ["buyGetMoneyTimes"] = 20,  ["eliteCopyAdditionalTimes"] = 5,  ["buyEnergyMax"] = 16,  ["guildWorShip"] = 2,  ["activityCopyTimes1"] = 6,  ["equipmentStrengthOneKey"] = 1,  ["buyGifts"] = 40015,  ["buyRestrictionsShopTime"] = 20,  ["equipmentStrengthCliTimes"] = {
+  ["3"] = 0.02,  ["2"] = 0.1,  ["5"] = 0.01,  ["4"] = 0.02,  ["7"] = 0.01,  ["6"] = 0.01,  ["9"] = 0.01,  ["8"] = 0.01,  ["10"] = 0.01,}
+,  ["autoTravelGet"] = 1,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 1,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 160,  ["eliteCopyTimes"] = 6,  ["buyGgzjTimes"] = 2,  ["MineIncrease"] = 1,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 20,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 20,  ["12"] = 20,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 1,  ["buyShoeTimes"] = 160,  ["warFogRefreshNum"] = 10,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 6,  ["cookingTimes"] = 8,  ["guildWorshipTimes"] = 2,  ["allStrength"] = 1,  ["jump"] = 1,  ["id"] = 15,  ["rechargeAmount"] = 200000,  ["openSweepTen"] = 1,  ["indiana_TruceTime"] = 9,  ["buyhjqyCopyTimes"] = 6,  ["activityCopyTimes"] = 6,  ["worldbossSkip"] = 1,  ["buyArenaTimes"] = 70,  ["buyStaminaMax"] = 16,  ["shopRefreshTimes"] = 160,  ["shopEquTimes"] = 160,  ["buyStageResetTimes"] = 4,}
+,  [0] = {
+  ["description"] = 4800000000,  ["buyGetMoneyTimes"] = 2,  ["eliteCopyAdditionalTimes"] = 1,  ["buyEnergyMax"] = 1,  ["guildWorShip"] = 1,  ["activityCopyTimes1"] = 2,  ["equipmentStrengthOneKey"] = 0,  ["buyGifts"] = 0,  ["buyRestrictionsShopTime"] = 0,  ["equipmentStrengthCliTimes"] = {
+  ["2"] = 0.15,}
+,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
+  ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 0,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}
+,  ["shopWuhunTimes"] = 10,  ["eliteCopyTimes"] = 2,  ["buyGgzjTimes"] = 1,  ["MineIncrease"] = 0,  ["shopRefreshTime"] = {
+  ["1"] = -1,  ["3"] = -1,  ["21"] = -1,  ["5"] = -1,  ["4"] = -1,  ["7"] = -1,  ["22"] = -1,  ["9"] = 5,  ["24"] = -1,  ["18"] = -1,  ["19"] = -1,  ["20"] = 0,  ["12"] = 5,  ["11"] = -1,  ["10"] = -1,}
+,  ["SpeedUpThreeTimes"] = 0,  ["buyShoeTimes"] = 10,  ["warFogRefreshNum"] = 2,  ["openSweep"] = 1,  ["activityCopyTimes2"] = 2,  ["cookingTimes"] = 4,  ["guildWorshipTimes"] = 1,  ["allStrength"] = 0,  ["jump"] = 1,  ["id"] = 0,  ["rechargeAmount"] = 0,  ["openSweepTen"] = 0,  ["indiana_TruceTime"] = 5,  ["buyhjqyCopyTimes"] = 2,  ["activityCopyTimes"] = 2,  ["worldbossSkip"] = 0,  ["buyArenaTimes"] = 0,  ["buyStaminaMax"] = 1,  ["shopRefreshTimes"] = 10,  ["shopEquTimes"] = 10,  ["buyStageResetTimes"] = 1,}
 ,}
