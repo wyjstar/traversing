@@ -1464,7 +1464,7 @@ def appoint_1810(data, player):
     response.res.result = True
     return response.SerializeToString()
 
-
+"""
 @remoteserviceHandle('gate')
 def create_guild_801(data, player):
     """创建公会 """
@@ -1564,3 +1564,4 @@ def create_guild_801(data, player):
                     player.base_info.level)
     print response, '===========================222create'
     return response.SerializeToString()
+"""
