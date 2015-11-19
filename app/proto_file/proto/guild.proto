@@ -103,12 +103,12 @@ message GetGuildInfoResponse{
 }
 
 message BuildInfo{
-    required BuildType = 1;
-    required BuildLevel = 2;
+    required int32 build_type = 1;
+    required int32 build_level = 2;
 }
 
 message UpBuildRequest{
-    required BuildType = 1
+    required int32 build_type = 1;
 }
 
 message UpBuildResponse{
@@ -180,7 +180,7 @@ message DealApplyRequest{
 }
 message DealApplyResponse{
     required CommonResponse res = 1;
-    repeated int32 p_ids = 2;  //没有成功加入的玩家ID
+    repeated int32 p_ids = 2;  //成功加入的玩家ID
 }
 
 // 踢出公会 command：807
@@ -287,8 +287,8 @@ message GuildAnimalsInfoResponse{
 }
 
 message GuildSkill{
-    required SkillType = 1;
-    required SkillLevel = 2;
+    required int32 skill_type = 1;
+    required int32 skill_level = 2;
 }
 
 message GuildAnimal{
@@ -304,7 +304,7 @@ message GuildAnimal{
 
 // 召唤圣兽
 message SummonGuildAnimalRequest{
-    required AnimalType = 1;
+    required int32 animal_type = 1;
 }
 
 // 召唤圣兽

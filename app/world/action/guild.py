@@ -25,7 +25,7 @@ result = cPickle.loads(result)
 
 
 @rootserviceHandle
-def create_guild_remote(p_id, g_name, icon_id):
+def create_guild_remote(p_id, g_name, icon_id, apply_guilds):
     """
     """
     res = {}
@@ -37,21 +37,9 @@ def create_guild_remote(p_id, g_name, icon_id):
 
     guild_obj = guild_manager_obj.create_guild(p_id, g_name, icon_id)
     guild_name_data.hmset({g_name: guild_obj.g_id})
+    del_player_apply(p_id, apply_guilds)
 
     return cPickle.dumps({'res', True, 'guild_info': guild_obj.info})
-
-
-@rootserviceHandle
-def del_player_apply_remote(p_id, apply_guilds):
-    """
-    """
-    for g_id in apply_guilds:
-        guild_obj = guild_manager_obj.get_guild_obj(g_id)
-        if not guild_obj:
-            continue
-        if p_id in guild_obj.apply:
-            guild_obj.apply.remove(p_id)
-            guild_obj.save_data()
 
 
 @rootserviceHandle
@@ -78,7 +66,7 @@ def join_guild_remote(guild_id, p_id):
         # "军团申请人数已满
         return cPickle.dumps({'res': False, 'no': 859})
     if guild_obj.get_p_num() >= game_configs.guild_config. \
-            get(guild_obj.level).p_max:
+            get(1).get(guild_obj.build[1]).p_max:
         # "公会已满员"
         return cPickle.dumps({'res': False, 'no': 845})
 
@@ -146,3 +134,69 @@ def get_next_captain(p_list):
                                      x[1]['join_guild_time']),
                       reverse=True)
     return new_list[0][0]
+
+
+@rootserviceHandle
+def cheak_deal_apply_remote(g_id, p_ids, p_id, deal_type):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
+        return cPickle.dumps({'res': False, 'no': 844})
+    position = guild_obj.get_position(p_id)
+    if position != 1:
+        # 没有权限 或者 不在此军团
+        return cPickle.dumps({'res': False, 'no': 800})
+
+    if deal_type == 1:
+        p_num = guild_obj.get_p_num()
+        p_max = game_configs.guild_config.get(1).get(guild_obj.build[1]).p_max
+        if p_num()+len(p_ids) > p_max:
+            # "超出公会人数上限"
+            return cPickle.dumps({'res': False, 'no': 845})
+
+    return cPickle.dumps({'res': True,
+                          'guild_name', guild_obj.name,
+                          'applys': guild_obj.apply})
+
+
+@rootserviceHandle
+def deal_apply_remote(g_id, p_ids, deal_type):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if deal_type == 1:
+        for p_id in p_ids:
+            if p_id not in guild_obj.apply:
+                continue
+
+            guild_obj.apply.remove(p_id)
+            if guild_obj.p_list.get(3):
+                p_list1 = guild_obj.p_list.get(3)
+                p_list1.append(p_id)
+                # guild_obj.p_list.update({3: p_list1})
+            else:
+                # guild_obj.p_list.update({3: [p_id]})
+                guild_obj.p_list[3] = [p_id]
+
+            character_obj = tb_character_info.getObj(p_id)
+            apply_guilds = character_obj.hget('apply_guilds')
+            del_player_apply(p_id, apply_guilds)
+    if deal_type == 2:
+        for p_id in p_ids:
+            if p_id in guild_obj.apply:
+                guild_obj.apply.remove(p_id)
+    if deal_type == 3:
+        guild_obj.apply = []
+    guild_obj.save_data()
+
+
+def del_player_apply(p_id, apply_guilds):
+    for g_id in apply_guilds:
+        guild_obj = guild_manager_obj.get_guild_obj(g_id)
+        if not guild_obj:
+            continue
+        if p_id in guild_obj.apply:
+            guild_obj.apply.remove(p_id)
+            guild_obj.save_data()

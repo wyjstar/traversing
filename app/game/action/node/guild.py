@@ -92,9 +92,11 @@ def create_guild_801(data, player):
 
     def func():
         # 创建公会
-        create_res = remote_gate['world'].create_guild_remote(p_id,
-                                                              g_name,
-                                                              icon_id)
+        create_res = remote_gate['world']. \
+            create_guild_remote(p_id,
+                                g_name,
+                                icon_id,
+                                player.guild.apply_guilds)
         create_res = cPickle.loads(create_res)
         if not create_res.get('res'):
             raise ValueError("Guild name repeat!")
@@ -102,10 +104,6 @@ def create_guild_801(data, player):
 
         guild_info = create_res.get('guild_info')
         rank_helper.add_rank_info('GuildLevel', guild_info.get('g_id'), 1)
-
-        do_del_player_apply(p_id, player.guild.apply_guilds, 0)
-        remote_gate['world'].del_player_apply_remote(p_id,
-                                                     player.guild.apply_guilds)
 
         player.guild.g_id = guild_info.get('g_id')
         player.guild.today_contribution = 0
@@ -285,10 +283,9 @@ def modify_user_guild_info_remote(data, player):
                                        u'',
                                        [player.dynamic_id])
     elif data['cmd'] == 'deal_apply1':
-        if player.guild.g_id != 0:
-            return 0
-        player.guild.apply_guilds.remove(data['guild_id'])
-        player.guild.save_data()
+        if data['guild_id'] in player.guild.apply_guilds:
+            player.guild.apply_guilds.remove(data['guild_id'])
+            player.guild.save_data()
     elif data['cmd'] == 'kick':
         remote_gate.logout_guild_chat_remote(player.dynamic_id)
         player.guild.g_id = 0
@@ -365,31 +362,22 @@ def deal_apply_805(data, player):
     args.ParseFromString(data)
     response = DealApplyResponse()
 
+    p_ids = args.p_ids
     res_type = args.res_type
-    m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1 or m_g_id == 0:
+    g_id = player.guild.g_id
+    p_id = player.base_info.id
+
+    remote_res = remote_gate['world'].cheak_deal_apply_remote(g_id, p_ids,
+                                                              p_id)
+    remote_res = cPickle.loads(remote_res)
+    if not remote_res.get('res'):
         response.res.result = False
-        response.res.result_no = 844
-        # response.res.message = "公会ID错误"
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
+    p_ids = args.p_ids
     if res_type == 1:
-        p_ids = args.p_ids
-
-        if guild_obj.get_p_num()+len(p_ids) > game_configs.guild_config.get(guild_obj.level).p_max:
-            response.res.result = False
-            response.res.result_no = 845
-            # response.res.message = "超出公会人数上限"
-            return response.SerializeToString()
-
         for p_id in p_ids:
-            if p_id not in guild_obj.apply:
-                continue
-            del_player_apply(p_id, guild_obj.g_id)
-            # 加入公会聊天室
             data = {'guild_id': player.guild.g_id,
                     'position': 3,
                     'contribution': 0,
@@ -406,36 +394,25 @@ def deal_apply_805(data, player):
                 p_guild_obj = tb_character_info.getObj(p_id)
                 info = p_guild_obj.hget('guild_id')
                 if info != 0:
-                    if p_id in guild_obj.apply:
-                        guild_obj.apply.remove(p_id)
-                        response.p_ids.append(p_id)
                     continue
                 p_guild_obj.hmset(data)
             elif is_online == 0:  # 玩家在线，已经加入军团
-                guild_obj.apply.remove(p_id)
                 response.p_ids.append(p_id)
                 continue
 
-            send_mail(conf_id=303, receive_id=p_id, guild_name=guild_obj.name)
-
-            guild_obj.apply.remove(p_id)
-            if guild_obj.p_list.get(3):
-                p_list1 = guild_obj.p_list.get(3)
-                p_list1.append(p_id)
-                guild_obj.p_list.update({3: p_list1})
-            else:
-                guild_obj.p_list.update({3: [p_id]})
-            guild_obj.p_num += 1
-            tlog_action.log('DealJoinGuild', player, m_g_id,
+            response.p_ids.append(p_id)
+            send_mail(conf_id=303, receive_id=p_id,
+                      guild_name=remote_res['guild_name'])
+            tlog_action.log('DealJoinGuild', player, g_id,
                             p_id, 1)
 
-    elif res_type == 2:
-        p_ids = args.p_ids
+    else:
+        if res_type == 3:
+            p_ids = remote_res['applys']
+
         for p_id in p_ids:
-            if p_id in guild_obj.apply:
-                guild_obj.apply.remove(p_id)
-            tlog_action.log('DealJoinGuild', player, m_g_id,
-                            p_id, 2)
+            tlog_action.log('DealJoinGuild', player, g_id,
+                            p_id, res_type)
 
             is_online = remote_gate.is_online_remote(
                 'modify_user_guild_info_remote',
@@ -444,46 +421,17 @@ def deal_apply_805(data, player):
 
             if is_online == "notonline":
                 p_guild_obj = tb_character_info.getObj(p_id)
-                info = p_guild_obj.hget('guild_id')
-                if info != 0:
-                    continue
-
                 apply_guilds = p_guild_obj.hget('apply_guilds')
-                if player.guild.g_id in apply_guilds:
-                    apply_guilds.remove(player.guild.g_id)
-                    data = {'apply_guilds': apply_guilds}
-                    p_guild_obj.hmset(data)
-            elif is_online == 0:  # 玩家在线，已经加入军团
-                continue
+                if g_id in apply_guilds:
+                    apply_guilds.remove(g_id)
+                p_guild_obj.hmset({'apply_guilds': apply_guilds})
 
-    else:  # res_type == 3
-        guild_obj.apply = []
-        tlog_action.log('DealJoinGuild', player, m_g_id,
-                        '', 3)
+    remote_gate['world'].deal_apply_remote(g_id, p_ids,
+                                           p_id)
+    remote_res = cPickle.loads(remote_res)
 
-    guild_obj.save_data()
     response.res.result = True
-    # response.res.message = "处理成功"
     return response.SerializeToString()
-
-
-def del_player_apply(p_id, guild_id):
-    # 删除其他军团的申请列表里的此玩家
-    character_obj = tb_character_info.getObj(p_id)
-    apply_guilds = character_obj.hget('apply_guilds')
-    do_del_player_apply(p_id, apply_guilds, guild_id)
-
-
-def do_del_player_apply(p_id, apply_guilds, guild_id):
-    for g_id in apply_guilds:
-        # if g_id == guild_id:
-        #     continue
-        guild_data = tb_guild_info.getObj(g_id).hgetall()
-        guild_obj = Guild()
-        guild_obj.init_data(guild_data)
-        if p_id in guild_obj.apply:
-            guild_obj.apply.remove(p_id)
-            guild_obj.save_data()
 
 
 @remoteserviceHandle('gate')
