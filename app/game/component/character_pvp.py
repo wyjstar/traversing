@@ -421,8 +421,8 @@ def get_player_ids(player_id, player_ap, types, num):
             logger.error('not robot2 exist')
             return []
         robot_ids = set([])
-        print '===========', robot_ids
         index = 0
+        num -= 1
         for i in range(len(robot2_rank)):
             rid, rap = robot2_rank[i]
             if rap > player_ap:
