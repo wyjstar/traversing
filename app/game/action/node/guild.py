@@ -171,7 +171,6 @@ def join_guild_802(data, player):
         return response.SerializeToString()
 
     remote_res = remote_gate['world'].join_guild_remote(g_id, p_id)
-    remote_res = cPickle.loads(remote_res)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')

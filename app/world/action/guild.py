@@ -71,20 +71,19 @@ def join_guild_remote(guild_id, p_id):
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:
         logger.error('join_guild_remote guild id error! pid:%d' % p_id)
-        return cPickle.dumps({'res': False, 'no': 844})
+        return {'res': False, 'no': 844}
     if len(guild_obj.apply) >= game_configs.base_config. \
             get('guildApplyMaxNum'):
         # "军团申请人数已满
-        return cPickle.dumps({'res': False, 'no': 859})
+        return {'res': False, 'no': 859}
     if guild_obj.get_p_num() >= game_configs.guild_config. \
             get(1).get(guild_obj.build[1]).p_max:
         # "公会已满员"
-        return cPickle.dumps({'res': False, 'no': 845})
+        return {'res': False, 'no': 845}
 
     guild_obj.join_guild(p_id)
     guild_obj.save_data()
-    return cPickle.dumps({'res': True,
-                          'captain_id': guild_obj.p_list.get(1)[0]})
+    return {'res': True, 'captain_id': guild_obj.p_list.get(1)[0]}
 
 
 @rootserviceHandle
