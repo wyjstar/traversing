@@ -19,8 +19,8 @@ class Guild(object):
         """
         self._name = 0  # 名
         self._g_id = 0  # id
-        self._contribution = 0  # 当前建设值
-        self._all_contribution = 0  # 总建设值
+        self._contribution = 99999999  # 当前建设值
+        self._all_contribution = 99999999  # 总建设值
         self._call = ''  # 公告
         self._p_list = {}  # 成员信息
         self._apply = []  # 加入申请
