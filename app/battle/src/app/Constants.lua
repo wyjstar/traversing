@@ -271,6 +271,7 @@ TYPE_WORLD_BOSS     = 7          -- 世界boss
 TYPE_MINE_MONSTER   = 8          -- 攻占也怪
 TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
 TYPE_HJQY_STAGE     = 10         -- 黄巾起义
+TYPE_TREASURE       = 11         -- 夺宝战斗
 TYPE_TEST           = 999        -- 测试战斗
 
 TYPE_PVP_NORMAL     = 0          --正常的PVP,擂台
@@ -409,6 +410,7 @@ g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --�
 g_notice.NOTICE_TRAVEL_RELOAD_SHOES_2 = "NOTICE_TRAVEL_RELOAD_SHOES_2"      --游历界面,重新读取鞋子信息
 g_notice.NOTICE_PVP_CLEARANCE_UPDATA = "NOTICE_PVP_CLEARANCE_UPDATA"        --过关斩将界面,重新刷新当前的关卡信息
 g_notice.NOTICE_REFRESH_SYS_MAIL_LIST = "NOTICE_REFRESH_SYS_MAIL_LIST"      --刷新系统邮件列表
+g_notice.NOTICE_RESET_MERIDIANS = "NOTICE_RESET_MERIDIANS"                  --更新经脉信息
 
 g_other.USER_DEFAULT_FWZ_NEW_LIST = "USER_DEFAULT_FWZ_NEW_LIST"             --风物志新物品存储名称
 
@@ -432,19 +434,6 @@ G_BOTTOM_DEFINE.GET_COINS_JUMP = {
 guid_titlle = {war = "GUID_OPEN_WAR"}
 
 TYPE_SHOP = {
---[[
-1   商城良将寻访
-2   商城良兵宝箱
-3   商城道具
-4   商城礼包
-5   商城神将寻访
-6   商城神兵宝箱
-7   密境商店
-9   武魂商店
-10  竞技场商店
-11  熔炼商店
-12  抽装备商店
-]]
     SHOP_ITEM   = 3,   --商城-道具
     SHOP_GIFT   = 4,   --商城-礼包
     SECRETPLACE = 7,   --秘境商店
@@ -453,7 +442,20 @@ TYPE_SHOP = {
     SMELT       = 11,  --精华商店(装备炼化)
     SHOP_EQUIP  = 12,  --商城-装备
     MERIT       = 18,  --功勋商店(黄巾起义)
-    TREASURE    = 19   --珍宝（过关斩将）
+    TREASURE    = 19,  --珍宝（过关斩将）
+    VIP         = 20,  --VIP商店
+}
+
+--[[--
+商店的UI类型
+]]
+SHOP_UI_TYPE = {
+    NO_REFRESH_TAB_BAR      = 1, -- 不可刷新,页签形式
+    NO_REFRESH_TITLE_OLD    = 2, -- 不可刷新,标题,返回按钮形式
+    NO_REFRESH_TITLE_NEW    = 3, -- 不可刷新,标题,返回关闭按钮形式
+    REFRESH_TAB_BAR         = 4, -- 可刷新,页签形式
+    REFRESH_TITLE_OLD       = 5, -- 可刷新,标题,返回按钮形式
+    REFRESH_TITLE_NEW       = 6, -- 可刷新,标题,返回关闭按钮形式
 }
 
 RES_TYPE = {
@@ -471,6 +473,8 @@ RES_TYPE = {
     PLAYER_EXP   = 12, --战队经验
     GOD_HERO_SOUL= 29, --将魂
     QJYL         = 13, --琼浆玉露
+    ENERGY       = 4,  --精力
+
 }
 
 TRAVEL_EVENT_TYPE = {
@@ -489,6 +493,7 @@ EventName = {
     UPDATE_EXP = "update_exp",--更新经验
     UPDATE_TL = "update_tili",--更新体力
     UPDATE_HEAD = "update_head",--更新头像
+    UPDATE_ENERGY = "update_energy",--更新精力
     UPDATE_NAME = "update_name",--更新名称
     UPDATE_COMBAT_POWER = "update_combat_power",--更新战斗力
     UPDATE_VIP = "update_vip",--更新VIP
@@ -534,9 +539,11 @@ EventName = {
     UPDATE_LINEUP_WS_UPGRADE = "UPDATE_LINEUP_WS_UPGRADE",--无双升级
     TRAVEL_EVENT_CHANGE = "TRAVEL_EVENT_CHANGE", -- 游历,加入等待事件到列表中
     UPDATE_LINEUP = "UPDATE_LINEUP",--更新了阵容信息
+    UPDATE_LINEUP_ORDER = "UPDATE_LINEUP_ORDER",--更新阵容顺序
     UPDATE_SEVENDAY = "UPDATE_SEVENDAY",  --更新七日红点提示
     UPDATE_QJYL = "UPDATE_QJYL", --更新经脉红点
-    UPDATE_SOLDIER_AWAKE = "UPDATE_SOLDIER_AWAKE", --更新英雄觉醒等级
+    UPDATE_SOLDIER_AWAKE_MAX = "UPDATE_SOLDIER_AWAKE_MAX",--更新英雄觉醒等级到最高等级
+    CAPTURE_RESP = "CAPTURE_RESP",
 }
 
 NoticeColor = {
@@ -562,6 +569,9 @@ const.C_WS_MAX_LEVEL = 3
 --定义网络错误代码
 const.NET_ERR_CODE = {
     RuneBagFull = 12451, --符文收获时背包满
+    PVP_RANK_CHANGE = 150508,--PVP排名发生变化
+    PVP_RANK_MY_CHANGE = 150509,--PVP我的排名发生变化
+    PVP_RES_NO_ENOUGH = 150501,--PVP资源不足
 }
 
 --[[--
@@ -588,4 +598,15 @@ SIGN = {
 HOME_TIP_TYPE = {
     HJQY_BUFF        = 1, -- 征讨令减半
     HJQY_MERITORIOUS = 2, -- 收益翻倍
+}
+
+--[[--
+邮件类型
+]]
+MAIL_TYPE = {
+    GIFT        = 1, -- 赠送
+    SYS         = 2, -- 系统
+    FIGHT       = 3, -- 战斗
+    SOCIALLY    = 4, -- 社交
+    REMOVE      = 5, -- 准备删除
 }

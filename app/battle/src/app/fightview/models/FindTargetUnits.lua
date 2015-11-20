@@ -188,7 +188,7 @@ function find_target_units(skill_buff_info, main_target_units, viewMainTargetPos
         value = v
         break
     end
-    print("key++++++"..key.."value++++++++"..value)
+    print("key++++++"..key.."value++++++++"..value,"buffID:",skill_buff_info.id)
 
     local target_side = find_side(skill_buff_info)
     if key == 12 then

@@ -1,14 +1,14 @@
 formula_config={
   [1] = {
-  ["precondition"] = "1",  ["formula"] = "monster_info.hp/10+monster_info.atk*0.2+(monster_info.physicalDef+monster_info.magicDef)*0.4+(monster_info.hit+monster_info.dodge+monster_info.cri+monster_info.criCoeff+monster_info.criDedCoeff+monster_info.block+monster_info.ductility)*5-14500",  ["clientPrecondition"] = "1",  ["id"] = 1,  ["clientFormula"] = "result=monster_info.hp/10+monster_info.atk*0.2+(monster_info.physicalDef+monster_info.magicDef)*0.4+(monster_info.hit+monster_info.dodge+monster_info.cri+monster_info.criCoeff+monster_info.criDedCoeff+monster_info.block+monster_info.ductility)*5-14500",  ["key"] = "fightValue",}
+  ["precondition"] = "1",  ["formula"] = "monster_info.hp/6+monster_info.atk/3+(monster_info.physicalDef+monster_info.magicDef)/2+monster_info.hit-9000+monster_info.dodge+monster_info.cri+monster_info.criCoeff-12000+monster_info.criDedCoeff+monster_info.block*2+monster_info.ductility",  ["clientPrecondition"] = "1",  ["id"] = 1,  ["clientFormula"] = "result=monster_info.hp/6+monster_info.atk/3+(monster_info.physicalDef+monster_info.magicDef)/2+monster_info.hit-9000+monster_info.dodge+monster_info.cri+monster_info.criCoeff-12000+monster_info.criDedCoeff+monster_info.block*2+monster_info.ductility",  ["key"] = "fightValue",}
 ,  [2] = {
-  ["precondition"] = "1",  ["formula"] = "(hero_info.hp+hero_info.growHp*(heroLevel-1)+hpB+hero_info.hp*parameters+hpSeal+hpStone)*(1+awake_percent)",  ["clientPrecondition"] = "1",  ["id"] = 2,  ["clientFormula"] = "result=(hero_info.hp+hero_info.growHp*(heroLevel-1)+hpB+hero_info.hp*parameters+hpSeal+hpStone)*(1+awake_percent)",  ["key"] = "hpHero",}
+  ["precondition"] = "1",  ["formula"] = "hero_info.hp+hero_info.growHp*(heroLevel-1)+hpB+hero_info.hp*parameters+hpSeal+hpStone",  ["clientPrecondition"] = "1",  ["id"] = 2,  ["clientFormula"] = "result=hero_info.hp+hero_info.growHp*(heroLevel-1)+hpB+hero_info.hp*parameters+hpSeal+hpStone",  ["key"] = "hpHero",}
 ,  [3] = {
-  ["precondition"] = "1",  ["formula"] = "(hero_info.atk+hero_info.growAtk*(heroLevel-1)+atkB+hero_info.atk*parameters+atkSeal+atkStone)*(1+awake_percent)",  ["clientPrecondition"] = "1",  ["id"] = 3,  ["clientFormula"] = "result=(hero_info.atk+hero_info.growAtk*(heroLevel-1)+atkB+hero_info.atk*parameters+atkSeal+atkStone)*(1+awake_percent)",  ["key"] = "atkHero",}
+  ["precondition"] = "1",  ["formula"] = "hero_info.atk+hero_info.growAtk*(heroLevel-1)+atkB+hero_info.atk*parameters+atkSeal+atkStone",  ["clientPrecondition"] = "1",  ["id"] = 3,  ["clientFormula"] = "result=hero_info.atk+hero_info.growAtk*(heroLevel-1)+atkB+hero_info.atk*parameters+atkSeal+atkStone",  ["key"] = "atkHero",}
 ,  [4] = {
-  ["precondition"] = "1",  ["formula"] = "(hero_info.physicalDef+hero_info.growPhysicalDef*(heroLevel-1)+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone)*(1+awake_percent)",  ["clientPrecondition"] = "1",  ["id"] = 4,  ["clientFormula"] = "result=(hero_info.physicalDef+hero_info.growPhysicalDef*(heroLevel-1)+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone)*(1+awake_percent)",  ["key"] = "physicalDefHero",}
+  ["precondition"] = "1",  ["formula"] = "hero_info.physicalDef+hero_info.growPhysicalDef*(heroLevel-1)+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone",  ["clientPrecondition"] = "1",  ["id"] = 4,  ["clientFormula"] = "result=hero_info.physicalDef+hero_info.growPhysicalDef*(heroLevel-1)+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone",  ["key"] = "physicalDefHero",}
 ,  [5] = {
-  ["precondition"] = "1",  ["formula"] = "(hero_info.magicDef+hero_info.growMagicDef*(heroLevel-1)+mDefB+hero_info.magicDef*parameters+mDefSeal+mDefStone)*(1+awake_percent)",  ["clientPrecondition"] = "1",  ["id"] = 5,  ["clientFormula"] = "result=(hero_info.magicDef+hero_info.growMagicDef*(heroLevel-1)+mDefB+hero_info.magicDef*parameters+mDefSeal+mDefStone)*(1+awake_percent)",  ["key"] = "magicDefHero",}
+  ["precondition"] = "1",  ["formula"] = "hero_info.magicDef+hero_info.growMagicDef*(heroLevel-1)+mDefB+hero_info.magicDef*parameters+mDefSeal+mDefStone",  ["clientPrecondition"] = "1",  ["id"] = 5,  ["clientFormula"] = "result=hero_info.magicDef+hero_info.growMagicDef*(heroLevel-1)+mDefB+hero_info.magicDef*parameters+mDefSeal+mDefStone",  ["key"] = "magicDefHero",}
 ,  [6] = {
   ["precondition"] = "1",  ["formula"] = "hero_info.hit+hitB+hitSeal+hitStone",  ["clientPrecondition"] = "1",  ["id"] = 6,  ["clientFormula"] = "result=hero_info.hit+hitB+hitSeal+hitStone",  ["key"] = "hitHero",}
 ,  [7] = {
@@ -24,7 +24,7 @@ formula_config={
 ,  [12] = {
   ["precondition"] = "1",  ["formula"] = "hero_info.ductility+ductilityB+ductilitySeal+ductilityStone",  ["clientPrecondition"] = "1",  ["id"] = 12,  ["clientFormula"] = "result=hero_info.ductility+ductilityB+ductilitySeal+ductilityStone",  ["key"] = "ductilityHero",}
 ,  [13] = {
-  ["precondition"] = "1",  ["formula"] = "hpHero/10+atkHero*0.2+(physicalDefHero+magicDefHero)*0.4+(hitHero+dodgeHero+criHero+criCoeffHero+criDedCoeffHero+blockHero+ductilityHero)*5-14500",  ["clientPrecondition"] = "1",  ["id"] = 13,  ["clientFormula"] = "result=self_attr.hpHero*0.1+self_attr.atkHero*0.2+(self_attr.physicalDefHero+self_attr.magicDefHero)*0.4+(self_attr.hitHero+self_attr.dodgeHero+self_attr.criHero+self_attr.criCoeffHero+self_attr.criDedCoeffHero+self_attr.blockHero+self_attr.ductilityHero)*5-14500",  ["key"] = "fightValueHero",}
+  ["precondition"] = "1",  ["formula"] = "hpHero/6+atkHero/3+(physicalDefHero+magicDefHero)/2",  ["clientPrecondition"] = "1",  ["id"] = 13,  ["clientFormula"] = "result=self_attr.hpHero/6+self_attr.atkHero/3+(self_attr.physicalDefHero+self_attr.magicDefHero)/2",  ["key"] = "fightValueHero",}
 ,  [14] = {
   ["precondition"] = "skill_buff.valueType==1 and skill_buff.effectId==4 and skill_buff.triggerType==1 and skill_buff.effectPos=={11:0}",  ["formula"] = "skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.valueType==1 and skill_buff.effectId==4 and skill_buff.triggerType==1 and skill_buff.effectPos[\"11\"]==0",  ["id"] = 14,  ["clientFormula"] = "result=skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["key"] = "hpB_1",}
 ,  [15] = {
@@ -78,7 +78,7 @@ formula_config={
 ,  [39] = {
   ["precondition"] = "1",  ["formula"] = "ductilityHero+ductilityEqu+ductilitySetEqu+ductilitylink",  ["clientPrecondition"] = "1",  ["id"] = 39,  ["clientFormula"] = "result=ductilityHero+ductilityEqu+ductilitySetEqu+ductilitylink",  ["key"] = "ductilityArray",}
 ,  [40] = {
-  ["precondition"] = "1",  ["formula"] = "hpArray*0.1+atkArray*0.2+(physicalDefArray+magicDefArray)*0.4+(hitArray+dodgeArray+criArray+criCoeffArray+criDedCoeffArray+blockArray+ductilityArray)*5-14500",  ["clientPrecondition"] = "1",  ["id"] = 40,  ["clientFormula"] = "result=lineup_attr.hpArray*0.1+lineup_attr.atkArray*0.2+(lineup_attr.physicalDefArray+lineup_attr.magicDefArray)*0.4+(lineup_attr.hitArray+lineup_attr.dodgeArray+lineup_attr.criArray+lineup_attr.criCoeffArray+lineup_attr.criDedCoeffArray+lineup_attr.blockArray+lineup_attr.ductilityArray)*5-14500",  ["key"] = "fightValueArray",}
+  ["precondition"] = "1",  ["formula"] = "hpArray/6+atkArray/3+(physicalDefArray+magicDefArray)/2+hitArray-hero_info.hit+dodgeArray-hero_info.dodge+criArray-hero_info.cri+criCoeffArray-hero_info.criCoeff+criDedCoeffArray-hero_info.criDedCoeff+blockArray*2-2*hero_info.block+ductilityArray-hero_info.ductility",  ["clientPrecondition"] = "1",  ["id"] = 40,  ["clientFormula"] = "result=lineup_attr.hpArray/6+lineup_attr.atkArray/3+(lineup_attr.physicalDefArray+lineup_attr.magicDefArray)/2+lineup_attr.hitArray-hero_info.hit+lineup_attr.dodgeArray-hero_info.dodge+lineup_attr.criArray-hero_info.cri+lineup_attr.criCoeffArray-hero_info.criCoeff+lineup_attr.criDedCoeffArray-hero_info.criDedCoeff+lineup_attr.blockArray*2-2*hero_info.block+lineup_attr.ductilityArray-hero_info.ductility",  ["key"] = "fightValueArray",}
 ,  [41] = {
   ["precondition"] = "1",  ["formula"] = "fightValueArray1+fightValueArray2+fightValueArray3+fightValueArray4+fightValueArray5+fightValueArray6",  ["clientPrecondition"] = "1",  ["id"] = 41,  ["clientFormula"] = "result=fightValueArray1+fightValueArray2+fightValueArray3+fightValueArray4+fightValueArray5+fightValueArray6",  ["key"] = "fightValuePlayer",}
 ,  [42] = {
@@ -196,15 +196,15 @@ formula_config={
 ,  [98] = {
   ["precondition"] = "1",  ["formula"] = "1 if triggerRate>random else 0",  ["clientPrecondition"] = "1",  ["id"] = 98,  ["clientFormula"] = "result=(triggerRate>random and 1) or 0",  ["key"] = "isTrigger",}
 ,  [99] = {
-  ["precondition"] = "1",  ["formula"] = "1 if hitArray1/10-dodgeArray2/10>random else 0",  ["clientPrecondition"] = "1",  ["id"] = 99,  ["clientFormula"] = "result=((hitArray1-dodgeArray2)/10>random and 1) or 0",  ["key"] = "isHit",}
+  ["precondition"] = "1",  ["formula"] = "1 if hitArray1/100-dodgeArray2/100>random else 0",  ["clientPrecondition"] = "1",  ["id"] = 99,  ["clientFormula"] = "result=((hitArray1-dodgeArray2)/100>random and 1) or 0",  ["key"] = "isHit",}
 ,  [100] = {
-  ["precondition"] = "1",  ["formula"] = "1 if criArray1/10-ductilityArray2/10>random else 0",  ["clientPrecondition"] = "1",  ["id"] = 100,  ["clientFormula"] = "result=((criArray1-ductilityArray2)/10>random and 1) or 0",  ["key"] = "isCri",}
+  ["precondition"] = "1",  ["formula"] = "1 if criArray1/100-ductilityArray2/100>random else 0",  ["clientPrecondition"] = "1",  ["id"] = 100,  ["clientFormula"] = "result=((criArray1-ductilityArray2)/100>random and 1) or 0",  ["key"] = "isCri",}
 ,  [101] = {
-  ["precondition"] = "1",  ["formula"] = "1 if blockArray/10>random else 0",  ["clientPrecondition"] = "1",  ["id"] = 101,  ["clientFormula"] = "result=(blockArray/10>random and 1) or 0",  ["key"] = "isBlock",}
+  ["precondition"] = "1",  ["formula"] = "1 if blockArray/100>random else 0",  ["clientPrecondition"] = "1",  ["id"] = 101,  ["clientFormula"] = "result=(blockArray/100>random and 1) or 0",  ["key"] = "isBlock",}
 ,  [102] = {
   ["precondition"] = "1",  ["formula"] = "atkArray-def2 if atkArray-def2 > heroLevel else heroLevel",  ["clientPrecondition"] = "1",  ["id"] = 102,  ["clientFormula"] = "result= (atkArray-def2 > heroLevel and atkArray-def2 ) or heroLevel",  ["key"] = "baseDamage",}
 ,  [103] = {
-  ["precondition"] = "1",  ["formula"] = "(criCoeffArray1-criDedCoeffArray2)/1000",  ["clientPrecondition"] = "1",  ["id"] = 103,  ["clientFormula"] = "result=(criCoeffArray1-criDedCoeffArray2)/1000",  ["key"] = "criDamage",}
+  ["precondition"] = "1",  ["formula"] = "(criCoeffArray1-criDedCoeffArray2)/10000",  ["clientPrecondition"] = "1",  ["id"] = 103,  ["clientFormula"] = "result=(criCoeffArray1-criDedCoeffArray2)/10000",  ["key"] = "criDamage",}
 ,  [104] = {
   ["precondition"] = "1",  ["formula"] = "1 if heroLevel1<heroLevel2+5 else 1",  ["clientPrecondition"] = "1",  ["id"] = 104,  ["clientFormula"] = "result=1",  ["key"] = "levelDamage",}
 ,  [105] = {
@@ -218,9 +218,9 @@ formula_config={
 ,  [109] = {
   ["precondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType == 2",  ["formula"] = "allDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType == 2",  ["id"] = 109,  ["clientFormula"] = "result=allDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["key"] = "damage_2",}
 ,  [110] = {
-  ["precondition"] = "(skill_buff.effectId == 3 or skill_buff.effectId == 33 or skill_buff.effectId == 34 or skill_buff.effectId == 35) and skill_buff.valueType == 1",  ["formula"] = "skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "(skill_buff.effectId == 3 or skill_buff.effectId == 33 or skill_buff.effectId == 34 or skill_buff.effectId == 35) and skill_buff.valueType == 1",  ["id"] = 110,  ["clientFormula"] = "result=skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["key"] = "damage_3",}
+  ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 1",  ["formula"] = "skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 1",  ["id"] = 110,  ["clientFormula"] = "result=skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["key"] = "damage_3",}
 ,  [111] = {
-  ["precondition"] = "(skill_buff.effectId == 3 or skill_buff.effectId == 33 or skill_buff.effectId == 34 or skill_buff.effectId == 35) and skill_buff.valueType == 2",  ["formula"] = "atkArray*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "(skill_buff.effectId == 3 or skill_buff.effectId == 33 or skill_buff.effectId == 34 or skill_buff.effectId == 35) and skill_buff.valueType == 2",  ["id"] = 111,  ["clientFormula"] = "result=atkArray*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["key"] = "damage_4",}
+  ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["formula"] = "atkArray*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["id"] = 111,  ["clientFormula"] = "result=atkArray*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["key"] = "damage_4",}
 ,  [112] = {
   ["precondition"] = "1",  ["formula"] = "(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["clientPrecondition"] = "",  ["id"] = 112,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "warriorsDamage",}
 ,  [113] = {
@@ -306,11 +306,19 @@ formula_config={
 ,  [154] = {
   ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/1000",  ["clientPrecondition"] = "1",  ["id"] = 154,  ["clientFormula"] = "result=ActivityExpDrop/1000",  ["key"] = "ActivityExpDropConvert_3",}
 ,  [155] = {
-  ["precondition"] = "1",  ["formula"] = "hero_info.hp*parameters",  ["clientPrecondition"] = "1",  ["id"] = 155,  ["clientFormula"] = "result=hero_info.hp*parameters",  ["key"] = "hero_Breakthrough.hp",}
+  ["precondition"] = "skill_buff.effectId == 30 and skill_buff.valueType ==1",  ["formula"] = "(1.5*wslevel^2+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 155,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "peerlessDamage1",}
 ,  [156] = {
-  ["precondition"] = "1",  ["formula"] = "hero_info.atk*parameters",  ["clientPrecondition"] = "1",  ["id"] = 156,  ["clientFormula"] = "result=hero_info.atk*parameters",  ["key"] = "hero_Breakthrough.atk",}
+  ["precondition"] = "skill_buff.effectId == 30 and skill_buff.valueType ==2",  ["formula"] = "(1.5*wslevel^2+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 156,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "peerlessDamage2",}
 ,  [157] = {
-  ["precondition"] = "1",  ["formula"] = "hero_info.physicalDef*parameters",  ["clientPrecondition"] = "1",  ["id"] = 157,  ["clientFormula"] = "result=hero_info.physicalDef*parameters",  ["key"] = "hero_Breakthrough.physicalDef",}
+  ["precondition"] = "1",  ["formula"] = "hero_info.hp*parameters",  ["clientPrecondition"] = "1",  ["id"] = 157,  ["clientFormula"] = "result=hero_info.hp*parameters",  ["key"] = "hero_Breakthrough.hp",}
 ,  [158] = {
-  ["precondition"] = "1",  ["formula"] = "hero_info.magicDef*parameters",  ["clientPrecondition"] = "1",  ["id"] = 158,  ["clientFormula"] = "result=hero_info.magicDef*parameters",  ["key"] = "hero_Breakthrough.magicDef",}
+  ["precondition"] = "1",  ["formula"] = "hero_info.atk*parameters",  ["clientPrecondition"] = "1",  ["id"] = 158,  ["clientFormula"] = "result=hero_info.atk*parameters",  ["key"] = "hero_Breakthrough.atk",}
+,  [159] = {
+  ["precondition"] = "1",  ["formula"] = "hero_info.physicalDef*parameters",  ["clientPrecondition"] = "1",  ["id"] = 159,  ["clientFormula"] = "result=hero_info.physicalDef*parameters",  ["key"] = "hero_Breakthrough.physicalDef",}
+,  [160] = {
+  ["precondition"] = "1",  ["formula"] = "hero_info.magicDef*parameters",  ["clientPrecondition"] = "1",  ["id"] = 160,  ["clientFormula"] = "result=hero_info.magicDef*parameters",  ["key"] = "hero_Breakthrough.magicDef",}
+,  [161] = {
+  ["precondition"] = "1",  ["formula"] = "reward*peoplePercentage*(1-robbedPercentage)",  ["clientPrecondition"] = "1",  ["id"] = 161,  ["clientFormula"] = "result=reward*peoplePercentage*(1-robbedPercentage)",  ["key"] = "EscortReward",}
+,  [162] = {
+  ["precondition"] = "1",  ["formula"] = "reward*peoplePercentage*robbedPercentage",  ["clientPrecondition"] = "1",  ["id"] = 162,  ["clientFormula"] = "result=reward*peoplePercentage*robbedPercentage",  ["key"] = "SnatchReward",}
 ,}
