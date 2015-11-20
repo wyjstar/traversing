@@ -184,7 +184,7 @@ def join_guild_802(data, player):
         return response.SerializeToString()
 
     if guild_obj.get_p_num() >= game_configs.guild_config. \
-            get(guild_obj.level).p_max:
+            get(8).get(guild_obj.level).p_max:
         response.res.result = False
         # response.res.message = "公会已满员"
         response.res.result_no = 845
@@ -417,7 +417,7 @@ def deal_apply_805(data, player):
     if res_type == 1:
         p_ids = args.p_ids
 
-        if guild_obj.get_p_num()+len(p_ids) > game_configs.guild_config.get(guild_obj.level).p_max:
+        if guild_obj.get_p_num()+len(p_ids) > game_configs.guild_config.get(8).get(guild_obj.level).p_max:
             response.res.result = False
             response.res.result_no = 845
             # response.res.message = "超出公会人数上限"
@@ -719,8 +719,8 @@ def bless_809(data, player):
         guild_obj.bless[0] += 1
     guild_obj.exp += worship_info[2]
 
-    if guild_obj.exp >= game_configs.guild_config.get(guild_obj.level).exp:
-        guild_obj.exp -= game_configs.guild_config.get(guild_obj.level).exp
+    if guild_obj.exp >= game_configs.guild_config.get(8).get(guild_obj.level).exp:
+        guild_obj.exp -= game_configs.guild_config.get(8).get(guild_obj.level).exp
         guild_obj.level += 1
         rank_helper.add_rank_info('GuildLevel',
                                   guild_obj.g_id, guild_obj.level)
@@ -833,7 +833,7 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
     guild_obj = Guild()
     guild_obj.init_data(data1)
     if rank_type == 2 and guild_obj.get_p_num() >= \
-            game_configs.guild_config.get(guild_obj.level).p_max:
+            game_configs.guild_config.get(8).get(guild_obj.level).p_max:
         return False
     guild_rank = response.guild_rank.add()
     guild_rank.g_id = guild_obj.g_id
@@ -1084,7 +1084,7 @@ def invite_join_1803(data, player):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    guild_p_max = game_configs.guild_config.get(guild_obj.level).p_max
+    guild_p_max = game_configs.guild_config.get(8).get(guild_obj.level).p_max
 
     if guild_obj.get_p_num()+1 > guild_p_max:
         response.res.result = False
@@ -1202,7 +1202,7 @@ def deal_invite_join_1804(data, player):
             #response.message = "你已经有军团了"
             return response.SerializeToString()
 
-        if guild_obj.get_p_num()+1 > game_configs.guild_config.get(guild_obj.level).p_max:
+        if guild_obj.get_p_num()+1 > game_configs.guild_config.get(8).get(guild_obj.level).p_max:
             response.res.result = False
             response.res.result_no = 845
             # response.message = "超出公会人数上限"
@@ -1264,7 +1264,7 @@ def praise_1807(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(guild_obj.level)
+    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
     if time.localtime(player.guild.praise[1]).tm_yday != \
             time.localtime().tm_yday:
@@ -1311,7 +1311,7 @@ def captailn_receive_1806(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(guild_obj.level)
+    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
     if guild_obj.praise_num < guild_config.collectSupportNum:
         response.res.result = False
@@ -1359,7 +1359,7 @@ def get_bless_gift_1808(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(guild_obj.level)
+    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
     gift_list = guild_config.cohesion.get(gift_no)
     if not gift_list:
@@ -1455,7 +1455,7 @@ def appoint_1810(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(guild_obj.level)
+    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
     p_list = guild_obj.p_list
     position2_list = p_list.get(2, [])
