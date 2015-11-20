@@ -362,20 +362,23 @@ def deal_apply_805(data, player):
     args.ParseFromString(data)
     response = DealApplyResponse()
 
-    p_ids = args.p_ids
+    pb_p_ids = args.p_ids
+    p_ids = []
+    for _p_id in pb_p_ids:
+        p_ids.append(_p_id)
     res_type = args.res_type
     g_id = player.guild.g_id
     p_id = player.base_info.id
 
     remote_res = remote_gate['world'].cheak_deal_apply_remote(g_id, p_ids,
-                                                              p_id)
-    remote_res = cPickle.loads(remote_res)
+                                                              p_id, res_type)
     if not remote_res.get('res'):
         response.res.result = False
+        print remote_res.get('no'), '=============deal apply 4'
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    p_ids = args.p_ids
+    print res_type, '=============deal apply 2'
     if res_type == 1:
         for p_id in p_ids:
             data = {'guild_id': player.guild.g_id,
@@ -426,9 +429,9 @@ def deal_apply_805(data, player):
                     apply_guilds.remove(g_id)
                 p_guild_obj.hmset({'apply_guilds': apply_guilds})
 
+    print res_type, '=============deal apply 3'
     remote_gate['world'].deal_apply_remote(g_id, p_ids,
-                                           p_id)
-    remote_res = cPickle.loads(remote_res)
+                                           res_type)
 
     response.res.result = True
     return response.SerializeToString()
@@ -635,8 +638,8 @@ def bless_809(data, player):
         guild_obj.bless[0] += 1
     guild_obj.exp += worship_info[2]
 
-    if guild_obj.exp >= game_configs.guild_config.get(guild_obj.level).exp:
-        guild_obj.exp -= game_configs.guild_config.get(guild_obj.level).exp
+    if guild_obj.exp >= game_configs.guild_config.get(8).get(guild_obj.level).exp:
+        guild_obj.exp -= game_configs.guild_config.get(8).get(guild_obj.level).exp
         guild_obj.level += 1
         rank_helper.add_rank_info('GuildLevel',
                                   guild_obj.g_id, guild_obj.level)
@@ -752,7 +755,7 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
     guild_obj = Guild()
     guild_obj.init_data(data1)
     if rank_type == 2 and guild_obj.get_p_num() >= \
-            game_configs.guild_config.get(guild_obj.level).p_max:
+            game_configs.guild_config.get(8).get(guild_obj.level).p_max:
         return False
     guild_rank = response.guild_rank.add()
     guild_rank.g_id = guild_obj.g_id
@@ -782,8 +785,6 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
 @remoteserviceHandle('gate')
 def get_role_list_811(data, player):
     """角色列表 """
-    return
-    # TODO
     response = GetGuildMemberListResponse()
     m_g_id = player.guild.g_id
     if m_g_id == 0:
@@ -803,6 +804,7 @@ def get_role_list_811(data, player):
     guild_obj.init_data(data1)
 
     guild_p_list = guild_obj.p_list
+    print guild_p_list, '================guild p list '
     if not guild_p_list.values():
         response.res.result = False
         response.res.result_no = 800
@@ -823,10 +825,11 @@ def get_role_list_811(data, player):
                 role_info.name = u'无名'
             role_info.level = character_info['level']
 
-            role_info.position = character_info['position']
+            role_info.position = guild_obj.get_position(role_id)
             role_info.all_contribution = \
                 character_info['all_contribution']
-            role_info.vip_level = character_info['vip_level']
+            role_info.contribution = character_info['contribution']
+            role_info.day_contribution = character_info['today_contribution']
             role_info.vip_level = character_info['vip_level']
 
             ap = 1
@@ -846,6 +849,7 @@ def get_role_list_811(data, player):
             role_info.contribution = today_contribution
 
     response.res.result = True
+    print response, '==========================guild player list'
     return response.SerializeToString()
 
 
@@ -1023,7 +1027,7 @@ def invite_join_1803(data, player):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    guild_p_max = game_configs.guild_config.get(guild_obj.level).p_max
+    guild_p_max = game_configs.guild_config.get(8).get(guild_obj.level).p_max
 
     if guild_obj.get_p_num()+1 > guild_p_max:
         response.res.result = False
@@ -1143,7 +1147,7 @@ def deal_invite_join_1804(data, player):
             #response.message = "你已经有军团了"
             return response.SerializeToString()
 
-        if guild_obj.get_p_num()+1 > game_configs.guild_config.get(guild_obj.level).p_max:
+        if guild_obj.get_p_num()+1 > game_configs.guild_config.get(8).get(guild_obj.level).p_max:
             response.res.result = False
             response.res.result_no = 845
             # response.message = "超出公会人数上限"
@@ -1207,7 +1211,7 @@ def praise_1807(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(guild_obj.level)
+    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
     if time.localtime(player.guild.praise[1]).tm_yday != \
             time.localtime().tm_yday:
@@ -1256,7 +1260,7 @@ def captailn_receive_1806(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(guild_obj.level)
+    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
     if guild_obj.praise_num < guild_config.collectSupportNum:
         response.res.result = False
@@ -1306,7 +1310,7 @@ def get_bless_gift_1808(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(guild_obj.level)
+    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
     gift_list = guild_config.cohesion.get(gift_no)
     if not gift_list:
@@ -1404,7 +1408,7 @@ def appoint_1810(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(guild_obj.level)
+    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
     p_list = guild_obj.p_list
     position2_list = p_list.get(2, [])
