@@ -4,6 +4,7 @@
 """
 import time
 from shared.common_logic.guild import Guild
+tb_guild_info = RedisObject('tb_guild_info')
 
 
 class GuildManager(object):
