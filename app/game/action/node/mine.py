@@ -692,7 +692,6 @@ def battle_1253(data, player):
 
         # print red_units, blue_units
 
-    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
     response.hold = request.hold
