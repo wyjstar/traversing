@@ -1373,7 +1373,7 @@ def find_guild_1809(data, player):
             logger.error('guild rank, president player not fond,id:%s',
                          president_id)
 
-        guild_rank.p_num = guild_obj.p_num
+        guild_rank.p_num = guild_obj.get_p_num()
         guild_rank.call = guild_obj.call
         if player.base_info.id in guild_obj.apply:
             guild_rank.be_apply = 1

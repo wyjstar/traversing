@@ -236,7 +236,7 @@ def up_build_remote(g_id, p_id, build_type):
         logger.error('up_build_870, build type error')
         return {'res': False, 'no': 888}
 
-    if build_level >= game_configs.base_config.get('guild_level_max'):
+    if build_level >= game_configs.base_config.get('guild_level_max').get(build_type):
         logger.error('up_build_870, level max')
         return {'res': False, 'no': 800}
 
