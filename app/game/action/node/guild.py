@@ -1335,8 +1335,6 @@ def get_bless_gift_1808(data, player):
 @remoteserviceHandle('gate')
 def find_guild_1809(data, player):
     """搜索军团 """
-    return
-    # TODO
     args = FindGuildRequest()
     args.ParseFromString(data)
     response = FindGuildResponse()
@@ -1363,7 +1361,7 @@ def find_guild_1809(data, player):
         guild_rank.g_id = guild_obj.g_id
         guild_rank.rank = rank_no
         guild_rank.name = guild_obj.name
-        guild_rank.level = guild_obj.level
+        guild_rank.level = 1
         guild_rank.icon_id = guild_obj.icon_id
 
         president_id = guild_obj.p_list.get(1)[0]

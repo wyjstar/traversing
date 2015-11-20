@@ -235,6 +235,11 @@ def up_build_remote(g_id, p_id, build_type):
     if guild_obj.contribution < build_conf.exp:
         logger.error('up_build_870, build type error')
         return {'res': False, 'no': 888}
+
+    if build_level >= game_configs.base_config.get('guild_level_max'):
+        logger.error('up_build_870, level max')
+        return {'res': False, 'no': 800}
+
     for up_c in build_conf.condition:
         c_conf = game_configs.guild_config.get(up_c)
         my_build_level = build_info.get(c_conf.type)
@@ -242,7 +247,7 @@ def up_build_remote(g_id, p_id, build_type):
             logger.error('up_build_870, build type error')
             return {'res': False, 'no': 892}
 
-    build_info[build_level] += 1
+    build_info[build_type] += 1
     guild_obj.build = build_info
     guild_obj.contribution -= build_conf.exp
     guild_obj.save_data()
