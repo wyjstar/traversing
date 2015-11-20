@@ -761,7 +761,7 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
     guild_rank.g_id = guild_obj.g_id
     guild_rank.rank = rank_num
     guild_rank.name = guild_obj.name
-    guild_rank.level = guild_obj.level
+    guild_rank.level = 1
     guild_rank.icon_id = guild_obj.icon_id
 
     president_id = guild_obj.p_list.get(1)[0]
@@ -773,7 +773,7 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
         logger.error('guild rank, president player not fond,id:%s',
                      president_id)
 
-    guild_rank.p_num = guild_obj.p_num
+    guild_rank.p_num = guild_obj.get_p_num()
     guild_rank.call = guild_obj.call
     if player.base_info.id in guild_obj.apply:
         guild_rank.be_apply = 1
