@@ -126,13 +126,19 @@ class UDPPortListener(BasePortListener):
         BasePortListener.__init__(self, port, factory, DatagramServer,port_type="UDP")
         
     
+class MyServer(WSGIServer):
+    def handle(self, socket, address):
+        socket.settimeout(10)
+        return WSGIServer.handle(self, socket, address)
+
+
 class WSGIPortListener(BasePortListener):
     """WSGI服务端（端口监听器）
     """
     def __init__(self,port,factory):
         """
         """
-        BasePortListener.__init__(self, port, factory, WSGIServer,port_type="WSGI")
+        BasePortListener.__init__(self, port, factory, MyServer,port_type="WSGI")
         
 class BaseConnector(Greenlet):
     """基础连接器
