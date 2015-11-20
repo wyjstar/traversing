@@ -27,7 +27,7 @@ class Guild(object):
         self._invite_join = {}  # {id:time, id:time} 邀请加入
         self._icon_id = 0  # 军团头像
         self._bless = [0, 0, 1]  # 祈福人数,福运,时间
-        self._praise = [0, 0, 0, 1]  # 点赞次数,团长奖励领取状态，累计金钱，时间
+        self._praise = [0, 0, 1]  # 点赞次数，累计金钱，时间
         self._build = {}  # 建筑等级 {建筑类型：建筑等级}
 
     @property
@@ -246,21 +246,19 @@ class Guild(object):
 
     @property
     def praise_num(self):
-        if time.localtime(self._praise[3]).tm_yday != time.localtime().tm_yday:
+        if time.localtime(self._praise[2]).tm_yday != time.localtime().tm_yday:
             return 0
         return self._praise[0]
 
     @property
     def praise_money(self):
-        if time.localtime(self._praise[3]).tm_yday != time.localtime().tm_yday:
+        if time.localtime(self._praise[2]).tm_yday != time.localtime().tm_yday:
             return 0
         return self._praise[2]
 
     @property
     def receive_praise_state(self):
-        if time.localtime(self._praise[3]).tm_yday != time.localtime().tm_yday:
-            return 0
-        return self._praise[1]
+        return 0
 
     @property
     def bless_luck_num(self):

@@ -1193,22 +1193,22 @@ def praise_1807(data, player):
     return
     # TODO
     response = ZanResResponse()
+    g_id = player.guild.g_id
 
-    m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1 or m_g_id == 0:
-        response.res.result = False
-        response.res.result_no = 800
-        # response.message = "公会ID错误"
-        return response.SerializeToString()
-
-    if player.guild.praise_state:
+    praise_num_max = game_configs.base_config.get('worShipFrequencyMax')
+    if player.guild.praise_num >= praise_num_max:
+        #  "次数不够"
         response.res.result = False
         response.res.result_no = 851
         return response.SerializeToString()
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
+    remote_res = remote_gate['world'].praise_remote(g_id,
+                                                    player.base_info.id)
+    if not remote_res.get('res'):
+        response.res.result = False
+        response.res.result_no = remote_res.get('no')
+        return response.SerializeToString()
+
     guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
     if time.localtime(player.guild.praise[1]).tm_yday != \
