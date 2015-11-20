@@ -153,22 +153,22 @@ def cheak_deal_apply_remote(g_id, p_ids, p_id, deal_type):
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
-        return cPickle.dumps({'res': False, 'no': 844})
+        return {'res': False, 'no': 844}
     position = guild_obj.get_position(p_id)
     if position != 1:
         # 没有权限 或者 不在此军团
-        return cPickle.dumps({'res': False, 'no': 800})
+        return {'res': False, 'no': 800}
 
     if deal_type == 1:
         p_num = guild_obj.get_p_num()
         p_max = game_configs.guild_config.get(1).get(guild_obj.build[1]).p_max
-        if p_num()+len(p_ids) > p_max:
+        if p_num+len(p_ids) > p_max:
             # "超出公会人数上限"
-            return cPickle.dumps({'res': False, 'no': 845})
+            return {'res': False, 'no': 845}
 
-    return cPickle.dumps({'res': True,
-                          'guild_name': guild_obj.name,
-                          'applys': guild_obj.apply})
+    return {'res': True,
+            'guild_name': guild_obj.name,
+            'applys': guild_obj.apply}
 
 
 @rootserviceHandle
