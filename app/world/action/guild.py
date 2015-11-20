@@ -224,24 +224,24 @@ def up_build_remote(g_id, p_id, build_type):
     position = guild_obj.get_position(p_id)
     if position != 1:
         # 没有权限 或者 不在此军团
-        return cPickle.dumps({'res': False, 'no': 800})
+        return {'res': False, 'no': 800}
 
     build_level = guild_obj.build.get(build_type)
     if not build_level:
         logger.error('up_build_870, build type error')
-        return cPickle.dumps({'res': False, 'no': 891})
+        return {'res': False, 'no': 891}
     build_conf = game_configs.guild_config.get(build_type)[build_level]
     if guild_obj.contribution < build_conf.exp:
         logger.error('up_build_870, build type error')
-        return cPickle.dumps({'res': False, 'no': 888})
+        return {'res': False, 'no': 888}
     for up_c in build_conf.condition:
         c_conf = game_configs.guild_config.get(up_c)
         my_build_level = guild_obj.build.get(c_conf.type)
         if not my_build_level or my_build_level < c_conf.level:
             logger.error('up_build_870, build type error')
-            return cPickle.dumps({'res': False, 'no': 892})
+            return {'res': False, 'no': 892}
 
     guild_obj.build[build_level] += 1
     guild_obj.contribution -= build_conf.exp
 
-    return cPickle.dumps({'res': True})
+    return {'res': True}
