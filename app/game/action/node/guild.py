@@ -875,7 +875,7 @@ def get_guild_info_812(data, player):
 
     position = guild_obj.get_position(player.base_info.id)
     response.g_id = g_id
-    response.name = unicode(guild_obj.name)
+    response.name = guild_obj.name
     response.member_num = guild_obj.get_p_num()
     response.contribution = guild_obj.contribution
     response.all_contribution = guild_obj.all_contribution
@@ -1475,85 +1475,19 @@ def up_build_870(data, player):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    if game_configs.base_config.get('create_money') > player.finance.gold:
+    g_id = player.guild.g_id
+    if g_id == 0:
+        # "没有公会"
+        logger.error('up_build_870, guild id == 0')
         response.res.result = False
-        response.res.result_no = 102
+        response.res.result_no = 846
         return response.SerializeToString()
 
-    if g_id != 0:
+    remote_gate['world'].up_build_remote(g_id, p_id,
+                                         build_type)
+    if not remote_res.get('res'):
         response.res.result = False
-        response.res.result_no = 843
-        # response.res.message = "您已加入公会"
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
-
-    if not g_name or g_name.isdigit():
-        response.res.result = False
-        response.res.result_no = 840  # 军团名不合法
-        return response.SerializeToString()
-
-    match = re.search(u'[\uD800-\uDBFF][\uDC00-\uDFFF]',
-                      g_name)
-    if match:
-        response.res.result = False
-        # response.res.message = "公会名不合法"
-        response.res.result_no = 840  # 军团名不合法
-        return response.SerializeToString()
-
-    if trie_tree.check.replace_bad_word(g_name).encode("utf-8") != g_name:
-        response.res.result = False
-        # response.res.message = "公会名不合法"
-        response.res.result_no = 840  # 军团名不合法
-        return response.SerializeToString()
-
-    if len(g_name) > 18:
-        response.res.result = False
-        response.res.message = "名称超过字数限制"
-        response.res.result_no = 840  # 军团名不合法
-        return response.SerializeToString()
-
-    # 判断有没有重名
-    guild_name_data = tb_guild_info.getObj('names')
-    _result = guild_name_data.hget(g_name)
-    if _result:
-        response.res.result = False
-        # response.res.message = "此名已存在"
-        response.res.result_no = 841  # 名称已存在
-        return response.SerializeToString()
-
-    def func():
-        # 创建公会
-        create_res = remote_gate['world']. \
-            create_guild_remote(p_id,
-                                g_name,
-                                icon_id,
-                                player.guild.apply_guilds)
-        # create_res = cPickle.loads(create_res)
-        if not create_res.get('res'):
-            raise ValueError("Guild name repeat!")
-            return
-
-        guild_info = create_res.get('guild_info')
-        rank_helper.add_rank_info('GuildLevel', guild_info.get('g_id'), 1)
-
-        player.guild.g_id = guild_info.get('id')
-        player.guild.today_contribution = 0
-        player.guild.position = 1
-        player.guild.apply_guilds = []
-        player.guild.save_data()
-
-        # 加入公会聊天
-        remote_gate.login_guild_chat_remote(player.dynamic_id,
-                                            player.guild.g_id)
-
-    need_gold = game_configs.base_config.get('create_money')
-    if not player.pay.pay(need_gold, const.GUILD_CREATE, func):
-        response.res.result = False
-        response.res.result_no = 800
-        logger.error('create_guild error! pid:%d' % p_id)
-        return response.SerializeToString()
-
     response.res.result = True
-    tlog_action.log('CreatGuild', player, player.guild.g_id,
-                    player.base_info.level)
-    print response, '===========================222create'
     return response.SerializeToString()
