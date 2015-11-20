@@ -104,7 +104,7 @@ def create_guild_801(data, player):
             return
 
         guild_info = create_res.get('guild_info')
-        rank_helper.add_rank_info('GuildLevel', guild_info.get('g_id'), 1)
+        rank_helper.add_rank_info('GuildLevel', guild_info.get('id'), 1)
 
         player.guild.g_id = guild_info.get('id')
         player.guild.today_contribution = 0
@@ -665,14 +665,12 @@ def get_guild_rank_810(data, player):
     min_rank = args.min_rank
     max_rank = args.max_rank
 
-    response.res.result = True
-    return response.SerializeToString()
-
     if rank_type == 1:
         rank_num = min_rank
         # 得到公会排行
         rank_info = rank_helper.get_rank('GuildLevel',
                                          min_rank, max_rank)
+        print rank_info, '========================rankinfo'
         for (_g_id, _rank) in rank_info:
             g_id = int(_g_id)
             deal_rank_response_info(player, response, g_id, rank_num)
@@ -755,7 +753,7 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
     guild_obj = Guild()
     guild_obj.init_data(data1)
     if rank_type == 2 and guild_obj.get_p_num() >= \
-            game_configs.guild_config.get(8).get(guild_obj.level).p_max:
+            game_configs.guild_config.get(8).get(guild_obj.build[1]).p_max:
         return False
     guild_rank = response.guild_rank.add()
     guild_rank.g_id = guild_obj.g_id
