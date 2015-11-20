@@ -64,7 +64,7 @@ class CharacterLineUpComponent(Component):
         self._unpar_level = character_info.get('unpar_level', 1)
         self._unpar_type = character_info.get('unpar_type', 0)
         self._unpar_other_id = character_info.get('unpar_other_id', 0)
-        self._ever_have_heros = character_info.get('ever_have_heros', 0)
+        self._ever_have_heros = character_info.get('ever_have_heros', [])
 
         self._friend_fight_times = character_info.get('friend_fight_times', {})
         self._friend_fight_last_time = character_info.get('friend_fight_last_time', 0)
