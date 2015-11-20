@@ -64,7 +64,7 @@ def get_my_guild_info_remote(guild_id, p_id):
 
 
 @rootserviceHandle
-def join_guild_remote(guild_id, p_id):
+def join_guild_remote(g_id, p_id):
     """
     no 844 id error 859 申请人数满 845 成员已经满
     """
