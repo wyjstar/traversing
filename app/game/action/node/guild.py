@@ -1483,8 +1483,8 @@ def up_build_870(data, player):
         response.res.result_no = 846
         return response.SerializeToString()
 
-    remote_gate['world'].up_build_remote(g_id, p_id,
-                                         build_type)
+    remote_res = remote_gate['world'].up_build_remote(g_id, p_id,
+                                                      build_type)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
