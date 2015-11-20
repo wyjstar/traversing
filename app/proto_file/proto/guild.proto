@@ -24,7 +24,7 @@ message GuildRank
     required string president = 5;   //会长
     required int32 p_num = 6;   //人数
     required int32 icon_id = 7;   //军团徽章
-    required bytes call = 8;   //公告
+    required string call = 8;   //公告
     optional int32 be_apply = 9;   //有没有被我申请
 }
 
@@ -119,7 +119,7 @@ message UpBuildResponse{
 
 // 修改公告 command：804
 message EditorCallRequest{
-	required bytes call = 1;  //公告内容
+	required string call = 1;  //公告内容
 }
 
 // 修改公告 command：804

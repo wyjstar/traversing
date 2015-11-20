@@ -12,6 +12,7 @@ from shared.db_opear.configs_data import game_configs
 import random
 from app.world.action import mine
 from shared.common_logic.shop import do_shop_buy
+from shared.utils import trie_tree
 
 tb_guild_info = RedisObject('tb_guild_info')
 tb_character_info = RedisObject('tb_character_info')
@@ -42,7 +43,7 @@ def create_guild_remote(p_id, g_name, icon_id, apply_guilds):
     guild_name_data.hmset({g_name: guild_obj.g_id})
     del_player_apply(p_id, apply_guilds)
 
-    return {'res': True, 'guild_info': guild_obj.info}
+    return {'res': True, 'guild_info': guild_obj.guild_data}
 
 
 @rootserviceHandle
@@ -56,10 +57,187 @@ def get_guild_info_remote(guild_id, info_name, p_id):
     if info_name:
         res.update({'result': True, info_name: getattr(guild_obj, info_name)})
     else:
-        res.update({'result': True, 'guild_info': guild_obj.info})
+        res.update({'result': True, 'guild_info': guild_obj.guild_data})
     if p_id:
         res.update(dict(position=guild_obj.get_position(p_id)))
     return res
+
+
+@rootserviceHandle
+def deal_invite_guild_remote(g_id, p_id, res):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('join_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+    if not guild_obj.invite_join.get(p_id):
+        return {'res': False, 'no': 800}
+    del guild_obj.invite_join[p_id]
+    if res:
+        p_max = game_configs.guild_config.get(1).get(guild_obj.build.get(1)).p_max
+        if not guild_obj.invite_join.get(p_id) and guild_obj.p_num+1 > p_max:
+            return {'res': False, 'no': 845}
+        p_list3 = guild_obj.p_list.get(3, [])
+        if p_list3:
+            p_list3.append(p_id)
+        else:
+            guild_obj.p_list[3] = [p_id]
+
+    guild_obj.save_data()
+
+    return {'res': True}
+
+
+@rootserviceHandle
+def invite_join_guild_remote(g_id, p_id, target_id):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('join_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+
+    position = guild_obj.get_position(p_id)
+    if position > 2:
+        # 没有权限
+        return {'res': False, 'no': 849}
+    now = int(time.time())
+    for _p_id, i_time in guild_obj.invite_join.items():
+        if i_time + game_configs.base_config.get('guildInviteTime') > now:
+            del guild_obj.invite_join[_p_id]
+    p_max = game_configs.guild_config.get(1).get(guild_obj.build.get(1)).p_max
+    if not guild_obj.invite_join.get(target_id) and guild_obj.p_num+1 > p_max:
+        return {'res': False, 'no': 845}
+
+    guild_obj.invite_join[target_id] = now
+    guild_obj.save_data()
+
+    return {'res': True, 'name': guild_obj.name, 'level': guild_obj.level,
+            'p_num': guild_obj.p_num}
+
+
+@rootserviceHandle
+def guild_change_president_remote(g_id, p_id, target_id):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('join_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+
+    position = guild_obj.get_position(p_id)
+    if position != 1:
+        # 没有权限
+        return {'res': False, 'no': 849}
+    flag = 0
+    for pos, p_list in guild_obj.p_list.items():
+        if pos == 1:
+            continue
+        if target_id in p_list:
+            p_list.remove(target_id)
+            guild_obj.p_list[1] = [target_id]
+            flag = 1
+    if not flag:
+        return {'res': False, 'no': 850}
+    p_list3 = guild_obj.p_list.get(3, [])
+    if p_list3:
+        p_list3.append(p_id)
+    else:
+        guild_obj.p_list[3] = [p_id]
+    guild_obj.save_data()
+    return {'res': True, 'name': guild_obj.name}
+
+
+@rootserviceHandle
+def editor_call_remote(g_id, p_id, call):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('join_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+
+    position = guild_obj.get_position(p_id)
+    if not position or position > 2:
+        # 没有权限
+        return {'res': False, 'no': 849}
+    if call:
+        new_call = trie_tree.check.replace_bad_word(call)
+    guild_obj.editor_call(new_call)
+
+    guild_obj.save_data()
+    return {'res': True, 'name': guild_obj.name}
+
+
+@rootserviceHandle
+def guild_appoint_remote(g_id, p_id, deal_type, target_id):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('join_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+
+    position = guild_obj.get_position(p_id)
+    if position != 1:
+        # 没有权限
+        return {'res': False, 'no': 849}
+    p_list2 = guild_obj.p_list.get(2, [])
+    p_list3 = guild_obj.p_list.get(3, [])
+    if deal_type == 1:  # 1提拔2撤销
+        if len(p_list2) >= 2:
+            return {'res': False, 'no': 860}
+        if target_id not in p_list3:
+            return {'res': False, 'no': 800}
+        p_list3.remove(target_id)
+        if p_list2:
+            p_list2.append(target_id)
+        else:
+            guild_obj.p_list[2] = [target_id]
+    else:
+        if target_id not in p_list2:
+            return {'res': False, 'no': 800}
+        p_list2.remove(target_id)
+        if p_list3:
+            p_list3.append(target_id)
+        else:
+            guild_obj.p_list[3] = [target_id]
+
+    guild_obj.save_data()
+    return {'res': True, 'name': guild_obj.name}
+
+
+@rootserviceHandle
+def guild_kick_remote(g_id, p_id, be_kick_ids):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('join_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+
+    position = guild_obj.get_position(p_id)
+    kick_list = []
+    p_ids = []
+    for _, x in guild_obj.p_list.items():
+        p_ids += x
+    if not position or position > 2:
+        # 没有权限 或者 不在此军团
+        return {'res': False, 'no': 849}
+    p_list2 = guild_obj.p_list.get(2, [])
+    p_list3 = guild_obj.p_list.get(3, [])
+    for be_kick_id in be_kick_ids:
+        if be_kick_id in p_list2 and position == 1:
+            guild_obj.p_list[2].remove(be_kick_id)
+        elif be_kick_id in p_list3:
+            guild_obj.p_list[3].remove(be_kick_id)
+        else:
+            continue
+        kick_list.append(be_kick_id)
+
+    guild_obj.save_data()
+    return {'res': True, 'kick_list': kick_list, 'name': guild_obj.name}
 
 
 @rootserviceHandle
@@ -246,7 +424,6 @@ def up_build_remote(g_id, p_id, build_type):
             return {'res': False, 'no': 892}
 
     build_info[build_type] += 1
-    guild_obj.build = build_info
     guild_obj.contribution -= build_conf.exp
     guild_obj.save_data()
 

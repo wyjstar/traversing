@@ -116,7 +116,7 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
     if shop_item.batch != -1:
         limit_type = 'items'
         if shop_id_buyed_num >= shop_item.batch:
-            return {'res': False, 'no': 851}
+            return {'res': False, 'no': 502}
 
     if shop_item.limitVIP:
         limit_num = shop_item.limitVIP.get(vip_level, 0)

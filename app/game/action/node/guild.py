@@ -125,7 +125,6 @@ def create_guild_801(data, player):
     response.res.result = True
     tlog_action.log('CreatGuild', player, player.guild.g_id,
                     player.base_info.level)
-    print response, '===========================222create'
     return response.SerializeToString()
 
 
@@ -251,16 +250,11 @@ def modify_user_guild_info_remote(data, player):
     if data['cmd'] == 'change_president':
         proto_data = PositionChange()
         proto_data.position = data['position']
-        player.guild.position = data['position']
-        player.guild.save_data()
         remote_gate.push_object_remote(1815,
                                        proto_data.SerializeToString(),
                                        [player.dynamic_id])
     elif data['cmd'] == 'be_mobai':
         player.guild.be_mobai()
-        player.guild.save_data()
-    elif data['cmd'] == 'exit_guild':
-        player.guild.position = data['position']
         player.guild.save_data()
     elif data['cmd'] == 'deal_apply':
         if player.guild.g_id != 0:
@@ -305,8 +299,6 @@ def modify_user_guild_info_remote(data, player):
 @remoteserviceHandle('gate')
 def editor_call_804(data, player):
     """编辑公告 """
-    return
-    # TODO
     p_id = player.base_info.id
     args = EditorCallRequest()
     args.ParseFromString(data)
@@ -317,38 +309,18 @@ def editor_call_804(data, player):
         response.res.result_no = 848
         # response.res.message = "公告内容超过字数限制"
         return response.SerializeToString()
-    data1 = tb_guild_info.getObj(player.guild.g_id).hgetall()
-    if not data1:
+
+    g_id = player.guild.g_id
+    remote_res = remote_gate['world'].editor_call_remote(g_id,
+                                                         player.base_info.id,
+                                                         call)
+    if not remote_res.get('res'):
         response.res.result = False
-        response.res.result_no = 844
-        # response.res.message = "公会ID错误"
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
 
-    position = player.guild.position
-    p_list = guild_obj.p_list
-    position_p_list = p_list.get(position)
-
-    if p_id in position_p_list:
-        if position > 2:
-            response.res.result = False
-            response.res.result_no = 849
-            # response.res.message = "权限不够"
-            return response.SerializeToString()
-
-        if call:
-            new_call = trie_tree.check.replace_bad_word(call).encode("utf-8")
-
-        guild_obj.editor_call(call)
-        guild_obj.save_data()
-        response.res.result = True
-        return response.SerializeToString()
-    else:
-        response.res.result = False
-        response.res.result_no = 850
-        # response.res.message = "您不在此公会"
-        return response.SerializeToString()
+    response.res.result = True
+    return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
@@ -370,11 +342,9 @@ def deal_apply_805(data, player):
                                                               p_id, res_type)
     if not remote_res.get('res'):
         response.res.result = False
-        print remote_res.get('no'), '=============deal apply 4'
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    print res_type, '=============deal apply 2'
     if res_type == 1:
         for p_id in p_ids:
             data = {'guild_id': player.guild.g_id,
@@ -421,7 +391,6 @@ def deal_apply_805(data, player):
                     apply_guilds.remove(g_id)
                 p_guild_obj.hmset({'apply_guilds': apply_guilds})
 
-    print res_type, '=============deal apply 3'
     remote_gate['world'].deal_apply_remote(g_id, p_ids,
                                            res_type)
 
@@ -432,141 +401,64 @@ def deal_apply_805(data, player):
 @remoteserviceHandle('gate')
 def change_president_806(data, player):
     """转让会长 """
-    return
-    # TODO
     dynamicid = player.dynamic_id
     p_id = player.base_info.id
     args = ChangePresidentRequest()
     args.ParseFromString(data)
     response = ChangePresidentResponse()
-    p_p_id = args.p_id
-    m_g_id = player.guild.g_id
-
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-
-    if m_g_id == 0:
+    target_id = args.p_id
+    g_id = player.guild.g_id
+    remote_res = remote_gate['world'].guild_change_president_remote(g_id, p_id,
+                                                                    target_id)
+    if not remote_res.get('res'):
         response.res.result = False
-        response.res.result_no = 846
-        # response.res.message = "您还未加入公会"
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    if not data1:
-        response.res.result = False
-        response.res.result_no = 844
-        # response.res.message = "公会ID错误"
-        return response.SerializeToString()
+    remote_gate.is_online_remote(
+        'modify_user_guild_info_remote',
+        target_id, {'cmd': 'change_president', 'position': 1})
 
-    if player.guild.position != 1:
-        logger.debug('guild change president : you are`t president')
-        response.res.result = False
-        response.res.result_no = 849
-        # response.res.message = "您不是会长"
-        return response.SerializeToString()
+    send_mail(conf_id=307, receive_id=target_id,
+              guild_name=remote_res.get('name'))
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
-    p_list = guild_obj.p_list
-    for num in range(2, 4):
-        p_list1 = p_list.get(num)
-        if p_list1 and p_p_id in p_list1:
-            p_list1.remove(p_p_id)
-            p_list3 = p_list.get(3)
-            p_list3.append(p_id)
-            p_list.update({num: p_list1, 3: p_list3, 1: [p_p_id]})
-            guild_obj.p_list = p_list
-            guild_obj.save_data()
-
-            info = tb_character_info.getObj(p_p_id).hgetall()
-            if info.get("guild_id") != player.guild.g_id:
-                logger.debug('guild change president : player don`t in guild')
-                response.res.result = False
-                response.res.result_no = 850
-                # response.res.message = "此玩家不在公会"
-                return response.SerializeToString()
-
-            data = {'position': 1}
-            is_online = remote_gate.is_online_remote(
-                'modify_user_guild_info_remote',
-                p_p_id, {'cmd': 'change_president', 'position': 1})
-
-            if is_online == "notonline":
-                p_guild_data = tb_character_info.getObj(p_p_id)
-                p_guild_data.hmset(data)
-
-            player.guild.position = 3
-            player.guild.save_data()
-
-            send_mail(conf_id=307, receive_id=p_p_id, guild_name=guild_obj.name)
-
-            response.res.result = True
-            # response.res.message = "转让成功"
-            tlog_action.log('GuildChangePresident', player, m_g_id, p_p_id)
-            return response.SerializeToString()
-    # 没有找到此玩家
-    logger.debug('guild change president : dont find player')
-    response.result = False
-    response.res.result_no = 858
-    # response.message = "玩家不在此公会"
+    response.res.result = True
+    tlog_action.log('GuildChangePresident', player, g_id, target_id)
     return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
 def kick_807(data, player):
     """踢人 """
-    return
-    # TODO
     args = KickRequest()
     args.ParseFromString(data)
     response = KickResponse()
     p_ids = args.p_ids
-    m_g_id = player.guild.g_id
-    if player.guild.position > 2:
-        logger.debug('guild kick:you are not position:%s', player.guild.position)
+    g_id = player.guild.g_id
+    be_kick_ids = []
+    for a in p_ids:
+        be_kick_ids.append(a)
+
+    remote_res = remote_gate['world'].guild_kick_remote(g_id,
+                                                        player.base_info.id,
+                                                        be_kick_ids)
+    if not remote_res.get('res'):
         response.res.result = False
-        response.res.result_no = 849
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
+    kick_list = remote_res.get('kick_list')
 
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-    p_list = guild_obj.p_list
-    for p_id in p_ids:
-        for num in range(2, 4):
-            p_list1 = p_list.get(num)
-            if not p_list1 or p_id not in p_list1:
-                continue
+    for be_kick_id in kick_list:
+        data = {'guild_id': 0,
+                'apply_guilds': []}
+        is_online = remote_gate.is_online_remote(
+            'modify_user_guild_info_remote', be_kick_id, {'cmd': 'kick'})
+        if is_online == "notonline":
+            p_guild_data = tb_character_info.getObj(be_kick_id)
+            p_guild_data.hmset(data)
 
-            be_kick_obj = tb_character_info.getObj(p_id)
-            if be_kick_obj.hget('guild_id') == 0:
-                response.res.result = False
-                response.res.result_no = 800
-                return response.SerializeToString()
-            if player.guild.position == 2 and num != 3:
-                response.res.result = False
-                response.res.result_no = 849
-                return response.SerializeToString()
-
-            p_list1.remove(p_id)
-            p_list.update({num: p_list1})
-            guild_obj.p_list = p_list
-            guild_obj.p_num -= 1
-            guild_obj.save_data()
-
-            data = {'guild_id': 0,
-                    'position': 3,
-                    'contribution': 0,
-                    'all_contribution': 0,
-                    'apply_guilds': [],
-                    'exit_time': 1}
-            # TODO 玩家被提出，或者退出军团以后，膜拜的记录清理不清理。
-            is_online = remote_gate.is_online_remote(
-                'modify_user_guild_info_remote', p_id, {'cmd': 'kick'})
-            if is_online == "notonline":
-                p_guild_data = tb_character_info.getObj(p_id)
-                p_guild_data.hmset(data)
-
-            send_mail(conf_id=302, receive_id=p_id, guild_name=guild_obj.name)
+        send_mail(conf_id=302, receive_id=be_kick_id,
+                  guild_name=remote_res.get('name'))
 
     response.res.result = True
     return response.SerializeToString()
@@ -618,7 +510,6 @@ def bless_809(data, player):
                                                    bless_type)
     if not remote_res.get('res'):
         response.res.result = False
-        print remote_res.get('no'), '=============deal apply 4'
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
@@ -632,7 +523,6 @@ def bless_809(data, player):
     guild_contribution = game_configs.base_config.get('guildContribution')
     animal_open_consume = game_configs.base_config.get('AnimalOpenConsume')
 
-    print worship_info, '======================worship info'
     return_data = gain(player, guild_contribution, const.Bless,
                        multiple=worship_info[4])  # 获取
     return_data = gain(player, animal_open_consume, const.Bless,
@@ -647,7 +537,6 @@ def bless_809(data, player):
     response.res.result = True
     # response.message = "膜拜成功"
     tlog_action.log('GuildWorship', player, g_id, bless_type)
-    print response, '================================================11111'
     return response.SerializeToString()
 
 
@@ -666,7 +555,6 @@ def get_guild_rank_810(data, player):
         # 得到公会排行
         rank_info = rank_helper.get_rank('GuildLevel',
                                          min_rank, max_rank)
-        print rank_info, '========================rankinfo'
         for (_g_id, _rank) in rank_info:
             g_id = int(_g_id)
             deal_rank_response_info(player, response, g_id, rank_num)
@@ -740,7 +628,6 @@ def get_guild_rank_810(data, player):
 
     player.guild.save_data()
     response.res.result = True
-    print response, '==================guild rank list'
     return response.SerializeToString()
 
 
@@ -748,13 +635,11 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
 
     remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, 0)
     if not remote_res.get('result'):
-        print 'deal guild rank ====================3', remote_res
         return False
     guild_info = remote_res.get('guild_info')
 
     if rank_type == 2 and guild_info.get('p_num') >= \
             game_configs.guild_config.get(1).get(guild_info.get('build')[1]).p_max:
-        print 'deal guild rank ====================2'
         return False
     guild_rank = response.guild_rank.add()
     guild_rank.g_id = guild_info.get('id')
@@ -778,7 +663,6 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
         guild_rank.be_apply = 1
     else:
         guild_rank.be_apply = 0
-    print 'deal guild rank ====================1'
     return True
 
 
@@ -786,32 +670,21 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
 def get_role_list_811(data, player):
     """角色列表 """
     response = GetGuildMemberListResponse()
-    m_g_id = player.guild.g_id
-    if m_g_id == 0:
+    g_id = player.guild.g_id
+    if g_id == 0:
         response.res.result = False
         response.res.result_no = 846
         # response.res.message = "没有公会"
         return response.SerializeToString()
-
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1:
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, 0)
+    if not remote_res.get('result'):
         response.res.result = False
-        response.res.result_no = 844
-        # response.res.message = "id error"
+        response.res.result_no = remote_res.get('result_no')
         return response.SerializeToString()
+    guild_info = remote_res.get('guild_info')
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
-    guild_p_list = guild_obj.p_list
-    print guild_p_list, '================guild p list '
-    if not guild_p_list.values():
-        response.res.result = False
-        response.res.result_no = 800
-        # response.message = "p list is none"
-        return response.SerializeToString()
-
-    for p_list in guild_p_list.values():
+    guild_p_list = guild_info.get('p_list')
+    for position, p_list in guild_p_list.items():
         for role_id in p_list:
             character_info = tb_character_info.getObj(role_id).hgetall()
             if not character_info:
@@ -825,7 +698,7 @@ def get_role_list_811(data, player):
                 role_info.name = u'无名'
             role_info.level = character_info['level']
 
-            role_info.position = guild_obj.get_position(role_id)
+            role_info.position = position
             role_info.all_contribution = \
                 character_info['all_contribution']
             role_info.contribution = character_info['contribution']
@@ -852,7 +725,6 @@ def get_role_list_811(data, player):
                 role_info.be_mobai = 0
 
     response.res.result = True
-    print response, '==========================guild player list'
     return response.SerializeToString()
 
 
@@ -868,29 +740,25 @@ def get_guild_info_812(data, player):
         response.res.result_no = 846
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObj(g_id).hgetall()
-    if not data1:
-        # "公会ID错误"
-        logger.error('get_guild_info_812, guild error')
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, player.base_info.id)
+    if not remote_res.get('result'):
         response.res.result = False
-        response.res.result_no = 844
+        response.res.result_no = remote_res.get('result_no')
         return response.SerializeToString()
+    guild_info = remote_res.get('guild_info')
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
-    position = guild_obj.get_position(player.base_info.id)
-    response.g_id = g_id
-    response.name = guild_obj.name
-    response.member_num = guild_obj.p_num
-    response.contribution = guild_obj.contribution
-    response.all_contribution = guild_obj.all_contribution
-    response.icon_id = guild_obj.icon_id
-    response.call = guild_obj.call
+    position = remote_res.get('position')
+    response.g_id = guild_info.get('id')
+    response.name = guild_info.get('name')
+    response.member_num = guild_info.get('p_num')
+    response.contribution = guild_info.get('contribution')
+    response.all_contribution = guild_info.get('all_contribution')
+    response.icon_id = guild_info.get('icon_id')
+    response.call = guild_info.get('call')
     response.position = position
-    response.all_zan_num = guild_obj.praise_num
-    response.zan_money = guild_obj.praise_money
-    for build_type, build_level in guild_obj.build.items():
+    response.all_zan_num = guild_info.get('praise_num')
+    response.zan_money = guild_info.get('praise_money')
+    for build_type, build_level in guild_info.get('build').items():
         build_info_pb = response.build_info.add()
         build_info_pb.build_type = build_type
         build_info_pb.build_level = build_level
@@ -902,9 +770,9 @@ def get_guild_info_812(data, player):
     response.last_zan_time = player.guild.praise_time
     response.zan_num = player.guild.praise_num
 
-    response.luck_num = guild_obj.bless_luck_num
+    response.luck_num = guild_info.get('bless_luck_num')
     response.bless_num = player.guild.bless_times
-    response.guild_bless_times = guild_obj.bless_num
+    response.guild_bless_times = guild_info.get('bless_num')
 
     for bless_gift_no in player.guild.bless_gifts:
         response.bless_gift.append(bless_gift_no)
@@ -919,7 +787,7 @@ def get_guild_info_812(data, player):
         response.captain_icon = player.base_info.head
 
     else:
-        president_id = guild_obj.p_list.get(1)[0]
+        president_id = guild_info.get('p_list').get(1)[0]
         character_info = tb_character_info.getObj(president_id).hgetall()
         if character_info:
             response.captain_name = character_info['nickname']
@@ -934,19 +802,18 @@ def get_guild_info_812(data, player):
             heads.ParseFromString(character_info['heads'])
             response.captain_icon = heads.now_head
     if position <= 2:
-        if guild_obj.apply:
+        if guild_info.get('apply'):
             response.have_apply = 1
         else:
             response.have_apply = 0
     response.be_mobai_times = player.guild.be_mobai_times
 
-    for skill_type, skill_level in guild_obj.guild_skills.items():
+    for skill_type, skill_level in guild_info.get('guild_skills').items():
         skill_pb = response.guild_skill.add()
         skill_pb.skill_type = skill_type
         skill_pb.skill_level = skill_level
 
     response.res.result = True
-    print response, '================================================11111'
     return response.SerializeToString()
 
 
@@ -954,24 +821,21 @@ def get_guild_info_812(data, player):
 def get_apply_list_813(data, player):
     """获取申请列表 """
     response = GetApplyListResponse()
-    m_g_id = player.guild.g_id
-    if m_g_id == 0:
+    g_id = player.guild.g_id
+    if g_id == 0:
         # "没有公会"
         response.res.result = False
         response.res.result_no = 846
         return response.SerializeToString()
 
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1:
-        # "id error"
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, 0)
+    if not remote_res.get('result'):
         response.res.result = False
-        response.res.result_no = 844
+        response.res.result_no = remote_res.get('result_no')
         return response.SerializeToString()
+    guild_info = remote_res.get('guild_info')
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
-    guild_apply = guild_obj.apply
+    guild_apply = guild_info.get('apply')
 
     for role_id in guild_apply:
         character_info = tb_character_info.getObj(role_id).hgetall()
@@ -999,65 +863,37 @@ def get_apply_list_813(data, player):
 
 
 @remoteserviceHandle('gate')
-def be_change_president_1801(is_online, player):
-    """获取申请列表 """
-    player.guild.position = 1
-    player.guild.save_data()
-    return True
-
-
-@remoteserviceHandle('gate')
 def invite_join_1803(data, player):
     """邀请加入军团 """
-    return
-    # TODO
     args = InviteJoinRequest()
     args.ParseFromString(data)
     response = InviteJoinResponse()
-    user_id = args.user_id
+    target_id = args.user_id
+    g_id = player.guild.g_id
 
-    m_g_id = player.guild.g_id
-
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1 or m_g_id == 0:
-        response.res.result = False
-        response.res.result_no = 800
-        # response.message = "公会ID错误"
-        return response.SerializeToString()
-
-    if player.guild.position == 3:
-        logger.error('invite_join_1802 : you are`t president')
-        response.res.result = False
-        response.res.result_no = 849
-        # response.res.message = "您不是会长"
-        return response.SerializeToString()
-
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
-    guild_p_max = game_configs.guild_config.get(8).get(guild_obj.level).p_max
-
-    if guild_obj.p_num+1 > guild_p_max:
-        response.res.result = False
-        response.res.result_no = 845
-        # response.message = "超出公会人数上限"
-        return response.SerializeToString()
-
-    info = tb_character_info.getObj(user_id).hget('guild_id')
+    info = tb_character_info.getObj(target_id).hget('guild_id')
     if info != 0:
         response.res.result = False
         # response.res.message = "对方已有军团"
         response.res.result_no = 865
         return response.SerializeToString()
 
+    remote_res = remote_gate['world'].invite_join_guild_remote(g_id, player.base_info.id, target_id)
+    if not remote_res.get('res'):
+        response.res.result = False
+        response.res.result_no = remote_res.get('no')
+        return response.SerializeToString()
+
     open_stage_id = game_configs.base_config.get('guildOpenStage')
-    is_online = remote_gate.is_online_remote('modify_user_guild_info_remote', user_id, {'cmd': 'canjoinguild'})
+    is_online = remote_gate.is_online_remote('modify_user_guild_info_remote',
+                                             target_id,
+                                             {'cmd': 'canjoinguild'})
     if is_online == "notonline":
-        character_obj = tb_character_info.getObj(user_id)
+        character_obj = tb_character_info.getObj(target_id)
         if not character_obj.exists():
             response.res.result = False
-            # response.message = "未知错误"
             response.res.result_no = 800
+            logger.error('invite join ,target id error')
             return response.SerializeToString()
         stages = character_obj.hget('stage_info')
         stage_objs = {}
@@ -1070,34 +906,23 @@ def invite_join_1803(data, player):
                     flog = 1
         if flog:
             response.res.result = False
-            # response.res.message = "对方未开启军团功能"
+            # "对方未开启军团功能"
             response.res.result_no = 866
             return response.SerializeToString()
 
     elif is_online == 0:
         response.res.result = False
-        # response.message = "对方未开启军团功能"
+        # "对方未开启军团功能"
         response.res.result_no = 866
         return response.SerializeToString()
 
-    if not guild_obj.invite_join.get(user_id):
-        for u_id, i_time in guild_obj.invite_join.items():
-            if i_time + game_configs.base_config.get('guildInviteTime') > int(time.time()):
-                del guild_obj.invite_join[u_id]
-        if len(guild_obj.invite_join)+1 > guild_p_max:
-            response.res.result = False
-            response.res.result_no = 845
-            # response.res.message = "超出可邀请人数上限"
-            return response.SerializeToString()
+    mail_id = game_configs.base_config.get('guildInviteMail')
+    send_mail(conf_id=mail_id, receive_id=target_id,
+              guild_name=remote_res.get('name'),
+              guild_p_num=remote_res.get('p_num'),
+              guild_level=remote_res.get('level'),
+              guild_id=g_id, nickname=player.base_info.base_name)
 
-        mail_id = game_configs.base_config.get('guildInviteMail')
-        send_mail(conf_id=mail_id, receive_id=user_id, guild_name=guild_obj.name,
-                  guild_p_num=guild_obj.p_num, guild_level=guild_obj.level,
-                  guild_id=guild_obj.g_id, nickname=player.base_info.base_name)
-
-    guild_obj.invite_join[user_id] = int(time.time())
-
-    guild_obj.save_data()
     response.res.result = True
     return response.SerializeToString()
 
@@ -1105,35 +930,20 @@ def invite_join_1803(data, player):
 @remoteserviceHandle('gate')
 def deal_invite_join_1804(data, player):
     """处理邀请加入军团 """
-    return
-    # TODO
     args = DealInviteJoinRequest()
     args.ParseFromString(data)
     response = DealInviteJoinResResponse()
-    guild_id = args.guild_id
+    g_id = args.guild_id
     res = args.res
     response.res.result = True
 
-    data1 = tb_guild_info.getObj(guild_id).hgetall()
-    if not data1:
-        player.mail_component.delete_mails([args.mail_id])
-        response.res.result = False
-        response.res.result_no = 844
-        # response.res.message = "公会ID错误"
-        return response.SerializeToString()
-
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-    # player.mail_component.delete_mails([args.mail_id])
-
-    if not guild_obj.invite_join.get(player.base_info.id):
-        response.res.result = False
-        response.res.result_no = 800
-        return response.SerializeToString()
-
-    # del guild_obj.invite_join[player.base_info.id]
-
     if res:
+        open_stage_id = game_configs.base_config.get('guildOpenStage')
+        if player.stage_component.get_stage(open_stage_id).state != 1:
+            response.res.result = False
+            response.res.result_no = 837
+            # response.message = "未完成指定关卡"
+            return response.SerializeToString()
         m_exit_time = player.guild.exit_time
         the_time = int(time.time())-m_exit_time
 
@@ -1145,55 +955,27 @@ def deal_invite_join_1804(data, player):
             response.spare_time = game_configs.base_config.get('exit_time') \
                 - the_time
             return response.SerializeToString()
-
-        player.mail_component.delete_mails([args.mail_id])
-        del guild_obj.invite_join[player.base_info.id]
-
         if player.guild.g_id != 0:
             response.res.result = False
             response.res.result_no = 843
             #response.message = "你已经有军团了"
             return response.SerializeToString()
 
-        if guild_obj.p_num+1 > game_configs.guild_config.get(8).get(guild_obj.level).p_max:
-            response.res.result = False
-            response.res.result_no = 845
-            # response.message = "超出公会人数上限"
-            return response.SerializeToString()
+    remote_res = remote_gate['world'].deal_invite_guild_remote(g_id, player.base_info.id, res)
+    if not remote_res.get('res'):
+        response.res.result = False
+        response.res.result_no = remote_res.get('no')
+        return response.SerializeToString()
 
-        open_stage_id = game_configs.base_config.get('guildOpenStage')
-        if player.stage_component.get_stage(open_stage_id).state != 1:
-            response.res.result = False
-            response.res.result_no = 837
-            # response.message = "未完成指定关卡"
-            return response.SerializeToString()
+    player.mail_component.delete_mails([args.mail_id])
 
-        if response.res.result:
-            player.guild.g_id = guild_obj.g_id
-            player.guild.position = 3
-            player.guild.contribution = 0
-            player.guild.all_contribution = 0
-            player.guild.k_num = 0
-            player.guild.exit_time = 1
-
-            if guild_obj.p_list.get(3):
-                p_list1 = guild_obj.p_list.get(3)
-                p_list1.append(player.base_info.id)
-                guild_obj.p_list.update({3: p_list1})
-            else:
-                guild_obj.p_list.update({3: [player.base_info.id]})
-            guild_obj.p_num += 1
-
-            remote_gate.login_guild_chat_remote(player.dynamic_id,
-                                                player.guild.g_id)
-
+    if res:
+        player.guild.g_id = g_id
         player.guild.save_data()
-    else:
-        player.mail_component.delete_mails([args.mail_id])
-        del guild_obj.invite_join[player.base_info.id]
+        remote_gate.login_guild_chat_remote(player.dynamic_id,
+                                            player.guild.g_id)
 
-    guild_obj.save_data()
-
+    response.res.result = True
     return response.SerializeToString()
 
 
@@ -1227,8 +1009,6 @@ def praise_1807(data, player):
     build_config = game_configs.guild_config.get(1).get(build_level)
 
     player.guild.add_praise_times()
-
-    print build_config.worShip, '========================111'
 
     dorp_item = parse({107: [build_config.worShip[1][0], build_config.worShip[1][1],
                       build_config.worShip[1][2]]})
@@ -1268,7 +1048,6 @@ def captailn_receive_1806(data, player):
     get_return(player, return_data, response.gain)
 
     response.res.result = True
-    print '===================', response
     return response.SerializeToString()
 
 
@@ -1279,24 +1058,21 @@ def get_bless_gift_1808(data, player):
     args.ParseFromString(data)
     response = GetBlessGiftResponse()
     gift_no = args.gift_no
+    g_id = player.guild.g_id
 
     if gift_no in player.guild.bless_gifts:
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
 
-    g_id = player.guild.g_id
-    data1 = tb_guild_info.getObj(g_id).hgetall()
-    if not data1 or g_id == 0:
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, 0)
+    if not remote_res.get('result'):
         response.res.result = False
-        response.res.result_no = 800
-        # response.message = "公会ID错误"
+        response.res.result_no = remote_res.get('result_no')
         return response.SerializeToString()
+    guild_info = remote_res.get('guild_info')
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
-    build_level = guild_obj.build.get(2)
+    build_level = guild_info.get('build').get(2)
     build_conf = game_configs.guild_config.get(2)[build_level]
     gift_info = build_conf.reward.get(gift_no)
 
@@ -1305,7 +1081,7 @@ def get_bless_gift_1808(data, player):
         response.res.result_no = 855
         return response.SerializeToString()
 
-    if guild_obj.bless_luck_num < gift_info[0]:
+    if guild_info.get('bless_luck_num') < gift_info[0]:
         response.res.result = False
         response.res.result_no = 856
         return response.SerializeToString()
@@ -1315,10 +1091,8 @@ def get_bless_gift_1808(data, player):
     get_return(player, return_data, response.gain)
 
     player.guild.receive_bless_gift(gift_no)
-    print player.guild.bless_gifts, '=============212121:1'
     player.guild.save_data()
     response.res.result = True
-    print '============================21212', response
     return response.SerializeToString()
 
 
@@ -1330,45 +1104,42 @@ def find_guild_1809(data, player):
     response = FindGuildResponse()
     id_or_name = args.id_or_name
 
-    if id_or_name.isdigit():
-        guild_obj = tb_guild_info.getObj(id_or_name)
-        isexist = guild_obj.exists()
-    else:
+    if not id_or_name.isdigit():
         guild_name_obj = tb_guild_info.getObj('names')
         isexist = guild_name_obj.hexists(id_or_name)
-        g_id = guild_name_obj.hget(id_or_name)
-        guild_obj = tb_guild_info.getObj(g_id)
-    if isexist:
-        guild_data = guild_obj.hgetall()
-        guild_rank = response.guild_info
 
-        guild_obj = Guild()
-        guild_obj.init_data(guild_data)
+    remote_res = remote_gate['world'].get_guild_info_remote(id_or_name, 0, 0)
+    if not remote_res.get('result'):
+        response.res.result = False
+        response.res.result_no = remote_res.get('result_no')
+        return response.SerializeToString()
+    guild_info = remote_res.get('guild_info')
 
-        rank_no = rank_helper.get_rank_by_key('GuildLevel',
-                                              guild_obj.g_id)
+    rank_no = rank_helper.get_rank_by_key('GuildLevel',
+                                          guild_info.get('id'))
 
-        guild_rank.g_id = guild_obj.g_id
-        guild_rank.rank = rank_no
-        guild_rank.name = guild_obj.name
-        guild_rank.level = 1
-        guild_rank.icon_id = guild_obj.icon_id
+    guild_rank = response.guild_info
+    guild_rank.g_id = guild_info.get('id')
+    guild_rank.rank = rank_no
+    guild_rank.name = guild_info.get('name')
+    guild_rank.level = 1
+    guild_rank.icon_id = guild_info.get('icon_id')
 
-        president_id = guild_obj.p_list.get(1)[0]
-        char_obj = tb_character_info.getObj(president_id)
-        if char_obj.exists():
-            guild_rank.president = char_obj.hget('nickname')
-        else:
-            guild_rank.president = u'错误'
-            logger.error('guild rank, president player not fond,id:%s',
-                         president_id)
+    president_id = guild_info.get('p_list').get(1)[0]
+    char_obj = tb_character_info.getObj(president_id)
+    if char_obj.exists():
+        guild_rank.president = char_obj.hget('nickname')
+    else:
+        guild_rank.president = u'错误'
+        logger.error('guild rank, president player not fond,id:%s',
+                     president_id)
 
-        guild_rank.p_num = guild_obj.p_num
-        guild_rank.call = guild_obj.call
-        if player.base_info.id in guild_obj.apply:
-            guild_rank.be_apply = 1
-        else:
-            guild_rank.be_apply = 0
+    guild_rank.p_num = guild_info.get('p_num')
+    guild_rank.call = guild_info.get('call')
+    if player.base_info.id in guild_info.get('apply'):
+        guild_rank.be_apply = 1
+    else:
+        guild_rank.be_apply = 0
 
     response.res.result = True
     return response.SerializeToString()
@@ -1377,78 +1148,31 @@ def find_guild_1809(data, player):
 @remoteserviceHandle('gate')
 def appoint_1810(data, player):
     """任命 """
-    return
-    # TODO
     args = AppointRequest()
     args.ParseFromString(data)
     response = AppointResponse()
     deal_type = args.deal_type
-    p_id = args.p_id
+    target_id = args.p_id
 
-    m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1 or m_g_id == 0:
+    g_id = player.guild.g_id
+    remote_res = remote_gate['world'].guild_appoint_remote(g_id, player.base_info.id, deal_type, target_id)
+    if not remote_res.get('res'):
         response.res.result = False
-        response.res.result_no = 800
-        # response.message = "公会ID错误"
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
-
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
-
-    p_list = guild_obj.p_list
-    position2_list = p_list.get(2, [])
-    position3_list = p_list.get(3, [])
-    if deal_type == 1:
-        now_positon = 2
-        if position2_list and len(position2_list) >= 2:
-            response.res.result = False
-            response.res.result_no = 860
-            return response.SerializeToString()
-        if not position3_list or p_id not in position3_list:
-            response.res.result = False
-            response.res.result_no = 800
-            return response.SerializeToString()
-        position3_list.remove(p_id)
-        position2_list.append(p_id)
-        guild_obj.p_list = {1: [player.base_info.id],
-                            2: position2_list,
-                            3: position3_list}
-    else:
-        now_positon = 3
-        if not position2_list or p_id not in position2_list:
-            response.res.result = False
-            response.res.result_no = 800
-            return response.SerializeToString()
-        position2_list.remove(p_id)
-        position3_list.append(p_id)
-        guild_obj.p_list = {1: [player.base_info.id],
-                            2: position2_list,
-                            3: position3_list}
-
-    guild_id = tb_character_info.getObj(p_id).hget('guild_id')
-    if guild_id != player.guild.g_id:
-        response.res.result = False
-        response.res.result_no = 800
-        return response.SerializeToString()
-    data = {'position': now_positon}
-    is_online = remote_gate.is_online_remote(
-        'modify_user_guild_info_remote',
-        p_id,
-        {'cmd': 'change_president', "position": now_positon})
-
-    if is_online == "notonline":
-        p_guild_data = tb_character_info.getObj(p_id)
-        p_guild_data.hmset(data)
-
-    guild_obj.save_data()
 
     if deal_type == 1:
         mail_id = 306
+        now_positon = 2
     else:  # deal type == 2
         mail_id = 308
-    send_mail(conf_id=mail_id, receive_id=p_id, guild_name=guild_obj.name)
+        now_positon = 3
+    remote_gate.is_online_remote(
+        'modify_user_guild_info_remote', target_id,
+        {'cmd': 'change_president', "position": now_positon})
+
+    send_mail(conf_id=mail_id, receive_id=target_id,
+              guild_name=remote_res.get('name'))
     response.res.result = True
     return response.SerializeToString()
 
@@ -1577,7 +1301,6 @@ def receive_mobai_872(data, player):
     get_return(player, return_data, response.gain)
 
     response.res.result = True
-    print 'receive mobai ===========', response, game_configs.base_config.get('AreWorship2')
     return response.SerializeToString()
 
 
@@ -1600,13 +1323,11 @@ def mine_seek_help_873(data, player):
         return response.SerializeToString()
 
     res = player.mine.seek_help(pos)
-    print res, '==========222'
     if not res:
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
     response.res.result = True
-    print response, '=================111'
     return response.SerializeToString()
 
 
@@ -1626,12 +1347,10 @@ def mine_seek_help_list_874(data, player):
         return response.SerializeToString()
     remote_res = remote_gate['world'].mine_seek_help_list_remote(g_id, p_id)
     if not remote_res.get('res'):
-        print '=========================aaa', remote_res.get('no')
         response.res.result = False
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
     mine_help_list = remote_res.get('mine_help_list')
-    print '=========================aaa1', mine_help_list
     for _time, [mine_id, u_id, times] in mine_help_list.items():
         # if u_id == p_id:
         #     continue
@@ -1656,7 +1375,6 @@ def mine_seek_help_list_874(data, player):
         help_info.seek_time = _time
 
     response.res.result = True
-    print response, '=====================aaaa='
     return response.SerializeToString()
 
 
@@ -1683,7 +1401,6 @@ def mine_help_list_875(data, player):
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
     help_ids = remote_res.get('help_ids')
-    print help_ids, '==================bbb2'
     player.guild.mine_help = help_ids
     player.guild.save_data()
 
