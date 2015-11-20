@@ -178,7 +178,7 @@ def join_guild_802(data, player):
 
     remote_gate.is_online_remote(
         'modify_user_guild_info_remote',
-        captain_id, {'cmd': 'join_guild'})
+        remote_res.get('captain_id'), {'cmd': 'join_guild'})
 
     player.guild.apply_guilds.append(g_id)
     player.guild.save_data()
