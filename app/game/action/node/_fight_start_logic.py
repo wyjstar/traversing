@@ -13,7 +13,7 @@ from random import randint
 from shared.utils.const import const
 
 
-def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_best_skill, blue_player_level, current_unpar, seed1, seed2, fight_type):
+def pvp_process(player, line_up, red_units, blue_units, seed1, seed2, fight_type):
     """docstring for pvp_process"""
     #save_line_up_order(line_up, player, current_unpar)
     #player.fight_cache_component.awake_hero_units(blue_units)
@@ -21,13 +21,15 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
     if not blue_units:
         return True
 
-    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill)
+    unpar_type = player.line_up_component.unpar_type
+    unpar_other_id = player.line_up_component.unpar_other_id
+
     if fight_type == const.BATTLE_PVP:
-        res = pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
-                                blue_best_skill, blue_player_level, seed1, seed2, player.base_info.level)
+        res = pvp_start(red_units, blue_units, unpar_type, unpar_other_id,
+                                0, 0, seed1, seed2, player.base_info.level)
     elif fight_type == const.BATTLE_MINE_PVP:
-        res = mine_pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
-                                blue_best_skill, blue_player_level, seed1, seed2, player.base_info.level)
+        res = mine_pvp_start(red_units, blue_units, unpar_type, unpar_other_id,
+                                0, 0, seed1, seed2, player.base_info.level)
 
     logger.debug("pvp_process: %s" % res)
     #fight_result = process.process()
@@ -46,23 +48,18 @@ def pve_process_check(player, fight_result, steps, fight_type):
 
     seed1 = player.fight_cache_component.seed1
     seed2 = player.fight_cache_component.seed2
-    red_best_skill_id = player.fight_cache_component.red_best_skill_id
-    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
-    #try:
+    unpar_type = player.line_up_component.unpar_type
+    unpar_other_id = player.line_up_component.unpar_other_id
 
     if fight_type == const.BATTLE_PVE:
-        res = pve_start(red_units, blue_groups, red_best_skill_id, red_best_skill_level,
+        res = pve_start(red_units, blue_groups, unpar_type, unpar_other_id,
                             monster_unpara, 1, f_unit, seed1, seed2, steps, player.base_info.level)
     elif fight_type == const.BATTLE_MINE_PVE:
         blue_units = blue_groups[0]
-        res = mine_start(red_units, blue_units, red_best_skill_id, red_best_skill_level,
+        res = mine_start(red_units, blue_units, unpar_type, unpar_other_id,
                             monster_unpara, 1, seed1, seed2, steps, player.base_info.level)
     logger.debug("pve_start %s %s" % (res, fight_result))
     return res[0] == fight_result, res[1], res[2], res[3], res[4]
-    #except Exception, e:
-        ##logger.debug(e)
-        #raise e
-        #return False
 
 def save_line_up_order(line_up, player, current_unpar, stage_id=0):
     """docstring for save_line_up_order"""
@@ -93,14 +90,13 @@ def pvp_assemble_units(red_units, blue_units, response):
         assemble(blue_add, blue_unit)
 
 
-def pve_process(stage_id, stage_type, line_up, fid, player, current_unpar):
+def pve_process(stage_id, stage_type, line_up, fid, player):
     """docstring for pve_process
     line_up: line up order
     best_skill_id: unpar
     fid: friend id.
     """
     player.fight_cache_component.stage_id = stage_id
-    #save_line_up_order(line_up, player, current_unpar, stage_id)
 
     stage = get_stage_by_stage_type(stage_type, stage_id, player)
 

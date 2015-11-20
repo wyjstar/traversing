@@ -61,6 +61,7 @@ function FightProcess:init(fight_type)
     self.round_to_kill_num = {}
     self.init_blue_units_num = table.nums(self.blue_groups[1])
     self.playerLevel=getDataManager():getCommonData():getLevel()
+    self.best_skill_used_num = 0
     self:logInfo()
     -- self.red_unpara_skill.mp_step = 50
     -- self.buddy_skill.mp_step = 50
@@ -659,6 +660,7 @@ end
 -- 执行无双
 function FightProcess:do_unpara_skill()
     --if self.red_unpara_skill:is_ready() and self.small_step ~= 1  then return false end
+    print("do_unpara_skill==============", self.current_skill_type, self.small_step)
     
     local skill = nil
     local isDone = false

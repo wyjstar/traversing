@@ -618,8 +618,6 @@ def battle_1253(data, player):
     pos = request.pos                    # 矿所在位置
     line_up = request.lineup            # 阵容顺序
     red_best_skill_id = request.unparalleled  # 无双编号
-    blue_best_skill_id = 0
-    blue_best_skill_level = 0
     red_units = {}
     blue_units = {}
 
@@ -639,8 +637,8 @@ def battle_1253(data, player):
                                  stage_type,
                                  line_up,
                                  0,
-                                 player,
-                                 red_best_skill_id)
+                                 player
+                                 )
         result = stage_info.get('result')
         response.res.result = result
         if not result:
@@ -683,32 +681,18 @@ def battle_1253(data, player):
                                        line_up,
                                        red_units,
                                        blue_units,
-                                       red_best_skill_id,
-                                       blue_data.get("best_skill_no"),
-                                       blue_data.get("level"),
-                                       red_best_skill_id,
                                        seed1, seed2,
                                        const.BATTLE_MINE_PVP)
         hold = request.hold
         process_mine_result(player, pos, fight_result, response, 1, hold)
 
-        blue_best_skill_id = blue_data.get("best_skill_id", 0)
-        blue_best_skill_level = blue_data.get("best_skill_level", 0)
         response.fight_result = fight_result
         response.seed1 = seed1
         response.seed2 = seed2
 
-        red_best_skill_id = 0
-        red_best_skill_level = 1
-        blue_best_skill_id = 0
-        blue_best_skill_level = 1
         # print red_units, blue_units
 
     red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
-    response.red_best_skill_id = red_best_skill_id
-    response.red_best_skill_level = red_best_skill_level
-    response.blue_best_skill_id = blue_best_skill_id
-    response.blue_best_skill_level = blue_best_skill_level
     pvp_assemble_units(red_units, blue_units, response)
     response.res.result = True
     response.hold = request.hold

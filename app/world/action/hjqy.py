@@ -72,7 +72,7 @@ def share_hjqy_remote(player_id):
 
 #def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, attack_type, seed1, seed2, level):
 @rootserviceHandle
-def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2):
+def hjqy_battle_remote(player_info, boss_id, str_red_units, unpar_type, unpar_other_id, attack_type, seed1, seed2):
     """开始战斗
     """
     logger.debug("hjqy_battle_remote======")
@@ -84,7 +84,7 @@ def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, r
     blue_units = boss.blue_units
 
     origin_hp = boss.hp
-    result = hjqy_start(red_units,  blue_units, red_best_skill_id, red_best_skill_level, 0, 1, attack_type, seed1, seed2, player_level)
+    result = hjqy_start(red_units,  blue_units, unpar_type, unpar_other_id, 0, 1, attack_type, seed1, seed2, player_level)
 
     logger.debug("blue unit length %s" % len(blue_units))
     boss.blue_units = blue_units

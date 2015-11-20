@@ -108,7 +108,6 @@ def battle_2103(pro_data, player):
         response.res.result_no = 150901
         return response.SerializeToString()
     boss_id = request.owner_id
-    line_up = request.lineup
     attack_type = request.attack_type # 全力一击，普通攻击
     logger.debug("request %s" % request)
 
@@ -142,8 +141,6 @@ def battle_2103(pro_data, player):
         response.res.result_no = 210303
         return response.SerializePartialToString()
 
-    red_best_skill_id = request.skill
-    _skill_id, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
 
     stage_id = data.get("stage_id")
     player.fight_cache_component.stage_id = stage_id
@@ -158,7 +155,10 @@ def battle_2103(pro_data, player):
             level=player.base_info.level)
 
     str_red_units = cPickle.dumps(red_units)
-    fight_result, boss_state, current_damage_hp, is_kill = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2)
+    unpar_type = player.line_up_component.unpar_type
+    unpar_other_id = player.line_up_component.unpar_other_id
+    fight_result, boss_state, current_damage_hp, is_kill = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, unpar_type, unpar_other_id, attack_type, seed1, seed2)
+
     logger.debug("============battle over")
 
     # 消耗讨伐令
@@ -176,8 +176,6 @@ def battle_2103(pro_data, player):
 
     response.fight_result = fight_result
     pvp_assemble_units(red_units, blue_units, response)
-    response.red_skill= red_best_skill_id
-    response.red_skill_level = red_best_skill_level
     response.seed1 = seed1
     response.seed2 = seed2
     response.attack_type = attack_type

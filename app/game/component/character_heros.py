@@ -62,6 +62,7 @@ class CharacterHerosComponent(Component):
         hero.hero_no = hero_no
         self._heros[hero_no] = hero
         self.new_hero_data(hero)
+        self.save_hero_to_line_up(hero_no)
 
         hero_conf = game_configs.hero_config.get(hero_no)
 
@@ -95,7 +96,17 @@ class CharacterHerosComponent(Component):
         hero = Hero(self.owner.base_info.id)
         hero.hero_no = hero_no
         self._heros[hero_no] = hero
+        self.save_hero_to_line_up(hero_no)
         return hero
+
+    def save_hero_to_line_up(self, hero_no):
+        """
+        点亮武将
+        """
+        _ever_have_heros = self._owner.line_up_component._ever_have_heros
+        if hero_no not in _ever_have_heros:
+            _ever_have_heros.append(hero_no)
+            self._owner.line_up_component.save_data(["ever_have_heros"])
 
     def delete_hero(self, hero_no):
         if self._heros.get(hero_no):

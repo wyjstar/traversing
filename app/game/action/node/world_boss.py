@@ -264,7 +264,7 @@ def pvb_fight_start_1705(pro_data, player):
     stage_id = boss.stage_id
     logger.debug("stage_id,%s" % stage_id)
     WORLD_BOSS = 7
-    stage_info = pve_process(stage_id, WORLD_BOSS, line_up, 0, player, best_skill_id)
+    stage_info = pve_process(stage_id, WORLD_BOSS, line_up, 0, player)
     result = stage_info.get('result')
 
     res.result = result
@@ -308,7 +308,8 @@ def pvb_fight_start_1705(pro_data, player):
     logger.debug("--" * 40)
     print red_units
     print blue_units
-    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(best_skill_id)
+    #red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(best_skill_id)
+
     seed1, seed2 = get_seeds()
     #def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2):
     result, demage_hp = remote_gate['world'].pvb_fight_remote(str_red_units,

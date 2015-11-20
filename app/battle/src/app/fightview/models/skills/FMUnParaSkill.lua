@@ -5,57 +5,60 @@ import("..FightUtil")
 local FMBuffManager = import("..FMBuffManager")
 local FMUnParaSkill = class("FMUnParaSkill", FMUnParaSkill)
 
-function FMUnParaSkill:ctor(unpara_info, base_info, level, process)
-    print(level)
-    self.unpara_info = unpara_info
-    self.mp = base_info[1]
+function FMUnParaSkill:ctor(unpar_type_id, unpar_other_id, base_info, process)
+    print("FMUnParaSkill:ctor=====", unpar_type_id, unpar_other_id, base_info)
+    self.unpar_type_id = unpar_type_id
+    self.unpar_other_id = unpar_other_id
+
     self.mp_step = base_info[2]
     self.mp_max1 = base_info[3]
     self.mp_max2 = base_info[4]
     self.mp_max3 = base_info[5]
-    if not unpara_info then
+    if not unpar_type_id then
         return
     end
-    self.level = level
-    self.mp_max = base_info[level+2]
-    self.ready= false
-    self.process = process
-    print("FMUnParaSkill:ctor=====", self.process)
-    self.soldierTemplate = getTemplateManager():getSoldierTemplate()
-    self._main_skill_buff = {}
-    self._skill_buffs = {}
 
-    for i=1,level do
-        self._skill_buffs[i] = {}
-        print("m++++++++++0", i)
-        skill_info = self.soldierTemplate:getSkillTempLateById(unpara_info["triggle"..i])
-        if skill_info then
-            for _, buff_id in pairs(skill_info.group) do
-                local skill_buff = self.soldierTemplate:getSkillBuffTempLateById(buff_id)
-                print("m++++++++++1", i,buff_id, skill_buff)
-                if skill_buff.skill_key == 1 then
-                    print("m++++++++++2")
-                    self._main_skill_buff[i] = skill_buff
-                end
-                table.insert(self._skill_buffs[i], skill_buff)
-            end
-        end
-    end
-    self.current_level = 0
+    self.mp_max = base_info[3]
+    self.ready = false
+    self.process = process
+    self.soldierTemplate = getTemplateManager():getSoldierTemplate()
+    self.baseTemplate = getTemplateManager():getBaseTemplate()
+    self._main_skill_buff = nil -- 主技能
+    self._skill_buffs = {}      -- 其他技能
+    self:get_skill_buffs(unpar_type_id)
+    self:get_skill_buffs(unpar_other_id)
+
+    self.used_times = 0 -- 使用次数
+    self.mp = 0
     self.HOME = {}
     self.side = ""
     self.viewPos = 0
+    self.max_used_times = self.baseTemplate:getBaseInfoById("wushuangTimeMax")
+end
+
+function FMUnParaSkill:get_skill_buffs(skill_id)
+    skill_info = self.soldierTemplate:getSkillTempLateById(skill_id)
+    if skill_info then
+        for _, buff_id in pairs(skill_info.group) do
+            local skill_buff = self.soldierTemplate:getSkillBuffTempLateById(buff_id)
+            print("skill_buff", buff_id, skill_buff)
+            if skill_buff.skill_key == 1 then
+                print("m++++++++++2")
+                self._main_skill_buff = skill_buff
+            end
+            table.insert(self._skill_buffs, skill_buff)
+        end
+    end
+
 end
 
 function FMUnParaSkill:get_skill_nos()
-    if not self.unpara_info then
+    if not self.unpar_type_id then
         return {}
     end
     local skill_nos = {}
-    for i=1, self.level do
-        if i > 3 then i = 3 end
-        table.insert(skill_nos, self.unpara_info["triggle"..i])
-    end
+    table.insert(skill_nos, unpar_type_id)
+    table.insert(skill_nos, unpar_other_id)
     return skill_nos
 end
 
@@ -64,19 +67,11 @@ function FMUnParaSkill:get_hero_num()
 end
 
 function FMUnParaSkill:get_hero_nos()
-    local item = self.unpara_info
-    if item == nil then
+    if self.unpar_type_id == nil then
         return {}
     end
 
     local nos = {}
-    for i = 1, 6 do
-        local name = "condition" .. i
-        local conditionValue = item[name]
-        if conditionValue ~= 0 then
-            table.insert(nos, conditionValue)
-        end
-    end
     return nos
 end
 
@@ -101,26 +96,27 @@ end
 function FMUnParaSkill:skill_buffs()
     --docstring for skill_buff_ids--
     
-    return self._skill_buffs[self.current_level]
+    return self._skill_buffs
 end
 
 function FMUnParaSkill:clear_mp()
     --释放技能后，减少怒气
-    print("unpara clear_mp", self.mp, self.mp_max1)
-    if self.mp == self.mp_max3 then
+    print("unpara clear_mp", self.mp, self.mp_max1, self.used_times)
+    if self.mp == self.mp_max then
         self.mp = 0
-    elseif self.mp >= self.mp_max2 then
-        self.mp = self.mp - self.mp_max2
-    elseif self.mp >= self.mp_max1 then
-        self.mp = self.mp - self.mp_max1
+    --elseif self.mp >= self.mp_max2 then
+        --self.mp = self.mp - self.mp_max2
+    --elseif self.mp >= self.mp_max1 then
+        --self.mp = self.mp - self.mp_max1
     end
-    print("unpara clear_mp", self.mp, self.mp_max1)
+    self.used_times = self.used_times + 1
+    print("unpara clear_mp", self.mp, self.mp_max1, self.used_times)
 end
 
 function FMUnParaSkill:add_mp()
-    print("FMUnParaSkill:add_mp",self.mp,self.mp_step,self.mp_max)
-    --docstring for add_mp--
-    if not self.unpara_info then
+    print("FMUnParaSkill:add_mp",self.mp,self.mp_step,self.mp_max,self.max_used_times,self.used_times)
+
+    if not self.unpar_type_id or self.max_used_times <= self.used_times then
         return 
     end
     if not self:is_full() then
@@ -133,7 +129,12 @@ function FMUnParaSkill:add_mp()
 end
 
 function FMUnParaSkill:is_ready()
-    if not self.unpara_info then
+    if not self.unpar_type_id then
+        return false
+    end
+    if self.max_used_times <= self.used_times then
+        -- 达到使用上限
+        print("reach max use time==================")
         return false
     end
     if self:is_auto() then
@@ -156,16 +157,17 @@ function FMUnParaSkill:is_auto()
 end
 
 function FMUnParaSkill:reset()
+    print("reset==================")
     self.ready = false
     --self:reset_mp()
 end
 
 function FMUnParaSkill:main_skill_buff()
-    return self._main_skill_buff[self.current_level]
+    return self._main_skill_buff
 end
 
 function FMUnParaSkill:attack_skill_buffs()
-    return self._skill_buffs[self.current_level]
+    return self._skill_buffs
 end
 
 function FMUnParaSkill:get_before_skill_buffs()
@@ -206,8 +208,8 @@ function FMUnParaSkill:construct_attacker(side)
     attacker.buff_manager = FMBuffManager.new(attacker)
     attacker.str_data = function()
         local info = "unpara skill:"
-        info = info.."id:"..self.unpara_info.id.."---"
-        info = info.."level:"..self.level.."---"
+        info = info.."unpar_type_id:"..self.unpar_type_id.."---"
+        info = info.."unpar_other_id:"..self.unpar_other_id.."---"
         info = info.."mp:"..self.mp.."---"
         return info end
     return attacker

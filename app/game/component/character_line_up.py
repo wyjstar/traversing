@@ -37,9 +37,13 @@ class CharacterLineUpComponent(Component):
                                 slot_no in range(1, 7)])  # 卡牌位替补
 
         self._line_up_order = [1, 2, 3, 4, 5, 6]
-        self._current_unpar = 0
-        self._unpars = {}  # 无双
-        self._friend_fight_times = {}  # 小伙伴战斗次数
+
+        self._unpar_type = 0          # 当前无双类型，战，刺，法，牧
+        self._unpar_other_id = 0      # 当前无双附加属性
+        self._unpar_level = 1         # 无双等级
+        self._ever_have_heros = []    # 点亮的武将列表
+
+        self._friend_fight_times = {} # 小伙伴战斗次数
         self._friend_fight_last_time = 0
         self._hight_power = 0
         self._caption_pos = 1
@@ -56,8 +60,12 @@ class CharacterLineUpComponent(Component):
             line_sub_slot = LineUpSlotComponent.loads(self, sub_slot)
             self._sub_slots[sub_slot_no] = line_sub_slot
         self._line_up_order = character_info.get('line_up_order')
-        self._unpars = character_info.get('unpars')
-        self._current_unpar = character_info.get('current_unpar')
+
+        self._unpar_level = character_info.get('unpar_level', 1)
+        self._unpar_type = character_info.get('unpar_type', 0)
+        self._unpar_other_id = character_info.get('unpar_other_id', 0)
+        self._ever_have_heros = character_info.get('ever_have_heros', 0)
+
         self._friend_fight_times = character_info.get('friend_fight_times', {})
         self._friend_fight_last_time = character_info.get('friend_fight_last_time', 0)
         self._hight_power = character_info.get('hight_power', 0)
@@ -75,12 +83,15 @@ class CharacterLineUpComponent(Component):
             'sub_slots': dict([(slot_no, sub_slot.dumps()) for
                                slot_no, sub_slot in self._sub_slots.items()]),
             'line_up_order': self._line_up_order,
-            'unpars': self._unpars,
-            'current_unpar': self._current_unpar,
+
+            'unpar_level': self._unpar_level,
+            'unpar_type': self._unpar_type,
+            'unpar_other_id': self._unpar_other_id,
+            'ever_have_heros': self._ever_have_heros,
+
             'friend_fight_times': self._friend_fight_times,
             'attackPoint': power,
             'hight_power': self._hight_power,
-            'best_skill': self.get_skill_id_by_unpar(self._current_unpar),
             'caption_pos': self._caption_pos,
         }
         if ('copy_units' in prop_names) or (not prop_names):
@@ -100,8 +111,12 @@ class CharacterLineUpComponent(Component):
         data = dict(line_up_slots=__line_up_slots,
                     sub_slots=__sub_slots,
                     line_up_order=self._line_up_order,
-                    unpars=self._unpars,
-                    current_unpar=self._current_unpar,
+
+                    unpar_level=self._unpar_level,
+                    unpar_type=self._unpar_type,
+                    unpar_other_id=self._unpar_other_id,
+                    ever_have_heros=self._ever_have_heros,
+
                     friend_fight_times=self._friend_fight_times,
                     best_skill=0,
                     attackPoint=0,
@@ -125,7 +140,10 @@ class CharacterLineUpComponent(Component):
             if self.owner.base_info.level >= __level:
                 slot.activation = True
 
-    def unpar_upgrade(self, skill_id, skill_upgrade_level):
+    def unpar_upgrade_unused(self, skill_id, skill_upgrade_level):
+        """
+        已弃用
+        """
         if skill_id not in self._unpars:
             logger.error('skill is not open yet:%s', skill_id)
             return False
@@ -160,17 +178,11 @@ class CharacterLineUpComponent(Component):
 
         return True
 
-    def get_skill_id_by_unpar(self, unpar):
-        if unpar not in self._unpars:
-            return 0
 
-        item = game_configs.warriors_config.get(unpar)
-        if not item:
-            logger.error('can not find warrior:%s', unpar)
-            return 0
-        return item.skill_ids[self._unpars[unpar]]
-
-    def get_skill_info_by_unpar(self, unpar):
+    def get_skill_info_by_unpar_unused(self, unpar):
+        """
+        已弃用
+        """
         if unpar not in self._unpars:
             return (0, 0)
 
@@ -229,16 +241,6 @@ class CharacterLineUpComponent(Component):
         self._line_up_order = line_up_order
 
     @property
-    def current_unpar(self):
-        """取得队形
-        """
-        return self._current_unpar
-
-    @current_unpar.setter
-    def current_unpar(self, current_unpar):
-        self._current_unpar = current_unpar
-
-    @property
     def sub_slots(self):
         return self._sub_slots
 
@@ -279,14 +281,6 @@ class CharacterLineUpComponent(Component):
 
         tlog_action.log('LineUpChange', self.owner, slot_no, origin_hero_no,
                         hero_no, change_type)
-        # 如果无双条件不满足，则无双设为空
-        hero_nos = set(self.hero_nos)  # 阵容英雄编号
-        for skill_id, item in game_configs.warriors_config.items():
-            if skill_id not in self._unpars:
-                conditions = item.get('conditions')
-                if conditions and hero_nos.issuperset(conditions):
-                    self._unpars[skill_id] = 1
-                    # logger.warning('unpars:%s', str(self._unpars))
 
     def change_equipment(self, slot_no, no, equipment_id):
         """更改装备
@@ -356,29 +350,6 @@ class CharacterLineUpComponent(Component):
         return on_equipment_ids
 
     @property
-    def warriors(self):
-        """无双列表
-        """
-        warrior_list = []
-        warriors_item = game_configs.warriors_config
-        hero_nos = set(self.hero_nos)  # 阵容英雄编号
-        for warrior_id, warrior in warriors_item.items():
-            conditions = set()
-            for i in range(1, 7):
-                condition = getattr(warrior, 'condition%s' % i, None)
-                if condition:
-                    conditions.add(condition)
-
-            length = len(conditions)  # 无双需求英雄数量
-            condition_intersection = hero_nos.intersection(conditions)  # 交集
-
-            if length == len(condition_intersection):  # 激活的无双
-                warrior_list.append(warrior_id)
-                continue
-
-        return warrior_list
-
-    @property
     def character_id(self):
         return self.owner.base_info.id
 
@@ -433,6 +404,38 @@ class CharacterLineUpComponent(Component):
     @hight_power.setter
     def hight_power(self, v):
         self._hight_power = v
+
+    @property
+    def unpar_type(self):
+        return self._unpar_type
+
+    @unpar_type.setter
+    def unpar_type(self, v):
+        self._unpar_type = v
+
+    @property
+    def unpar_other_id(self):
+        return self._unpar_other_id
+
+    @unpar_other_id.setter
+    def unpar_other_id(self, v):
+        self._unpar_other_id = v
+
+    @property
+    def unpar_level(self):
+        return self._unpar_level
+
+    @unpar_level.setter
+    def unpar_level(self, v):
+        self._unpar_level = v
+
+    @property
+    def ever_have_heros(self):
+        return self._ever_have_heros
+
+    @ever_have_heros.setter
+    def ever_have_heros(self, v):
+        self._ever_have_heros = v
 
     def remove_caption_hero(self):
         """移除队长"""

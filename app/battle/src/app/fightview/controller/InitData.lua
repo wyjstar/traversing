@@ -37,6 +37,8 @@ function initData(_process)
     calculation = getCalculationManager():getCalculation() 
     process = _process
     local data = fightData:getData() or {}
+    --data["unpar_type_id"] = 8100001
+    --data["unpar_other_id"] = 8100005
     set_seed(data.seed1, data.seed2)
     process.fight_type =  process.fight_type or TYPE_GUIDE
     print("process.fight_type======", process.fight_type)
@@ -300,8 +302,8 @@ function initMineData(data)
             --optional int32 blue_best_skill_id = 6;       // 无双
                 --optional int32 blue_best_skill_level = 7; // 无双
 
-    local redUnParaSkill = constructUnparaSkill(data.red_best_skill_id, data.red_best_skill_level, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(data.blue_best_skill_id, data.blue_best_skill_level, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
     return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
@@ -336,7 +338,7 @@ function initWorldBossData()
         end
     end
 
-    local redUnParaSkill = constructUnparaSkill(data.red_best_skill, data.red_best_skill_level, const.HOME_ARMY, "red", 7)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
     local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkillWithTemplate(10001, 30)
     --local buddySkill = constructBattleUnit(data.replace, "blue")
@@ -371,7 +373,8 @@ function initStageData(data)
         table.insert(blueGroup, blueUnits)
     end
 
-    local redUnParaSkill = constructUnparaSkill(data.hero_unpar, data.hero_unpar_level, const.HOME_ARMY, "red", 7 )
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7 )
+    --local redUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ARMY, "red", 7 )
     local blueUnParaSkill = constructUnparaSkill(data.monster_unpar, 1, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkillWithTemplate(10001, 30)
     local buddySkill = constructBuddySkill(data.friend)
@@ -403,8 +406,8 @@ function initPvpData(data)
 
     --local redUnParaSkill = constructUnparaSkill(data.red_skill, data.red_skill_level, const.HOME_ARMY, "red", 7)
     --local blueUnParaSkill = constructUnparaSkill(data.blue_skill, data.blue_skill_level, const.HOME_ENEMY, "blue", 7+12)
-    local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ARMY, "red", 7)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
     return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
@@ -439,8 +442,8 @@ function initHjqyData(data)
     else
         process.damage_rate = 0
     end
-    local redUnParaSkill = constructUnparaSkill(data.red_skill, data.red_skill_level, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(data.blue_skill, data.blue_skill_level, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
     --local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
     --local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkill(data.replace)
@@ -640,15 +643,13 @@ function updateBossUnitViewProperty(unit)
 end
 
 -- 构造无双技能
-function constructUnparaSkill(uparaId, level, HOMES, side, viewPos)
-    local uparaInfo = instanceTemplate:getWSInfoById(uparaId)
-    print("constructUnparaSkill=============", uparaId)
-    -- table.print(uparaInfo)
-    --print(level)
-    --print("p+++")
+function constructUnparaSkill(unpar_type_id, unpar_other_id, HOMES, side, viewPos)
+    if unpar_type_id == 0 then
+        unpar_type_id = nil
+    end
+    print("constructUnparaSkill=============", unpar_type_id, unpar_other_id)
     local base_info = baseTemplate:getBaseInfoById("wushang_value_config")
-    print("constructSkill===============", process)
-    local unpara_skill = UnParaSkill.new(uparaInfo, base_info, level, process)
+    local unpara_skill = UnParaSkill.new(unpar_type_id, unpar_other_id, base_info, process)
 
     unpara_skill.HOME = HOMES[7]
     unpara_skill.side = side

@@ -166,7 +166,7 @@ def stage_start_903(pro_data, player):
             response.res.result_no = 837
             return response.SerializeToString()
 
-    stage_info = pve_process(stage_id, stage_config.type, line_up, fid, player, red_best_skill_id)
+    stage_info = pve_process(stage_id, stage_config.type, line_up, fid, player)
     result = stage_info.get('result')
 
     res = response.res
@@ -187,9 +187,8 @@ def stage_start_903(pro_data, player):
     pve_assemble_friend(f_unit, response)
     if blue_skill:
         response.monster_unpar = blue_skill
-    red_best_skill_no, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
-    response.hero_unpar = red_best_skill_id
-    response.hero_unpar_level = red_best_skill_level
+    response.hero_unpar = 0
+    response.hero_unpar_level = 0
 
     response.drop_num = drop_num
 
@@ -228,7 +227,7 @@ def stage_start_903(pro_data, player):
         friend_fight_times[fid].append(int(time.time()))
         player.friends.save_data()
 
-    player.fight_cache_component.red_best_skill_id = red_best_skill_id
+    player.fight_cache_component.red_best_skill_id = 0
     return response.SerializePartialToString()
 
 

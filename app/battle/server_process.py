@@ -125,7 +125,7 @@ def pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blu
         return True
     return False
 
-def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, blue_skill_level, f_unit, seed1, seed2, step_infos, level):
+def pve_start(red_units, blue_groups, unpar_type, unpar_other_id, blue_skill, blue_skill_level, f_unit, seed1, seed2, step_infos, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -145,9 +145,9 @@ def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, bl
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        hero_unpar = red_skill,
-        hero_unpar_level = red_skill_level,
-        monster_unpar = blue_skill,
+        unpar_type = unpar_type,
+        unpar_other_id = unpar_other_id,
+        blue_skill = blue_skill,
         #blue_skill_level = blue_skill_level,
         friend = construct_battle_unit(f_unit),
         fight_result = False,
@@ -168,7 +168,7 @@ def pve_start(red_units, blue_groups, red_skill, red_skill_level, blue_skill, bl
         return True, res[1], res[2], res[3], round_to_kill_num
     return False, res[1], res[2], res[3], round_to_kill_num
 
-def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, debuff_skill_no, damage_rate, seed1, seed2, level):
+def world_boss_start(red_units,  blue_units, unpar_type, unpar_other_id, blue_skill, blue_skill_level, debuff_skill_no, damage_rate, seed1, seed2, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -179,8 +179,8 @@ def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_sk
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        red_best_skill = red_skill,
-        red_best_skill_level = red_skill_level,
+        unpar_type = unpar_type,
+        unpar_other_id = unpar_other_id,
         blue_skill = blue_skill,
         blue_skill_level = blue_skill_level,
         seed1 = seed1,
@@ -195,7 +195,7 @@ def world_boss_start(red_units,  blue_units, red_skill, red_skill_level, blue_sk
         return {"result":True, "hp_left":res[1]}
     return {"result":False, "hp_left":res[1]}
 
-def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, attack_type, seed1, seed2, level):
+def hjqy_start(red_units,  blue_units, unpar_type, unpar_other_id, blue_skill, blue_skill_level, attack_type, seed1, seed2, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -206,8 +206,8 @@ def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, b
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        red_skill = red_skill,
-        red_skill_level = red_skill_level,
+        unpar_type = unpar_type,
+        unpar_other_id = unpar_other_id,
         blue_skill = blue_skill,
         blue_skill_level = blue_skill_level,
         seed1 = seed1,
@@ -227,7 +227,7 @@ def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, b
         return True
     return False
 
-def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, level):
+def mine_pvp_start(red_units, blue_units, unpar_type, unpar_other_id, blue_skill, blue_skill_level, seed1, seed2, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -238,10 +238,10 @@ def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        red_best_skill_id = red_skill,
-        red_best_skill_level = red_skill_level,
-        blue_best_skill_id = blue_skill,
-        blue_best_skill_level = blue_skill_level,
+        unpar_type = unpar_type,
+        unpar_other_id = unpar_other_id,
+        blue_skill_id = blue_skill,
+        blue_skill_level = blue_skill_level,
         seed1 = seed1,
         seed2 = seed2
     )
@@ -252,7 +252,7 @@ def mine_pvp_start(red_units, blue_units, red_skill, red_skill_level, blue_skill
         return True
     return False
 
-def mine_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, seed1, seed2, step_infos, level):
+def mine_start(red_units, blue_units, unpar_type, unpar_other_id, blue_skill, blue_skill_level, seed1, seed2, step_infos, level):
     red = []
     blue = []
     for unit in red_units.values():
@@ -268,10 +268,10 @@ def mine_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, bl
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        red_best_skill_id = red_skill,
-        red_best_skill_level = red_skill_level,
-        blue_best_skill_id = blue_skill,
-        blue_best_skill_level = blue_skill_level,
+        unpar_type = unpar_type,
+        unpar_other_id = unpar_other_id,
+        blue_skill_id = blue_skill,
+        blue_skill_level = blue_skill_level,
         seed1 = seed1,
         seed2 = seed2
     )
