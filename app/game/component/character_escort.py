@@ -133,6 +133,8 @@ class EscortTask():
         rob_task_info_pb.rob_reward = rob_response_pb.ParseFromString(rob_task_info.get("rob_reward", ""))
         # rob_result
         rob_task_info_pb.rob_result = rob_task_info.get("rob_result")
+        # rob_time
+        rob_task_info_pb.rob_time = rob_task_info.get("rob_time")
 
 
 
@@ -155,10 +157,14 @@ class EscortTask():
         guild_info_pb.call = guild_info.get("call", "")
 
     def update_player_infos_pb(self, player_infos, player_infos_pb):
-        pass
-
-
-
+        for player_info in player_infos:
+            player_info_pb = player_infos_pb.add()
+            player_info_pb.id = player_info.get("id")
+            player_info_pb.nickname = player_info.get("nickname")
+            player_info_pb.level = player_info.get("level")
+            player_info_pb.hero_no = player_info.get("head")
+            player_info_pb.vip_level = player_info.get("vip_level")
+            player_info_pb.power = player_info.get("power")
 
     def add_player(self, player, protect_or_rob, header=0):
         player_info = {}

@@ -239,7 +239,7 @@ const.BATTLE_PVB = 7
 const.BATTLE_MINE_PVE = 8
 const.BATTLE_MINE_PVP = 9
 const.BATTLE_HJQY = 10
-const.BATTLE_GUILD = 11
+const.BATTLE_GUILD = 12
 
 const.BOSS_NOT_EXIST = 0 # 不存在
 const.BOSS_LIVE = 1  # 正常

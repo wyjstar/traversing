@@ -44,6 +44,7 @@ def send_reward_when_task_finish(player):
         task = Guild().get_task_by_id(task_id)
         task_item = game_configs.guild_task_config.get(task.task_no)
         if task.is_finished(task_item):
+            task.state = -1
             protecters_num = len(task.protecters)
             peoplePercentage = task_item.peoplePercentage.get(protecters_num)
             robbedPercentage = 0
@@ -54,7 +55,7 @@ def send_reward_when_task_finish(player):
             robbedPercentage = task_item.robbedPercentage.get(task.rob_success_times())
             logger.debug("peoplePercentage protecters_num robbedPercentage %s %s %s" % (peoplePercentage, protecters_num, robbedPercentage))
             escort_formula = game_configs.formula_config.get("EscortReward").get("formula")
-            assert escort_formula!=None, "snatch_formula can not be None!"
+            assert escort_formula!=None, "escort_formula can not be None!"
             percent = eval(escort_formula, {"peoplePercentage": peoplePercentage, "robbedPercentage": robbedPercentage})
 
             return_data = gain(player, task_item.reward, const.ESCORT_ROB, multiple=percent)
@@ -294,6 +295,7 @@ def start_rob_escort(player, task):
                                const.BATTLE_GUILD)
 
     rob_task_info["rob_result"] = rob_result
+    rob_task_info["rob_time"] = get_current_timestamp()
     if rob_result:
         robbers_num = len(rob_task_info.get("robbers"))
         peoplePercentage = task_item.peoplePercentage.get(robbers_num)
