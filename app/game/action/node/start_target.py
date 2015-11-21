@@ -367,7 +367,7 @@ def get_target_info_1827(data, player):
 
 
 def target_update(player, conditions):
-    logger.debug("target_update, conditions:", conditions)
+    print 'target_update, conditions:', conditions
 
     # 第几天登录
     if player.base_info.id < 10000:
