@@ -9,6 +9,7 @@ import time
 import cPickle
 from app.world.core.guild_manager import guild_manager_obj
 from shared.db_opear.configs_data import game_configs
+import random
 
 tb_guild_info = RedisObject('tb_guild_info')
 tb_character_info = RedisObject('tb_character_info')
@@ -259,7 +260,27 @@ def up_build_remote(g_id, p_id, build_type):
 def praise_remote(g_id, p_id, build_type):
     """
     """
-    return {'res': True}
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
+        return cPickle.dumps({'res': False, 'no': 844})
+
+    build_level = guild_obj.build.get(1)
+    build_conf = game_configs.guild_config.get(1)[build_level]
+
+    headSworShip = build_conf.headSworShip
+    money_num = random.randint(headSworShip[0], headSworShip[1])
+    guild_obj.add_praise_money(money_num)
+    guild_obj.save_data()
+    return {'res': True, 'build_level': build_level,
+            'money_num': guild_obj.praise_money,
+            'praise_times': guild_obj.praise_num}
+
+
+@rootserviceHandle
+def captailn_receive_remote(g_id, p_id, build_type):
+    """
+    """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
@@ -272,21 +293,10 @@ def praise_remote(g_id, p_id, build_type):
     build_level = guild_obj.build.get(1)
     build_conf = game_configs.guild_config.get(1)[build_level]
 
-    if build_level >= game_configs.base_config.get('guild_level_max').get(build_type):
-        logger.error('up_build_870, level max')
+    if guild_obj.praise_money <= 0:
         return {'res': False, 'no': 800}
 
-    for up_c in build_conf.condition:
-        c_conf = game_configs.guild_config.get(up_c)
-        my_build_level = build_info.get(c_conf.type)
-        if not my_build_level or my_build_level < c_conf.level:
-            logger.error('up_build_870, build type error')
-            return {'res': False, 'no': 892}
-
-    build_info[build_type] += 1
-    guild_obj.build = build_info
-    guild_obj.contribution -= build_conf.exp
+    guild_obj.receive_praise_money()
     guild_obj.save_data()
-    print guild_obj.build, '===================build info'
-
-    return {'res': True}
+    return {'res': True, 'build_level': build_level,
+            'money_num': guild_obj.praise_money}

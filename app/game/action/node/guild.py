@@ -1190,8 +1190,6 @@ def deal_invite_join_1804(data, player):
 @remoteserviceHandle('gate')
 def praise_1807(data, player):
     """点赞 """
-    return
-    # TODO
     response = ZanResResponse()
     g_id = player.guild.g_id
 
@@ -1209,28 +1207,17 @@ def praise_1807(data, player):
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
+    build_level = remote_res.get('build_level')
+    build_config = game_configs.guild_config.get(1).get(build_level)
 
-    if time.localtime(player.guild.praise[1]).tm_yday != \
-            time.localtime().tm_yday:
-        player.guild.praise = [1, int(time.time())]
-    else:
-        player.guild.praise[0] += 1
-        player.guild.praise[1] = int(time.time())
+    player.guild.add_praise_times()
 
-    if time.localtime(guild_obj.praise[2]).tm_yday != \
-            time.localtime().tm_yday:
-        guild_obj.praise = [1, 0, int(time.time())]
-    else:
-        guild_obj.praise[0] += 1
-        guild_obj.praise[2] = int(time.time())
-
-    response.zan_num = guild_obj.praise_num
-
-    return_data = gain(player, guild_config.support, const.PraiseGift)  # 获取
+    return_data = gain(player, guild_config.worShip[player.guild.praise_num], const.PraiseGift)  # 获取
     get_return(player, return_data, response.gain)
     player.guild.save_data()
-    guild_obj.save_data()
+
+    response.zan_money = remote_res.get('money_num')
+    response.all_zan_num = remote_res.get('praise_times')
 
     response.res.result = True
     return response.SerializeToString()
@@ -1239,43 +1226,25 @@ def praise_1807(data, player):
 @remoteserviceHandle('gate')
 def captailn_receive_1806(data, player):
     """团长领取赞的奖励 """
-    return
-    # TODO
     response = ReceiveResponse()
 
-    m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1 or m_g_id == 0:
+    remote_res = remote_gate['world'].praise_remote(g_id,
+                                                    player.base_info.id)
+    if not remote_res.get('res'):
         response.res.result = False
-        response.res.result_no = 800
-        # response.message = "公会ID错误"
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    if player.guild.position != 1:
-        response.res.result = False
-        response.res.result_no = 849
-        return response.SerializeToString()
+    build_level = remote_res.get('build_level')
+    build_config = game_configs.guild_config.get(1).get(build_level)
+    money_num = remote_res.get('money_num')
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
+    dorp_item = parse({107: [money_num, money_num,
+                      build_conf.headSworShip[2]]})
 
-    if guild_obj.praise_num < guild_config.collectSupportNum:
-        response.res.result = False
-        response.res.result_no = 852
-        return response.SerializeToString()
-
-    if guild_obj.receive_praise_state:
-        response.res.result = False
-        response.res.result_no = 853
-        return response.SerializeToString()
-
-    guild_obj.praise[1] = 1
-
-    return_data = gain(player, guild_config.collectSupportGift, const.ReceivePraiseGift)  # 获取
+    return_data = gain(player, dorp_item, const.ReceivePraiseGift)  # 获取
     get_return(player, return_data, response.gain)
-    player.guild.save_data()
-    guild_obj.save_data()
+
     response.res.result = True
     return response.SerializeToString()
 
