@@ -16,6 +16,7 @@ const.POS_UNPARA_ICON_FIGHT = cc.p(55,55)
 const.FIGHT_POS_UNPARA_ICON = cc.p(130,355)
 BIG_SCALE = 0.58
 BOSS_SCALE = 1.4
+TYPE_ACTIVITY_LIMIT_SHOP = "limitShop"  --限时商店类型
 
 const.HOME_ARMY = {
     [1] = {point = cc.pAdd(const.POS_ARMY, cc.p(-190, 90)), scale = BIG_SCALE},

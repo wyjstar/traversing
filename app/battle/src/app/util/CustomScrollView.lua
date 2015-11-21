@@ -573,6 +573,7 @@ end
 ]]
 function CustomScrollView:delButtonByIdx(idx)
     if idx and idx >= 1 and idx <= table.nums(self.buttons) then
+        self.buttons[idx]:removeFromParent()
         table.remove(self.buttons, idx)
     end
 end
