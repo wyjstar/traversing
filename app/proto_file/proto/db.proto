@@ -23,7 +23,7 @@ message Mail_PB
     optional int32 config_id = 14; //数值表ID
 
     optional string nickname = 15; //邀请者名字
-    optional bytes guild_name = 16; //军团名字
+    optional string guild_name = 16; //军团名字
     optional int32 guild_person_num = 17; //军团人数
     optional int32 guild_level = 18; //军团等级
     optional int32 guild_id = 19; //军团id

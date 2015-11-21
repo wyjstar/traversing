@@ -18,7 +18,9 @@ class GuildConfig(object):
         """解析config到GuildConfig"""
         for row in config_value:
 
-            convert_keystr2num(row.get("cohesion"))
+            convert_keystr2num(row.get("worShip"))
+            convert_keystr2num(row.get("guild_worship"))
+            convert_keystr2num(row.get("reward"))
             row["support"] = parse(row.get("support"))
             row["collectSupportGift"] = parse(row.get("collectSupportGift"))
             item = CommonItem(row)

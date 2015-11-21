@@ -21,11 +21,11 @@ class CharacterGuildComponent(Component):
 
         self._contribution = 0  # 贡献
         self._all_contribution = 0  # 总贡献
-        self._today_contribution = 0  # 今日贡献
+        self._today_contribution = [0, int(time.time())]  # 今日贡献
 
         self._exit_time = 1  # 上次退出公会时间
         self._praise = [0, 1]  # 点赞次数，时间
-        self._bless = [0, [], 0, 1]  # 祈福次数,领取的祈福奖励，今日贡献时间
+        self._bless = [0, [], 0, 1]  # 祈福次数,领取的祈福奖励，今日贡献， 今日贡献时间
         self._apply_guilds = []  # 已经申请过的军团
         self._guild_rank_flag = 0  # 推荐列表，已经查询到的redis排行标记
 
@@ -36,7 +36,7 @@ class CharacterGuildComponent(Component):
         self._g_id = character_info.get("guild_id")
         self._contribution = character_info.get("contribution")
         self._all_contribution = character_info.get("all_contribution")
-        self._today_contribution = character_info.get("today_contribution", 0)
+        self._today_contribution = character_info.get("today_contribution")
         self._bless = character_info.get('bless')
         self._praise = character_info.get('praise')
         self._exit_time = character_info.get("exit_time")
@@ -64,18 +64,11 @@ class CharacterGuildComponent(Component):
                 'exit_time': self._exit_time}
         return data
 
-    def deal_create_guild(self, g_id):
-        self._g_id = g_id
-        self.position = 1
-        self._aaaa
-
     @property
     def today_contribution(self):
-        return self._today_contribution
-
-    @today_contribution.setter
-    def today_contribution(self, value):
-        self._today_contribution = value
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
+            return 0
+        return self._today_contribution[0]
 
     @property
     def praise(self):
@@ -146,18 +139,14 @@ class CharacterGuildComponent(Component):
                     magic_def=guild_info.profit_mdef)
 
     @property
-    def contribution(self):
-        return self._contribution
-
-    @contribution.setter
-    def contribution(self, contribution):
-        self._contribution = contribution
-
-    @property
     def praise_num(self):
         if time.localtime(self._praise[1]).tm_yday != time.localtime().tm_yday:
             return 0
         return self._praise[0]
+
+    def add_praise_times(self):
+        self._praise[0] += 1
+        self._praise[1] = int(time.time())
 
     @property
     def praise_time(self):
@@ -165,16 +154,31 @@ class CharacterGuildComponent(Component):
 
     @property
     def bless_times(self):
-        if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
             return 0
         return self._bless[0]
 
     @property
     def bless_gifts(self):
-        if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
             return []
         return self._bless[1]
 
-    def bless_update(self):
-        if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
-            self._bless = [0, [], 0, int(time.time())]
+    @property
+    def today_contribution(self):
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
+            return 0
+        return self._bless[2]
+
+    def do_bless(self, v):
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
+            self._bless = [1, [], v, int(time.time())]
+        else:
+            self._bless[0] += 1
+            self._bless[2] += v
+            self._bless[3] += v
+        self._contribution += v
+        self._all_contribution += v
+
+    def receive_bless_gift(self, v):
+        self._bless[1].append(v)

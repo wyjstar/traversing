@@ -299,8 +299,9 @@ class Guild(object):
     def praise_money(self):
         if time.localtime(self._praise[2]).tm_yday != time.localtime().tm_yday:
             return 0
-        return self._praise[2]
+        return self._praise[1]
 
+    # self._praise = [0, 0, 1]  # 点赞次数，累计金钱，时间
     def add_praise_money(self, num):
         now = int(time.time())
         if time.localtime(self._praise[2]).tm_yday != time.localtime(now).tm_yday:
@@ -324,6 +325,15 @@ class Guild(object):
         if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
             return 0
         return self._bless[0]
+
+    def do_bless(self, v1, v2):
+        self._contribution += v1
+        self._all_contribution += v1
+        if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
+            self._bless = [1, v2, int(time.time())]
+        else:
+            self._bless[0] += 1
+            self._bless[1] += v2
 
     def get_task_by_id(self, task_id):
         return self._escort_tasks.get(task_id)

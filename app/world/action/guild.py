@@ -49,8 +49,8 @@ def get_guild_info_remote(guild_id):
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id, p_id)
     if not guild_obj:
-        return cPickle.dumps({'res': False, 'no': 844})
-    return cPickle.dumps({'res': True, 'guild_info': guild_obj.info})
+        return {'res': False, 'no': 844}
+    return {'res': True, 'guild_info': guild_obj.info}
 
 
 @rootserviceHandle
@@ -59,9 +59,9 @@ def get_my_guild_info_remote(guild_id, p_id):
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id, p_id)
     if not guild_obj:
-        return cPickle.dumps({'res': False, 'no': 844})
-    return cPickle.dumps({'res': True, 'guild_info': guild_obj.info,
-                          'position': guild_obj.get_position(p_id)})
+        return {'res': False, 'no': 844}
+    return {'res': True, 'guild_info': guild_obj.info,
+            'position': guild_obj.get_position(p_id)}
 
 
 @rootserviceHandle
@@ -95,11 +95,11 @@ def exit_guild_remote(guild_id, p_id):
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
-        return cPickle.dumps({'res': False, 'no': 844})
+        return {'res': False, 'no': 844}
     position = guild_obj.get_position(p_id)
     if not position:
         # "您不在此公会"
-        return cPickle.dumps({'res': False, 'no': 850})
+        return {'res': False, 'no': 850}
     p_num = guild_obj.get_p_num()
     if p_num == 1:
         # 删名字
@@ -108,9 +108,9 @@ def exit_guild_remote(guild_id, p_id):
             guild_name_data.hdel(guild_obj.name)
         # 删军团
         guild_manager_obj.delete_guild(guild_obj.g_id)
-        return cPickle.dumps({'res': True, 'no': 1,
-                              'apply_ids': guild_obj.apply,
-                              'guild_name': guild_obj.name})
+        return {'res': True, 'no': 1,
+                'apply_ids': guild_obj.apply,
+                'guild_name': guild_obj.name}
     if position == 1:
         p_list = []
         next_position = 0
@@ -126,9 +126,9 @@ def exit_guild_remote(guild_id, p_id):
         no = 3
     guild_obj.exit_guild(p_id, position)
     guild_obj.save_data()
-    return cPickle.dumps({'res': True, 'no': no,
-                          'apply_ids': guild_obj.apply,
-                          'guild_name': guild_obj.name})
+    return {'res': True, 'no': no,
+            'apply_ids': guild_obj.apply,
+            'guild_name': guild_obj.name}
 
 
 def get_next_captain(p_list):
@@ -220,7 +220,7 @@ def up_build_remote(g_id, p_id, build_type):
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
-        return cPickle.dumps({'res': False, 'no': 844})
+        return {'res': False, 'no': 844}
     position = guild_obj.get_position(p_id)
     if position != 1:
         # 没有权限 或者 不在此军团
@@ -257,19 +257,20 @@ def up_build_remote(g_id, p_id, build_type):
 
 
 @rootserviceHandle
-def praise_remote(g_id, p_id, build_type):
+def praise_remote(g_id, p_id):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
-        return cPickle.dumps({'res': False, 'no': 844})
+        return {'res': False, 'no': 844}
 
     build_level = guild_obj.build.get(1)
     build_conf = game_configs.guild_config.get(1)[build_level]
 
     headSworShip = build_conf.headSworShip
     money_num = random.randint(headSworShip[0], headSworShip[1])
+    print money_num, '===============================add money num'
     guild_obj.add_praise_money(money_num)
     guild_obj.save_data()
     return {'res': True, 'build_level': build_level,
@@ -278,13 +279,13 @@ def praise_remote(g_id, p_id, build_type):
 
 
 @rootserviceHandle
-def captailn_receive_remote(g_id, p_id, build_type):
+def captailn_receive_remote(g_id, p_id):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
-        return cPickle.dumps({'res': False, 'no': 844})
+        return {'res': False, 'no': 844}
     position = guild_obj.get_position(p_id)
     if position != 1:
         # 没有权限 或者 不在此军团
@@ -297,6 +298,27 @@ def captailn_receive_remote(g_id, p_id, build_type):
         return {'res': False, 'no': 800}
 
     guild_obj.receive_praise_money()
+    print guild_obj.praise_money, '===========praise money'
     guild_obj.save_data()
     return {'res': True, 'build_level': build_level,
             'money_num': guild_obj.praise_money}
+
+
+@rootserviceHandle
+def bless_remote(g_id, p_id, bless_type):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
+        return cPickle.dumps({'res': False, 'no': 844})
+
+    build_level = guild_obj.build.get(2)
+    build_conf = game_configs.guild_config.get(2)[build_level]
+    worship_info = build_conf.guild_worship.get(bless_type)
+    print worship_info, '================worshipiinfo'
+
+    guild_obj.do_bless(worship_info[2], worship_info[3])
+    guild_obj.save_data()
+
+    return {'res': True}

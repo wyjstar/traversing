@@ -98,7 +98,6 @@ def create_guild_801(data, player):
                                 g_name,
                                 icon_id,
                                 player.guild.apply_guilds)
-        # create_res = cPickle.loads(create_res)
         if not create_res.get('res'):
             raise ValueError("Guild name repeat!")
             return
@@ -107,7 +106,6 @@ def create_guild_801(data, player):
         rank_helper.add_rank_info('GuildLevel', guild_info.get('id'), 1)
 
         player.guild.g_id = guild_info.get('id')
-        player.guild.today_contribution = 0
         player.guild.position = 1
         player.guild.apply_guilds = []
         player.guild.save_data()
@@ -196,7 +194,6 @@ def exit_guild_803(data, player):
     g_id = player.guild.g_id
 
     remote_res = remote_gate['world'].exit_guild_remote(g_id, p_id)
-    remote_res = cPickle.loads(remote_res)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -583,17 +580,15 @@ def kick_807(data, player):
 
 @remoteserviceHandle('gate')
 def bless_809(data, player):
-    """膜拜 """
-    return
-    # TODO
+    """祈福 """
     args = BlessRequest()
     args.ParseFromString(data)
     response = BlessResponse()
     bless_type = args.bless_type
 
-    m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1 or m_g_id == 0:
+    g_id = player.guild.g_id
+    data1 = tb_guild_info.getObj(g_id).hgetall()
+    if not data1 or g_id == 0:
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
@@ -601,8 +596,11 @@ def bless_809(data, player):
     guild_obj = Guild()
     guild_obj.init_data(data1)
 
-    # {祈福编号：[资源类型,资源消耗量,凝聚力,福运,获得个人贡献值]}
-    worship_info = game_configs.base_config.get('worship').get(bless_type)
+    # {祈福编号：[资源类型,资源消耗量,建设值,福运,获得个人贡献值,圣兽召唤石数量]}
+    # worship_info = game_configs.base_config.get('worship').get(bless_type)
+    build_level = guild_obj.build.get(2)
+    build_conf = game_configs.guild_config.get(2)[build_level]
+    worship_info = build_conf.guild_worship.get(bless_type)
 
     if worship_info[0] == 1:  # 1金币  2元宝
         if worship_info[1] > player.finance.coin:
@@ -622,36 +620,33 @@ def bless_809(data, player):
         # response.message = "今天的膜拜次数已用完"
         return response.SerializeToString()
 
+    remote_res = remote_gate['world'].bless_remote(g_id,
+                                                   player.base_info.id,
+                                                   bless_type)
+    if not remote_res.get('res'):
+        response.res.result = False
+        print remote_res.get('no'), '=============deal apply 4'
+        response.res.result_no = remote_res.get('no')
+        return response.SerializeToString()
+
     # 根据膜拜类型判断减什么钱，然后扣除
     if worship_info[0] == 1:  # 1金币  2元宝
         player.finance.coin -= worship_info[1]
     else:
         player.finance.consume_gold(worship_info[1], const.GUILD_BLESS)
-
     # 逻辑
-    player.guild.bless[0] += 1
-    player.guild.contribution += worship_info[4]
-    player.guild.all_contribution += worship_info[4]
-    player.guild.bless[2] += worship_info[4]
-    guild_obj.bless[1] += worship_info[3]
-    if player.guild.bless[0] == 1:
-        guild_obj.bless[0] += 1
-    guild_obj.exp += worship_info[2]
+    player.guild.do_bless(worship_info[4])
 
-    if guild_obj.exp >= game_configs.guild_config.get(8).get(guild_obj.level).exp:
-        guild_obj.exp -= game_configs.guild_config.get(8).get(guild_obj.level).exp
-        guild_obj.level += 1
-        rank_helper.add_rank_info('GuildLevel',
-                                  guild_obj.g_id, guild_obj.level)
+    # rank_helper.add_rank_info('GuildLevel',
+    #                           guild_obj.g_id, guild_obj.level)
 
     player.guild.save_data()
-    guild_obj.save_data()
-
     player.finance.save_data()
 
     response.res.result = True
     # response.message = "膜拜成功"
-    tlog_action.log('GuildWorship', player, m_g_id, bless_type)
+    tlog_action.log('GuildWorship', player, g_id, bless_type)
+    print response, '================================================11111'
     return response.SerializeToString()
 
 
@@ -885,7 +880,6 @@ def get_guild_info_812(data, player):
     response.position = position
     response.all_zan_num = guild_obj.praise_num
     response.zan_money = guild_obj.praise_money
-    response.captain_zan_receive_state = guild_obj.receive_praise_state
     for build_type, build_level in guild_obj.build.items():
         build_info_pb = response.build_info.add()
         build_info_pb.build_type = build_type
@@ -898,8 +892,10 @@ def get_guild_info_812(data, player):
     response.last_zan_time = player.guild.praise_time
     response.zan_num = player.guild.praise_num
 
-    response.luck_num = player.guild.bless_times
+    response.luck_num = guild_obj.bless_luck_num
     response.bless_num = player.guild.bless_times
+    response.guild_bless_times = guild_obj.bless_num
+
     response.bless_state = player.guild.bless_times
 
     for bless_gift_no in player.guild.bless_gifts:
@@ -1194,10 +1190,16 @@ def praise_1807(data, player):
     g_id = player.guild.g_id
 
     praise_num_max = game_configs.base_config.get('worShipFrequencyMax')
+    praise_cooling_time = game_configs.base_config.get('worShipCoolingTime')
     if player.guild.praise_num >= praise_num_max:
         #  "次数不够"
         response.res.result = False
         response.res.result_no = 851
+        return response.SerializeToString()
+    if player.guild.praise_time+praise_cooling_time >= time.time():
+        #  "冷却"
+        response.res.result = False
+        response.res.result_no = 889
         return response.SerializeToString()
 
     remote_res = remote_gate['world'].praise_remote(g_id,
@@ -1212,12 +1214,17 @@ def praise_1807(data, player):
 
     player.guild.add_praise_times()
 
-    return_data = gain(player, guild_config.worShip[player.guild.praise_num], const.PraiseGift)  # 获取
+    print build_config.worShip, '========================111'
+
+    dorp_item = parse({107: [build_config.worShip[1][0], build_config.worShip[1][1],
+                      build_config.worShip[1][2]]})
+    return_data = gain(player, dorp_item, const.PraiseGift)  # 获取
     get_return(player, return_data, response.gain)
     player.guild.save_data()
 
     response.zan_money = remote_res.get('money_num')
     response.all_zan_num = remote_res.get('praise_times')
+    response.last_zan_time = player.guild.praise_time
 
     response.res.result = True
     return response.SerializeToString()
@@ -1227,9 +1234,10 @@ def praise_1807(data, player):
 def captailn_receive_1806(data, player):
     """团长领取赞的奖励 """
     response = ReceiveResponse()
+    g_id = player.guild.g_id
 
-    remote_res = remote_gate['world'].praise_remote(g_id,
-                                                    player.base_info.id)
+    remote_res = remote_gate['world'].captailn_receive_remote(g_id,
+                                                              player.base_info.id)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -1240,36 +1248,32 @@ def captailn_receive_1806(data, player):
     money_num = remote_res.get('money_num')
 
     dorp_item = parse({107: [money_num, money_num,
-                      build_conf.headSworShip[2]]})
+                      build_config.headSworShip[2]]})
 
     return_data = gain(player, dorp_item, const.ReceivePraiseGift)  # 获取
     get_return(player, return_data, response.gain)
 
     response.res.result = True
+    print '===================', response
     return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
 def get_bless_gift_1808(data, player):
     """领取祈福的奖励 """
-    return
-    # TODO
     args = GetBlessGiftRequest()
     args.ParseFromString(data)
     response = GetBlessGiftResponse()
     gift_no = args.gift_no
 
-    player.guild.bless_update()
-
-    if gift_no in player.guild.bless[1]:
+    if gift_no in player.guild.bless_gifts:
         response.res.result = False
         response.res.result_no = 800
-        # response.message = "公会ID错误"
         return response.SerializeToString()
 
-    m_g_id = player.guild.g_id
-    data1 = tb_guild_info.getObj(m_g_id).hgetall()
-    if not data1 or m_g_id == 0:
+    g_id = player.guild.g_id
+    data1 = tb_guild_info.getObj(g_id).hgetall()
+    if not data1 or g_id == 0:
         response.res.result = False
         response.res.result_no = 800
         # response.message = "公会ID错误"
@@ -1277,28 +1281,29 @@ def get_bless_gift_1808(data, player):
 
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    guild_config = game_configs.guild_config.get(8).get(guild_obj.level)
 
-    gift_list = guild_config.cohesion.get(gift_no)
-    if not gift_list:
+    build_level = guild_obj.build.get(2)
+    build_conf = game_configs.guild_config.get(2)[build_level]
+    gift_info = build_conf.reward.get(gift_no)
+
+    if not gift_info:
         response.res.result = False
         response.res.result_no = 855
         return response.SerializeToString()
 
-    if guild_obj.bless_luck_num < gift_no:
+    if guild_obj.bless_luck_num < gift_info[0]:
         response.res.result = False
         response.res.result_no = 856
         return response.SerializeToString()
 
-    for x in gift_list:
-        prize = parse({106: [1, 1, x]})
-        return_data = gain(player, prize, const.ReceiveBlessGift)  # 获取
-        get_return(player, return_data, response.gain)
+    prize = parse({106: [1, 1, gift_info[1]]})
+    return_data = gain(player, prize, const.ReceiveBlessGift)  # 获取
+    get_return(player, return_data, response.gain)
 
-    player.guild.bless[1].append(gift_no)
+    player.guild.receive_bless_gift(gift_no)
     player.guild.save_data()
-    guild_obj.save_data()
     response.res.result = True
+    print '============================21212', response
     return response.SerializeToString()
 
 
