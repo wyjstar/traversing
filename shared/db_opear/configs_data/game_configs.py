@@ -58,6 +58,8 @@ from activity_type_config import ActivityTypeConfig
 from ggzj_config import GgzjConfig
 from awake_config import AwakeConfig
 from indiana_config import IndianaConfig
+from guild_task_config import GuildTaskConfig
+
 
 indiana_config = {}
 activity_type_config = {}
@@ -114,6 +116,7 @@ push_config = {}
 currency_config = {}
 ggzj_config = {}
 awake_config = {}
+guild_task_config = {}
 
 all_config_name = {
     'activity_type_config': ActivityTypeConfig(),
@@ -170,6 +173,7 @@ all_config_name = {
     'ggzj_config': GgzjConfig(),
     'awake_config': AwakeConfig(),
     'indiana_config': IndianaConfig(),
+    'guild_task_config': GuildTaskConfig(),
 }
 
 logger.info("=============load game_configs=============")

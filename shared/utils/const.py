@@ -207,6 +207,8 @@ const.BUY_TRUCE_ITEM = 72  # 夺宝购买休战符
 const.ROB_TREASURE = 73  # 夺宝
 const.ROB_TREASURE_REWARD = 74  # 夺宝
 
+const.ESCORT_ROB = 1909  # 劫运公会
+
 
 const.LOGIN_GIFT_CONTINUS = 8061
 const.LOGIN_GIFT_CUMULATIVE = 8062
@@ -229,7 +231,7 @@ const.PVB_IN_AWARD = 4 #参与奖
 const.DEBUG = False
 
 const.level_rank_xs = 10000000
-const.power_rank_xs = 1000 
+const.power_rank_xs = 1000
 
 const.BATTLE_PVE = 1
 const.BATTLE_PVP = 6
@@ -237,6 +239,7 @@ const.BATTLE_PVB = 7
 const.BATTLE_MINE_PVE = 8
 const.BATTLE_MINE_PVP = 9
 const.BATTLE_HJQY = 10
+const.BATTLE_GUILD = 12
 
 const.BOSS_NOT_EXIST = 0 # 不存在
 const.BOSS_LIVE = 1  # 正常

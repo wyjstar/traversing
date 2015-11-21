@@ -62,5 +62,6 @@ __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'CharacterLimitHeroComponent', 'CharacterPvpComponent',
            'CharacterTaskComponent', 'CharacterStartTargetComponent',
            'CharacterHjqyComponent', 'CharacterActComponent',
-           'CharacterRobTreasureComponent'
+           'CharacterRobTreasureComponent',
+           'CharacterEscortComponent'
            ]
