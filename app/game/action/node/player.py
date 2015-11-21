@@ -422,13 +422,20 @@ def add_stamina_2202(request_proto, player):
     """按时自动增长资源"""
     request = StaminaOperRequest()
     request.ParseFromString(request_proto)
+    logger.debug("request %s" % request)
+
+    response = StaminaOperResponse()
     resource_type = request.finance_changes.item_no
     num = request.finance_changes.item_num
     item = player.stamina.get_item(resource_type)
+    if not item:
+        logger.error("resource type %s not exist!" % resource_type)
+        response.res.result_no = 22023
+        response.res.result = False
+        return response.SerializePartialToString()
     info = player.stamina.get_info(resource_type, player, item.buy_stamina_times)
     current_value = player.finance[resource_type]
 
-    response = StaminaOperResponse()
     response.finance_changes.item_type = 107
     response.finance_changes.item_no = resource_type
     response.finance_changes.item_num = num
