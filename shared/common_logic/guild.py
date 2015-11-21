@@ -258,14 +258,6 @@ class Guild(object):
         self._bless = values
 
     @property
-    def praise(self):
-        return self._praise
-
-    @praise.setter
-    def praise(self, values):
-        self._praise = values
-
-    @property
     def escort_tasks(self):
         return self._escort_tasks
 
@@ -309,9 +301,17 @@ class Guild(object):
             return 0
         return self._praise[2]
 
-    @property
-    def receive_praise_state(self):
-        return 0
+    def add_praise_money(self, num):
+        now = int(time.time())
+        if time.localtime(self._praise[2]).tm_yday != time.localtime(now).tm_yday:
+            self._praise = [1, num, int(time.time())]
+        else:
+            self._praise[0] += 1
+            self._praise[1] += num
+            self._praise[2] = now
+
+    def receive_praise_money(self):
+        self._praise[1] = 0
 
     @property
     def bless_luck_num(self):
