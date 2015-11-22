@@ -322,3 +322,21 @@ def bless_remote(g_id, p_id, bless_type):
     guild_obj.save_data()
 
     return {'res': True}
+
+
+@rootserviceHandle
+def can_mobai_remote(g_id, p_id, u_id):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
+        return cPickle.dumps({'res': False, 'no': 844})
+
+    p_list = guild_obj.p_list
+    for _, _p_list in guild_obj.p_list.items():
+        if u_id in _p_list:
+            return {'res': True}
+
+    logger.error('mobai, player dont in guild')
+    return cPickle.dumps({'res': False, 'no': 800})

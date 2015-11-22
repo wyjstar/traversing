@@ -378,3 +378,20 @@ message UpGuildSkillRequest{
 message UpGuildSkillResponse{
     required CommonResponse res = 1;
 }
+
+// 膜拜
+message GuildMOBAIRequest{
+    required int32 u_id = 1;
+}
+
+// 膜拜
+message GuildMOBAIResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}
+
+// 被膜拜奖励
+message ReceiveMOBAIResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+}

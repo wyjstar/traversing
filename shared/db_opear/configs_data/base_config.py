@@ -95,6 +95,8 @@ class BaseConfig(object):
                 equPrefix[v[0]] = []
             equPrefix[v[0]].append(v[1:])
         config_value["equPrefix"] = equPrefix
+        config_value["Worship2"] = parse(config_value["Worship2"])
+        config_value["AreWorship2"] = parse(config_value["AreWorship2"])
         config_value["indianaIteam"] = parse(config_value["indianaIteam"])
         config_value["indianaTrucePrice"] = parse(config_value["indianaTrucePrice"])
         config_value["indianaConsume"] = parse(config_value["indianaConsume"])

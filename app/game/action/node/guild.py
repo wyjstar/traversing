@@ -224,10 +224,6 @@ def exit_guild_803(data, player):
               guild_name=remote_res.get('guild_name'))
 
     player.guild.g_id = 0
-    player.guild.contribution = 0
-    player.guild.all_contribution = 0
-    player.guild.today_contribution = 0
-    player.guild.position = 3
     player.guild.save_data()
 
     response.res.result = True
@@ -259,6 +255,9 @@ def modify_user_guild_info_remote(data, player):
         remote_gate.push_object_remote(1815,
                                        proto_data.SerializeToString(),
                                        [player.dynamic_id])
+    elif data['cmd'] == 'be_mobai':
+        player.guild.be_mobai()
+        player.guild.save_data()
     elif data['cmd'] == 'exit_guild':
         player.guild.position = data['position']
         player.guild.save_data()
@@ -270,7 +269,6 @@ def modify_user_guild_info_remote(data, player):
         player.guild.g_id = data['guild_id']
         player.guild.contribution = 0
         player.guild.all_contribution = 0
-        player.guild.today_contribution = 0
         player.guild.position = 3
         player.guild.exit_time = 1
         player.guild.apply_guilds = []
@@ -379,10 +377,6 @@ def deal_apply_805(data, player):
     if res_type == 1:
         for p_id in p_ids:
             data = {'guild_id': player.guild.g_id,
-                    'position': 3,
-                    'contribution': 0,
-                    'all_contribution': 0,
-                    'today_contribution': 0,
                     'apply_guilds': [],
                     'exit_time': 1}
             is_online = remote_gate.is_online_remote(
@@ -562,7 +556,6 @@ def kick_807(data, player):
                     'position': 3,
                     'contribution': 0,
                     'all_contribution': 0,
-                    'today_contribution': 0,
                     'apply_guilds': [],
                     'exit_time': 1}
             # TODO 玩家被提出，或者退出军团以后，膜拜的记录清理不清理。
@@ -822,7 +815,6 @@ def get_role_list_811(data, player):
             role_info.all_contribution = \
                 character_info['all_contribution']
             role_info.contribution = character_info['contribution']
-            role_info.day_contribution = character_info['today_contribution']
             role_info.vip_level = character_info['vip_level']
 
             ap = 1
@@ -839,7 +831,7 @@ def get_role_list_811(data, player):
             if time.localtime(character_info['bless'][3]).tm_yday == \
                     time.localtime().tm_yday:
                 today_contribution = character_info['bless'][2]
-            role_info.contribution = today_contribution
+            role_info.day_contribution = today_contribution
 
     response.res.result = True
     print response, '==========================guild player list'
@@ -1464,3 +1456,135 @@ def up_build_870(data, player):
         return response.SerializeToString()
     response.res.result = True
     return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def mobai_871(data, player):
+    args = GuildMOBAIRequest()
+    args.ParseFromString(data)
+    u_id = args.u_id
+    response = GuildMOBAIResponse()
+
+    p_id = player.base_info.id
+    g_id = player.guild.g_id
+
+    if g_id == 0:
+        # "没有公会"
+        logger.error('mobai, guild id == 0')
+        response.res.result = False
+        response.res.result_no = 846
+        return response.SerializeToString()
+
+    mobai_list = player.guild.mobai_list
+    if u_id in mobai_list:
+        logger.error('mobai, yijing mobaiguo')
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+    character_obj = tb_character_info.getObj(u_id)
+    character_info = character_obj.hmget(['attackPoint', 'guild_mobai'])
+    if not character_info:
+        logger.error('mobai, uid error')
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+    u_power = character_info['attackPoint']
+    if player.line_up_component.combat_power > u_power:
+        response.res.result = False
+        response.res.result_no = 892
+        return response.SerializeToString()
+    if len(mobai_list) >= game_configs.base_config.get('Worship2FrequencyMax'):
+        response.res.result = False
+        response.res.result_no = 851
+        return response.SerializeToString()
+
+    remote_res = remote_gate['world'].can_mobai(g_id, p_id,
+                                                u_id)
+    if not remote_res.get('res'):
+        response.res.result = False
+        response.res.result_no = remote_res.get('no')
+        return response.SerializeToString()
+
+    player.guild.do_mobai(u_id)
+    return_data = gain(player, game_configs.base_config.get('Worship2'),
+                       const.GUILD_MOBAI)  # 获取
+    get_return(player, return_data, response.gain)
+
+    data = {'position': 1}
+    is_online = remote_gate.is_online_remote(
+        'modify_user_guild_info_remote',
+        u_id, {'cmd': 'be_mobai'})
+
+    if is_online == "notonline":
+        p_mobai_info = character_info['guild_mobai']
+        if time.localtime(p_mobai_info[2]).tm_yday != time.localtime().tm_yday():
+            data = {'guild_mobai': [0, [p_id], int(time.time())]}
+        else:
+            p_mobai_info[1].append(p_id)
+            data = {'guild_mobai': p_mobai_info}
+        character_obj.hmset(data)
+
+    response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def receive_mobai_872(data, player):
+    args = UpBuildRequest()
+    args.ParseFromString(data)
+    u_id = args.u_id
+    response = UpBuildResponse()
+
+    p_id = player.base_info.id
+    g_id = player.guild.g_id
+
+    if g_id == 0:
+        # "没有公会"
+        logger.error('mobai, guild id == 0')
+        response.res.result = False
+        response.res.result_no = 846
+        return response.SerializeToString()
+    be_mobai_times = player.guild.be_mobai_times
+    if not be_mobai_times:
+        logger.error('mobai, be_mobai_times == 0')
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+
+    remote_res = remote_gate['world'].can_mobai(g_id, p_id,
+                                                u_id)
+    if not remote_res.get('res'):
+        response.res.result = False
+        response.res.result_no = remote_res.get('no')
+        return response.SerializeToString()
+
+    player.guild.receive_mobai()
+    return_data = gain(player, game_configs.base_config.get('AreWorship2'),
+                       const.GUILD_MOBAI, multiple=be_mobai_times)  # 获取
+    get_return(player, return_data, response.gain)
+
+    response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def mine_seek_help_873(data, player):
+    return
+    # 秘境求助
+    args = MineSeekHelpRequest()
+    args.ParseFromString(data)
+    pos = request.pos                    # 矿所在位置
+    response = MineHelpRequest()
+
+    p_id = player.base_info.id
+    g_id = player.guild.g_id
+
+    if g_id == 0:
+        # "没有公会"
+        logger.error('mobai, guild id == 0')
+        response.res.result = False
+        response.res.result_no = 846
+        return response.SerializeToString()
+
+    mine = player.mine.mine_info(pos)
+    mine_id = mine['seq']

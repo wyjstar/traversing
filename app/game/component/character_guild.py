@@ -28,6 +28,7 @@ class CharacterGuildComponent(Component):
         self._bless = [0, [], 0, 1]  # 祈福次数,领取的祈福奖励，今日贡献， 今日贡献时间
         self._apply_guilds = []  # 已经申请过的军团
         self._guild_rank_flag = 0  # 推荐列表，已经查询到的redis排行标记
+        self._mobai = [0, [], 1]  # ［被膜拜次数，［膜拜李飚］，time］
 
     def init_data(self, character_info):
         """
@@ -36,7 +37,6 @@ class CharacterGuildComponent(Component):
         self._g_id = character_info.get("guild_id")
         self._contribution = character_info.get("contribution")
         self._all_contribution = character_info.get("all_contribution")
-        self._today_contribution = character_info.get("today_contribution")
         self._bless = character_info.get('bless')
         self._praise = character_info.get('praise')
         self._exit_time = character_info.get("exit_time")
@@ -47,7 +47,6 @@ class CharacterGuildComponent(Component):
         data_obj.hmset({'guild_id': self._g_id,
                         'contribution': self._contribution,
                         'all_contribution': self._all_contribution,
-                        'today_contribution': self._today_contribution,
                         'bless': self._bless,
                         'praise': self._praise,
                         'apply_guilds': self._apply_guilds,
@@ -57,7 +56,6 @@ class CharacterGuildComponent(Component):
         data = {'guild_id': self._g_id,
                 'contribution': self._contribution,
                 'all_contribution': self._all_contribution,
-                'today_contribution': self._today_contribution,
                 'bless': self._bless,
                 'praise': self._praise,
                 'apply_guilds': self._apply_guilds,
@@ -182,3 +180,30 @@ class CharacterGuildComponent(Component):
 
     def receive_bless_gift(self, v):
         self._bless[1].append(v)
+
+    @property
+    def be_mobai_times(self):
+        if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
+            return 0
+        return self._mobai[0]
+
+    @property
+    def mobai_list(self):
+        if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
+            return []
+        return self._mobai[1]
+
+    def do_mobai(self, v):
+        if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
+            self._mobai = [0, [v], int(time.time())]
+        else:
+            self._mobai[1].append(v)
+
+    def be_mobai(self):
+        if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
+            self._mobai = [1, [], int(time.time())]
+        else:
+            self._mobai[0] += 1
+
+    def receive_mobai(self):
+        self._mobai[0] = 0
