@@ -733,9 +733,20 @@ def trigger_hjqy(player, result):
 
     if stage_info.chapter not in hjqyRandomCheckpoint:
         return False
+
     stage_id = hjqyRandomCheckpoint.get(stage_info.chapter)[stage_index-1]
 
+    monster_lv = hjqyRandomCheckpoint.get(stage_info.chapter)[3]
+
+    hjqyRule2 = game_configs.base_config.get("hjqyRule2")
+    if monster_lv - player.base_info.level > hjqyRule2:
+        if (stage_info.chapter - 1) not in hjqyRandomCheckpoint:
+            return False
+        stage_id = hjqyRandomCheckpoint.get(stage_info.chapter-1)[stage_index-1]
+
     player.fight_cache_component.stage_id = stage_id
+
+
     blue_units = player.fight_cache_component._assemble_monster()
 
     str_blue_units = cPickle.dumps(blue_units[0])
