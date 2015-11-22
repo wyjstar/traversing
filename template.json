@@ -226,6 +226,9 @@
 
         "appid": 150651
     },
+    "push":{
+        "channel": "xinge"
+    },
     "deploy":{
         "channel": "taiwan",
         "remote_deployed": false
