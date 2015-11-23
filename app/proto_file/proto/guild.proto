@@ -377,6 +377,7 @@ message MineSeekHelpInfo{
     required int32 seek_time = 5;
     required int32 vip_level = 6;
     required int32 level = 7;
+    required int32 be_help_times = 8;
 }
 
 // 秘境帮助 875

@@ -1342,6 +1342,7 @@ def mine_seek_help_list_874(data, player):
         help_info.icon = heads.now_head
         help_info.mine_id = mine_id
         help_info.seek_time = _time
+        help_info.be_help_times = times
 
     response.res.result = True
     return response.SerializeToString()
