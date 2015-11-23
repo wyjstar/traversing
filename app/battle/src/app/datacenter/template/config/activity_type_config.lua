@@ -67,14 +67,12 @@ activity_type_config={
   ["index"] = 90,  ["id"] = 105,  ["duration"] = 1,  ["page"] = 1,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "CDKEY_GIFT",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [51] = {
   ["index"] = 21,  ["id"] = 51,  ["duration"] = 3,  ["page"] = 1,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_GROW",  ["timeEnd"] = "2019-12-31 23:59:59",}
-,  [53] = {
-  ["index"] = 23,  ["id"] = 53,  ["duration"] = 3,  ["page"] = 0,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
-,  [55] = {
-  ["index"] = 996,  ["id"] = 55,  ["duration"] = 3,  ["page"] = 2,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
+,  [102] = {
+  ["index"] = 50,  ["id"] = 102,  ["duration"] = 1,  ["page"] = 1,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "GETWEALTH",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [202] = {
   ["index"] = 995,  ["id"] = 202,  ["duration"] = 5,  ["page"] = 2,  ["is_open"] = 1,  ["parameterT"] = "240",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_SEVENDAY",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [104] = {
   ["index"] = 70,  ["id"] = 104,  ["duration"] = 1,  ["page"] = 1,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "STAMINA",  ["timeEnd"] = "2019-12-31 23:59:59",}
-,  [102] = {
-  ["index"] = 50,  ["id"] = 102,  ["duration"] = 1,  ["page"] = 1,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "GETWEALTH",  ["timeEnd"] = "2019-12-31 23:59:59",}
+,  [53] = {
+  ["index"] = 23,  ["id"] = 53,  ["duration"] = 3,  ["page"] = 0,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,}

@@ -339,3 +339,5 @@ def check_condition(player, condition_conf, task_type):
         return check_condition_const(player, condition_conf, task_type)
     elif cid in CHEAK_CONDITION_RANK:
         return check_condition_rank(player, condition_conf, task_type)
+    else:
+        return {'state': 1, 'value': 1}
