@@ -252,6 +252,11 @@ def modify_user_guild_info_remote(data, player):
         remote_gate.push_object_remote(1815,
                                        proto_data.SerializeToString(),
                                        [player.dynamic_id])
+    elif data['cmd'] == 'mine_help':
+        print player.base_info.id, '========================'
+        remote_gate.push_object_remote(877,
+                                       u'',
+                                       [player.dynamic_id])
     elif data['cmd'] == 'be_mobai':
         player.guild.be_mobai()
         player.guild.save_data()
@@ -1298,10 +1303,19 @@ def mine_seek_help_873(data, player):
         return response.SerializeToString()
 
     res = player.mine.seek_help(pos)
-    if not res:
+    if not res.get('res'):
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
+    # 推动消息给所有玩家
+    for plist in res.get('p_list').values():
+        for target_id in plist:
+            if target_id == p_id:
+                continue
+            remote_gate.is_online_remote(
+                'modify_user_guild_info_remote',
+                target_id, {'cmd': 'mine_help'})
+
     response.res.result = True
     return response.SerializeToString()
 

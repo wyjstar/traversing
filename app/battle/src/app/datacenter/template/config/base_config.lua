@@ -167,7 +167,7 @@ base_config={
 ,}
 ,  ["arena_times_buy_price"] = {
   ["2"] = {
-  [1] = 10,  [2] = 10,  [3] = 2,}
+  [1] = 50,  [2] = 50,  [3] = 2,}
 ,}
 ,  ["sameContentSpaceTime"] = 5,  ["arenaFightCdRemovePrice"] = {
   ["107"] = {
@@ -517,7 +517,7 @@ base_config={
   [1] = 3700000002,  [2] = 20,  [3] = 10056,  [4] = 20,}
 ,  ["arenaRevengeRewards"] = {
   ["107"] = {
-  [1] = 100,  [2] = 100,  [3] = 8,}
+  [1] = 20,  [2] = 20,  [3] = 8,}
 ,}
 ,  ["equAssembleOpenStage"] = 100403,  ["angryValueAwakeHero"] = {
   [1] = 0,  [2] = 50,  [3] = 100,}
@@ -587,7 +587,7 @@ base_config={
   [1] = 1,  [2] = 1600,  [3] = 3,}
 ,  ["free_relive_time"] = 300,  ["goldcoin_inspire_price"] = 10000,  ["guildNoticeWords"] = 25,  ["totemSpaceNum1"] = 10,  ["guildOpenStage"] = 100605,  ["CardCumulate"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 20003,}
+  [1] = 1,  [2] = 1,  [3] = 20002,}
 ,}
 ,  ["sweepNeedItem"] = {
   ["105"] = {
@@ -704,7 +704,7 @@ base_config={
   [1] = 1,  [2] = 1,  [3] = 2,}
 ,}
 ,  ["peroid_of_vigor_recover"] = 300,  ["max_item_superposition"] = 999,  ["guildBadge"] = {
-  [1] = 10001,  [2] = 10002,  [3] = 10003,  [4] = 10004,}
+  [1] = 10001,  [2] = 10002,  [3] = 10003,  [4] = 10004,  [5] = 10005,}
 ,  ["warFogExploringTimeCDMoney"] = 1,  ["arena_open_level"] = 1,  ["warFogStrongpointNum"] = 9,  ["cheer_partner_seat3"] = {
   ["4"] = 0.1,}
 ,  ["player_level_max"] = 100,  ["worldbossOpenDay"] = {
@@ -735,7 +735,7 @@ base_config={
 ,  ["6"] = {
   [1] = 60,}
 ,}
-,  ["CardTimeLimitFreeTimes"] = 1,  ["stage_for_InitUser"] = 100101,  ["SpeedUpTwoTimesOpenLevel"] = 5,  ["getMoneyBuyTimesPrice"] = {
+,  ["CardTimeLimitFreeTimes"] = 1,  ["stage_for_InitUser"] = 100101,  ["SpeedUpTwoTimesOpenLevel"] = 2,  ["getMoneyBuyTimesPrice"] = {
   ["60"] = 22,  ["70"] = 24,  ["40"] = 18,  ["50"] = 20,  ["80"] = 26,  ["90"] = 28,  ["1"] = 10,  ["150"] = 34,  ["30"] = 16,  ["0"] = 0,  ["20"] = 14,  ["400"] = 40,  ["300"] = 38,  ["200"] = 36,  ["100"] = 30,  ["120"] = 32,  ["10"] = 12,}
 ,  ["time_vigor_activity"] = {
   [1] = {
@@ -889,11 +889,11 @@ base_config={
 ,}
 ,  ["warFogBossGoldcoinInspireLimited"] = 20,  ["max_of_UserFriend"] = 500,  ["arena_win_points"] = {
   ["107"] = {
-  [1] = 100,  [2] = 100,  [3] = 8,}
+  [1] = 50,  [2] = 50,  [3] = 8,}
 ,}
 ,  ["stageWarn"] = 1,  ["worshipName"] = {
   ["1"] = 3700000004,  ["3"] = 3700000006,  ["2"] = 3700000005,}
-,  ["equMallOpenStage"] = 100307,  ["hjqyRewardRefreshTime"] = "0:00:00",  ["travelShoeTimesMax"] = 15,  ["arena_reset_times"] = 1,  ["ggzjReward"] = {
+,  ["equMallOpenStage"] = 100307,  ["hjqyRewardRefreshTime"] = "0:00:00",  ["travelShoeTimesMax"] = 15,  ["arena_reset_times"] = 5,  ["ggzjReward"] = {
   ["1"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 710001,}

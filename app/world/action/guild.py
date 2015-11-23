@@ -591,7 +591,7 @@ def mine_seek_help_remote(u_id, mine_id, g_id):
         return {'res': False, 'no': 844}
 
     if not mine.guild_seek_help(mine_id, u_id):
-        return False
+        return {'res': False, 'no': 800}
 
     mine_help = guild_obj.mine_help
     now = int(time.time())
@@ -599,13 +599,13 @@ def mine_seek_help_remote(u_id, mine_id, g_id):
     a = 1
     while mine_help.get(now):
         if a > 2:
-            return False
+            return {'res': False, 'no': 800}
         now += 1
         a += 1
 
     guild_obj.mine_help[now] = [mine_id, u_id, 0]
     guild_obj.save_data()
-    return True
+    return {'res': True, 'p_list': guild_obj.p_list}
 
 
 @rootserviceHandle
@@ -680,7 +680,7 @@ def mine_help_remote(g_id, p_id, seek_time, already_helps):
     # help_ids 这次帮助的列表 加上 之前帮助的而且这个请求还存在的
     # already_helps 之前已经帮助过的列表
     # guild_obj.mine_help 军团里所有的请求
-    return {'res': True, 'help_ids': help_ids}
+    return {'res': True, 'help_ids': help_ids, 'p_list': guild_obj.p_list}
 
 
 @rootserviceHandle

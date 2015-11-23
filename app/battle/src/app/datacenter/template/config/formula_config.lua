@@ -210,17 +210,17 @@ formula_config={
 ,  [105] = {
   ["precondition"] = "1",  ["formula"] = "k1+random*(k2-k1)/99",  ["clientPrecondition"] = "",  ["id"] = 105,  ["clientFormula"] = "result=k1+random*(k2-k1)/99",  ["key"] = "floatDamage",}
 ,  [106] = {
-  ["precondition"] = "1",  ["formula"] = "baseDamage*(1 if isHit else 0)*(criDamage if isCri else 1)*(0.7 if isBlock else 1)*levelDamage*floatDamage",  ["clientPrecondition"] = "1",  ["id"] = 106,  ["clientFormula"] = "result=baseDamage*((isHit and 1) or 0)*((isCri and criDamage) or 1)*((isBlock and 0.7) or 1)*levelDamage*floatDamage",  ["key"] = "allDamage",}
+  ["precondition"] = "1",  ["formula"] = "baseDamage*(1 if isHit else 0)*(criDamage if isCri else 1)*(0.7 if isBlock else 1)",  ["clientPrecondition"] = "1",  ["id"] = 106,  ["clientFormula"] = "result=baseDamage*((isHit and 1) or 0)*((isCri and criDamage) or 1)*((isBlock and 0.7) or 1)*levelDamage*floatDamage",  ["key"] = "allDamage",}
 ,  [107] = {
   ["precondition"] = "1",  ["formula"] = "atkArray*(criCoeffArray/1000 if isCri else 1)",  ["clientPrecondition"] = "1",  ["id"] = 107,  ["clientFormula"] = "result=atkArray*((isCri and criCoeffArray/1000) or 1)",  ["key"] = "allHeal",}
 ,  [108] = {
-  ["precondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType ==1",  ["formula"] = "allDamage+skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType ==1",  ["id"] = 108,  ["clientFormula"] = "result=allDamage+skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["key"] = "damage_1",}
+  ["precondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType ==1",  ["formula"] = "allDamage+skill_buff.valueEffect",  ["clientPrecondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType ==1",  ["id"] = 108,  ["clientFormula"] = "result=allDamage+skill_buff.valueEffect",  ["key"] = "damage_1",}
 ,  [109] = {
-  ["precondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType == 2",  ["formula"] = "allDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType == 2",  ["id"] = 109,  ["clientFormula"] = "result=allDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["key"] = "damage_2",}
+  ["precondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType == 2",  ["formula"] = "allDamage*skill_buff.valueEffect/100",  ["clientPrecondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType == 2",  ["id"] = 109,  ["clientFormula"] = "result=allDamage*skill_buff.valueEffect/100",  ["key"] = "damage_2",}
 ,  [110] = {
-  ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 1",  ["formula"] = "skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 1",  ["id"] = 110,  ["clientFormula"] = "result=skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["key"] = "damage_3",}
+  ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 1",  ["formula"] = "skill_buff.valueEffect",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 1",  ["id"] = 110,  ["clientFormula"] = "result=skill_buff.valueEffect",  ["key"] = "damage_3",}
 ,  [111] = {
-  ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["formula"] = "atkArray*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["id"] = 111,  ["clientFormula"] = "result=atkArray*skill_buff.valueEffect/100+skill_buff.levelEffectValue*heroLevel",  ["key"] = "damage_4",}
+  ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["formula"] = "atkArray*skill_buff.valueEffect/100",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["id"] = 111,  ["clientFormula"] = "result=atkArray*skill_buff.valueEffect/100",  ["key"] = "damage_4",}
 ,  [112] = {
   ["precondition"] = "1",  ["formula"] = "(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["clientPrecondition"] = "",  ["id"] = 112,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "warriorsDamage",}
 ,  [113] = {
@@ -292,7 +292,7 @@ formula_config={
 ,  [146] = {
   ["precondition"] = "1",  ["formula"] = "warriorLevel*100",  ["clientPrecondition"] = "1",  ["id"] = 146,  ["clientFormula"] = "result=warriorLevel*100",  ["key"] = "guide2009",}
 ,  [147] = {
-  ["precondition"] = "1",  ["formula"] = "1.5+heroBreak*0.1",  ["clientPrecondition"] = "1",  ["id"] = 147,  ["clientFormula"] = "result=1.5+heroBreak*0.1",  ["key"] = "hjqyDamage",}
+  ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 147,  ["clientFormula"] = "result=1",  ["key"] = "hjqyDamage",}
 ,  [148] = {
   ["precondition"] = "EquNumMax > EquNumMin",  ["formula"] = "grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["clientPrecondition"] = "EquNumMax > EquNumMin",  ["id"] = 148,  ["clientFormula"] = "result=grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["key"] = "equGrowUpParameter",}
 ,  [149] = {
