@@ -267,3 +267,14 @@ const.NEXT_DAY_FEATURES_BUTTON = 0 # 第二天功能开启按钮
 const.FIRST_RECHARGE_BUTTON = 1 # 首次充值按钮
 const.STAGE_LUCKY_BUTTON = 2 # 关卡点我有惊喜
 
+# =================================================
+# 军团动态类型
+const.DYNAMIC_ZAN = 1
+const.DYNAMIC_BLESS = 2
+const.DYNAMIC_JOIN = 3
+const.DYNAMIC_EXIT = 4
+const.DYNAMIC_UP = 5
+const.DYNAMIC_DOWN = 6
+const.DYNAMIC_CHANGE = 7
+const.DYNAMIC_KICK = 8
+const.DYNAMIC_MOBAI = 9

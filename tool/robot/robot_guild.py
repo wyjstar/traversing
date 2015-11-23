@@ -12,9 +12,19 @@ from app.proto_file.runt_pb2 import *
 from app.proto_file.level_gift_pb2 import *
 from app.proto_file.start_target_pb2 import *
 from app.proto_file.rob_treasure_pb2 import *
+from app.proto_file.guild_pb2 import *
 
 
 class RobotGuild(Robot):
+    def command_guild_dymanic(self):
+        self.send_message('', 876)
+
+    def rob_guild_dymanic_876(self, message):
+        argument = GuildDynamicsResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
+
     def command_rob_treasure_init(self):
         self.send_message('', 858)
 
