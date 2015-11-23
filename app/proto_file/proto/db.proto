@@ -29,6 +29,7 @@ message Mail_PB
     optional int32 guild_id = 19; //军团id
     optional int32 rune_num = 20;  //附文个数
     optional int32 pvp_rank = 21;  //擂台排行
+    optional int32 boss_id = 26;  //boss_id 黄巾起义分享邮件
 
     optional int32 integral = 24;
     optional int32 rank = 25;

@@ -6,12 +6,14 @@ from gfirefly.server.logobj import logger
 
 def deal_mail(conf_id=0, nickname='', receive_id=0, guild_name='',
               guild_p_num=0, guild_level=0, guild_id=0, pvp_rank=0,
-              rune_num=0, rank=0, integral=0):
+              rune_num=0, rank=0, integral=0, boss_id=0):
     mail = Mail_PB()
     if conf_id:
         mail.config_id = conf_id
     if nickname:
         mail.nickname = nickname
+    if boss_id:
+        mail.boss_id = boss_id
     if guild_name:
         mail.guild_name = guild_name
     if guild_p_num:
