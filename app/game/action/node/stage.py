@@ -740,6 +740,7 @@ def trigger_hjqy(player, result):
 
     hjqyRule2 = game_configs.base_config.get("hjqyRule2")
     if monster_lv - player.base_info.level > hjqyRule2:
+        logger.debug("monster_lv %s, player.base_info.level %s, hjqyRule2 %s" % (monster_lv, player.base_info.level, hjqyRule2))
         if (stage_info.chapter - 1) not in hjqyRandomCheckpoint:
             return False
         stage_id = hjqyRandomCheckpoint.get(stage_info.chapter-1)[stage_index-1]
