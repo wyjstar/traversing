@@ -43,17 +43,6 @@ message ExitGuildResponse{
     required CommonResponse res = 1;
 }
 
-// 搜索军团 command：
-message SelectGuildRequest{
-	required int32 select_type = 1;  //搜索类型
-	required string value = 2;  //搜索值
-}
-
-message SelectGuildResponse{
-    required CommonResponse res = 1;
-    optional GuildRank guild_rank = 2;
-}
-
 // 创建公会 command：801
 message CreateGuildRequest{
 	required string name = 1;  //公会名
@@ -103,6 +92,7 @@ message GetGuildInfoResponse{
     optional int32 be_mobai_times = 29;  // 被膜拜次数
     repeated GuildSkill guild_skill = 30; //军团技能
     optional int32 skill_point = 31; //军团技能点
+    optional int32 level = 32;   //等级
 }
 
 message BuildInfo{
@@ -389,7 +379,7 @@ message MineSeekHelpInfo{
     required int32 seek_time = 5;
     required int32 vip_level = 6;
     required int32 level = 7;
-
+    required int32 be_help_times = 8;
 }
 
 // 秘境帮助 875
@@ -400,4 +390,18 @@ message MineHelpRequest{
 // 秘境帮助
 message MineHelpResponse{
     required CommonResponse res = 1;
+}
+
+message GuildDynamic{
+    required int32 type = 1;
+    required int32 time = 2;
+    optional string name1 = 3;
+    optional string name2 = 4;
+    optional int32 num1 = 5;
+}
+
+// 军团动态 876
+message GuildDynamicsResponse{
+    required CommonResponse res = 1;
+    repeated GuildDynamic dynamics = 2;
 }

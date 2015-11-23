@@ -192,7 +192,7 @@ def exit_guild_803(data, player):
     response = ExitGuildResponse()
     g_id = player.guild.g_id
 
-    remote_res = remote_gate['world'].exit_guild_remote(g_id, p_id)
+    remote_res = remote_gate['world'].exit_guild_remote(g_id, p_id, player.base_info.base_name)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -251,6 +251,11 @@ def modify_user_guild_info_remote(data, player):
         proto_data.position = data['position']
         remote_gate.push_object_remote(1815,
                                        proto_data.SerializeToString(),
+                                       [player.dynamic_id])
+    elif data['cmd'] == 'mine_help':
+        print player.base_info.id, '========================'
+        remote_gate.push_object_remote(877,
+                                       u'',
                                        [player.dynamic_id])
     elif data['cmd'] == 'be_mobai':
         player.guild.be_mobai()
@@ -408,7 +413,8 @@ def change_president_806(data, player):
     target_id = args.p_id
     g_id = player.guild.g_id
     remote_res = remote_gate['world'].guild_change_president_remote(g_id, p_id,
-                                                                    target_id)
+                                                                    target_id,
+                                                                    player.base_info.base_name)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -506,7 +512,8 @@ def bless_809(data, player):
 
     remote_res = remote_gate['world'].bless_remote(g_id,
                                                    player.base_info.id,
-                                                   bless_type)
+                                                   bless_type,
+                                                   player.base_info.base_name)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -626,6 +633,7 @@ def get_guild_rank_810(data, player):
             player.guild.guild_rank_flag = guild_rank_flag
 
     player.guild.save_data()
+    print response, '====================guild rank'
     response.res.result = True
     return response.SerializeToString()
 
@@ -670,11 +678,6 @@ def get_role_list_811(data, player):
     """角色列表 """
     response = GetGuildMemberListResponse()
     g_id = player.guild.g_id
-    if g_id == 0:
-        response.res.result = False
-        response.res.result_no = 846
-        # response.res.message = "没有公会"
-        return response.SerializeToString()
     remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, 0)
     if not remote_res.get('result'):
         response.res.result = False
@@ -732,14 +735,9 @@ def get_guild_info_812(data, player):
     """获取公会信息 """
     response = GetGuildInfoResponse()
     g_id = player.guild.g_id
-    if g_id == 0:
-        # "没有公会"
-        logger.error('get_guild_info_812, guild id == 0')
-        response.res.result = False
-        response.res.result_no = 846
-        return response.SerializeToString()
 
     remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, player.base_info.id)
+    print '=================================112'
     if not remote_res.get('result'):
         response.res.result = False
         response.res.result_no = remote_res.get('result_no')
@@ -754,6 +752,7 @@ def get_guild_info_812(data, player):
     response.all_contribution = guild_info.get('all_contribution')
     response.icon_id = guild_info.get('icon_id')
     response.call = guild_info.get('call')
+    response.level = guild_info.get('level')
     response.position = position
     response.all_zan_num = guild_info.get('praise_num')
     response.zan_money = guild_info.get('praise_money')
@@ -814,6 +813,7 @@ def get_guild_info_812(data, player):
     response.skill_point = guild_info.get('skill_point')
 
     response.res.result = True
+    print response, '===========guild info'
     return response.SerializeToString()
 
 
@@ -822,11 +822,6 @@ def get_apply_list_813(data, player):
     """获取申请列表 """
     response = GetApplyListResponse()
     g_id = player.guild.g_id
-    if g_id == 0:
-        # "没有公会"
-        response.res.result = False
-        response.res.result_no = 846
-        return response.SerializeToString()
 
     remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, 0)
     if not remote_res.get('result'):
@@ -961,7 +956,8 @@ def deal_invite_join_1804(data, player):
             #response.message = "你已经有军团了"
             return response.SerializeToString()
 
-    remote_res = remote_gate['world'].deal_invite_guild_remote(g_id, player.base_info.id, res)
+    remote_res = remote_gate['world'].deal_invite_guild_remote(g_id, player.base_info.id, res,
+                                                               player.base_info.base_name)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -999,7 +995,8 @@ def praise_1807(data, player):
         return response.SerializeToString()
 
     remote_res = remote_gate['world'].praise_remote(g_id,
-                                                    player.base_info.id)
+                                                    player.base_info.id,
+                                                    player.base_info.base_name)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -1010,7 +1007,7 @@ def praise_1807(data, player):
 
     player.guild.add_praise_times()
 
-    dorp_item = parse({107: [build_config.worShip[1][0], build_config.worShip[1][1],
+    dorp_item = parse({107: [remote_res.get('drop_num'), remote_res.get('drop_num'),
                       build_config.worShip[1][2]]})
     return_data = gain(player, dorp_item, const.PraiseGift)  # 获取
     get_return(player, return_data, response.gain)
@@ -1122,7 +1119,7 @@ def find_guild_1809(data, player):
     guild_rank.g_id = guild_info.get('id')
     guild_rank.rank = rank_no
     guild_rank.name = guild_info.get('name')
-    guild_rank.level = 1
+    guild_rank.level = guild_info.get('level')
     guild_rank.icon_id = guild_info.get('icon_id')
 
     president_id = guild_info.get('p_list').get(1)[0]
@@ -1187,14 +1184,6 @@ def up_build_870(data, player):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    g_id = player.guild.g_id
-    if g_id == 0:
-        # "没有公会"
-        logger.error('up_build_870, guild id == 0')
-        response.res.result = False
-        response.res.result_no = 846
-        return response.SerializeToString()
-
     remote_res = remote_gate['world'].up_build_remote(g_id, p_id,
                                                       build_type)
     if not remote_res.get('res'):
@@ -1214,13 +1203,6 @@ def mobai_871(data, player):
 
     p_id = player.base_info.id
     g_id = player.guild.g_id
-
-    if g_id == 0:
-        # "没有公会"
-        logger.error('mobai, guild id == 0')
-        response.res.result = False
-        response.res.result_no = 846
-        return response.SerializeToString()
 
     mobai_list = player.guild.mobai_list
     if u_id in mobai_list:
@@ -1245,8 +1227,8 @@ def mobai_871(data, player):
         response.res.result_no = 851
         return response.SerializeToString()
 
-    remote_res = remote_gate['world'].can_mobai_remote(g_id, p_id,
-                                                       u_id)
+    remote_res = remote_gate['world'].mobai_remote(g_id, p_id,
+                                                   u_id, player.base_info.base_name)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -1317,16 +1299,24 @@ def mine_seek_help_873(data, player):
 
     if g_id == 0:
         # "没有公会"
-        logger.error('mobai, guild id == 0')
         response.res.result = False
         response.res.result_no = 846
         return response.SerializeToString()
 
     res = player.mine.seek_help(pos)
-    if not res:
+    if not res.get('res'):
         response.res.result = False
         response.res.result_no = 800
         return response.SerializeToString()
+    # 推动消息给所有玩家
+    for plist in res.get('p_list').values():
+        for target_id in plist:
+            if target_id == p_id:
+                continue
+            remote_gate.is_online_remote(
+                'modify_user_guild_info_remote',
+                target_id, {'cmd': 'mine_help'})
+
     response.res.result = True
     return response.SerializeToString()
 
@@ -1339,12 +1329,6 @@ def mine_seek_help_list_874(data, player):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    if g_id == 0:
-        # "没有公会"
-        logger.error('mobai, guild id == 0')
-        response.res.result = False
-        response.res.result_no = 846
-        return response.SerializeToString()
     remote_res = remote_gate['world'].mine_seek_help_list_remote(g_id, p_id)
     if not remote_res.get('res'):
         response.res.result = False
@@ -1373,6 +1357,7 @@ def mine_seek_help_list_874(data, player):
         help_info.icon = heads.now_head
         help_info.mine_id = mine_id
         help_info.seek_time = _time
+        help_info.be_help_times = times
 
     response.res.result = True
     return response.SerializeToString()
@@ -1389,12 +1374,6 @@ def mine_help_list_875(data, player):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    if g_id == 0:
-        # "没有公会"
-        logger.error('mobai, guild id == 0')
-        response.res.result = False
-        response.res.result_no = 846
-        return response.SerializeToString()
     remote_res = remote_gate['world'].mine_help_remote(g_id, p_id, seek_time, player.guild.mine_help)
     if not remote_res.get('res'):
         response.res.result = False
@@ -1405,4 +1384,30 @@ def mine_help_list_875(data, player):
     player.guild.save_data()
 
     response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_guild_dynamics_876(data, player):
+    # 获取军团动态
+    response = GuildDynamicsResponse()
+
+    p_id = player.base_info.id
+    g_id = player.guild.g_id
+
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 'dynamics', 0)
+    if not remote_res.get('result'):
+        response.res.result = False
+        response.res.result_no = remote_res.get('result_no')
+        return response.SerializeToString()
+    dynamics = remote_res.get('dynamics')
+    print dynamics, '========================111'
+    for dynamic in dynamics:
+        _dynamic = GuildDynamic()
+        dynamic_pb = response.dynamics.add()
+        _dynamic.ParseFromString(dynamic)
+        dynamic_pb.CopyFrom(_dynamic)
+
+    response.res.result = True
+    print response, '====================22'
     return response.SerializeToString()

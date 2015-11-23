@@ -47,6 +47,7 @@ class Guild(object):
         self._escort_tasks_ids = []            # 任务ids
         self._shop_data = {}                   # {shop_type: shop_info}  军团商店
         self._skill_point = 0                  # 技能点
+        self._dynamics = []
 
         self.init_guild_skills()
 
@@ -59,6 +60,7 @@ class Guild(object):
                 'icon_id': self._icon_id,
                 'bless': self._bless,
                 'praise': self._praise,
+                'guild_dynamics': self._dynamics,
                 'call': self._call,
                 'invite_join': self._invite_join,
                 'mine_help': self._mine_help,
@@ -102,6 +104,7 @@ class Guild(object):
         self._all_contribution = data.get("all_contribution")
         self._icon_id = data.get("icon_id")
         self._bless = data.get("bless")
+        self._dynamics = data.get("guild_dynamics", [])
         self._praise = data.get("praise")
         self._mine_help = data.get("mine_help")
         self._call = data.get("call")
@@ -189,9 +192,18 @@ class Guild(object):
                     self._build[build_type] = build_level
         return self._build
 
+    def add_dynamic(self, dynamic):
+        if len(self._dynamics)+1 > 50:
+            del self.dynamics[0]
+        self.dynamics.append(dynamic)
+
     @build.setter
     def build(self, v):
         self._build = v
+
+    @property
+    def dynamics(self):
+        return self._dynamics
 
     @property
     def all_contribution(self):
@@ -247,7 +259,7 @@ class Guild(object):
         build_info = self.build
         for b_type, b_level in build_info.items():
             level += b_level
-        return 0
+        return level
 
     @property
     def call(self):
@@ -421,6 +433,7 @@ class Guild(object):
                 'p_list': self._p_list,
                 'p_num': self.p_num,
                 'level': self.level,
+                'dynamics': self._dynamics,
                 'apply': self._apply,
                 'call': self._call,
                 'build': self.build,

@@ -13,19 +13,11 @@ import random
 from app.world.action import mine
 from shared.common_logic.shop import do_shop_buy
 from shared.utils import trie_tree
+from app.proto_file import guild_pb2
+from shared.utils.const import const
 
 tb_guild_info = RedisObject('tb_guild_info')
 tb_character_info = RedisObject('tb_character_info')
-
-
-"""
-from gfirefly.server.globalobject import GlobalObject
-remote_gate = GlobalObject().remote.get('gate')
-seq = remote_gate['world'].mine_add_field_remote(uid,
-                                                 player_field)
-return cPickle.dumps(result)
-result = cPickle.loads(result)
-"""
 
 
 @rootserviceHandle
@@ -65,7 +57,7 @@ def get_guild_info_remote(guild_id, info_name, p_id):
 
 
 @rootserviceHandle
-def deal_invite_guild_remote(g_id, p_id, res):
+def deal_invite_guild_remote(g_id, p_id, res, name):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
@@ -84,6 +76,13 @@ def deal_invite_guild_remote(g_id, p_id, res):
             p_list3.append(p_id)
         else:
             guild_obj.p_list[3] = [p_id]
+
+        dynamic_pb = guild_pb2.GuildDynamic()
+        dynamic_pb.type = const.DYNAMIC_JOIN
+        dynamic_pb.time = int(time.time())
+        dynamic_pb.name1 = name
+
+        guild_obj.add_dynamic(dynamic_pb.SerializeToString())
 
     guild_obj.save_data()
 
@@ -119,7 +118,7 @@ def invite_join_guild_remote(g_id, p_id, target_id):
 
 
 @rootserviceHandle
-def guild_change_president_remote(g_id, p_id, target_id):
+def guild_change_president_remote(g_id, p_id, target_id, name):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
@@ -146,6 +145,15 @@ def guild_change_president_remote(g_id, p_id, target_id):
         p_list3.append(p_id)
     else:
         guild_obj.p_list[3] = [p_id]
+
+    dynamic_pb = guild_pb2.GuildDynamic()
+    dynamic_pb.type = const.DYNAMIC_CHANGE
+    dynamic_pb.time = int(time.time())
+    name2 = tb_character_info.getObj(target_id).hget('nickname')
+    dynamic_pb.name1 = name
+    dynamic_pb.name2 = name2
+
+    guild_obj.add_dynamic(dynamic_pb.SerializeToString())
     guild_obj.save_data()
     return {'res': True, 'name': guild_obj.name}
 
@@ -186,7 +194,11 @@ def guild_appoint_remote(g_id, p_id, deal_type, target_id):
         return {'res': False, 'no': 849}
     p_list2 = guild_obj.p_list.get(2, [])
     p_list3 = guild_obj.p_list.get(3, [])
+
+    dynamic_pb = guild_pb2.GuildDynamic()
+
     if deal_type == 1:  # 1提拔2撤销
+        dynamic_pb.type = const.DYNAMIC_UP
         if len(p_list2) >= 2:
             return {'res': False, 'no': 860}
         if target_id not in p_list3:
@@ -197,6 +209,7 @@ def guild_appoint_remote(g_id, p_id, deal_type, target_id):
         else:
             guild_obj.p_list[2] = [target_id]
     else:
+        dynamic_pb.type = const.DYNAMIC_DOWN
         if target_id not in p_list2:
             return {'res': False, 'no': 800}
         p_list2.remove(target_id)
@@ -204,6 +217,11 @@ def guild_appoint_remote(g_id, p_id, deal_type, target_id):
             p_list3.append(target_id)
         else:
             guild_obj.p_list[3] = [target_id]
+
+    dynamic_pb.time = int(time.time())
+    name = tb_character_info.getObj(target_id).hget('nickname')
+    dynamic_pb.name1 = name
+    guild_obj.add_dynamic(dynamic_pb.SerializeToString())
 
     guild_obj.save_data()
     return {'res': True, 'name': guild_obj.name}
@@ -226,6 +244,7 @@ def guild_kick_remote(g_id, p_id, be_kick_ids):
     if not position or position > 2:
         # 没有权限 或者 不在此军团
         return {'res': False, 'no': 849}
+
     p_list2 = guild_obj.p_list.get(2, [])
     p_list3 = guild_obj.p_list.get(3, [])
     for be_kick_id in be_kick_ids:
@@ -236,6 +255,12 @@ def guild_kick_remote(g_id, p_id, be_kick_ids):
         else:
             continue
         kick_list.append(be_kick_id)
+
+        dynamic_pb = guild_pb2.GuildDynamic()
+        dynamic_pb.type = const.DYNAMIC_KICK
+        name = tb_character_info.getObj(be_kick_id).hget('nickname')
+        dynamic_pb.name1 = name
+        guild_obj.add_dynamic(dynamic_pb.SerializeToString())
 
     guild_obj.save_data()
     return {'res': True, 'kick_list': kick_list, 'name': guild_obj.name}
@@ -265,7 +290,7 @@ def join_guild_remote(g_id, p_id):
 
 
 @rootserviceHandle
-def exit_guild_remote(guild_id, p_id):
+def exit_guild_remote(guild_id, p_id, name):
     """
     no: True 1 解散公会 2 团长退出 3 非团长退出
     """
@@ -302,6 +327,13 @@ def exit_guild_remote(guild_id, p_id):
         guild_obj.change_position(next_id, next_position, position)
         no = 3
     guild_obj.exit_guild(p_id, position)
+
+    dynamic_pb = guild_pb2.GuildDynamic()
+    dynamic_pb.type = const.DYNAMIC_EXIT
+    dynamic_pb.time = int(time.time())
+    dynamic_pb.name1 = name
+    guild_obj.add_dynamic(dynamic_pb.SerializeToString())
+
     guild_obj.save_data()
     return {'res': True, 'no': no,
             'apply_ids': guild_obj.apply,
@@ -369,8 +401,14 @@ def deal_apply_remote(g_id, p_ids, deal_type):
                 guild_obj.p_list[3] = [p_id]
 
             character_obj = tb_character_info.getObj(p_id)
-            apply_guilds = character_obj.hget('apply_guilds')
-            del_player_apply(p_id, apply_guilds)
+            character_info = character_obj.hgetall()
+            del_player_apply(p_id, character_info.get('apply_guilds', []))
+
+            dynamic_pb = guild_pb2.GuildDynamic()
+            dynamic_pb.type = const.DYNAMIC_JOIN
+            dynamic_pb.time = int(time.time())
+            dynamic_pb.name1 = character_info.get('nickname')
+            guild_obj.add_dynamic(dynamic_pb.SerializeToString())
     if deal_type == 2:
         for p_id in p_ids:
             if p_id in guild_obj.apply:
@@ -425,6 +463,7 @@ def up_build_remote(g_id, p_id, build_type):
             return {'res': False, 'no': 892}
 
     build_info[build_type] += 1
+    guild_obj.build = build_info
     guild_obj.contribution -= build_conf.exp
     guild_obj.save_data()
 
@@ -432,7 +471,7 @@ def up_build_remote(g_id, p_id, build_type):
 
 
 @rootserviceHandle
-def praise_remote(g_id, p_id):
+def praise_remote(g_id, p_id, name):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
@@ -445,11 +484,21 @@ def praise_remote(g_id, p_id):
 
     headSworShip = build_conf.headSworShip
     money_num = random.randint(headSworShip[0], headSworShip[1])
+    drop_num = random.randint(worShip[1][0], worShip[1][1])
     guild_obj.add_praise_money(money_num)
+
+    dynamic_pb = guild_pb2.GuildDynamic()
+    dynamic_pb.type = const.DYNAMIC_ZAN
+    dynamic_pb.time = int(time.time())
+    dynamic_pb.name1 = name
+    dynamic_pb.num = drop_num
+
+    guild_obj.add_dynamic(dynamic_pb.SerializeToString())
     guild_obj.save_data()
     return {'res': True, 'build_level': build_level,
             'money_num': guild_obj.praise_money,
-            'praise_times': guild_obj.praise_num}
+            'praise_times': guild_obj.praise_num,
+            'drop_num': drop_num}
 
 
 @rootserviceHandle
@@ -478,7 +527,7 @@ def captailn_receive_remote(g_id, p_id):
 
 
 @rootserviceHandle
-def bless_remote(g_id, p_id, bless_type):
+def bless_remote(g_id, p_id, bless_type, name):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
@@ -490,6 +539,14 @@ def bless_remote(g_id, p_id, bless_type):
     build_conf = game_configs.guild_config.get(2)[build_level]
     worship_info = build_conf.guild_worship.get(bless_type)
 
+    dynamic_pb = guild_pb2.GuildDynamic()
+    dynamic_pb.type = const.DYNAMIC_BLESS
+    dynamic_pb.time = int(time.time())
+    dynamic_pb.name1 = name
+    dynamic_pb.num1 = worship_info[2]
+
+    guild_obj.add_dynamic(dynamic_pb.SerializeToString())
+
     guild_obj.do_bless(worship_info[2], worship_info[3])
     guild_obj.save_data()
 
@@ -497,7 +554,7 @@ def bless_remote(g_id, p_id, bless_type):
 
 
 @rootserviceHandle
-def can_mobai_remote(g_id, p_id, u_id):
+def mobai_remote(g_id, p_id, u_id, name):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
@@ -508,6 +565,15 @@ def can_mobai_remote(g_id, p_id, u_id):
     p_list = guild_obj.p_list
     for _, _p_list in guild_obj.p_list.items():
         if u_id in _p_list:
+            drop_num = game_configs.base_config.get('Worship2')[0].num
+            dynamic_pb = guild_pb2.GuildDynamic()
+            dynamic_pb.type = const.DYNAMIC_MOBAI
+            dynamic_pb.time = int(time.time())
+            dynamic_pb.name1 = name
+            name2 = tb_character_info.getObj(u_id).hget('nickname')
+            dynamic_pb.name2 = name2
+            dynamic_pb.num = drop_num
+            dynamic_pb.num = worship_info[2]
             return {'res': True}
 
     logger.error('mobai, player dont in guild')
@@ -525,7 +591,7 @@ def mine_seek_help_remote(u_id, mine_id, g_id):
         return {'res': False, 'no': 844}
 
     if not mine.guild_seek_help(mine_id, u_id):
-        return False
+        return {'res': False, 'no': 800}
 
     mine_help = guild_obj.mine_help
     now = int(time.time())
@@ -533,13 +599,13 @@ def mine_seek_help_remote(u_id, mine_id, g_id):
     a = 1
     while mine_help.get(now):
         if a > 2:
-            return False
+            return {'res': False, 'no': 800}
         now += 1
         a += 1
 
     guild_obj.mine_help[now] = [mine_id, u_id, 0]
     guild_obj.save_data()
-    return True
+    return {'res': True, 'p_list': guild_obj.p_list}
 
 
 @rootserviceHandle
@@ -614,7 +680,7 @@ def mine_help_remote(g_id, p_id, seek_time, already_helps):
     # help_ids 这次帮助的列表 加上 之前帮助的而且这个请求还存在的
     # already_helps 之前已经帮助过的列表
     # guild_obj.mine_help 军团里所有的请求
-    return {'res': True, 'help_ids': help_ids}
+    return {'res': True, 'help_ids': help_ids, 'p_list': guild_obj.p_list}
 
 
 @rootserviceHandle

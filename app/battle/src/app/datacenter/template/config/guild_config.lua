@@ -2,7 +2,7 @@ guild_config={
   [30002] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 20002,  [2] = 30002,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -24,7 +24,7 @@ guild_config={
 ,  [30003] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 20003,  [2] = 30003,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -46,7 +46,7 @@ guild_config={
 ,  [30004] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 20004,  [2] = 30004,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -68,7 +68,7 @@ guild_config={
 ,  [30005] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 20005,  [2] = 30005,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -90,7 +90,7 @@ guild_config={
 ,  [30006] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 20006,  [2] = 30006,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -112,7 +112,7 @@ guild_config={
 ,  [30007] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 20007,  [2] = 30007,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -134,7 +134,7 @@ guild_config={
 ,  [30008] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 20008,  [2] = 30008,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -156,7 +156,7 @@ guild_config={
 ,  [30009] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 20009,  [2] = 30009,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -178,7 +178,7 @@ guild_config={
 ,  [80003] = {
   ["profit_mdef"] = 540,  ["condition"] = {
 }
-,  ["p_max"] = 24,  ["guild_worship"] = {
+,  ["p_max"] = 24,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -214,7 +214,7 @@ guild_config={
 ,  [80007] = {
   ["profit_mdef"] = 2540,  ["condition"] = {
 }
-,  ["p_max"] = 38,  ["guild_worship"] = {
+,  ["p_max"] = 38,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -250,7 +250,7 @@ guild_config={
 ,  [50001] = {
   ["profit_mdef"] = 0,  ["condition"] = {
 }
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -272,7 +272,7 @@ guild_config={
 ,  [10001] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10001,  [2] = 20001,  [3] = 30001,  [4] = 40001,}
-,  ["p_max"] = 20,  ["guild_worship"] = {
+,  ["p_max"] = 20,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -318,7 +318,7 @@ guild_config={
 ,  [10002] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10002,  [2] = 20002,  [3] = 30002,  [4] = 40002,}
-,  ["p_max"] = 22,  ["guild_worship"] = {
+,  ["p_max"] = 22,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -364,7 +364,7 @@ guild_config={
 ,  [20001] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10001,  [2] = 20001,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -389,18 +389,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 6000,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5001,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5004,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5003,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5002,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5005,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5004,}
 ,}
 ,}
 ,  [20002] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10002,  [2] = 20002,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -425,18 +427,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 11500,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5021,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5024,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5023,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5022,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5025,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5024,}
 ,}
 ,}
 ,  [20003] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10002,  [2] = 20003,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -461,18 +465,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 27000,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5021,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5024,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5023,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5022,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5025,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5024,}
 ,}
 ,}
 ,  [20004] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10002,  [2] = 20004,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -497,18 +503,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 63000,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5041,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5044,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5043,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5042,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5045,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5044,}
 ,}
 ,}
 ,  [20005] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10002,  [2] = 20005,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -533,18 +541,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 133000,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5041,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5044,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5043,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5042,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5045,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5044,}
 ,}
 ,}
 ,  [10005] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10005,  [2] = 20005,  [3] = 30005,  [4] = 40005,}
-,  ["p_max"] = 30,  ["guild_worship"] = {
+,  ["p_max"] = 30,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -590,7 +600,7 @@ guild_config={
 ,  [20007] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10002,  [2] = 20007,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -615,18 +625,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 477500,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5061,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5064,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5063,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5062,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5065,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5064,}
 ,}
 ,}
 ,  [10006] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10006,  [2] = 20006,  [3] = 30006,  [4] = 40006,}
-,  ["p_max"] = 34,  ["guild_worship"] = {
+,  ["p_max"] = 34,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -672,7 +684,7 @@ guild_config={
 ,  [80004] = {
   ["profit_mdef"] = 900,  ["condition"] = {
 }
-,  ["p_max"] = 27,  ["guild_worship"] = {
+,  ["p_max"] = 27,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -708,7 +720,7 @@ guild_config={
 ,  [80008] = {
   ["profit_mdef"] = 3270,  ["condition"] = {
 }
-,  ["p_max"] = 42,  ["guild_worship"] = {
+,  ["p_max"] = 42,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -744,7 +756,7 @@ guild_config={
 ,  [10008] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10008,  [2] = 20008,  [3] = 30008,  [4] = 40008,}
-,  ["p_max"] = 42,  ["guild_worship"] = {
+,  ["p_max"] = 42,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -790,7 +802,7 @@ guild_config={
 ,  [10009] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10009,  [2] = 20009,  [3] = 30009,  [4] = 40009,}
-,  ["p_max"] = 46,  ["guild_worship"] = {
+,  ["p_max"] = 46,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -836,7 +848,7 @@ guild_config={
 ,  [10010] = {
   ["profit_mdef"] = 0,  ["condition"] = {
 }
-,  ["p_max"] = 50,  ["guild_worship"] = {
+,  ["p_max"] = 50,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -882,7 +894,7 @@ guild_config={
 ,  [60001] = {
   ["profit_mdef"] = 0,  ["condition"] = {
 }
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -904,7 +916,7 @@ guild_config={
 ,  [80001] = {
   ["profit_mdef"] = 90,  ["condition"] = {
 }
-,  ["p_max"] = 20,  ["guild_worship"] = {
+,  ["p_max"] = 20,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -940,7 +952,7 @@ guild_config={
 ,  [80005] = {
   ["profit_mdef"] = 1350,  ["condition"] = {
 }
-,  ["p_max"] = 30,  ["guild_worship"] = {
+,  ["p_max"] = 30,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -976,7 +988,7 @@ guild_config={
 ,  [80009] = {
   ["profit_mdef"] = 4090,  ["condition"] = {
 }
-,  ["p_max"] = 46,  ["guild_worship"] = {
+,  ["p_max"] = 46,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -1012,7 +1024,7 @@ guild_config={
 ,  [40010] = {
   ["profit_mdef"] = 5000,  ["condition"] = {
 }
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 10,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1040,7 +1052,7 @@ guild_config={
 ,  [40009] = {
   ["profit_mdef"] = 4090,  ["condition"] = {
   [1] = 30009,  [2] = 40009,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 9,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1068,7 +1080,7 @@ guild_config={
 ,  [40008] = {
   ["profit_mdef"] = 3270,  ["condition"] = {
   [1] = 30008,  [2] = 40008,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 8,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1096,7 +1108,7 @@ guild_config={
 ,  [20006] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10002,  [2] = 20006,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -1121,18 +1133,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 263000,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5061,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5064,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5063,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5062,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5065,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5064,}
 ,}
 ,}
 ,  [40006] = {
   ["profit_mdef"] = 1900,  ["condition"] = {
   [1] = 30006,  [2] = 40006,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 6,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1160,7 +1174,7 @@ guild_config={
 ,  [10003] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10003,  [2] = 20003,  [3] = 30003,  [4] = 40003,}
-,  ["p_max"] = 24,  ["guild_worship"] = {
+,  ["p_max"] = 24,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -1206,7 +1220,7 @@ guild_config={
 ,  [40004] = {
   ["profit_mdef"] = 900,  ["condition"] = {
   [1] = 30004,  [2] = 40004,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 4,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1234,7 +1248,7 @@ guild_config={
 ,  [30010] = {
   ["profit_mdef"] = 0,  ["condition"] = {
 }
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1256,7 +1270,7 @@ guild_config={
 ,  [40002] = {
   ["profit_mdef"] = 270,  ["condition"] = {
   [1] = 30002,  [2] = 40002,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 2,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1284,7 +1298,7 @@ guild_config={
 ,  [40001] = {
   ["profit_mdef"] = 90,  ["condition"] = {
   [1] = 30001,  [2] = 40001,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 1,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1312,7 +1326,7 @@ guild_config={
 ,  [40003] = {
   ["profit_mdef"] = 540,  ["condition"] = {
   [1] = 30003,  [2] = 40003,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 3,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1340,7 +1354,7 @@ guild_config={
 ,  [40005] = {
   ["profit_mdef"] = 1350,  ["condition"] = {
   [1] = 30005,  [2] = 40005,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 5,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1368,7 +1382,7 @@ guild_config={
 ,  [40007] = {
   ["profit_mdef"] = 2540,  ["condition"] = {
   [1] = 30007,  [2] = 40007,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 7,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1396,7 +1410,7 @@ guild_config={
 ,  [80002] = {
   ["profit_mdef"] = 270,  ["condition"] = {
 }
-,  ["p_max"] = 22,  ["guild_worship"] = {
+,  ["p_max"] = 22,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -1432,7 +1446,7 @@ guild_config={
 ,  [80006] = {
   ["profit_mdef"] = 1900,  ["condition"] = {
 }
-,  ["p_max"] = 34,  ["guild_worship"] = {
+,  ["p_max"] = 34,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -1468,7 +1482,7 @@ guild_config={
 ,  [80010] = {
   ["profit_mdef"] = 5000,  ["condition"] = {
 }
-,  ["p_max"] = 50,  ["guild_worship"] = {
+,  ["p_max"] = 50,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -1504,7 +1518,7 @@ guild_config={
 ,  [20009] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10002,  [2] = 20009,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -1529,18 +1543,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 1304000,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5081,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5084,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5083,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5082,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5085,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5084,}
 ,}
 ,}
 ,  [10004] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10004,  [2] = 20004,  [3] = 30004,  [4] = 40004,}
-,  ["p_max"] = 27,  ["guild_worship"] = {
+,  ["p_max"] = 27,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
@@ -1586,7 +1602,7 @@ guild_config={
 ,  [20008] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10002,  [2] = 20008,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -1611,18 +1627,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 811000,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5081,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5084,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5083,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5082,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5085,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5084,}
 ,}
 ,}
 ,  [20010] = {
   ["profit_mdef"] = 0,  ["condition"] = {
 }
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 15000,  [3] = 200,  [4] = 15,  [5] = 20,  [6] = 1,}
 ,  ["3"] = {
@@ -1647,18 +1665,20 @@ guild_config={
 ,  ["profit_pdef"] = 0,  ["profit_hp"] = 0,  ["exp"] = 0,  ["collectSupportNum"] = 0,  ["reward"] = {
   ["1"] = {
   [1] = 10,  [2] = 5101,}
-,  ["4"] = {
-  [1] = 40,  [2] = 5104,}
 ,  ["3"] = {
   [1] = 30,  [2] = 5103,}
 ,  ["2"] = {
   [1] = 20,  [2] = 5102,}
+,  ["5"] = {
+  [1] = 50,  [2] = 5105,}
+,  ["4"] = {
+  [1] = 40,  [2] = 5104,}
 ,}
 ,}
 ,  [30001] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 20001,  [2] = 30001,}
-,  ["p_max"] = 0,  ["guild_worship"] = {
+,  ["p_max"] = 0,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
 }
@@ -1680,7 +1700,7 @@ guild_config={
 ,  [10007] = {
   ["profit_mdef"] = 0,  ["condition"] = {
   [1] = 10007,  [2] = 20007,  [3] = 30007,  [4] = 40007,}
-,  ["p_max"] = 38,  ["guild_worship"] = {
+,  ["p_max"] = 38,  ["skillMax"] = 0,  ["guild_worship"] = {
 }
 ,  ["support"] = {
   ["107"] = {
