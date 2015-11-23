@@ -10,6 +10,7 @@ import cPickle
 from app.world.core.guild_manager import guild_manager_obj
 from shared.db_opear.configs_data import game_configs
 import random
+from app.world.action import mine
 
 tb_guild_info = RedisObject('tb_guild_info')
 tb_character_info = RedisObject('tb_character_info')
@@ -311,7 +312,7 @@ def bless_remote(g_id, p_id, bless_type):
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
-        return cPickle.dumps({'res': False, 'no': 844})
+        return {'res': False, 'no': 844}
 
     build_level = guild_obj.build.get(2)
     build_conf = game_configs.guild_config.get(2)[build_level]
@@ -331,7 +332,7 @@ def can_mobai_remote(g_id, p_id, u_id):
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
-        return cPickle.dumps({'res': False, 'no': 844})
+        return {'res': False, 'no': 844}
 
     p_list = guild_obj.p_list
     for _, _p_list in guild_obj.p_list.items():
@@ -339,4 +340,109 @@ def can_mobai_remote(g_id, p_id, u_id):
             return {'res': True}
 
     logger.error('mobai, player dont in guild')
-    return cPickle.dumps({'res': False, 'no': 800})
+    return {'res': False, 'no': 800}
+
+
+@rootserviceHandle
+def mine_seek_help_remote(u_id, mine_id, g_id):
+    """
+    求助
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+
+    if not mine.guild_seek_help(mine_id, u_id):
+        return False
+
+    mine_help = guild_obj.mine_help
+    now = int(time.time())
+
+    a = 1
+    while mine_help.get(now):
+        if a > 2:
+            return False
+        now += 1
+        a += 1
+
+    guild_obj.mine_help[now] = [mine_id, u_id, 0]
+    guild_obj.save_data()
+    return True
+
+
+@rootserviceHandle
+def mine_seek_help_list_remote(g_id, p_id):
+    """
+    获取列表
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+    position = guild_obj.get_position(p_id)
+    if not position:
+        #  不在此军团
+        return {'res': False, 'no': 800}
+
+    p_ids = []
+    for _, x in guild_obj.p_list.items():
+        p_ids += x
+    print guild_obj.mine_help, '======================aaa2', p_ids
+    for _time, [mine_id, u_id, times] in guild_obj.mine_help.items():
+        if u_id not in p_ids:
+            del guild_obj.mine_help[_time]
+            continue
+        if not mine.check_guild_seek_help(mine_id, u_id):
+            del guild_obj.mine_help[_time]
+            continue
+
+    return {'res': True, 'mine_help_list': guild_obj.mine_help}
+
+
+@rootserviceHandle
+def mine_help_remote(g_id, p_id, seek_time, already_helps):
+    """
+    帮助加速
+    此函数处理在帮助加速的的同时，更新玩家已经帮助列表
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 844}
+    position = guild_obj.get_position(p_id)
+    if not position:
+        #  不在此军团
+        return {'res': False, 'no': 800}
+
+    build_level = guild_obj.build.get(1)
+    build_conf = game_configs.guild_config.get(1)[build_level]
+    shorten_time = build_conf.shortenTime
+
+    help_ids = []
+    p_ids = []  # 所有的成员ID
+    for _, x in guild_obj.p_list.items():
+        p_ids += x
+    print guild_obj.mine_help, '======================aaa2', p_ids
+    for _time, [mine_id, u_id, times] in guild_obj.mine_help.items():
+        if u_id not in p_ids:
+            del guild_obj.mine_help[_time]
+            continue
+        if u_id == p_id:
+            continue
+        if _time in already_helps:
+            help_ids.append(_time)
+            continue
+        if seek_time and seek_time != _time:
+            continue
+        if not mine.guild_help(mine_id, u_id, p_id, shorten_time):
+            del guild_obj.mine_help[_time]
+        else:
+            times += 1
+            guild_obj.mine_help[_time] = [mine_id, u_id, times]
+            help_ids.append(_time)
+
+    # help_ids 这次帮助的列表 加上 之前帮助的而且这个请求还存在的
+    # already_helps 之前已经帮助过的列表
+    # guild_obj.mine_help 军团里所有的请求
+    return {'res': True, 'help_ids': help_ids}

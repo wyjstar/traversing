@@ -628,7 +628,7 @@ def bless_809(data, player):
     else:
         player.finance.consume_gold(worship_info[1], const.GUILD_BLESS)
     # 逻辑
-    player.guild.do_bless(worship_info[4])
+    # player.guild.do_bless(worship_info[4])
 
     # rank_helper.add_rank_info('GuildLevel',
     #                           guild_obj.g_id, guild_obj.level)
@@ -832,6 +832,10 @@ def get_role_list_811(data, player):
                     time.localtime().tm_yday:
                 today_contribution = character_info['bless'][2]
             role_info.day_contribution = today_contribution
+            if role_id in player.guild.mobai_list:
+                role_info.be_mobai = 1
+            else:
+                role_info.be_mobai = 0
 
     response.res.result = True
     print response, '==========================guild player list'
@@ -888,8 +892,6 @@ def get_guild_info_812(data, player):
     response.bless_num = player.guild.bless_times
     response.guild_bless_times = guild_obj.bless_num
 
-    response.bless_state = player.guild.bless_times
-
     for bless_gift_no in player.guild.bless_gifts:
         response.bless_gift.append(bless_gift_no)
     rank_no = rank_helper.get_rank_by_key('GuildLevel',
@@ -922,6 +924,7 @@ def get_guild_info_812(data, player):
             response.have_apply = 1
         else:
             response.have_apply = 0
+    response.be_mobai_times = player.guild.be_mobai_times
 
     response.res.result = True
     print response, '================================================11111'
@@ -1293,6 +1296,7 @@ def get_bless_gift_1808(data, player):
     get_return(player, return_data, response.gain)
 
     player.guild.receive_bless_gift(gift_no)
+    print player.guild.bless_gifts, '=============212121:1'
     player.guild.save_data()
     response.res.result = True
     print '============================21212', response
@@ -1498,14 +1502,14 @@ def mobai_871(data, player):
         response.res.result_no = 851
         return response.SerializeToString()
 
-    remote_res = remote_gate['world'].can_mobai(g_id, p_id,
-                                                u_id)
+    remote_res = remote_gate['world'].can_mobai_remote(g_id, p_id,
+                                                       u_id)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    player.guild.do_mobai(u_id)
+    # player.guild.do_mobai(u_id)
     return_data = gain(player, game_configs.base_config.get('Worship2'),
                        const.GUILD_MOBAI)  # 获取
     get_return(player, return_data, response.gain)
@@ -1530,10 +1534,7 @@ def mobai_871(data, player):
 
 @remoteserviceHandle('gate')
 def receive_mobai_872(data, player):
-    args = UpBuildRequest()
-    args.ParseFromString(data)
-    u_id = args.u_id
-    response = UpBuildResponse()
+    response = ReceiveMOBAIResponse()
 
     p_id = player.base_info.id
     g_id = player.guild.g_id
@@ -1551,30 +1552,23 @@ def receive_mobai_872(data, player):
         response.res.result_no = 800
         return response.SerializeToString()
 
-    remote_res = remote_gate['world'].can_mobai(g_id, p_id,
-                                                u_id)
-    if not remote_res.get('res'):
-        response.res.result = False
-        response.res.result_no = remote_res.get('no')
-        return response.SerializeToString()
-
-    player.guild.receive_mobai()
+    # player.guild.receive_mobai()
     return_data = gain(player, game_configs.base_config.get('AreWorship2'),
                        const.GUILD_MOBAI, multiple=be_mobai_times)  # 获取
     get_return(player, return_data, response.gain)
 
     response.res.result = True
+    print 'receive mobai ===========', response, game_configs.base_config.get('AreWorship2')
     return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
 def mine_seek_help_873(data, player):
-    return
     # 秘境求助
     args = MineSeekHelpRequest()
     args.ParseFromString(data)
-    pos = request.pos                    # 矿所在位置
-    response = MineHelpRequest()
+    pos = args.pos                    # 矿所在位置
+    response = MineSeekHelpResponse()
 
     p_id = player.base_info.id
     g_id = player.guild.g_id
@@ -1586,5 +1580,93 @@ def mine_seek_help_873(data, player):
         response.res.result_no = 846
         return response.SerializeToString()
 
-    mine = player.mine.mine_info(pos)
-    mine_id = mine['seq']
+    res = player.mine.seek_help(pos)
+    print res, '==========222'
+    if not res:
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+    response.res.result = True
+    print response, '=================111'
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def mine_seek_help_list_874(data, player):
+    # 秘境求助列表
+    response = MineSeekHelpListResponse()
+
+    p_id = player.base_info.id
+    g_id = player.guild.g_id
+
+    if g_id == 0:
+        # "没有公会"
+        logger.error('mobai, guild id == 0')
+        response.res.result = False
+        response.res.result_no = 846
+        return response.SerializeToString()
+    remote_res = remote_gate['world'].mine_seek_help_list_remote(g_id, p_id)
+    if not remote_res.get('res'):
+        print '=========================aaa', remote_res.get('no')
+        response.res.result = False
+        response.res.result_no = remote_res.get('no')
+        return response.SerializeToString()
+    mine_help_list = remote_res.get('mine_help_list')
+    print '=========================aaa1', mine_help_list
+    for _time, [mine_id, u_id, times] in mine_help_list.items():
+        # if u_id == p_id:
+        #     continue
+        if _time in player.guild.mine_help:
+            continue
+        character_obj = tb_character_info.getObj(u_id)
+        if not character_obj.exists():
+            continue
+        character_info = character_obj.hmget(['nickname', 'heads', 'level',
+                                              'vip_level'])
+
+        help_info = response.help_infos.add()
+        help_info.p_id = u_id
+        help_info.name = character_info['nickname']
+        help_info.level = character_info['level']
+        help_info.vip_level = character_info['vip_level']
+
+        heads = Heads_DB()
+        heads.ParseFromString(character_info['heads'])
+        help_info.icon = heads.now_head
+        help_info.mine_id = mine_id
+        help_info.seek_time = _time
+
+    response.res.result = True
+    print response, '=====================aaaa='
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def mine_help_list_875(data, player):
+    # 秘境帮助
+    args = MineHelpRequest()
+    args.ParseFromString(data)
+    seek_time = args.seek_time                    # 矿所在位置
+    response = MineHelpResponse()
+
+    p_id = player.base_info.id
+    g_id = player.guild.g_id
+
+    if g_id == 0:
+        # "没有公会"
+        logger.error('mobai, guild id == 0')
+        response.res.result = False
+        response.res.result_no = 846
+        return response.SerializeToString()
+    remote_res = remote_gate['world'].mine_help_remote(g_id, p_id, seek_time, player.guild.mine_help)
+    if not remote_res.get('res'):
+        response.res.result = False
+        response.res.result_no = remote_res.get('no')
+        return response.SerializeToString()
+    help_ids = remote_res.get('help_ids')
+    print help_ids, '==================bbb2'
+    player.guild.mine_help = help_ids
+    player.guild.save_data()
+
+    response.res.result = True
+    return response.SerializeToString()

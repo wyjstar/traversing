@@ -20,7 +20,7 @@ import runt_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='mine.proto',
   package='',
-  serialized_pb='\n\nmine.proto\x1a\nitem.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\x1a\rline_up.proto\x1a\x0epvp_rank.proto\x1a\x13item_response.proto\x1a\nrunt.proto\"#\n\x0fpositionRequest\x12\x10\n\x08position\x18\x01 \x02(\x05\"\xab\x01\n\x08mineData\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0c\n\x04type\x18\x02 \x02(\x05\x12\x0e\n\x06status\x18\x03 \x02(\x05\x12\x10\n\x08nickname\x18\x04 \x01(\t\x12\x11\n\tlast_time\x18\x05 \x01(\x05\x12\x10\n\x08gen_time\x18\x06 \x01(\x05\x12\x10\n\x08is_guild\x18\x07 \x01(\x08\x12\x11\n\tis_friend\x18\x08 \x01(\x08\x12\x13\n\x0b\x66ight_power\x18\t \x01(\x05\"c\n\nmineUpdate\x12\x13\n\x0breset_today\x18\x01 \x02(\x05\x12\x12\n\nreset_free\x18\x02 \x02(\x05\x12\x13\n\x0breset_count\x18\x03 \x02(\x05\x12\x17\n\x04mine\x18\x04 \x03(\x0b\x32\t.mineData\"Y\n\x0esearchResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08position\x18\x02 \x02(\x05\x12\x17\n\x04mine\x18\x03 \x02(\x0b\x32\t.mineData\"\x18\n\x08resetMap\x12\x0c\n\x04\x66ree\x18\x01 \x02(\x05\"\x7f\n\rresetResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\x12\x19\n\x04mine\x18\x03 \x02(\x0b\x32\x0b.mineUpdate\x12\x0c\n\x04\x66ree\x18\x04 \x02(\x05\"0\n\tstoneData\x12\x10\n\x08stone_id\x18\x01 \x02(\x05\x12\x11\n\tstone_num\x18\x02 \x02(\x05\"\xbf\x02\n\nmineDetail\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12\x17\n\x04mine\x18\x03 \x02(\x0b\x32\t.mineData\x12\r\n\x05limit\x18\x04 \x02(\x05\x12\x1a\n\x06normal\x18\x05 \x03(\x0b\x32\n.stoneData\x12\x19\n\x05lucky\x18\x06 \x03(\x0b\x32\n.stoneData\x12\x10\n\x08increase\x18\x07 \x02(\x05\x12\x1f\n\x06lineup\x18\x08 \x01(\x0b\x32\x0f.LineUpResponse\x12\x0f\n\x07genUnit\x18\t \x01(\x05\x12\x0c\n\x04rate\x18\n \x01(\x02\x12\x10\n\x08incrcost\x18\x0b \x01(\x05\x12\x10\n\x08stage_id\x18\x0c \x01(\x05\x12\x12\n\nguard_time\x18\r \x01(\x05\x12\x18\n\x10\x61\x63\x63\x65lerate_times\x18\x0e \x01(\x05\"\x8b\x01\n\ndrawStones\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12&\n\x06normal\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12%\n\x05lucky\x18\x04 \x01(\x0b\x32\x16.GameResourcesResponse\"+\n\x08shopInfo\x12\x0f\n\x07shop_id\x18\x01 \x02(\x05\x12\x0e\n\x06status\x18\x02 \x02(\x05\"U\n\nshopStatus\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x17\n\x04shop\x18\x02 \x03(\x0b\x32\t.shopInfo\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"4\n\x0f\x65xchangeRequest\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0f\n\x07shop_id\x18\x02 \x02(\x05\"\xa2\x01\n\x10\x65xchangeResponse\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0f\n\x07shop_id\x18\x02 \x02(\x05\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x04 \x02(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x05 \x02(\x0b\x32\x16.GameResourcesResponse\"=\n\tboxReward\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1e\n\x04\x64\x61ta\x18\x02 \x02(\x0b\x32\x10.ItemUseResponse\"~\n\x10IncreaseResponse\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x11\n\tlast_time\x18\x02 \x02(\x05\x12\'\n\x07\x63onsume\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x04 \x02(\x0b\x32\x0f.CommonResponse\"n\n\x10MineGuardRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12&\n\rline_up_slots\x18\x02 \x03(\x0b\x32\x0f.MineLineUpSlot\x12\x15\n\rbest_skill_id\x18\x03 \x01(\x05\x12\x0e\n\x06lineup\x18\x04 \x03(\x05\"_\n\x0eMineLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12+\n\x0f\x65quipment_slots\x18\x03 \x03(\x0b\x32\x12.MineEquipmentSlot\":\n\x11MineEquipmentSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x14\n\x0c\x65quipment_id\x18\x02 \x02(\t\"a\n\x11MineBattleRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x03 \x01(\x05\x12\x0b\n\x03\x66id\x18\x04 \x01(\x05\x12\x0c\n\x04hold\x18\x05 \x01(\x05\"\xd5\x02\n\x12MineBattleResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x11red_best_skill_id\x18\x04 \x01(\x05\x12\x1c\n\x14red_best_skill_level\x18\x05 \x01(\x05\x12\x1a\n\x12\x62lue_best_skill_id\x18\x06 \x01(\x05\x12\x1d\n\x15\x62lue_best_skill_level\x18\x07 \x01(\x05\x12\x10\n\x08\x61wake_no\x18\x08 \x03(\x05\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12$\n\x04gain\x18\x0b \x01(\x0b\x32\x16.GameResourcesResponse\x12\x14\n\x0c\x66ight_result\x18\x0c \x01(\x08\x12\x0c\n\x04hold\x18\r \x01(\x05\"J\n\x11MineSettleRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0e\n\x06result\x18\x02 \x01(\x08\x12\x18\n\x05steps\x18\x03 \x03(\x0b\x32\t.StepInfo\"\x0b\n\tMineSpeed\"$\n\x15MineAccelerateRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\"_\n\x16MineAccelerateResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\nmine.proto\x1a\nitem.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\x1a\rline_up.proto\x1a\x0epvp_rank.proto\x1a\x13item_response.proto\x1a\nrunt.proto\"#\n\x0fpositionRequest\x12\x10\n\x08position\x18\x01 \x02(\x05\"\xbe\x01\n\x08mineData\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0c\n\x04type\x18\x02 \x02(\x05\x12\x0e\n\x06status\x18\x03 \x02(\x05\x12\x10\n\x08nickname\x18\x04 \x01(\t\x12\x11\n\tlast_time\x18\x05 \x01(\x05\x12\x10\n\x08gen_time\x18\x06 \x01(\x05\x12\x10\n\x08is_guild\x18\x07 \x01(\x08\x12\x11\n\tis_friend\x18\x08 \x01(\x08\x12\x13\n\x0b\x66ight_power\x18\t \x01(\x05\x12\x11\n\tseek_help\x18\n \x01(\x05\"c\n\nmineUpdate\x12\x13\n\x0breset_today\x18\x01 \x02(\x05\x12\x12\n\nreset_free\x18\x02 \x02(\x05\x12\x13\n\x0breset_count\x18\x03 \x02(\x05\x12\x17\n\x04mine\x18\x04 \x03(\x0b\x32\t.mineData\"Y\n\x0esearchResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08position\x18\x02 \x02(\x05\x12\x17\n\x04mine\x18\x03 \x02(\x0b\x32\t.mineData\"\x18\n\x08resetMap\x12\x0c\n\x04\x66ree\x18\x01 \x02(\x05\"\x7f\n\rresetResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse\x12\x19\n\x04mine\x18\x03 \x02(\x0b\x32\x0b.mineUpdate\x12\x0c\n\x04\x66ree\x18\x04 \x02(\x05\"0\n\tstoneData\x12\x10\n\x08stone_id\x18\x01 \x02(\x05\x12\x11\n\tstone_num\x18\x02 \x02(\x05\"\xd2\x02\n\nmineDetail\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12\x17\n\x04mine\x18\x03 \x02(\x0b\x32\t.mineData\x12\r\n\x05limit\x18\x04 \x02(\x05\x12\x1a\n\x06normal\x18\x05 \x03(\x0b\x32\n.stoneData\x12\x19\n\x05lucky\x18\x06 \x03(\x0b\x32\n.stoneData\x12\x10\n\x08increase\x18\x07 \x02(\x05\x12\x1f\n\x06lineup\x18\x08 \x01(\x0b\x32\x0f.LineUpResponse\x12\x0f\n\x07genUnit\x18\t \x01(\x05\x12\x0c\n\x04rate\x18\n \x01(\x02\x12\x10\n\x08incrcost\x18\x0b \x01(\x05\x12\x10\n\x08stage_id\x18\x0c \x01(\x05\x12\x12\n\nguard_time\x18\r \x01(\x05\x12\x18\n\x10\x61\x63\x63\x65lerate_times\x18\x0e \x01(\x05\x12\x11\n\tseek_help\x18\x0f \x01(\x05\"\x8b\x01\n\ndrawStones\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1c\n\x03res\x18\x02 \x02(\x0b\x32\x0f.CommonResponse\x12&\n\x06normal\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12%\n\x05lucky\x18\x04 \x01(\x0b\x32\x16.GameResourcesResponse\"+\n\x08shopInfo\x12\x0f\n\x07shop_id\x18\x01 \x02(\x05\x12\x0e\n\x06status\x18\x02 \x02(\x05\"U\n\nshopStatus\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x17\n\x04shop\x18\x02 \x03(\x0b\x32\t.shopInfo\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\"4\n\x0f\x65xchangeRequest\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0f\n\x07shop_id\x18\x02 \x02(\x05\"\xa2\x01\n\x10\x65xchangeResponse\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x0f\n\x07shop_id\x18\x02 \x02(\x05\x12\x1c\n\x03res\x18\x03 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x04 \x02(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x05 \x02(\x0b\x32\x16.GameResourcesResponse\"=\n\tboxReward\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x1e\n\x04\x64\x61ta\x18\x02 \x02(\x0b\x32\x10.ItemUseResponse\"~\n\x10IncreaseResponse\x12\x10\n\x08position\x18\x01 \x02(\x05\x12\x11\n\tlast_time\x18\x02 \x02(\x05\x12\'\n\x07\x63onsume\x18\x03 \x02(\x0b\x32\x16.GameResourcesResponse\x12\x1c\n\x03res\x18\x04 \x02(\x0b\x32\x0f.CommonResponse\"n\n\x10MineGuardRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12&\n\rline_up_slots\x18\x02 \x03(\x0b\x32\x0f.MineLineUpSlot\x12\x15\n\rbest_skill_id\x18\x03 \x01(\x05\x12\x0e\n\x06lineup\x18\x04 \x03(\x05\"_\n\x0eMineLineUpSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x0f\n\x07hero_no\x18\x02 \x02(\x05\x12+\n\x0f\x65quipment_slots\x18\x03 \x03(\x0b\x32\x12.MineEquipmentSlot\":\n\x11MineEquipmentSlot\x12\x0f\n\x07slot_no\x18\x01 \x02(\x05\x12\x14\n\x0c\x65quipment_id\x18\x02 \x02(\t\"a\n\x11MineBattleRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0e\n\x06lineup\x18\x02 \x03(\x05\x12\x14\n\x0cunparalleled\x18\x03 \x01(\x05\x12\x0b\n\x03\x66id\x18\x04 \x01(\x05\x12\x0c\n\x04hold\x18\x05 \x01(\x05\"\xd5\x02\n\x12MineBattleResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x11red_best_skill_id\x18\x04 \x01(\x05\x12\x1c\n\x14red_best_skill_level\x18\x05 \x01(\x05\x12\x1a\n\x12\x62lue_best_skill_id\x18\x06 \x01(\x05\x12\x1d\n\x15\x62lue_best_skill_level\x18\x07 \x01(\x05\x12\x10\n\x08\x61wake_no\x18\x08 \x03(\x05\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\x12$\n\x04gain\x18\x0b \x01(\x0b\x32\x16.GameResourcesResponse\x12\x14\n\x0c\x66ight_result\x18\x0c \x01(\x08\x12\x0c\n\x04hold\x18\r \x01(\x05\"J\n\x11MineSettleRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x0e\n\x06result\x18\x02 \x01(\x08\x12\x18\n\x05steps\x18\x03 \x03(\x0b\x32\t.StepInfo\"\x0b\n\tMineSpeed\"$\n\x15MineAccelerateRequest\x12\x0b\n\x03pos\x18\x01 \x02(\x05\"_\n\x16MineAccelerateResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x02(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -123,6 +123,13 @@ _MINEDATA = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='seek_help', full_name='mineData.seek_help', index=9,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -133,7 +140,7 @@ _MINEDATA = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=155,
-  serialized_end=326,
+  serialized_end=345,
 )
 
 
@@ -181,8 +188,8 @@ _MINEUPDATE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=328,
-  serialized_end=427,
+  serialized_start=347,
+  serialized_end=446,
 )
 
 
@@ -223,8 +230,8 @@ _SEARCHRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=429,
-  serialized_end=518,
+  serialized_start=448,
+  serialized_end=537,
 )
 
 
@@ -251,8 +258,8 @@ _RESETMAP = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=520,
-  serialized_end=544,
+  serialized_start=539,
+  serialized_end=563,
 )
 
 
@@ -300,8 +307,8 @@ _RESETRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=546,
-  serialized_end=673,
+  serialized_start=565,
+  serialized_end=692,
 )
 
 
@@ -335,8 +342,8 @@ _STONEDATA = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=675,
-  serialized_end=723,
+  serialized_start=694,
+  serialized_end=742,
 )
 
 
@@ -445,6 +452,13 @@ _MINEDETAIL = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='seek_help', full_name='mineDetail.seek_help', index=14,
+      number=15, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -454,8 +468,8 @@ _MINEDETAIL = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=726,
-  serialized_end=1045,
+  serialized_start=745,
+  serialized_end=1083,
 )
 
 
@@ -503,8 +517,8 @@ _DRAWSTONES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1048,
-  serialized_end=1187,
+  serialized_start=1086,
+  serialized_end=1225,
 )
 
 
@@ -538,8 +552,8 @@ _SHOPINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1189,
-  serialized_end=1232,
+  serialized_start=1227,
+  serialized_end=1270,
 )
 
 
@@ -580,8 +594,8 @@ _SHOPSTATUS = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1234,
-  serialized_end=1319,
+  serialized_start=1272,
+  serialized_end=1357,
 )
 
 
@@ -615,8 +629,8 @@ _EXCHANGEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1321,
-  serialized_end=1373,
+  serialized_start=1359,
+  serialized_end=1411,
 )
 
 
@@ -671,8 +685,8 @@ _EXCHANGERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1376,
-  serialized_end=1538,
+  serialized_start=1414,
+  serialized_end=1576,
 )
 
 
@@ -706,8 +720,8 @@ _BOXREWARD = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1540,
-  serialized_end=1601,
+  serialized_start=1578,
+  serialized_end=1639,
 )
 
 
@@ -755,8 +769,8 @@ _INCREASERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1603,
-  serialized_end=1729,
+  serialized_start=1641,
+  serialized_end=1767,
 )
 
 
@@ -804,8 +818,8 @@ _MINEGUARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1731,
-  serialized_end=1841,
+  serialized_start=1769,
+  serialized_end=1879,
 )
 
 
@@ -846,8 +860,8 @@ _MINELINEUPSLOT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1843,
-  serialized_end=1938,
+  serialized_start=1881,
+  serialized_end=1976,
 )
 
 
@@ -881,8 +895,8 @@ _MINEEQUIPMENTSLOT = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1940,
-  serialized_end=1998,
+  serialized_start=1978,
+  serialized_end=2036,
 )
 
 
@@ -937,8 +951,8 @@ _MINEBATTLEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2000,
-  serialized_end=2097,
+  serialized_start=2038,
+  serialized_end=2135,
 )
 
 
@@ -1049,8 +1063,8 @@ _MINEBATTLERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2100,
-  serialized_end=2441,
+  serialized_start=2138,
+  serialized_end=2479,
 )
 
 
@@ -1091,8 +1105,8 @@ _MINESETTLEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2443,
-  serialized_end=2517,
+  serialized_start=2481,
+  serialized_end=2555,
 )
 
 
@@ -1112,8 +1126,8 @@ _MINESPEED = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2519,
-  serialized_end=2530,
+  serialized_start=2557,
+  serialized_end=2568,
 )
 
 
@@ -1140,8 +1154,8 @@ _MINEACCELERATEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2532,
-  serialized_end=2568,
+  serialized_start=2570,
+  serialized_end=2606,
 )
 
 
@@ -1175,8 +1189,8 @@ _MINEACCELERATERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2570,
-  serialized_end=2665,
+  serialized_start=2608,
+  serialized_end=2703,
 )
 
 _MINEUPDATE.fields_by_name['mine'].message_type = _MINEDATA

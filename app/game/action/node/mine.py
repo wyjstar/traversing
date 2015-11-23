@@ -114,6 +114,9 @@ def one_mine_info(player, mstatus, one_mine):
     gen_time = mstatus.get('gen_time', None)
     if gen_time is not None:
         one_mine.gen_time = int(gen_time)
+    seek_help = mstatus.get('seek_help', None)
+    if seek_help is not None:
+        one_mine.seek_help = int(seek_help)
 
     if one_mine.type == MineType.PLAYER_FIELD:
         uid = mstatus.get('uid')
@@ -242,6 +245,7 @@ def query_1243(data, player):
     lucky = detail_info['lucky']
     guard_time = detail_info.get('guard_time', 0)
     stage_id = detail_info.get('stage_id', 0)
+    seek_help = detail_info.get('seek_help', 0)
 
     response.res.result = True
     mstatus = player.mine.mine_info(request.position)
@@ -260,6 +264,7 @@ def query_1243(data, player):
     response.increase = int(last_increase)
     if stype == 2:
         response.stage_id = int(stage_id)
+        response.seek_help = seek_help
         line_up_info(player, response.lineup)
     if stype == 1:
         response.accelerate_times = detail_info.get('accelerate_times', 0)
@@ -278,6 +283,7 @@ def query_1243(data, player):
     response.guard_time = int(guard_time)
 
     player.mine.save_data()
+    print response, '=========================aaa'
     return response.SerializePartialToString()
 
 

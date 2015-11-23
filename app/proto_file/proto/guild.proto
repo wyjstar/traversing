@@ -72,46 +72,6 @@ message GetGuildInfoResponse{
     optional int32 g_id = 2;    //id
     optional string name = 3;    //名
     optional int32 member_num = 4;   //人数
-    optional int32 contribution = 6;     //军团的建设值
-    optional int32 all_contribution = 5;     //军团的建设值
-    optional string call = 7;    //公告
-    optional int32 icon_id = 8;   //军团徽章
-    optional int32 all_zan_num = 30;   // 军团今日已经赞的次数
-    optional int32 zan_money = 29;   // 军团今日已经赞的次数
-
-    optional string captain_name = 9;   //团长name
-    optional int32 captain_level = 10;   //团长level
-    optional int32 captain_power = 11;   //团长战力
-    // optional int32 captain_zan_num = 12;   //团长集赞次数
-    optional int32 captain_vip_level = 16;   //团长vip等级
-    optional int32 captain_icon = 17;   //团长头像
-    optional int32 captain_zan_receive_state = 21;   //团长赞领取状态
-
-    optional int32 zan_num = 13;   // 我今日已经赞的次数
-    optional int32 last_zan_time = 27;   // 最后赞时间
-    optional int32 position = 14;   //我的职位
-    optional int32 have_apply = 15;   //有没有加军团申请 0 or 1
-
-    optional int32 luck_num = 18;   //福运
-    optional int32 bless_num = 19;   //祈福次数
-    optional int32 bless_state = 20;   //今天有没有祈福
-    repeated int32 bless_gift = 22;   //已经领取的祈福奖励
-    optional int32 guild_bless_times = 31;   //已经领取的祈福奖励
-
-    optional int32 my_guild_rank = 23;
-    optional int32 my_contribution = 24;  //我的剩余贡献值
-    optional int32 my_all_contribution = 28;  //我的总贡献值
-    optional int32 my_day_contribution = 25;  //我的今日共贡献值
-    repeated BuildInfo build_info = 26;
-}
-
-// 获取公会信息 command：812
-message GetGuildInfoResponse1{
-    required CommonResponse res = 1;
-
-    optional int32 g_id = 2;    //id
-    optional string name = 3;    //名
-    optional int32 member_num = 4;   //人数
     optional int32 contribution = 5;     //军团的建设值
     optional int32 all_contribution = 6;     //军团的建设值
     optional string call = 7;    //公告
@@ -135,12 +95,12 @@ message GetGuildInfoResponse1{
     repeated int32 bless_gift = 22;   //已经领取的祈福奖励
     optional int32 bless_num = 23;   //祈福次数
     optional int32 guild_bless_times = 24;   //军团祈福次数
-    optional int32 bless_state = 29;   //军团祈福次数
 
     optional int32 my_guild_rank = 25;
     optional int32 my_contribution = 26;  //我的剩余贡献值
     optional int32 my_all_contribution = 27;  //我的总贡献值
     optional int32 my_day_contribution = 28;  //我的今日共贡献值
+    optional int32 be_mobai_times = 29;  // 被膜拜次数
 }
 
 message BuildInfo{
@@ -203,6 +163,7 @@ message RoleInfo
     required int32 is_online = 8;  //是否在线，1在线，0不在线
     optional int32 user_icon = 9;   //玩家头像
     optional int32 vip_level = 16;   //vip等级
+    optional int32 be_mobai = 11;   //膜拜状态，我膜拜过为1 没膜拜过为0
 }
 
 // 转让军团 command：806 change_president_806
@@ -400,4 +361,41 @@ message GuildMOBAIResponse{
 message ReceiveMOBAIResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
+}
+
+// 秘境求助 873
+message MineSeekHelpRequest{
+    required int32 pos = 1;
+}
+
+// 秘境求助
+message MineSeekHelpResponse{
+    required CommonResponse res = 1;
+}
+
+// 秘境求助列表 874
+message MineSeekHelpListResponse{
+    required CommonResponse res = 1;
+    repeated MineSeekHelpInfo help_infos = 2;
+}
+
+message MineSeekHelpInfo{
+    required int32 p_id = 1;
+    required string name = 2;
+    optional int32 icon = 3;   //玩家头像
+    required int32 mine_id = 4;
+    required int32 seek_time = 5;
+    required int32 vip_level = 6;
+    required int32 level = 7;
+
+}
+
+// 秘境帮助 875
+message MineHelpRequest{
+    required int32 seek_time = 1;  // 0 all
+}
+
+// 秘境帮助
+message MineHelpResponse{
+    required CommonResponse res = 1;
 }

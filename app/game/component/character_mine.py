@@ -193,6 +193,7 @@ def settle(mine, uid=None, result=True, nickname=None, hold=1):
         player_field['creator'] = uid
         player_field['last_time'] = _now + mine_item.timeLimited1 * 60
         player_field['status'] = 1
+        player_field['seek_help'] = 0
 
         seq = remote_gate['world'].mine_add_field_remote(uid,
                                                          player_field)
@@ -524,6 +525,7 @@ class CharacterMine(Component):
         info['nickname'] = mine.get('nickname', _nickname)
         info['last_time'] = mine.get('last_time', 0)
         info['gen_time'] = mine.get('gen_time', 0)
+        info['seek_help'] = mine.get('seek_help', 0)
 
         info['position'] = position
         return info
@@ -633,4 +635,25 @@ class CharacterMine(Component):
         if result:
             _mine['accelerate_times'] = _mine.get('accelerate_times', 0) + 1
             self.save_data()
+        return result
+
+    def seek_help(self, pos):
+        if pos == 0 or pos not in self._mine:
+            logger.error('acc time gold pos is error:%s', pos)
+            return False
+        _mine = self._mine[pos]
+        if _mine['type'] != MineType.PLAYER_FIELD:
+            print '===============444'
+            return False
+        mine = tb_mine.hget(_mine['seq'])
+        if mine.get('seek_help'):
+            print '===============555', mine
+            return False
+
+        _uid = self.owner.base_info.id
+        _g_id = self.owner.guild.g_id
+        result = remote_gate['world'].mine_seek_help_remote(_uid,
+                                                            _mine['seq'],
+                                                            _g_id)
+        print result, '==========333'
         return result

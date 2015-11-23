@@ -40,6 +40,7 @@ class Guild(object):
         self._skill_points = 0                 # 技能点
         self._guild_skills = {}                # 军团等级
         self._last_attack_time = 0             # 上次攻击圣兽时间
+        self._mine_help = {}                   # {time:[mine_id, u_id]}
 
         self.init_guild_skills()
 
@@ -60,6 +61,7 @@ class Guild(object):
                 'praise': self._praise,
                 'call': self._call,
                 'invite_join': self._invite_join,
+                'mine_help': self._mine_help,
                 'p_list': self._p_list,
                 'build': self.build,
                 'apply': self._apply,
@@ -98,6 +100,7 @@ class Guild(object):
         self._icon_id = data.get("icon_id")
         self._bless = data.get("bless")
         self._praise = data.get("praise")
+        self._mine_help = data.get("mine_help")
         self._call = data.get("call")
         self._invite_join = data.get("invite_join")
         self._p_list = data.get("p_list")
@@ -421,3 +424,11 @@ class Guild(object):
         self._guild_boss = boss
         self.save_data()
         return boss
+
+    @property
+    def mine_help(self):
+        return self._mine_help
+
+    @mine_help.setter
+    def mine_help(self, values):
+        self._mine_help = values

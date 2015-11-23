@@ -9,6 +9,7 @@ from shared.db_opear.configs_data import game_configs
 
 
 def init_equipment(player):
+    return
     character_id = player.base_info.id
 
     for equip_no, val in game_configs.equipment_config.items():
@@ -55,4 +56,3 @@ def init_equipment(player):
     equipment_obj.save_data()
 
     player.equipment_component.save_data()
-

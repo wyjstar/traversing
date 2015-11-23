@@ -30,6 +30,7 @@ class CharacterGuildComponent(Component):
         self._guild_rank_flag = 0  # 推荐列表，已经查询到的redis排行标记
         self._mobai = [0, [], 1]  # ［被膜拜次数，［膜拜李飚］，time］
         self._guild_boss_last_attack_time = 0  # 上次攻击圣兽时间
+        self._mine_help = []  # 帮助过的时间戳
 
     def init_data(self, character_info):
         """
@@ -43,6 +44,8 @@ class CharacterGuildComponent(Component):
         self._exit_time = character_info.get("exit_time")
         self._apply_guilds = character_info.get("apply_guilds")
         self._guild_boss_last_attack_time = character_info.get("guild_boss_last_attack_time", 0)
+        self._mobai = character_info.get("guild_mobai")
+        self._mine_help = character_info.get("mine_help")
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -52,6 +55,8 @@ class CharacterGuildComponent(Component):
                         'bless': self._bless,
                         'praise': self._praise,
                         'apply_guilds': self._apply_guilds,
+                        'guild_mobai': self._mobai,
+                        'mine_help': self._mine_help,
                         'exit_time': self._exit_time,
                         'guild_boss_last_attack_time': self._guild_boss_last_attack_time,
                         })
@@ -61,6 +66,8 @@ class CharacterGuildComponent(Component):
                 'contribution': self._contribution,
                 'all_contribution': self._all_contribution,
                 'bless': self._bless,
+                'guild_mobai': self._mobai,
+                'mine_help': self._mine_help,
                 'praise': self._praise,
                 'apply_guilds': self._apply_guilds,
                 'exit_time': self._exit_time,
@@ -193,7 +200,10 @@ class CharacterGuildComponent(Component):
         self._all_contribution += v
 
     def receive_bless_gift(self, v):
-        self._bless[1].append(v)
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
+            self._bless = [0, [v], 0, int(time.time())]
+        else:
+            self._bless[1].append(v)
 
     @property
     def be_mobai_times(self):
@@ -221,3 +231,11 @@ class CharacterGuildComponent(Component):
 
     def receive_mobai(self):
         self._mobai[0] = 0
+
+    @property
+    def mine_help(self):
+        return self._mine_help
+
+    @mine_help.setter
+    def mine_help(self, v):
+        self._mine_help = v
