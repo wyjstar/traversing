@@ -38,15 +38,15 @@ class CharacterLoginGiftComponent(Component):
 
     def new_item(self):
         """docstring for new_item"""
-        activity_infos = game_configs.activity_config.get(2)
+        activity_infos = game_configs.activity_config.get(2, [])
         for info in activity_infos:
             self._continuous_day[info.id] = -1
 
-        activity_infos = game_configs.activity_config.get(1)
+        activity_infos = game_configs.activity_config.get(1, [])
         for info in activity_infos:
             self._cumulative_day[info.id] = -1
 
-        activity_infos = game_configs.activity_config.get(18)
+        activity_infos = game_configs.activity_config.get(18, [])
         for info in activity_infos:
             self._continuous_7day[info.id] = -1
 
