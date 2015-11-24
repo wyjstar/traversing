@@ -29,6 +29,7 @@ message GameLoginRequest{
     optional string pf = 23;//
     optional string pfkey = 24;//
     optional string zoneid = 25;//
+    optional int32 recharge_id = 27;// recharge_config 用于充值
 }
 
 //返回结果

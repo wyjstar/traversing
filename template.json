@@ -231,7 +231,7 @@
     },
     "deploy":{
         "channel": "taiwan",
-        "remote_deployed": false
+        "remote_deployed": true
     },
     "server_no": "<=server_no=>"
 }

@@ -6,6 +6,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.logobj import logger
 from app.proto_file.common_pb2 import GetGoldResponse
 from app.proto_file.game_pb2 import GameLoginRequest
+from shared.db_opear.configs_data import game_configs
 
 @remoteserviceHandle('gate')
 def get_gold_2001(data, player):
@@ -17,9 +18,19 @@ def get_gold_2001(data, player):
                    pay_token=request.pay_token,
                    pf=request.pf,
                    pfkey=request.pfkey)
+    response = GetGoldResponse()
     player.pay.refresh_pay_arg(pay_arg) # 设置支付参数
 
-    response = GetGoldResponse()
+    logger.debug("recharge_id %s" % request.recharge_id)
+    # add 月卡
+    recharge_item = game_configs.recharge_config.get(request.recharge_id)
+    if recharge_item is None:
+        logger.debug('not in rechargeconfig:%s',
+                        data.get('productId'))
+    else:
+        player.recharge.recharge_gain(recharge_item, response, True) #发送奖励邮件
+        response.res.result = True
+
     player.pay.recharge()
     response.res.result = True
     player.recharge.get_recharge_response(response)

@@ -19,5 +19,6 @@ class RechargeConfig(object):
             if item.get('platform') not in self._items:
                 self._items[item.get('platform')] = {}
             self._items[item.get('platform')].update({item.goodsid: item})
+            self._items[item.id] = item
 
         return self._items
