@@ -64,7 +64,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100053,}
+  [1] = 1,  [2] = 1,  [3] = 300053,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -442,7 +442,7 @@ shop_config={
 ,}
 ,  ["weight"] = 40,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 25,  ["quality"] = 6,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100054,}
+  [1] = 1,  [2] = 1,  [3] = 300054,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -820,7 +820,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100055,}
+  [1] = 1,  [2] = 1,  [3] = 300055,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -2330,7 +2330,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100017,}
+  [1] = 1,  [2] = 1,  [3] = 300017,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -2746,7 +2746,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100018,}
+  [1] = 1,  [2] = 1,  [3] = 300018,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -3164,7 +3164,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100019,}
+  [1] = 1,  [2] = 1,  [3] = 300019,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -4172,7 +4172,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100021,}
+  [1] = 1,  [2] = 1,  [3] = 300021,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -4846,7 +4846,7 @@ shop_config={
 ,}
 ,  ["weight"] = 40,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 25,  ["quality"] = 6,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100022,}
+  [1] = 1,  [2] = 1,  [3] = 300022,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -5518,7 +5518,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100027,}
+  [1] = 1,  [2] = 1,  [3] = 300027,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -6188,7 +6188,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100028,}
+  [1] = 1,  [2] = 1,  [3] = 300028,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -6858,7 +6858,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100029,}
+  [1] = 1,  [2] = 1,  [3] = 300029,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -6984,7 +6984,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100016,}
+  [1] = 1,  [2] = 1,  [3] = 300016,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -7528,7 +7528,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100030,}
+  [1] = 1,  [2] = 1,  [3] = 300030,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -8196,7 +8196,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100031,}
+  [1] = 1,  [2] = 1,  [3] = 300031,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -8868,7 +8868,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100032,}
+  [1] = 1,  [2] = 1,  [3] = 300032,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -9538,7 +9538,7 @@ shop_config={
 ,}
 ,  ["weight"] = 40,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 25,  ["quality"] = 6,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100033,}
+  [1] = 1,  [2] = 1,  [3] = 300033,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -10208,7 +10208,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100040,}
+  [1] = 1,  [2] = 1,  [3] = 300040,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -10884,7 +10884,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100041,}
+  [1] = 1,  [2] = 1,  [3] = 300041,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -11556,7 +11556,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100042,}
+  [1] = 1,  [2] = 1,  [3] = 300042,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -12222,7 +12222,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100043,}
+  [1] = 1,  [2] = 1,  [3] = 300043,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -12884,7 +12884,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100044,}
+  [1] = 1,  [2] = 1,  [3] = 300044,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -13568,7 +13568,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100045,}
+  [1] = 1,  [2] = 1,  [3] = 300045,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -14246,7 +14246,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100046,}
+  [1] = 1,  [2] = 1,  [3] = 300046,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -14544,7 +14544,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100007,}
+  [1] = 1,  [2] = 1,  [3] = 300007,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -14930,7 +14930,7 @@ shop_config={
 ,}
 ,  ["weight"] = 40,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 25,  ["quality"] = 6,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100047,}
+  [1] = 1,  [2] = 1,  [3] = 300047,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -15608,7 +15608,7 @@ shop_config={
 ,}
 ,  ["weight"] = 40,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 25,  ["quality"] = 6,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100048,}
+  [1] = 1,  [2] = 1,  [3] = 300048,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -16288,7 +16288,7 @@ shop_config={
 ,}
 ,  ["weight"] = 40,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 25,  ["quality"] = 6,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100049,}
+  [1] = 1,  [2] = 1,  [3] = 300049,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -16966,7 +16966,7 @@ shop_config={
 ,}
 ,  ["weight"] = 40,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 25,  ["quality"] = 6,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100050,}
+  [1] = 1,  [2] = 1,  [3] = 300050,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -17172,7 +17172,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100020,}
+  [1] = 1,  [2] = 1,  [3] = 300020,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -17382,7 +17382,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100006,}
+  [1] = 1,  [2] = 1,  [3] = 300006,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -17592,7 +17592,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100005,}
+  [1] = 1,  [2] = 1,  [3] = 300005,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -17634,7 +17634,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100051,}
+  [1] = 1,  [2] = 1,  [3] = 300051,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -18298,7 +18298,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100052,}
+  [1] = 1,  [2] = 1,  [3] = 300052,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -18508,7 +18508,7 @@ shop_config={
 ,}
 ,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 15,  ["quality"] = 4,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100008,}
+  [1] = 1,  [2] = 1,  [3] = 300008,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -18594,7 +18594,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100009,}
+  [1] = 1,  [2] = 1,  [3] = 300009,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -18718,7 +18718,7 @@ shop_config={
 ,}
 ,  ["weight"] = 100,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 20,  ["quality"] = 5,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100010,}
+  [1] = 1,  [2] = 1,  [3] = 300010,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
@@ -18800,7 +18800,7 @@ shop_config={
 ,}
 ,  ["weight"] = 40,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 25,  ["quality"] = 6,  ["gain"] = {
   ["102"] = {
-  [1] = 1,  [2] = 1,  [3] = 100011,}
+  [1] = 1,  [2] = 1,  [3] = 300011,}
 ,}
 ,  ["type"] = 7,  ["restrictions"] = 0,  ["replaceGain"] = {
 }

@@ -316,15 +316,16 @@ def exit_guild_remote(guild_id, p_id, name):
     if position == 1:
         p_list = []
         next_position = 0
+        no = 2
         if guild_obj.p_list.get(2):
             next_position = 2
             p_list = guild_obj.p_list.get(2)
-            no = 2
         else:
             next_position = 3
             p_list = guild_obj.p_list.get(3)
         next_id = get_next_captain(p_list)
         guild_obj.change_position(next_id, next_position, position)
+    else:
         no = 3
     guild_obj.exit_guild(p_id, position)
 
@@ -484,7 +485,6 @@ def praise_remote(g_id, p_id, name):
 
     headSworShip = build_conf.headSworShip
     money_num = random.randint(headSworShip[0], headSworShip[1])
-    drop_num = random.randint(worShip[1][0], worShip[1][1])
     guild_obj.add_praise_money(money_num)
 
     dynamic_pb = guild_pb2.GuildDynamic()
@@ -686,7 +686,7 @@ def mine_help_remote(g_id, p_id, seek_time, already_helps):
 @rootserviceHandle
 def get_shop_data_remote(g_id, shop_type):
     """
-    求助
+    军团商店
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
     if not guild_obj:

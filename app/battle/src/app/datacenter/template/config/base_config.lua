@@ -1,9 +1,7 @@
 base_config={
   ["LostMax"] = 2,  ["moonCardMaxDays"] = 999999999,  ["warFogRefreshPrice"] = {
   [1] = 0,  [2] = 0,  [3] = 50,  [4] = 50,  [5] = 50,  [6] = 50,  [7] = 50,  [8] = 50,  [9] = 50,  [10] = 50,}
-,  ["version_of_data"] = {
-  ["version"] = "1.0.1",  ["url"] = "http://192.168.1.33:2600/static/download/configs_v6.110.129.zip",}
-,  ["indianaDefaultId"] = {
+,  ["unit_of_vigor_recover"] = 1,  ["indianaDefaultId"] = {
   [1] = 100056,  [2] = 100068,}
 ,  ["cheer_partner_seat6"] = {
   ["4"] = 0.1,  ["2"] = 0.1,}
@@ -45,7 +43,7 @@ base_config={
   ["0"] = 0.6,  ["6000001"] = 0.1,  ["6000004"] = 0.1,  ["6000002"] = 0.1,  ["6000003"] = 0.1,}
 ,  ["join_guild_level"] = 1,  ["pos_p_num"] = {
   [1] = 2,  [2] = 0,  [3] = 0,}
-,  ["max_equipment_strength"] = 0,  ["totemOpenLevel"] = 1,  ["buy_vigor_num"] = 120,  ["StopTalkTime"] = 5,  ["arenaRes"] = 1006,  ["hurt_rewards_worldboss_rank"] = {
+,  ["max_equipment_strength"] = 0,  ["totemOpenLevel"] = 20,  ["hjqyBuyTime"] = 1,  ["equUpgradeOpenLevel"] = 1,  ["arenaRes"] = 1006,  ["hurt_rewards_worldboss_rank"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 2,}
 ,  ["3"] = {
@@ -87,21 +85,11 @@ base_config={
   [1] = 6,  [2] = 5,  [3] = 4,  [4] = 3,  [5] = 2,  [6] = 1,}
 ,  ["rank_item"] = {
   [1] = 5,  [2] = 4,  [3] = 3,  [4] = 2,  [5] = 1,}
-,  ["worldbossAccumulatedReward"] = {
-  ["1"] = {
-  [1] = 0.002,  [2] = 600101,}
-,  ["3"] = {
-  [1] = 0.01,  [2] = 600103,}
-,  ["2"] = {
-  [1] = 0.005,  [2] = 600102,}
-,  ["5"] = {
-  [1] = 0.05,  [2] = 600105,}
-,  ["4"] = {
-  [1] = 0.02,  [2] = 600104,}
-,}
-,  ["warFogBossFightTimes"] = 2,  ["DrawCardShow1_time"] = 3,  ["seven7_Id"] = 31001,  ["DrawCardShow1"] = {
+,  ["star_condition"] = {
+  ["1"] = 3,  ["3"] = 0,  ["2"] = 1,}
+,  ["worldboss_open_level"] = 1,  ["DrawCardShow1_time"] = 3,  ["seven7_Id"] = 31001,  ["DrawCardShow1"] = {
   [1] = 10021,  [2] = 10022,  [3] = 10026,  [4] = 10027,  [5] = 10029,  [6] = 10032,  [7] = 10033,  [8] = 10034,  [9] = 10038,}
-,  ["share_GetCard_4"] = 0,  ["travelVigorPrice"] = 5,  ["travelWrongKeyFeedback"] = {
+,  ["share_GetCard_4"] = 0,  ["heroBreakOpenLevel"] = 5,  ["travelWrongKeyFeedback"] = {
   [1] = 4300000001,  [2] = 4300000002,  [3] = 4300000003,  [4] = 4300000004,  [5] = 4300000005,  [6] = 4300000006,  [7] = 4300000007,  [8] = 4300000008,  [9] = 4300000009,  [10] = 4300000010,  [11] = 4300000011,  [12] = 4300000012,}
 ,  ["goldcoin_inspire_price_multiple"] = 2,  ["arena_rank_points"] = {
   ["1"] = 13,  ["3"] = 15,  ["2"] = 14,  ["500"] = 21,  ["50"] = 18,  ["1000"] = 22,  ["5000"] = 24,  ["20"] = 17,  ["200"] = 20,  ["100"] = 19,  ["2000"] = 23,  ["10"] = 16,}
@@ -109,7 +97,9 @@ base_config={
 }
 ,  ["EscortPeople"] = {
   [1] = 1,  [2] = 3,}
-,  ["indianaExpImpairment"] = 0.8,  ["price_buy_manual"] = {
+,  ["debuff_skill"] = {
+  ["0"] = 0.4,  ["6000001"] = 0.15,  ["6000004"] = 0.15,  ["6000002"] = 0.15,  ["6000003"] = 0.15,}
+,  ["price_buy_manual"] = {
   ["1"] = {
   [1] = 2,  [2] = 50,}
 ,  ["15"] = {
@@ -173,7 +163,7 @@ base_config={
   ["107"] = {
   [1] = 10000,  [2] = 10000,  [3] = 1,}
 ,}
-,  ["StopTalkNeedTimes"] = 10,  ["friendOpenLevel"] = 1,  ["warFogRobbedMail"] = 121,  ["cookingWinePrice"] = {
+,  ["StopTalkNeedTimes"] = 10,  ["friendOpenLevel"] = 1,  ["warFogRobbedMail"] = 121,  ["heroSacrificeOpenLevel"] = 10,  ["cookingWinePrice"] = {
   ["1"] = {
   [1] = {
 }
@@ -225,11 +215,11 @@ base_config={
   [1] = 10064,  [2] = 10045,  [3] = 10046,  [4] = 10048,  [5] = 10052,  [6] = 10053,  [7] = 10056,  [8] = 10061,  [9] = 10065,  [10] = 10066,}
 ,  ["CardTimeLimit"] = 150,  ["huoban_value_config"] = {
   [1] = 0,  [2] = 20,  [3] = 100,}
-,  ["CoinCardCumulateTimes"] = 10,  ["level_for_InitGuild"] = 1,  ["moonCardRemindDays"] = 1,  ["CardTimeCumulateTimes"] = 10,  ["weekCardFreshTime"] = "0:00:00",  ["warFogBossMoneyInspireLimited"] = 20,  ["warFogBossCriServer"] = 2,  ["money_inspire_price_multiple"] = 1,  ["warFogBossFreeReliveTime"] = 300,  ["nextDayOpenTime"] = {
+,  ["CoinCardCumulateTimes"] = 10,  ["level_for_InitGuild"] = 1,  ["moonCardRemindDays"] = 1,  ["CardTimeCumulateTimes"] = 10,  ["weekCardFreshTime"] = "0:00:00",  ["equMallOpenLevel"] = 10,  ["warFogBossCriServer"] = 2,  ["money_inspire_price_multiple"] = 1,  ["warFogBossFreeReliveTime"] = 300,  ["nextDayOpenTime"] = {
   ["2"] = {
   [1] = "0:00:30",}
 ,}
-,  ["vigorValueFriendGive"] = 2,  ["friendActivityValue"] = 100,  ["indianaMatch"] = {
+,  ["vigorValueFriendGive"] = 2,  ["friendActivityValue"] = 100,  ["sealOpenStage"] = 100703,  ["userAgreementUrl"] = "http://exp.dt.qq.com/pages/agreement/userAgreement.html",  ["indianaMatch"] = {
   [1] = 60001,  [2] = 60002,  [3] = 60003,}
 ,  ["CardFirst"] = {
   ["101"] = {
@@ -243,63 +233,19 @@ base_config={
 ,  ["5"] = {
   [1] = 10044,  [2] = 190,  [3] = 50,  [4] = 240000,}
 ,}
-,  ["arenaFightCd"] = 300,  ["arena_free_times"] = 5,  ["cheer_partner_seat5"] = {
-  ["3"] = 0.1,  ["2"] = 0.1,}
-,  ["chat_interval"] = 30,  ["warFogBossMoneyRelivePrice"] = 20,  ["Worship2Fresh"] = "9:00:00",  ["warFogBossInspireAtk"] = 0.05,  ["public_chat_open_level"] = 10,  ["maxOfFriendApply"] = 100,  ["totemRefreshFreeTimes"] = 1,  ["hjqyOpenDay"] = {
-  ["2"] = {
-  [1] = "0:00:00",  [2] = 3300009037,  [3] = 3400009037,}
-,}
-,  ["totemSpaceNum2"] = 10,  ["openTime"] = {
-  ["2"] = {
-  [1] = "0:00:00",}
-,}
-,  ["CardTimeActivity2"] = {
+,  ["arenaFightCd"] = 300,  ["CardTimeActivity2"] = {
   ["13001"] = {
   [1] = 610,}
 ,}
-,  ["indianaIteam"] = {
-  ["105"] = {
-  [1] = 1,  [2] = 1,  [3] = 130001,}
-,}
-,  ["icon_of_share"] = "http://exp.dt.qq.com/images/logo_2/90.png",  ["hjqyKillBossRewardID"] = 511,  ["hjqyRandomCheckpoint"] = {
-  ["1"] = {
-  [1] = 930101,  [2] = 930201,  [3] = 930301,  [4] = 3,}
-,  ["15"] = {
-  [1] = 930115,  [2] = 930215,  [3] = 930315,  [4] = 101,}
-,  ["3"] = {
-  [1] = 930103,  [2] = 930203,  [3] = 930303,  [4] = 17,}
-,  ["2"] = {
-  [1] = 930102,  [2] = 930202,  [3] = 930302,  [4] = 10,}
-,  ["5"] = {
-  [1] = 930105,  [2] = 930205,  [3] = 930305,  [4] = 31,}
-,  ["4"] = {
-  [1] = 930104,  [2] = 930204,  [3] = 930304,  [4] = 24,}
-,  ["7"] = {
-  [1] = 930107,  [2] = 930207,  [3] = 930307,  [4] = 45,}
-,  ["6"] = {
-  [1] = 930106,  [2] = 930206,  [3] = 930306,  [4] = 38,}
-,  ["9"] = {
-  [1] = 930109,  [2] = 930209,  [3] = 930309,  [4] = 59,}
-,  ["8"] = {
-  [1] = 930108,  [2] = 930208,  [3] = 930308,  [4] = 52,}
-,  ["16"] = {
-  [1] = 930116,  [2] = 930216,  [3] = 930316,  [4] = 108,}
-,  ["14"] = {
-  [1] = 930114,  [2] = 930214,  [3] = 930314,  [4] = 94,}
-,  ["13"] = {
-  [1] = 930113,  [2] = 930213,  [3] = 930313,  [4] = 87,}
-,  ["12"] = {
-  [1] = 930112,  [2] = 930212,  [3] = 930312,  [4] = 80,}
-,  ["11"] = {
-  [1] = 930111,  [2] = 930211,  [3] = 930311,  [4] = 73,}
-,  ["10"] = {
-  [1] = 930110,  [2] = 930210,  [3] = 930310,  [4] = 66,}
-,}
-,  ["AnimalOpenTime"] = {
+,  ["arena_free_times"] = 5,  ["cheer_partner_seat5"] = {
+  ["3"] = 0.1,  ["2"] = 0.1,}
+,  ["chat_interval"] = 30,  ["warFogBossMoneyRelivePrice"] = 20,  ["version_of_game"] = {
+  ["current_version"] = "4.0.1",  ["version"] = "1.0.1",}
+,  ["Worship2Fresh"] = "9:00:00",  ["hjqyExchangeBUFFTime"] = {
   [1] = {
-  [1] = "08:00",  [2] = "18:00",}
+  [1] = "13:00",  [2] = "13:30",}
 ,}
-,  ["worldbossHurtRankRewards"] = {
+,  ["warFogBossFightTimes"] = 2,  ["warFogBossInspireAtk"] = 0.05,  ["worldbossHurtRankRewards"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 600001,}
 ,  ["3"] = {
@@ -321,13 +267,47 @@ base_config={
 ,  ["10"] = {
   [1] = 10,  [2] = 10,  [3] = 600010,}
 ,}
-,  ["initialVipLevel"] = 0,  ["arena_day_points_time"] = "01:00:00",  ["guild_level"] = {
-  ["1"] = 1,  ["3"] = 1,  ["2"] = 1,  ["5"] = -1,  ["4"] = 1,  ["6"] = -1,}
-,  ["activityOpenDay"] = {
+,  ["initialVipLevel"] = 0,  ["AreWorship2"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 5096,}
+,}
+,  ["public_chat_open_level"] = 10,  ["maxOfFriendApply"] = 100,  ["activityOpenDay"] = {
   ["2"] = {
   [1] = "0:00:00",  [2] = 3300009020,  [3] = 3400009020,}
 ,}
-,  ["seven7_Icon"] = {
+,  ["AnimalCoolingTime"] = 300,  ["totemRefreshFreeTimes"] = 1,  ["equRefundRatio"] = 0.8,  ["totemSpaceNum2"] = 10,  ["seven1_Icon"] = {
+  ["1"] = {
+  [1] = 1600001,}
+,  ["4"] = {
+  [1] = 1600002,}
+,  ["3"] = {
+  [1] = 1600004,}
+,  ["2"] = {
+  [1] = 1600003,}
+,}
+,  ["worShipCoolingTime"] = 300,  ["initialHead"] = 10044,  ["icon_of_share"] = "http://exp.dt.qq.com/images/logo_2/90.png",  ["hjqyKillBossRewardID"] = 511,  ["warFogStrongpointOdds2"] = {
+  ["1"] = 0.4,  ["3"] = 0.05,  ["2"] = 0.5,  ["5"] = 0,  ["4"] = 0.05,}
+,  ["AnimalOpenTime"] = {
+  [1] = {
+  [1] = "08:00",  [2] = "18:00",}
+,}
+,  ["BOSSOpeningRage"] = {
+  ["1"] = {
+  [1] = 100,  [2] = 50,  [3] = 100,}
+,  ["3"] = {
+  [1] = 100,  [2] = 50,  [3] = 100,}
+,  ["2"] = {
+  [1] = 100,  [2] = 50,  [3] = 100,}
+,  ["5"] = {
+  [1] = 100,  [2] = 50,  [3] = 100,}
+,  ["4"] = {
+  [1] = 100,  [2] = 50,  [3] = 100,}
+,}
+,  ["vigorActivityName"] = {
+  [1] = 3700000007,  [2] = 3700000008,}
+,  ["arena_day_points_time"] = "01:00:00",  ["ggzjBackGround"] = {
+  [1] = 1013,}
+,  ["hjqyDayPointsTime"] = "0:00:00",  ["seven7_Icon"] = {
   ["1"] = {
   [1] = 1600001,}
 ,  ["4"] = {
@@ -341,7 +321,9 @@ base_config={
   [1] = 10,  [2] = 10,  [3] = 20,  [4] = 20,  [5] = 30,  [6] = 30,  [7] = 40,  [8] = 40,  [9] = 50,}
 ,  ["travelShoe2"] = {
   [1] = 19,  [2] = 20,  [3] = 100,  [4] = 3,}
-,  ["worldbossInspireAtk"] = 0.05,  ["AnimalCoolingTime"] = 300,  ["stageAOpen"] = 100506,  ["equRefundRatio"] = 0.8,  ["seven1_Icon"] = {
+,  ["worldbossInspireAtk"] = 0.05,  ["warFogBossTime"] = {
+  [1] = "9:00-11:00",  [2] = "13:00-19:00",}
+,  ["stageAOpen"] = 100506,  ["max_of_UserFriend"] = 500,  ["seven2_Icon"] = {
   ["1"] = {
   [1] = 1600001,}
 ,  ["4"] = {
@@ -349,13 +331,15 @@ base_config={
 ,  ["3"] = {
   [1] = 1600004,}
 ,  ["2"] = {
-  [1] = 1600003,}
+  [1] = 1600005,}
 ,}
 ,  ["warFogBossInspireAtkMoney"] = 0.1,  ["getMoneyFreeTimes"] = 1,  ["equUpgradeOpenStage"] = 100205,  ["totemRefreshItem"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 50004,}
 ,}
-,  ["worShipCoolingTime"] = 300,  ["initialHead"] = 10044,  ["CardTimeRule"] = 5500000001,  ["a3"] = {
+,  ["Worship2FrequencyMax"] = 3,  ["create_level"] = 1,  ["sacrificeGainExp"] = {
+  ["200"] = 10003,  ["100"] = 10002,  ["50"] = 10001,}
+,  ["a3"] = {
   [1] = 3,  [2] = 2,}
 ,  ["arena_day_points"] = {
   ["22"] = {
@@ -415,27 +399,13 @@ base_config={
 ,  ["10"] = {
   [1] = 31,  [2] = 40,  [3] = 40,}
 ,}
-,  ["share_GetCard_5"] = 0,  ["friendHelpOpenLevel"] = 1,  ["BOSSOpeningRage"] = {
-  ["1"] = {
-  [1] = 100,  [2] = 50,  [3] = 100,}
-,  ["3"] = {
-  [1] = 100,  [2] = 50,  [3] = 100,}
-,  ["2"] = {
-  [1] = 100,  [2] = 50,  [3] = 100,}
-,  ["5"] = {
-  [1] = 100,  [2] = 50,  [3] = 100,}
-,  ["4"] = {
-  [1] = 100,  [2] = 50,  [3] = 100,}
-,}
-,  ["public_chat_item"] = {
+,  ["share_GetCard_5"] = 0,  ["specialStageOpenLevel"] = 18,  ["hjqyExchangeNumber"] = 1,  ["public_chat_item"] = {
 }
-,  ["friendApplyOfflineDay"] = 2,  ["warFogOpenStage"] = 100607,  ["stoneReduceTime_guild"] = 1,  ["GoddessOpenStage"] = 100305,  ["vigorActivityName"] = {
-  [1] = 3700000007,  [2] = 3700000008,}
-,  ["ggzjBackGround"] = {
-  [1] = 1013,}
-,  ["money_inspire_price"] = 20,  ["hjqyEscapeTime"] = 30,  ["warFogBossTime"] = {
-  [1] = "9:00-11:00",  [2] = "13:00-19:00",}
-,  ["supportFresh"] = "0",  ["vipMaxLevel"] = 15,  ["strategyUrl"] = "http://fwd.3g.qq.com:8080/forward.jsp?bid=1034",  ["starPrice"] = {
+,  ["friendApplyOfflineDay"] = 2,  ["warFogOpenStage"] = 100607,  ["stoneReduceTime_guild"] = 1,  ["GoddessOpenStage"] = 100305,  ["GoddessOpenLevel"] = 2,  ["chushi_value_config"] = {
+  [1] = 0,  [2] = 50,  [3] = 100,}
+,  ["money_inspire_price"] = 20,  ["moneyInspireLimited"] = 20,  ["initial"] = {
+  [1] = 3700000002,  [2] = 20,  [3] = 10056,  [4] = 20,}
+,  ["supportFresh"] = "0",  ["indianaOpenLevel"] = 12,  ["strategyUrl"] = "http://fwd.3g.qq.com:8080/forward.jsp?bid=1034",  ["starPrice"] = {
   [1] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 2,}
@@ -465,17 +435,13 @@ base_config={
   [1] = 1000,  [2] = 1000,  [3] = 2,}
 ,}
 ,}
-,  ["newhandWarriors"] = 100,  ["seven2_Icon"] = {
-  ["1"] = {
-  [1] = 1600001,}
-,  ["4"] = {
-  [1] = 1600002,}
-,  ["3"] = {
-  [1] = 1600004,}
-,  ["2"] = {
-  [1] = 1600005,}
+,  ["newhandWarriors"] = 100,  ["openTime"] = {
+  ["2"] = {
+  [1] = "0:00:00",}
 ,}
-,  ["cookingWineOpenLevel"] = 1,  ["seven4_Icon"] = {
+,  ["angryValueAwakeHero"] = {
+  [1] = 0,  [2] = 50,  [3] = 100,}
+,  ["seven4_Icon"] = {
   ["1"] = {
   [1] = 1600001,}
 ,  ["4"] = {
@@ -485,43 +451,7 @@ base_config={
 ,  ["2"] = {
   [1] = 1600007,}
 ,}
-,  ["create_level"] = 1,  ["sacrificeGainExp"] = {
-  ["200"] = 10003,  ["100"] = 10002,  ["50"] = 10001,}
-,  ["travelExpend"] = {
-  ["107"] = {
-  [1] = 1,  [2] = 1,  [3] = 20,}
-,}
-,  ["chushi_value_config"] = {
-  [1] = 0,  [2] = 50,  [3] = 100,}
-,  ["money_inspire_CD"] = 0,  ["arenaRewardWin"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 9100001,}
-,}
-,  ["LotteryPrice"] = {
-  [1] = 0,  [2] = 20,  [3] = 30,  [4] = 40,  [5] = 50,  [6] = 60,  [7] = 70,  [8] = 80,  [9] = 90,  [10] = 100,}
-,  ["arena_day_points_Gallery"] = {
-  ["1"] = {
-  [1] = 31,  [2] = 32,  [3] = 33,  [4] = 34,}
-,  ["3"] = {
-  [1] = 43,  [2] = 44,  [3] = 45,  [4] = 46,  [5] = 47,  [6] = 48,}
-,  ["2"] = {
-  [1] = 35,  [2] = 36,  [3] = 37,  [4] = 38,  [5] = 39,  [6] = 40,  [7] = 41,  [8] = 42,}
-,  ["5"] = {
-  [1] = 54,  [2] = 55,  [3] = 56,  [4] = 57,}
-,  ["4"] = {
-  [1] = 49,  [2] = 50,  [3] = 51,  [4] = 52,  [5] = 53,}
-,  ["6"] = {
-  [1] = 58,}
-,}
-,  ["exit_time"] = 43200,  ["zhandouli_xishu_a"] = 0.5,  ["DrawCardShow1_number"] = 6,  ["moneyInspireLimited"] = 20,  ["initial"] = {
-  [1] = 3700000002,  [2] = 20,  [3] = 10056,  [4] = 20,}
-,  ["arenaRevengeRewards"] = {
-  ["107"] = {
-  [1] = 20,  [2] = 20,  [3] = 8,}
-,}
-,  ["equAssembleOpenStage"] = 100403,  ["angryValueAwakeHero"] = {
-  [1] = 0,  [2] = 50,  [3] = 100,}
-,  ["finalstage_id"] = 104607,  ["DrawCardShow2_number"] = 3,  ["eliteDuplicateTime"] = 2,  ["cookingWineOpenStage"] = 100703,  ["autoTravel"] = {
+,  ["autoTravel"] = {
   ["390"] = {
   [1] = 65,  [2] = 650,}
 ,  ["150"] = {
@@ -555,11 +485,47 @@ base_config={
 ,  ["120"] = {
   [1] = 20,  [2] = 200,}
 ,}
-,  ["autoTravelGetPrice"] = 1.67,  ["travelShoe1"] = {
-  [1] = 18,  [2] = 10,  [3] = 50,  [4] = 2,}
-,  ["equRefundOpenLevel"] = 1,  ["stoneReduce_guildeveryonefrequency"] = 1,  ["warFogBossOpenStage"] = 100607,  ["guild_skill_max"] = {
+,  ["autoTravelGetPrice"] = 1.67,  ["signInAdd"] = {
+  [1] = 50,  [2] = 50,  [3] = 50,  [4] = 50,  [5] = 50,  [6] = 50,  [7] = 50,  [8] = 50,  [9] = 50,  [10] = 50,  [11] = 50,  [12] = 50,  [13] = 50,  [14] = 50,  [15] = 50,  [16] = 50,  [17] = 50,  [18] = 50,  [19] = 50,  [20] = 50,  [21] = 50,  [22] = 50,  [23] = 50,  [24] = 50,  [25] = 50,  [26] = 50,  [27] = 50,  [28] = 50,  [29] = 50,  [30] = 50,}
+,  ["guild_skill_max"] = {
   ["1"] = 10,  ["4"] = 10,  ["3"] = 10,  ["2"] = 10,}
-,  ["hjqyOpenRewardID"] = 510,  ["seven1"] = {
+,  ["money_inspire_CD"] = 0,  ["arenaRewardWin"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 9100001,}
+,}
+,  ["LotteryPrice"] = {
+  [1] = 0,  [2] = 20,  [3] = 30,  [4] = 40,  [5] = 50,  [6] = 60,  [7] = 70,  [8] = 80,  [9] = 90,  [10] = 100,}
+,  ["arena_day_points_Gallery"] = {
+  ["1"] = {
+  [1] = 31,  [2] = 32,  [3] = 33,  [4] = 34,}
+,  ["3"] = {
+  [1] = 43,  [2] = 44,  [3] = 45,  [4] = 46,  [5] = 47,  [6] = 48,}
+,  ["2"] = {
+  [1] = 35,  [2] = 36,  [3] = 37,  [4] = 38,  [5] = 39,  [6] = 40,  [7] = 41,  [8] = 42,}
+,  ["5"] = {
+  [1] = 54,  [2] = 55,  [3] = 56,  [4] = 57,}
+,  ["4"] = {
+  [1] = 49,  [2] = 50,  [3] = 51,  [4] = 52,  [5] = 53,}
+,  ["6"] = {
+  [1] = 58,}
+,}
+,  ["exit_time"] = 43200,  ["zhandouli_xishu_a"] = 0.5,  ["DrawCardShow1_number"] = 6,  ["a4"] = 0.7,  ["num_vigor_activity"] = 60,  ["indianaIteam"] = {
+  ["105"] = {
+  [1] = 1,  [2] = 1,  [3] = 130001,}
+,}
+,  ["equAssembleOpenStage"] = 100403,  ["warFogBossOpenStage"] = 100607,  ["equAssembleOpenLevel"] = 1,  ["DrawCardShow2_number"] = 3,  ["eliteDuplicateTime"] = 2,  ["cookingWineOpenStage"] = 100703,  ["supporttime"] = 30,  ["warFogBossMoneyInspireLimited"] = 20,  ["travelShoe1"] = {
+  [1] = 18,  [2] = 10,  [3] = 50,  [4] = 2,}
+,  ["equRefundOpenLevel"] = 10,  ["stoneReduce_guildeveryonefrequency"] = 1,  ["seven5_Icon"] = {
+  ["1"] = {
+  [1] = 1600001,}
+,  ["4"] = {
+  [1] = 1600002,}
+,  ["3"] = {
+  [1] = 1600010,}
+,  ["2"] = {
+  [1] = 1600009,}
+,}
+,  ["arenaOpenStage"] = 100507,  ["hjqyOpenRewardID"] = 510,  ["seven1"] = {
   ["1"] = {
   [1] = 29001,  [2] = 30001,}
 ,  ["4"] = {
@@ -573,19 +539,19 @@ base_config={
   ["1"] = 10001,  ["2"] = 10002,}
 ,  ["equStrengthenAll"] = {
   [1] = 6,  [2] = 5,  [3] = 4,  [4] = 3,  [5] = 2,}
-,  ["mailMax3"] = 50,  ["a4"] = 0.7,  ["hjqyMeritoriousServiceOpenTime"] = {
+,  ["mailMax3"] = 50,  ["travelVigorPrice"] = 5,  ["hjqyMeritoriousServiceOpenTime"] = {
   [1] = {
   [1] = "19:00",  [2] = "19:30",}
 ,}
 ,  ["friend_position_open_level"] = {
   ["1"] = 15,  ["3"] = 30,  ["2"] = 25,  ["5"] = 40,  ["4"] = 35,  ["6"] = 45,}
-,  ["num_vigor_activity"] = 60,  ["CardTimeCumulate"] = {
+,  ["friendActivityRewardNum"] = 30,  ["CardTimeCumulate"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 30002,}
 ,}
 ,  ["a5"] = {
   [1] = 1,  [2] = 1600,  [3] = 3,}
-,  ["free_relive_time"] = 300,  ["goldcoin_inspire_price"] = 10000,  ["guildNoticeWords"] = 25,  ["totemSpaceNum1"] = 10,  ["guildOpenStage"] = 100605,  ["CardCumulate"] = {
+,  ["free_relive_time"] = 300,  ["goldcoin_inspire_price"] = 10000,  ["guildNoticeWords"] = 25,  ["totemSpaceNum1"] = 10,  ["equ_special_level_max"] = 50,  ["CardCumulate"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 20002,}
 ,}
@@ -595,27 +561,7 @@ base_config={
 ,}
 ,  ["travelOpenStage"] = 100505,  ["activityOpenStage"] = 100101,  ["CardTimeActivityShop"] = {
   ["13001"] = 170001,}
-,  ["supporttime"] = 30,  ["seven5_Icon"] = {
-  ["1"] = {
-  [1] = 1600001,}
-,  ["4"] = {
-  [1] = 1600002,}
-,  ["3"] = {
-  [1] = 1600010,}
-,  ["2"] = {
-  [1] = 1600009,}
-,}
-,  ["arenaOpenStage"] = 100507,  ["friendActivityRewardNum"] = 30,  ["webUrl"] = "http://qhero.qq.com",  ["warFogLootRatio"] = 0.5,  ["hjqyDayPointsTime"] = "0:00:00",  ["newhandHero"] = {
-  ["3"] = {
-  [1] = 10046,  [2] = 1,}
-,  ["2"] = {
-  [1] = 10045,  [2] = 1,}
-,}
-,  ["times_get_vigor_from_friend"] = 15,  ["signInAdd"] = {
-  [1] = 50,  [2] = 50,  [3] = 50,  [4] = 50,  [5] = 50,  [6] = 50,  [7] = 50,  [8] = 50,  [9] = 50,  [10] = 50,  [11] = 50,  [12] = 50,  [13] = 50,  [14] = 50,  [15] = 50,  [16] = 50,  [17] = 50,  [18] = 50,  [19] = 50,  [20] = 50,  [21] = 50,  [22] = 50,  [23] = 50,  [24] = 50,  [25] = 50,  [26] = 50,  [27] = 50,  [28] = 50,  [29] = 50,  [30] = 50,}
-,  ["travelOpenLevel"] = 1,  ["EscortFresh"] = "5:00:00",  ["sealHeroQuality"] = {
-  [1] = 5,  [2] = 6,}
-,  ["GoddessLevelMax"] = 50,  ["hjqyRule2"] = 7,  ["arena_shorttime_points_time"] = 360,  ["AnnouncementShowQuantityMax"] = 30,  ["CardTimeActivity"] = {
+,  ["cookingWineOpenLevel"] = 1,  ["CardTimeActivity"] = {
   ["13001"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 606,}
@@ -626,6 +572,82 @@ base_config={
 ,  ["2"] = {
   [1] = 2,  [2] = 3,  [3] = 607,}
 ,}
+,}
+,  ["hjqyOpenDay"] = {
+  ["2"] = {
+  [1] = "0:00:00",  [2] = 3300009037,  [3] = 3400009037,}
+,}
+,  ["CoinCardCumulate"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 10003,}
+,}
+,  ["webUrl"] = "http://qhero.qq.com",  ["warFogLootRatio"] = 0.5,  ["AnnouncementShowQuantityMax"] = 30,  ["newhandHero"] = {
+  ["3"] = {
+  [1] = 10046,  [2] = 1,}
+,  ["2"] = {
+  [1] = 10045,  [2] = 1,}
+,}
+,  ["times_get_vigor_from_friend"] = 15,  ["ggzjOpenNumber"] = 15,  ["travelOpenLevel"] = 30,  ["EscortFresh"] = "5:00:00",  ["sealHeroQuality"] = {
+  [1] = 5,  [2] = 6,}
+,  ["travelVigorNeedTime"] = 15,  ["version_of_data"] = {
+  ["version"] = "1.0.1",  ["url"] = "http://192.168.1.33:2600/static/download/configs_v6.110.129.zip",}
+,  ["arenaRankUpRewards"] = {
+  ["107"] = {
+  [1] = 1,  [2] = 1,  [3] = 2,}
+,}
+,  ["hjqyDayReward"] = {
+  ["1"] = {
+  [1] = 1,  [2] = 1,  [3] = 501,}
+,  ["3"] = {
+  [1] = 3,  [2] = 3,  [3] = 503,}
+,  ["2"] = {
+  [1] = 2,  [2] = 2,  [3] = 502,}
+,  ["5"] = {
+  [1] = 6,  [2] = 10,  [3] = 505,}
+,  ["4"] = {
+  [1] = 4,  [2] = 5,  [3] = 504,}
+,  ["7"] = {
+  [1] = 31,  [2] = 50,  [3] = 507,}
+,  ["6"] = {
+  [1] = 11,  [2] = 30,  [3] = 506,}
+,  ["9"] = {
+  [1] = 101,  [2] = 200,  [3] = 509,}
+,  ["8"] = {
+  [1] = 51,  [2] = 100,  [3] = 508,}
+,}
+,  ["hjqyRandomCheckpoint"] = {
+  ["1"] = {
+  [1] = 930101,  [2] = 930201,  [3] = 930301,  [4] = 3,}
+,  ["15"] = {
+  [1] = 930115,  [2] = 930215,  [3] = 930315,  [4] = 101,}
+,  ["3"] = {
+  [1] = 930103,  [2] = 930203,  [3] = 930303,  [4] = 17,}
+,  ["2"] = {
+  [1] = 930102,  [2] = 930202,  [3] = 930302,  [4] = 10,}
+,  ["5"] = {
+  [1] = 930105,  [2] = 930205,  [3] = 930305,  [4] = 31,}
+,  ["4"] = {
+  [1] = 930104,  [2] = 930204,  [3] = 930304,  [4] = 24,}
+,  ["7"] = {
+  [1] = 930107,  [2] = 930207,  [3] = 930307,  [4] = 45,}
+,  ["6"] = {
+  [1] = 930106,  [2] = 930206,  [3] = 930306,  [4] = 38,}
+,  ["9"] = {
+  [1] = 930109,  [2] = 930209,  [3] = 930309,  [4] = 59,}
+,  ["8"] = {
+  [1] = 930108,  [2] = 930208,  [3] = 930308,  [4] = 52,}
+,  ["16"] = {
+  [1] = 930116,  [2] = 930216,  [3] = 930316,  [4] = 108,}
+,  ["14"] = {
+  [1] = 930114,  [2] = 930214,  [3] = 930314,  [4] = 94,}
+,  ["13"] = {
+  [1] = 930113,  [2] = 930213,  [3] = 930313,  [4] = 87,}
+,  ["12"] = {
+  [1] = 930112,  [2] = 930212,  [3] = 930312,  [4] = 80,}
+,  ["11"] = {
+  [1] = 930111,  [2] = 930211,  [3] = 930311,  [4] = 73,}
+,  ["10"] = {
+  [1] = 930110,  [2] = 930210,  [3] = 930310,  [4] = 66,}
 ,}
 ,  ["arena_shorttime_points"] = {
   ["29"] = {
@@ -697,29 +719,23 @@ base_config={
 ,  ["10"] = {
   [1] = 10,  [2] = 10,  [3] = 51,}
 ,}
-,  ["max_of_Userblacklist"] = 100,  ["inheritOpenLevel"] = 1,  ["ggzjOpenNumber"] = 15,  ["Worship2FrequencyMax"] = 3,  ["huihe_xianzhi_config"] = 10,  ["hjqytrigger"] = {
-  [1] = 0.4,  [2] = 200,  [3] = 150,  [4] = 100,}
-,  ["multiple_for_SettleCoin"] = 2,  ["arenaRankUpRewards"] = {
-  ["107"] = {
-  [1] = 1,  [2] = 1,  [3] = 2,}
-,}
-,  ["peroid_of_vigor_recover"] = 300,  ["max_item_superposition"] = 999,  ["guildBadge"] = {
-  [1] = 10001,  [2] = 10002,  [3] = 10003,  [4] = 10004,  [5] = 10005,}
-,  ["warFogExploringTimeCDMoney"] = 1,  ["arena_open_level"] = 1,  ["warFogStrongpointNum"] = 9,  ["cheer_partner_seat3"] = {
-  ["4"] = 0.1,}
-,  ["player_level_max"] = 100,  ["worldbossOpenDay"] = {
+,  ["max_of_Userblacklist"] = 100,  ["inheritOpenLevel"] = 1,  ["warFogExploringTimeCDMoney"] = 1,  ["worldbossOpenDay"] = {
   ["2"] = {
   [1] = "0:00:00",  [2] = 3300009014,  [3] = 3400009014,}
 ,}
-,  ["indianaTrucePrice"] = {
+,  ["huihe_xianzhi_config"] = 10,  ["warFogBosskillRewards"] = 100,  ["rechargeOpen"] = 1,  ["friendHelpOpenLevel"] = 8,  ["sealOpenLevel"] = 25,  ["max_item_superposition"] = 999,  ["guildBadge"] = {
+  [1] = 10001,  [2] = 10002,  [3] = 10003,  [4] = 10004,  [5] = 10005,}
+,  ["SnatchTaskShowQuantity"] = 5,  ["arena_open_level"] = 1,  ["warFogStrongpointNum"] = 9,  ["cheer_partner_seat3"] = {
+  ["4"] = 0.1,}
+,  ["EscortRefreshPrice"] = {
+  [1] = 0,  [2] = 0,  [3] = 5,  [4] = 5,  [5] = 10,  [6] = 10,  [7] = 10,  [8] = 10,  [9] = 20,  [10] = 20,  [11] = 20,  [12] = 20,  [13] = 50,  [14] = 50,  [15] = 50,  [16] = 50,  [17] = 100,  [18] = 100,  [19] = 200,  [20] = 200,}
+,  ["DrawCardShow2_time"] = 3,  ["indianaTrucePrice"] = {
   ["107"] = {
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
-,  ["rechargeOpen"] = 1,  ["hjqyBuyTime"] = 1,  ["sealOpenLevel"] = 1,  ["totemRefreshPrice"] = 20,  ["EscortTaskShowQuantity"] = 3,  ["EscortMap"] = 1007,  ["money_relive_price"] = {
-  [1] = 20,  [2] = 20,  [3] = 50,  [4] = 50,  [5] = 80,  [6] = 80,  [7] = 100,  [8] = 100,  [9] = 150,  [10] = 150,  [11] = 200,  [12] = 200,  [13] = 300,  [14] = 300,  [15] = 400,  [16] = 400,  [17] = 500,  [18] = 500,}
-,  ["multiple_for_SettleExp"] = 2,  ["wushang_value_config"] = {
+,  ["GoddessLevelMax"] = 50,  ["friendApplyLevelGapAdd"] = 5,  ["SpeedUpTwoTimesOpenLevel"] = 2,  ["totemRefreshPrice"] = 20,  ["hjqyExchangeBUFFNumber"] = 2,  ["indianaExpImpairment"] = 0.8,  ["share_GetCard_6"] = 0,  ["multiple_for_SettleExp"] = 2,  ["wushang_value_config"] = {
   [1] = 0,  [2] = 8,  [3] = 100,  [4] = 150,  [5] = 200,}
-,  ["goldcoinInspireLimited"] = 20,  ["hjqyReplyNumber"] = 1,  ["stageLimited"] = 0.8,  ["friendApplyLevelGapAdd"] = 5,  ["breakthrough"] = {
+,  ["goldcoinInspireLimited"] = 20,  ["hjqyReplyNumber"] = 1,  ["stageLimited"] = 0.8,  ["hjqyEscapeTime"] = 30,  ["breakthrough"] = {
   ["1"] = {
   [1] = 10,}
 ,  ["3"] = {
@@ -735,7 +751,7 @@ base_config={
 ,  ["6"] = {
   [1] = 60,}
 ,}
-,  ["CardTimeLimitFreeTimes"] = 1,  ["stage_for_InitUser"] = 100101,  ["SpeedUpTwoTimesOpenLevel"] = 2,  ["getMoneyBuyTimesPrice"] = {
+,  ["CardTimeLimitFreeTimes"] = 1,  ["stage_for_InitUser"] = 100101,  ["friendApplyLevelGap"] = 5,  ["getMoneyBuyTimesPrice"] = {
   ["60"] = 22,  ["70"] = 24,  ["40"] = 18,  ["50"] = 20,  ["80"] = 26,  ["90"] = 28,  ["1"] = 10,  ["150"] = 34,  ["30"] = 16,  ["0"] = 0,  ["20"] = 14,  ["400"] = 40,  ["300"] = 38,  ["200"] = 36,  ["100"] = 30,  ["120"] = 32,  ["10"] = 12,}
 ,  ["time_vigor_activity"] = {
   [1] = {
@@ -743,7 +759,7 @@ base_config={
 ,  [2] = {
   [1] = "18:00",  [2] = "20:00",}
 ,}
-,  ["hjqyExchangeBUFFNumber"] = 2,  ["hjqyNumberPrice"] = {
+,  ["CardTimeParticipateInAwards"] = 100,  ["hjqyNumberPrice"] = {
   ["1"] = {
   [1] = 2,  [2] = 20,}
 ,  ["3"] = {
@@ -757,17 +773,7 @@ base_config={
 ,  ["6"] = {
   [1] = 2,  [2] = 80,}
 ,}
-,  ["warFogBossMoneyInspirePrice"] = 20,  ["hjqyItemUpperLimitMax"] = 10,  ["stoneReduce_guildeffectivetime"] = 270,  ["AnimalFresh"] = "0:00:00",  ["EscortRoundMax"] = 20,  ["friendApplyLevelGap"] = 5,  ["seven5"] = {
-  ["1"] = {
-  [1] = 29005,  [2] = 30005,}
-,  ["4"] = {
-  [1] = 32005,}
-,  ["3"] = {
-  [1] = 44001,}
-,  ["2"] = {
-  [1] = 43001,}
-,}
-,  ["CardTimeParticipateInAwards"] = 100,  ["totemSpaceDecay"] = 0.5,  ["cookingWineOutput"] = 60,  ["level_open_copy_stage"] = 1,  ["unit_of_vigor_recover"] = 1,  ["supportPrice"] = {
+,  ["totemSpaceDecay"] = 0.5,  ["hjqyItemUpperLimitMax"] = 10,  ["stoneReduce_guildeffectivetime"] = 270,  ["AnimalFresh"] = "0:00:00",  ["EscortRoundMax"] = 20,  ["supportPrice"] = {
   ["1"] = {
   ["107"] = {
   [1] = 2000,  [2] = 2000,  [3] = 1,}
@@ -805,9 +811,7 @@ base_config={
   [1] = 15000,  [2] = 15000,  [3] = 1,}
 ,}
 ,}
-,  ["multiple_for_SettleHeroExp"] = 2,  ["cheer_partner_seat2"] = {
-  ["3"] = 0.1,}
-,  ["meridians"] = {
+,  ["lucky_hero_cycle_times"] = 2,  ["meridians"] = {
   ["1"] = {
   [1] = 10,}
 ,  ["9"] = {
@@ -825,6 +829,12 @@ base_config={
 ,  ["6"] = {
   [1] = 60,}
 ,}
+,  ["finalstage_id"] = 104607,  ["gameNoteUrl"] = "http://www.mobartsgame.com/123/announcement_0323.html",  ["level_open_copy_stage"] = 1,  ["peroid_of_vigor_recover"] = 300,  ["hjqyItemRate"] = 0.5,  ["multiple_for_SettleHeroExp"] = 2,  ["cheer_partner_seat2"] = {
+  ["3"] = 0.1,}
+,  ["indianaConsume"] = {
+  ["107"] = {
+  [1] = 2,  [2] = 2,  [3] = 4,}
+,}
 ,  ["seven6_Icon"] = {
   ["1"] = {
   [1] = 1600001,}
@@ -835,7 +845,9 @@ base_config={
 ,  ["2"] = {
   [1] = 1600011,}
 ,}
-,  ["worldbossParticipationRewards"] = 801,  ["gameNoteUrl"] = "http://www.mobartsgame.com/123/announcement_0323.html",  ["totemOpenStage"] = 100607,  ["demoEnemy"] = {
+,  ["worldbossParticipationRewards"] = 801,  ["warFogBossPartakeRewards"] = {
+  ["110101"] = 0.2,  ["110201"] = 0.2,  ["120201"] = 0.05,  ["120101"] = 0.05,  ["120401"] = 0.05,  ["120301"] = 0.05,  ["110301"] = 0.2,  ["110401"] = 0.2,}
+,  ["totemOpenStage"] = 100607,  ["demoEnemy"] = {
   ["1"] = {
   [1] = 10049,  [2] = 200,  [3] = 50,  [4] = 140000,}
 ,  ["3"] = {
@@ -843,39 +855,35 @@ base_config={
 ,  ["5"] = {
   [1] = 10048,  [2] = 190,  [3] = 50,  [4] = 50000,}
 ,}
-,  ["times_save_vigor"] = 30,  ["EscortMail"] = 1001,  ["indianaConsume"] = {
-  ["107"] = {
-  [1] = 2,  [2] = 2,  [3] = 4,}
-,}
-,  ["warFogStrongpointOdds2"] = {
-  ["1"] = 0.4,  ["3"] = 0.05,  ["2"] = 0.5,  ["5"] = 0,  ["4"] = 0.05,}
-,  ["warFogBossPartakeRewards"] = {
-  ["110101"] = 0.2,  ["110201"] = 0.2,  ["120201"] = 0.05,  ["120101"] = 0.05,  ["120401"] = 0.05,  ["120301"] = 0.05,  ["110301"] = 0.2,  ["110401"] = 0.2,}
-,  ["hjqyDayReward"] = {
+,  ["totemStash"] = 400,  ["EscortMail"] = 1001,  ["warFogBossOpenLevel"] = 1,  ["seven3"] = {
   ["1"] = {
-  [1] = 1,  [2] = 1,  [3] = 501,}
-,  ["3"] = {
-  [1] = 3,  [2] = 3,  [3] = 503,}
-,  ["2"] = {
-  [1] = 2,  [2] = 2,  [3] = 502,}
-,  ["5"] = {
-  [1] = 6,  [2] = 10,  [3] = 505,}
+  [1] = 29003,  [2] = 30003,}
 ,  ["4"] = {
-  [1] = 4,  [2] = 5,  [3] = 504,}
-,  ["7"] = {
-  [1] = 31,  [2] = 50,  [3] = 507,}
-,  ["6"] = {
-  [1] = 11,  [2] = 30,  [3] = 506,}
-,  ["9"] = {
-  [1] = 101,  [2] = 200,  [3] = 509,}
-,  ["8"] = {
-  [1] = 51,  [2] = 100,  [3] = 508,}
+  [1] = 32003,}
+,  ["3"] = {
+  [1] = 39001,}
+,  ["2"] = {
+  [1] = 38001,}
 ,}
-,  ["worldbossFightTimes"] = 2,  ["debuff_skill"] = {
-  ["0"] = 0.4,  ["6000001"] = 0.15,  ["6000004"] = 0.15,  ["6000002"] = 0.15,  ["6000003"] = 0.15,}
-,  ["travelChest"] = 1102,  ["totemStash"] = 400,  ["warFogBossOpenLevel"] = 1,  ["activityOpenLevel"] = 1,  ["travelShoe"] = {
+,  ["travelShoeTimes"] = 15,  ["inheritOpenStage"] = 100401,  ["worldbossFightTimes"] = 2,  ["arenaRevengeRewards"] = {
+  ["107"] = {
+  [1] = 20,  [2] = 20,  [3] = 8,}
+,}
+,  ["travelChest"] = 1102,  ["indianaOpenStage"] = 100501,  ["vipMaxLevel"] = 15,  ["activityOpenLevel"] = 1,  ["travelShoe"] = {
   [1] = 20,  [2] = 1,  [3] = 5,}
-,  ["warFogBossRewardsText"] = 3300040001,  ["share_corss_stage"] = 0,  ["warFogBossMoneyInspirePriceMultiple"] = 1,  ["max_of_vigor"] = 120,  ["travelShoeTimes"] = 15,  ["inheritOpenStage"] = 100401,  ["hjqyReplyTime"] = 3600,  ["demoFightRes"] = 1001,  ["cookingWineOutputCrit"] = {
+,  ["warFogBossRewardsText"] = 3300040001,  ["share_corss_stage"] = 0,  ["mailMax1"] = 50,  ["max_of_vigor"] = 120,  ["mailMax4"] = 50,  ["worldbossAccumulatedReward"] = {
+  ["1"] = {
+  [1] = 0.002,  [2] = 600101,}
+,  ["3"] = {
+  [1] = 0.01,  [2] = 600103,}
+,  ["2"] = {
+  [1] = 0.005,  [2] = 600102,}
+,  ["5"] = {
+  [1] = 0.05,  [2] = 600105,}
+,  ["4"] = {
+  [1] = 0.02,  [2] = 600104,}
+,}
+,  ["notesSpaceTimes"] = 5,  ["demoFightRes"] = 1001,  ["cookingWineOutputCrit"] = {
   ["1"] = {
   ["1"] = 1,}
 ,  ["3"] = {
@@ -883,17 +891,21 @@ base_config={
 ,  ["2"] = {
   ["1.5"] = 1,}
 ,}
-,  ["travelReplyTime"] = 900,  ["indianaOpenStage"] = 100501,  ["SnatchTaskShowQuantity"] = 5,  ["kill_rewards_worldboss"] = 12,  ["weekCardRemindDays"] = 2,  ["mailMax1"] = 50,  ["mailMax4"] = 50,  ["stoneReduceTime"] = 30,  ["Worship2"] = {
+,  ["travelReplyTime"] = 900,  ["warFogBossMoneyInspirePrice"] = 20,  ["times_save_vigor"] = 30,  ["kill_rewards_worldboss"] = 12,  ["weekCardRemindDays"] = 2,  ["stageWarn"] = 1,  ["EscortTaskShowQuantity"] = 3,  ["stoneReduceTime"] = 30,  ["Worship2"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 7,}
 ,}
-,  ["warFogBossGoldcoinInspireLimited"] = 20,  ["max_of_UserFriend"] = 500,  ["arena_win_points"] = {
+,  ["equMallOpenStage"] = 100307,  ["CardTimeLimitFreeIntegral"] = {
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 28,}
+,}
+,  ["arena_win_points"] = {
   ["107"] = {
   [1] = 50,  [2] = 50,  [3] = 8,}
 ,}
-,  ["stageWarn"] = 1,  ["worshipName"] = {
+,  ["warFogBossGoldcoinInspireLimited"] = 20,  ["worshipName"] = {
   ["1"] = 3700000004,  ["3"] = 3700000006,  ["2"] = 3700000005,}
-,  ["equMallOpenStage"] = 100307,  ["hjqyRewardRefreshTime"] = "0:00:00",  ["travelShoeTimesMax"] = 15,  ["arena_reset_times"] = 5,  ["ggzjReward"] = {
+,  ["warFogBossMoneyInspirePriceMultiple"] = 1,  ["hjqyRewardRefreshTime"] = "0:00:00",  ["travelShoeTimesMax"] = 15,  ["arena_reset_times"] = 5,  ["ggzjReward"] = {
   ["1"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 710001,}
@@ -955,9 +967,15 @@ base_config={
   [1] = 1,  [2] = 1,  [3] = 710010,}
 ,}
 ,}
-,  ["gmUrl"] = "http://bbs.agame.qq.com/forum.php?mod=viewthread&tid=4050589&styleflag=",  ["CardTimeLimitFreeIntegral"] = {
-  ["107"] = {
-  [1] = 10,  [2] = 10,  [3] = 28,}
+,  ["gmUrl"] = "http://bbs.agame.qq.com/forum.php?mod=viewthread&tid=4050589&styleflag=",  ["seven5"] = {
+  ["1"] = {
+  [1] = 29005,  [2] = 30005,}
+,  ["4"] = {
+  [1] = 32005,}
+,  ["3"] = {
+  [1] = 44001,}
+,  ["2"] = {
+  [1] = 43001,}
 ,}
 ,  ["worldbossHurtReward"] = {
   ["1"] = {
@@ -971,7 +989,7 @@ base_config={
 ,  ["4"] = {
   [1] = 0.02,  [2] = 805,}
 ,}
-,  ["worldboss_open_level"] = 1,  ["level_open_activity_stage"] = 1,  ["ggzjOpenDay"] = {
+,  ["hjqyReplyTime"] = 3600,  ["EscortRefreshFrequencyMax"] = 20,  ["ggzjOpenDay"] = {
   ["2"] = {
   [1] = "0:00:00",  [2] = 3300009038,  [3] = 3400009038,}
 ,}
@@ -991,7 +1009,7 @@ base_config={
 ,  ["4"] = {
   [1] = 4,  [2] = 6,  [3] = 20002,}
 ,}
-,  ["warFogOpenLevel"] = 1,  ["FriendRecommendNum"] = 20,  ["seven6"] = {
+,  ["arena_shorttime_points_time"] = 360,  ["FriendRecommendNum"] = 20,  ["seven6"] = {
   ["1"] = {
   [1] = 29006,  [2] = 30006,}
 ,  ["4"] = {
@@ -1001,13 +1019,11 @@ base_config={
 ,  ["2"] = {
   [1] = 45001,}
 ,}
-,  ["userAgreementUrl"] = "http://exp.dt.qq.com/pages/agreement/userAgreement.html",  ["worldbossKillRewards"] = 601001,  ["hjqyExchangeBUFFTime"] = {
-  [1] = {
-  [1] = "13:00",  [2] = "13:30",}
-,}
-,  ["cheer_partner_seat4"] = {
+,  ["level_open_activity_stage"] = 1,  ["worldbossKillRewards"] = 601001,  ["warFogBossGoldcoinInspirePrice"] = 10000,  ["cheer_partner_seat4"] = {
   ["2"] = 0.2,}
-,  ["guildInviteMail"] = 131,  ["EscortRefreshFrequencyMax"] = 20,  ["resource_for_InitUser"] = {
+,  ["guildInviteMail"] = 131,  ["AnimalChallengeTime"] = {
+  ["930005"] = 7200,  ["910005"] = 3600,  ["920007"] = 5400,  ["910008"] = 3600,  ["910006"] = 3600,  ["920002"] = 5400,  ["920001"] = 5400,  ["910001"] = 3600,  ["920006"] = 5400,  ["930009"] = 7200,  ["920003"] = 5400,  ["910004"] = 3600,  ["930008"] = 7200,  ["930003"] = 7200,  ["930007"] = 7200,  ["930006"] = 7200,  ["910003"] = 3600,  ["930002"] = 7200,  ["930001"] = 7200,  ["920005"] = 5400,  ["910002"] = 3600,  ["920008"] = 5400,  ["930010"] = 7200,  ["910007"] = 3600,  ["920010"] = 5400,  ["910010"] = 3600,  ["910009"] = 3600,  ["920009"] = 5400,  ["930004"] = 7200,  ["920004"] = 5400,}
+,  ["resource_for_InitUser"] = {
   ["1"] = 0,  ["16"] = 0,  ["2"] = 0,  ["13"] = 0,  ["26"] = 10,  ["7"] = 120,  ["20"] = 15,}
 ,  ["warFogBossHurtRewardsRank"] = {
   ["1"] = {
@@ -1031,13 +1047,7 @@ base_config={
 ,  ["10"] = {
   [1] = 10,  [2] = 10,  [3] = 110,}
 ,}
-,  ["equ_special_level_max"] = 50,  ["CoinCardCumulate"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 10003,}
-,}
-,  ["indianaCamouflageProbability"] = 0.5,  ["heroInheritPrice"] = 100,  ["heroBreakOpenStage"] = 100405,  ["warFogBossGoldcoinInspirePrice"] = 10000,  ["CardTimeLimitFreeCountdown"] = 24,  ["AnimalChallengeTime"] = {
-  ["930005"] = 7200,  ["910005"] = 3600,  ["920007"] = 5400,  ["910008"] = 3600,  ["910006"] = 3600,  ["920002"] = 5400,  ["920001"] = 5400,  ["910001"] = 3600,  ["920006"] = 5400,  ["930009"] = 7200,  ["920003"] = 5400,  ["910004"] = 3600,  ["930008"] = 7200,  ["930003"] = 7200,  ["930007"] = 7200,  ["930006"] = 7200,  ["910003"] = 3600,  ["930002"] = 7200,  ["930001"] = 7200,  ["920005"] = 5400,  ["910002"] = 3600,  ["920008"] = 5400,  ["930010"] = 7200,  ["910007"] = 3600,  ["920010"] = 5400,  ["910010"] = 3600,  ["910009"] = 3600,  ["920009"] = 5400,  ["930004"] = 7200,  ["920004"] = 5400,}
-,  ["totemSpaceNum3"] = 10,  ["equPrefix"] = {
+,  ["buy_vigor_num"] = 120,  ["StopTalkTime"] = 5,  ["indianaCamouflageProbability"] = 0.5,  ["guildOpenStage"] = 100605,  ["heroBreakOpenStage"] = 100405,  ["EscortMap"] = 1007,  ["CardTimeLimitFreeCountdown"] = 24,  ["stageBOpen"] = 100306,  ["totemSpaceNum3"] = 10,  ["equPrefix"] = {
   ["1"] = {
   [1] = 2,  [2] = 0,  [3] = 1,  [4] = 3300030001,}
 ,  ["3"] = {
@@ -1051,19 +1061,15 @@ base_config={
 ,  ["6"] = {
   [1] = 6,  [2] = 0,  [3] = 0.95,  [4] = 3300030005,}
 ,}
-,  ["worldbossOpenStage"] = 100101,  ["ggzjName"] = {
+,  ["hjqyRule2"] = 7,  ["ggzjName"] = {
   ["1"] = 5300000001,  ["3"] = 5300000003,  ["2"] = 5300000002,  ["5"] = 5300000005,  ["4"] = 5300000004,}
-,  ["travelVigorNeedTime"] = 15,  ["awakeOpen"] = 100401,  ["star_condition"] = {
-  ["1"] = 3,  ["3"] = 0,  ["2"] = 1,}
-,  ["awakemax"] = 10010,  ["stageBOpen"] = 100306,  ["getMoneyValue"] = {
-  ["60"] = 17888,  ["0"] = 8888,  ["40"] = 14888,  ["50"] = 16888,  ["5"] = 9688,  ["30"] = 12888,  ["45"] = 15888,  ["35"] = 13888,  ["25"] = 11888,  ["15"] = 9988,  ["90"] = 20888,  ["80"] = 19888,  ["20"] = 10888,  ["100"] = 28888,  ["70"] = 18888,  ["10"] = 9888,}
-,  ["lucky_hero_cycle_times"] = 2,  ["warFogBossGoldcoinInspirePriceMultiple"] = 2,  ["hero_position_open_level"] = {
+,  ["hero_position_open_level"] = {
   ["1"] = 1,  ["3"] = 3,  ["2"] = 1,  ["5"] = 7,  ["4"] = 5,  ["6"] = 10,}
-,  ["hjqyItemRate"] = 0.5,  ["create_money"] = 500,  ["totemSpaceNum4"] = 10,  ["cheer_partner_seat1"] = {
+,  ["awakeOpen"] = 100401,  ["multiple_for_SettleCoin"] = 2,  ["awakemax"] = 10010,  ["worldbossOpenStage"] = 100101,  ["getMoneyValue"] = {
+  ["60"] = 17888,  ["0"] = 8888,  ["40"] = 14888,  ["50"] = 16888,  ["5"] = 9688,  ["30"] = 12888,  ["45"] = 15888,  ["35"] = 13888,  ["25"] = 11888,  ["15"] = 9988,  ["90"] = 20888,  ["80"] = 19888,  ["20"] = 10888,  ["100"] = 28888,  ["70"] = 18888,  ["10"] = 9888,}
+,  ["equWearOpenLevel"] = 5,  ["warFogBossGoldcoinInspirePriceMultiple"] = 2,  ["awakeOpenLevel"] = 5,  ["CardTimeRule"] = 5500000001,  ["create_money"] = 500,  ["activityStageOpenLevel"] = 15,  ["cheer_partner_seat1"] = {
   ["1"] = 0.2,}
-,  ["zhandouli_xishu_b"] = 1,  ["monsterWarriorsFightRound"] = 3,  ["EscortRefreshPrice"] = {
-  [1] = 0,  [2] = 0,  [3] = 5,  [4] = 5,  [5] = 10,  [6] = 10,  [7] = 10,  [8] = 10,  [9] = 20,  [10] = 20,  [11] = 20,  [12] = 20,  [13] = 50,  [14] = 50,  [15] = 50,  [16] = 50,  [17] = 100,  [18] = 100,  [19] = 200,  [20] = 200,}
-,  ["CoinCardFirst"] = {
+,  ["zhandouli_xishu_b"] = 1,  ["monsterWarriorsFightRound"] = 3,  ["CoinCardFirst"] = {
   ["101"] = {
   [1] = 1,  [2] = 1,  [3] = 10012,}
 ,}
@@ -1071,7 +1077,9 @@ base_config={
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 1103,}
 ,}
-,  ["AnnouncementCoolingTime"] = 120,  ["heroBreakBack"] = 0.8,  ["share_GetCard_6"] = 0,  ["worship"] = {
+,  ["totemSpaceNum4"] = 10,  ["AnnouncementCoolingTime"] = 120,  ["heroBreakBack"] = 0.8,  ["money_relive_price"] = {
+  [1] = 20,  [2] = 20,  [3] = 50,  [4] = 50,  [5] = 80,  [6] = 80,  [7] = 100,  [8] = 100,  [9] = 150,  [10] = 150,  [11] = 200,  [12] = 200,  [13] = 300,  [14] = 300,  [15] = 400,  [16] = 400,  [17] = 500,  [18] = 500,}
+,  ["worship"] = {
   ["1"] = {
   [1] = 1,  [2] = 10000,  [3] = 100,  [4] = 1,  [5] = 100,}
 ,  ["3"] = {
@@ -1079,11 +1087,13 @@ base_config={
 ,  ["2"] = {
   [1] = 1,  [2] = 50000,  [3] = 200,  [4] = 2,  [5] = 200,}
 ,}
-,  ["AreWorship2"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 5096,}
+,  ["guild_level"] = {
+  ["1"] = 1,  ["3"] = 1,  ["2"] = 1,  ["5"] = -1,  ["4"] = 1,  ["6"] = -1,}
+,  ["travelExpend"] = {
+  ["107"] = {
+  [1] = 1,  [2] = 1,  [3] = 20,}
 ,}
-,  ["DrawCardShow2_time"] = 3,  ["CardTimeHero"] = {
+,  ["CardTimeHero"] = {
   ["13001"] = 10048,}
 ,  ["seven7"] = {
   ["1"] = {
@@ -1095,23 +1105,13 @@ base_config={
 ,  ["2"] = {
   [1] = 46001,}
 ,}
-,  ["hjqyExchangeNumber"] = 1,  ["EscortOpenTime"] = {
+,  ["arenaOpenLevel"] = 20,  ["EscortOpenTime"] = {
   [1] = {
   [1] = "08:00",  [2] = "18:00",}
 ,}
 ,  ["friendHelpOpenStage"] = 100102,  ["shopTypeIndex"] = 199,  ["uiIconOpenLevel"] = {
   ["8007"] = 11,  ["8006"] = 6,  ["8004"] = 14,  ["8002"] = 1,  ["8009"] = 7,  ["8005"] = 20,  ["8008"] = 25,  ["8001"] = 1,  ["8003"] = 1,}
-,  ["warFogBosskillRewards"] = 100,  ["seven3"] = {
-  ["1"] = {
-  [1] = 29003,  [2] = 30003,}
-,  ["4"] = {
-  [1] = 32003,}
-,  ["3"] = {
-  [1] = 39001,}
-,  ["2"] = {
-  [1] = 38001,}
-,}
-,  ["seven4"] = {
+,  ["heroInheritPrice"] = 100,  ["seven4"] = {
   ["1"] = {
   [1] = 29004,  [2] = 30004,}
 ,  ["4"] = {
@@ -1121,7 +1121,7 @@ base_config={
 ,  ["2"] = {
   [1] = 41001,  [2] = 41002,  [3] = 42001,}
 ,}
-,  ["weekCardRemindMail"] = 202,  ["wushuangTimeMax"] = 2,  ["ggzjRule2"] = {
+,  ["cookingWineOutput"] = 60,  ["weekCardRemindMail"] = 202,  ["wushuangTimeMax"] = 2,  ["ggzjRule2"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 30001,}
 ,  ["3"] = {
@@ -1143,18 +1143,18 @@ base_config={
 ,  ["10"] = {
   [1] = 1000,  [2] = 99999,  [3] = 30010,}
 ,}
-,  ["heroAwakeBack"] = 0.8,  ["notesSpaceTimes"] = 5,  ["stageResetPrice"] = {
+,  ["heroAwakeBack"] = 0.8,  ["equRefundOpenStage"] = 100403,  ["stageResetPrice"] = {
   [1] = 20,  [2] = 30,  [3] = 40,  [4] = 50,}
-,  ["equRefundOpenStage"] = 100403,  ["moonCardFreshTime"] = "0:00:00",  ["warFogBossGoldcoinInspireCD"] = 120,  ["CardTimeLimitIntegral"] = {
+,  ["hjqytrigger"] = {
+  [1] = 0.4,  [2] = 200,  [3] = 150,  [4] = 100,}
+,  ["moonCardFreshTime"] = "0:00:00",  ["warFogBossGoldcoinInspireCD"] = 120,  ["CardTimeLimitIntegral"] = {
   ["107"] = {
   [1] = 10,  [2] = 10,  [3] = 28,}
 ,}
-,  ["version_of_game"] = {
-  ["current_version"] = "4.0.1",  ["version"] = "1.0.1",}
-,  ["share_fight"] = 0,  ["worldbossInspireAtkMoney"] = 0.1,  ["hjqyRankingListRefreshTime"] = "0:00:00",  ["hero_breakup_open_level"] = 1,  ["worldbossPartakeRewardsType"] = {
-  [1] = 3,  [2] = 1,}
-,  ["isShare"] = 1,  ["sealOpenStage"] = 100703,  ["stonesynthesis"] = {
+,  ["stonesynthesis"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 100001,}
 ,}
-,}
+,  ["share_fight"] = 0,  ["worldbossInspireAtkMoney"] = 0.1,  ["hjqyRankingListRefreshTime"] = "0:00:00",  ["warFogOpenLevel"] = 16,  ["worldbossPartakeRewardsType"] = {
+  [1] = 3,  [2] = 1,}
+,  ["isShare"] = 1,  ["player_level_max"] = 100,  ["hero_breakup_open_level"] = 1,}

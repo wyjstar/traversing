@@ -293,7 +293,7 @@ arena_fight_config={
 ,}
 ,  [40004] = {
   ["type"] = 4,  ["Description"] = 0,  ["play_rank"] = {
-  [1] = 200,  [2] = 230,}
+  [1] = 201,  [2] = 230,}
 ,  ["id"] = 40004,  ["Gradient"] = 4,  ["choose"] = "[[180,200,1]]",  ["Reward"] = {
 }
 ,}
