@@ -17,11 +17,11 @@ def rebate_info(player):
     """
     获取返利卡状态
     """
-    
+
     response = rebateInfo()
     plat = 'ios'
     if player.base_info.plat_id == 1:
-        plat = 'android'
+        plat = 'tencent'
 
     for rid in game_configs.recharge_config[plat].keys():
         recharge_item = game_configs.recharge_config[plat][rid]
