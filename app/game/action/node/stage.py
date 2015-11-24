@@ -392,7 +392,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
         res.result_no = 839
         return response.SerializePartialToString()
 
-    need_gold = get_consume_gold_num(sweep_item)
+    need_gold = get_consume_gold_num(sweep_item, times)
 
     tlog_event_id = get_uuid()
 
@@ -455,7 +455,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
 
         # hook task
         hook_task(player, CONDITIONId.ANY_STAGE, times)
-
+        logger.debug("sweep time %s %s" % (times, sweep_item))
         return_data = consume(player, sweep_item, multiple=times)
         get_return(player, return_data, response.consume)
 
