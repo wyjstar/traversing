@@ -6,6 +6,7 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 import random
 import time
+from shared.common_logic.escort_task import EscortTask
 
 
 class Guild(object):
@@ -14,20 +15,24 @@ class Guild(object):
     def __init__(self, tb_guild_info):
         """
         """
-        self._name = 0  # 名
-        self._g_id = 0  # id
-        self._p_num = 1  # 人数
-        self._contribution = 0  # 当前建设值
-        self._all_contribution = 0  # 总建设值
-        self._call = ''  # 公告
-        self._p_list = {}  # 成员信息
-        self._apply = []  # 加入申请
-        self._invite_join = {}  # {id:time, id:time}
-        self._icon_id = 0  # 军团头像
-        self._bless = [0, 0, 1]  # 祈福人数,福运,时间
-        self._praise = [0, 0, 0, 1]  # 点赞次数,团长奖励领取状态，累计金钱，时间
-        self._build = {}  # 建筑等级 {建筑类型：建筑等级}
-        self._tb_guild_info = tb_guild_info
+        self._name = 0                         # 名
+        self._g_id = 0                         # id
+        self._p_num = 1                        # 人数
+        self._contribution = 0                 # 当前建设值
+        self._all_contribution = 0             # 总建设值
+        self._call = ''                        # 公告
+        self._p_list = {}                      # 成员信息
+        self._apply = []                       # 加入申请
+        self._invite_join = {}                 # {id:time, id:time}
+        self._icon_id = 0                      # 军团头像
+        self._bless = [0, 0, 1]                # 祈福人数,福运,时间
+        self._praise = [0, 0, 0, 1]            # 点赞次数,团长奖励领取状态，累计金钱，时间
+        self._build = {}                       # 建筑等级 {建筑类型：建筑等级}
+        self._tb_guild_info = tb_guild_info    #
+        self._escort_tasks = {}                # 粮草押运任务
+        self._escort_tasks_can_rob = []        # 粮草押运任务中可被抢夺的任务
+        self._escort_tasks_invite_protect = [] # 粮草押运任务邀请
+        self._escort_tasks_invite_rob = []     # 粮草押运任务邀请
 
     @property
     def info(self):
@@ -39,15 +44,19 @@ class Guild(object):
     def _info(self):
         data = {'id': self._g_id,
                 'name': self._name,
-                'level': self._level,
-                'exp': self._exp,
+                #'level': self._level,
+                #'exp': self._exp,
                 'icon_id': self._icon_id,
                 'bless': self._bless,
                 'praise': self._praise,
                 'call': self._call,
                 'invite_join': self._invite_join,
                 'p_list': self._p_list,
-                'apply': self._apply}
+                'apply': self._apply,
+                'escort_tasks': self._escort_tasks,
+                'escort_tasks_invite_protect': self._escort_tasks_invite_protect,
+                'escort_tasks_invite_rob': self._escort_tasks_invite_rob,
+                }
         return data
 
     def create_guild(self, p_id, name, icon_id):
@@ -69,8 +78,8 @@ class Guild(object):
     def init_data(self, data):
         self._g_id = data.get("id")
         self._name = data.get("name")
-        self._level = data.get("level")
-        self._exp = data.get("exp")
+        #self._level = data.get("level")
+        #self._exp = data.get("exp")
         self._icon_id = data.get("icon_id")
         self._bless = data.get("bless")
         self._praise = data.get("praise")
@@ -78,6 +87,18 @@ class Guild(object):
         self._invite_join = data.get("invite_join")
         self._p_list = data.get("p_list")
         self._apply = data.get("apply")
+
+        # 初始化粮草押运信息
+        tb_guild_escort_tasks = self._tb_guild_info.getObj(self._g_id).getObj('escort_tasks')
+        heros = tb_guild_escort_tasks.hgetall()
+        for task_id, data in heros.items():
+            task = EscortTask(self)
+            task.init_data(data)
+            self._escort_tasks[task.task_id] = task
+        for k, task in self._escort_tasks:
+            if task.state == 2:
+                self._escort_tasks_can_rob.append(k)
+
 
     def join_guild(self, p_id):
         if self._apply.count(p_id) >= 1:
@@ -194,6 +215,38 @@ class Guild(object):
         self._praise = values
 
     @property
+    def escort_tasks(self):
+        return self._escort_tasks
+
+    @escort_tasks.setter
+    def escort_tasks(self, values):
+        self._escort_tasks = values
+
+    @property
+    def escort_tasks_can_rob(self):
+        return self._escort_tasks_can_rob
+
+    @escort_tasks_can_rob.setter
+    def escort_tasks_can_rob(self, values):
+        self._escort_tasks_can_rob = values
+
+    @property
+    def escort_tasks_invite_protect(self):
+        return self._escort_tasks_invite_protect
+
+    @escort_tasks_invite_protect.setter
+    def escort_tasks_invite_protect(self, values):
+        self._escort_tasks_invite_protect = values
+
+    @property
+    def escort_tasks_invite_rob(self):
+        return self._escort_tasks_invite_rob
+
+    @escort_tasks_invite_rob.setter
+    def escort_tasks_invite_rob(self, values):
+        self._escort_tasks_invite_rob = values
+
+    @property
     def praise_num(self):
         if time.localtime(self._praise[2]).tm_yday != time.localtime().tm_yday:
             self._praise = [0, 0, int(time.time())]
@@ -220,3 +273,12 @@ class Guild(object):
             self._bless = [0, 0, int(time.time())]
             self.save_data()
         return self._bless[0]
+
+    def get_task_by_id(self, task_id):
+        return self._escort_tasks.get(task_id)
+
+    def add_task(self, task_info):
+        task = EscortTask(self)
+        task.load(task_info)
+        self._escort_tasks[task.task_id] = task
+        return task

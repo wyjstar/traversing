@@ -18,6 +18,8 @@ class GuildTaskConfig(object):
         for row in config_value:
             convert_keystr2num(row.get('robbedPercentage'))
             convert_keystr2num(row.get('peoplePercentage'))
-            row["reward"] = parse(row.get("reward"))
+            row["reward1"] = parse(row.get("reward1"))
+            row["reward2"] = parse(row.get("reward2"))
+            row["reward3"] = parse(row.get("reward3"))
             self.items[row.get('id')] = CommonItem(row)
         return self.items

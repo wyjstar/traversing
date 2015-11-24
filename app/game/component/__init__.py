@@ -42,6 +42,7 @@ from character_rob_treasure import CharacterRobTreasureComponent
 
 from character_buy_coin_activity import CharacterBuyCoinActivity
 from character_start_target import CharacterStartTargetComponent
+from character_escort import CharacterEscortComponent
 
 
 __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',

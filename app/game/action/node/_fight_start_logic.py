@@ -29,8 +29,7 @@ def pvp_process(player, line_up, red_units, blue_units, red_best_skill, blue_bes
         res = mine_pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
                                 blue_best_skill, blue_player_level, seed1, seed2, player.base_info.level)
     elif fight_type == const.BATTLE_GUILD:
-        res = guild_pvp_start(red_units, blue_units, red_best_skill, red_best_skill_level,
-                                blue_best_skill, blue_player_level, seed1, seed2, player.base_info.level)
+        res = guild_pvp_start(red_units, blue_units, seed1, seed2)
 
     logger.debug("pvp_process: %s" % res)
     #fight_result = process.process()

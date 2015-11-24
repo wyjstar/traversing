@@ -208,7 +208,7 @@ const.ROB_TREASURE = 73  # 夺宝
 const.ROB_TREASURE_REWARD = 74  # 夺宝
 
 const.ESCORT_ROB = 1909  # 劫运公会
-
+const.REFRESH_ESCORT_TASKS = 1904 # 刷新押运任务
 
 const.LOGIN_GIFT_CONTINUS = 8061
 const.LOGIN_GIFT_CUMULATIVE = 8062

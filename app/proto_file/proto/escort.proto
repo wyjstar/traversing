@@ -60,18 +60,17 @@ message RefreshEscortTaskResponse{
 
 //接受押运、劫运任务 command 1905 返回CommonResponse
 message ReceiveEscortTaskRequest{
-    required int32 task_id = 1;   // 任务id
+    required string task_id = 1;   // 任务id
     required int32 protect_or_rob = 2; // 押运1 劫运2
 }
 
 // 发布邀请、参与押运/劫运邀请、command:1908
 message InviteEscortTaskRequest{
-    required int32 task_id = 1;   // 任务id
+    required string task_id = 1;   // 任务id
     required int32 send_or_in = 2; // 发布1 参与2
     required int32 protect_or_rob = 3; // 押运1 劫运2
 }
-//发布邀请后向军团推送信息
-
+//发布邀请后向军团推送信息19082
 //推送给承接人信息  19081
 //1.接受邀请，加入队伍 只要CharacterInfo
 message InviteEscortTaskPushResponse{

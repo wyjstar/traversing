@@ -185,5 +185,6 @@ for config_name in all_config_name.keys():
 
 if __name__ == '__main__':
     print ggzj_config
+    print base_config.get("EscortFresh")
     #print arena_fight_config
     #print awake_config

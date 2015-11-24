@@ -139,7 +139,8 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     # logger.debug("gold:%d", player.finance.gold)
     # logger.debug("hero_soul:%d", player.finance.hero_soul)
     # logger.debug("soul_shop_refresh_times:%d", player.soul_shop.refresh_times)
-
+    # mock guild
+    player.guild.g_id = 1989
     # 更新7日奖励的状态
     # player.start_target.update_29()
 

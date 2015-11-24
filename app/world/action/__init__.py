@@ -6,3 +6,4 @@ import world_boss
 import hjqy
 import gateforwarding
 import mine
+import escort_task

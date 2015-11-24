@@ -71,3 +71,14 @@ def random_multi_pick_without_repeat(items, times):
         del items_copy[picked_item_id]
 
     return drop_items
+
+def get_random_items_from_list(num, items=[]):
+    """
+    items is a list
+    """
+    res = []
+    if len(items) < num:
+        return []
+    for no in random.sample(range(len(items)), num):
+        res.append(items[no])
+    return res
