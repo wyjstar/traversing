@@ -13,7 +13,7 @@ message EscortTask{
     optional int32 start_protect_time = 5;        // 开始押运任务时间
                                                   //
     optional GuildRank protect_guild_info = 6;    // 保护方所在公会信息
-    repeated CharacterInfo protecters = 7;        // 保护押运的玩家, 其中第一个为开始押运的玩家 VIP 队长 等级 战力 头像   CharacterInfo
+    repeated CharacterInfo protecters = 7;        // 保护押运的玩家, 其中第一个为开始押运的玩家
     optional GameResourcesResponse reward = 8;   // 最终的奖励, 根据人数增加
     repeated RobEscortTaskInfo rob_task_infos = 9;// 劫运记录信息
 }
@@ -29,6 +29,8 @@ message RobEscortTaskInfo{
     optional GameResourcesResponse rob_reward = 7; // 劫取
     optional bool rob_result = 8;           // 劫运的结果
     optional int32 rob_time = 9;           // 劫运的时间
+    optional int32 rob_state = 10;           // 劫运的状态 0：取消状态，1：接受任务，倒计时开始 -1：完成
+    optional int32 rob_receive_task_time = 11;        // 劫运接受时间
 }
 
 // 获取所有押运任务 command:1901
@@ -62,6 +64,10 @@ message RefreshEscortTaskResponse{
 message ReceiveEscortTaskRequest{
     required string task_id = 1;   // 任务id
     required int32 protect_or_rob = 2; // 押运1 劫运2
+}
+//取消劫运 command 1906 返回 CommonResponse
+message CancelEscortTaskRequest{
+    required string task_id = 1; //任务id
 }
 
 // 发布邀请、参与押运/劫运邀请、command:1908

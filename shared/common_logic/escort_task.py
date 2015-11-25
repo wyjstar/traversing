@@ -2,12 +2,11 @@
 
 #from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
-from shared.utils.date_util import str_time_to_timestamp, get_current_timestamp
+from shared.utils.date_util import get_current_timestamp
 #from shared.utils.pyuuid import get_uuid
 #from app.game.action.node._fight_start_logic import assemble
-from app.proto_file import escort_pb2, common_pb2
 
-class EscortTask():
+class EscortTask(object):
     """粮草押运任务"""
 
     def __init__(self, owner):
@@ -25,41 +24,123 @@ class EscortTask():
     def init_data(self, info):
         self.load(info)
 
+
+    def add_player(self, player_info, protect_or_rob, header=0):
+        if protect_or_rob == 1:
+            self._protecters.append(player_info)
+        elif protect_or_rob == 2:
+            if not header:
+                rob_task_info = {}
+                rob_task_info["robbers"] = []
+                rob_task_info["robbers"].append(player_info)
+                rob_task_info["rob_state"] = 1
+                rob_task_info["rob_receive_task_time"] = int(get_current_timestamp())
+                self._rob_task_infos[player_info.get("id")] = rob_task_info
+            else:
+                rob_task_info = self._rob_task_infos.get(header)
+                rob_task_info["robbers"].append(player_info)
+
+        return True
+
+    def is_finished(self, task_item):
+        if self._start_protect_time and self._start_protect_time + task_item.taskTime < get_current_timestamp():
+            return True
+        elif not self._start_protect_time and self._receive_task_time + task_item.wait + task_item.taskTime < get_current_timestamp():
+            return True
+        return False
+
+    def rob_success_times(self):
+        """
+        劫运成功的次数
+        """
+        times = 0
+        for rob_task_info in self._rob_task_infos:
+            if rob_task_info.get("rob_result"):
+                times = times + 1
+        return times
+
+    def save_data(self):
+        """
+        保存
+        """
+        tb_guild = self._owner._tb_guild_info.getObj(self._owner.g_id).getObj('escort_tasks')
+        data = self.property_dict()
+        if not tb_guild.hset(data['task_id'], data):
+            logger.error('save escort task error:%s', data['task_id'])
+
+    def property_dict(self):
+        """docstring for property_dict"""
+        return {
+                "task_id": self._task_id,
+                "task_no": self._task_no,
+                "state": self._state,
+                "receive_task_time": self._receive_task_time,
+                "start_protect_time": self._start_protect_time,
+                "protect_guild_info": self._protect_guild_info,
+                "protecters": self._protecters,
+                "rob_task_infos": self._rob_task_infos,
+                }
+
+    def load(self, task_info):
+        """
+        根据字典类型的数据初始化对象
+        """
+
+        if task_info.get("task_id"):
+            self._task_id = task_info.get("task_id")
+        if task_info.get("task_no"):
+            self._task_no = task_info.get("task_no")
+        if task_info.get("state"):
+            self._state = task_info.get("state")
+        if task_info.get("receive_task_time"):
+            self._receive_task_time = int(task_info.get("receive_task_time"))
+        if task_info.get("start_protect_time"):
+            self._start_protect_time = int(task_info.get("start_protect_time"))
+        if task_info.get("protect_guild_info"):
+            self._protect_guild_info = task_info.get("protect_guild_info")
+        if task_info.get("protecters"):
+            self._protecters = task_info.get("protecters")
+        if task_info.get("rob_task_infos"):
+            self._rob_task_infos = task_info.get("rob_task_infos")
+
+    def update_rob_task_info(self, rob_task_info, header):
+        __rob_task_info = self._rob_task_infos.get(header)
+        __rob_task_info["seed1"] = rob_task_info["seed1"]
+        __rob_task_info["seed2"] = rob_task_info["seed2"]
+        __rob_task_info["rob_reward"] = rob_task_info["rob_reward"]
+        __rob_task_info["rob_result"] = rob_task_info["rob_result"]
+        __rob_task_info["rob_time"] = int(rob_task_info["rob_time"])
+
+    def cancel_rob_task(self, header):
+        """取消劫运"""
+        rob_task_info = self._rob_task_infos[header]
+        rob_task_info["rob_state"] = 0
+        return rob_task_info
+
     @property
     def task_id(self):
-        logger.debug("==================")
         return self._task_id
 
     @task_id.setter
     def task_id(self, value):
-        logger.debug("==================")
         self._task_id = value
 
     @property
     def task_no(self):
-        logger.debug("==================")
         return self._task_no
 
     @task_no.setter
     def task_no(self, value):
-        logger.debug("==================")
         self._task_no = value
 
     @property
     def state(self):
         print("state get", self._state)
-        logger.debug("==================")
         return self._state
-
-    #@state.setter
-    #def state(self, value):
-        #print("state set", value)
-        #logger.debug("==================")
-        #self._state = value
 
     @state.setter
     def state(self, value):
-        logger.debug("set==================")
+        print("state set %s-> %s" % (self._state, value))
         self._state = value
 
     @property
@@ -101,88 +182,3 @@ class EscortTask():
     @rob_task_infos.setter
     def rob_task_infos(self, value):
         self._rob_task_infos = value
-
-    def add_player(self, player_info, protect_or_rob, header=0):
-        if protect_or_rob == 1:
-            self._protecters.append(player_info)
-        elif protect_or_rob == 2:
-            if not header:
-                rob_task_info = {}
-                rob_task_info["robbers"] = []
-                rob_task_info["robbers"].append(player_info)
-                self._rob_task_infos[player_info.get("id")] = rob_task_info
-            else:
-                rob_task_info = self._rob_task_infos.get(header)
-                rob_task_info["robbers"].append(player_info)
-
-        return True
-
-    def is_finished(self, task_item):
-        if self._start_protect_time and self._start_protect_time + task_item.taskTime < get_current_timestamp():
-            return True
-        elif not self._start_protect_time and self._receive_task_time + task_item.wait + task_item.taskTime < get_current_timestamp():
-            return True
-        return False
-
-    def rob_success_times(self):
-        """
-        劫运成功的次数
-        """
-        times = 0
-        for rob_task_info in self._rob_task_infos:
-            if rob_task_info.get("rob_result"):
-                times = times + 1
-        return times
-
-    def save_data(self):
-        """
-        保存
-        """
-        tb_guild = self._owner._tb_guild_info.getObj('escort_tasks')
-        data = self.property_dict()
-        if not tb_guild.hset(data['task_id'], data):
-            logger.error('save escort task error:%s', data['task_id'])
-
-    def property_dict(self):
-        """docstring for property_dict"""
-        return {
-                "task_id": self._task_id,
-                "task_no": self._task_no,
-                "state": self._state,
-                "receive_task_time": self._receive_task_time,
-                "start_protect_time": self._start_protect_time,
-                "protect_guild_info": self._protect_guild_info,
-                "protecters": self._protecters,
-                "rob_task_infos": self._rob_task_infos,
-                }
-
-    def load(self, task_info):
-        """
-        根据字典类型的数据初始化对象
-        """
-
-        if task_info.get("task_id"):
-            self._task_id = task_info.get("task_id")
-        if task_info.get("task_no"):
-            self._task_no = task_info.get("task_no")
-        if task_info.get("state"):
-            self._state = task_info.get("state")
-        if task_info.get("receive_task_time"):
-            self._receive_task_time = task_info.get("receive_task_time")
-        if task_info.get("start_protect_time"):
-            self._start_protect_time = task_info.get("start_protect_time")
-        if task_info.get("protect_guild_info"):
-            self._protect_guild_info = task_info.get("protect_guild_info")
-        if task_info.get("protecters"):
-            self._protecters = task_info.get("protecters")
-        if task_info.get("rob_task_infos"):
-            self._rob_task_infos = task_info.get("rob_task_infos")
-
-    def update_rob_task_info(self, rob_task_info, header):
-        __rob_task_info = self._rob_task_infos.get(header)
-        __rob_task_info["seed1"] = rob_task_info["seed1"]
-        __rob_task_info["seed2"] = rob_task_info["seed2"]
-        __rob_task_info["rob_reward"] = rob_task_info["rob_reward"]
-        __rob_task_info["rob_result"] = rob_task_info["rob_result"]
-        __rob_task_info["rob_time"] = rob_task_info["rob_time"]
-

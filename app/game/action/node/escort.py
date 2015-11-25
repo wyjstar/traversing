@@ -232,6 +232,19 @@ def get_player_info(player):
     return player_info
 
 @remoteserviceHandle('gate')
+def cancel_escort_task_1906(data, player):
+    """取消劫运任务"""
+    request = escort_pb2.CancelEscortTaskRequest()
+    request.ParseFromString(data)
+    logger.debug("request %s" % request)
+    task_id = request.task_id
+    remote_gate["world"].cancel_rob_task_remote(player.guild.g_id, task_id, player.base_info.id)
+    response = common_pb2.CommonResponse()
+    response.result = True
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
 def invite_1908(data, player):
     """发送/接受邀请"""
     request = escort_pb2.InviteEscortTaskRequest()
@@ -269,27 +282,26 @@ def send_invite(player, task_id, protect_or_rob):
     update_task_pb(task, push_response.task)
     push_response.protect_or_rob = protect_or_rob
     for p_id in get_guild_member_ids(player.guild.g_id):
-        remote_gate.push_object_remote(19081, push_response.SerializePartialToString(), player.base_info.id)
+        remote_gate.push_object_remote(19082, push_response.SerializePartialToString(), player.base_info.id)
 
 
     return {'result': True}
 
 def get_guild_member_ids(g_id):
     """docstring for get_guild_member_ids"""
-    return []
-
+    return [10000]
 
 def in_invite(player, task_id, protect_or_rob):
     """
     参与邀请
     """
     # add CharacterInfo to the task
-    task = remote_gate["world"].add_player_remote(player.guild.g_id, get_player_info(player), protect_or_rob)
+    task = remote_gate["world"].add_player_remote(player.guild.g_id, task_id, get_player_info(player), protect_or_rob, 0)
     # push info to related players
     push_response = escort_pb2.InviteEscortTaskPushResponse()
     update_task_pb(task, push_response.task)
     push_response.protect_or_rob = protect_or_rob
-    remote_gate.push_object_remote(19081, push_response.SerializePartialToString(), )
+    remote_gate.push_object_remote(19081, push_response.SerializePartialToString(), task.get("protecters")[0].get("id"))
     return {'result': True}
 
 @remoteserviceHandle('gate')
@@ -389,7 +401,7 @@ def update_task_pb(task, task_pb):
 
     for rob_task_info in task.get("rob_task_infos"):
         rob_task_info_pb = task_pb.rob_task_infos.add()
-        update_rob_task_info_pb(rob_task_info, rob_task_info_pb)
+        update_rob_task_info_pb(task.get("protecters"), rob_task_info, rob_task_info_pb)
 
 def update_guild_pb(guild_info, guild_info_pb):
     guild_info_pb.g_id = guild_info.get("g_id", -1)
@@ -429,6 +441,10 @@ def update_rob_task_info_pb(protecters, rob_task_info, rob_task_info_pb):
     rob_task_info_pb.rob_result = rob_task_info.get("rob_result")
     # rob_time
     rob_task_info_pb.rob_time = rob_task_info.get("rob_time")
+    # rob_state
+    rob_task_info_pb.rob_time = rob_task_info.get("rob_state", 0)
+    # rob_receive_task_time
+    rob_task_info_pb.rob_time = rob_task_info.get("rob_receive_task_time", 0)
 
 def update_side_battle_unit_pb(player_infos, battle_unit_group_pb):
     for player_info in player_infos:

@@ -13,9 +13,7 @@ from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
 from shared.utils.mail_helper import deal_mail
 from shared.utils.date_util import get_current_timestamp
-from gfirefly.server.globalobject import GlobalObject
 from app.world.core.guild_manager import guild_manager_obj
-from app.proto_file import escort_pb2
 
 @rootserviceHandle
 def get_guild_task_records_remote(guild_id):
@@ -25,7 +23,7 @@ def get_guild_task_records_remote(guild_id):
     tasks = {}
     guild = guild_manager_obj.get_guild_obj(guild_id)
     for task_id, task in guild.escort_tasks.items():
-        if task.state in [2, 3]:
+        if task.state in [2, -1]:
             tasks[task_id] = construct_task_data(task)
 
     return tasks
@@ -93,10 +91,9 @@ def start_protect_task_remote(guild_id, task_id):
     guild = guild_manager_obj.get_guild_obj(guild_id)
     task = guild.get_task_by_id(task_id)
     logger.debug("task state %s" % task.state)
-    #task.state = 2
-    task._state = 2
+    task.state = 2
     logger.debug("task state %s" % task.state)
-    task.start_protect_time = get_current_timestamp()
+    task.start_protect_time = int(get_current_timestamp())
     guild.escort_tasks_can_rob.append(task_id)
     guild.save_data()
     task.save_data()
@@ -110,4 +107,12 @@ def send_escort_task_invite_remote(guild_id, task_id, protect_or_rob):
         guild.escort_tasks_invite_rob.append(task_id)
 
     return construct_task_data(guild.get_task_by_id(task_id))
-    #task = guild.get_task_by_id(task_id)
+
+@rootserviceHandle
+def cancel_rob_task_remote(guild_id, task_id, header):
+    """取消劫运任务"""
+    guild = guild_manager_obj.get_guild_obj(guild_id)
+    task = guild.get_task_by_id(task_id)
+    task.cancel_rob_task(header)
+    task.save_data()
+

@@ -74,16 +74,34 @@ class RobotEscortTask(Robot):
 
         self.on_command_finish()
 
+    def command_zzcancel_escort_task(self):
+        request = escort_pb2.CancelEscortTaskRequest()
+        request.task_id = self.tasks.keys()[0]
+        self.send_message(request, 1906)
+
+    def cancel_escort_task_1906(self, message):
+        print "cancel_escort_task_1906==================="
+        response = common_pb2.CommonResponse()
+        response.ParseFromString(message)
+
+        self.on_command_finish()
+
     def command_invite(self):
         request = escort_pb2.InviteEscortTaskRequest()
         request.task_id = self.tasks.keys()[0]
         request.protect_or_rob = 1
         request.send_or_in = 1
         self.send_message(request, 1908)
+    def command_zjoin_invite(self):
+        request = escort_pb2.InviteEscortTaskRequest()
+        request.task_id = self.tasks.keys()[0]
+        request.protect_or_rob = 1
+        request.send_or_in = 2
+        self.send_message(request, 1908)
 
     def invite_1908(self, message):
         print "invite_1908==================="
-        response = escort_pb2.CommonResponse()
+        response = common_pb2.CommonResponse()
         response.ParseFromString(message)
         self.on_command_finish()
     def command_start_task(self):
@@ -106,3 +124,14 @@ class RobotEscortTask(Robot):
         #request.send_or_in = 1
         self.send_message(request, 1909)
 
+    def push_to_team_when_join_team_19081(self, message):
+        print "push_to_team_when_join_team_19081==================="
+        response = escort_pb2.StartEscortTaskResponse()
+        response.ParseFromString(message)
+        self.on_command_finish()
+
+    def push_to_guild_when_invite_19082(self, message):
+        print "push_to_guild_when_invite_19082==================="
+        response = escort_pb2.StartEscortTaskResponse()
+        response.ParseFromString(message)
+        self.on_command_finish()
