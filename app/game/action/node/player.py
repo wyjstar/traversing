@@ -407,6 +407,7 @@ def buy_stamina_2201(request_proto, player):
 
     player.pay.pay(need_gold*num, func)
     response.buy_times = item.buy_stamina_times
+    logger.debug("buy stamina times %s" % (response.buy_times))
 
     response.res.result = True
     return response.SerializePartialToString()
