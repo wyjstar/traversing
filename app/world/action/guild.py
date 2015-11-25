@@ -472,7 +472,7 @@ def up_build_remote(g_id, p_id, build_type):
 
 
 @rootserviceHandle
-def praise_remote(g_id, p_id, name):
+def praise_remote(g_id, p_id, name, this_times):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
@@ -484,14 +484,16 @@ def praise_remote(g_id, p_id, name):
     build_conf = game_configs.guild_config.get(1)[build_level]
 
     headSworShip = build_conf.headSworShip
+    worShip = build_conf.worShip
     money_num = random.randint(headSworShip[0], headSworShip[1])
+    drop_num = random.randint(worShip[this_times][0], worShip[this_times][1])
     guild_obj.add_praise_money(money_num)
 
     dynamic_pb = guild_pb2.GuildDynamic()
     dynamic_pb.type = const.DYNAMIC_ZAN
     dynamic_pb.time = int(time.time())
     dynamic_pb.name1 = name
-    dynamic_pb.num = drop_num
+    dynamic_pb.num1 = drop_num
 
     guild_obj.add_dynamic(dynamic_pb.SerializeToString())
     guild_obj.save_data()
@@ -572,8 +574,7 @@ def mobai_remote(g_id, p_id, u_id, name):
             dynamic_pb.name1 = name
             name2 = tb_character_info.getObj(u_id).hget('nickname')
             dynamic_pb.name2 = name2
-            dynamic_pb.num = drop_num
-            dynamic_pb.num = worship_info[2]
+            dynamic_pb.num1 = drop_num
             return {'res': True}
 
     logger.error('mobai, player dont in guild')

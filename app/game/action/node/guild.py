@@ -994,9 +994,11 @@ def praise_1807(data, player):
         response.res.result_no = 889
         return response.SerializeToString()
 
+    this_times = player.guild.praise_num+1
     remote_res = remote_gate['world'].praise_remote(g_id,
                                                     player.base_info.id,
-                                                    player.base_info.base_name)
+                                                    player.base_info.base_name,
+                                                    this_times)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -1008,7 +1010,7 @@ def praise_1807(data, player):
     player.guild.add_praise_times()
 
     dorp_item = parse({107: [remote_res.get('drop_num'), remote_res.get('drop_num'),
-                      build_config.worShip[1][2]]})
+                      build_config.worShip[this_times][2]]})
     return_data = gain(player, dorp_item, const.PraiseGift)  # 获取
     get_return(player, return_data, response.gain)
     player.guild.save_data()
