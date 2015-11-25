@@ -5,10 +5,10 @@ created by server on 14-7-5下午3:07.
 from app.game.component.Component import Component
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.redis_mode import tb_character_info
+from app.game.redis_mode import tb_character_ap
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
-from app.game.component.mine.monster_mine import MineOpt
 from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
 from app.game.core.task import hook_task, CONDITIONId
@@ -368,7 +368,7 @@ class CharacterLineUpComponent(Component):
             each_power = slot.combat_power_lineup()
             _power += each_power
 
-        MineOpt.update('sword', self.owner.base_info.id, _power)
+        tb_character_ap.zadd(_power, self.owner.base_info.id)
         if _power > self._hight_power:
             self._hight_power = _power
         return _power

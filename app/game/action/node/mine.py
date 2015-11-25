@@ -277,7 +277,7 @@ def query_1243(data, player):
     mid = player.mine.mid(request.position)
     mine_item = game_configs.mine_config.get(mid)
 
-    response.genUnit = int((60 / mine_item.timeGroup1) * mine_item.outputGroup1)
+    response.genUnit = mine_item.timeGroup1 / mine_item.outputGroup1
     response.rate = mine_item.increase
     response.incrcost = mine_item.increasePrice
     response.guard_time = int(guard_time)
