@@ -15,6 +15,7 @@ from app.game.action.node._fight_start_logic import get_seeds
 from app.game.action.node._fight_start_logic import pvp_process
 from app.game.core.mail_helper import send_mail
 from app.game.action.node._fight_start_logic import assemble
+from shared.db_opear.configs_data.data_helper import convert_common_resource2mail
 import cPickle
 import copy
 
@@ -171,6 +172,7 @@ def receive_escort_task_1905(data, player):
     logger.debug("request %s" % request)
     task_id = request.task_id
     protect_or_rob = request.protect_or_rob
+    task_guild_id = request.task_guild_id
 
     response = common_pb2.CommonResponse()
 
@@ -332,6 +334,13 @@ def start_rob_escort(player, task_id, response):
     手动开始劫运
     """
     task = remote_gate["world"].get_task_by_id_remote(player.guild.g_id, task_id)
+    # get robbed success num
+    robbed_num = 0
+    for _, tmp in task.get("rob_task_infos", {}).items():
+        if tmp["rob_result"]:
+            robbed_num = robbed_num + 1
+    if robbed_num > 2:
+        return {"result": False, "result_no": 190911}
     # construct battle units
     # update rob task
     task_item = game_configs.guild_task_config.get(task.get("task_no"))
@@ -364,23 +373,33 @@ def start_rob_escort(player, task_id, response):
     if rob_result:
         robbers_num = len(rob_task_info.get("robbers"))
         peoplePercentage = task_item.peoplePercentage.get(robbers_num)
-        robbedPercentage = task_item.robbedPercentage.get(len(task.rob_task_infos))
+
+
+        robbedPercentage = task_item.robbedPercentage.get(robbed_num+1)
         logger.debug("peoplePercentage robbers_num %s %s" % (peoplePercentage, robbers_num))
         snatch_formula = game_configs.formula_config.get("SnatchReward").get("formula")
         assert snatch_formula!=None, "snatch_formula can not be None!"
         percent = eval(snatch_formula, {"peoplePercentage": peoplePercentage, "robbedPercentage": robbedPercentage})
-        return_data = gain(player, task_item.reward, const.ESCORT_ROB, multiple=percent)
-        rob_response_pb = common_pb2.GameResourcesResponse()
-        get_return(player, return_data, rob_response_pb)
-        rob_task_info["rob_reward"] = rob_response_pb.SerializePartialToString()
-        # send reward mail
-        str_rewards = dump_game_response_to_string(rob_response_pb)
 
+        # send reward mail
+        mail_arg1 = []
+        mail_arg1.extend(convert_common_resource2mail(task_item.get("reward1")))
+        mail_arg1.extend(convert_common_resource2mail(task_item.get("reward2")))
+        mail_arg1.extend(convert_common_resource2mail(task_item.get("reward3")))
+        logger.debug("mail_arg1 %s percent %s" % (mail_arg1, percent))
+        for tmp in mail_arg1:
+            for _, tmp_info in tmp.items():
+                tmp_info[0] = tmp_info[0] * percent
+                tmp_info[1] = tmp_info[1] * percent
+
+        logger.debug("mail_arg1 %s percent %s" % (mail_arg1, percent))
+
+        rob_task_info["rob_reward"] = mail_arg1
         for player_info in rob_task_info.get("robbers"):
             send_mail(conf_id=1002,  receive_id=player_info.get("id"),
-                                  nickname=player_info.get("nickname"), arg1=str(str_rewards))
-    remote_gate["world"].start_rob_escort_remote(player.guild.g_id, task_id, rob_task_info)
-    update_rob_task_info_pb(rob_task_info, response.rob_task_info)
+                                  nickname=player_info.get("nickname"), arg1=str(mail_arg1))
+    remote_gate["world"].start_rob_escort_remote(player.guild.g_id, task_id, rob_task_info, player.base_info.id)
+    update_rob_task_info_pb(task.get("protecters"), rob_task_info, response.rob_task_info)
     return {"result": True}
 
 def load_data_to_response(tasks, tasks_pb):
@@ -399,7 +418,7 @@ def update_task_pb(task, task_pb):
     update_guild_pb(task.get("protect_guild_info"), task_pb.protect_guild_info)
     update_player_infos_pb(task.get("protecters"), task_pb.protecters)
 
-    for rob_task_info in task.get("rob_task_infos"):
+    for _, rob_task_info in task.get("rob_task_infos"):
         rob_task_info_pb = task_pb.rob_task_infos.add()
         update_rob_task_info_pb(task.get("protecters"), rob_task_info, rob_task_info_pb)
 

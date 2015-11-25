@@ -25,16 +25,20 @@ class EscortTask(object):
         self.load(info)
 
 
-    def add_player(self, player_info, protect_or_rob, header=0):
+    def add_player(self, player_info, protect_or_rob, header=0, guild_info={}):
         if protect_or_rob == 1:
             self._protecters.append(player_info)
+            if not self._protecters:
+                self._protect_guild_info = guild_info
         elif protect_or_rob == 2:
             if not header:
                 rob_task_info = {}
                 rob_task_info["robbers"] = []
                 rob_task_info["robbers"].append(player_info)
+                rob_task_info["rob_result"] = False
                 rob_task_info["rob_state"] = 1
                 rob_task_info["rob_receive_task_time"] = int(get_current_timestamp())
+                rob_task_info["rob_guild_info"] = guild_info
                 self._rob_task_infos[player_info.get("id")] = rob_task_info
             else:
                 rob_task_info = self._rob_task_infos.get(header)

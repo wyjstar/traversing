@@ -64,6 +64,7 @@ message RefreshEscortTaskResponse{
 message ReceiveEscortTaskRequest{
     required string task_id = 1;   // 任务id
     required int32 protect_or_rob = 2; // 押运1 劫运2
+    optional int32 task_guild_id = 3; // 任务所在公会id
 }
 //取消劫运 command 1906 返回 CommonResponse
 message CancelEscortTaskRequest{
@@ -89,6 +90,7 @@ message InviteEscortTaskPushResponse{
 message StartEscortTaskRequest{
     required string task_id = 1; //任务id
     required int32 protect_or_rob = 2; // 押运1 劫运2
+    optional int32 task_guild_id = 3; // 任务所在公会id
 }
 // 手动开始押运、劫运返回
 message StartEscortTaskResponse{

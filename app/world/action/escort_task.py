@@ -74,13 +74,13 @@ def add_player_remote(guild_id, task_id, player_info, protect_or_rob, header):
     return construct_task_data(task)
 
 @rootserviceHandle
-def start_rob_escort_remote(guild_id, task_id, rob_task_info):
+def start_rob_escort_remote(guild_id, task_id, rob_task_info, header):
     """
     更新劫运信息
     """
     guild = guild_manager_obj.get_guild_obj(guild_id)
     task = guild.get_task_by_id(task_id)
-    task.update_rob_task_info(rob_task_info)
+    task.update_rob_task_info(rob_task_info, header)
     task.save_data()
 
 @rootserviceHandle
