@@ -1236,7 +1236,7 @@ def mobai_871(data, player):
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    # player.guild.do_mobai(u_id)
+    player.guild.do_mobai(u_id)
     return_data = gain(player, game_configs.base_config.get('Worship2'),
                        const.GUILD_MOBAI)  # 获取
     get_return(player, return_data, response.gain)
@@ -1279,7 +1279,7 @@ def receive_mobai_872(data, player):
         response.res.result_no = 800
         return response.SerializeToString()
 
-    # player.guild.receive_mobai()
+    player.guild.receive_mobai()
     return_data = gain(player, game_configs.base_config.get('AreWorship2'),
                        const.GUILD_MOBAI, multiple=be_mobai_times)  # 获取
     get_return(player, return_data, response.gain)
