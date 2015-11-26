@@ -22,7 +22,7 @@ class StageConfig(object):
         # self._gift_weight = {}         # ｛章节：权重｝
         # self._gift_info = {}           # {章节：［type，id，num］}
         self._hjqy_stages = {}         # {章节：［type，id，num］}
-        self._chapter_hide_stage = {}  # {章节：隐藏关卡ID}
+        self._chapter_hide_stage = {}  # {章节：隐藏关卡conf}
 
     def parser(self, config_value):
         for row in config_value:
@@ -31,8 +31,8 @@ class StageConfig(object):
             item = CommonItem(row)
 
             if item.sort == 1:
-                if item.type == 4:  # 隐藏关卡
-                    self._chapter_hide_stage[item.id] = item
+                if item.type == 14:  # 隐藏关卡
+                    self._chapter_hide_stage[item.chapter] = item
 
                 self._chapter_ids.add(item.chapter)
                 self._stages[item.id] = item

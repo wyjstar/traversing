@@ -735,6 +735,10 @@ def get_guild_info_812(data, player):
     """获取公会信息 """
     response = GetGuildInfoResponse()
     g_id = player.guild.g_id
+    if not g_id:
+        response.res.result = False
+        response.res.result_no = 844
+        return response.SerializeToString()
 
     remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, player.base_info.id)
     print '=================================112'
