@@ -26,6 +26,7 @@ message GuildRank
     required int32 icon_id = 7;   //军团徽章
     required string call = 8;   //公告
     optional int32 be_apply = 9;   //有没有被我申请
+    optional int32 ysdt_level = 10;   //议事大厅等级
 }
 
 // 加入公会 command：802
@@ -93,6 +94,7 @@ message GetGuildInfoResponse{
     repeated GuildSkill guild_skill = 30; //军团技能
     optional int32 skill_point = 31; //军团技能点
     optional int32 level = 32;   //等级
+    optional int32 captain_id = 33;   //团长id
 }
 
 message BuildInfo{
@@ -380,6 +382,7 @@ message MineSeekHelpInfo{
     required int32 vip_level = 6;
     required int32 level = 7;
     required int32 be_help_times = 8;
+    required int32 position = 9;
 }
 
 // 秘境帮助 875
