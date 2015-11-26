@@ -1079,7 +1079,7 @@ base_config={
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 1103,}
 ,}
-,  ["totemSpaceNum4"] = 10,  ["AnnouncementCoolingTime"] = 15,  ["heroBreakBack"] = 0.8,  ["money_relive_price"] = {
+,  ["totemSpaceNum4"] = 10,  ["AnnouncementCoolingTime"] = 120,  ["heroBreakBack"] = 0.8,  ["money_relive_price"] = {
   [1] = 20,  [2] = 20,  [3] = 50,  [4] = 50,  [5] = 80,  [6] = 80,  [7] = 100,  [8] = 100,  [9] = 150,  [10] = 150,  [11] = 200,  [12] = 200,  [13] = 300,  [14] = 300,  [15] = 400,  [16] = 400,  [17] = 500,  [18] = 500,}
 ,  ["worship"] = {
   ["1"] = {
