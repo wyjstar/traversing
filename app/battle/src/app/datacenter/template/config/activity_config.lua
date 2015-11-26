@@ -80,7 +80,7 @@ activity_config={
 ,}
 ,}
 ,  [50004] = {
-  ["parameterB"] = 100,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 50,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 50,  ["idEmail"] = 0,  ["parameterD"] = {
   [1] = 30,}
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 50004,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
@@ -1980,7 +1980,7 @@ activity_config={
 }
 ,}
 ,  [50002] = {
-  ["parameterB"] = 100,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 50,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 50,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 50002,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }

@@ -1263,6 +1263,7 @@ def mobai_871(data, player):
             data = {'guild_mobai': p_mobai_info}
         character_obj.hmset(data)
 
+    player.guild.save_data()
     response.res.result = True
     return response.SerializeToString()
 
