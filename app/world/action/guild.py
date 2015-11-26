@@ -529,7 +529,7 @@ def captailn_receive_remote(g_id, p_id):
 
 
 @rootserviceHandle
-def bless_remote(g_id, p_id, bless_type, name):
+def bless_remote(g_id, p_id, bless_type, name, my_bless_times):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
@@ -549,7 +549,7 @@ def bless_remote(g_id, p_id, bless_type, name):
 
     guild_obj.add_dynamic(dynamic_pb.SerializeToString())
 
-    guild_obj.do_bless(worship_info[2], worship_info[3])
+    guild_obj.do_bless(worship_info[2], worship_info[3], my_bless_times)
     guild_obj.save_data()
 
     return {'res': True}
@@ -634,7 +634,8 @@ def mine_seek_help_list_remote(g_id, p_id):
             del guild_obj.mine_help[_time]
             continue
 
-    return {'res': True, 'mine_help_list': guild_obj.mine_help}
+    return {'res': True, 'mine_help_list': guild_obj.mine_help,
+            'p_list': guild_obj.p_list}
 
 
 @rootserviceHandle

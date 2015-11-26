@@ -390,7 +390,7 @@ def make_runt_857(data, player):
         del player.runt.m_runt[runt_no]
 
     if num:
-        consume(player, price, const.RUNT_MAKE)  # 消耗
+        consume(player, price, const.RUNT_MAKE, multiple=num)  # 消耗
     consume(player, runt_conf.consume, const.RUNT_MAKE)  # 消耗
 
     new_runt_no = 0
