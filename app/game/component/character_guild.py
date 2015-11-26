@@ -8,6 +8,9 @@ from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_character_info
 from app.game.core.guild import Guild
 import time
+from gfirefly.server.globalobject import GlobalObject
+
+remote_gate = GlobalObject().remote.get('gate')
 
 
 class CharacterGuildComponent(Component):
@@ -241,4 +244,4 @@ class CharacterGuildComponent(Component):
         self._mine_help = v
 
     def get_shop_data(self, t):
-        return remote_gate['world'].get_shop_data(self.owner.guild_g_id, t)
+        return remote_gate['world'].get_shop_data_remote(self.owner.guild.g_id, t)

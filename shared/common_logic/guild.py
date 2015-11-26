@@ -435,7 +435,8 @@ class Guild(object):
     def get_shop_data(self, shop_type):
         if shop_type not in self._shop_data:
             logger.error('err shop type:%s', shop_type)
+            logger.error('guild shop data:%s', self._shop_data)
             return None
-        check_time(self.shop_data)
+        check_time(self._shop_data)
         self.save_data()
         return self._shop_data[shop_type]

@@ -462,7 +462,7 @@ def get_shop_data_remote(g_id, shop_type):
 
 
 @rootserviceHandle
-def guild_shop_buy_remote(shop_id, item_count, shop_type, vip_level):
+def guild_shop_buy_remote(g_id, shop_id, item_count, shop_type, vip_level):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(g_id)
@@ -470,6 +470,7 @@ def guild_shop_buy_remote(shop_id, item_count, shop_type, vip_level):
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
         return {'res': False, 'no': 800}
     shop = guild_obj.get_shop_data(shop_type)
-    res = do_shop_buy(shop_id, item_count, shop, vip_level)
+    build_level = guild_obj.build.get(1)
+    res = do_shop_buy(shop_id, item_count, shop, vip_level, build_level)
     guild_obj.save_data()
     return res

@@ -19,6 +19,11 @@ from shared.utils.const import const
 from shared.tlog import tlog_action
 from app.game.core.task import hook_task, CONDITIONId
 from shared.common_logic.shop import guild_shops, do_shop_buy
+from gfirefly.server.globalobject import GlobalObject
+from app.game.redis_mode import tb_guild_info
+from shared.common_logic.guild import Guild
+
+remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')
@@ -321,10 +326,18 @@ def shop_buy_505(pro_data, player):
         def func():
             vip_level = player.base_info.vip_level
             if shop_type in guild_shops:
-                res = remote_gate['world'].guild_shop_buy_remote(shop_id, item_count, shop_type, vip_level)
+                res = remote_gate['world'].guild_shop_buy_remote(guild_id, shop_id, item_count, shop_type, vip_level)
             else:
                 shop = player.shop.get_shop_data(shop_type)
-                res = do_shop_buy(shop_id, item_count, shop, vip_level)
+                g_id = player.guild.g_id
+                guild_data = tb_guild_info.getObj(g_id).hgetall()
+                build_level = 0
+                if g_id != 0 and guild_data:
+                    guild_obj = Guild()
+                    guild_obj.init_data(guild_data)
+
+                    build_level = guild_obj.build.get(3)
+                res = do_shop_buy(shop_id, item_count, shop, vip_level, build_level)
             common_response.result = res.get('res')
             if res.get('no'):
                 common_response.result_no = res.get('no')

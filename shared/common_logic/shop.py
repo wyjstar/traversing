@@ -106,7 +106,7 @@ def refresh_shop_info(shop_data, is_guild_shop):
             self._shop_data[t] = get_new_shop_info(t)
 
 
-def do_shop_buy(shop_id, item_count, shop, vip_level):
+def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
     shop_item = game_configs.shop_config.get(shop_id)
     shop_id_buyed_num_day = shop['items'].get(shop_id, 0)
@@ -125,7 +125,8 @@ def do_shop_buy(shop_id, item_count, shop, vip_level):
             # response.limit_item_max_num = limit_num
 
     if shop_item.contribution:
-        limit_num = shop_item.limitVIPeveryday.get(vip_level, 0)
+        print build_level, '===========build_level'
+        limit_num = shop_item.contribution.get(build_level, 0)
 
         if shop_id_buyed_num_day + item_count > limit_num:
             logger.error("limit shop item:%s:%s limit:%s:%s",
