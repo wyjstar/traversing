@@ -109,7 +109,7 @@ def refresh_shop_info(shop_data, is_guild_shop):
 def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
     shop_item = game_configs.shop_config.get(shop_id)
-    # shop_id_buyed_num_day = shop['items'].get(shop_id, 0)
+    shop_id_buyed_num_day = shop['items'].get(shop_id, 0)
     # shop_id_buyed_num_all = shop['all_items'].get(shop_id, 0)
     # guild_shop_id_buyed_num_day = shop['guild_items'].get(shop_id, 0)
     if shop_item.batch != -1 and shop_id_buyed_num_day >= shop_item.batch:
@@ -122,7 +122,7 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
         if shop_id_buyed_num + item_count > limit_num:
             logger.error("vip limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num_all, limit_num)
+                         shop_id, item_count, shop_id_buyed_num, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_all
             # response.limit_item_max_num = limit_num
@@ -135,7 +135,7 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
         if shop_id_buyed_num + item_count > limit_num:
             logger.error("limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num_day, limit_num)
+                         shop_id, item_count, shop_id_buyed_num, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
@@ -148,7 +148,7 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
         if shop_id_buyed_num + item_count > limit_num:
             logger.error("limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num_day, limit_num)
+                         shop_id, item_count, shop_id_buyed_num, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
@@ -160,7 +160,7 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
         if shop_id_buyed_num + item_count > limit_num:
             logger.error("limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num_day, limit_num)
+                         shop_id, item_count, shop_id_buyed_num, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
