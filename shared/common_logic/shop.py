@@ -157,4 +157,4 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
             else:
                 break
 
-    return {'res': True, 'lucky_attr': _lucky_attr}
+    return {'res': True, 'lucky_attr': _lucky_attr, 'shop': shop}

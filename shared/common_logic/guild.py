@@ -447,5 +447,4 @@ class Guild(object):
             logger.error('err shop type:%s', shop_type)
             logger.error('guild shop data:%s', self._shop_data)
             return None
-        self._shop_data[shop_type][item_id] += num
-        self._save_data()
+        self.save_data()
