@@ -18,6 +18,7 @@ class ShopConfig(object):
             convert_keystr2num(row.get("weightGroup"))
             convert_keystr2num(row.get("limitVIPeveryday"))
             convert_keystr2num(row.get("limitVIP"))
+            convert_keystr2num(row.get("dutyFree"))
             convert_keystr2num(row.get("contribution"))
             convert_keystr2num(row.get("attr"))
             row["consume"] = parse(row.get("consume"))

@@ -473,6 +473,6 @@ def guild_shop_buy_remote(g_id, shop_id, item_count, shop_type, vip_level):
     build_level = guild_obj.build.get(1)
     res = do_shop_buy(shop_id, item_count, shop, vip_level, build_level)
     if res.get('res'):
-        guild_obj.buy_item(shop_type, shop_id, item_count)
+        guild_obj.buy_item(shop_type, res.get('shop'))
         guild_obj.save_data()
     return res

@@ -439,6 +439,10 @@ def refresh_shop_items_507(pro_data, player):
         all_items = response.all_items.add()
         all_items.item_id = k
         all_items.item_num = v
+    for k, v in shopdata['guild_items'].items():
+        guild_items = response.guild_items.add()
+        guild_items.item_id = k
+        guild_items.item_num = v
 
     if shop_type == 11:
         # 11活动
@@ -501,6 +505,10 @@ def get_shop_items_508(pro_data, player):
         all_items = response.all_items.add()
         all_items.item_id = k
         all_items.item_num = v
+    for k, v in shopdata['guild_items'].items():
+        guild_items = response.guild_items.add()
+        guild_items.item_id = k
+        guild_items.item_num = v
 
     # logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
     response.luck_num = int(shopdata['luck_num'])

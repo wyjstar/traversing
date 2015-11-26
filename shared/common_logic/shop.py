@@ -24,7 +24,7 @@ def get_new_shop_info(shop_type):
     data['item_ids'] = get_shop_item_ids(shop_type, 0)
     data['items'] = {}  # 每日限制 每日刷新的
     data['all_items'] = {}  # 永久限制 一个号只能买一定个数
-    # data['guild_limit_items'] = {}  # 军团限制军团公用个数 存军团里
+    data['guild_items'] = {}  # 军团限制军团公用个数 存军团里
     return data
 
 
@@ -109,26 +109,44 @@ def refresh_shop_info(shop_data, is_guild_shop):
 def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
     shop_item = game_configs.shop_config.get(shop_id)
-    shop_id_buyed_num_day = shop['items'].get(shop_id, 0)
-    shop_id_buyed_num_all = shop['all_items'].get(shop_id, 0)
+    # shop_id_buyed_num_day = shop['items'].get(shop_id, 0)
+    # shop_id_buyed_num_all = shop['all_items'].get(shop_id, 0)
+    # guild_shop_id_buyed_num_day = shop['guild_items'].get(shop_id, 0)
     if shop_item.batch != -1 and shop_id_buyed_num_day >= shop_item.batch:
         return {'res': False, 'no': 851}
 
     if shop_item.limitVIP:
         limit_num = shop_item.limitVIP.get(vip_level, 0)
+        limit_type = 'all_items'
+        shop_id_buyed_num = shop['all_items'].get(shop_id, 0)
 
-        if shop_id_buyed_num_all + item_count > limit_num:
+        if shop_id_buyed_num + item_count > limit_num:
             logger.error("vip limit shop item:%s:%s limit:%s:%s",
                          shop_id, item_count, shop_id_buyed_num_all, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_all
             # response.limit_item_max_num = limit_num
 
+    if shop_item.dutyFree:
+        print build_level, '===========build_level'
+        limit_num = shop_item.dutyFree.get(build_level, 0)
+        limit_type = 'guild_items'
+        shop_id_buyed_num = shop['guild_items'].get(shop_id, 0)
+
+        if shop_id_buyed_num + item_count > limit_num:
+            logger.error("limit shop item:%s:%s limit:%s:%s",
+                         shop_id, item_count, shop_id_buyed_num_day, limit_num)
+            return {'res': False, 'no': 502}
+            # response.limit_item_current_num = shop_id_buyed_num_day
+            # response.limit_item_max_num = limit_num
+
     if shop_item.contribution:
         print build_level, '===========build_level'
         limit_num = shop_item.contribution.get(build_level, 0)
+        limit_type = 'items'
+        shop_id_buyed_num = shop['items'].get(shop_id, 0)
 
-        if shop_id_buyed_num_day + item_count > limit_num:
+        if shop_id_buyed_num + item_count > limit_num:
             logger.error("limit shop item:%s:%s limit:%s:%s",
                          shop_id, item_count, shop_id_buyed_num_day, limit_num)
             return {'res': False, 'no': 502}
@@ -137,15 +155,16 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
     if shop_item.limitVIPeveryday:
         limit_num = shop_item.limitVIPeveryday.get(vip_level, 0)
+        limit_type = 'items'
+        shop_id_buyed_num = shop['items'].get(shop_id, 0)
 
-        if shop_id_buyed_num_day + item_count > limit_num:
+        if shop_id_buyed_num + item_count > limit_num:
             logger.error("limit shop item:%s:%s limit:%s:%s",
                          shop_id, item_count, shop_id_buyed_num_day, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
-    shop['items'][shop_id] = shop_id_buyed_num_day + item_count
-    shop['all_items'][shop_id] = shop_id_buyed_num_all + item_count
+    shop[limit_type][shop_id] = shop_id_buyed_num + item_count
 
     _lucky_attr = 0
     shop_item_attr = shop_item.get('attr')

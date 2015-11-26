@@ -442,9 +442,9 @@ class Guild(object):
         self.save_data()
         return self._shop_data[shop_type]
 
-    def buy_item(self, shop_type, item_id, num):
+    def buy_item(self, shop_type, shop):
+        logger.error('err shop type:%s', shop_type)
+        logger.error('guild shop data:%s', self._shop_data)
         if shop_type not in self._shop_data:
-            logger.error('err shop type:%s', shop_type)
-            logger.error('guild shop data:%s', self._shop_data)
             return None
-        self.save_data()
+        self._shop_data[shop_type] = shop
