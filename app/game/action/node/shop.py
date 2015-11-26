@@ -18,6 +18,7 @@ from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from shared.tlog import tlog_action
 from app.game.core.task import hook_task, CONDITIONId
+from shared.common_logic.shop import guild_shops, do_shop_buy
 
 
 @remoteserviceHandle('gate')
@@ -294,7 +295,7 @@ def shop_buy_505(pro_data, player):
                          shop_item.get('limitLevel'))
             return response.SerializeToString()
 
-        shop = player.shop.get_shop_data(shop_item.get('type'))
+        shop_type = shop_item.get('type')
 
         price = shop_item.consume if not shop_item.discountPrice else shop_item.discountPrice
         result = is_afford(player, price, multiple=item_count)  # 校验
@@ -314,63 +315,25 @@ def shop_buy_505(pro_data, player):
                     common_response.message = u'消费不足2！'
                     return response.SerializeToString()
 
-        if shop_item.limitVIP:
-            limit_num = shop_item.limitVIP.get(player.base_info.vip_level, 0)
-            shop_id_buyed_num = shop['vip_limit_items'].get(shop_id, 0)
-
-            if shop_id_buyed_num + item_count > limit_num:
-                logger.error("vip limit shop item:%s:%s limit:%s:%s",
-                             shop_id, item_count, shop_id_buyed_num, limit_num)
-                common_response.result = False
-                common_response.result_no = 502
-                response.limit_item_current_num = shop_id_buyed_num
-                response.limit_item_max_num = limit_num
-                return response.SerializeToString()
-            shop['vip_limit_items'][shop_id] = shop_id_buyed_num + item_count
-
-        if shop_item.limitVIPeveryday:
-            limit_num = shop_item.limitVIPeveryday.get(player.base_info.vip_level, 0)
-            shop_id_buyed_num = shop['limit_items'].get(shop_id, 0)
-
-            if shop_id_buyed_num + item_count > limit_num:
-                logger.error("limit shop item:%s:%s limit:%s:%s",
-                             shop_id, item_count, shop_id_buyed_num, limit_num)
-                common_response.result = False
-                common_response.result_no = 502
-                response.limit_item_current_num = shop_id_buyed_num
-                response.limit_item_max_num = limit_num
-                return response.SerializeToString()
-            shop['limit_items'][shop_id] = shop_id_buyed_num + item_count
-
-        if shop_item.batch == 1:
-            if shop_id in shop['item_ids']:
-                shop['item_ids'].remove(shop_id)
-                shop['buyed_item_ids'].append(shop_id)
-            else:
-                logger.error("can not find shop id:%s:%s",
-                             shop_id, shop['item_ids'])
-                common_response.result = False
-                common_response.result_no = 501
-                return response.SerializeToString()
-
         shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
-
         need_gold = get_consume_gold_num(price, item_count)
 
-        _lucky_attr = 0
-        shop_item_attr = shop_item.get('attr')
-        # print 'luck attr', shop_item_attr
-        if shop_item_attr:
-            lucky_keys = sorted(shop_item_attr.keys())
-            for k in lucky_keys:
-                # print k, shop_item_attr[k]
-                if shop['luck_num'] >= k:
-                    _lucky_attr = shop_item_attr[k]
-                    # print 'luck Num attr', shop['luck_num'], shop_item_attr[k], shop_item_attr
-                else:
-                    break
-
         def func():
+            vip_level = player.base_info.vip_level
+            if shop_type in guild_shops:
+                res = remote_gate['world'].guild_shop_buy_remote(shop_id, item_count, shop_type, vip_level)
+            else:
+                shop = player.shop.get_shop_data(shop_type)
+                res = do_shop_buy(shop_id, item_count, shop, vip_level)
+            common_response.result = res.get('res')
+            if res.get('no'):
+                common_response.result_no = res.get('no')
+
+            if not res.get('res'):
+                raise ValueError("shop bug error!")
+                return
+            _lucky_attr = res.get('lucky_attr')
+
             consume_return_data = consume(player, price,
                                           get_reason(shop_item.get('type')),
                                           multiple=item_count,
@@ -392,7 +355,13 @@ def shop_buy_505(pro_data, player):
             for _ in range(item_count):
                 send_tlog(player, shop_item)
             logger.debug("allBuyRefresh %s" % shop_type_item.allBuyRefresh)
-            if not shop['item_ids'] and shop_type_item.allBuyRefresh:
+            need_refresh = 1
+            if shop_item.batch != -1:
+                for item_id in shop['item_ids']:
+                    if not shop['items'].get(shop_id, 0):
+                        need_refresh = 0
+                        break
+            if need_refresh and shop_type_item.allBuyRefresh:
                 logger.debug("shop auto refresh =============")
                 player.shop.auto_refresh_items(shop_item.get('type'))
                 response.is_all_buy = True
@@ -400,7 +369,7 @@ def shop_buy_505(pro_data, player):
         player.pay.pay(need_gold, get_reason(shop_item.get('type')), func)
 
     player.shop.save_data()
-    common_response.result = True
+    print response, '===================================shop buy'
     return response.SerializeToString()
 
 REASON_HASH = {3: const.COMMON_BUY_ITEM,
@@ -446,11 +415,14 @@ def refresh_shop_items_507(pro_data, player):
 
     for x in shopdata['item_ids']:
         response.id.append(x)
-    for x in shopdata['buyed_item_ids']:
-        response.buyed_id.append(x)
-    for k, v in shopdata['limit_items']:
-        response.limit_item_id.append(k)
-        response.limit_item_num.append(v)
+    for k, v in shopdata['items'].items():
+        items = response.items.add()
+        items.item_id = k
+        items.item_num = v
+    for k, v in shopdata['all_items'].items():
+        all_items = response.all_items.add()
+        all_items.item_id = k
+        all_items.item_num = v
 
     if shop_type == 11:
         # 11活动
@@ -478,7 +450,17 @@ def get_shop_items_508(pro_data, player):
     shop_type = request.shop_type
 
     response = GetShopItemsResponse()
-    shopdata = player.shop.get_shop_data(shop_type)
+
+    # TODO 根据类型 从商店类型表里判断需不需要加入军团
+    if shop_type in guild_shops and player.guild.g_id == 0:
+        response.res.result_no = 846
+        response.res.result = False
+        return response.SerializePartialToString()
+
+    if shop_type in guild_shops:
+        shopdata = player.guild.get_shop_data(shop_type)
+    else:
+        shopdata = player.shop.get_shop_data(shop_type)
 
     shop_is_open = player.base_info.vip_shop_open
     _is_open = shop_is_open.get(shop_type, 0)
@@ -495,18 +477,18 @@ def get_shop_items_508(pro_data, player):
 
     for x in shopdata['item_ids']:
         response.id.append(x)
-    for x in shopdata['buyed_item_ids']:
-        response.buyed_id.append(x)
-    for k, v in shopdata['limit_items'].items():
-        response.limit_item_id.append(k)
-        response.limit_item_num.append(v)
-    for k, v in shopdata['vip_limit_items'].items():
-        vim_limit_item = response.vip_limit_item.add()
-        vim_limit_item.item_id = k
-        vim_limit_item.item_num = v
+    for k, v in shopdata['items'].items():
+        items = response.items.add()
+        items.item_id = k
+        items.item_num = v
+    for k, v in shopdata['all_items'].items():
+        all_items = response.all_items.add()
+        all_items.item_id = k
+        all_items.item_num = v
 
     # logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
     response.luck_num = int(shopdata['luck_num'])
     response.res.result = True
     response.refresh_times = shopdata['refresh_times']
+    print response, '===================================shop list'
     return response.SerializePartialToString()

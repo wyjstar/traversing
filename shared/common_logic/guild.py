@@ -11,6 +11,7 @@ tb_guild_info = RedisObject('tb_guild_info')
 from shared.common_logic.escort_task import EscortTask
 from shared.common_logic.guild_boss import GuildBoss
 from shared.utils.date_util import get_current_timestamp
+from shared.common_logic.shop import guild_shops, check_time, get_new_shop_info
 
 
 class Guild(object):
@@ -41,6 +42,7 @@ class Guild(object):
         self._guild_skills = {}                # 军团等级
         self._last_attack_time = 0             # 上次攻击圣兽时间
         self._mine_help = {}                   # {time:[mine_id, u_id]}
+        self._shop_data = {}                   # {shop_type: shop_info}  军团商店
 
         self.init_guild_skills()
 
@@ -73,6 +75,7 @@ class Guild(object):
                 'skill_points': self._skill_points,
                 'guild_skills': self._guild_skills,
                 'last_attack_time': self._last_attack_time,
+                'shop_data': self._shop_data,
                 }
         return data
 
@@ -83,6 +86,10 @@ class Guild(object):
         self._g_id = g_id
         self._icon_id = icon_id
         self._p_list = {1: [p_id]}
+        for t, item in game_configs.shop_type_config.items():
+            if t not in guild_shops:
+                continue
+            self._shop_data[t] = get_new_shop_info(t)
 
         guild_obj = tb_guild_info.getObj(self._g_id)
         guild_obj.new(self._info)
@@ -225,14 +232,6 @@ class Guild(object):
     @p_list.setter
     def p_list(self, p_list):
         self._p_list = p_list
-
-    @property
-    def exp(self):
-        return self._exp
-
-    @exp.setter
-    def exp(self, exp):
-        self._exp = exp
 
     @property
     def g_id(self):
@@ -432,3 +431,11 @@ class Guild(object):
     @mine_help.setter
     def mine_help(self, values):
         self._mine_help = values
+
+    def get_shop_data(self, shop_type):
+        if shop_type not in self._shop_data:
+            logger.error('err shop type:%s', shop_type)
+            return None
+        check_time(self.shop_data)
+        self.save_data()
+        return self._shop_data[shop_type]

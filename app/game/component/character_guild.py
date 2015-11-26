@@ -239,3 +239,6 @@ class CharacterGuildComponent(Component):
     @mine_help.setter
     def mine_help(self, v):
         self._mine_help = v
+
+    def get_shop_data(self, t):
+        return remote_gate['world'].get_shop_data(self.owner.guild_g_id, t)

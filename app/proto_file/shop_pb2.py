@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='shop.proto',
   package='',
-  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"%\n\x10RefreshShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\"!\n\x0cGetShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\".\n\x0bShopRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x05\x12\x12\n\nitem_count\x18\x02 \x03(\x05\"\xcb\x01\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x16limit_item_current_num\x18\x04 \x01(\x05\x12\x1a\n\x12limit_item_max_num\x18\x05 \x01(\x05\x12\x12\n\nis_all_buy\x18\x06 \x01(\x08\"\xfa\x01\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\x12\x10\n\x08\x62uyed_id\x18\x03 \x03(\x05\x12\x10\n\x08luck_num\x18\x04 \x01(\x05\x12\x15\n\rrefresh_times\x18\x05 \x01(\x05\x12\x15\n\rlimit_item_id\x18\x06 \x03(\x05\x12\x16\n\x0elimit_item_num\x18\x07 \x03(\x05\x12%\n\x0evip_limit_item\x18\x08 \x03(\x0b\x32\r.VipLimitItem\x12\'\n\x07\x63onsume\x18\t \x01(\x0b\x32\x16.GameResourcesResponse\"1\n\x0cVipLimitItem\x12\x0f\n\x07item_id\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05')
+  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"%\n\x10RefreshShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\"!\n\x0cGetShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\".\n\x0bShopRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x05\x12\x12\n\nitem_count\x18\x02 \x03(\x05\"\xcb\x01\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x16limit_item_current_num\x18\x04 \x01(\x05\x12\x1a\n\x12limit_item_max_num\x18\x05 \x01(\x05\x12\x12\n\nis_all_buy\x18\x06 \x01(\x08\"\xea\x01\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\x12\x10\n\x08luck_num\x18\x04 \x01(\x05\x12\x15\n\rrefresh_times\x18\x05 \x01(\x05\x12\x18\n\x05items\x18\x06 \x03(\x0b\x32\t.ItemInfo\x12\x1c\n\tall_items\x18\x07 \x03(\x0b\x32\t.ItemInfo\x12\x1e\n\x0bguild_items\x18\x08 \x03(\x0b\x32\t.ItemInfo\x12\'\n\x07\x63onsume\x18\t \x01(\x0b\x32\x16.GameResourcesResponse\"-\n\x08ItemInfo\x12\x0f\n\x07item_id\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05')
 
 
 
@@ -195,49 +195,42 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='buyed_id', full_name='GetShopItemsResponse.buyed_id', index=2,
-      number=3, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='luck_num', full_name='GetShopItemsResponse.luck_num', index=3,
+      name='luck_num', full_name='GetShopItemsResponse.luck_num', index=2,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='refresh_times', full_name='GetShopItemsResponse.refresh_times', index=4,
+      name='refresh_times', full_name='GetShopItemsResponse.refresh_times', index=3,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='limit_item_id', full_name='GetShopItemsResponse.limit_item_id', index=5,
-      number=6, type=5, cpp_type=1, label=3,
+      name='items', full_name='GetShopItemsResponse.items', index=4,
+      number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='limit_item_num', full_name='GetShopItemsResponse.limit_item_num', index=6,
-      number=7, type=5, cpp_type=1, label=3,
+      name='all_items', full_name='GetShopItemsResponse.all_items', index=5,
+      number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='vip_limit_item', full_name='GetShopItemsResponse.vip_limit_item', index=7,
+      name='guild_items', full_name='GetShopItemsResponse.guild_items', index=6,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='consume', full_name='GetShopItemsResponse.consume', index=8,
+      name='consume', full_name='GetShopItemsResponse.consume', index=7,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -253,26 +246,26 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=357,
-  serialized_end=607,
+  serialized_end=591,
 )
 
 
-_VIPLIMITITEM = _descriptor.Descriptor(
-  name='VipLimitItem',
-  full_name='VipLimitItem',
+_ITEMINFO = _descriptor.Descriptor(
+  name='ItemInfo',
+  full_name='ItemInfo',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='item_id', full_name='VipLimitItem.item_id', index=0,
+      name='item_id', full_name='ItemInfo.item_id', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='item_num', full_name='VipLimitItem.item_num', index=1,
+      name='item_num', full_name='ItemInfo.item_num', index=1,
       number=2, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -287,22 +280,24 @@ _VIPLIMITITEM = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=609,
-  serialized_end=658,
+  serialized_start=593,
+  serialized_end=638,
 )
 
 _SHOPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _SHOPRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _SHOPRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _GETSHOPITEMSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
-_GETSHOPITEMSRESPONSE.fields_by_name['vip_limit_item'].message_type = _VIPLIMITITEM
+_GETSHOPITEMSRESPONSE.fields_by_name['items'].message_type = _ITEMINFO
+_GETSHOPITEMSRESPONSE.fields_by_name['all_items'].message_type = _ITEMINFO
+_GETSHOPITEMSRESPONSE.fields_by_name['guild_items'].message_type = _ITEMINFO
 _GETSHOPITEMSRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['RefreshShopItems'] = _REFRESHSHOPITEMS
 DESCRIPTOR.message_types_by_name['GetShopItems'] = _GETSHOPITEMS
 DESCRIPTOR.message_types_by_name['ShopRequest'] = _SHOPREQUEST
 DESCRIPTOR.message_types_by_name['ShopResponse'] = _SHOPRESPONSE
 DESCRIPTOR.message_types_by_name['GetShopItemsResponse'] = _GETSHOPITEMSRESPONSE
-DESCRIPTOR.message_types_by_name['VipLimitItem'] = _VIPLIMITITEM
+DESCRIPTOR.message_types_by_name['ItemInfo'] = _ITEMINFO
 
 class RefreshShopItems(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -334,11 +329,11 @@ class GetShopItemsResponse(_message.Message):
 
   # @@protoc_insertion_point(class_scope:GetShopItemsResponse)
 
-class VipLimitItem(_message.Message):
+class ItemInfo(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _VIPLIMITITEM
+  DESCRIPTOR = _ITEMINFO
 
-  # @@protoc_insertion_point(class_scope:VipLimitItem)
+  # @@protoc_insertion_point(class_scope:ItemInfo)
 
 
 # @@protoc_insertion_point(module_scope)

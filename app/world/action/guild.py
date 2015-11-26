@@ -11,6 +11,7 @@ from app.world.core.guild_manager import guild_manager_obj
 from shared.db_opear.configs_data import game_configs
 import random
 from app.world.action import mine
+from shared.common_logic.shop import do_shop_buy
 
 tb_guild_info = RedisObject('tb_guild_info')
 tb_character_info = RedisObject('tb_character_info')
@@ -446,3 +447,29 @@ def mine_help_remote(g_id, p_id, seek_time, already_helps):
     # already_helps 之前已经帮助过的列表
     # guild_obj.mine_help 军团里所有的请求
     return {'res': True, 'help_ids': help_ids}
+
+
+@rootserviceHandle
+def get_shop_data_remote(g_id, shop_type):
+    """
+    求助
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
+        return None
+    return guild_obj.get_shop_data(shop_type)
+
+
+@rootserviceHandle
+def guild_shop_buy_remote(shop_id, item_count, shop_type, vip_level):
+    """
+    """
+    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    if not guild_obj:
+        logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
+        return {'res': False, 'no': 800}
+    shop = guild_obj.get_shop_data(shop_type)
+    res = do_shop_buy(shop_id, item_count, shop, vip_level)
+    guild_obj.save_data()
+    return res
