@@ -94,7 +94,7 @@ def exit_guild_remote(guild_id, p_id):
     """
     no: True 1 解散公会 2 团长退出 3 非团长退出
     """
-    guild_obj = guild_manager_obj.get_guild_obj(g_id)
+    guild_obj = guild_manager_obj.get_guild_obj(guild_id)
     if not guild_obj:
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
         return {'res': False, 'no': 844}
@@ -106,7 +106,7 @@ def exit_guild_remote(guild_id, p_id):
     if p_num == 1:
         # 删名字
         guild_name_data = tb_guild_info.getObj('names')
-        if guild_name_data.hget(g_name):
+        if guild_name_data.hget(guild_name_data):
             guild_name_data.hdel(guild_obj.name)
         # 删军团
         guild_manager_obj.delete_guild(guild_obj.g_id)
@@ -472,5 +472,7 @@ def guild_shop_buy_remote(g_id, shop_id, item_count, shop_type, vip_level):
     shop = guild_obj.get_shop_data(shop_type)
     build_level = guild_obj.build.get(1)
     res = do_shop_buy(shop_id, item_count, shop, vip_level, build_level)
-    guild_obj.save_data()
+    if res.get('res'):
+        guild_obj.buy_item(shop_type, shop_id, item_count)
+        guild_obj.save_data()
     return res

@@ -325,6 +325,7 @@ def shop_buy_505(pro_data, player):
 
         def func():
             vip_level = player.base_info.vip_level
+            guild_id = player.guild.g_id
             if shop_type in guild_shops:
                 res = remote_gate['world'].guild_shop_buy_remote(guild_id, shop_id, item_count, shop_type, vip_level)
             else:

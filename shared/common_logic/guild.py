@@ -113,6 +113,7 @@ class Guild(object):
         self._p_list = data.get("p_list")
         self._apply = data.get("apply")
         self._build = data.get("build")
+        self._shop_data = data.get("shop_data")
 
         # 初始化粮草押运信息
         tb_guild_escort_tasks = tb_guild_info.getObj(self._g_id).getObj('escort_tasks')
@@ -440,3 +441,11 @@ class Guild(object):
         check_time(self._shop_data)
         self.save_data()
         return self._shop_data[shop_type]
+
+    def buy_item(self, shop_type, item_id, num):
+        if shop_type not in self._shop_data:
+            logger.error('err shop type:%s', shop_type)
+            logger.error('guild shop data:%s', self._shop_data)
+            return None
+        self._shop_data[shop_type][item_id] += num
+        self._save_data()
