@@ -245,3 +245,9 @@ class CharacterGuildComponent(Component):
 
     def get_shop_data(self, t):
         return remote_gate['world'].get_shop_data_remote(self.owner.guild.g_id, t)
+
+    def get_guild_member_ids(self, p_list):
+        member_ids = []
+        for _, v in p_list.items():
+            member_ids.extend(v)
+        return member_ids

@@ -199,8 +199,8 @@ class WorldBoss(BaseBoss):
             ranks = self._rank_instance.get(up, down)
             for k, v in enumerate(ranks):
                 player_id, val = v
-                logger.debug("send_award_top_ten: player_id %s, value %s, mail_id %s" % (player_id, v, mail_id))
-                send_mail(conf_id=mail_id, receive_id=player_id, rank=k+1)
+                logger.debug("send_award_top_ten: player_id %s, value %s, mail_id %s, rank: %s" % (player_id, v, mail_id, up))
+                send_mail(conf_id=mail_id, receive_id=player_id, rank=up)
                 #self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id, k+up)
 
     def send_award_add_up(self):

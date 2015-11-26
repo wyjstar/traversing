@@ -59,10 +59,10 @@ def guild_boss_add_remote(guild_id, stage_id, boss_type, trigger_player_id, trig
     guild_boss = guild.add_guild_boss(stage_id, blue_units[0], boss_type, trigger_player_id, trigger_player_name)
 
 
-    return {"result": True, "guild_boss": guild_boss.property_dict()}
+    return {"result": True, "guild_boss": guild_boss.property_dict(), "p_list": guild.p_list}
 
 @rootserviceHandle
-def guild_boss_battle_remote(guild_id, str_red_units, unpar_type, unpar_other_id, seed1, seed2):
+def guild_boss_battle_remote(guild_id, str_red_units, red_unpar_data, seed1, seed2):
     """开始战斗
     """
     logger.debug("hjqy_battle_remote======")
@@ -73,7 +73,7 @@ def guild_boss_battle_remote(guild_id, str_red_units, unpar_type, unpar_other_id
     logger.debug("blue unit length %s" % len(blue_units))
 
     origin_hp = boss.hp
-    fight_result = guild_boss_start(red_units,  blue_units, unpar_type, unpar_other_id, 0, 0, seed1, seed2)
+    fight_result = guild_boss_start(red_units,  blue_units, red_unpar_data, {}, seed1, seed2)
 
     logger.debug("blue unit length %s" % len(blue_units))
     boss.blue_units = blue_units

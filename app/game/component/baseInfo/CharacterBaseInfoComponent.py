@@ -4,9 +4,9 @@ created by server on 14-5-27下午5:21.
 """
 
 from shared.db_opear.configs_data import game_configs
-from app.game.component.mine.monster_mine import MineOpt
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
+from app.game.redis_mode import tb_character_level
 from app.proto_file.db_pb2 import Heads_DB
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
@@ -62,7 +62,7 @@ class CharacterBaseInfoComponent(Component):
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
         self._level = character_info['level']
-        MineOpt.asadd('user_level', self.owner.base_info.id, self._level)
+        tb_character_level.zadd(self._level, self.id)
         self._exp = character_info['exp']
 
         self._newbee_guide_id = character_info['newbee_guide_id']
@@ -268,12 +268,11 @@ class CharacterBaseInfoComponent(Component):
         if self._level != value:
             logger.info('player id:%s level up ++ %s>>%s',
                         self.id, self._level, value)
-            MineOpt.updata_level('user_level', self.owner.base_info.id,
-                                 self._level, value)
             # hook task
             hook_task(self.owner, CONDITIONId.LEVEL, self._level)
             target_update(self.owner, [43])
             self._level = value
+            tb_character_level.zadd(self._level, self.id)
 
     @property
     def login_time(self):

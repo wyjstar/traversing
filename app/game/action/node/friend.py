@@ -8,6 +8,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.battle.battle_unit import BattleUnit
 from app.game.redis_mode import tb_character_info
+from app.game.redis_mode import tb_character_level
 from app.game.action.root.netforwarding import push_message
 from app.proto_file.common_pb2 import CommonResponse
 from shared.db_opear.configs_data import game_configs, data_helper
@@ -17,7 +18,6 @@ from app.proto_file.db_pb2 import Stamina_DB
 from shared.utils.date_util import is_next_day
 from app.game.core.item_group_helper import gain, get_return
 from app.game.core.mail_helper import send_mail
-from app.game.component.mine.monster_mine import MineOpt
 from shared.utils.const import const
 from app.game.core.task import hook_task, CONDITIONId
 from app.game.redis_mode import tb_pvp_rank
@@ -357,12 +357,13 @@ def find_friend_request_1107(data, player):
 def get_recommend(player, up, down, recommend_num, response):
     front = player.base_info.level - down
     back = player.base_info.level + up
-    uids = MineOpt.rand_level("user_level", front, back+1)
+    uids = tb_character_level.zrangebyscore(front, back+1)
     count = 0
-    now = int(time.time())
+    # now = int(time.time())
 
     has_one = []
     for uid in uids:
+        uid = int(uid)
         if uid == player.base_info.id:
             continue
         elif player.friends.is_friend(uid):
@@ -412,7 +413,7 @@ def recommend_friend_1198(data, player):
     x = game_configs.base_config['friendApplyLevelGap']
     front = player.base_info.level - x
     back = player.base_info.level + x
-    uids = MineOpt.rand_level("user_level", front, back+1)
+    uids = tb_character_level.zrangebyscore(front, back+1)
     statics = game_configs.base_config['FriendRecommendNum']
     add_count_conf = game_configs.base_config.get('friendApplyLevelGapAdd', 5)
     player_level_max = game_configs.base_config['player_level_max']
@@ -423,6 +424,7 @@ def recommend_friend_1198(data, player):
     add_count = 1
     while True:
         for uid in uids:
+            uid = int(uid)
             if uid == player.base_info.id:
                 continue
             elif player.friends.is_friend(uid):
@@ -475,7 +477,7 @@ def recommend_friend_1198(data, player):
                 front = 1
             if back > player_level_max:
                 back = player_level_max
-            uids = MineOpt.rand_level("user_level", front, back+1)
+            uids = tb_character_level.zrangebyscore(front, back+1)
         if back >= player_level_max and front <= 1:
             break
 

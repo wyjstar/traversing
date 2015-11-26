@@ -893,8 +893,8 @@ def deal_target_player(player, target_id, chip_id):
 
         props = {}
         for chip_id_x, chip_obj in chips_obj.items():
-            if chip.chip_num:  # 如果chip num == 0, 则不保存
-                props[no] = chip.chip_num
+            if chip_obj.chip_num:  # 如果chip num == 0, 则不保存
+                props[no] = chip_obj.chip_num
         target_data.hset('equipment_chips', props)
 
     mail_arg1 = [{104: [1, 1, chip_id]}]

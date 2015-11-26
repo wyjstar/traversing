@@ -5,10 +5,10 @@ created by server on 14-7-5下午3:07.
 from app.game.component.Component import Component
 from app.game.component.line_up.line_up_slot import LineUpSlotComponent
 from app.game.redis_mode import tb_character_info
+from app.game.redis_mode import tb_character_ap
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
-from app.game.component.mine.monster_mine import MineOpt
 from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
 from app.game.core.task import hook_task, CONDITIONId
@@ -368,7 +368,7 @@ class CharacterLineUpComponent(Component):
             each_power = slot.combat_power_lineup()
             _power += each_power
 
-        MineOpt.update('sword', self.owner.base_info.id, _power)
+        tb_character_ap.zadd(_power, self.owner.base_info.id)
         if _power > self._hight_power:
             self._hight_power = _power
         return _power
@@ -474,3 +474,14 @@ class CharacterLineUpComponent(Component):
                 attr["magic_def"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_mdef
         self.guild_attr = attr
         print("update_guild_attr============== %s" % self.guild_attr)
+
+    def get_red_unpar_data(self):
+        """docstring for get_red_unpar_data, 用于战斗逻辑"""
+
+        unpar_type = self._unpar_type
+        unpar_other_id = self._unpar_other_id
+        unpar_level = self._unpar_level
+        unpar_job = game_configs.skill_peerless_effect_config.get(unpar_level).type
+        red_unpar_data = dict(unpar_type=unpar_type, unpar_other_id=unpar_other_id, unpar_level=unpar_level, unpar_job=unpar_job)
+        return red_unpar_data
+

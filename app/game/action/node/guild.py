@@ -513,7 +513,8 @@ def bless_809(data, player):
     remote_res = remote_gate['world'].bless_remote(g_id,
                                                    player.base_info.id,
                                                    bless_type,
-                                                   player.base_info.base_name)
+                                                   player.base_info.base_name,
+                                                   player.guild.bless_times)
     if not remote_res.get('res'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
@@ -654,6 +655,7 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
     guild_rank.name = guild_info.get('name')
     guild_rank.level = guild_info.get('level')
     guild_rank.icon_id = guild_info.get('icon_id')
+    guild_rank.ysdt_level = guild_info.get('build')[1]
 
     president_id = guild_info.get('p_list').get(1)[0]
     char_obj = tb_character_info.getObj(president_id)
@@ -735,6 +737,10 @@ def get_guild_info_812(data, player):
     """获取公会信息 """
     response = GetGuildInfoResponse()
     g_id = player.guild.g_id
+    if not g_id:
+        response.res.result = False
+        response.res.result_no = 844
+        return response.SerializeToString()
 
     remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, player.base_info.id)
     print '=================================112'
@@ -779,6 +785,7 @@ def get_guild_info_812(data, player):
     response.my_guild_rank = rank_no
     if position == 1:
         response.captain_name = player.base_info.base_name
+        response.captain_id = player.base_info.id
         response.captain_level = player.base_info.level
         response.captain_power = int(player.line_up_component.combat_power)
         response.captain_vip_level = player.base_info.vip_level
@@ -789,6 +796,7 @@ def get_guild_info_812(data, player):
         character_info = tb_character_info.getObj(president_id).hgetall()
         if character_info:
             response.captain_name = character_info['nickname']
+            response.captain_id = president_id
             response.captain_level = character_info['level']
             ap = 1
             if character_info['attackPoint'] is not None:
@@ -1337,6 +1345,7 @@ def mine_seek_help_list_874(data, player):
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
     mine_help_list = remote_res.get('mine_help_list')
+    p_list = remote_res.get('p_list')
     for _time, [mine_id, u_id, times] in mine_help_list.items():
         # if u_id == p_id:
         #     continue
@@ -1360,6 +1369,12 @@ def mine_seek_help_list_874(data, player):
         help_info.mine_id = mine_id
         help_info.seek_time = _time
         help_info.be_help_times = times
+        position = 1
+        for _position, _list in p_list.items():
+            if u_id in _list:
+                position = _position
+                break
+        help_info.position = position
 
     response.res.result = True
     return response.SerializeToString()

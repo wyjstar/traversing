@@ -21,7 +21,11 @@ remote_gate = GlobalObject().remote.get('gate')
 def init_2401(pro_data, player):
     """获取guild_boss信息
     """
+    return construct_init_data(player)
+
+def construct_init_data(player):
     response = guild_pb2.GuildBossInitResponse()
+    """docstring for construct_init_boss"""
     res = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
     response.res.result = res.get("result")
     logger.debug("return res %s" % res)
@@ -37,9 +41,7 @@ def init_2401(pro_data, player):
     if res.get("guild_boss").get("boss_id") != last_attack_time.get("boss_id"):
             last_attack_time["boss_id"] = res.get("guild_boss").get("boss_id")
             last_attack_time["time"] = 0
-
     response.last_attack_time = last_attack_time.get("time")
-
     logger.debug("response %s" % response)
     return response.SerializeToString()
 
@@ -116,6 +118,9 @@ def trigger_boss_2402(pro_data, player):
     logger.debug("guild_boss_last_attack_time %s " % (player.guild.guild_boss_last_attack_time))
     construct_boss_pb(res.get("guild_boss"), response.guild_boss)
     logger.debug("response %s" % response)
+
+    remote_gate.push_object_character_remote(24021, construct_init_data(player), player.guild.get_guild_member_ids(res.get("p_list", {})))
+
     return response.SerializeToString()
 
 
@@ -147,9 +152,8 @@ def battle_2403(pro_data, player):
     red_units = player.fight_cache_component.get_red_units()
     str_red_units = cPickle.dumps(red_units)
     seed1, seed2 = get_seeds()
-    unpar_type = line_up.unpar_type
-    unpar_other_id = line_up.unpar_other_id
-    res = remote_gate['world'].guild_boss_battle_remote(player.guild.g_id, str_red_units, unpar_type, unpar_other_id, seed1, seed2)
+    red_unpar_data = line_up.get_red_unpar_data()
+    res = remote_gate['world'].guild_boss_battle_remote(player.guild.g_id, str_red_units, red_unpar_data, seed1, seed2)
     #boss_info = res.get("guild_boss")
     blue_units = cPickle.loads(boss_info.get("blue_units"))
     pvp_assemble_units(red_units, blue_units, response)

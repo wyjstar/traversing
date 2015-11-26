@@ -400,18 +400,11 @@ def send_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
     if protect_or_rob == 2:
         guild_info = task.get("rob_task_infos")[0].get("rob_guild_info")
 
-    remote_gate.push_object_character_remote(19082, push_response.SerializePartialToString(), get_guild_member_ids(guild_info))
+    remote_gate.push_object_character_remote(19082, push_response.SerializePartialToString(), player.guild.get_guild_member_ids(guild_info.get("p_list", {})))
     logger.debug("push_response %s" % push_response)
 
 
     return {'result': True}
-
-def get_guild_member_ids(guild_info):
-    """docstring for get_guild_member_ids"""
-    member_ids = []
-    for _, v in guild_info.get("p_list", {}).items():
-        member_ids.extend(v)
-    return member_ids
 
 def in_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
     """

@@ -394,13 +394,14 @@ class Guild(object):
             return 0
         return self._bless[0]
 
-    def do_bless(self, v1, v2):
+    def do_bless(self, v1, v2, my_bless_times):
         self._contribution += v1
         self._all_contribution += v1
         if time.localtime(self._bless[2]).tm_yday != time.localtime().tm_yday:
             self._bless = [1, v2, int(time.time())]
         else:
-            self._bless[0] += 1
+            if not my_bless_times:
+                self._bless[0] += 1
             self._bless[1] += v2
 
     def get_task_by_id(self, task_id):

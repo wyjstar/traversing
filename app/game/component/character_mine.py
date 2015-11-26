@@ -10,9 +10,10 @@ import cPickle
 from shared.db_opear.configs_data import game_configs
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
+from app.game.redis_mode import tb_character_level
+from app.game.redis_mode import tb_character_ap
 from app.game.redis_mode import tb_mine
 from gfirefly.server.logobj import logger
-from mine.monster_mine import MineOpt
 from gfirefly.server.globalobject import GlobalObject
 from shared.common_logic.mine import get_cur_data
 from shared.common_logic.mine import random_pick
@@ -70,9 +71,9 @@ def player_mine_create(mine, uid, nickname, level, lively):
     front = level + minus if level + minus >= lowlevel else lowlevel
     back = level + add if level + add <= highlevel else highlevel
     # 取玩家等级附近的玩家
-    uids = MineOpt.rand_level("user_level", front, back+1)
+    uids = tb_character_level.zrangebyscore(front, back+1)
     match_users = []
-    self_sword = MineOpt.get_user("sword", uid)
+    self_sword = tb_character_ap.zscore(uid)
     if self_sword is None:
         self_sword = 0
     if uids:
@@ -80,7 +81,7 @@ def player_mine_create(mine, uid, nickname, level, lively):
             one_user = int(one_user)
             if one_user == uid:
                 continue
-            user_sword = MineOpt.get_user("sword", one_user)
+            user_sword = tb_character_ap.zscore(one_user)
             if user_sword is None:
                 user_sword = 0
             if user_sword < self_sword * lowswordrate \
