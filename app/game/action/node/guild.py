@@ -1256,7 +1256,7 @@ def mobai_871(data, player):
 
     if is_online == "notonline":
         p_mobai_info = character_info['guild_mobai']
-        if time.localtime(p_mobai_info[2]).tm_yday != time.localtime().tm_yday():
+        if time.localtime(p_mobai_info[2]).tm_yday != time.localtime().tm_yday:
             data = {'guild_mobai': [0, [p_id], int(time.time())]}
         else:
             p_mobai_info[1].append(p_id)
