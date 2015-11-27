@@ -184,10 +184,10 @@ function CommonData:setData(data)
         for k,v in pairs(data.buy_times) do --{资源类型,购买次数,上次获得体力时间}
             self.buy_times[v.resource_type] = {resource_type=v.resource_type,buy_stamina_times = v.buy_stamina_times,last_gain_time = v.last_gain_stamina_time}
         end
-        --         --TODO:ADD RES_TYPE.ENERGY
-        -- if self.buy_times[RES_TYPE.ENERGY] == nil then
-        --     self.buy_times[RES_TYPE.ENERGY] = {resource_type=RES_TYPE.ENERGY,buy_stamina_times = 0,last_gain_time = 0}
-        -- end
+        --TODO:ADD RES_TYPE.ROB_NUM
+        if self.buy_times[RES_TYPE.ROB_NUM] == nil then
+            self.buy_times[RES_TYPE.ROB_NUM] = {resource_type=RES_TYPE.ROB_NUM,buy_stamina_times = 0,last_gain_time = 0}
+        end
     end
     print("buy_times:====>")
     table.print(self.buy_times)
@@ -200,7 +200,6 @@ function CommonData:setData(data)
     self:setPvpOvercomeIndex(data.pvp_overcome_index)                  -- 过关斩将当前进行的关卡(从0开始计数)
     self:setPvpOvercomeRefreshCount(data.pvp_overcome_refresh_count)   -- 可刷新的次数
 
-    getDataManager():pushTask(CustomTask.new(handler(self,self.updateTestTask), 20,2)) 
 
     self:setStoryId(data.story_id)
 
@@ -249,10 +248,6 @@ function CommonData:refreshData(data)
     self:setPvpOvercomeRefreshCount(data.pvp_overcome_refresh_count)   -- 可刷新的次数
 
     self:setPowerRank(data.fight_power_rank)
-end
-
-function CommonData:updateTestTask(task,dt)
-    print("CommonData:updateTestTask====>",task.count_)
 end
 
 --是否领取过首冲好礼
@@ -333,6 +328,8 @@ function CommonData:setFinance(type_, num)
         self:dispatchEvent(EventName.UPDATE_QJYL)
     elseif type_ == RES_TYPE.ENERGY then
         self:dispatchEvent(EventName.UPDATE_ENERGY) 
+    elseif type_ == RES_TYPE.ROB_NUM then
+        self:dispatchEvent(EventName.UPDATE_ROB_NUM)
     end
 end
 
@@ -838,6 +835,13 @@ function CommonData:getResBuyTimeByType(_type)
 end
 
 --[[--
+    
+]]
+function CommonData:getRobNum()
+    return self.finances[RES_TYPE.ROB_NUM]
+end
+
+--[[--
 增加资源的已购买次数
 @param number type 资源类型
 @param number num 增加的购买次数
@@ -853,6 +857,7 @@ function CommonData:setBuyTimes(_type, num)
 
     self.buy_times[_type].buy_stamina_times = num
 end
+
 
 --[[--
     可恢复性资源统一恢复时间计时
@@ -872,15 +877,10 @@ function CommonData:resRecoverTime()
         v.retainTime = 0
     end
 
-    print("CommonData:resRecoverTime=====>begin")
-    table.print(self.buy_times)
-    print("CommonData:resRecoverTime====>end")
     if self.updateResTimer then
         timer.unscheduleGlobal(self.updateResTimer)
         self.updateResTimer = nil
     end
-    print("CommonData:resRecoverTime====>",self:getTime())
-    table.print(self.buy_times)
 
     local function updateTimer(dt)
         local curTime = self:getTime()
@@ -1291,7 +1291,7 @@ end
 是否显示经脉红点,如果拥有的琼浆玉露能够完成至少一次点穴,那么显示红点
 ]]
 function CommonData:isJingMaiRedDotInHome()
-    print("CommonData:isJingMaiRedDotInHome")
+    -- print("CommonData:isJingMaiRedDotInHome")
     -- 获取琼浆玉露数量
     local qjyl = self:getFinance(RES_TYPE.QJYL)
     -- 获取下次点穴的消耗

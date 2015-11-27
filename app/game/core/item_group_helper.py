@@ -203,7 +203,7 @@ def gain(player, item_group, reason,
     for group_item in item_group:
         type_id = group_item.item_type
 
-        num = group_item.num * multiple
+        num = int(group_item.num * multiple)
         if type_id in part_multiple[0]:
             num = int(num * part_multiple[1])
 
@@ -482,3 +482,9 @@ def do_get_draw_drop_bag(pseudo_bag_id, draw_times):
             break
     # logger.debug("drop_items %s", drop_items)
     return drop_items
+
+def dump_game_response_to_string():
+    """
+    game_resource_response to [{107:[1,1,1]}]
+    """
+    pass

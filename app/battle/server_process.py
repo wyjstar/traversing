@@ -284,6 +284,33 @@ def mine_start(red_units, blue_units, red_skill, red_skill_level, blue_skill, bl
         return True, res[1], res[2], res[3], res[4]
     return False, res[1], res[2], res[3], res[4]
 
+def guild_pvp_start(red_groups, blue_groups, seed1, seed2):
+    red = []
+    blue = []
+    for units in red_groups:
+        temp = []
+        for unit in units.values():
+            temp.append(construct_battle_unit(unit))
+        red.append(lua.table(group=lua.table_from(temp)))
+    for units in blue_groups:
+        temp = []
+        for unit in units.values():
+            temp.append(construct_battle_unit(unit))
+        blue.append(lua.table(group=lua.table_from(temp)))
+
+    fight_data = lua.table(
+        red = lua.table_from(red),
+        blue = lua.table_from(blue),
+        seed1 = seed1,
+        seed2 = seed2,
+    )
+    fight_type = const.BATTLE_GUILD
+    res = pvp_func(fight_data, fight_type, 0)
+
+    if int(res[0]) == 1:
+        return True
+    return False
+
 def get_seeds():
     seed1 = randint(1, 100)
     seed2 = randint(1, 100)

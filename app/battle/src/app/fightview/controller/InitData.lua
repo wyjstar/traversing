@@ -37,6 +37,8 @@ function initData(_process)
     calculation = getCalculationManager():getCalculation() 
     process = _process
     local data = fightData:getData() or {}
+    --data["unpar_type_id"] = 8100001
+    --data["unpar_other_id"] = 8100005
     set_seed(data.seed1, data.seed2)
     process.fight_type =  process.fight_type or TYPE_GUIDE
     print("process.fight_type======", process.fight_type)
@@ -58,6 +60,8 @@ function initData(_process)
         return initHjqyData(data)
     elseif process.fight_type == TYPE_TEST then
         return initTESTData()
+    elseif process.fight_type == TYPE_ESCORT then
+        return initGuildEscortPvpData(data)
     end
 
 end
@@ -69,7 +73,7 @@ end
 function initTESTData()
     -- return 我方数据，敌方数据，我方View，敌方View，我方无双，敌方无双
     -- 演示关卡中所有武将全部觉醒, 突破等级0
-    local redUnits = {}
+    -- local redUnits = {}
     local blueUnits = {}
     local redUnParaSkill = nil
     local blueUnParaSkill = nil
@@ -83,29 +87,31 @@ function initTESTData()
     demoEnemy = {["5"] = {[1] = 10058,  [2] = 33,},
     ["6"] = {[1] = 10050,  [2] = 33,}}
     
-    demoHero = 
-    {
-        -- ["1"] = {[1] = 10001,  [2] = 60,},
-        -- ["2"] = {[1] = 10002,  [2] = 60,},
-        -- ["3"] = {[1] = 10003,  [2] = 60,},
-        ["2"] = {[1] = 10004,  [2] = 60,},
-        ["1"] = {[1] = 10005,  [2] = 60,},
-        ["3"] = {[1] = 10006,  [2] = 60,},
-        -- ["2"] = {[1] = 10045,  [2] = 60,},
-        -- ["3"] = {[1] = 10044,  [2] = 60,},
-        -- ["4"] = {[1] = 10001,  [2] = 60,},
-        -- ["5"] = {[1] = 10001,  [2] = 60,},
-        -- ["6"] = {[1] = 10001,  [2] = 60,},        
-        -- ["1"] = {[1] = 10056,  [2] = 60,},--赵云
-        -- ["2"] = {[1] = 10047,  [2] = 60,},--张角
-        -- ["3"] = {[1] = 10061,  [2] = 60,},--貂蝉
-        -- ["4"] = {[1] = 20061,  [2] = 60,},--圣貂蝉
-        -- ["5"] = {[1] = 10048,  [2] = 60,},--吕布
-        -- ["6"] = {[1] = 10050,  [2] = 60,},--董卓
+    demoHero = {
+        {
+            ["2"] = {[1] = 10004,  [2] = 40,},
+            ["1"] = {[1] = 10005,  [2] = 40,},
+            ["3"] = {[1] = 10006,  [2] = 40,},
+        },
+        {
+            ["2"] = {[1] = 10001,  [2] = 40,},
+            ["1"] = {[1] = 10002,  [2] = 40,},
+            ["3"] = {[1] = 10003,  [2] = 40,},
+        },
+
+        {
+            ["2"] = {[1] = 10007,  [2] = 40,},
+            ["1"] = {[1] = 10008,  [2] = 40,},
+            ["3"] = {[1] = 10009,  [2] = 40,},
+        }
     }
+
     demoEnemy = 
     {
-        ["2"] = {[1] = 10005,  [2] = 60,},
+        ["2"] = {[1] = 10004,  [2] = 50,},
+        ["1"] = {[1] = 10005,  [2] = 50,},
+        ["3"] = {[1] = 10006,  [2] = 50,},
+        ["4"] = {[1] = 10007,  [2] = 30,},
         -- ["2"] = {[1] = 10002,  [2] = 60,},
         -- ["3"] = {[1] = 10003,  [2] = 60,},
         -- ["4"] = {[1] = 10004,  [2] = 60,},
@@ -114,48 +120,48 @@ function initTESTData()
     }
     --for pos, v in pairs(demoHero) do
     local chief = false
-    for i=1,6 do
-        v = demoHero[tostring(i)]
-        if v then
-            local pos = i
-            local unit_no = v[1]
-            local unit_level = v[2]
-            local data = soldierTemplate:getHeroTempLateById(unit_no)
-            local isawake = false
-            -- local break_level = 8 - i
-            local break_level = 0
-            print("=====================initGuideData1")
-            local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, isawake, false)
-            
-            -- if not chief then
-            --     --unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, false, false)
-            --     unit.chief = true
-            --     chief = true
-            -- end
-            unit.hp_max = 100000000
-            unit.hp = 100000000
-            redUnits[pos] = unit
-            updateRedUnitViewProperty(unit)
-            --controller.addChild(UnitView.new(unit))
+    local redGroup = {}
+    for k = 1,3 do
+        local redUnits = {}
+        for i=1,6 do
+            v = demoHero[k][tostring(i)]
+            if v then
+                local pos = i
+                local unit_no = v[1]
+                local unit_level = math.random(50,60)
+                local data = soldierTemplate:getHeroTempLateById(unit_no)
+                local isawake = false
+                -- local break_level = 8 - i
+                local break_level = 1
+                print("=====================initGuideData1")
+                local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, isawake, false)
+                
+                unit.hp_max = 1000
+                unit.hp = 1000
+                redUnits[pos] = unit
+                updateRedUnitViewProperty(unit)
+                --controller.addChild(UnitView.new(unit))
+            end
         end
+        redGroup[k] = redUnits
     end
 
     for pos, v in pairs(demoEnemy) do
         local pos = tonumber(pos)
         if v then
             local unit_no = v[1]
-            local unit_level = v[2]
+            local unit_level = math.random(50,60)
             local data = soldierTemplate:getHeroTempLateById(unit_no)
             local break_level = 0
-            if pos == 1 then
-                break_level = 7
-            elseif pos == 2 then
-                break_level = 3
-            end
+            -- if pos == 1 then
+            --     break_level = 7
+            -- elseif pos == 2 then
+            --     break_level = 3
+            -- end
             break_level = 0
             local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, false, false)
-            unit.hp_max = 100000000
-            unit.hp = 100000000
+            unit.hp_max = 1000
+            unit.hp = 1000
             blueUnits[pos] = unit
             updateBlueUnitViewProperty(unit)
             --controller.addChild(UnitView.new(unit))
@@ -168,7 +174,7 @@ function initTESTData()
     --local redUnParaSkill = nil 
     --local blueUnParaSkill = nil 
     --local buddySkill = nil
-    return redUnits, {blueUnits, clone(blueUnits), clone(blueUnits)}, redUnParaSkill, blueUnParaSkill, buddySkill
+    return redGroup, {blueUnits, clone(blueUnits), clone(blueUnits)}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 
 --[[--
@@ -271,7 +277,7 @@ function initGuideData()
 
     local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
     -- local buddySkill = constructBuddySkill(mockBattleUnit(10001, 12, "red"))
-    return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
+    return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 
 function initMineData(data)
@@ -300,11 +306,11 @@ function initMineData(data)
             --optional int32 blue_best_skill_id = 6;       // 无双
                 --optional int32 blue_best_skill_level = 7; // 无双
 
-    local redUnParaSkill = constructUnparaSkill(data.red_best_skill_id, data.red_best_skill_level, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(data.blue_best_skill_id, data.blue_best_skill_level, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
-    return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
+    return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 
 -- 世界boss
@@ -336,11 +342,11 @@ function initWorldBossData()
         end
     end
 
-    local redUnParaSkill = constructUnparaSkill(data.red_best_skill, data.red_best_skill_level, const.HOME_ARMY, "red", 7)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
     local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkillWithTemplate(10001, 30)
     --local buddySkill = constructBattleUnit(data.replace, "blue")
-    return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
+    return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 
 function initStageData(data)
@@ -357,7 +363,6 @@ function initStageData(data)
         end
     end
 
-    local blue
     for k,blue_units in pairs(blue_group) do
         local blueUnits = {}
         print("blue_units==========="..table.nums(blue_units.group))
@@ -371,12 +376,13 @@ function initStageData(data)
         table.insert(blueGroup, blueUnits)
     end
 
-    local redUnParaSkill = constructUnparaSkill(data.hero_unpar, data.hero_unpar_level, const.HOME_ARMY, "red", 7 )
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7 )
+    --local redUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ARMY, "red", 7 )
     local blueUnParaSkill = constructUnparaSkill(data.monster_unpar, 1, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkillWithTemplate(10001, 30)
     local buddySkill = constructBuddySkill(data.friend)
     --print(buddySkill.unit.no, "buddySkill=================")
-    return redUnits, blueGroup, redUnParaSkill, blueUnParaSkill, buddySkill
+    return {redUnits}, blueGroup, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 
 function initPvpData(data)
@@ -403,11 +409,52 @@ function initPvpData(data)
 
     --local redUnParaSkill = constructUnparaSkill(data.red_skill, data.red_skill_level, const.HOME_ARMY, "red", 7)
     --local blueUnParaSkill = constructUnparaSkill(data.blue_skill, data.blue_skill_level, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ARMY, "red", 7)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
+    --local buddySkill = constructBuddySkill(data.replace)
+    --print(buddySkill.unit.no, "buddySkill=================")
+    return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
+end
+
+-- 军团押运
+function initGuildEscortPvpData(data)
+    local red_groups = data.red
+    local blue_groups = data.blue
+    local redGroup = {}
+    local blueGroup = {}
+
+    for k,red_units in pairs(red_groups) do
+        local redUnits = {}
+        print("red_units==========="..table.nums(red_units.group))
+        for i=1,6 do
+            if red_units.group[i] then
+                local unit = constructBattleUnit(red_units.group[i], "red", k==table.nums(red_group))
+                redUnits[unit.pos] = unit
+                updateRedUnitViewProperty(unit)
+            end
+        end
+        table.insert(redGroup, redUnits)
+    end  
+    for k,blue_units in pairs(blue_groups) do
+        local blueUnits = {}
+        print("blue_units==========="..table.nums(blue_units.group))
+        for i=1,6 do
+            if blue_units.group[i] then
+                local unit = constructBattleUnit(blue_units.group[i], "blue", k==table.nums(blue_group))
+                blueUnits[unit.pos] = unit
+                updateBlueUnitViewProperty(unit)
+            end
+        end
+        table.insert(blueGroup, blueUnits)
+    end
+
+    --local redUnParaSkill = constructUnparaSkill(data.red_skill, data.red_skill_level, const.HOME_ARMY, "red", 7)
+    --local blueUnParaSkill = constructUnparaSkill(data.blue_skill, data.blue_skill_level, const.HOME_ENEMY, "blue", 7+12)
     local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
     local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
-    return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
+    return redGroup, blueGroup, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 
 function initHjqyData(data)
@@ -439,18 +486,18 @@ function initHjqyData(data)
     else
         process.damage_rate = 0
     end
-    local redUnParaSkill = constructUnparaSkill(data.red_skill, data.red_skill_level, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(data.blue_skill, data.blue_skill_level, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
     --local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
     --local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
-    return redUnits, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
+    return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
 -- 根据hero模板构造battle unit
 function constructBattleUnitWithTemplate(data, pos, level, break_level, is_awake, is_break)
     print("data...."..data.id)
-    local hero = {["refine"] = 0, ["hero_no"] = data.id, ["break_level"] = break_level, ["level"] = level, ["runt_type"] = {}}
+    local hero = {["refine"] = 0, ["hero_no"] = data.id, ["break_level"] = break_level, ["awake_level"] = 1,["level"] = level, ["runt_type"] = {}}
     local self_attr = calculation:SoldierSelfAttr(hero)
     local unit = BattleUnit.new()
     unit.origin_no = data.id
@@ -640,15 +687,13 @@ function updateBossUnitViewProperty(unit)
 end
 
 -- 构造无双技能
-function constructUnparaSkill(uparaId, level, HOMES, side, viewPos)
-    local uparaInfo = instanceTemplate:getWSInfoById(uparaId)
-    print("constructUnparaSkill=============", uparaId)
-    -- table.print(uparaInfo)
-    --print(level)
-    --print("p+++")
+function constructUnparaSkill(unpar_type_id, unpar_other_id, HOMES, side, viewPos)
+    if unpar_type_id == 0 then
+        unpar_type_id = nil
+    end
+    print("constructUnparaSkill=============", unpar_type_id, unpar_other_id)
     local base_info = baseTemplate:getBaseInfoById("wushang_value_config")
-    print("constructSkill===============", process)
-    local unpara_skill = UnParaSkill.new(uparaInfo, base_info, level, process)
+    local unpara_skill = UnParaSkill.new(unpar_type_id, unpar_other_id, base_info, process)
 
     unpara_skill.HOME = HOMES[7]
     unpara_skill.side = side

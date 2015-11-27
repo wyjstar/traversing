@@ -42,7 +42,6 @@ class CharacterShopComponent(Component):
 
     def new_data(self):
         for t, item in game_configs.shop_type_config.items():
-            print("shop ================", t)
             self._shop_data[t] = self.get_new_shop_info(t)
         self._shop_extra_args = self.get_new_shop_extra_args()
         return {'shop': self._shop_data,

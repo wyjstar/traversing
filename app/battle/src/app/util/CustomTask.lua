@@ -62,7 +62,8 @@ function CustomTask:update(dt)
 
 		if self.callback_ then
 			self.callback_(self, self:getCallTimeDiff())
-		end		
+		end	
+		self:reset()	
 	end
 end
 --[[--

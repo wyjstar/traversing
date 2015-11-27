@@ -102,7 +102,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100060,  ["suitNo"] = 0,  ["exp"] = 100,  ["name"] = 1700100060,  ["set"] = {
+,  ["id"] = 100060,  ["suitNo"] = 0,  ["exp"] = 150,  ["name"] = 1700100060,  ["set"] = {
 }
 ,  ["toGet"] = 30100060,  ["attr"] = 50050,  ["currencyDir"] = 2,  ["skill1"] = 0,}
 ,  [100068] = {
@@ -124,7 +124,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100068,  ["suitNo"] = 0,  ["exp"] = 50,  ["name"] = 1700100068,  ["set"] = {
+,  ["id"] = 100068,  ["suitNo"] = 0,  ["exp"] = 75,  ["name"] = 1700100068,  ["set"] = {
 }
 ,  ["toGet"] = 30100068,  ["attr"] = 60010,  ["currencyDir"] = 1,  ["skill1"] = 0,}
 ,  [100076] = {
@@ -146,7 +146,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100076,  ["suitNo"] = 0,  ["exp"] = 250,  ["name"] = 1700100076,  ["set"] = {
+,  ["id"] = 100076,  ["suitNo"] = 0,  ["exp"] = 350,  ["name"] = 1700100076,  ["set"] = {
 }
 ,  ["toGet"] = 30100076,  ["attr"] = 60090,  ["currencyDir"] = 3,  ["skill1"] = 0,}
 ,  [100005] = {
@@ -252,7 +252,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100061,  ["suitNo"] = 0,  ["exp"] = 100,  ["name"] = 1700100061,  ["set"] = {
+,  ["id"] = 100061,  ["suitNo"] = 0,  ["exp"] = 150,  ["name"] = 1700100061,  ["set"] = {
 }
 ,  ["toGet"] = 30100061,  ["attr"] = 50060,  ["currencyDir"] = 2,  ["skill1"] = 0,}
 ,  [100069] = {
@@ -274,7 +274,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100069,  ["suitNo"] = 0,  ["exp"] = 50,  ["name"] = 1700100069,  ["set"] = {
+,  ["id"] = 100069,  ["suitNo"] = 0,  ["exp"] = 75,  ["name"] = 1700100069,  ["set"] = {
 }
 ,  ["toGet"] = 30100069,  ["attr"] = 60020,  ["currencyDir"] = 1,  ["skill1"] = 0,}
 ,  [100077] = {
@@ -296,7 +296,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100077,  ["suitNo"] = 0,  ["exp"] = 250,  ["name"] = 1700100077,  ["set"] = {
+,  ["id"] = 100077,  ["suitNo"] = 0,  ["exp"] = 350,  ["name"] = 1700100077,  ["set"] = {
 }
 ,  ["toGet"] = 30100077,  ["attr"] = 60100,  ["currencyDir"] = 3,  ["skill1"] = 0,}
 ,  [100006] = {
@@ -402,7 +402,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100062,  ["suitNo"] = 0,  ["exp"] = 100,  ["name"] = 1700100062,  ["set"] = {
+,  ["id"] = 100062,  ["suitNo"] = 0,  ["exp"] = 150,  ["name"] = 1700100062,  ["set"] = {
 }
 ,  ["toGet"] = 30100062,  ["attr"] = 50070,  ["currencyDir"] = 2,  ["skill1"] = 0,}
 ,  [100070] = {
@@ -424,7 +424,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100070,  ["suitNo"] = 0,  ["exp"] = 50,  ["name"] = 1700100070,  ["set"] = {
+,  ["id"] = 100070,  ["suitNo"] = 0,  ["exp"] = 75,  ["name"] = 1700100070,  ["set"] = {
 }
 ,  ["toGet"] = 30100070,  ["attr"] = 60030,  ["currencyDir"] = 1,  ["skill1"] = 0,}
 ,  [100078] = {
@@ -446,7 +446,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100078,  ["suitNo"] = 0,  ["exp"] = 250,  ["name"] = 1700100078,  ["set"] = {
+,  ["id"] = 100078,  ["suitNo"] = 0,  ["exp"] = 350,  ["name"] = 1700100078,  ["set"] = {
 }
 ,  ["toGet"] = 30100078,  ["attr"] = 60110,  ["currencyDir"] = 3,  ["skill1"] = 0,}
 ,  [100007] = {
@@ -552,7 +552,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100063,  ["suitNo"] = 0,  ["exp"] = 100,  ["name"] = 1700100063,  ["set"] = {
+,  ["id"] = 100063,  ["suitNo"] = 0,  ["exp"] = 150,  ["name"] = 1700100063,  ["set"] = {
 }
 ,  ["toGet"] = 30100063,  ["attr"] = 50080,  ["currencyDir"] = 2,  ["skill1"] = 0,}
 ,  [100071] = {
@@ -574,7 +574,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100071,  ["suitNo"] = 0,  ["exp"] = 50,  ["name"] = 1700100071,  ["set"] = {
+,  ["id"] = 100071,  ["suitNo"] = 0,  ["exp"] = 75,  ["name"] = 1700100071,  ["set"] = {
 }
 ,  ["toGet"] = 30100071,  ["attr"] = 60040,  ["currencyDir"] = 1,  ["skill1"] = 0,}
 ,  [100079] = {
@@ -596,7 +596,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100079,  ["suitNo"] = 0,  ["exp"] = 250,  ["name"] = 1700100079,  ["set"] = {
+,  ["id"] = 100079,  ["suitNo"] = 0,  ["exp"] = 350,  ["name"] = 1700100079,  ["set"] = {
 }
 ,  ["toGet"] = 30100079,  ["attr"] = 60120,  ["currencyDir"] = 3,  ["skill1"] = 0,}
 ,  [100008] = {
@@ -690,7 +690,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100056,  ["suitNo"] = 0,  ["exp"] = 50,  ["name"] = 1700100056,  ["set"] = {
+,  ["id"] = 100056,  ["suitNo"] = 0,  ["exp"] = 75,  ["name"] = 1700100056,  ["set"] = {
 }
 ,  ["toGet"] = 30100056,  ["attr"] = 50010,  ["currencyDir"] = 1,  ["skill1"] = 0,}
 ,  [100064] = {
@@ -712,7 +712,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100064,  ["suitNo"] = 0,  ["exp"] = 250,  ["name"] = 1700100064,  ["set"] = {
+,  ["id"] = 100064,  ["suitNo"] = 0,  ["exp"] = 350,  ["name"] = 1700100064,  ["set"] = {
 }
 ,  ["toGet"] = 30100064,  ["attr"] = 50090,  ["currencyDir"] = 3,  ["skill1"] = 0,}
 ,  [100072] = {
@@ -734,7 +734,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100072,  ["suitNo"] = 0,  ["exp"] = 100,  ["name"] = 1700100072,  ["set"] = {
+,  ["id"] = 100072,  ["suitNo"] = 0,  ["exp"] = 150,  ["name"] = 1700100072,  ["set"] = {
 }
 ,  ["toGet"] = 30100072,  ["attr"] = 60050,  ["currencyDir"] = 2,  ["skill1"] = 0,}
 ,  [100080] = {
@@ -862,7 +862,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100057,  ["suitNo"] = 0,  ["exp"] = 50,  ["name"] = 1700100057,  ["set"] = {
+,  ["id"] = 100057,  ["suitNo"] = 0,  ["exp"] = 75,  ["name"] = 1700100057,  ["set"] = {
 }
 ,  ["toGet"] = 30100057,  ["attr"] = 50020,  ["currencyDir"] = 1,  ["skill1"] = 0,}
 ,  [100065] = {
@@ -884,7 +884,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100065,  ["suitNo"] = 0,  ["exp"] = 250,  ["name"] = 1700100065,  ["set"] = {
+,  ["id"] = 100065,  ["suitNo"] = 0,  ["exp"] = 350,  ["name"] = 1700100065,  ["set"] = {
 }
 ,  ["toGet"] = 30100065,  ["attr"] = 50100,  ["currencyDir"] = 3,  ["skill1"] = 0,}
 ,  [100073] = {
@@ -906,7 +906,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100073,  ["suitNo"] = 0,  ["exp"] = 100,  ["name"] = 1700100073,  ["set"] = {
+,  ["id"] = 100073,  ["suitNo"] = 0,  ["exp"] = 150,  ["name"] = 1700100073,  ["set"] = {
 }
 ,  ["toGet"] = 30100073,  ["attr"] = 60060,  ["currencyDir"] = 2,  ["skill1"] = 0,}
 ,  [100081] = {
@@ -1034,7 +1034,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100058,  ["suitNo"] = 0,  ["exp"] = 50,  ["name"] = 1700100058,  ["set"] = {
+,  ["id"] = 100058,  ["suitNo"] = 0,  ["exp"] = 75,  ["name"] = 1700100058,  ["set"] = {
 }
 ,  ["toGet"] = 30100058,  ["attr"] = 50030,  ["currencyDir"] = 1,  ["skill1"] = 0,}
 ,  [100066] = {
@@ -1056,7 +1056,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100066,  ["suitNo"] = 0,  ["exp"] = 250,  ["name"] = 1700100066,  ["set"] = {
+,  ["id"] = 100066,  ["suitNo"] = 0,  ["exp"] = 350,  ["name"] = 1700100066,  ["set"] = {
 }
 ,  ["toGet"] = 30100066,  ["attr"] = 50110,  ["currencyDir"] = 3,  ["skill1"] = 0,}
 ,  [100074] = {
@@ -1078,7 +1078,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100074,  ["suitNo"] = 0,  ["exp"] = 100,  ["name"] = 1700100074,  ["set"] = {
+,  ["id"] = 100074,  ["suitNo"] = 0,  ["exp"] = 150,  ["name"] = 1700100074,  ["set"] = {
 }
 ,  ["toGet"] = 30100074,  ["attr"] = 60070,  ["currencyDir"] = 2,  ["skill1"] = 0,}
 ,  [200006] = {
@@ -1194,7 +1194,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100059,  ["suitNo"] = 0,  ["exp"] = 50,  ["name"] = 1700100059,  ["set"] = {
+,  ["id"] = 100059,  ["suitNo"] = 0,  ["exp"] = 75,  ["name"] = 1700100059,  ["set"] = {
 }
 ,  ["toGet"] = 30100059,  ["attr"] = 50040,  ["currencyDir"] = 1,  ["skill1"] = 0,}
 ,  [100067] = {
@@ -1216,7 +1216,7 @@ equipment_config={
 }
 ,  ["type"] = 5,  ["link"] = {
 }
-,  ["id"] = 100067,  ["suitNo"] = 0,  ["exp"] = 250,  ["name"] = 1700100067,  ["set"] = {
+,  ["id"] = 100067,  ["suitNo"] = 0,  ["exp"] = 350,  ["name"] = 1700100067,  ["set"] = {
 }
 ,  ["toGet"] = 30100067,  ["attr"] = 50120,  ["currencyDir"] = 3,  ["skill1"] = 0,}
 ,  [100075] = {
@@ -1238,7 +1238,7 @@ equipment_config={
 }
 ,  ["type"] = 6,  ["link"] = {
 }
-,  ["id"] = 100075,  ["suitNo"] = 0,  ["exp"] = 100,  ["name"] = 1700100075,  ["set"] = {
+,  ["id"] = 100075,  ["suitNo"] = 0,  ["exp"] = 150,  ["name"] = 1700100075,  ["set"] = {
 }
 ,  ["toGet"] = 30100075,  ["attr"] = 60080,  ["currencyDir"] = 2,  ["skill1"] = 0,}
 ,  [200005] = {
