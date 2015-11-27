@@ -221,7 +221,7 @@ def exit_guild_803(data, player):
         player.guild.exit_time = int(time.time())
         mail_id = 305
 
-    send_mail(mail_id, receive_id=p_id,
+    send_mail(conf_id=mail_id, receive_id=p_id,
               guild_name=remote_res.get('guild_name'))
 
     player.guild.g_id = 0

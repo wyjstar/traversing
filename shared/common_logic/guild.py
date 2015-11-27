@@ -10,8 +10,13 @@ from gfirefly.dbentrust.redis_mode import RedisObject
 tb_guild_info = RedisObject('tb_guild_info')
 from shared.common_logic.escort_task import EscortTask
 from shared.common_logic.guild_boss import GuildBoss
+<<<<<<< HEAD
 from shared.utils.date_util import str_time_to_timestamp, get_current_timestamp
 from collections import deque
+=======
+from shared.utils.date_util import get_current_timestamp
+from shared.common_logic.shop import guild_shops, check_time, get_new_shop_info
+>>>>>>> guild
 
 
 class Guild(object):
@@ -43,6 +48,7 @@ class Guild(object):
         self._last_attack_time = 0             # 上次攻击圣兽时间
         self._mine_help = {}                   # {time:[mine_id, u_id]}
         self._escort_tasks_ids = []     # 任务ids
+        self._shop_data = {}                   # {shop_type: shop_info}  军团商店
 
         self.init_guild_skills()
 
@@ -75,6 +81,7 @@ class Guild(object):
                 'last_attack_time': self._last_attack_time,
                 'guild_boss_reset_time': self._guild_boss_reset_time,
                 'escort_tasks_ids': self._escort_tasks_ids,
+                'shop_data': self._shop_data,
                 }
         return data
 
@@ -85,6 +92,10 @@ class Guild(object):
         self._g_id = g_id
         self._icon_id = icon_id
         self._p_list = {1: [p_id]}
+        for t, item in game_configs.shop_type_config.items():
+            if t not in guild_shops:
+                continue
+            self._shop_data[t] = get_new_shop_info(t)
 
         guild_obj = tb_guild_info.getObj(self._g_id)
         guild_obj.new(self._info)
@@ -109,6 +120,7 @@ class Guild(object):
         self._apply = data.get("apply")
         self._build = data.get("build")
         self._escort_tasks_ids = data.get("escort_tasks_ids", [])
+        self._shop_data = data.get("shop_data")
         for i in range(0, 3):
             self._build[i+1] = 10
 
@@ -234,14 +246,6 @@ class Guild(object):
     @p_list.setter
     def p_list(self, p_list):
         self._p_list = p_list
-
-    @property
-    def exp(self):
-        return self._exp
-
-    @exp.setter
-    def exp(self, exp):
-        self._exp = exp
 
     @property
     def g_id(self):
@@ -444,6 +448,7 @@ class Guild(object):
     @mine_help.setter
     def mine_help(self, values):
         self._mine_help = values
+
     def reset_guild_boss_trigger_times(self):
         """
         重置公会boss召唤次数
@@ -459,3 +464,12 @@ class Guild(object):
         """docstring for update_all_task_state"""
         for escort_task_id, escort_task in self._escort_tasks.items():
             escort_task.update_task_state()
+
+    def get_shop_data(self, shop_type):
+        if shop_type not in self._shop_data:
+            logger.error('err shop type:%s', shop_type)
+            logger.error('guild shop data:%s', self._shop_data)
+            return None
+        check_time(self._shop_data)
+        self.save_data()
+        return self._shop_data[shop_type]

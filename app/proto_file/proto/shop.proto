@@ -34,16 +34,15 @@ message GetShopItemsResponse
 {
     required CommonResponse res = 1;
     repeated int32 id = 2;
-    repeated int32 buyed_id = 3;
     optional int32 luck_num = 4;
     optional int32 refresh_times = 5;
-    repeated int32 limit_item_id = 6;
-    repeated int32 limit_item_num = 7;
-    repeated VipLimitItem vip_limit_item = 8;
+    repeated ItemInfo items = 6;  // 今日买的个数
+    repeated ItemInfo all_items = 7;  // 历史总买个数
+    repeated ItemInfo guild_items = 8;  //军团今日买个数
     optional GameResourcesResponse consume = 9; //统一消耗
 }
 
-message VipLimitItem
+message ItemInfo
 {
     required int32 item_id = 1;
     required int32 item_num = 2;
