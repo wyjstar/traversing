@@ -501,6 +501,7 @@ def reset_stage_908(pro_data, player):
         return response.SerializePartialToString()
 
     need_gold = game_configs.base_config.get('stageResetPrice')[stage_obj.reset[0] - 1]
+    logger.debug("reset stage %s %s" % (stage_obj.reset[0], need_gold))
     if player.finance.gold < need_gold:
         logger.error("gold not enough")
         response.res.result = False
