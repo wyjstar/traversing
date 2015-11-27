@@ -22,13 +22,14 @@ class RobotEscortTask(Robot):
             task_info["task_id"] = task.task_id
             task_info["task_no"] = task.task_no
             task_info["state"] = task.state
+            task_info["g_id"] = 1989
             self.tasks[task.task_id] = task_info
 
         self.on_command_finish()
 
     def command_get_escort_record(self):
         request = escort_pb2.GetEscortRecordsRequest()
-        request.record_type = 3
+        request.record_type = 1
         self.send_message(request, 1902)
 
     def get_escort_record_1902(self, message):
@@ -58,6 +59,7 @@ class RobotEscortTask(Robot):
     def command_receive_task(self):
         request = escort_pb2.ReceiveEscortTaskRequest()
         request.task_id = self.tasks.keys()[0]
+        request.task_guild_id = 1989
         request.protect_or_rob = 1
         self.send_message(request, 1905)
 
@@ -65,6 +67,7 @@ class RobotEscortTask(Robot):
         request = escort_pb2.ReceiveEscortTaskRequest()
         request.task_id = self.tasks.keys()[0]
         request.protect_or_rob = 2
+        request.task_guild_id = 1989
         self.send_message(request, 1905)
 
     def receive_task_1905(self, message):
@@ -77,6 +80,7 @@ class RobotEscortTask(Robot):
     def command_zzcancel_escort_task(self):
         request = escort_pb2.CancelEscortTaskRequest()
         request.task_id = self.tasks.keys()[0]
+        request.task_guild_id = 1989
         self.send_message(request, 1906)
 
     def cancel_escort_task_1906(self, message):
@@ -89,12 +93,14 @@ class RobotEscortTask(Robot):
     def command_invite(self):
         request = escort_pb2.InviteEscortTaskRequest()
         request.task_id = self.tasks.keys()[0]
+        request.task_guild_id = 1989
         request.protect_or_rob = 1
         request.send_or_in = 1
         self.send_message(request, 1908)
     def command_zjoin_invite(self):
         request = escort_pb2.InviteEscortTaskRequest()
         request.task_id = self.tasks.keys()[0]
+        request.task_guild_id = 1989
         request.protect_or_rob = 1
         request.send_or_in = 2
         self.send_message(request, 1908)
@@ -107,6 +113,7 @@ class RobotEscortTask(Robot):
     def command_start_task(self):
         request = escort_pb2.StartEscortTaskRequest()
         request.task_id = self.tasks.keys()[0]
+        request.task_guild_id = 1989
         request.protect_or_rob = 1
         #request.send_or_in = 1
         self.send_message(request, 1909)
@@ -120,6 +127,7 @@ class RobotEscortTask(Robot):
     def command_start_rob_task(self):
         request = escort_pb2.StartEscortTaskRequest()
         request.task_id = self.tasks.keys()[0]
+        request.task_guild_id = 1989
         request.protect_or_rob = 2
         #request.send_or_in = 1
         self.send_message(request, 1909)

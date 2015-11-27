@@ -17,9 +17,9 @@ class CharacterEscortComponent(Component):
     def __init__(self, owner):
         super(CharacterEscortComponent, self).__init__(owner)
         self._tasks = {}          # 押运任务列表
-        self._protect_records = []     # 我的押运记录
-        self._rob_records = []         # 我的劫运记录
-        self._can_rob_tasks = []       # 可劫运的任务
+        self._protect_records = {}     # 我的押运记录
+        self._rob_records = {}         # 我的劫运记录
+        self._can_rob_tasks = {}       # 可劫运的任务
         self._start_protect_times = 0; # 开始押运次数
         self._protect_times = 0;       # 保护押运次数
         self._rob_times = 0;           # 参与劫运次数

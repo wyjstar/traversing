@@ -27,9 +27,11 @@ class EscortTask(object):
 
     def add_player(self, player_info, protect_or_rob, header=0, guild_info={}):
         if protect_or_rob == 1:
-            self._protecters.append(player_info)
             if not self._protecters:
+                logger.debug("receive task add player==============")
                 self._protect_guild_info = guild_info
+                self._receive_task_time = int(get_current_timestamp())
+            self._protecters.append(player_info)
         elif protect_or_rob == 2:
             if not header:
                 rob_task_info = {}
@@ -43,15 +45,48 @@ class EscortTask(object):
             else:
                 rob_task_info = self._rob_task_infos.get(header)
                 rob_task_info["robbers"].append(player_info)
+        # add player position to player_info
+        guild_position = 3
+        p_list = guild_info.get("p_list", {})
+        player_id = player_info.get("id")
+        if player_id in p_list:
+            guild_position = 1
+        if player_id in p_list:
+            guild_position = 2
+        player_info["guild_position"] = guild_position
 
         return True
 
+    def update_state(self, task_item):
+        self.update_finish(task_item)
+        self.update_start(task_item)
+        self.update_rob_cancel(task_item)
+
     def is_finished(self, task_item):
+        if self.state == -1: return False
         if self._start_protect_time and self._start_protect_time + task_item.taskTime < get_current_timestamp():
             return True
         elif not self._start_protect_time and self._receive_task_time + task_item.wait + task_item.taskTime < get_current_timestamp():
             return True
         return False
+    def is_started(self, task_item):
+        if self.state == 1 and \
+            self._receive_task_time + task_item.wait > get_current_timestamp() and \
+            self._receive_task_time + task_item.wait + task_item.taskTime < get_current_timestamp():
+            return True
+        return False
+    def update_rob_state(self, task_item):
+        for _, rob_task_info in self._rob_task_infos.items():
+            if rob_task_info.get("rob_state") == 1 and \
+                rob_task_info.get("rob_receive_task_time") + 60 < get_current_timestamp():
+                rob_task_info["rob_state"] = 0
+
+        if self.state == 1 and \
+            self._receive_task_time + task_item.wait > get_current_timestamp() and \
+            self._receive_task_time + task_item.wait + task_item.taskTime < get_current_timestamp():
+            return True
+        return False
+
 
     def rob_success_times(self):
         """
@@ -90,22 +125,14 @@ class EscortTask(object):
         根据字典类型的数据初始化对象
         """
 
-        if task_info.get("task_id"):
-            self._task_id = task_info.get("task_id")
-        if task_info.get("task_no"):
-            self._task_no = task_info.get("task_no")
-        if task_info.get("state"):
-            self._state = task_info.get("state")
-        if task_info.get("receive_task_time"):
-            self._receive_task_time = int(task_info.get("receive_task_time"))
-        if task_info.get("start_protect_time"):
-            self._start_protect_time = int(task_info.get("start_protect_time"))
-        if task_info.get("protect_guild_info"):
-            self._protect_guild_info = task_info.get("protect_guild_info")
-        if task_info.get("protecters"):
-            self._protecters = task_info.get("protecters")
-        if task_info.get("rob_task_infos"):
-            self._rob_task_infos = task_info.get("rob_task_infos")
+        self._task_id = task_info.get("task_id")
+        self._task_no = task_info.get("task_no")
+        self._state = task_info.get("state")
+        self._receive_task_time = int(task_info.get("receive_task_time"))
+        self._start_protect_time = int(task_info.get("start_protect_time"))
+        self._protect_guild_info = task_info.get("protect_guild_info")
+        self._protecters = task_info.get("protecters")
+        self._rob_task_infos = task_info.get("rob_task_infos")
 
     def update_rob_task_info(self, rob_task_info, header):
         __rob_task_info = self._rob_task_infos.get(header)

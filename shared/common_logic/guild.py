@@ -31,12 +31,12 @@ class Guild(object):
         self._tb_guild_info = tb_guild_info    #
         self._escort_tasks = {}                # 粮草押运任务
         self._escort_tasks_can_rob = []        # 粮草押运任务中可被抢夺的任务
-        self._escort_tasks_invite_protect = [] # 粮草押运任务邀请
-        self._escort_tasks_invite_rob = []     # 粮草押运任务邀请
+        self._escort_tasks_invite_protect = {} # 粮草押运任务邀请
+        self._escort_tasks_invite_rob = {}     # 粮草押运任务邀请
 
     @property
     def info(self):
-        data = self._info()
+        data = self._info
         data['p_num'] = self.get_p_num()
         return data
 
@@ -279,6 +279,17 @@ class Guild(object):
 
     def add_task(self, task_info):
         task = EscortTask(self)
-        task.load(task_info)
+        task.task_id = task_info.get("task_id")
+        task.task_no = task_info.get("task_no")
+        task.state = task_info.get("state")
+        task.add_player(task_info.get("player_info"), 1, 0, self.guild_info())
         self._escort_tasks[task.task_id] = task
         return task
+
+    def guild_info(self):
+        data = {'id': self._g_id,
+                'name': self._name,
+                'icon_id': self._icon_id,
+                'p_list': self._p_list,
+                }
+        return data
