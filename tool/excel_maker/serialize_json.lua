@@ -29,7 +29,7 @@ function save_to_file(json_data, path, name)
 
 		local id = nil
 
-		if name == "hero_exp" or name == "equipment_strengthen_config" or name == "guild_config"
+		if name == "hero_exp" or name == "equipment_strengthen_config" 
 		or name == "hero_exp_config" or name == "player_exp_config"
 
 		then
