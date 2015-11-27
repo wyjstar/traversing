@@ -313,7 +313,7 @@ def pvb_fight_start_1705(pro_data, player):
     seed1, seed2 = get_seeds()
     #def pvb_fight_remote(str_red_units, red_best_skill, red_best_skill_level, str_blue_units, player_info, boss_id, seed1, seed2):
     result, demage_hp = remote_gate['world'].pvb_fight_remote(str_red_units,
-                                                   best_skill_id, red_best_skill_level, str_blue_units, player_info, boss_id, damage_rate, debuff_skill_no, seed1, seed2)
+                                                   best_skill_id, 0, str_blue_units, player_info, boss_id, damage_rate, debuff_skill_no, seed1, seed2)
 
     if result == -1:
         logger.debug("world boss already gone!")
@@ -333,7 +333,7 @@ def pvb_fight_start_1705(pro_data, player):
 
     pvp_assemble_units(red_units, blue_units, response)
     response.red_best_skill= best_skill_id
-    response.red_best_skill_level = red_best_skill_level
+    response.red_best_skill_level = 0
     response.debuff_skill_no = debuff_skill_no
     response.seed1 = seed1
     response.seed2 = seed2
