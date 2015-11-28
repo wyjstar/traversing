@@ -138,8 +138,12 @@ def format_by_type(format_type, value):
         return value.encode("utf-8")
 
     if format_type == 'eval':
-        c = compile(value, '', 'eval')
-        return value.encode("utf-8")
+        tmp = value
+        if type(value) is float:
+            tmp = str(value).split('.')[0]
+        c = compile(tmp, '', 'eval')
+        return tmp.encode('utf-8')
+
 
 
 def table2jsn(table, jsonFileName, luaFileName, objName, cur=None):

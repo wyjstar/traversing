@@ -60,7 +60,7 @@ class CharacterLineUpComponent(Component):
 
         self.update_slot_activation()
 
-    def save_data(self):
+    def save_data(self, prop_names=[]):
         power = self.combat_power
         hook_task(self.owner, CONDITIONId.FIGHT_POWER, power)
         props = {
@@ -75,9 +75,10 @@ class CharacterLineUpComponent(Component):
             'friend_fight_times': self._friend_fight_times,
             'attackPoint': power,
             'best_skill': self.get_skill_id_by_unpar(self._current_unpar),
-            'copy_units': self.owner.fight_cache_component.red_unit,
-            'copy_slots': line_up_info(self.owner).SerializeToString()
         }
+        if ('copy_units' in prop_names) or (not prop_names):
+            props['copy_units'] = self.owner.fight_cache_component.red_unit
+            props['copy_slots'] = line_up_info(self.owner).SerializeToString()
 
         line_up_obj = tb_character_info.getObj(self.character_id)
         line_up_obj.hmset(props)

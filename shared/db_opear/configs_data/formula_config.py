@@ -13,6 +13,7 @@ class FormulaConfig(object):
         for row in config_value:
             item = CommonItem(row)
             item['formula'] = compile(item.get('formula'), '', 'eval')
+            item['precondition'] = compile(item.get('precondition'), '', 'eval')
             self._items[item.get('key')] = item
 
         return self._items
