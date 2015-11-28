@@ -216,11 +216,12 @@ class CharacterStageComponent(Component):
                 chapter_conf = chapter.get_conf()
                 hide_stage_conf = game_configs.stage_config. \
                     get('chapter_hide_stage').get(chapter_id)
-                print chapter_star_num, hide_stage_conf.condition2, chapter_id, '==========================111'
-                if chapter_star_num >= hide_stage_conf.condition2:
-                    hide_stage_obj = self.get_stage(hide_stage_conf.id)
-                    if hide_stage_obj.state == -2:
-                        hide_stage_obj.state = -1
+                if hide_stage_conf:
+                    print chapter_star_num, hide_stage_conf.condition2, chapter_id, '==========================111'
+                    if chapter_star_num >= hide_stage_conf.condition2:
+                        hide_stage_obj = self.get_stage(hide_stage_conf.id)
+                        if hide_stage_obj.state == -2:
+                            hide_stage_obj.state = -1
                 # 获取那蛋疼的掉落
 
             else:

@@ -105,6 +105,9 @@ class CONDITIONId:
     VIP_LEVEL = 31
     HERO_GET_LIANG = 32
     SHARE = 33
+    PROTECT_ESCORT = 34
+    ROB_ESCORT = 35
+    GUILD_BOSS = 36
 
 
 def update_condition_add(player, cid, num):
@@ -165,8 +168,9 @@ def update_condition_insert(player, cid, num):
 # UPDATE_CONDITION_MAP = {}
 # UPDATE_CONDITION_MAP[1] = update_condition1
 UPDATE_CONDITION_ADD = [3, 4, 5, 12, 13, 14, 15, 16,
-                        17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 32]  # 增加
-UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11]  # 如果比原来值大覆盖
+                        18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 32, 34,
+                        35, 36]  # 增加
+UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11, 17]  # 如果比原来值大覆盖
 UPDATE_CONDITION_COVER_RANK = [25, 26]  # 如果比原来值小覆盖
 UPDATE_CONDITION_INSERT = [33]  # 插入列表
 
@@ -289,6 +293,7 @@ def check_condition33(player, condition_conf, task_type):
 def check_condition_const(player, condition_conf, task_type):
     value = get_condition_value(player, condition_conf, task_type)
     state = 0
+    print task_type, '==========================aaa', condition_conf
     if value >= condition_conf[1]:
         state = 1
     return {'state': state, 'value': value}
@@ -323,7 +328,8 @@ CHECK_CONDITION_MAP[30] = check_condition30
 CHECK_CONDITION_MAP[31] = check_condition31
 CHECK_CONDITION_MAP[33] = check_condition33
 CHEAK_CONDITION_CONST = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                         18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 32]
+                         18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 32,
+                         34, 35, 36]
 CHEAK_CONDITION_RANK = [25, 26]
 
 

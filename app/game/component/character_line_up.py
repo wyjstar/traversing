@@ -362,6 +362,7 @@ class CharacterLineUpComponent(Component):
     def combat_power(self):
         """总战斗力
         """
+        print("combat_power===================")
         self.update_guild_attr()
         _power = 0
         for slot in self._line_up_slots.values():
@@ -456,7 +457,6 @@ class CharacterLineUpComponent(Component):
         attr = dict(hp=0, atk=0, physical_def=0, magic_def=0)
         if not self._owner.guild.g_id:
             self.guild_attr = attr
-            print("update_guild_attr============== %s" % self.guild_attr)
             return
         res = remote_gate['world'].get_guild_info_remote(self._owner.guild.g_id, "guild_skills", 0)
         if not res.get("result"):
@@ -473,7 +473,6 @@ class CharacterLineUpComponent(Component):
             if skill_type == 4:
                 attr["magic_def"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_mdef
         self.guild_attr = attr
-        print("update_guild_attr============== %s" % self.guild_attr)
 
     def get_red_unpar_data(self):
         """docstring for get_red_unpar_data, 用于战斗逻辑"""

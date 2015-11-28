@@ -15,6 +15,7 @@ from app.game.action.root.netforwarding import push_message
 from shared.utils.date_util import get_current_timestamp, is_in_period
 import cPickle
 import copy
+from app.game.core.task import hook_task, CONDITIONId
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -518,6 +519,19 @@ def remove_escort_in_times_remote(protect_or_rob, is_online, player):
         player.escort_component.rob_times += 1
     player.escort_component.save_data()
 
+@remoteserviceHandle('gate')
+def add_guild_activity_times_remote(task_no, protect_or_rob, is_online, player):
+    """
+    添加活动信息
+    """
+    logger.debug("add_guild_activity_times_remote============%s %s" % (task_no, protect_or_rob))
+    if protect_or_rob == 1:
+        player.guild_activity.add_protect_escort_times(task_no)
+        hook_task(player, CONDITIONId.PROTECT_ESCORT, 1)
+    elif protect_or_rob == 2:
+        player.guild_activity.add_rob_escort_times(task_no)
+        hook_task(player, CONDITIONId.ROB_ESCORT, 1)
+
 
 def start_rob_escort(player, task_id, response, task_guild_id, rob_no):
     """
@@ -541,6 +555,7 @@ def start_rob_escort(player, task_id, response, task_guild_id, rob_no):
         # 参与劫运次数
         task = res.get("task")
         for no, robber in enumerate(res.get("rob_task_info", {}).get("robbers", [])):
+            push_message("add_guild_activity_times_remote", int(robber.get("id")), task.get("task_no"), 2)
             if no == 0: continue
             push_message("remove_escort_in_times_remote", int(robber.get("id")), 2)
     return res
@@ -556,8 +571,8 @@ def update_task_pb(task, task_pb):
     task_pb.task_id = task.get("task_id")
     task_pb.task_no = task.get("task_no")
     task_pb.state = task.get("state")
-    task_pb.receive_task_time = task.get("receive_task_time", 0)
-    task_pb.start_protect_time = task.get("start_protect_time", 0)
+    task_pb.receive_task_time = int(task.get("receive_task_time", 0))
+    task_pb.start_protect_time = int(task.get("start_protect_time", 0))
     task_pb.last_send_invite_time = task.get("last_send_invite_time", 0)
     update_guild_pb(task.get("protect_guild_info", {}), task_pb.protect_guild_info)
     update_player_infos_pb(task.get("protecters", []), task_pb.protecters)

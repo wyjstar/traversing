@@ -23,6 +23,7 @@ from shared.db_opear.configs_data.data_helper import parse
 from app.game.core.mail_helper import send_mail
 from app.game.core import rank_helper
 import cPickle
+from app.game.core.task import hook_task, CONDITIONId
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -106,7 +107,7 @@ def create_guild_801(data, player):
         rank_helper.add_rank_info('GuildLevel', guild_info.get('id'), 1)
 
         player.guild.g_id = guild_info.get('id')
-        player.guild.position = 1
+        player.guild.exit_time = 1
         player.guild.apply_guilds = []
         player.guild.save_data()
 
@@ -124,6 +125,8 @@ def create_guild_801(data, player):
     response.res.result = True
     tlog_action.log('CreatGuild', player, player.guild.g_id,
                     player.base_info.level)
+    # hook task
+    hook_task(player, CONDITIONId.JOIN_GUILD, 1)
     return response.SerializeToString()
 
 
@@ -222,7 +225,7 @@ def exit_guild_803(data, player):
     send_mail(conf_id=mail_id, receive_id=p_id,
               guild_name=remote_res.get('guild_name'))
 
-    player.guild.g_id = 0
+    player.guild.exit_guild()
     player.guild.save_data()
 
     response.res.result = True
@@ -268,7 +271,6 @@ def modify_user_guild_info_remote(data, player):
         player.guild.g_id = data['guild_id']
         player.guild.contribution = 0
         player.guild.all_contribution = 0
-        player.guild.position = 3
         player.guild.exit_time = 1
         player.guild.apply_guilds = []
 
@@ -282,7 +284,7 @@ def modify_user_guild_info_remote(data, player):
             player.guild.save_data()
     elif data['cmd'] == 'kick':
         remote_gate.logout_guild_chat_remote(player.dynamic_id)
-        player.guild.g_id = 0
+        player.guild.exit_guild()
         player.guild.save_data()
         remote_gate.push_object_remote(814,
                                        u'',
@@ -459,8 +461,11 @@ def kick_807(data, player):
         is_online = remote_gate.is_online_remote(
             'modify_user_guild_info_remote', be_kick_id, {'cmd': 'kick'})
         if is_online == "notonline":
-            p_guild_data = tb_character_info.getObj(be_kick_id)
-            p_guild_data.hmset(data)
+            p_guild_obj = tb_character_info.getObj(be_kick_id)
+            mobai_info = p_guild_obj.hget('guild_mobai')
+            mobai_info[0] = 0
+            data['guild_mobai'] = mobai_info
+            p_guild_obj.hmset(data)
 
         send_mail(conf_id=302, receive_id=be_kick_id,
                   guild_name=remote_res.get('name'))
@@ -813,12 +818,16 @@ def get_guild_info_812(data, player):
         else:
             response.have_apply = 0
     response.be_mobai_times = player.guild.be_mobai_times
+    response.mobai_times = player.guild.mobai_times
 
     for skill_type, skill_level in guild_info.get('guild_skills').items():
         skill_pb = response.guild_skill.add()
         skill_pb.skill_type = skill_type
         skill_pb.skill_level = skill_level
     response.skill_point = guild_info.get('skill_point')
+
+    # hook task
+    hook_task(player, CONDITIONId.JOIN_GUILD, 1)
 
     response.res.result = True
     print response, '===========guild info'

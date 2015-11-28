@@ -95,6 +95,7 @@ message GetGuildInfoResponse{
     optional int32 skill_point = 31; //军团技能点
     optional int32 level = 32;   //等级
     optional int32 captain_id = 33;   //团长id
+    optional int32 mobai_times = 34;   //膜拜次数
 }
 
 message BuildInfo{
@@ -291,8 +292,8 @@ message GuildSkill{
 }
 
 message GuildBoss{
-    optional int32 player_id = 1;    // 未使用
-    optional string player_name = 2; // 未使用
+    optional int32 player_id = 1;    // 
+    optional string player_name = 2; // 
     required int32 hp_left = 3;      // 当前血量
     required int32 hp_max = 4;       // 最大血量
     required int32 stage_id = 5;     // 关卡ID

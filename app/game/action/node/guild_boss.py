@@ -13,6 +13,7 @@ from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import get_seeds
 from shared.utils.date_util import get_current_timestamp, is_in_period
 import cPickle
+from app.game.core.task import hook_task, CONDITIONId
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -120,6 +121,9 @@ def trigger_boss_2402(pro_data, player):
     logger.debug("response %s" % response)
 
     remote_gate.push_object_character_remote(24021, construct_init_data(player), player.guild.get_guild_member_ids(res.get("p_list", {})))
+    # add guild activity times
+    player.guild_activity.add_guild_boss_times(res.get("guild_boss").get("boss_type"))
+    hook_task(player, CONDITIONId.GUILD_BOSS, 1)
 
     return response.SerializeToString()
 
@@ -177,6 +181,9 @@ def battle_2403(pro_data, player):
     if not res.get("result"):
         response.res.result_no = res.get("result_no")
         return response.SerializePartialToString()
+    # add guild activity times
+    player.guild_activity.add_guild_boss_times(boss_info.get("boss_type"))
+    hook_task(player, CONDITIONId.GUILD_BOSS, 1)
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
