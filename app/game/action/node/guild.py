@@ -23,6 +23,7 @@ from shared.db_opear.configs_data.data_helper import parse
 from app.game.core.mail_helper import send_mail
 from app.game.core import rank_helper
 import cPickle
+from app.game.core.task import hook_task, CONDITIONId
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -124,6 +125,8 @@ def create_guild_801(data, player):
     response.res.result = True
     tlog_action.log('CreatGuild', player, player.guild.g_id,
                     player.base_info.level)
+    # hook task
+    hook_task(player, CONDITIONId.JOIN_GUILD, 1)
     return response.SerializeToString()
 
 
@@ -819,6 +822,9 @@ def get_guild_info_812(data, player):
         skill_pb.skill_type = skill_type
         skill_pb.skill_level = skill_level
     response.skill_point = guild_info.get('skill_point')
+
+    # hook task
+    hook_task(player, CONDITIONId.JOIN_GUILD, 1)
 
     response.res.result = True
     print response, '===========guild info'
