@@ -66,7 +66,6 @@ def auto_refresh_items(type_shop, shop_data):
         shop_data[type_shop]['last_auto_refresh_time'] = time.time()
         shop_data[type_shop]['items'] = {}
         logger.info('refresh_item_ids:%s', ids)
-        self.save_data()
         return True
     else:
         logger.error('err type shop:%s', type_shop)
@@ -96,14 +95,14 @@ def check_time(shop_data):
             continue
         logger.debug("%s %s" % (freeRefreshTime, v['last_auto_refresh_time']))
         if time.time() > is_past_time(freeRefreshTime, v['last_auto_refresh_time']):
-            auto_refresh_items(k)
+            auto_refresh_items(k, shop_data)
 
 
 def refresh_shop_info(shop_data, is_guild_shop):
     for t, item in game_configs.shop_type_config.items():
         if (is_guild_shop and t not in guild_shops) or (not is_guild_shop and t in guild_shops):
             continue
-            self._shop_data[t] = get_new_shop_info(t)
+            shop_data[t] = get_new_shop_info(t)
 
 
 def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
