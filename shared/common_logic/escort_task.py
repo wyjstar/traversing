@@ -3,6 +3,9 @@
 #from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from shared.utils.date_util import get_current_timestamp
+from gfirefly.dbentrust.redis_mode import RedisObject
+
+tb_guild_info = RedisObject('tb_guild_info')
 #from shared.utils.pyuuid import get_uuid
 #from app.game.action.node._fight_start_logic import assemble
 
@@ -102,7 +105,7 @@ class EscortTask(object):
         """
         保存
         """
-        tb_guild = self._owner._tb_guild_info.getObj(self._owner.g_id).getObj('escort_tasks')
+        tb_guild = tb_guild_info.getObj(self._owner.g_id).getObj('escort_tasks')
         data = self.property_dict()
         if not tb_guild.hset(data['task_id'], data):
             logger.error('save escort task error:%s', data['task_id'])
