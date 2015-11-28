@@ -491,6 +491,8 @@ def reset_stage_908(pro_data, player):
     if time.localtime(stage_obj.reset[1]).tm_year == time.localtime().tm_year \
             and time.localtime(stage_obj.reset[1]).tm_yday == time.localtime().tm_yday:
         is_today = 1
+    else:
+        stage_obj.reset = [0, int(time.time())]
 
     if game_configs.vip_config.get(player.base_info.vip_level).buyStageResetTimes <= stage_obj.reset[0]:
         enough_times = 0
@@ -511,8 +513,6 @@ def reset_stage_908(pro_data, player):
 
     player.finance.consume_gold(need_gold)
 
-    if not is_today:
-        stage_obj.reset = [0, int(time.time())]
     if is_today and enough_times:
         stage_obj.reset[0] += 1
     stage_obj.attacks = 0
