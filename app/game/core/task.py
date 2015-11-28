@@ -105,6 +105,9 @@ class CONDITIONId:
     VIP_LEVEL = 31
     HERO_GET_LIANG = 32
     SHARE = 33
+    SHARE = 34
+    SHARE = 35
+    SHARE = 36
 
 
 def update_condition_add(player, cid, num):
@@ -289,6 +292,7 @@ def check_condition33(player, condition_conf, task_type):
 def check_condition_const(player, condition_conf, task_type):
     value = get_condition_value(player, condition_conf, task_type)
     state = 0
+    print task_type, '==========================aaa', condition_conf
     if value >= condition_conf[1]:
         state = 1
     return {'state': state, 'value': value}
@@ -323,7 +327,7 @@ CHECK_CONDITION_MAP[30] = check_condition30
 CHECK_CONDITION_MAP[31] = check_condition31
 CHECK_CONDITION_MAP[33] = check_condition33
 CHEAK_CONDITION_CONST = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                         18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 32]
+                         18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 32, 34, 35, 36]
 CHEAK_CONDITION_RANK = [25, 26]
 
 
