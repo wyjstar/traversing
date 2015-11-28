@@ -258,6 +258,7 @@ def guild_kick_remote(g_id, p_id, be_kick_ids):
         kick_list.append(be_kick_id)
 
         dynamic_pb = guild_pb2.GuildDynamic()
+        dynamic_pb.time = int(time.time())
         dynamic_pb.type = const.DYNAMIC_KICK
         name = tb_character_info.getObj(be_kick_id).hget('nickname')
         dynamic_pb.name1 = name
@@ -367,7 +368,7 @@ def cheak_deal_apply_remote(g_id, p_ids, p_id, deal_type):
         logger.error('exit_guild_remote guild id error! pid:%d' % p_id)
         return {'res': False, 'no': 844}
     position = guild_obj.get_position(p_id)
-    if position != 1:
+    if not position or position > 2:
         # 没有权限 或者 不在此军团
         return {'res': False, 'no': 800}
 

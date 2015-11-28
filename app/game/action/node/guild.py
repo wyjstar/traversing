@@ -225,7 +225,7 @@ def exit_guild_803(data, player):
     send_mail(conf_id=mail_id, receive_id=p_id,
               guild_name=remote_res.get('guild_name'))
 
-    player.guild.g_id = 0
+    player.guild.exit_guild()
     player.guild.save_data()
 
     response.res.result = True
@@ -284,7 +284,7 @@ def modify_user_guild_info_remote(data, player):
             player.guild.save_data()
     elif data['cmd'] == 'kick':
         remote_gate.logout_guild_chat_remote(player.dynamic_id)
-        player.guild.g_id = 0
+        player.guild.exit_guild()
         player.guild.save_data()
         remote_gate.push_object_remote(814,
                                        u'',
@@ -461,8 +461,11 @@ def kick_807(data, player):
         is_online = remote_gate.is_online_remote(
             'modify_user_guild_info_remote', be_kick_id, {'cmd': 'kick'})
         if is_online == "notonline":
-            p_guild_data = tb_character_info.getObj(be_kick_id)
-            p_guild_data.hmset(data)
+            p_guild_obj = tb_character_info.getObj(be_kick_id)
+            mobai_info = p_guild_obj.hget('guild_mobai')
+            mobai_info[0] = 0
+            data['guild_mobai'] = mobai_info
+            p_guild_obj.hmset(data)
 
         send_mail(conf_id=302, receive_id=be_kick_id,
                   guild_name=remote_res.get('name'))
@@ -815,6 +818,7 @@ def get_guild_info_812(data, player):
         else:
             response.have_apply = 0
     response.be_mobai_times = player.guild.be_mobai_times
+    response.mobai_times = player.guild.mobai_times
 
     for skill_type, skill_level in guild_info.get('guild_skills').items():
         skill_pb = response.guild_skill.add()

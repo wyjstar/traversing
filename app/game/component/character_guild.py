@@ -215,6 +215,12 @@ class CharacterGuildComponent(Component):
         return self._mobai[0]
 
     @property
+    def mobai_times(self):
+        if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
+            return 0
+        return len(self._mobai[1])
+
+    @property
     def mobai_list(self):
         if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
             return []
@@ -251,3 +257,7 @@ class CharacterGuildComponent(Component):
         for _, v in p_list.items():
             member_ids.extend(v)
         return member_ids
+
+    def exit_guild(self):
+        self._g_id = 0
+        self._mobai[0] = 0

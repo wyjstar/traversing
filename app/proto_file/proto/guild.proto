@@ -95,6 +95,7 @@ message GetGuildInfoResponse{
     optional int32 skill_point = 31; //军团技能点
     optional int32 level = 32;   //等级
     optional int32 captain_id = 33;   //团长id
+    optional int32 mobai_times = 34;   //膜拜次数
 }
 
 message BuildInfo{

@@ -145,7 +145,7 @@ def rand_pick_attr(attr):
                 _, attrValueType, valueMin, valueMax, attrIncrement = attr[k]
             else:
                 _, attrValueType, valueMin, valueMax = attr[k]
-            attrValue = int(valueMin + random.random() * (valueMax - valueMin))
+            attrValue = valueMin + random.random() * (valueMax - valueMin)
             # add increment formula
             inputs = {'EquNumRandom': attrValue,'EquNumMax': valueMax, 'EquNumMin': valueMin, 'grow': attrIncrement}
             if valueMax != valueMin:
@@ -197,6 +197,7 @@ class Equipment(object):
     def add_data(self, character_id, attr_id=0):
         no = self._base_info.equipment_no
         mainAttr, minorAttr, prefix, equip_attr_id = init_equipment_attr(no, attr_id)
+        print mainAttr, minorAttr, prefix, equip_attr_id, '============================================equipment_attr'
         self._attribute.main_attr = mainAttr
         self._attribute.minor_attr = minorAttr
         self._attribute.prefix = prefix
