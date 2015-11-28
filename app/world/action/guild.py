@@ -171,6 +171,7 @@ def editor_call_remote(g_id, p_id, call):
     if not position or position > 2:
         # 没有权限
         return {'res': False, 'no': 849}
+    new_call = ''
     if call:
         new_call = trie_tree.check.replace_bad_word(call)
     guild_obj.editor_call(new_call)

@@ -106,7 +106,7 @@ def create_guild_801(data, player):
         rank_helper.add_rank_info('GuildLevel', guild_info.get('id'), 1)
 
         player.guild.g_id = guild_info.get('id')
-        player.guild.position = 1
+        player.guild.exit_time = 1
         player.guild.apply_guilds = []
         player.guild.save_data()
 
@@ -268,7 +268,6 @@ def modify_user_guild_info_remote(data, player):
         player.guild.g_id = data['guild_id']
         player.guild.contribution = 0
         player.guild.all_contribution = 0
-        player.guild.position = 3
         player.guild.exit_time = 1
         player.guild.apply_guilds = []
 
