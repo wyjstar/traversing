@@ -14,6 +14,7 @@ from app.game.action.node._fight_start_logic import get_seeds
 from shared.utils.date_util import get_current_timestamp, is_in_period
 import cPickle
 from app.game.core.task import hook_task, CONDITIONId
+from shared.tlog import tlog_action
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -122,6 +123,7 @@ def trigger_boss_2402(pro_data, player):
     # add guild activity times
     player.guild_activity.add_guild_boss_times(res.get("guild_boss").get("boss_type"))
     hook_task(player, CONDITIONId.GUILD_BOSS, 1)
+    tlog_action.log('TriggerBoss', player, player.guild.g_id, boss_type)
 
     return response.SerializeToString()
 

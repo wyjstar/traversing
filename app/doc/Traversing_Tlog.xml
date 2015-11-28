@@ -1137,6 +1137,18 @@
         <entry name="GiftNo" type="int" desc="礼物编号" />
     </struct>
 
+    <!--召唤圣兽--> 
+    <struct name="TriggerBoss" version="1" desc="召唤圣兽">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="BossType" type="int" desc="boss类型" />
+    </struct>
+
 
 </metalib>
 <!--

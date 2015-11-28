@@ -1062,6 +1062,7 @@ tlog_funcs['UnparUpgrade'] = unpar_upgrade
 tlog_funcs['UpGuide'] = up_guide
 tlog_funcs['CaptainReceiveZan'] = captain_receive_zan
 tlog_funcs['GuildBuildUp'] = guild_build_up
+tlog_funcs['MineHelp'] = mine_help
 
 
 def log(mod, *args, **kwds):
