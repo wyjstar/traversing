@@ -487,6 +487,7 @@ def reset_stage_908(pro_data, player):
     is_today = 0
     enough_times = 1
 
+    logger.debug("reset stage  %s" % (stage_obj.reset[0]))
     if time.localtime(stage_obj.reset[1]).tm_year == time.localtime().tm_year \
             and time.localtime(stage_obj.reset[1]).tm_yday == time.localtime().tm_yday:
         is_today = 1
@@ -500,7 +501,7 @@ def reset_stage_908(pro_data, player):
         response.res.result_no = 830
         return response.SerializePartialToString()
 
-    need_gold = game_configs.base_config.get('stageResetPrice')[stage_obj.reset[0] - 1]
+    need_gold = game_configs.base_config.get('stageResetPrice')[stage_obj.reset[0]]
     logger.debug("reset stage %s %s" % (stage_obj.reset[0], need_gold))
     if player.finance.gold < need_gold:
         logger.error("gold not enough")
