@@ -92,7 +92,7 @@ class Guild(object):
         self._build = data.get("build")
 
         # 初始化粮草押运信息
-        tb_guild_escort_tasks = self._tb_guild_info.getObj(self._g_id).getObj('escort_tasks')
+        tb_guild_escort_tasks = tb_guild_info.getObj(self._g_id).getObj('escort_tasks')
         heros = tb_guild_escort_tasks.hgetall()
         for task_id, data in heros.items():
             task = EscortTask(self)

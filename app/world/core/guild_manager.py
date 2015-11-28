@@ -86,5 +86,5 @@ class GuildManager(object):
 
 
 guild_manager_obj = GuildManager()
-guild_obj = guild_manager_obj.create_guild(1989, "mock_guild_name", 0)
-guild_manager_obj._guilds[1989] = guild_obj
+#guild_obj = guild_manager_obj.create_guild(1989, "mock_guild_name", 0)
+#guild_manager_obj._guilds[1989] = guild_obj
