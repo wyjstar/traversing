@@ -25,6 +25,8 @@ def get_heros_101(pro_data, player):
     for hero in player.hero_component.get_heros():
         hero_pb = response.heros.add()
         hero.update_pb(hero_pb)
+        if hero_pb.hero_no == 10045:
+            logger.debug("%s %s " % (hero.hero_no, hero_pb.is_guard))
 
     return response.SerializePartialToString()
 
