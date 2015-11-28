@@ -512,7 +512,7 @@ def reset_stage_908(pro_data, player):
     player.finance.consume_gold(need_gold)
 
     if not is_today:
-        stage_obj.reset = [1, int(time.time())]
+        stage_obj.reset = [0, int(time.time())]
     if is_today and enough_times:
         stage_obj.reset[0] += 1
     stage_obj.attacks = 0
