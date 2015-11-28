@@ -137,16 +137,22 @@ arena_fight_config={
 ,  ["id"] = 23,  ["Gradient"] = 6,  ["choose"] = "[[k*0.9165,k*0.9999,8],[k,k,1],[k+1,k+300,1]]",  ["Reward"] = {
 }
 ,}
-,  [30002] = {
+,  [60002] = {
   ["type"] = 6,  ["Description"] = 5900000002,  ["play_rank"] = {
   [1] = 3,  [2] = 4,}
-,  ["id"] = 30002,  ["Gradient"] = 2,  ["choose"] = "[[k-k*0.051,k-k*0.05,2]]",  ["Reward"] = {
+,  ["id"] = 60002,  ["Gradient"] = 2,  ["choose"] = "[[k-k*0.051,k-k*0.05,2]]",  ["Reward"] = {
+}
+,}
+,  [30002] = {
+  ["type"] = 3,  ["Description"] = 0,  ["play_rank"] = {
+  [1] = 2,}
+,  ["id"] = 30002,  ["Gradient"] = 0,  ["choose"] = "[[1,k-1,1],[k+1,k+15,14]]",  ["Reward"] = {
 }
 ,}
 ,  [30003] = {
-  ["type"] = 6,  ["Description"] = 5900000003,  ["play_rank"] = {
-  [1] = 5,}
-,  ["id"] = 30003,  ["Gradient"] = 3,  ["choose"] = "[[k-k*0.1,k-k*0.05,1]]",  ["Reward"] = {
+  ["type"] = 3,  ["Description"] = 0,  ["play_rank"] = {
+  [1] = 3,}
+,  ["id"] = 30003,  ["Gradient"] = 0,  ["choose"] = "[[1,k-1,1],[k+1,k+20,14]]",  ["Reward"] = {
 }
 ,}
 ,  [30004] = {
@@ -165,6 +171,12 @@ arena_fight_config={
   ["type"] = 3,  ["Description"] = 0,  ["play_rank"] = {
   [1] = 20,  [2] = 49,}
 ,  ["id"] = 30006,  ["Gradient"] = 0,  ["choose"] = "[[11,k-1,3],[k+1,k+30,12]]",  ["Reward"] = {
+}
+,}
+,  [60003] = {
+  ["type"] = 6,  ["Description"] = 5900000003,  ["play_rank"] = {
+  [1] = 5,}
+,  ["id"] = 60003,  ["Gradient"] = 3,  ["choose"] = "[[k-k*0.1,k-k*0.05,1]]",  ["Reward"] = {
 }
 ,}
 ,  [30007] = {
@@ -213,6 +225,12 @@ arena_fight_config={
   ["type"] = 3,  ["Description"] = 0,  ["play_rank"] = {
   [1] = 1000,  [2] = 99999,}
 ,  ["id"] = 30010,  ["Gradient"] = 0,  ["choose"] = "[[501,k-1,6],[k+1,k+500,9]]",  ["Reward"] = {
+}
+,}
+,  [60001] = {
+  ["type"] = 6,  ["Description"] = 5900000001,  ["play_rank"] = {
+  [1] = 1,  [2] = 2,}
+,  ["id"] = 60001,  ["Gradient"] = 1,  ["choose"] = "[[k+k*0.051,k+k*0.25,2]]",  ["Reward"] = {
 }
 ,}
 ,  [50006] = {
@@ -286,9 +304,9 @@ arena_fight_config={
 }
 ,}
 ,  [30001] = {
-  ["type"] = 6,  ["Description"] = 5900000001,  ["play_rank"] = {
-  [1] = 1,  [2] = 2,}
-,  ["id"] = 30001,  ["Gradient"] = 1,  ["choose"] = "[[k+k*0.051,k+k*0.25,2]]",  ["Reward"] = {
+  ["type"] = 3,  ["Description"] = 0,  ["play_rank"] = {
+  [1] = 1,}
+,  ["id"] = 30001,  ["Gradient"] = 0,  ["choose"] = "[[2,16,15]]",  ["Reward"] = {
 }
 ,}
 ,  [40001] = {

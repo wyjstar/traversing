@@ -30,3 +30,13 @@ def convert_keystr2num(d):
             d[nk] = v
         if isinstance(v, dict):
             convert_keystr2num(v)
+
+
+def convert_common_resource2mail(common_rewards):
+    mail_resource = []
+    for group_item in common_rewards:
+        mail_resource.append({group_item.item_type:[group_item.num, group_item.num, group_item.item_no]})
+    return mail_resource
+
+
+

@@ -111,4 +111,4 @@ class remoteserviceHandle:
             service = remote._reference._service
             service.mapTarget(target)
         else:
-            print self.remotename, target, '='*398
+            print self.remotename, target, '='*10

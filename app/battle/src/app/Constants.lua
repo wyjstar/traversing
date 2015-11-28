@@ -274,10 +274,14 @@ TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
 TYPE_HJQY_STAGE     = 10         -- 黄巾起义
 TYPE_TREASURE       = 11         -- 夺宝战斗
 TYPE_TEST           = 999        -- 测试战斗
+TYPE_ESCORT         = 12        -- 押运
 
 TYPE_PVP_NORMAL     = 0          --正常的PVP,擂台
 TYPE_PVP_CLEARANCE  = 1          --过关斩将
 TYPE_PVP_REVANGE    = 2          --坏蛋反击
+
+TYPE_FORAGE_ROB_BATTLE_VIEW  = 1 --劫运的战斗回放
+TYPE_FORAGE_ROB_BATTLE = 2       --劫运的战斗
 
 TYPE_STAGE_JIA = 3               -- 难度甲
 TYPE_STAGE_YI = 2                -- 难度乙
@@ -475,6 +479,7 @@ RES_TYPE = {
     GOD_HERO_SOUL= 29, --将魂
     QJYL         = 13, --琼浆玉露
     ENERGY       = 4,  --精力
+    ROB_NUM      = 14, --劫运次数
 
 }
 
@@ -495,6 +500,7 @@ EventName = {
     UPDATE_TL = "update_tili",--更新体力
     UPDATE_HEAD = "update_head",--更新头像
     UPDATE_ENERGY = "update_energy",--更新精力
+    UPDATE_ROB_NUM = "update_rob_num",--更新劫运次数
     UPDATE_NAME = "update_name",--更新名称
     UPDATE_COMBAT_POWER = "update_combat_power",--更新战斗力
     UPDATE_VIP = "update_vip",--更新VIP
@@ -546,6 +552,10 @@ EventName = {
     UPDATE_QJYL = "UPDATE_QJYL", --更新经脉红点
     UPDATE_SOLDIER_AWAKE_MAX = "UPDATE_SOLDIER_AWAKE_MAX",--更新英雄觉醒等级到最高等级
     CAPTURE_RESP = "CAPTURE_RESP",
+    UPDATE_ROB_INVITE = "update_rob_invite",
+    UPDATE_ESCORT_INVITE = "update_escort_invite",
+    UPDATE_MY_ESCORT = "update_my_escort",
+    UPDATE_ROB_CHARATERINFO = "update_rob_characterInfo",--承接人收到的消息，有人加入劫运了
 }
 
 NoticeColor = {
@@ -612,4 +622,10 @@ MAIL_TYPE = {
     FIGHT       = 3, -- 战斗
     SOCIALLY    = 4, -- 社交
     REMOVE      = 5, -- 准备删除
+}
+
+--押劫类型
+FORAGE_TASK_TYPE = {
+    ESCORT = 1, --押运
+    ROB = 2,    --劫运
 }

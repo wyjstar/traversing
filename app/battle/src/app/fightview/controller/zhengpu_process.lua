@@ -26,8 +26,10 @@ function FightProcess:ctor(send_message)
     --初始值
     self.red_step = 1--我方步数
     self.blue_step = 1--敌方步数
-    self.current_round = 1--当前回合数
+    self.current_red_round = 1--当前回合数
+    self.current_blue_round = 1--当前回合数
     self.current_fight_times = 1--当前战斗回合数
+    self.current_lose = "" -- 当前回合，输方:red or blue 用来显示轮数
     --最大战斗回合数
     self.fight_times_max = self.baseTemplate:getBaseInfoById("max_times_fight")
     --buff数据集合, 用于一次攻击的buff管理，用于View显示
@@ -49,13 +51,15 @@ function FightProcess:init(fight_type)
     self.fight_type = getDataManager():getFightData():getFightType()
     self.fight_type = fight_type
     self.dropNum = 3
-    self.red_units, self.blue_groups, self.red_unpara_skill, self.blue_unpara_skill, self.buddy_skill = initData(self)
+    self.red_groups, self.blue_groups, self.red_unpara_skill, self.blue_unpara_skill, self.buddy_skill = initData(self)
     self.redAtkArray = self:get_atk_array(self.red_units, self.red_unpara_skill) -- 用来计算无双值
     print("==========redAtkArray", self.redAtkArray)
     self:init_round()
-    self.blue_units = self.blue_groups[self.current_round]
+    self.red_units = self.red_groups[self.current_red_round]
+    self.blue_units = self.blue_groups[self.current_blue_round]
     --总回合数
-    self.max_round = table.nums(self.blue_groups)
+    self.max_red_round = table.nums(self.red_groups)
+    self.max_blue_round = table.nums(self.blue_groups)
     self.blue_hp_total = self:get_blue_hp_total()
     self.red_hp_total = self:get_red_hp_total()
     self.round_to_kill_num = {}
@@ -85,7 +89,8 @@ end
 function FightProcess:init_round()
     self.red_step = 1--我方步数
     self.blue_step = 1--敌方步数
-    self.current_round = 1--当前回合数
+    self.current_red_round = 1--当前回合数
+    self.current_blue_round = 1--当前回合数
     self.current_fight_times = 1--当前战斗回合数
     self.small_step = 0 
     self.current_skill_type = TYPE_NORMAL
@@ -375,19 +380,27 @@ end
 
 -- 下一轮数据
 function FightProcess:next_round()
-    if self.current_round ~= self.max_round then
-        self.current_round = self.current_round + 1
+    if self.current_lose == "red" and self.current_red_round ~= self.max_red_round then
+        self.current_red_round = self.current_red_round + 1
     end
-    self.current_fight_times = 1
+    if self.current_lose == "blue" and self.current_blue_round ~= self.max_blue_round then
+        self.current_blue_round = self.current_blue_round + 1
+    end
+    if self.fight_type ~= TYPE_ESCORT then
+        self.current_fight_times = 1
+    end
     self.red_step = 1
     self.blue_step = 1
     self.small_step = 0
 
-    self.blue_units = self.blue_groups[self.current_round]
+    self.red_units = self.red_groups[self.current_red_round]
+    self.blue_units = self.blue_groups[self.current_blue_round]
 
     -- 重置我方数据
     for _,v in pairs(self.red_units) do
-        v:reset()
+        if self.fight_type ~= TYPE_ESCORT then
+            v:reset()
+        end
     end
 end
 
@@ -446,7 +459,7 @@ end
 
 -- 判断是否是最后一轮
 function FightProcess:is_last_round()
-    return self.max_round == self.current_round
+    return self.max_blue_round == self.current_blue_round
 end
 
 -- 检查当前回合结果
@@ -457,15 +470,28 @@ function FightProcess:check_result()
     if table.nums(self.red_units) == 0 or self.current_fight_times > self.fight_times_max then
         self:logInfo()
         appendFile2("lose========"..self.current_fight_times.."=="..self.fight_times_max, 0)
+        self.current_lose = "red"
         return -1 -- lose
     elseif table.nums(self.blue_units) == 0 then
         self:logInfo()
         appendFile2("win========", 0)
+        self.current_lose = "blue"
         return 1 -- win
     else
         return 0 -- continue
     end
 end
+
+function FightProcess:check_final_result(result)
+    if result == -1 and self.max_red_round == self.current_red_round then
+        return -1
+    elseif result == 1 and self.max_blue_round == self.current_blue_round then
+        return 1
+    else
+        return 0
+    end
+end
+
 --执行一步，即一个战斗动作
 function FightProcess:perform_one_step()
     appendFile2("perform one step=============="..self.step_id)
@@ -477,7 +503,7 @@ function FightProcess:perform_one_step()
     if result == 1 or result == -1 then
         -- 战斗结束，发送结果
         print("lose============")
-        self.send_message(const.EVENT_FIGHT_RESULT, (result == 1))
+        self.send_message(const.EVENT_FIGHT_RESULT, self:check_final_result(result))
         return 
     end
     self.step_id = self.step_id + 1
@@ -501,7 +527,7 @@ function FightProcess:perform_one_step()
 end
 
 function FightProcess:do_normal_skill()
-    print("do_normal_skill==================")
+    print("do_normal_skill==================", self.red_step, self.blue_step, table.nums(self.blue_units), self.blue_units)
     local attack_units = nil--攻击阵容
     local defend_units = nil--防御阵容
     local who_step = nil--攻击者位置
@@ -589,6 +615,7 @@ end
 
 function FightProcess:set_normal_step()
     self.small_step = 0
+    print("set_normal_step===", self.red_step, self.blue_step)
 
     if self.red_step == self.blue_step then
         self.red_step = self.red_step + 1
@@ -741,7 +768,7 @@ function FightProcess:logInfo()
             appendFile2(v:str_data(), 0)
         end
     end
-    appendFile2(""..self.max_round.."=="..self.current_round.."回合＝＝＝＝＝＝＝", 0)
+    appendFile2(""..self.max_blue_round.."=="..self.current_blue_round.."回合＝＝＝＝＝＝＝", 0)
 end
 
 function FightProcess:get_blue_hp_total()

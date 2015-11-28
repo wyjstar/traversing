@@ -8,7 +8,7 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from app.battle.battle_unit import BattleUnit
 #from app.battle.battle_process import BattlePVPProcess
-from app.battle.server_process import pvp_start, pve_start, mine_start, mine_pvp_start
+from app.battle.server_process import pvp_start, pve_start, mine_start, mine_pvp_start, guild_pvp_start
 from random import randint
 from shared.utils.const import const
 
@@ -17,7 +17,7 @@ def pvp_process(player, line_up, red_units, blue_units, seed1, seed2, fight_type
     """docstring for pvp_process"""
     #save_line_up_order(line_up, player, current_unpar)
     #player.fight_cache_component.awake_hero_units(blue_units)
-    player.fight_cache_component.awake_hero_units(red_units)
+    #player.fight_cache_component.awake_hero_units(red_units)
     if not blue_units:
         return True
 
@@ -30,6 +30,8 @@ def pvp_process(player, line_up, red_units, blue_units, seed1, seed2, fight_type
     elif fight_type == const.BATTLE_MINE_PVP:
         res = mine_pvp_start(red_units, blue_units, unpar_type, unpar_other_id,
                                 0, 0, seed1, seed2, player.base_info.level)
+    elif fight_type == const.BATTLE_GUILD:
+        res = guild_pvp_start(red_units, blue_units, seed1, seed2)
 
     logger.debug("pvp_process: %s" % res)
     #fight_result = process.process()

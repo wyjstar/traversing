@@ -15,6 +15,7 @@ from robot_pvp import RobotPvp
 from robot_mine import RobotMine
 from robot_hero import RobotHero
 from robot_zhangchao import RobotZhangChao
+from robot_escort_task import RobotEscortTask
 
 monkey.patch_os()
 
@@ -26,17 +27,18 @@ OCEAN = '\033[36m'
 RESET = '\033[0m'
 
 robot_type = {}
-robot_type['1'] = Robot
-robot_type['2'] = RobotFriend
-robot_type['3'] = RobotGuild
-robot_type['4'] = RobotOnlineGift
-robot_type['5'] = RobotActivity
-robot_type['6'] = RobotWorldBoss
-robot_type['7'] = RobotStage
-robot_type['8'] = RobotPvp
-robot_type['9'] = RobotMine
+robot_type['01'] = Robot
+robot_type['02'] = RobotFriend
+robot_type['03'] = RobotGuild
+robot_type['04'] = RobotOnlineGift
+robot_type['05'] = RobotActivity
+robot_type['06'] = RobotWorldBoss
+robot_type['07'] = RobotStage
+robot_type['08'] = RobotPvp
+robot_type['09'] = RobotMine
 robot_type['10'] = RobotHero
 robot_type['11'] = RobotZhangChao
+robot_type['12'] = RobotEscortTask
 robot_manager = RobotManager()
 
 

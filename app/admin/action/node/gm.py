@@ -141,8 +141,7 @@ def get_user_info(args):
     if not isexist:
         return {'success': 0, 'message': 2}
 
-    finances = character_obj.hget('finances')
-    character_info = character_obj.hmget(['nickname', 'attackpoint',
+    character_info = character_obj.hmget(['nickname', 'attackPoint',
                                           'heads', 'upgrade_time',
                                           'level', 'id', 'exp',
                                           'vip_level', 'register_time',
