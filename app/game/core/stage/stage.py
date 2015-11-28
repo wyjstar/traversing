@@ -5,12 +5,13 @@ created by server on 14-7-17下午8:43.
 import cPickle
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
+import time
 
 
 class Stage(object):
     """关卡
     """
-    def __init__(self, stage_id, attacks=0, state=-1, reset=[0, 1],
+    def __init__(self, stage_id, attacks=0, state=-1, reset=[0, int(time.time())],
                  drop_num=0, chest_state=0):
         self._stage_id = stage_id   # 关卡编号
         self._attacks = attacks     # 攻击次数
