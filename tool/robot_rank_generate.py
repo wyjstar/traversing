@@ -50,7 +50,7 @@ def init_line_up(player, robot_config, level):
 
 
 if __name__ == '__main__':
-    if not sys.argv[1]:
+    if len(sys.argv) == 1:
         rank_length = const.ROBOT_NUM
     else:
         rank_length = int(sys.argv[1])
