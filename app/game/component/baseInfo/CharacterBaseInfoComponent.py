@@ -596,3 +596,8 @@ class CharacterBaseInfoComponent(Component):
         """每日购买精力上限"""
         vip_content = game_configs.vip_config.get(self._vip_level)
         return vip_content.buyEnergyMax
+
+    @property
+    def guild_escort_rob_times_max(self):
+        """每日购买上限"""
+        return 0

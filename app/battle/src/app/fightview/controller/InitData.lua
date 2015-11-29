@@ -58,10 +58,12 @@ function initData(_process)
         return initMineData(data)
     elseif process.fight_type == TYPE_HJQY_STAGE then
         return initHjqyData(data)
-    elseif process.fight_type == TYPE_TEST then
-        return initTESTData()
+    elseif process.fight_type == TYPE_BEAST_BATTLE then
+        return initBeastData(data)
     elseif process.fight_type == TYPE_ESCORT then
         return initGuildEscortPvpData(data)
+    elseif process.fight_type == TYPE_TEST then
+        return initTESTData()
     end
 
 end
@@ -378,7 +380,7 @@ function initStageData(data)
 
     local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7 )
     --local redUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ARMY, "red", 7 )
-    local blueUnParaSkill = constructUnparaSkill(data.monster_unpar, 1, const.HOME_ENEMY, "blue", 7+12)
+    local blueUnParaSkill = constructUnparaSkill(data.monster_unpar, 0, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkillWithTemplate(10001, 30)
     local buddySkill = constructBuddySkill(data.friend)
     --print(buddySkill.unit.no, "buddySkill=================")
@@ -494,6 +496,42 @@ function initHjqyData(data)
     --print(buddySkill.unit.no, "buddySkill=================")
     return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
+
+function initBeastData(data)
+    local red_units = data.red
+    local blue_units = data.blue
+    local redUnits = {}
+    local blueUnits = {}
+    local heroBreak = 0
+
+    print("red_units", red_units)
+    print("blue_units", blue_units)
+
+    for i=1,6 do
+        if red_units[i] then
+            print("red_units================")
+            table.print(red_units[i])
+            local unit = constructBattleUnit(red_units[i], "red")
+            redUnits[unit.pos] = unit
+            print("unit==============", unit)
+            updateRedUnitViewProperty(unit)
+        end
+    end
+
+    for i=1,6 do
+        if blue_units[i] then
+            local unit = constructBattleUnit(blue_units[i], "blue", true)
+            blueUnits[unit.pos] = unit
+            updateBlueUnitViewProperty(unit)
+        end
+    end
+
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
+
+    return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
+end
+
 -- 根据hero模板构造battle unit
 function constructBattleUnitWithTemplate(data, pos, level, break_level, is_awake, is_break)
     print("data...."..data.id)
@@ -606,7 +644,9 @@ function constructBattleUnit(data, side, is_last_round)
         or process.fight_type == TYPE_TRAVEL
         or process.fight_type == TYPE_MINE_MONSTER
         or process.fight_type == TYPE_WORLD_BOSS
-        or process.fight_type == TYPE_HJQY_STAGE)
+        or process.fight_type == TYPE_HJQY_STAGE
+        or process.fight_type == TYPE_BEAST_BATTLE
+        )
         and side == "blue"
         then
         print("==========?", data.no)

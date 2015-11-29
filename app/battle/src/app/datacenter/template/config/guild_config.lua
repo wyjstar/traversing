@@ -299,9 +299,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 30,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 10,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 30,  [2] = 101,  [3] = 1,}
@@ -347,9 +345,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 40,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 15,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 35,  [2] = 111,  [3] = 1,}
@@ -575,9 +571,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 70,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 30,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 50,  [2] = 141,  [3] = 1,}
@@ -659,9 +653,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 80,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 35,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 55,  [2] = 151,  [3] = 1,}
@@ -779,9 +771,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 100,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 45,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 65,  [2] = 172,  [3] = 1,}
@@ -827,9 +817,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 110,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 50,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 70,  [2] = 182,  [3] = 1,}
@@ -875,9 +863,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 120,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 55,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 80,  [2] = 192,  [3] = 1,}
@@ -1201,9 +1187,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 50,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 20,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 40,  [2] = 121,  [3] = 1,}
@@ -1583,9 +1567,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 60,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 25,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 45,  [2] = 131,  [3] = 1,}
@@ -1725,9 +1707,7 @@ guild_config={
 ,  ["animalOpen"] = {
 }
 ,  ["shortenTime"] = 90,  ["headSworShip"] = {
-  ["107"] = {
   [1] = 40,  [2] = 100,  [3] = 1,}
-,}
 ,  ["worShip"] = {
   ["1"] = {
   [1] = 60,  [2] = 162,  [3] = 1,}

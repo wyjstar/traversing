@@ -45,7 +45,10 @@ def get_all_task_info_1901(pro_data, player):
     # 可劫运的任务
     if not escort_component.can_rob_tasks: # 如果没有则刷新
         tasks = remote_gate["world"].get_can_rob_tasks_remote(player.guild.g_id)
-        for task in tasks.items():
+        logger.debug("can_rob_tasks_remote %s" % tasks)
+        for task_id, task in tasks.items():
+            logger.debug("task_id, task")
+            logger.debug(task)
             escort_component.can_rob_tasks[task.get("task_id")] = task.get("protect_guild_info").get("id")
         escort_component.save_data()
     else:
@@ -59,12 +62,19 @@ def get_all_task_info_1901(pro_data, player):
     load_data_to_response(tasks, response.tasks_rob_invite)
     # 我的押运任务
     tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.protect_records)
-    record_util(2, player.base_info.id, tasks, response.my_protect_tasks)
+    #record_util(player.base_info.id, tasks, response.my_protect_tasks)
+    # 我的押运任务
+    for task_id, task in tasks.items():
+        update_task_pb(task, response.my_current_task)
+    get_my_current_task(tasks, response.my_current_task)
+    # 我的劫运任务
+    tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.rob_records)
+    get_my_current_rob_task(player.base_info.id, tasks, response.my_current_task)
+
+    record_util(player.base_info.id, tasks, response.my_protect_tasks)
 
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
-
-
 
 @remoteserviceHandle('gate')
 def get_escort_record_1902(data, player):
@@ -74,45 +84,69 @@ def get_escort_record_1902(data, player):
     response = escort_pb2.GetEscortRecordsResponse()
     logger.debug("request %s" % request)
     record_type = request.record_type
+    current = request.current
     escort_component = player.escort_component
 
     logger.debug("guild %s" % player.guild.g_id)
     tasks = {}
     if record_type == 1: # 我的押运记录
         tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.protect_records)
-        load_data_to_response(tasks, response.tasks)
+        for task_id, task in tasks.items():
+            task_pb = response.tasks.add()
+            update_task_pb(task, task_pb)
+        if current:
+            get_my_current_task(tasks, response.tasks.add())
 
     elif record_type == 2: # 我的劫运记录
         tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.rob_records)
+        record_util(player.base_info.id, tasks, response.tasks)
 
     elif record_type == 3: # 军团押劫记录
         tasks = remote_gate["world"].get_guild_task_records_remote(player.guild.g_id)
+        load_data_to_response(tasks, response.tasks)
 
-    record_util(record_type, player.base_info.id, tasks, response.tasks)
 
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
-def record_util(record_type, player_id, tasks, tasks_pb):
-    if record_type == 2 and record_type == 3:
-        for task_id, task in tasks.items():
-            if not task.get("rob_task_infos"):
-                task_pb = tasks_pb.add()
-                update_task_pb(task, task_pb)
-                break
-            for header, rob_task_info in task.get("rob_task_infos", {}):
-                if record_type == 2:
-                    is_in_rob = False
-                    for robber_info in rob_task_info.get("robbers"):
-                        if player_id == robber_info.get("id"):
-                            is_in_rob = True
-                    if not is_in_rob: continue
+def get_my_current_task(tasks, task_pb):
+    """docstring for get_my_current_task"""
+    for task_id, task in tasks.items():
+        if task.get("state") in [1, 2]:
+            update_task_pb(task, task_pb)
 
-                tmp_task = copy.deepcopy(task)
-                tmp_task["rob_task_infos"] = {}
-                tmp_task["rob_task_infos"][header] = rob_task_info
-                task_pb = tasks_pb.add()
-                update_task_pb(tmp_task, task_pb)
+def get_my_current_rob_task(player_id, tasks, task_pb):
+    for task_id, task in tasks.items():
+        if not task.get("rob_task_infos"):
+            continue
+        for header, rob_task_info in task.get("rob_task_infos", {}).items():
+            if player_id != rob_task_info.get("robbers")[0].get("id"):
+                continue
+
+            tmp_task = copy.deepcopy(task)
+            tmp_task["rob_task_infos"] = {}
+            tmp_task["rob_task_infos"][header] = rob_task_info
+            update_task_pb(tmp_task, task_pb)
+
+
+def record_util(player_id, tasks, tasks_pb):
+    for task_id, task in tasks.items():
+        if not task.get("rob_task_infos"):
+            task_pb = tasks_pb.add()
+            update_task_pb(task, task_pb)
+            continue
+        for header, rob_task_info in task.get("rob_task_infos", {}).items():
+            is_in_rob = False
+            for robber_info in rob_task_info.get("robbers"):
+                if player_id == robber_info.get("id"):
+                    is_in_rob = True
+            if not is_in_rob: continue
+
+            tmp_task = copy.deepcopy(task)
+            tmp_task["rob_task_infos"] = {}
+            tmp_task["rob_task_infos"][header] = rob_task_info
+            task_pb = tasks_pb.add()
+            update_task_pb(tmp_task, task_pb)
 
 @remoteserviceHandle('gate')
 def refresh_can_rob_tasks_1903(data, player):
@@ -156,22 +190,37 @@ def refresh_tasks_1904(data, player):
 
 @remoteserviceHandle('gate')
 def receive_escort_task_1905(data, player):
-    """接受押运、劫运任务"""
+    """接受劫运任务"""
     request = escort_pb2.ReceiveEscortTaskRequest()
     request.ParseFromString(data)
     logger.debug("request %s" % request)
     task_id = request.task_id
-    protect_or_rob = request.protect_or_rob
+    #protect_or_rob = request.protect_or_rob
+    #task_guild_id = request.task_guild_id
+
+    response = common_pb2.CommonResponse()
+
+    res = receive_protect_task(player, task_id)
+
+    if not res.get('result'):
+        response.result_no = res.get('result_no')
+    response.result = res.get('result')
+    return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def receive_rob_escort_task_1907(data, player):
+    """接受劫运任务"""
+    request = escort_pb2.ReceiveEscortTaskRequest()
+    request.ParseFromString(data)
+    logger.debug("request %s" % request)
+    task_id = request.task_id
+    #protect_or_rob = request.protect_or_rob
     task_guild_id = request.task_guild_id
 
     response = common_pb2.CommonResponse()
 
-    res = None
-    if protect_or_rob == 1:
-        res = receive_protect_task(player, task_id)
-    elif protect_or_rob == 2:
-        res = receive_rob_task(player, task_id, task_guild_id)
-        logger.debug("res %s" % res)
+    res = receive_rob_task(player, task_id, task_guild_id)
+    logger.debug("res %s" % res)
 
     if not res.get('result'):
         response.result_no = res.get('result_no')
@@ -202,9 +251,9 @@ def receive_rob_task(player, task_id, task_guild_id):
     if task.get('state') != 2:
         logger.error("task state not right! %s" % task.get("state"))
         return {'result': False, 'result_no': 190901}
-    if player.base_info.id in task.get('rob_task_infos'):
-        logger.debug("this task has been robbed!")
-        return {'result': False, 'result_no': 190902}
+    #if player.base_info.id in task.get('rob_task_infos') and task.get():
+        #logger.debug("this task has been robbed!")
+        #return {'result': False, 'result_no': 190902}
     escort_component.rob_records[task.get("task_id")] = task_guild_id
     escort_component.save_data()
 
@@ -308,7 +357,7 @@ def in_invite(player, task_id, protect_or_rob, task_guild_id):
     """
     # add CharacterInfo to the task
     task = remote_gate["world"].add_player_remote(task_guild_id, task_id, get_player_info(player), protect_or_rob, 0)
-    # push info to related players
+    # push info to head players
     push_response = escort_pb2.InviteEscortTaskPushResponse()
     update_task_pb(task, push_response.task)
     push_response.protect_or_rob = protect_or_rob
@@ -316,22 +365,37 @@ def in_invite(player, task_id, protect_or_rob, task_guild_id):
     return {'result': True}
 
 @remoteserviceHandle('gate')
-def start_escort_1909(data, player):
-    """手动开始押运或者劫运"""
+def start_protect_escort_1909(data, player):
+    """手动开始押运"""
     request = escort_pb2.StartEscortTaskRequest()
     request.ParseFromString(data)
     logger.debug("request %s" % request)
     task_id = request.task_id
-    protect_or_rob = request.protect_or_rob
     task_guild_id = request.task_guild_id
     response = escort_pb2.StartEscortTaskResponse()
     response.res.result = True
 
-    res = None
-    if protect_or_rob == 1:
-        res = start_protect_escort(task_guild_id, task_id)
-    elif protect_or_rob == 2:
-        res = start_rob_escort(player, task_id, response, task_guild_id)
+    res = start_protect_escort(task_guild_id, task_id)
+
+    if not res.get("result"):
+        response.res.result_no = res.get("result_no")
+        return response.SerializePartialToString()
+    response.res.result = res.get("result")
+    logger.debug("response %s" % response)
+    return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def start_rob_escort_1910(data, player):
+    """手动开始劫运"""
+    request = escort_pb2.StartEscortTaskRequest()
+    request.ParseFromString(data)
+    logger.debug("request %s" % request)
+    task_id = request.task_id
+    task_guild_id = request.task_guild_id
+    response = escort_pb2.StartEscortTaskResponse()
+    response.res.result = True
+
+    res = start_rob_escort(player, task_id, response, task_guild_id)
 
     if not res.get("result"):
         response.res.result_no = res.get("result_no")
@@ -352,6 +416,12 @@ def start_rob_escort(player, task_id, response, task_guild_id):
     res = remote_gate["world"].start_rob_escort_remote(task_guild_id, task_id, player.base_info.id)
     if res.get("result"):
         update_rob_task_info_pb(res.get("protecters", []), res.get("rob_task_info", {}), response.rob_task_info)
+        # push info to head players
+        push_response = escort_pb2.InviteEscortTaskPushResponse()
+        task = res.get("task")
+        update_task_pb(task, push_response.task)
+        push_response.protect_or_rob = 2
+        remote_gate.push_object_remote(19083, push_response.SerializePartialToString(), [task.get("protecters")[0].get("id")])
     return res
 
 def load_data_to_response(tasks, tasks_pb):
@@ -367,17 +437,17 @@ def update_task_pb(task, task_pb):
     task_pb.state = task.get("state")
     task_pb.receive_task_time = task.get("receive_task_time", 0)
     task_pb.start_protect_time = task.get("start_protect_time", 0)
-    update_guild_pb(task.get("protect_guild_info"), task_pb.protect_guild_info)
-    update_player_infos_pb(task.get("protecters"), task_pb.protecters)
+    update_guild_pb(task.get("protect_guild_info", {}), task_pb.protect_guild_info)
+    update_player_infos_pb(task.get("protecters", []), task_pb.protecters)
     # reward
     load_to_game_response(task.get("reward", []), task_pb.reward)
 
-    for _, rob_task_info in task.get("rob_task_infos"):
+    for _, rob_task_info in task.get("rob_task_infos", {}).items():
         rob_task_info_pb = task_pb.rob_task_infos.add()
         update_rob_task_info_pb(task.get("protecters"), rob_task_info, rob_task_info_pb)
 
 def update_guild_pb(guild_info, guild_info_pb):
-    guild_info_pb.g_id = guild_info.get("g_id", -1)
+    guild_info_pb.g_id = guild_info.get("id", -1)
     guild_info_pb.rank = guild_info.get("rank", -1)
     guild_info_pb.name = guild_info.get("name", "")
     guild_info_pb.level = guild_info.get("level", 0)
@@ -409,14 +479,14 @@ def update_rob_task_info_pb(protecters, rob_task_info, rob_task_info_pb):
     update_side_battle_unit_pb(protecters, rob_task_info_pb.red)
     update_side_battle_unit_pb(rob_task_info.get("robbers"), rob_task_info_pb.blue)
     # seed
-    rob_task_info_pb.seed1 = rob_task_info.get("seed1")
-    rob_task_info_pb.seed2 = rob_task_info.get("seed2")
+    rob_task_info_pb.seed1 = rob_task_info.get("seed1", 0)
+    rob_task_info_pb.seed2 = rob_task_info.get("seed2", 0)
     # rob reward
-    load_to_game_response(rob_task_info.get("rob_reward"), rob_task_info_pb.rob_reward)
+    load_to_game_response(rob_task_info.get("rob_reward", []), rob_task_info_pb.rob_reward)
     # rob_result
-    rob_task_info_pb.rob_result = rob_task_info.get("rob_result")
+    rob_task_info_pb.rob_result = rob_task_info.get("rob_result", False)
     # rob_time
-    rob_task_info_pb.rob_time = rob_task_info.get("rob_time")
+    rob_task_info_pb.rob_time = rob_task_info.get("rob_time", 0)
     # rob_state
     rob_task_info_pb.rob_state = rob_task_info.get("rob_state", 0)
     # rob_receive_task_time

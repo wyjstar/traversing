@@ -16,6 +16,7 @@ from robot_mine import RobotMine
 from robot_hero import RobotHero
 from robot_zhangchao import RobotZhangChao
 from robot_escort_task import RobotEscortTask
+from robot_guild_boss import RobotGuildBoss
 
 monkey.patch_all()
 
@@ -39,6 +40,7 @@ robot_type['09'] = RobotMine
 robot_type['10'] = RobotHero
 robot_type['11'] = RobotZhangChao
 robot_type['12'] = RobotEscortTask
+robot_type['13'] = RobotGuildBoss
 robot_manager = RobotManager()
 
 

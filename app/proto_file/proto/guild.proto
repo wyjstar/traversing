@@ -1,4 +1,5 @@
 import "common.proto";
+import "stage.proto";
 
 // 获取公会排行列表 command：810
 message GetGuildRankRequest{
@@ -279,56 +280,60 @@ message PositionChange{
     required int32 position = 1;
 }
 
-// 获取圣兽模块信息
-message GuildAnimalsInfoResponse{
-    required int32 SkillPoints = 1;
-    repeated GuildSkill guild_skill = 2;
-    required int32 summon_times = 3;  // 军团已经召唤次数
-    // required int32 attack_times = 4;  // 今日我打圣兽次数
-    repeated GuildAnimal guild_animal = 5;
+// 获取圣兽模块信息 command 2401
+message GuildBossInitResponse{
+    required int32 skill_points = 1;     // 技能点
+    repeated GuildSkill guild_skill = 2; // 军团技能
+    required int32 trigger_times = 3;    // 军团已经召唤次数
+    required GuildBoss guild_boss = 4;   // 圣兽信息
+    required int32 last_attack_time = 5; // 我上次打的时间
 }
 
+//军团技能
 message GuildSkill{
-    required int32 skill_type = 1;
-    required int32 skill_level = 2;
+    required int32 skill_type = 1; //军团技能type
+    required int32 skill_level = 2;//军团技能等级
 }
 
-message GuildAnimal{
-    required int32 player_id = 1;
-    required string player_name = 2;
-    required int32 hp = 3;
-    required int32 all_hp = 8;
-    required string animal_id = 4;  // 唯一ID
-    required int32 stage_id = 5;  // 关卡ID
-    required int32 start_time = 6;
-    required int32 last_time = 7;  // 我上次打的时间
+message GuildBoss{
+    optional int32 player_id = 1;    // 未使用
+    optional string player_name = 2; // 未使用
+    required int32 hp_left = 3;      // 当前血量
+    required int32 hp_max = 4;       // 最大血量
+    required int32 stage_id = 5;     // 关卡ID
+    required int32 trigger_time = 6; // 触发时间
+    required int32 boss_type = 7;    // boss类型
+}
+
+// 召唤圣兽command 2402
+message TriggerGuildBossRequest{
+    required int32 boss_type = 1;
 }
 
 // 召唤圣兽
-message SummonGuildAnimalRequest{
-    required int32 animal_type = 1;
+message TriggerGuildBossResponse{
+    required CommonResponse res = 1;
+    optional GuildBoss guild_boss = 2;
+    optional GameResourcesResponse consume = 3;
 }
 
-// 召唤圣兽
-message SummonGuildAnimalResponse{
-    required CommonResponse res = 1;
-    required GuildAnimal guild_animal = 2;
+// 打圣兽command 2403
+message GuildBossBattleRequest{
+    required int32 stage_id = 1;   
 }
 
 // 打圣兽
-message AttackGuildAnimalRequest{
-    required string animal_id = 4;  // 唯一ID
-}
-
-// 打圣兽
-message AttackGuildAnimalResponse{
+message GuildBossBattleResponse{
     required CommonResponse res = 1;
-    required string animal_id = 2;  // 唯一ID
-    required int32 hp = 3;
+    repeated BattleUnit red = 2;         // 红方数据 自己
+    repeated BattleUnit blue = 3;        // 对方数据
     optional GameResourcesResponse gain = 4;
+    optional bool fight_result= 5;             // 战斗结果
+    optional int32 seed1= 9;             // 随机种子1
+    optional int32 seed2= 10;            // 随机种子2
 }
 
-// 军团技能升级
+// 军团技能升级command 2404
 message UpGuildSkillRequest{
     required int32 skill_type = 1;
 }
@@ -336,4 +341,5 @@ message UpGuildSkillRequest{
 // 军团技能升级
 message UpGuildSkillResponse{
     required CommonResponse res = 1;
+    optional GameResourcesResponse consume = 2;
 }

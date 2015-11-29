@@ -19,6 +19,7 @@ class GuildConfig(object):
         for row in config_value:
 
             convert_keystr2num(row.get("cohesion"))
+            convert_keystr2num(row.get("animalOpen"))
             row["support"] = parse(row.get("support"))
             row["collectSupportGift"] = parse(row.get("collectSupportGift"))
             item = CommonItem(row)

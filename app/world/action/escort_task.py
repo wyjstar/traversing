@@ -187,7 +187,7 @@ def start_rob_escort_remote(guild_id, task_id, header):
             send_mail(conf_id=1002,  receive_id=player_info.get("id"), arg1=str(mail_arg1))
     task.state = -1
     task.save_data()
-    res = {"result": True, "protecters": task.protecters, "rob_task_info": rob_task_info}
+    res = {"result": True, "protecters": task.protecters, "rob_task_info": rob_task_info, "task": construct_task_data(task)}
     logger.debug("res %s" % res)
     return res
 
@@ -207,6 +207,7 @@ def update_task_state_remote(protect_records, rob_records):
     """
     根据时间调整任务状态
     """
+    return
     records = {}
     rob_records.update(protect_records)
 

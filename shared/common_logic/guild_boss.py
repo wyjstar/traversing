@@ -13,6 +13,7 @@ from shared.utils.const import const
 from gtwisted.core import reactor
 from shared.utils.mail_helper import deal_mail
 from gfirefly.server.globalobject import GlobalObject
+import cPickle
 
 
 class GuildBoss(object):
@@ -22,6 +23,24 @@ class GuildBoss(object):
         self._blue_units = {}  # 怪物信息
         self._trigger_time = 0 # 触发时间
         self._hp_max = 0 # 最大血量
+        self._boss_type = 0 # boss 类型
+
+    def load(self, info):
+        """docstring for load"""
+        self._stage_id = info.get("stage_id", 0)
+        self._blue_units = info.get("blue_units", {})
+        self._trigger_time = info.get("trigger_time", 0)
+        self._hp_max = info.get("hp_max", 0)
+
+    def property_dict(self):
+        return {
+                "stage_id": self._stage_id,
+                "blue_units": cPickle.dumps(self._blue_units),
+                "trigger_time": self._trigger_time,
+                "hp_max": self._hp_max,
+                "hp_left": self.hp,
+                "boss_type": self.boss_type,
+                }
 
     def init_data(self, data):
         """docstring for init_data"""
@@ -30,6 +49,14 @@ class GuildBoss(object):
         self._trigger_time = 0 # 触发时间
         self._hp_max = data.get("hp_max", False)
 
+
+    def check_time(self):
+        if not self._stage_id: return
+        remain_time = game_configs.base_config.get("AnimalChallengeTime").get(self._stage_id)
+        if remain_time + self._trigger_time <= get_current_timestamp():
+            self._stage_id = 0
+            self._trigger_time = 0
+
     @property
     def stage_id(self):
         return self._stage_id
@@ -37,6 +64,14 @@ class GuildBoss(object):
     @stage_id.setter
     def stage_id(self, value):
         self._stage_id = value
+
+    @property
+    def boss_type(self):
+        return self._boss_type
+
+    @boss_type.setter
+    def boss_type(self, value):
+        self._boss_type = value
 
     @property
     def trigger_time(self):
@@ -67,45 +102,3 @@ class GuildBoss(object):
     @hp_max.setter
     def hp_max(self, value):
         self._hp_max = value
-
-    def get_data_dict(self):
-        return dict(player_id=self._player_id,
-                    nickname=self._nickname,
-                    blue_units=self._blue_units,
-                    stage_id=self._stage_id,
-                    trigger_time=self._trigger_time,
-                    hp_max=self._hp_max,
-                    is_share=self._is_share)
-
-    def start_boss(self):
-        self._rank_instance.clear_rank()  # 重置排行
-        self._last_shot_item = {}  # 重置最后击杀
-
-
-    def in_the_time_period(self):
-        stage_info = self.current_stage_info()
-        time_start, time_end = str_time_period_to_timestamp(stage_info.timeControl)
-        current = get_current_timestamp()
-        if self._boss_dead_time > time_start:
-            return time_start<=current and self._boss_dead_time>=current
-        return time_start<=current and time_end>=current
-
-    def get_state(self):
-        """
-        1: not dead
-        2: dead
-        3: run away
-        """
-        if self.hp <= 0:
-            return const.BOSS_DEAD
-        elif self.is_expired():
-            return const.BOSS_RUN_AWAY
-        return const.BOSS_LIVE
-
-    def is_expired(self):
-        """
-        boss 是否逃走
-        """
-        expired_time = game_configs.base_config.get("hjqyEscapeTime")*60
-        return is_expired(self._trigger_time, expired_time)
-

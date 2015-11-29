@@ -8,3 +8,4 @@ import gateforwarding
 import mine
 import guild
 import escort_task
+import guild_boss

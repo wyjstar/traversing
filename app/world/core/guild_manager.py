@@ -57,6 +57,8 @@ class GuildManager(object):
             if len(guild.escort_tasks_can_rob) > 0 and player_g_id != k:
                 guilds[k] = guild.escort_tasks_can_rob
 
+        print("get_can_rob_escort_tasks %s" % guilds)
+
 
         if len(guilds) >= target_num:
             res_g_ids = get_random_items_from_list(target_num, guilds.keys())
@@ -77,6 +79,7 @@ class GuildManager(object):
                 if num == len(task_ids):
                     break
 
+        print("get_can_rob_escort_tasks ids %s" % task_ids)
         tasks = {}
         for task_id, g_id in task_ids.items():
             task = self._guilds[g_id].get_task_by_id(task_id)
@@ -86,5 +89,5 @@ class GuildManager(object):
 
 
 guild_manager_obj = GuildManager()
-#guild_obj = guild_manager_obj.create_guild(1989, "mock_guild_name", 0)
-#guild_manager_obj._guilds[1989] = guild_obj
+guild_obj = guild_manager_obj.create_guild(1989, "mock_guild_name", 0)
+guild_manager_obj._guilds[1989] = guild_obj
