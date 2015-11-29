@@ -5,6 +5,7 @@ created by sphinx.
 from gevent import monkey
 monkey.patch_all()
 import cPickle
+import sys
 import copy
 import random
 import json
@@ -49,6 +50,10 @@ def init_line_up(player, robot_config, level):
 
 
 if __name__ == '__main__':
+    if not sys.argv[1]:
+        rank_length = const.ROBOT_NUM
+    else:
+        rank_length = int(sys.argv[1])
     redis_config = ["127.0.0.1:6379"]
     redis_manager.connection_setup(redis_config)
     log_init_only_out()
@@ -94,7 +99,6 @@ if __name__ == '__main__':
     from app.game.core.character.PlayerCharacter import PlayerCharacter
     from app.game.action.node.line_up import line_up_info
 
-    rank_length = const.ROBOT_NUM
     from app.game.redis_mode import tb_character_info, tb_pvp_rank
 
     nickname_set = set()
