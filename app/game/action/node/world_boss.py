@@ -19,6 +19,7 @@ from shared.utils.const import const
 from random import randint
 from shared.utils.random_pick import random_pick_with_percent
 from app.game.core.task import hook_task, CONDITIONId, update_condition
+from shared.tlog import tlog_action
 
 # from app.proto_file import world_boss_pb2
 
