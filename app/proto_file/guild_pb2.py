@@ -9,12 +9,13 @@ from google.protobuf import descriptor_pb2
 
 
 import common_pb2
+import stage_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='guild.proto',
   package='',
-  serialized_pb='\n\x0bguild.proto\x1a\x0c\x63ommon.proto\"L\n\x13GetGuildRankRequest\x12\x11\n\trank_type\x18\x01 \x02(\x05\x12\x10\n\x08min_rank\x18\x02 \x02(\x05\x12\x10\n\x08max_rank\x18\x03 \x02(\x05\"b\n\x14GetGuildRankResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1e\n\nguild_rank\x18\x02 \x03(\x0b\x32\n.GuildRank\x12\x0c\n\x04\x66lag\x18\x03 \x01(\x05\"\x97\x01\n\tGuildRank\x12\x0c\n\x04g_id\x18\x01 \x02(\x05\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\x0c\n\x04name\x18\x03 \x02(\t\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x11\n\tpresident\x18\x05 \x02(\t\x12\r\n\x05p_num\x18\x06 \x02(\x05\x12\x0f\n\x07icon_id\x18\x07 \x02(\x05\x12\x0c\n\x04\x63\x61ll\x18\x08 \x02(\x0c\x12\x10\n\x08\x62\x65_apply\x18\t \x01(\x05\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\x05\"E\n\x11JoinGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nspare_time\x18\x04 \x01(\x05\"1\n\x11\x45xitGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"8\n\x12SelectGuildRequest\x12\x13\n\x0bselect_type\x18\x01 \x02(\x05\x12\r\n\x05value\x18\x02 \x02(\t\"S\n\x13SelectGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1e\n\nguild_rank\x18\x02 \x01(\x0b\x32\n.GuildRank\"3\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x0f\n\x07icon_id\x18\x02 \x02(\x05\"3\n\x13\x43reateGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"\xb4\x05\n\x14GetGuildInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04g_id\x18\x02 \x01(\x05\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x12\n\nmember_num\x18\x04 \x01(\x05\x12\x14\n\x0c\x63ontribution\x18\x06 \x01(\x05\x12\x18\n\x10\x61ll_contribution\x18\x05 \x01(\x05\x12\x0c\n\x04\x63\x61ll\x18\x07 \x01(\t\x12\x0f\n\x07icon_id\x18\x08 \x01(\x05\x12\x13\n\x0b\x61ll_zan_num\x18\x1e \x01(\x05\x12\x11\n\tzan_money\x18\x1d \x01(\x05\x12\x14\n\x0c\x63\x61ptain_name\x18\t \x01(\t\x12\x15\n\rcaptain_level\x18\n \x01(\x05\x12\x15\n\rcaptain_power\x18\x0b \x01(\x05\x12\x19\n\x11\x63\x61ptain_vip_level\x18\x10 \x01(\x05\x12\x14\n\x0c\x63\x61ptain_icon\x18\x11 \x01(\x05\x12!\n\x19\x63\x61ptain_zan_receive_state\x18\x15 \x01(\x05\x12\x0f\n\x07zan_num\x18\r \x01(\x05\x12\x15\n\rlast_zan_time\x18\x1b \x01(\x05\x12\x10\n\x08position\x18\x0e \x01(\x05\x12\x12\n\nhave_apply\x18\x0f \x01(\x05\x12\x10\n\x08luck_num\x18\x12 \x01(\x05\x12\x11\n\tbless_num\x18\x13 \x01(\x05\x12\x13\n\x0b\x62less_state\x18\x14 \x01(\x05\x12\x12\n\nbless_gift\x18\x16 \x03(\x05\x12\x19\n\x11guild_bless_times\x18\x1f \x01(\x05\x12\x15\n\rmy_guild_rank\x18\x17 \x01(\x05\x12\x17\n\x0fmy_contribution\x18\x18 \x01(\x05\x12\x1b\n\x13my_all_contribution\x18\x1c \x01(\x05\x12\x1b\n\x13my_day_contribution\x18\x19 \x01(\x05\x12\x1e\n\nbuild_info\x18\x1a \x03(\x0b\x32\n.BuildInfo\"\x92\x05\n\x15GetGuildInfoResponse1\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04g_id\x18\x02 \x01(\x05\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x12\n\nmember_num\x18\x04 \x01(\x05\x12\x14\n\x0c\x63ontribution\x18\x05 \x01(\x05\x12\x18\n\x10\x61ll_contribution\x18\x06 \x01(\x05\x12\x0c\n\x04\x63\x61ll\x18\x07 \x01(\t\x12\x0f\n\x07icon_id\x18\x08 \x01(\x05\x12\x13\n\x0b\x61ll_zan_num\x18\t \x01(\x05\x12\x11\n\tzan_money\x18\n \x01(\x05\x12\x12\n\nhave_apply\x18\x0b \x01(\x05\x12\x1e\n\nbuild_info\x18\x0c \x03(\x0b\x32\n.BuildInfo\x12\x14\n\x0c\x63\x61ptain_name\x18\r \x01(\t\x12\x15\n\rcaptain_level\x18\x0e \x01(\x05\x12\x15\n\rcaptain_power\x18\x0f \x01(\x05\x12\x19\n\x11\x63\x61ptain_vip_level\x18\x10 \x01(\x05\x12\x14\n\x0c\x63\x61ptain_icon\x18\x11 \x01(\x05\x12\x0f\n\x07zan_num\x18\x12 \x01(\x05\x12\x15\n\rlast_zan_time\x18\x13 \x01(\x05\x12\x10\n\x08position\x18\x14 \x01(\x05\x12\x10\n\x08luck_num\x18\x15 \x01(\x05\x12\x12\n\nbless_gift\x18\x16 \x03(\x05\x12\x11\n\tbless_num\x18\x17 \x01(\x05\x12\x19\n\x11guild_bless_times\x18\x18 \x01(\x05\x12\x13\n\x0b\x62less_state\x18\x1d \x01(\x05\x12\x15\n\rmy_guild_rank\x18\x19 \x01(\x05\x12\x17\n\x0fmy_contribution\x18\x1a \x01(\x05\x12\x1b\n\x13my_all_contribution\x18\x1b \x01(\x05\x12\x1b\n\x13my_day_contribution\x18\x1c \x01(\x05\"4\n\tBuildInfo\x12\x12\n\nbuild_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x62uild_level\x18\x02 \x02(\x05\"$\n\x0eUpBuildRequest\x12\x12\n\nbuild_type\x18\x01 \x02(\x05\"/\n\x0fUpBuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"!\n\x11\x45\x64itorCallRequest\x12\x0c\n\x04\x63\x61ll\x18\x01 \x02(\x0c\"2\n\x12\x45\x64itorCallResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"W\n\x14GetApplyListResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12!\n\trole_info\x18\x02 \x03(\x0b\x32\x0e.ApplyUserInfo\"\x88\x01\n\rApplyUserInfo\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x11\n\tvip_level\x18\x04 \x02(\x05\x12\x13\n\x0b\x66ight_power\x18\x05 \x02(\x05\x12\x11\n\tis_online\x18\x06 \x02(\x05\x12\x11\n\tuser_icon\x18\x07 \x01(\x05\"X\n\x1aGetGuildMemberListResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1c\n\trole_info\x18\x02 \x03(\x0b\x32\t.RoleInfo\"\xdf\x01\n\x08RoleInfo\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x10\n\x08position\x18\x04 \x02(\x05\x12\x18\n\x10\x64\x61y_contribution\x18\x05 \x02(\x05\x12\x18\n\x10\x61ll_contribution\x18\n \x02(\x05\x12\x14\n\x0c\x63ontribution\x18\x06 \x02(\x05\x12\x13\n\x0b\x66ight_power\x18\x07 \x02(\x05\x12\x11\n\tis_online\x18\x08 \x02(\x05\x12\x11\n\tuser_icon\x18\t \x01(\x05\x12\x11\n\tvip_level\x18\x10 \x01(\x05\"&\n\x16\x43hangePresidentRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\"7\n\x17\x43hangePresidentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"3\n\x10\x44\x65\x61lApplyRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\x12\x10\n\x08res_type\x18\x02 \x02(\x05\"@\n\x11\x44\x65\x61lApplyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05p_ids\x18\x02 \x03(\x05\"\x1c\n\x0bKickRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\",\n\x0cKickResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"$\n\x11InviteJoinRequest\x12\x0f\n\x07user_id\x18\x01 \x02(\x05\"2\n\x12InviteJoinResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"G\n\x15\x44\x65\x61lInviteJoinRequest\x12\x0b\n\x03res\x18\x01 \x02(\x05\x12\x10\n\x08guild_id\x18\x02 \x01(\x05\x12\x0f\n\x07mail_id\x18\x03 \x01(\t\"M\n\x19\x44\x65\x61lInviteJoinResResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nspare_time\x18\x02 \x01(\x05\"\x93\x01\n\x0eZanResResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x13\n\x0b\x61ll_zan_num\x18\x02 \x01(\x05\x12\x11\n\tzan_money\x18\x03 \x01(\x05\x12$\n\x04gain\x18\x04 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x15\n\rlast_zan_time\x18\x05 \x01(\x05\"U\n\x0fReceiveResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"\"\n\x0c\x42lessRequest\x12\x12\n\nbless_type\x18\x01 \x02(\x05\"-\n\rBlessResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"&\n\x13GetBlessGiftRequest\x12\x0f\n\x07gift_no\x18\x01 \x02(\x05\"Z\n\x14GetBlessGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"&\n\x10\x46indGuildRequest\x12\x12\n\nid_or_name\x18\x01 \x01(\x0c\"Q\n\x11\x46indGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1e\n\nguild_info\x18\x02 \x01(\x0b\x32\n.GuildRank\"1\n\x0e\x41ppointRequest\x12\x11\n\tdeal_type\x18\x01 \x02(\x05\x12\x0c\n\x04p_id\x18\x02 \x02(\x05\"/\n\x0f\x41ppointResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"\"\n\x0ePositionChange\x12\x10\n\x08position\x18\x01 \x02(\x05\"\x8b\x01\n\x18GuildAnimalsInfoResponse\x12\x13\n\x0bSkillPoints\x18\x01 \x02(\x05\x12 \n\x0bguild_skill\x18\x02 \x03(\x0b\x32\x0b.GuildSkill\x12\x14\n\x0csummon_times\x18\x03 \x02(\x05\x12\"\n\x0cguild_animal\x18\x05 \x03(\x0b\x32\x0c.GuildAnimal\"5\n\nGuildSkill\x12\x12\n\nskill_type\x18\x01 \x02(\x05\x12\x13\n\x0bskill_level\x18\x02 \x02(\x05\"\x9d\x01\n\x0bGuildAnimal\x12\x11\n\tplayer_id\x18\x01 \x02(\x05\x12\x13\n\x0bplayer_name\x18\x02 \x02(\t\x12\n\n\x02hp\x18\x03 \x02(\x05\x12\x0e\n\x06\x61ll_hp\x18\x08 \x02(\x05\x12\x11\n\tanimal_id\x18\x04 \x02(\t\x12\x10\n\x08stage_id\x18\x05 \x02(\x05\x12\x12\n\nstart_time\x18\x06 \x02(\x05\x12\x11\n\tlast_time\x18\x07 \x02(\x05\"/\n\x18SummonGuildAnimalRequest\x12\x13\n\x0b\x61nimal_type\x18\x01 \x02(\x05\"]\n\x19SummonGuildAnimalResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\"\n\x0cguild_animal\x18\x02 \x02(\x0b\x32\x0c.GuildAnimal\"-\n\x18\x41ttackGuildAnimalRequest\x12\x11\n\tanimal_id\x18\x04 \x02(\t\"~\n\x19\x41ttackGuildAnimalResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x11\n\tanimal_id\x18\x02 \x02(\t\x12\n\n\x02hp\x18\x03 \x02(\x05\x12$\n\x04gain\x18\x04 \x01(\x0b\x32\x16.GameResourcesResponse\")\n\x13UpGuildSkillRequest\x12\x12\n\nskill_type\x18\x01 \x02(\x05\"4\n\x14UpGuildSkillResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\x0bguild.proto\x1a\x0c\x63ommon.proto\x1a\x0bstage.proto\"L\n\x13GetGuildRankRequest\x12\x11\n\trank_type\x18\x01 \x02(\x05\x12\x10\n\x08min_rank\x18\x02 \x02(\x05\x12\x10\n\x08max_rank\x18\x03 \x02(\x05\"b\n\x14GetGuildRankResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1e\n\nguild_rank\x18\x02 \x03(\x0b\x32\n.GuildRank\x12\x0c\n\x04\x66lag\x18\x03 \x01(\x05\"\x97\x01\n\tGuildRank\x12\x0c\n\x04g_id\x18\x01 \x02(\x05\x12\x0c\n\x04rank\x18\x02 \x02(\x05\x12\x0c\n\x04name\x18\x03 \x02(\t\x12\r\n\x05level\x18\x04 \x02(\x05\x12\x11\n\tpresident\x18\x05 \x02(\t\x12\r\n\x05p_num\x18\x06 \x02(\x05\x12\x0f\n\x07icon_id\x18\x07 \x02(\x05\x12\x0c\n\x04\x63\x61ll\x18\x08 \x02(\x0c\x12\x10\n\x08\x62\x65_apply\x18\t \x01(\x05\" \n\x10JoinGuildRequest\x12\x0c\n\x04g_id\x18\x01 \x02(\x05\"E\n\x11JoinGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nspare_time\x18\x04 \x01(\x05\"1\n\x11\x45xitGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"8\n\x12SelectGuildRequest\x12\x13\n\x0bselect_type\x18\x01 \x02(\x05\x12\r\n\x05value\x18\x02 \x02(\t\"S\n\x13SelectGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1e\n\nguild_rank\x18\x02 \x01(\x0b\x32\n.GuildRank\"3\n\x12\x43reateGuildRequest\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x0f\n\x07icon_id\x18\x02 \x02(\x05\"3\n\x13\x43reateGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"\xb4\x05\n\x14GetGuildInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04g_id\x18\x02 \x01(\x05\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x12\n\nmember_num\x18\x04 \x01(\x05\x12\x14\n\x0c\x63ontribution\x18\x06 \x01(\x05\x12\x18\n\x10\x61ll_contribution\x18\x05 \x01(\x05\x12\x0c\n\x04\x63\x61ll\x18\x07 \x01(\t\x12\x0f\n\x07icon_id\x18\x08 \x01(\x05\x12\x13\n\x0b\x61ll_zan_num\x18\x1e \x01(\x05\x12\x11\n\tzan_money\x18\x1d \x01(\x05\x12\x14\n\x0c\x63\x61ptain_name\x18\t \x01(\t\x12\x15\n\rcaptain_level\x18\n \x01(\x05\x12\x15\n\rcaptain_power\x18\x0b \x01(\x05\x12\x19\n\x11\x63\x61ptain_vip_level\x18\x10 \x01(\x05\x12\x14\n\x0c\x63\x61ptain_icon\x18\x11 \x01(\x05\x12!\n\x19\x63\x61ptain_zan_receive_state\x18\x15 \x01(\x05\x12\x0f\n\x07zan_num\x18\r \x01(\x05\x12\x15\n\rlast_zan_time\x18\x1b \x01(\x05\x12\x10\n\x08position\x18\x0e \x01(\x05\x12\x12\n\nhave_apply\x18\x0f \x01(\x05\x12\x10\n\x08luck_num\x18\x12 \x01(\x05\x12\x11\n\tbless_num\x18\x13 \x01(\x05\x12\x13\n\x0b\x62less_state\x18\x14 \x01(\x05\x12\x12\n\nbless_gift\x18\x16 \x03(\x05\x12\x19\n\x11guild_bless_times\x18\x1f \x01(\x05\x12\x15\n\rmy_guild_rank\x18\x17 \x01(\x05\x12\x17\n\x0fmy_contribution\x18\x18 \x01(\x05\x12\x1b\n\x13my_all_contribution\x18\x1c \x01(\x05\x12\x1b\n\x13my_day_contribution\x18\x19 \x01(\x05\x12\x1e\n\nbuild_info\x18\x1a \x03(\x0b\x32\n.BuildInfo\"\x92\x05\n\x15GetGuildInfoResponse1\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x0c\n\x04g_id\x18\x02 \x01(\x05\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x12\n\nmember_num\x18\x04 \x01(\x05\x12\x14\n\x0c\x63ontribution\x18\x05 \x01(\x05\x12\x18\n\x10\x61ll_contribution\x18\x06 \x01(\x05\x12\x0c\n\x04\x63\x61ll\x18\x07 \x01(\t\x12\x0f\n\x07icon_id\x18\x08 \x01(\x05\x12\x13\n\x0b\x61ll_zan_num\x18\t \x01(\x05\x12\x11\n\tzan_money\x18\n \x01(\x05\x12\x12\n\nhave_apply\x18\x0b \x01(\x05\x12\x1e\n\nbuild_info\x18\x0c \x03(\x0b\x32\n.BuildInfo\x12\x14\n\x0c\x63\x61ptain_name\x18\r \x01(\t\x12\x15\n\rcaptain_level\x18\x0e \x01(\x05\x12\x15\n\rcaptain_power\x18\x0f \x01(\x05\x12\x19\n\x11\x63\x61ptain_vip_level\x18\x10 \x01(\x05\x12\x14\n\x0c\x63\x61ptain_icon\x18\x11 \x01(\x05\x12\x0f\n\x07zan_num\x18\x12 \x01(\x05\x12\x15\n\rlast_zan_time\x18\x13 \x01(\x05\x12\x10\n\x08position\x18\x14 \x01(\x05\x12\x10\n\x08luck_num\x18\x15 \x01(\x05\x12\x12\n\nbless_gift\x18\x16 \x03(\x05\x12\x11\n\tbless_num\x18\x17 \x01(\x05\x12\x19\n\x11guild_bless_times\x18\x18 \x01(\x05\x12\x13\n\x0b\x62less_state\x18\x1d \x01(\x05\x12\x15\n\rmy_guild_rank\x18\x19 \x01(\x05\x12\x17\n\x0fmy_contribution\x18\x1a \x01(\x05\x12\x1b\n\x13my_all_contribution\x18\x1b \x01(\x05\x12\x1b\n\x13my_day_contribution\x18\x1c \x01(\x05\"4\n\tBuildInfo\x12\x12\n\nbuild_type\x18\x01 \x02(\x05\x12\x13\n\x0b\x62uild_level\x18\x02 \x02(\x05\"$\n\x0eUpBuildRequest\x12\x12\n\nbuild_type\x18\x01 \x02(\x05\"/\n\x0fUpBuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"!\n\x11\x45\x64itorCallRequest\x12\x0c\n\x04\x63\x61ll\x18\x01 \x02(\x0c\"2\n\x12\x45\x64itorCallResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"W\n\x14GetApplyListResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12!\n\trole_info\x18\x02 \x03(\x0b\x32\x0e.ApplyUserInfo\"\x88\x01\n\rApplyUserInfo\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x11\n\tvip_level\x18\x04 \x02(\x05\x12\x13\n\x0b\x66ight_power\x18\x05 \x02(\x05\x12\x11\n\tis_online\x18\x06 \x02(\x05\x12\x11\n\tuser_icon\x18\x07 \x01(\x05\"X\n\x1aGetGuildMemberListResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1c\n\trole_info\x18\x02 \x03(\x0b\x32\t.RoleInfo\"\xdf\x01\n\x08RoleInfo\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\x12\x0c\n\x04name\x18\x02 \x02(\t\x12\r\n\x05level\x18\x03 \x02(\x05\x12\x10\n\x08position\x18\x04 \x02(\x05\x12\x18\n\x10\x64\x61y_contribution\x18\x05 \x02(\x05\x12\x18\n\x10\x61ll_contribution\x18\n \x02(\x05\x12\x14\n\x0c\x63ontribution\x18\x06 \x02(\x05\x12\x13\n\x0b\x66ight_power\x18\x07 \x02(\x05\x12\x11\n\tis_online\x18\x08 \x02(\x05\x12\x11\n\tuser_icon\x18\t \x01(\x05\x12\x11\n\tvip_level\x18\x10 \x01(\x05\"&\n\x16\x43hangePresidentRequest\x12\x0c\n\x04p_id\x18\x01 \x02(\x05\"7\n\x17\x43hangePresidentResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"3\n\x10\x44\x65\x61lApplyRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\x12\x10\n\x08res_type\x18\x02 \x02(\x05\"@\n\x11\x44\x65\x61lApplyResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05p_ids\x18\x02 \x03(\x05\"\x1c\n\x0bKickRequest\x12\r\n\x05p_ids\x18\x01 \x03(\x05\",\n\x0cKickResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"$\n\x11InviteJoinRequest\x12\x0f\n\x07user_id\x18\x01 \x02(\x05\"2\n\x12InviteJoinResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"G\n\x15\x44\x65\x61lInviteJoinRequest\x12\x0b\n\x03res\x18\x01 \x02(\x05\x12\x10\n\x08guild_id\x18\x02 \x01(\x05\x12\x0f\n\x07mail_id\x18\x03 \x01(\t\"M\n\x19\x44\x65\x61lInviteJoinResResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nspare_time\x18\x02 \x01(\x05\"\x93\x01\n\x0eZanResResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x13\n\x0b\x61ll_zan_num\x18\x02 \x01(\x05\x12\x11\n\tzan_money\x18\x03 \x01(\x05\x12$\n\x04gain\x18\x04 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x15\n\rlast_zan_time\x18\x05 \x01(\x05\"U\n\x0fReceiveResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"\"\n\x0c\x42lessRequest\x12\x12\n\nbless_type\x18\x01 \x02(\x05\"-\n\rBlessResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"&\n\x13GetBlessGiftRequest\x12\x0f\n\x07gift_no\x18\x01 \x02(\x05\"Z\n\x14GetBlessGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"&\n\x10\x46indGuildRequest\x12\x12\n\nid_or_name\x18\x01 \x01(\x0c\"Q\n\x11\x46indGuildResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1e\n\nguild_info\x18\x02 \x01(\x0b\x32\n.GuildRank\"1\n\x0e\x41ppointRequest\x12\x11\n\tdeal_type\x18\x01 \x02(\x05\x12\x0c\n\x04p_id\x18\x02 \x02(\x05\"/\n\x0f\x41ppointResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"\"\n\x0ePositionChange\x12\x10\n\x08position\x18\x01 \x02(\x05\"\xa0\x01\n\x15GuildBossInitResponse\x12\x14\n\x0cskill_points\x18\x01 \x02(\x05\x12 \n\x0bguild_skill\x18\x02 \x03(\x0b\x32\x0b.GuildSkill\x12\x15\n\rtrigger_times\x18\x03 \x02(\x05\x12\x1e\n\nguild_boss\x18\x04 \x02(\x0b\x32\n.GuildBoss\x12\x18\n\x10last_attack_time\x18\x05 \x02(\x05\"5\n\nGuildSkill\x12\x12\n\nskill_type\x18\x01 \x02(\x05\x12\x13\n\x0bskill_level\x18\x02 \x02(\x05\"\x8f\x01\n\tGuildBoss\x12\x11\n\tplayer_id\x18\x01 \x01(\x05\x12\x13\n\x0bplayer_name\x18\x02 \x01(\t\x12\x0f\n\x07hp_left\x18\x03 \x02(\x05\x12\x0e\n\x06hp_max\x18\x04 \x02(\x05\x12\x10\n\x08stage_id\x18\x05 \x02(\x05\x12\x14\n\x0ctrigger_time\x18\x06 \x02(\x05\x12\x11\n\tboss_type\x18\x07 \x02(\x05\",\n\x17TriggerGuildBossRequest\x12\x11\n\tboss_type\x18\x01 \x02(\x05\"\x81\x01\n\x18TriggerGuildBossResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1e\n\nguild_boss\x18\x02 \x01(\x0b\x32\n.GuildBoss\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"*\n\x16GuildBossBattleRequest\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\"\xc6\x01\n\x17GuildBossBattleResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x03red\x18\x02 \x03(\x0b\x32\x0b.BattleUnit\x12\x19\n\x04\x62lue\x18\x03 \x03(\x0b\x32\x0b.BattleUnit\x12$\n\x04gain\x18\x04 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x14\n\x0c\x66ight_result\x18\x05 \x01(\x08\x12\r\n\x05seed1\x18\t \x01(\x05\x12\r\n\x05seed2\x18\n \x01(\x05\")\n\x13UpGuildSkillRequest\x12\x12\n\nskill_type\x18\x01 \x02(\x05\"]\n\x14UpGuildSkillResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"!\n\x11GuildMOBAIRequest\x12\x0c\n\x04u_id\x18\x01 \x02(\x05\"X\n\x12GuildMOBAIResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"Z\n\x14ReceiveMOBAIResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -56,8 +57,8 @@ _GETGUILDRANKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=29,
-  serialized_end=105,
+  serialized_start=42,
+  serialized_end=118,
 )
 
 
@@ -98,8 +99,8 @@ _GETGUILDRANKRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=107,
-  serialized_end=205,
+  serialized_start=120,
+  serialized_end=218,
 )
 
 
@@ -182,8 +183,8 @@ _GUILDRANK = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=208,
-  serialized_end=359,
+  serialized_start=221,
+  serialized_end=372,
 )
 
 
@@ -210,8 +211,8 @@ _JOINGUILDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=361,
-  serialized_end=393,
+  serialized_start=374,
+  serialized_end=406,
 )
 
 
@@ -245,8 +246,8 @@ _JOINGUILDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=395,
-  serialized_end=464,
+  serialized_start=408,
+  serialized_end=477,
 )
 
 
@@ -273,8 +274,8 @@ _EXITGUILDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=466,
-  serialized_end=515,
+  serialized_start=479,
+  serialized_end=528,
 )
 
 
@@ -308,8 +309,8 @@ _SELECTGUILDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=517,
-  serialized_end=573,
+  serialized_start=530,
+  serialized_end=586,
 )
 
 
@@ -343,8 +344,8 @@ _SELECTGUILDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=575,
-  serialized_end=658,
+  serialized_start=588,
+  serialized_end=671,
 )
 
 
@@ -378,8 +379,8 @@ _CREATEGUILDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=660,
-  serialized_end=711,
+  serialized_start=673,
+  serialized_end=724,
 )
 
 
@@ -406,8 +407,8 @@ _CREATEGUILDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=713,
-  serialized_end=764,
+  serialized_start=726,
+  serialized_end=777,
 )
 
 
@@ -637,8 +638,8 @@ _GETGUILDINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=767,
-  serialized_end=1459,
+  serialized_start=780,
+  serialized_end=1472,
 )
 
 
@@ -861,8 +862,8 @@ _GETGUILDINFORESPONSE1 = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1462,
-  serialized_end=2120,
+  serialized_start=1475,
+  serialized_end=2133,
 )
 
 
@@ -896,8 +897,8 @@ _BUILDINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2122,
-  serialized_end=2174,
+  serialized_start=2135,
+  serialized_end=2187,
 )
 
 
@@ -924,8 +925,8 @@ _UPBUILDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2176,
-  serialized_end=2212,
+  serialized_start=2189,
+  serialized_end=2225,
 )
 
 
@@ -952,8 +953,8 @@ _UPBUILDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2214,
-  serialized_end=2261,
+  serialized_start=2227,
+  serialized_end=2274,
 )
 
 
@@ -980,8 +981,8 @@ _EDITORCALLREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2263,
-  serialized_end=2296,
+  serialized_start=2276,
+  serialized_end=2309,
 )
 
 
@@ -1008,8 +1009,8 @@ _EDITORCALLRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2298,
-  serialized_end=2348,
+  serialized_start=2311,
+  serialized_end=2361,
 )
 
 
@@ -1043,8 +1044,8 @@ _GETAPPLYLISTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2350,
-  serialized_end=2437,
+  serialized_start=2363,
+  serialized_end=2450,
 )
 
 
@@ -1113,8 +1114,8 @@ _APPLYUSERINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2440,
-  serialized_end=2576,
+  serialized_start=2453,
+  serialized_end=2589,
 )
 
 
@@ -1148,8 +1149,8 @@ _GETGUILDMEMBERLISTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2578,
-  serialized_end=2666,
+  serialized_start=2591,
+  serialized_end=2679,
 )
 
 
@@ -1246,8 +1247,8 @@ _ROLEINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2669,
-  serialized_end=2892,
+  serialized_start=2682,
+  serialized_end=2905,
 )
 
 
@@ -1274,8 +1275,8 @@ _CHANGEPRESIDENTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2894,
-  serialized_end=2932,
+  serialized_start=2907,
+  serialized_end=2945,
 )
 
 
@@ -1302,8 +1303,8 @@ _CHANGEPRESIDENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2934,
-  serialized_end=2989,
+  serialized_start=2947,
+  serialized_end=3002,
 )
 
 
@@ -1337,8 +1338,8 @@ _DEALAPPLYREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=2991,
-  serialized_end=3042,
+  serialized_start=3004,
+  serialized_end=3055,
 )
 
 
@@ -1372,8 +1373,8 @@ _DEALAPPLYRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3044,
-  serialized_end=3108,
+  serialized_start=3057,
+  serialized_end=3121,
 )
 
 
@@ -1400,8 +1401,8 @@ _KICKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3110,
-  serialized_end=3138,
+  serialized_start=3123,
+  serialized_end=3151,
 )
 
 
@@ -1428,8 +1429,8 @@ _KICKRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3140,
-  serialized_end=3184,
+  serialized_start=3153,
+  serialized_end=3197,
 )
 
 
@@ -1456,8 +1457,8 @@ _INVITEJOINREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3186,
-  serialized_end=3222,
+  serialized_start=3199,
+  serialized_end=3235,
 )
 
 
@@ -1484,8 +1485,8 @@ _INVITEJOINRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3224,
-  serialized_end=3274,
+  serialized_start=3237,
+  serialized_end=3287,
 )
 
 
@@ -1526,8 +1527,8 @@ _DEALINVITEJOINREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3276,
-  serialized_end=3347,
+  serialized_start=3289,
+  serialized_end=3360,
 )
 
 
@@ -1561,8 +1562,8 @@ _DEALINVITEJOINRESRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3349,
-  serialized_end=3426,
+  serialized_start=3362,
+  serialized_end=3439,
 )
 
 
@@ -1617,8 +1618,8 @@ _ZANRESRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3429,
-  serialized_end=3576,
+  serialized_start=3442,
+  serialized_end=3589,
 )
 
 
@@ -1652,8 +1653,8 @@ _RECEIVERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3578,
-  serialized_end=3663,
+  serialized_start=3591,
+  serialized_end=3676,
 )
 
 
@@ -1680,8 +1681,8 @@ _BLESSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3665,
-  serialized_end=3699,
+  serialized_start=3678,
+  serialized_end=3712,
 )
 
 
@@ -1708,8 +1709,8 @@ _BLESSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3701,
-  serialized_end=3746,
+  serialized_start=3714,
+  serialized_end=3759,
 )
 
 
@@ -1736,8 +1737,8 @@ _GETBLESSGIFTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3748,
-  serialized_end=3786,
+  serialized_start=3761,
+  serialized_end=3799,
 )
 
 
@@ -1771,8 +1772,8 @@ _GETBLESSGIFTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3788,
-  serialized_end=3878,
+  serialized_start=3801,
+  serialized_end=3891,
 )
 
 
@@ -1799,8 +1800,8 @@ _FINDGUILDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3880,
-  serialized_end=3918,
+  serialized_start=3893,
+  serialized_end=3931,
 )
 
 
@@ -1834,8 +1835,8 @@ _FINDGUILDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=3920,
-  serialized_end=4001,
+  serialized_start=3933,
+  serialized_end=4014,
 )
 
 
@@ -1869,8 +1870,8 @@ _APPOINTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4003,
-  serialized_end=4052,
+  serialized_start=4016,
+  serialized_end=4065,
 )
 
 
@@ -1897,8 +1898,8 @@ _APPOINTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4054,
-  serialized_end=4101,
+  serialized_start=4067,
+  serialized_end=4114,
 )
 
 
@@ -1925,43 +1926,50 @@ _POSITIONCHANGE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4103,
-  serialized_end=4137,
+  serialized_start=4116,
+  serialized_end=4150,
 )
 
 
-_GUILDANIMALSINFORESPONSE = _descriptor.Descriptor(
-  name='GuildAnimalsInfoResponse',
-  full_name='GuildAnimalsInfoResponse',
+_GUILDBOSSINITRESPONSE = _descriptor.Descriptor(
+  name='GuildBossInitResponse',
+  full_name='GuildBossInitResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='SkillPoints', full_name='GuildAnimalsInfoResponse.SkillPoints', index=0,
+      name='skill_points', full_name='GuildBossInitResponse.skill_points', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='guild_skill', full_name='GuildAnimalsInfoResponse.guild_skill', index=1,
+      name='guild_skill', full_name='GuildBossInitResponse.guild_skill', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='summon_times', full_name='GuildAnimalsInfoResponse.summon_times', index=2,
+      name='trigger_times', full_name='GuildBossInitResponse.trigger_times', index=2,
       number=3, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='guild_animal', full_name='GuildAnimalsInfoResponse.guild_animal', index=3,
-      number=5, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='guild_boss', full_name='GuildBossInitResponse.guild_boss', index=3,
+      number=4, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='last_attack_time', full_name='GuildBossInitResponse.last_attack_time', index=4,
+      number=5, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -1974,8 +1982,8 @@ _GUILDANIMALSINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4140,
-  serialized_end=4279,
+  serialized_start=4153,
+  serialized_end=4313,
 )
 
 
@@ -2009,69 +2017,62 @@ _GUILDSKILL = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4281,
-  serialized_end=4334,
+  serialized_start=4315,
+  serialized_end=4368,
 )
 
 
-_GUILDANIMAL = _descriptor.Descriptor(
-  name='GuildAnimal',
-  full_name='GuildAnimal',
+_GUILDBOSS = _descriptor.Descriptor(
+  name='GuildBoss',
+  full_name='GuildBoss',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='player_id', full_name='GuildAnimal.player_id', index=0,
-      number=1, type=5, cpp_type=1, label=2,
+      name='player_id', full_name='GuildBoss.player_id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='player_name', full_name='GuildAnimal.player_name', index=1,
-      number=2, type=9, cpp_type=9, label=2,
+      name='player_name', full_name='GuildBoss.player_name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='hp', full_name='GuildAnimal.hp', index=2,
+      name='hp_left', full_name='GuildBoss.hp_left', index=2,
       number=3, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='all_hp', full_name='GuildAnimal.all_hp', index=3,
-      number=8, type=5, cpp_type=1, label=2,
+      name='hp_max', full_name='GuildBoss.hp_max', index=3,
+      number=4, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='animal_id', full_name='GuildAnimal.animal_id', index=4,
-      number=4, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='stage_id', full_name='GuildAnimal.stage_id', index=5,
+      name='stage_id', full_name='GuildBoss.stage_id', index=4,
       number=5, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='start_time', full_name='GuildAnimal.start_time', index=6,
+      name='trigger_time', full_name='GuildBoss.trigger_time', index=5,
       number=6, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='last_time', full_name='GuildAnimal.last_time', index=7,
+      name='boss_type', full_name='GuildBoss.boss_type', index=6,
       number=7, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -2086,20 +2087,20 @@ _GUILDANIMAL = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4337,
-  serialized_end=4494,
+  serialized_start=4371,
+  serialized_end=4514,
 )
 
 
-_SUMMONGUILDANIMALREQUEST = _descriptor.Descriptor(
-  name='SummonGuildAnimalRequest',
-  full_name='SummonGuildAnimalRequest',
+_TRIGGERGUILDBOSSREQUEST = _descriptor.Descriptor(
+  name='TriggerGuildBossRequest',
+  full_name='TriggerGuildBossRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='animal_type', full_name='SummonGuildAnimalRequest.animal_type', index=0,
+      name='boss_type', full_name='TriggerGuildBossRequest.boss_type', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -2114,28 +2115,35 @@ _SUMMONGUILDANIMALREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4496,
-  serialized_end=4543,
+  serialized_start=4516,
+  serialized_end=4560,
 )
 
 
-_SUMMONGUILDANIMALRESPONSE = _descriptor.Descriptor(
-  name='SummonGuildAnimalResponse',
-  full_name='SummonGuildAnimalResponse',
+_TRIGGERGUILDBOSSRESPONSE = _descriptor.Descriptor(
+  name='TriggerGuildBossResponse',
+  full_name='TriggerGuildBossResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='res', full_name='SummonGuildAnimalResponse.res', index=0,
+      name='res', full_name='TriggerGuildBossResponse.res', index=0,
       number=1, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='guild_animal', full_name='SummonGuildAnimalResponse.guild_animal', index=1,
-      number=2, type=11, cpp_type=10, label=2,
+      name='guild_boss', full_name='TriggerGuildBossResponse.guild_boss', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='consume', full_name='TriggerGuildBossResponse.consume', index=2,
+      number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -2149,74 +2157,95 @@ _SUMMONGUILDANIMALRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4545,
-  serialized_end=4638,
+  serialized_start=4563,
+  serialized_end=4692,
 )
 
 
-_ATTACKGUILDANIMALREQUEST = _descriptor.Descriptor(
-  name='AttackGuildAnimalRequest',
-  full_name='AttackGuildAnimalRequest',
+_GUILDBOSSBATTLEREQUEST = _descriptor.Descriptor(
+  name='GuildBossBattleRequest',
+  full_name='GuildBossBattleRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='animal_id', full_name='AttackGuildAnimalRequest.animal_id', index=0,
-      number=4, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=4640,
-  serialized_end=4685,
-)
-
-
-_ATTACKGUILDANIMALRESPONSE = _descriptor.Descriptor(
-  name='AttackGuildAnimalResponse',
-  full_name='AttackGuildAnimalResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='res', full_name='AttackGuildAnimalResponse.res', index=0,
-      number=1, type=11, cpp_type=10, label=2,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='animal_id', full_name='AttackGuildAnimalResponse.animal_id', index=1,
-      number=2, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='hp', full_name='AttackGuildAnimalResponse.hp', index=2,
-      number=3, type=5, cpp_type=1, label=2,
+      name='stage_id', full_name='GuildBossBattleRequest.stage_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=4694,
+  serialized_end=4736,
+)
+
+
+_GUILDBOSSBATTLERESPONSE = _descriptor.Descriptor(
+  name='GuildBossBattleResponse',
+  full_name='GuildBossBattleResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
     _descriptor.FieldDescriptor(
-      name='gain', full_name='AttackGuildAnimalResponse.gain', index=3,
+      name='res', full_name='GuildBossBattleResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='red', full_name='GuildBossBattleResponse.red', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='blue', full_name='GuildBossBattleResponse.blue', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='gain', full_name='GuildBossBattleResponse.gain', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='fight_result', full_name='GuildBossBattleResponse.fight_result', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='seed1', full_name='GuildBossBattleResponse.seed1', index=5,
+      number=9, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='seed2', full_name='GuildBossBattleResponse.seed2', index=6,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -2226,8 +2255,8 @@ _ATTACKGUILDANIMALRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4687,
-  serialized_end=4813,
+  serialized_start=4739,
+  serialized_end=4937,
 )
 
 
@@ -2254,8 +2283,8 @@ _UPGUILDSKILLREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4815,
-  serialized_end=4856,
+  serialized_start=4939,
+  serialized_end=4980,
 )
 
 
@@ -2273,6 +2302,13 @@ _UPGUILDSKILLRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='consume', full_name='UpGuildSkillResponse.consume', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -2282,8 +2318,106 @@ _UPGUILDSKILLRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=4858,
-  serialized_end=4910,
+  serialized_start=4982,
+  serialized_end=5075,
+)
+
+
+_GUILDMOBAIREQUEST = _descriptor.Descriptor(
+  name='GuildMOBAIRequest',
+  full_name='GuildMOBAIRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='u_id', full_name='GuildMOBAIRequest.u_id', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=5077,
+  serialized_end=5110,
+)
+
+
+_GUILDMOBAIRESPONSE = _descriptor.Descriptor(
+  name='GuildMOBAIResponse',
+  full_name='GuildMOBAIResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='GuildMOBAIResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='gain', full_name='GuildMOBAIResponse.gain', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=5112,
+  serialized_end=5200,
+)
+
+
+_RECEIVEMOBAIRESPONSE = _descriptor.Descriptor(
+  name='ReceiveMOBAIResponse',
+  full_name='ReceiveMOBAIResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='ReceiveMOBAIResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='gain', full_name='ReceiveMOBAIResponse.gain', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=5202,
+  serialized_end=5292,
 )
 
 _GETGUILDRANKRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -2318,13 +2452,21 @@ _GETBLESSGIFTRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESO
 _FINDGUILDRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _FINDGUILDRESPONSE.fields_by_name['guild_info'].message_type = _GUILDRANK
 _APPOINTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
-_GUILDANIMALSINFORESPONSE.fields_by_name['guild_skill'].message_type = _GUILDSKILL
-_GUILDANIMALSINFORESPONSE.fields_by_name['guild_animal'].message_type = _GUILDANIMAL
-_SUMMONGUILDANIMALRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
-_SUMMONGUILDANIMALRESPONSE.fields_by_name['guild_animal'].message_type = _GUILDANIMAL
-_ATTACKGUILDANIMALRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
-_ATTACKGUILDANIMALRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_GUILDBOSSINITRESPONSE.fields_by_name['guild_skill'].message_type = _GUILDSKILL
+_GUILDBOSSINITRESPONSE.fields_by_name['guild_boss'].message_type = _GUILDBOSS
+_TRIGGERGUILDBOSSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_TRIGGERGUILDBOSSRESPONSE.fields_by_name['guild_boss'].message_type = _GUILDBOSS
+_TRIGGERGUILDBOSSRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_GUILDBOSSBATTLERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_GUILDBOSSBATTLERESPONSE.fields_by_name['red'].message_type = stage_pb2._BATTLEUNIT
+_GUILDBOSSBATTLERESPONSE.fields_by_name['blue'].message_type = stage_pb2._BATTLEUNIT
+_GUILDBOSSBATTLERESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _UPGUILDSKILLRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_UPGUILDSKILLRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_GUILDMOBAIRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_GUILDMOBAIRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_RECEIVEMOBAIRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_RECEIVEMOBAIRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['GetGuildRankRequest'] = _GETGUILDRANKREQUEST
 DESCRIPTOR.message_types_by_name['GetGuildRankResponse'] = _GETGUILDRANKRESPONSE
 DESCRIPTOR.message_types_by_name['GuildRank'] = _GUILDRANK
@@ -2367,15 +2509,18 @@ DESCRIPTOR.message_types_by_name['FindGuildResponse'] = _FINDGUILDRESPONSE
 DESCRIPTOR.message_types_by_name['AppointRequest'] = _APPOINTREQUEST
 DESCRIPTOR.message_types_by_name['AppointResponse'] = _APPOINTRESPONSE
 DESCRIPTOR.message_types_by_name['PositionChange'] = _POSITIONCHANGE
-DESCRIPTOR.message_types_by_name['GuildAnimalsInfoResponse'] = _GUILDANIMALSINFORESPONSE
+DESCRIPTOR.message_types_by_name['GuildBossInitResponse'] = _GUILDBOSSINITRESPONSE
 DESCRIPTOR.message_types_by_name['GuildSkill'] = _GUILDSKILL
-DESCRIPTOR.message_types_by_name['GuildAnimal'] = _GUILDANIMAL
-DESCRIPTOR.message_types_by_name['SummonGuildAnimalRequest'] = _SUMMONGUILDANIMALREQUEST
-DESCRIPTOR.message_types_by_name['SummonGuildAnimalResponse'] = _SUMMONGUILDANIMALRESPONSE
-DESCRIPTOR.message_types_by_name['AttackGuildAnimalRequest'] = _ATTACKGUILDANIMALREQUEST
-DESCRIPTOR.message_types_by_name['AttackGuildAnimalResponse'] = _ATTACKGUILDANIMALRESPONSE
+DESCRIPTOR.message_types_by_name['GuildBoss'] = _GUILDBOSS
+DESCRIPTOR.message_types_by_name['TriggerGuildBossRequest'] = _TRIGGERGUILDBOSSREQUEST
+DESCRIPTOR.message_types_by_name['TriggerGuildBossResponse'] = _TRIGGERGUILDBOSSRESPONSE
+DESCRIPTOR.message_types_by_name['GuildBossBattleRequest'] = _GUILDBOSSBATTLEREQUEST
+DESCRIPTOR.message_types_by_name['GuildBossBattleResponse'] = _GUILDBOSSBATTLERESPONSE
 DESCRIPTOR.message_types_by_name['UpGuildSkillRequest'] = _UPGUILDSKILLREQUEST
 DESCRIPTOR.message_types_by_name['UpGuildSkillResponse'] = _UPGUILDSKILLRESPONSE
+DESCRIPTOR.message_types_by_name['GuildMOBAIRequest'] = _GUILDMOBAIREQUEST
+DESCRIPTOR.message_types_by_name['GuildMOBAIResponse'] = _GUILDMOBAIRESPONSE
+DESCRIPTOR.message_types_by_name['ReceiveMOBAIResponse'] = _RECEIVEMOBAIRESPONSE
 
 class GetGuildRankRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -2629,11 +2774,11 @@ class PositionChange(_message.Message):
 
   # @@protoc_insertion_point(class_scope:PositionChange)
 
-class GuildAnimalsInfoResponse(_message.Message):
+class GuildBossInitResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _GUILDANIMALSINFORESPONSE
+  DESCRIPTOR = _GUILDBOSSINITRESPONSE
 
-  # @@protoc_insertion_point(class_scope:GuildAnimalsInfoResponse)
+  # @@protoc_insertion_point(class_scope:GuildBossInitResponse)
 
 class GuildSkill(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -2641,35 +2786,35 @@ class GuildSkill(_message.Message):
 
   # @@protoc_insertion_point(class_scope:GuildSkill)
 
-class GuildAnimal(_message.Message):
+class GuildBoss(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _GUILDANIMAL
+  DESCRIPTOR = _GUILDBOSS
 
-  # @@protoc_insertion_point(class_scope:GuildAnimal)
+  # @@protoc_insertion_point(class_scope:GuildBoss)
 
-class SummonGuildAnimalRequest(_message.Message):
+class TriggerGuildBossRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SUMMONGUILDANIMALREQUEST
+  DESCRIPTOR = _TRIGGERGUILDBOSSREQUEST
 
-  # @@protoc_insertion_point(class_scope:SummonGuildAnimalRequest)
+  # @@protoc_insertion_point(class_scope:TriggerGuildBossRequest)
 
-class SummonGuildAnimalResponse(_message.Message):
+class TriggerGuildBossResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SUMMONGUILDANIMALRESPONSE
+  DESCRIPTOR = _TRIGGERGUILDBOSSRESPONSE
 
-  # @@protoc_insertion_point(class_scope:SummonGuildAnimalResponse)
+  # @@protoc_insertion_point(class_scope:TriggerGuildBossResponse)
 
-class AttackGuildAnimalRequest(_message.Message):
+class GuildBossBattleRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _ATTACKGUILDANIMALREQUEST
+  DESCRIPTOR = _GUILDBOSSBATTLEREQUEST
 
-  # @@protoc_insertion_point(class_scope:AttackGuildAnimalRequest)
+  # @@protoc_insertion_point(class_scope:GuildBossBattleRequest)
 
-class AttackGuildAnimalResponse(_message.Message):
+class GuildBossBattleResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _ATTACKGUILDANIMALRESPONSE
+  DESCRIPTOR = _GUILDBOSSBATTLERESPONSE
 
-  # @@protoc_insertion_point(class_scope:AttackGuildAnimalResponse)
+  # @@protoc_insertion_point(class_scope:GuildBossBattleResponse)
 
 class UpGuildSkillRequest(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -2682,6 +2827,24 @@ class UpGuildSkillResponse(_message.Message):
   DESCRIPTOR = _UPGUILDSKILLRESPONSE
 
   # @@protoc_insertion_point(class_scope:UpGuildSkillResponse)
+
+class GuildMOBAIRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _GUILDMOBAIREQUEST
+
+  # @@protoc_insertion_point(class_scope:GuildMOBAIRequest)
+
+class GuildMOBAIResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _GUILDMOBAIRESPONSE
+
+  # @@protoc_insertion_point(class_scope:GuildMOBAIResponse)
+
+class ReceiveMOBAIResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _RECEIVEMOBAIRESPONSE
+
+  # @@protoc_insertion_point(class_scope:ReceiveMOBAIResponse)
 
 
 # @@protoc_insertion_point(module_scope)
