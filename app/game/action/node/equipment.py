@@ -154,6 +154,7 @@ def melting_equipment_405(pro_data, player):
     """
     request = equipment_request_pb2.MeltingEquipmentRequest()
     request.ParseFromString(pro_data)
+    response = equipment_response_pb2.MeltingEquipmentResponse()
 
     open_stage_id = game_configs.base_config.get('equRefundOpenStage')
     if player.stage_component.get_stage(open_stage_id).state != 1:
@@ -162,7 +163,6 @@ def melting_equipment_405(pro_data, player):
         return response.SerializeToString()
 
     equipment_ids = request.id
-    response = equipment_response_pb2.MeltingEquipmentResponse()
 
     for equipment_id in equipment_ids:
         melting_equipment(equipment_id, response, player)
