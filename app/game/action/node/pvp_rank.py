@@ -222,9 +222,9 @@ def get_pvp_data(character_id):
                 'copy_units2']
         pvp_data = char_obj.hmget(keys)
         pvp_data['character_id'] = character_id
-        pvp_data['unpar_skill'] = pvp_data['current_unpar']
-        skill_level = pvp_data['unpars'].get(pvp_data['current_unpar'], 1)
-        pvp_data['unpar_skill_level'] = skill_level
+        pvp_data['unpar_skill'] = 0#pvp_data['current_unpar']
+        # skill_level = pvp_data['unpars'].get(pvp_data['current_unpar'], 1)
+        pvp_data['unpar_skill_level'] = 0 #skill_level
         # print 'get pvp data player:', pvp_data
 
         return pvp_data
