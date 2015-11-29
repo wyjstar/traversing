@@ -49,7 +49,7 @@ const.CONSUME_GOLD = 9
 const.GUILD2 = 11
 const.TEAM_EXPERIENCE = 12
 const.NECTAR = 13
-const.STONE1 = 14
+const.GUILD_ESCORT_ROB_TIMES = 14
 const.STONE2 = 15
 const.SPIRIT= 16
 const.SHOE= 20
@@ -217,6 +217,9 @@ const.LOGIN_GIFT_CUMULATIVE = 8062
 const.HJQY_ADD_REWARD = 21011
 
 const.HERO_AWAKE = 119   # 英雄觉醒
+const.UPGRADE_GUILD_SKILL = 2404 # 公会技能升级
+const.GUILD_BOSS_IN = 240301 #   公会boss 参与
+const.GUILD_BOSS_KILL = 240302 #  公会boss 击杀
 # 等级流水
 # const.STAGE = 27  # 关卡
 # const.STAGE_SWEEP = 22  # 关卡扫荡
@@ -240,7 +243,8 @@ const.BATTLE_PVB = 7
 const.BATTLE_MINE_PVE = 8
 const.BATTLE_MINE_PVP = 9
 const.BATTLE_HJQY = 10
-const.BATTLE_GUILD = 12
+const.BATTLE_GUILD_ESCORT = 13
+const.BATTLE_GUILD_BOSS = 12
 
 const.BOSS_NOT_EXIST = 0 # 不存在
 const.BOSS_LIVE = 1  # 正常

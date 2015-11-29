@@ -11,9 +11,6 @@ function FMUnParaSkill:ctor(unpar_type_id, unpar_other_id, base_info, process)
     self.unpar_other_id = unpar_other_id
 
     self.mp_step = base_info[2]
-    self.mp_max1 = base_info[3]
-    self.mp_max2 = base_info[4]
-    self.mp_max3 = base_info[5]
     if not unpar_type_id then
         return
     end
@@ -37,6 +34,9 @@ function FMUnParaSkill:ctor(unpar_type_id, unpar_other_id, base_info, process)
 end
 
 function FMUnParaSkill:get_skill_buffs(skill_id)
+    if skill_id == 0 then
+        return
+    end
     skill_info = self.soldierTemplate:getSkillTempLateById(skill_id)
     if skill_info then
         for _, buff_id in pairs(skill_info.group) do
@@ -76,6 +76,9 @@ function FMUnParaSkill:get_hero_nos()
 end
 
 function FMUnParaSkill:is_full()
+    if not self.unpar_type_id then
+        return false
+    end
     --只进行最后的三段攻击--
     if self.mp == self.mp_max then
         return true
@@ -84,13 +87,15 @@ function FMUnParaSkill:is_full()
 end
 
 function FMUnParaSkill:is_mp_skill()
-    self:set_current_level()
     return true
 end
 
 function FMUnParaSkill:is_can()
+    if not self.unpar_type_id then
+        return false
+    end
     -- 可进行多段攻击
-    return self.mp >= self.mp_max1
+    return self.mp >= self.mp_max
 end
 
 function FMUnParaSkill:skill_buffs()
@@ -100,17 +105,16 @@ function FMUnParaSkill:skill_buffs()
 end
 
 function FMUnParaSkill:clear_mp()
+    if not self.unpar_type_id then
+        return
+    end
     --释放技能后，减少怒气
-    print("unpara clear_mp", self.mp, self.mp_max1, self.used_times)
+    print("unpara clear_mp", self.mp, self.mp_max, self.used_times)
     if self.mp == self.mp_max then
         self.mp = 0
-    --elseif self.mp >= self.mp_max2 then
-        --self.mp = self.mp - self.mp_max2
-    --elseif self.mp >= self.mp_max1 then
-        --self.mp = self.mp - self.mp_max1
     end
     self.used_times = self.used_times + 1
-    print("unpara clear_mp", self.mp, self.mp_max1, self.used_times)
+    print("unpara clear_mp", self.mp, self.mp_max, self.used_times)
 end
 
 function FMUnParaSkill:add_mp()
@@ -134,9 +138,10 @@ function FMUnParaSkill:is_ready()
     end
     if self.max_used_times <= self.used_times then
         -- 达到使用上限
-        print("reach max use time==================")
+        print("reach max use time==================",self.mp,self.mp_max)
         return false
     end
+    print("FMUnParaSkill:is_ready==>",self.mp,self.mp_max)
     if self:is_auto() then
         -- 自动释放
         return self:is_full()
@@ -220,13 +225,4 @@ function FMUnParaSkill:clear()
 end
 
 
-function FMUnParaSkill:set_current_level()
-    if self.mp>=self.mp_max3 then
-        self.current_level = 3
-    elseif self.mp >= self.mp_max2 then
-        self.current_level = 2
-    elseif self.mp >= self.mp_max1 then
-        self.current_level = 1
-    end
-end
 return FMUnParaSkill

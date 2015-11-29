@@ -4,202 +4,193 @@ created by server on 14-8-12下午2:17.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data import game_configs
-from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.server.globalobject import GlobalObject
-from app.proto_file import hjqy_pb2
+from app.proto_file import guild_pb2
 from gfirefly.server.logobj import logger
-from app.game.core.item_group_helper import gain, get_return
+from app.game.core.item_group_helper import gain, get_return, is_afford, consume
 from shared.utils.const import const
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import get_seeds
-from shared.utils.date_util import is_in_period, is_next_day, get_current_timestamp
+from shared.db_opear.configs_data.common_item import CommonGroupItem
 import cPickle
-from app.game.core.task import hook_task, CONDITIONId
-from app.game.core.mail_helper import send_mail
-from app.game.action.node.start_target import target_update
-from shared.tlog import tlog_action
 
 remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')
 def init_2401(pro_data, player):
-    """获取hjqy信息
+    """获取guild_boss信息
     """
-    request = hjqy_pb2.HjqyInitRequest()
-    request.ParseFromString(pro_data)
-
-    response = hjqy_pb2.HjqyInitResponse()
-    friend_ids = player.friends.friends
-    data = remote_gate['world'].hjqy_init_remote(player.base_info.id, friend_ids)
+    response = guild_pb2.GuildBossInitResponse()
+    data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
     logger.debug("return data %s" % data)
-    for boss_data in data.values():
-        if (request.owner_id and request.owner_id == boss_data.get("player_id")) or (not request.owner_id):
-            construct_boss_pb(boss_data, response)
+    response.skill_points = data.get("skill_points", 0)
+    response.trigger_times = data.get("guild_boss_trigger_times", 0)
+    for skill_type, skill_level in data.get("guild_skills", {}).items():
+        skill_pb = response.guild_skill.add()
+        skill_pb.skill_type = skill_type
+        skill_pb.skill_level = skill_level
+    construct_boss_pb(data.get("guild_boss"), response.guild_boss)
+    response.last_attack_time = player.guild.guild_boss_last_attack_time
 
-    response.damage_hp = remote_gate['world'].hjqy_damage_hp_remote(player.base_info.id)
-    response.rank = remote_gate['world'].hjqy_rank_remote(player.base_info.id)
-
-    if is_next_day(get_current_timestamp(), player.hjqy_component.last_time):
-        player.hjqy_component.received_ids = []
-        player.hjqy_component.last_time = get_current_timestamp()
-        player.hjqy_component.save_data()
-
-    for temp in player.hjqy_component.received_ids:
-        response.hjqy_ids.append(temp)
-
+    logger.debug("response %s" % response)
     return response.SerializeToString()
 
-def construct_boss_pb(data, response):
+
+def construct_boss_pb(data, boss_pb):
     """docstring for construct_boss_pb"""
-    boss_pb = response.bosses.add()
-    boss_pb.player_id = data.get("player_id")
-    boss_pb.nickname = data.get("nickname")
     boss_pb.stage_id = data.get("stage_id")
-    boss_pb.is_share = data.get("is_share")
-    boss_pb.trigger_time = data.get("trigger_time")
-    boss_pb.hp_max = data.get("hp_max")
-    boss_pb.hp_left = data.get("hp_left")
-    #boss_pb.damage_hp = data.get("damage_hp")
-    boss_pb.state = data.get("state")
+    boss_pb.trigger_time = data.get("trigger_time", 0)
+    boss_pb.hp_max = data.get("hp_max", 0)
+    boss_pb.hp_left = data.get("hp_left", 0)
+    boss_pb.boss_type = data.get("boss_type", 0)
 
 @remoteserviceHandle('gate')
 def trigger_boss_2402(pro_data, player):
     """召唤圣兽
     """
-    request = hjqy_pb2.HjqyInitRequest()
+    request = guild_pb2.TriggerGuildBossRequest()
     request.ParseFromString(pro_data)
+    logger.debug("request %s" % request)
+    boss_type = request.boss_type
+    trigger_stone_num = 0
+    item = player.item_package.get_item(140001)
+    if item: trigger_stone_num = item.num
+    response = guild_pb2.TriggerGuildBossResponse()
+    response.res.result = False
 
-    response = hjqy_pb2.HjqyInitResponse()
-    friend_ids = player.friends.friends
-    data = remote_gate['world'].hjqy_init_remote(player.base_info.id, friend_ids)
-    logger.debug("return data %s" % data)
-    for boss_data in data.values():
-        if (request.owner_id and request.owner_id == boss_data.get("player_id")) or (not request.owner_id):
-            construct_boss_pb(boss_data, response)
+    data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
+    build = data.get("build")
+    guild_boss_trigger_times = data.get("guild_boss_trigger_times")
+    guild_boss_item = game_configs.guild_config.get(4).get(build.get(4))
+    logger.debug("guild_boss_item %s" % guild_boss_item)
+    boss_open_item = guild_boss_item.animalOpen.get(boss_type)
+    stage_id = boss_open_item[0]
+    consume_num = boss_open_item[2]
 
-    response.damage_hp = remote_gate['world'].hjqy_damage_hp_remote(player.base_info.id)
-    response.rank = remote_gate['world'].hjqy_rank_remote(player.base_info.id)
+    ## 召唤石是否足够
+    #if trigger_stone_num < boss_open_item[2]:
+        #logger.debug("trigger stone is not enough!")
+        #response.res.result_no = 240201
+        #return response.SerializeToString()
+    ## 召唤次数是否达到上限
+    #if guild_boss_trigger_times >= guild_boss_item.animalOpenTime:
+        #logger.debug("trigger times reach the max!")
+        #response.res.result_no = 240202
+        #return response.SerializeToString()
 
-    if is_next_day(get_current_timestamp(), player.hjqy_component.last_time):
-        player.hjqy_component.received_ids = []
-        player.hjqy_component.last_time = get_current_timestamp()
-        player.hjqy_component.save_data()
+    ## 军团等级是否满足此类型boss
+    #if not boss_open_item[1]:
+        #logger.debug("guild level is not enough!")
+        #response.res.result_no = 240204
+        #return response.SerializeToString()
 
-    for temp in player.hjqy_component.received_ids:
-        response.hjqy_ids.append(temp)
+    res = remote_gate['world'].guild_boss_add_remote(player.guild.g_id, stage_id, boss_type)
+    response.res.result = res.get("result")
+    if not res.get("result"):
+        response.res.result_no = res.get("result_no")
+        return response.SerializeToString()
 
+    player.item_package.consume_item(140001, trigger_stone_num)
+
+    return_data = [[const.ITEM, consume_num, 140001]]
+    logger.debug(return_data)
+    get_return(player, return_data, response.consume)
+
+    construct_boss_pb(res.get("guild_boss"), response.guild_boss)
+    logger.debug("response %s" % response)
     return response.SerializeToString()
-
 
 
 @remoteserviceHandle('gate')
 def battle_2403(pro_data, player):
     """
     开始战斗
-    request:HjqyBattleRequest
-    response:HjqyBattleResponse
     """
-    request = hjqy_pb2.HjqyBattleRequest()
+    request = guild_pb2.GuildBossBattleRequest()
     request.ParseFromString(pro_data)
-    response = hjqy_pb2.HjqyBattleResponse()
-
-    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_WORLD_BOSS):
-        response.res.result = False
-        response.res.result_no = 150901
-        return response.SerializeToString()
-    boss_id = request.owner_id
-    attack_type = request.attack_type # 全力一击，普通攻击
     logger.debug("request %s" % request)
+    response = guild_pb2.GuildBossBattleResponse()
+    stage_id = request.stage_id
 
-    hjqyExchangeBUFFTime = game_configs.base_config.get("hjqyExchangeBUFFTime")
-    hjqyItemRate = game_configs.base_config.get("hjqyItemRate")
-
-    hjqyExchangeBUFFNumber = game_configs.base_config.get("hjqyExchangeBUFFNumber")
-    hjqyExchangeNumber = game_configs.base_config.get("hjqyExchangeNumber")
-    need_hjqy_fight_token = hjqyExchangeNumber
-    if attack_type == 2:
-        need_hjqy_fight_token = hjqyExchangeBUFFNumber
-    if is_in_period(hjqyExchangeBUFFTime) and attack_type == 2:
-        need_hjqy_fight_token = need_hjqy_fight_token * hjqyItemRate
-
-    if need_hjqy_fight_token > player.finance[const.HJQYFIGHTTOKEN]:
-        logger.error("hjqy coin not enough！")
-        response.res.result = False
-        response.res.result_no = 210301
-        return response.SerializePartialToString()
-
-    data = remote_gate['world'].get_boss_info_remote(boss_id)
-
-    if not data or data.get('state') == const.BOSS_DEAD:
-        logger.error("hjqy boss dead！")
-        response.res.result = False
-        response.res.result_no = 210302
-        return response.SerializePartialToString()
-    if data.get('state') == const.BOSS_RUN_AWAY:
-        logger.error("hjqy boss run away！")
-        response.res.result = False
-        response.res.result_no = 210303
-        return response.SerializePartialToString()
-
-    red_best_skill_id = request.skill
-    _skill_id, red_best_skill_level = player.line_up_component.get_skill_info_by_unpar(red_best_skill_id)
-
-    stage_id = data.get("stage_id")
+    line_up = player.line_up_component
     player.fight_cache_component.stage_id = stage_id
     red_units = player.fight_cache_component.get_red_units()
-
-    blue_units = cPickle.loads(remote_gate['world'].blue_units_remote(boss_id))
-
-    seed1, seed2 = get_seeds()
-    player_info = dict(player_id=player.base_info.id,
-            nickname=player.base_info.base_name,
-            user_icon=player.base_info.heads.now_head,
-            level=player.base_info.level)
-
     str_red_units = cPickle.dumps(red_units)
-    fight_result, boss_state, current_damage_hp, is_kill = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2)
-    logger.debug("============battle over")
-
-    # 消耗讨伐令
-    player.finance.consume(const.HJQYFIGHTTOKEN, need_hjqy_fight_token, const.HJQY_BATTLE)
-
-    # 功勋奖励
-    hjqyMeritoriousServiceOpenTime = game_configs.base_config.get("hjqyMeritoriousServiceOpenTime")
-    hjqyMeritoriousServiceRate = game_configs.base_config.get("hjqyMeritoriousServiceRate")
-    meritorious_service = player.fight_cache_component._get_stage_config().meritorious_service
-    logger.debug("========= %s %s ========"%(is_in_period(hjqyMeritoriousServiceOpenTime), hjqyMeritoriousServiceOpenTime ))
-    if is_in_period(hjqyMeritoriousServiceOpenTime):  # 增加功勋的活动
-        meritorious_service = meritorious_service * hjqyMeritoriousServiceRate
-    player.finance.add(const.HJQYCOIN, meritorious_service, reason=const.HJQY_BATTLE)
-    player.finance.save_data()
-
-    response.fight_result = fight_result
+    seed1, seed2 = get_seeds()
+    unpar_type = line_up.unpar_type
+    unpar_other_id = line_up.unpar_other_id
+    res = remote_gate['world'].guild_boss_battle_remote(player.guild.g_id, str_red_units, unpar_type, unpar_other_id, seed1, seed2)
+    boss_info = res.get("guild_boss")
+    blue_units = cPickle.loads(boss_info.get("blue_units"))
     pvp_assemble_units(red_units, blue_units, response)
-    response.red_skill= red_best_skill_id
-    response.red_skill_level = red_best_skill_level
+
+    fight_result = res.get("fight_result")
+    stage_item = game_configs.special_stage_config.get("guild_boss_stages").get(stage_id)
+    return_data = gain(player,stage_item.Animal_Participate, const.GUILD_BOSS_IN)
+    get_return(player, return_data, response.gain)
+
+    if fight_result:
+        return_data = gain(player,stage_item.Animal_Kill, const.GUILD_BOSS_KILL)
+        get_return(player, return_data, response.gain)
+        player.guild.guild_boss_last_attack_time = 0
+        player.guild.save_data()
+
     response.seed1 = seed1
     response.seed2 = seed2
-    response.attack_type = attack_type
-    response.hjqy_coin = meritorious_service
-    response.stage_id = stage_id
-    response.res.result = True
 
-    hook_task(player, CONDITIONId.HJQY, 1)
+    if not res.get("result"):
+        response.res.result_no = res.get("result_no")
+        return response.SerializePartialToString()
 
-    tlog_action.log('BattleHJQY', player, boss_id, is_kill)
-
-    # start target
-    if player.start_target.is_open():
-        all_current_damage_hp = remote_gate['world'].\
-            hjqy_damage_hp_remote(player.base_info.id)
-        player.start_target.condition_update(38, current_damage_hp)
-        player.start_target.condition_update(39, all_current_damage_hp)
-        player.start_target.save_data()
-        # 更新 七日奖励
-        target_update(player, [38, 39])
-
+    logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
+@remoteserviceHandle('gate')
+def upgrade_guild_skill_2404(pro_data, player):
+    """
+    升级军团技能
+    """
+    request = guild_pb2.UpGuildSkillRequest()
+    request.ParseFromString(pro_data)
+    logger.debug("request %s" % request)
+    response = guild_pb2.UpGuildSkillResponse()
+    logger.debug("request %s" % request)
+    skill_type = request.skill_type
+    data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
+    guild_skills = data.get("guild_skills")
+    build = data.get("build")
+    logger.debug("guild_skill_config %s" % game_configs.guild_skill_config.get(skill_type))
+    # check
+    guild_skill_item = game_configs.guild_skill_config.get(skill_type).get(guild_skills.get(skill_type))
+    response.res.result = False
+    if not is_afford(player, guild_skill_item.Consume):
+        logger.debug("consume not enough!")
+        response.res.result_no = 24041
+        return response.SerializeToString()
 
+    for condition2 in guild_skill_item.Skill_condition[2]:
+        skill_type = condition2 / 100000
+        skill_level = condition2 % 10
+        if skill_level > guild_skills[skill_type]:
+            logger.debug("skill level conidtion not enough!")
+            response.res.result_no = 24042
+            return response.SerializeToString()
 
+    #for condition1 in guild_skill_item.Skill_condition[1]:
+        #skill_type = condition1 / 10000
+        #skill_level = condition1 % 10
+        #if skill_level > build[skill_type]:
+            #logger.debug("guild build level not enough!")
+            #response.res.result_no = 24043
+            #return response.SerializeToString()
+
+    res = remote_gate['world'].upgrade_guild_skill_remote(player.guild.g_id, skill_type, guild_skills.get(skill_type)+1)
+    if res.get("result"):
+        # consume
+        return_data = consume(player, guild_skill_item.Consume, const.UPGRADE_GUILD_SKILL)
+        get_return(player, return_data, response.consume)
+
+    response.res.result = res.get("result")
+    logger.debug("response %s" % response)
+    return response.SerializeToString()

@@ -61,6 +61,7 @@ from indiana_config import IndianaConfig
 from skill_peerless_grade_config import PeerlessGradeConfig
 from skill_peerless_effect_config import PeerlessEffectConfig
 from guild_task_config import GuildTaskConfig
+from guild_skill_config import GuildSkillConfig
 
 indiana_config = {}
 activity_type_config = {}
@@ -120,6 +121,7 @@ awake_config = {}
 skill_peerless_effect_config = {}
 skill_peerless_grade_config = {}
 guild_task_config = {}
+guild_skill_config = {}
 
 all_config_name = {
     'activity_type_config': ActivityTypeConfig(),
@@ -179,6 +181,7 @@ all_config_name = {
     'skill_peerless_grade_config': PeerlessGradeConfig(),
     'skill_peerless_effect_config': PeerlessEffectConfig(),
     'guild_task_config': GuildTaskConfig(),
+    'guild_skill_config': GuildSkillConfig(),
 }
 
 logger.info("=============load game_configs=============")
@@ -191,5 +194,6 @@ for config_name in all_config_name.keys():
 if __name__ == '__main__':
     print ggzj_config
     print base_config.get("EscortFresh")
+    print guild_skill_config
     #print arena_fight_config
     #print awake_config

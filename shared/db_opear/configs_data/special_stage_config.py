@@ -19,10 +19,13 @@ class SpecialStageConfig(object):
         self._mine_boss_stages = {}  # boss关卡
         self._first_stage_id = []  # 第一关
         self._condition_mapping = {}  # 开启条件 {'开启条件关卡编号'：['开启关卡编号']}
+        self._guild_boss_stages = {}
 
     def parser(self, config_value):
         for row in config_value:
             row['stageBox'] = parse(row['stageBox'])
+            row['Animal_Participate'] = parse(row['Animal_Participate'])
+            row['Animal_Kill'] = parse(row['Animal_Kill'])
             convert_keystr2num(row['ClearanceConditions'])
             item = CommonItem(row)
 
@@ -48,8 +51,12 @@ class SpecialStageConfig(object):
                 self._world_boss_stages[item.id] = item
             elif item.type == 8:
                 self._mine_boss_stages[item.id] = item
+            elif item.type == 9:
+                self._guild_boss_stages[item.id] = item
 
         return {'elite_stages': self._elite_stages, 'act_stages': self._act_stages,
                 'world_boss_stages': self._world_boss_stages,
                 'mine_boss_stages': self._mine_boss_stages,
-                'first_stage_id': self._first_stage_id, 'condition_mapping': self._condition_mapping}
+                'first_stage_id': self._first_stage_id, 'condition_mapping': self._condition_mapping,
+                'guild_boss_stages': self._guild_boss_stages,
+                }

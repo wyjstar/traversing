@@ -35,22 +35,24 @@ message RobEscortTaskInfo{
 
 // 获取所有押运任务 command:1901
 message GetEscortTasksResponse{                          
-    required int32 start_protect_times = 1;      // 开始押运次数
-    required int32 protect_times = 2;            // 保护押运次数
-    /*required int32 start_rob_times = 3;        // 开始劫运次数*/
-    required int32 rob_times = 4;                // 参与劫运次数
-    required int32 refresh_times = 5;            // 刷新任务次数
-
-    repeated EscortTask tasks = 6;          // 所有押运任务列表 任务id，任务no，任务state
-    repeated EscortTask can_rob_tasks = 7;       // 所有可劫运任务 任务id, 任务no，任务state, 任务来源(军团及保护者信息), 开始时间，
-    repeated EscortTask tasks_protect_invite = 8;       // 押运申请
-    repeated EscortTask tasks_rob_invite = 9;           // 劫运申请
-    repeated EscortTask my_protect_tasks = 10;          // 我的押运记录
+    required int32 start_protect_times = 1;       // 开始押运次数
+    required int32 protect_times = 2;             // 保护押运次数
+    /*required int32 start_rob_times = 3;         // 开始劫运次数*/
+    required int32 rob_times = 4;                 // 参与劫运次数
+    required int32 refresh_times = 5;             // 刷新任务次数
+    repeated EscortTask tasks = 6;                // 所有押运任务列表 任务id，任务no，任务state
+    repeated EscortTask can_rob_tasks = 7;        // 所有可劫运任务 任务id, 任务no，任务state, 任务来源(军团及保护者信息), 开始时间，
+    repeated EscortTask tasks_protect_invite = 8; // 押运申请
+    repeated EscortTask tasks_rob_invite = 9;     // 劫运申请
+    /*repeated EscortTask my_protect_tasks = 10;    // 我的押运记录*/
+    optional EscortTask my_current_task = 11;     // 我的当前押运任务
+    optional EscortTask my_current_rob_task = 12;     // 我的当前劫运任务
 }
 
 //获取押运记录 command:1902
 message GetEscortRecordsRequest{
     required int32 record_type = 1; // 我的押运记录1，我的劫运记录2，军团记录3
+    optional bool current = 2;   // 如果True，则为当前任务
 }
 message GetEscortRecordsResponse{
     repeated EscortTask tasks = 1;  // 记录列表
@@ -83,6 +85,7 @@ message InviteEscortTaskRequest{
     required int32 task_guild_id = 4; // 任务所在公会id
 }
 //发布邀请后向军团推送信息19082
+//被劫后推送给承接人信息19083
 //推送给承接人信息  19081
 //1.接受邀请，加入队伍 只要CharacterInfo
 message InviteEscortTaskPushResponse{
@@ -90,8 +93,8 @@ message InviteEscortTaskPushResponse{
     required int32 protect_or_rob = 2; // 押运1 劫运2
 }
 
-
-// 手动开始押运/劫运请求command:1909 返回CommonResponse
+// 手动开始押运command:1909
+// 劫运开始请求 command:1910
 message StartEscortTaskRequest{
     required string task_id = 1; //任务id
     required int32 protect_or_rob = 2; // 押运1 劫运2

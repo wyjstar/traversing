@@ -21,6 +21,8 @@ class GuildConfig(object):
             convert_keystr2num(row.get("worShip"))
             convert_keystr2num(row.get("guild_worship"))
             convert_keystr2num(row.get("reward"))
+            convert_keystr2num(row.get("cohesion"))
+            convert_keystr2num(row.get("animalOpen"))
             row["support"] = parse(row.get("support"))
             row["collectSupportGift"] = parse(row.get("collectSupportGift"))
             item = CommonItem(row)

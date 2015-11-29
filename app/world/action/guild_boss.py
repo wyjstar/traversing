@@ -5,7 +5,7 @@ created by wzp.
 """
 from gfirefly.server.globalobject import rootserviceHandle
 from app.world.core.hjqy_boss import hjqy_manager
-from app.battle.server_process import hjqy_start
+from app.battle.server_process import guild_boss_start
 import cPickle
 #from shared.utils.date_util import get_current_timestamp
 #from app.world.action.gateforwarding import push_all_object_message
@@ -14,75 +14,74 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils.mail_helper import deal_mail
 from shared.utils.const import const
 from gfirefly.server.globalobject import GlobalObject
+from app.world.core.guild_manager import guild_manager_obj
+from app.battle.monster_process import assemble_monster
+
 #from app.proto_file import line_up_pb2
 
 @rootserviceHandle
-def guild_boss_init_remote(player_id, friend_ids):
+def guild_boss_init_remote(guild_id):
     """
     初始化信息
     """
-    bosses = {}
-    for temp_id in friend_ids + [player_id]:
-        boss = hjqy_manager.get_boss(temp_id)
-        if boss and (boss.is_share or temp_id == player_id): #获取hjqy列表
-            logger.debug("player id %s" % boss.player_id)
-            bosses[boss.player_id] = construct_boss_data(boss)
-            logger.debug("hjqy_init_remote bosses: %s" % bosses)
-    return bosses
+    guild = guild_manager_obj.get_guild_obj(guild_id)
 
-def construct_boss_data(boss):
+    #guild.guild_boss.check_time()
+
     return dict(
-            stage_id=boss.stage_id,
-            trigger_time=boss.trigger_time,
-            hp_max=boss.hp_max,
-            hp_left=boss.hp,
-            state=boss.get_state()
+            skill_points=guild.skill_points,
+            guild_skills=guild.guild_skills,
+            guild_boss_trigger_times=guild.guild_boss_trigger_times,
+            guild_boss=guild.guild_boss.property_dict(),
+            build = guild.build,
             )
 
-@rootserviceHandle
-def hjqy_damage_hp_remote(player_id):
-    """ 获取玩家伤害信息
-    """
-    damage_hp = hjqy_manager.get_damage_hp(player_id)
-    logger.debug("hjqy_damage_hp_remote : %s" % damage_hp)
-    return damage_hp
 
 @rootserviceHandle
-def hjqy_rank_remote(player_id):
-    """ 获取玩家伤害排名
-    """
-    rank = hjqy_manager.get_rank(player_id)
-    logger.debug("hjqy_rank_remote:%s" % rank)
-    return rank
+def guild_boss_add_remote(guild_id, stage_id, boss_type):
+    guild = guild_manager_obj.get_guild_obj(guild_id)
+    # 是否存在boss
+    if guild.guild_boss.stage_id:
+        logger.debug("guild boss exist!")
+        return {"result": False, "result_no": 240203}
+    #guild_boss_item = game_configs.guild_config.get(4).get(guild.build.get(4))
+    #logger.debug("guild_boss_item %s" % guild_boss_item)
+    #boss_open_item = guild_boss_item.animalOpen.get(boss_type)
+    #stage_id = boss_open_item[0]
+
+    ## 召唤石是否足够
+    #if trigger_stone_num < boss_open_item[2]:
+        #return {"result": False, "result_no": 240201}
+    ## 召唤次数是否达到上限
+    #if guild.guild_boss_trigger_times >= guild_boss_item.animalOpenTime:
+        #return {"result": False, "result_no": 240202}
+    ## 是否存在boss
+    #if guild.guild_boss.stage_id:
+        #return {"result": False, "result_no": 240203}
+    ## 军团等级是否满足此类型boss
+    #if not boss_open_item[1]:
+        #return {"result": False, "result_no": 240204}
+
+    blue_units = assemble_monster(stage_id, game_configs.special_stage_config, "guild_boss_stages")
+    logger.debug("blue_units %s" % blue_units)
+    guild_boss = guild.add_guild_boss(stage_id, blue_units[0], boss_type)
+
+
+    return {"result": True, "guild_boss": guild_boss.property_dict()}
 
 @rootserviceHandle
-def share_hjqy_remote(player_id):
-    """分享
-    """
-    logger.debug("share_hjqy_remote:%s" % player_id)
-    boss = hjqy_manager.get_boss(player_id)
-    if not boss:
-        return False
-    boss.is_share = True
-
-    #remote_gate.push_object_remote(2112, task_data, [player.dynamic_id])
-    return True
-
-#def hjqy_start(red_units,  blue_units, red_skill, red_skill_level, blue_skill, blue_skill_level, attack_type, seed1, seed2, level):
-@rootserviceHandle
-def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2):
+def guild_boss_battle_remote(guild_id, str_red_units, unpar_type, unpar_other_id, seed1, seed2):
     """开始战斗
     """
     logger.debug("hjqy_battle_remote======")
+    guild = guild_manager_obj.get_guild_obj(guild_id)
+    boss = guild.guild_boss
     red_units = cPickle.loads(str_red_units)
-    result = False
-    boss = hjqy_manager.get_boss(boss_id)
-    player_id = player_info.get("player_id")
-    player_level = player_info.get("level")
     blue_units = boss.blue_units
 
     origin_hp = boss.hp
-    result = hjqy_start(red_units,  blue_units, red_best_skill_id, red_best_skill_level, 0, 1, attack_type, seed1, seed2, player_level)
+    fight_result = guild_boss_start(red_units,  blue_units, unpar_type, unpar_other_id, 0, 0, seed1, seed2)
+
 
     logger.debug("blue unit length %s" % len(blue_units))
     boss.blue_units = blue_units
@@ -90,70 +89,22 @@ def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, r
     current_damage_hp = origin_hp - boss.hp
     logger.debug("origin_hp %s, current_hp %s, current_damage_hp %s" % (origin_hp, boss.hp, current_damage_hp))
 
-    player_info["damage_hp"] = current_damage_hp
-    hjqy_manager.add_rank_item(player_info) # 添加排行
 
-    is_kill = 0
-    if boss.get_state() == const.BOSS_DEAD: # 击杀boss
-        is_kill = 1
-        # send last kill reward mail
-        hjqyKillBossReward = game_configs.base_config.get("hjqyKillBossRewardID")
-        mail_data, _ = deal_mail(conf_id=hjqyKillBossReward, receive_id=int(player_id))
-        remote_gate = GlobalObject().child('gate')
-        remote_gate.push_message_to_transit_remote('receive_mail_remote',
-                                                   int(player_id), mail_data)
-        result = True
-    #return dict(result=result, state=boss.get_state())
-    logger.debug("hjqy_battle_remote over===================")
-    boss.save_data()
-    return result, boss.get_state(), current_damage_hp, is_kill
-
+    logger.debug("guildboss_battle_remote over===================")
+    guild.save_data()
+    return dict(
+            result=True,
+            guild_boss=boss.property_dict(),
+            fight_result = fight_result,
+            )
 @rootserviceHandle
-def blue_units_remote(boss_id):
+def upgrade_guild_skill_remote(guild_id, skill_type, skill_level):
+    """ 获取玩家伤害信息
     """
-    blue_units
-    """
-    boss = hjqy_manager.get_boss(boss_id)
-    return cPickle.dumps(boss.blue_units)
-
-@rootserviceHandle
-def is_can_trigger_hjqy_remote(player_id):
-    """
-    玩家是否可触发hjqy
-    """
-    logger.debug("is_can_trigger_hjqy_remote")
-    boss = hjqy_manager.get_boss(player_id)
-    if not boss:
-        return True
-    if boss.get_state() != const.BOSS_LIVE:
-        return True
-    return False
-
-@rootserviceHandle
-def create_hjqy_remote(player_id, nickname, str_blue_units, stage_id):
-    """
-    触发hjqy
-    """
-    logger.debug("create_hjqy_remote")
-    blue_units = cPickle.loads(str_blue_units)
-    hjqy_manager.add_boss(player_id, nickname, blue_units, stage_id)
-    return True
-
-
-@rootserviceHandle
-def get_hjqy_rank_remote():
-    """
-    获取玩家排行
-    """
-    logger.debug("get_hjqy_rank_remote")
-    rank_items = hjqy_manager.get_rank_items()
-    logger.debug(rank_items)
-    return rank_items
-
-
-@rootserviceHandle
-def get_boss_info_remote(boss_id):
-    boss = hjqy_manager.get_boss(boss_id)
-    if boss:
-        return construct_boss_data(boss)
+    logger.debug("upgrade_guild_skill_remote : (%s, %s)" % (skill_type, skill_level))
+    guild = guild_manager_obj.get_guild_obj(guild_id)
+    guild.guild_skills[skill_type] = skill_level
+    guild.save_data()
+    return dict(
+            result=True)
 

@@ -49,6 +49,8 @@ class CharacterStaminaComponent(Component):
         stamina_pb.resource_type = const.SHOE            # 鞋
         stamina_pb = self._stamina.stamina.add()
         stamina_pb.resource_type = const.ENERGY         # 精力
+        stamina_pb = self._stamina.stamina.add()
+        stamina_pb.resource_type = const.GUILD_ESCORT_ROB_TIMES # 公会劫运次数
 
         return dict(stamina=self._stamina.SerializeToString())
 
@@ -124,10 +126,12 @@ class CharacterStaminaComponent(Component):
         one_buy_value = currency_info.get("buyOneNumber")
         recover_period = currency_info.get("recoveryTime")
         recover_unit = currency_info.get("recoveryNumber")
-        if -1 in currency_info.get("buyPrice"):
-            need_gold = currency_info.get("buyPrice").get(-1)[1]
-        else:
-            need_gold = currency_info.get("buyPrice").get(buy_stamina_times+1)[1]
+        need_gold = 0
+        if currency_info.get("buyPrice"):
+            if -1 in currency_info.get("buyPrice"):
+                need_gold = currency_info.get("buyPrice").get(-1)[1]
+            else:
+                need_gold = currency_info.get("buyPrice").get(buy_stamina_times+1)[1]
 
         if resource_type == const.STAMINA: # 体力
             can_buy_times = player.base_info.buy_stamina_max
@@ -137,6 +141,8 @@ class CharacterStaminaComponent(Component):
             can_buy_times = player.base_info.buy_shoe_max
         elif resource_type == const.ENERGY: # 精力
             can_buy_times = player.base_info.buy_energy_max
+        elif resource_type == const.GUILD_ESCORT_ROB_TIMES: # 公会押运次数
+            can_buy_times = player.base_info.guild_escort_rob_times_max
         return dict(max_value=max_value,
                 one_buy_value=one_buy_value,
                 recover_period=recover_period,

@@ -29,6 +29,7 @@ class CharacterGuildComponent(Component):
         self._apply_guilds = []  # 已经申请过的军团
         self._guild_rank_flag = 0  # 推荐列表，已经查询到的redis排行标记
         self._mobai = [0, [], 1]  # ［被膜拜次数，［膜拜李飚］，time］
+        self._guild_boss_last_attack_time = 0  # 上次攻击圣兽时间
 
     def init_data(self, character_info):
         """
@@ -41,6 +42,7 @@ class CharacterGuildComponent(Component):
         self._praise = character_info.get('praise')
         self._exit_time = character_info.get("exit_time")
         self._apply_guilds = character_info.get("apply_guilds")
+        self._guild_boss_last_attack_time = character_info.get("guild_boss_last_attack_time", 0)
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -50,7 +52,9 @@ class CharacterGuildComponent(Component):
                         'bless': self._bless,
                         'praise': self._praise,
                         'apply_guilds': self._apply_guilds,
-                        'exit_time': self._exit_time})
+                        'exit_time': self._exit_time,
+                        'guild_boss_last_attack_time': self._guild_boss_last_attack_time,
+                        })
 
     def new_data(self):
         data = {'guild_id': self._g_id,
@@ -59,7 +63,9 @@ class CharacterGuildComponent(Component):
                 'bless': self._bless,
                 'praise': self._praise,
                 'apply_guilds': self._apply_guilds,
-                'exit_time': self._exit_time}
+                'exit_time': self._exit_time,
+                'guild_boss_last_attack_time': self._guild_boss_last_attack_time,
+                }
         return data
 
     @property
@@ -67,6 +73,14 @@ class CharacterGuildComponent(Component):
         if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
             return 0
         return self._today_contribution[0]
+
+    @property
+    def guild_boss_last_attack_time(self):
+        return self._guild_boss_last_attack_time
+
+    @guild_boss_last_attack_time.setter
+    def guild_boss_last_attack_time(self, value):
+        self._guild_boss_last_attack_time = value
 
     @property
     def praise(self):

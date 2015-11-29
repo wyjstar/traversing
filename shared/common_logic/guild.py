@@ -4,12 +4,13 @@
 """
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
-import random
 import time
 from gfirefly.dbentrust.redis_mode import RedisObject
 
 tb_guild_info = RedisObject('tb_guild_info')
 from shared.common_logic.escort_task import EscortTask
+from shared.common_logic.guild_boss import GuildBoss
+from shared.utils.date_util import get_current_timestamp
 
 
 class Guild(object):
@@ -18,22 +19,29 @@ class Guild(object):
     def __init__(self):
         """
         """
-        self._name = 0  # 名
-        self._g_id = 0  # id
-        self._contribution = 99999999  # 当前建设值
-        self._all_contribution = 99999999  # 总建设值
-        self._call = ''  # 公告
-        self._p_list = {}  # 成员信息
-        self._apply = []  # 加入申请
-        self._invite_join = {}  # {id:time, id:time} 邀请加入
-        self._icon_id = 0  # 军团头像
-        self._bless = [0, 0, 1]  # 祈福人数,福运,时间
-        self._praise = [0, 0, 1]  # 点赞次数，累计金钱，时间
-        self._build = {}  # 建筑等级 {建筑类型：建筑等级}
+        self._name = 0                         # 名
+        self._g_id = 0                         # id
+        self._contribution = 99999999          # 当前建设值
+        self._all_contribution = 99999999      # 总建设值
+        self._call = ''                        # 公告
+        self._p_list = {}                      # 成员信息
+        self._apply = []                       # 加入申请
+        self._invite_join = {}                 # {id:time, id:time} 邀请加入
+        self._icon_id = 0                      # 军团头像
+        self._bless = [0, 0, 1]                # 祈福人数,福运,时间
+        self._praise = [0, 0, 1]               # 点赞次数，累计金钱，时间
+        self._build = {}                       # 建筑等级 {建筑类型：建筑等级}
         self._escort_tasks = {}                # 粮草押运任务
         self._escort_tasks_can_rob = []        # 粮草押运任务中可被抢夺的任务
         self._escort_tasks_invite_protect = {} # 粮草押运任务邀请
         self._escort_tasks_invite_rob = {}     # 粮草押运任务邀请
+        self._guild_boss = GuildBoss()         # 圣兽
+        self._guild_boss_trigger_times = 0     # 圣兽触发次数
+        self._skill_points = 0                 # 技能点
+        self._guild_skills = {}                # 军团等级
+        self._last_attack_time = 0             # 上次攻击圣兽时间
+
+        self.init_guild_skills()
 
     @property
     def info(self):
@@ -58,6 +66,11 @@ class Guild(object):
                 'escort_tasks': self._escort_tasks,
                 'escort_tasks_invite_protect': self._escort_tasks_invite_protect,
                 'escort_tasks_invite_rob': self._escort_tasks_invite_rob,
+                #'guild_boss': self._guild_boss.property_dict(),
+                'guild_boss_trigger_times': self._guild_boss_trigger_times,
+                'skill_points': self._skill_points,
+                'guild_skills': self._guild_skills,
+                'last_attack_time': self._last_attack_time,
                 }
         return data
 
@@ -98,10 +111,19 @@ class Guild(object):
             task = EscortTask(self)
             task.init_data(data)
             self._escort_tasks[task.task_id] = task
-        for k, task in self._escort_tasks:
+        for k, task in self._escort_tasks.items():
             if task.state == 2:
                 self._escort_tasks_can_rob.append(k)
 
+        self._guild_boss = GuildBoss().load(data.get("guild_boss", {}))
+        self._guild_boss_trigger_times = data.get("guild_boss_trigger_times", 0)
+        self._skill_points = data.get("skill_points", 0)
+        self._guild_skills = data.get("guild_skills", self._guild_skills)
+
+    def init_guild_skills(self):
+        """docstring for init_guild_skills"""
+        for i in range(1, 5):
+            self._guild_skills[i] = 1
 
     def join_guild(self, p_id):
         if self._apply.count(p_id) >= 1:
@@ -290,6 +312,38 @@ class Guild(object):
         self._escort_tasks_invite_rob = values
 
     @property
+    def guild_skills(self):
+        return self._guild_skills
+
+    @guild_skills.setter
+    def guild_skills(self, values):
+        self._guild_skills = values
+
+    @property
+    def skill_points(self):
+        return self._skill_points
+
+    @skill_points.setter
+    def skill_points(self, values):
+        self._skill_points = values
+
+    @property
+    def guild_boss_trigger_times(self):
+        return self._guild_boss_trigger_times
+
+    @guild_boss_trigger_times.setter
+    def guild_boss_trigger_times(self, values):
+        self._guild_boss_trigger_times = values
+
+    @property
+    def guild_boss(self):
+        return self._guild_boss
+
+    @guild_boss.setter
+    def guild_boss(self, values):
+        self._guild_boss = values
+
+    @property
     def praise_num(self):
         if time.localtime(self._praise[2]).tm_yday != time.localtime().tm_yday:
             return 0
@@ -345,7 +399,7 @@ class Guild(object):
         task.state = task_info.get("state")
         task.add_player(task_info.get("player_info"), 1, 0, self.guild_info())
         self._escort_tasks[task.task_id] = task
-        return task
+        task.save_data()
 
     def guild_info(self):
         data = {'id': self._g_id,
@@ -354,3 +408,16 @@ class Guild(object):
                 'p_list': self._p_list,
                 }
         return data
+
+    def add_guild_boss(self, stage_id, blue_units, boss_type):
+        """docstring for add_boss"""
+        logger.debug("add boss %s %s" % ( blue_units, stage_id))
+        boss = GuildBoss()
+        boss.blue_units = blue_units
+        boss.stage_id = stage_id
+        boss.trigger_time = int(get_current_timestamp())
+        boss.hp_max = boss.hp
+        boss.boss_type = boss_type
+        self._guild_boss = boss
+        self.save_data()
+        return boss
