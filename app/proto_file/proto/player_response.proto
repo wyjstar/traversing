@@ -17,3 +17,8 @@ message NewbeeGuideStepResponse{
 message ChangeHeadResponse{
     required CommonResponse res = 1;
 }
+
+//1833
+message UpdateHightPowerResponse{
+    required float hight_power = 1;
+}

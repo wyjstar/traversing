@@ -67,7 +67,18 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.pvp_overcome_index = player.pvp.pvp_overcome_current
     responsedata.pvp_overcome_refresh_count = player.pvp.pvp_overcome_refresh_count
 
-    responsedata.combat_power = player.line_up_component.combat_power
+    combat_power = player.line_up_component.combat_power
+    responsedata.combat_power = combat_power
+
+    hight_power = player.line_up_component.hight_power
+    if hight_power and hight_power >= combat_power:
+        responsedata.hight_power = hight_power
+    else:
+        responsedata.hight_power = combat_power
+        player.line_up_component.hight_power = combat_power
+        player.line_up_component.save_data()
+
+    responsedata.hight_power = player.line_up_component.hight_power
     responsedata.newbee_guide_id = player.base_info.newbee_guide_id
 
     if player.guild.g_id != 0:
