@@ -185,7 +185,7 @@ def encourage_heros_1703(data, player):
             times = boss.encourage_gold_num
         player.pay.pay(need_gold, const.ENCOURAGE_HEROS, func)
 
-    tlog_action.log('WorldBossInReward', player, request.finance_type, times)
+    tlog_action.log('WorldBossEncourage', player, request.finance_type, times)
     player.world_boss.save_data()
     response.result = True
     logger.debug("encourage_coin_num %s" % boss.encourage_coin_num)
