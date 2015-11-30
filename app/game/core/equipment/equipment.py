@@ -15,8 +15,6 @@ import random
 import copy
 
 
-EQUIP_ATTR_CONFIG = game_configs.equipment_attribute_config
-
 
 def init_equipment_attr(equipment_no, attr_id=0):
     mainAttr, minorAttr = {}, {}
@@ -27,7 +25,7 @@ def init_equipment_attr(equipment_no, attr_id=0):
 
     equip_attr_id = equipment_item.attr if attr_id == 0 else attr_id
     logger.debug('init_equipment_attr %s %s', equip_attr_id, attr_id)
-    equipment_attr_item = EQUIP_ATTR_CONFIG.get(int(equip_attr_id))
+    equipment_attr_item = game_configs.equipment_attribute_config.get(int(equip_attr_id))
     print equipment_attr_item,'============================================='
     if not equipment_attr_item:
         logger.error('error equipment attr no:%s:%s',
@@ -77,7 +75,7 @@ def get_equip_rate(equipment_item, mainAttr, minorAttr):
     """当前装备/极限装备战斗力"""
 
     equip_attr_id = equipment_item.attr
-    equipment_attr_item = EQUIP_ATTR_CONFIG.get(int(equip_attr_id))
+    equipment_attr_item = game_configs.equipment_attribute_config.get(int(equip_attr_id))
     main_pool = copy.copy(equipment_attr_item.get('mainAttr'))
     minor_pool = copy.copy(equipment_attr_item.get('minorAttr'))
 
