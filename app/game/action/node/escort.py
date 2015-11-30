@@ -71,7 +71,7 @@ def get_all_task_info_1901(pro_data, player):
     tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.rob_records)
     get_my_current_rob_task(player.base_info.id, tasks, response.my_current_task)
 
-    record_util(player.base_info.id, tasks, response.my_protect_tasks)
+    #record_util(player.base_info.id, tasks, response.my_protect_tasks)
 
     logger.debug("response %s" % response)
     return response.SerializePartialToString()

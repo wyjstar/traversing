@@ -332,7 +332,13 @@ def guild_boss_start(red_units, blue_units, unpar_type, unpar_other_id, blue_ski
     )
     fight_type = const.BATTLE_GUILD_BOSS
     res = pvp_func(fight_data, fight_type, 0)
-    print("guild_boss_start=====:", res)
+    print("guild_boss_start=====:", res, blue_units.keys())
+    for k, v in blue_units.items():
+        if k not in res[2]:
+            del blue_units[k]
+        else:
+            blue_units[k].hp = res[2][k].hp
+
     if int(res[0]) == 1:
         return True
     return False

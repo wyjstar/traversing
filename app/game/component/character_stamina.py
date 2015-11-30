@@ -51,6 +51,8 @@ class CharacterStaminaComponent(Component):
         stamina_pb.resource_type = const.ENERGY         # 精力
         stamina_pb = self._stamina.stamina.add()
         stamina_pb.resource_type = const.GUILD_ESCORT_ROB_TIMES # 公会劫运次数
+        stamina_pb = self._stamina.stamina.add()
+        stamina_pb.resource_type = const.GUILD_SKILL_POINT # 公会技能点
 
         return dict(stamina=self._stamina.SerializeToString())
 
@@ -143,6 +145,8 @@ class CharacterStaminaComponent(Component):
             can_buy_times = player.base_info.buy_energy_max
         elif resource_type == const.GUILD_ESCORT_ROB_TIMES: # 公会押运次数
             can_buy_times = player.base_info.guild_escort_rob_times_max
+        elif resource_type == const.GUILD_SKILL_POINT: # 公会押运次数
+            can_buy_times = 0
         return dict(max_value=max_value,
                 one_buy_value=one_buy_value,
                 recover_period=recover_period,

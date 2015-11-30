@@ -37,7 +37,6 @@ class Guild(object):
         self._escort_tasks_invite_rob = {}     # 粮草押运任务邀请
         self._guild_boss = GuildBoss()         # 圣兽
         self._guild_boss_trigger_times = 0     # 圣兽触发次数
-        self._skill_points = 0                 # 技能点
         self._guild_skills = {}                # 军团等级
         self._last_attack_time = 0             # 上次攻击圣兽时间
 
@@ -66,9 +65,8 @@ class Guild(object):
                 'escort_tasks': self._escort_tasks,
                 'escort_tasks_invite_protect': self._escort_tasks_invite_protect,
                 'escort_tasks_invite_rob': self._escort_tasks_invite_rob,
-                #'guild_boss': self._guild_boss.property_dict(),
+                'guild_boss': self._guild_boss.property_dict(),
                 'guild_boss_trigger_times': self._guild_boss_trigger_times,
-                'skill_points': self._skill_points,
                 'guild_skills': self._guild_skills,
                 'last_attack_time': self._last_attack_time,
                 }
@@ -115,9 +113,10 @@ class Guild(object):
             if task.state == 2:
                 self._escort_tasks_can_rob.append(k)
 
-        self._guild_boss = GuildBoss().load(data.get("guild_boss", {}))
+        boss = GuildBoss()
+        boss.load(data.get("guild_boss", {}))
+        self._guild_boss = boss
         self._guild_boss_trigger_times = data.get("guild_boss_trigger_times", 0)
-        self._skill_points = data.get("skill_points", 0)
         self._guild_skills = data.get("guild_skills", self._guild_skills)
 
     def init_guild_skills(self):
@@ -320,14 +319,6 @@ class Guild(object):
         self._guild_skills = values
 
     @property
-    def skill_points(self):
-        return self._skill_points
-
-    @skill_points.setter
-    def skill_points(self, values):
-        self._skill_points = values
-
-    @property
     def guild_boss_trigger_times(self):
         return self._guild_boss_trigger_times
 
@@ -419,5 +410,6 @@ class Guild(object):
         boss.hp_max = boss.hp
         boss.boss_type = boss_type
         self._guild_boss = boss
+        self._guild_boss_trigger_times = self._guild_boss_trigger_times + 1
         self.save_data()
         return boss
