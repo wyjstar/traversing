@@ -44,15 +44,16 @@ def change_stage(stage_id, player):
 
     stage_id_a = stage_id
     while True:
-        if next_stages.get(stage_id):
-            for stage in [player.stage_component.get_stage(stage_id_1) for stage_id_1 in next_stages.get(stage_id_a)]:
-                stage.state = -2
-            for stage_id_1 in next_stages.get(stage_id_a):
-                if game_configs.stage_config.get('stages').get(stage_id_1)['type'] == 1:
-                    stage_id_a = stage_id_1
-                    break
-            else:
+        if not next_stages.get(stage_id_a):
+            break
+        for stage in [player.stage_component.get_stage(stage_id_1) for stage_id_1 in next_stages.get(stage_id_a)]:
+            stage.state = -2
+        for stage_id_1 in next_stages.get(stage_id_a):
+            if game_configs.stage_config.get('stages').get(stage_id_1)['type'] == 1:
+                stage_id_a = stage_id_1
                 break
+        else:
+            break
 
     while True:
         the_last_stage_id = game_configs.stage_config.get('stages').get(stage_id)['condition']

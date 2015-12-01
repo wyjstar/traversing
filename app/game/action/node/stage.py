@@ -69,6 +69,7 @@ def get_stages_901(pro_data, player):
     response.plot_chapter = player.stage_component.plot_chapter
     player.stage_component.save_data()
     logger.debug(response.stage_lucky_hero)
+    logger.debug(response)
     return response.SerializePartialToString()
 
 def construct_lucky_heros(stage_lucky_heros, response_stage_lucky_hero):
@@ -604,18 +605,6 @@ def reset_stage_908(pro_data, player):
 def get_award_909(pro_data, player):
     """取得章节奖励
     """
-    return get_award(pro_data, player)
-
-
-@remoteserviceHandle('gate')
-def get_award_910(pro_data, player):
-    """取得章节奖励
-    """
-    return get_award(pro_data, player)
-
-
-def get_award(pro_data, player):
-
     request = stage_request_pb2.StarAwardRequest()
     request.ParseFromString(pro_data)
     chapter_id = request.chapter_id
@@ -665,6 +654,29 @@ def get_award(pro_data, player):
     response.res.result = True
     # logger.debug(response)
     return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def get_star_random_1828(pro_data, player):
+    """取得满星抽奖随机倍数
+    """
+    request = stage_request_pb2.GetStarRandomRequest()
+    request.ParseFromString(pro_data)
+    chapter_id = request.chapter_id
+
+    response = stage_response_pb2.GetStarRandomResponse()
+
+    chapters_info = get_chapter_info(chapter_id, player)
+    if len(chapters_info) != 1 or chapter_id == 1 or (chapter_id == 2 and award_type ==2) or len(chapters_info[0].award_info) == 0:
+        logger.error("chapter_info dont find,or (chapter_id == 1 and award_type == 2 ) or ")
+        response.res.result = False
+        response.res.result_no = 831
+        return response.SerializePartialToString()
+    else:
+        chapter_obj = chapters_info[0]
+
+    conf = chapter_obj.get_conf()
+    chapter_obj.update(player.stage_component.calculation_star(chapter_id))
 
 
 def get_drop(bag_id):

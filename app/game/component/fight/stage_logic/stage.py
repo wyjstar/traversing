@@ -37,7 +37,7 @@ class StageLogic(base_stage.BaseStageLogic):
         """docstring for stage_config"""
         return stage_util.get_stage_config(game_configs.stage_config, "stages", self._stage_id)
 
-    def settle(self, result, response):
+    def settle(self, result, response, star_num=0):
         """
         战斗结算
         """
@@ -54,7 +54,7 @@ class StageLogic(base_stage.BaseStageLogic):
 
             # 活跃度
             # 结算
-            stage_util.settle(player, result, response, conf)
+            stage_util.settle(player, result, response, conf, star_num=star_num)
             # hook task
             hook_task(player, CONDITIONId.ANY_STAGE, 1)
             hook_task(player, CONDITIONId.STAGE, stage_id)
