@@ -33,7 +33,7 @@ def settle(player, result, response, conf, stage_type=0, star_num=0):
     # 保存活跃度
 
     # 增加玩家和武将经验，增加金币
-    if not result:
+    if not result and stage_type not in [4, 5]:
         return
 
     player.finance.coin += conf.currency

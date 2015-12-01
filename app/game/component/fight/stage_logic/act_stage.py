@@ -65,7 +65,7 @@ class ActStageLogic(base_stage.BaseStageLogic):
             player.stage_component.act_stage_info[0] += conf.timesExpend
         elif self.stage_type == 5:
             player.stage_component.act_stage_info[1] += conf.timesExpend
-        stage_util.settle(player, result, response, conf, star_num=star_num)
+        stage_util.settle(player, result, response, conf, stage_type=self.stage_type, star_num=star_num)
         hook_task(player, CONDITIONId.STAGE, stage_id)
         hook_task(player, CONDITIONId.ANY_ACT_STAGE, 1)
         tlog_action.log('RoundFlow', player, stage_id, 3, 0, 1)
