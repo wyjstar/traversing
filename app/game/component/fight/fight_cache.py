@@ -425,7 +425,6 @@ class CharacterFightCacheComponent(Component):
             hero_soul_num = stage_info.reward
             drops.append(CommonGroupItem(const.RESOURCE, hero_soul_num, hero_soul_num, const.HERO_SOUL))
 
-        print drops, '=====================1111'
         return drops
 
     def __break_hero_units(self, red_units):
