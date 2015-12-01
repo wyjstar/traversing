@@ -39,7 +39,7 @@ class GameCommandService(CommandService):
                     raise Exception("cantfind player dynamic id")
                     #return {'result': False, 'result_no': 1, 'message': u''}
                 logger.info("call method begin %s on service[%s], player id %s",
-                    target.__name__, self._name, _player.base_info.id)
+                            target.__name__, self._name, _player.base_info.id)
                 args = args[1:]
                 kw['player'] = _player
                 response = target(*args, **kw)
@@ -53,7 +53,6 @@ class GameCommandService(CommandService):
             return None
         except Exception, e:
             logger.exception(e)
-            remote_gate.push_object_remote(9999, "", _player.base_info.id)
             return None
         except:
             logger.error(traceback.format_exc())

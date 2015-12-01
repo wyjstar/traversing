@@ -67,7 +67,7 @@ class EscortTask(object):
 
 
     def add_player(self, player_info, protect_or_rob, rob_no=-1, guild_info={}):
-        if protect_or_rob == 1:
+        if protect_or_rob == 1 and len(self._protecters) < 3:
             if not self._protecters:
                 logger.debug("receive task add player==============")
                 self._protect_guild_info = guild_info
@@ -85,7 +85,7 @@ class EscortTask(object):
                 rob_no = len(self._rob_task_infos)
                 rob_task_info["rob_no"] = rob_no
                 self._rob_task_infos.append(rob_task_info)
-            else:
+            elif len(rob_task_info["robbers"]) < 3:
                 rob_task_info = self._rob_task_infos[rob_no]
                 rob_task_info["robbers"].append(player_info)
         # add player position to player_info

@@ -24,6 +24,7 @@ from app.game.core.mail_helper import send_mail
 from app.game.core import rank_helper
 import cPickle
 from app.game.core.task import hook_task, CONDITIONId
+from app.game.action.root.netforwarding import push_message
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -208,7 +209,7 @@ def exit_guild_803(data, player):
         # 删除排行
         rank_helper.remove_rank('GuildLevel', g_id)
         # 删除申请加入军团玩家的申请信息
-        del_apply_cache(remote_res.get('apply_ids'))
+        del_apply_cache(remote_res.get('apply_ids'), g_id)
         mail_id = 304
     elif remote_res.get('no') == 2:
         # 团长转让
@@ -227,16 +228,17 @@ def exit_guild_803(data, player):
 
     player.guild.exit_guild()
     player.guild.save_data()
+    clear_related_data(player.base_info.id)
 
     response.res.result = True
     tlog_action.log('ExitGuild', player, g_id)
     return response.SerializeToString()
 
 
-def del_apply_cache(apply_ids):
+def del_apply_cache(apply_ids, g_id):
     for p_id in apply_ids:
         if not netforwarding.push_message('del_apply_cache_remote',
-                                          p_id, guild_obj.g_id):
+                                          p_id, g_id):
             logger.error('del_apply_cache push message fail id:%d' % p_id)
 
 
@@ -470,9 +472,22 @@ def kick_807(data, player):
         send_mail(conf_id=302, receive_id=be_kick_id,
                   guild_name=remote_res.get('name'))
 
+        clear_related_data(be_kick_id)
+
     response.res.result = True
     return response.SerializeToString()
 
+def clear_related_data(player_id):
+    """如果玩家退出军团，或者被踢, 删除此工会相关信息"""
+    push_message("clear_related_data_remote", player_id)
+
+@remoteserviceHandle('gate')
+def clear_related_data_remote(is_online, player):
+    """
+    解散工会清除相关数据
+    """
+    player.escort_component.reset()
+    player.escort_component.save_data()
 
 @remoteserviceHandle('gate')
 def bless_809(data, player):
