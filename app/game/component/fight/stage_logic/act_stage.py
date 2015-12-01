@@ -61,17 +61,16 @@ class ActStageLogic(base_stage.BaseStageLogic):
         player = self._player
         conf = self.get_stage_config()
         stage_id = self._stage_id
-        if result:
-            if self.stage_type == 4:
-                player.stage_component.act_stage_info[0] += conf.timesExpend
-            elif self.stage_type == 5:
-                player.stage_component.act_stage_info[1] += conf.timesExpend
-            stage_util.settle(player, result, response, conf, star_num=star_num)
-            hook_task(player, CONDITIONId.STAGE, stage_id)
-            hook_task(player, CONDITIONId.ANY_ACT_STAGE, 1)
-            tlog_action.log('RoundFlow', player, stage_id, 3, 0, 1)
-        else:
-            tlog_action.log('RoundFlow', player, stage_id, 3, 0, 0)
+        if self.stage_type == 4:
+            player.stage_component.act_stage_info[0] += conf.timesExpend
+        elif self.stage_type == 5:
+            player.stage_component.act_stage_info[1] += conf.timesExpend
+        stage_util.settle(player, result, response, conf, star_num=star_num)
+        hook_task(player, CONDITIONId.STAGE, stage_id)
+        hook_task(player, CONDITIONId.ANY_ACT_STAGE, 1)
+        tlog_action.log('RoundFlow', player, stage_id, 3, 0, 1)
+        #else:
+            #tlog_action.log('RoundFlow', player, stage_id, 3, 0, 0)
 
     def update_hero_self_attr(self, hero_no, hero_self_attr, player):
         """
