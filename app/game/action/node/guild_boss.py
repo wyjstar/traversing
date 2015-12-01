@@ -184,6 +184,11 @@ def battle_2403(pro_data, player):
     # add guild activity times
     player.guild_activity.add_guild_boss_times(boss_info.get("boss_type"))
     hook_task(player, CONDITIONId.GUILD_BOSS, 1)
+    result = 0
+    if fight_result:
+        result = 1
+    tlog_action.log('GuildBossBattle', player, player.guild.g_id,
+                    boss_info.get("boss_type"), result)
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
@@ -244,5 +249,7 @@ def upgrade_guild_skill_2404(pro_data, player):
         response.guild_skill_point = guild_skill_item.Consumption
 
     response.res.result = res.get("result")
+    tlog_action.log('UpgradeGuildSkill', player, player.guild.g_id,
+                    skill_type, guild_skills.get(skill_type)+1, guild_skill_item.Consumption)
     logger.debug("response %s" % response)
     return response.SerializeToString()

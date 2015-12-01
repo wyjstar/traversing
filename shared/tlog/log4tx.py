@@ -182,7 +182,8 @@ def sweep_flow(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def guild_build_up(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                   PlatID=0, OpenID=0, GuildId=0, BuildLevel=0):
+                   PlatID=0, OpenID=0, GuildId=0, BuildLevel=0,
+                   BuildType=0):
 
     message = ['GuildBuildUp']
 
@@ -194,6 +195,7 @@ def guild_build_up(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(GuildId)
     message.append(BuildLevel)
+    message.append(BuildType)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -1704,6 +1706,213 @@ def mine_help(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(GuildID)
     message.append(BeHelpIds)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def trigger_boss(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                 PlatID=0, OpenID=0, GuildID=0, BossType=0):
+
+    message = ['MineHelp']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(BossType)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def guild_boss_battle(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                      PlatID=0, OpenID=0, GuildID=0, BossType=0,
+                      Result=0):
+
+    message = ['GuildBossBattle']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(SkillType)
+    message.append(Level)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def upgrade_guild_skill(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                        PlatID=0, OpenID=0, GuildID=0, SkillType=0,
+                        Level=0, Num=0):
+
+    message = ['UpgradeGuildSkill']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(SkillType)
+    message.append(Level)
+    message.append(Num)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def refresh_escort_tasks(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                         PlatID=0, OpenID=0, Times=0):
+
+    message = ['RefreshEscortTasks']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def receive_escort_task(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                        PlatID=0, OpenID=0, TaskID=0):
+
+    message = ['ReceiveEscortTask']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def receive_rob_escort_task(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                            PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0):
+
+    message = ['ReceiveRobEscortTask']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def cancel_escort_task(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                       PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0):
+
+    message = ['CancelEscortTask']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def guild_task_invite(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                      PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0,
+                      SendOrIn=0, ProtectOrRob=0, RobNo=0):
+
+    message = ['GuildTaskInvite']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
+    message.append(SendOrIn)
+    message.append(ProtectOrRob)
+    message.append(RobNo)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def start_protect_escort(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                         PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0):
+
+    message = ['StartProtectEscort']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def start_rob_escort(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                     PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0):
+
+    message = ['StartRobEscort']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

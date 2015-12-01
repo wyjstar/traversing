@@ -187,6 +187,8 @@ def refresh_tasks_1904(data, player):
             update_task_pb(task, task_pb)
     player.pay.pay(need_gold, const.REFRESH_ESCORT_TASKS, func)
 
+    tlog_action.log('RefreshEscortTasks', player, escort_component.refresh_times+1)
+
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
@@ -207,6 +209,7 @@ def receive_escort_task_1905(data, player):
     if not res.get('result'):
         response.result_no = res.get('result_no')
     response.result = res.get('result')
+    tlog_action.log('ReceiveEscortTask', player, task_id)
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
@@ -228,6 +231,8 @@ def receive_rob_escort_task_1907(data, player):
     response.res.result = res.get('result')
     if not res.get('result'):
         response.res.result_no = res.get('result_no')
+    else:
+        tlog_action.log('ReceiveRobEscortTask', player, task_id, task_guild_id)
     return response.SerializePartialToString()
 
 def receive_protect_task(player, task_id):
@@ -334,6 +339,7 @@ def cancel_escort_task_1906(data, player):
         logger.debug("rob_no can not be None!!")
     remote_gate["world"].cancel_rob_task_remote(task_guild_id, task_id, rob_no)
     response = common_pb2.CommonResponse()
+    tlog_action.log('CancelEscortTask', player, task_id, task_guild_id)
     response.result = True
     return response.SerializePartialToString()
 
@@ -368,6 +374,7 @@ def invite_1908(data, player):
         response.result_no = res.get('result_no')
         return response.SerializePartialToString()
 
+    tlog_action.log('GuildTaskInvite', player, task_id, task_guild_id, send_or_in, protect_or_rob, rob_no)
     response.result = True
     return response.SerializePartialToString()
 
@@ -468,6 +475,7 @@ def start_protect_escort_1909(data, player):
     if not res.get("result"):
         response.res.result_no = res.get("result_no")
         return response.SerializePartialToString()
+    tlog_action.log('StartProtectEscort', player, task_id, task_guild_id)
     response.res.result = res.get("result")
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
@@ -491,6 +499,7 @@ def start_rob_escort_1910(data, player):
         response.res.result_no = res.get("result_no")
         return response.SerializePartialToString()
     logger.debug("response %s" % response)
+    tlog_action.log('StartRobEscort', player, task_id, task_guild_id)
     return response.SerializePartialToString()
 
 def start_protect_escort(player, task_guild_id, task_id):

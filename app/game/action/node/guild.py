@@ -1220,7 +1220,8 @@ def up_build_870(data, player):
         return response.SerializeToString()
     response.res.result = True
     tlog_action.log('GuildBuildUp', player, player.guild.g_id,
-                    remote_res.get('build_level'))
+                    remote_res.get('build_level'),
+                    build_type)
     return response.SerializeToString()
 
 

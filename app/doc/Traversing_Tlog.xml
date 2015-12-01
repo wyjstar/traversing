@@ -1033,7 +1033,8 @@
         <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId"            type="string"        size="64" desc="军团ID" />
-        <entry name="BuildLevel"         type="int"                                            desc="玩家等级" />
+        <entry name="BuildLevel"         type="int"                                            desc="建筑等级" />
+        <entry name="BuildType"         type="int"                                            desc="建筑类型" />
     </struct>  
 
     <!--处理加入军团-->
@@ -1147,6 +1148,118 @@
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
         <entry name="BossType" type="int" desc="boss类型" />
+    </struct>
+
+    <!--击杀圣兽--> 
+    <struct name="GuildBossBattle" version="1" desc="召唤圣兽">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="BossType" type="int" desc="boss类型" />
+        <entry name="Result" type="int" desc="战斗结果1杀死2没杀死" />
+    </struct>
+
+    <!--升级军团技能--> 
+    <struct name="UpgradeGuildSkill" version="1" desc="升级军团技能">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="SkillType" type="int" desc="技能类型" />
+        <entry name="Level" type="int" desc="level" />
+        <entry name="Num" type="int" desc="消耗技能点" />
+    </struct>
+
+    <!--刷新任务列表--> 
+    <struct name="RefreshEscortTasks" version="1" desc="升级军团技能">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="Times" type="int" desc="次数" />
+    </struct>
+
+    <!--接受押运任务--> 
+    <struct name="ReceiveEscortTask" version="1" desc="升级军团技能">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+    </struct>
+
+    <!--接受劫运任务--> 
+    <struct name="ReceiveRobEscortTask" version="1" desc="升级军团技能">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
+    </struct>
+
+    <!--取消劫运任务--> 
+    <struct name="CancelEscortTask" version="1" desc="升级军团技能">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
+    </struct>
+
+    <!--发送或接受邀请--> 
+    <struct name="GuildTaskInvite" version="1" desc="升级军团技能">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="次数" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
+        <entry name="SendOrIN" type="int" desc="发布1 参与2" />
+        <entry name="ProtectOrRob" type="int" desc="押运1 劫运2" />
+        <entry name="RobNo" type="int" desc="默认－1" />
+    </struct>
+
+    <!--手动开始押运--> 
+    <struct name="StartProtectEscort" version="1" desc="升级军团技能">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
+    </struct>
+
+    <!--手动开始劫运--> 
+    <struct name="StartRobEscort" version="1" desc="升级军团技能">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
     </struct>
 
 

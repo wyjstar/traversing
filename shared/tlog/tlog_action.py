@@ -163,7 +163,7 @@ def sweep_flow(player_data, stage_id, times, reason_event_id):
                       ReasonEventID=reason_event_id)
 
 
-def guild_build_up(player_data, guild_id, build_level):
+def guild_build_up(player_data, guild_id, build_level, build_type):
 
     log4tx.guild_build_up(GameSvrId=game_server_id,
                           dtEventTime=xtime.strdatetime(),
@@ -171,7 +171,8 @@ def guild_build_up(player_data, guild_id, build_level):
                           OpenID=player_data.base_info.id,
                           PlatID=plat_id,
                           GuildId=guild_id,
-                          BuildLevel=build_level)
+                          BuildLevel=build_level,
+                          BuildType=build_type)
 
 
 def creat_guild(player_data, guild_id, user_level, icon):
@@ -981,6 +982,132 @@ def mine_help(player_data, guild_id, be_help_ids):
                      BeHelpIds=be_help_ids)
 
 
+def trigger_boss(player_data, guild_id, boss_type):
+
+    log4tx.trigger_boss(GameSvrId=game_server_id,
+                        dtEventTime=xtime.strdatetime(),
+                        GameAppID=game_app_id,
+                        OpenID=player_data.base_info.id,
+                        PlatID=plat_id,
+                        GuildID=guild_id,
+                        BossType=boss_type)
+
+
+def trigger_boss(player_data, guild_id, boss_type):
+
+    log4tx.trigger_boss(GameSvrId=game_server_id,
+                        dtEventTime=xtime.strdatetime(),
+                        GameAppID=game_app_id,
+                        OpenID=player_data.base_info.id,
+                        PlatID=plat_id,
+                        GuildID=guild_id,
+                        BossType=boss_type)
+
+
+def guild_boss_battle(player_data, guild_id, boss_type, result):
+
+    log4tx.guild_boss_battle(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+                             GuildID=guild_id,
+                             BossType=boss_type,
+                             Result=result)
+
+
+def upgrade_guild_skill(player_data, guild_id, skill_type, level, num):
+
+    log4tx.upgrade_guild_skill(GameSvrId=game_server_id,
+                               dtEventTime=xtime.strdatetime(),
+                               GameAppID=game_app_id,
+                               OpenID=player_data.base_info.id,
+                               PlatID=plat_id,
+                               GuildID=guild_id,
+                               SkillType=skill_type,
+                               Level=level,
+                               Num=num)
+
+
+def refresh_escort_tasks(player_data, times):
+
+    log4tx.refresh_escort_tasks(GameSvrId=game_server_id,
+                                dtEventTime=xtime.strdatetime(),
+                                GameAppID=game_app_id,
+                                OpenID=player_data.base_info.id,
+                                PlatID=plat_id,
+                                Times=times)
+
+
+def receive_rob_escort_task(player_data, task_id, task_guild_id):
+
+    log4tx.receive_rob_escort_task(GameSvrId=game_server_id,
+                                   dtEventTime=xtime.strdatetime(),
+                                   GameAppID=game_app_id,
+                                   OpenID=player_data.base_info.id,
+                                   PlatID=plat_id,
+                                   TaskID=task_id,
+                                   TaskGuildID=task_guild_id)
+
+
+def receive_escort_task(player_data, task_id):
+
+    log4tx.receive_escort_task(GameSvrId=game_server_id,
+                               dtEventTime=xtime.strdatetime(),
+                               GameAppID=game_app_id,
+                               OpenID=player_data.base_info.id,
+                               PlatID=plat_id,
+                               TaskID=task_id)
+
+
+def cancel_escort_task(player_data, task_id, task_guild_id):
+
+    log4tx.cancel_escort_task(GameSvrId=game_server_id,
+                              dtEventTime=xtime.strdatetime(),
+                              GameAppID=game_app_id,
+                              OpenID=player_data.base_info.id,
+                              PlatID=plat_id,
+                              TaskID=task_id,
+                              TaskGuildID=task_guild_id)
+
+
+def guild_task_invite(player_data, task_id, task_guild_id, send_or_in,
+                      protect_or_rob, rob_no):
+
+    log4tx.guild_task_invite(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+                             TaskID=task_id,
+                             TaskGuildID=task_guild_id,
+                             SendOrIn=send_or_in,
+                             ProtectOrRob=protect_or_rob,
+                             RobNo=rob_no)
+
+
+def start_protect_escort(player_data, task_id, task_guild_id):
+
+    log4tx.start_protect_escort(GameSvrId=game_server_id,
+                                dtEventTime=xtime.strdatetime(),
+                                GameAppID=game_app_id,
+                                OpenID=player_data.base_info.id,
+                                PlatID=plat_id,
+                                TaskID=task_id,
+                                TaskGuildID=task_guild_id)
+
+
+def start_rob_escort(player_data, task_id, task_guild_id):
+
+    log4tx.start_rob_escort(GameSvrId=game_server_id,
+                            dtEventTime=xtime.strdatetime(),
+                            GameAppID=game_app_id,
+                            OpenID=player_data.base_info.id,
+                            PlatID=plat_id,
+                            TaskID=task_id,
+                            TaskGuildID=task_guild_id)
+
+
 # TLOG分类打印函数
 
 tlog_funcs = {}
@@ -1063,6 +1190,16 @@ tlog_funcs['UpGuide'] = up_guide
 tlog_funcs['CaptainReceiveZan'] = captain_receive_zan
 tlog_funcs['GuildBuildUp'] = guild_build_up
 tlog_funcs['MineHelp'] = mine_help
+tlog_funcs['TriggerBoss'] = trigger_boss
+tlog_funcs['GuildBossBattle'] = guild_boss_battle
+tlog_funcs['UpgradeGuildSkill'] = upgrade_guild_skill
+tlog_funcs['RefreshEscortTasks'] = refresh_escort_tasks
+tlog_funcs['ReceiveEscortTask'] = receive_escort_task
+tlog_funcs['ReceiveRobEscortTask'] = receive_rob_escort_task
+tlog_funcs['CancelEscortTask'] = cancel_escort_task
+tlog_funcs['GuildTaskInvite'] = guild_task_invite
+tlog_funcs['StartProtectEscort'] = start_protect_escort
+tlog_funcs['StartRobEscort'] = start_rob_escort
 
 
 def log(mod, *args, **kwds):
