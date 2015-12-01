@@ -1108,6 +1108,60 @@ def start_rob_escort(player_data, task_id, task_guild_id):
                             TaskGuildID=task_guild_id)
 
 
+def join_guild(player_data, guild_id):
+
+    log4tx.start_rob_escort(GameSvrId=game_server_id,
+                            dtEventTime=xtime.strdatetime(),
+                            GameAppID=game_app_id,
+                            OpenID=player_data.base_info.id,
+                            PlatID=plat_id,
+                            GuildID=guild_id)
+
+
+def refresh_shop(player_data, shop_type, times):
+
+    log4tx.refresh_shop(GameSvrId=game_server_id,
+                        dtEventTime=xtime.strdatetime(),
+                        GameAppID=game_app_id,
+                        OpenID=player_data.base_info.id,
+                        PlatID=plat_id,
+                        ShopType=shop_type,
+                        Times=times)
+
+
+def shop_buy(player_data, ids, items_count):
+
+    log4tx.shop_buy(GameSvrId=game_server_id,
+                    dtEventTime=xtime.strdatetime(),
+                    GameAppID=game_app_id,
+                    OpenID=player_data.base_info.id,
+                    PlatID=plat_id,
+                    Ids=ids,
+                    ItemsCount=items_count)
+
+
+def buy_stamina(player_data, resource_type, num):
+
+    log4tx.buy_stamina(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+                       ResourceType=resource_type,
+                       Num=num)
+
+
+def reset_stage(player_data, stage_id, times):
+
+    log4tx.buy_stamina(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+                       StageID=stage_id,
+                       Times=times)
+
+
 # TLOG分类打印函数
 
 tlog_funcs = {}
@@ -1200,6 +1254,11 @@ tlog_funcs['CancelEscortTask'] = cancel_escort_task
 tlog_funcs['GuildTaskInvite'] = guild_task_invite
 tlog_funcs['StartProtectEscort'] = start_protect_escort
 tlog_funcs['StartRobEscort'] = start_rob_escort
+tlog_funcs['JoinGuild'] = join_guild
+tlog_funcs['RefreshShop'] = refresh_shop
+tlog_funcs['ShopBuy'] = shop_buy
+tlog_funcs['BuyStamina'] = buy_stamina
+tlog_funcs['ResetStage'] = reset_stage
 
 
 def log(mod, *args, **kwds):

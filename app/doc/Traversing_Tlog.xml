@@ -1113,7 +1113,7 @@
     </struct>
 
     <!--祈福--> 
-    <struct name="GuildWorship" version="1" desc="踢出军团">
+    <struct name="GuildWorship" version="1" desc="祈福">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -1151,7 +1151,7 @@
     </struct>
 
     <!--击杀圣兽--> 
-    <struct name="GuildBossBattle" version="1" desc="召唤圣兽">
+    <struct name="GuildBossBattle" version="1" desc="击杀圣兽">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -1178,7 +1178,7 @@
     </struct>
 
     <!--刷新任务列表--> 
-    <struct name="RefreshEscortTasks" version="1" desc="升级军团技能">
+    <struct name="RefreshEscortTasks" version="1" desc="刷新任务列表">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -1189,7 +1189,7 @@
     </struct>
 
     <!--接受押运任务--> 
-    <struct name="ReceiveEscortTask" version="1" desc="升级军团技能">
+    <struct name="ReceiveEscortTask" version="1" desc="接受押运任务">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -1200,7 +1200,7 @@
     </struct>
 
     <!--接受劫运任务--> 
-    <struct name="ReceiveRobEscortTask" version="1" desc="升级军团技能">
+    <struct name="ReceiveRobEscortTask" version="1" desc="接受劫运任务">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -1212,7 +1212,7 @@
     </struct>
 
     <!--取消劫运任务--> 
-    <struct name="CancelEscortTask" version="1" desc="升级军团技能">
+    <struct name="CancelEscortTask" version="1" desc="取消劫运任务">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -1224,7 +1224,7 @@
     </struct>
 
     <!--发送或接受邀请--> 
-    <struct name="GuildTaskInvite" version="1" desc="升级军团技能">
+    <struct name="GuildTaskInvite" version="1" desc="发送或接受邀请">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -1239,7 +1239,7 @@
     </struct>
 
     <!--手动开始押运--> 
-    <struct name="StartProtectEscort" version="1" desc="升级军团技能">
+    <struct name="StartProtectEscort" version="1" desc="手动开始押运">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -1251,7 +1251,7 @@
     </struct>
 
     <!--手动开始劫运--> 
-    <struct name="StartRobEscort" version="1" desc="升级军团技能">
+    <struct name="StartRobEscort" version="1" desc="手动开始劫运">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -1262,6 +1262,69 @@
         <entry name="TaskGuildID" type="int" desc="任务军团id" />
     </struct>
 
+
+    <!--申请加入军团--> 
+    <struct name="JoinGuild" version="1" desc="申请加入军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildID" type="int" desc="军团id" />
+    </struct>
+
+
+    <!--商城刷新--> 
+    <struct name="RefreshShop" version="1" desc="商城刷新">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="ShopType" type="int" desc="商城类型" />
+        <entry name="Times" type="int" desc="刷新次数" />
+    </struct>
+
+
+    <!--商城购买--> 
+    <struct name="ShopBuy" version="1" desc="商城购买">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="Ids" type="string" size="32" desc="购买的物品id的组成的字符串:'[123,123,123]'" />
+        <entry name="ItemsCount" type="string" size="32" desc="购买的物品个数组成的字符串:'[123,123,123]'" />
+    </struct>
+
+
+    <!--购买可恢复资源--> 
+    <struct name="BuyStamina" version="1" desc="购买可恢复资源">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="ResourceType" type="int" desc="资源类型" />
+        <entry name="Num" type="int" desc="资源类型数量" />
+    </struct>
+
+
+    <!--重置关卡次数--> 
+    <struct name="ResetStage" version="1" desc="申请加入军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="StageID" type="int" desc="关卡ID" />
+        <entry name="Times" type="int" desc="今日第几次重置" />
+    </struct>
 
 </metalib>
 <!--

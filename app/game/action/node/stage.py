@@ -639,6 +639,7 @@ def reset_stage_908(pro_data, player):
     player.stage_component.save_data()
     player.finance.save_data()
 
+    tlog_action.log('ResetStage', player, stage_id, stage_obj.reset[0])
     response.res.result = True
     # logger.debug('reset stage 908 success')
     return response.SerializePartialToString()

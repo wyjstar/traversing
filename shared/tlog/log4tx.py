@@ -1918,3 +1918,102 @@ def start_rob_escort(GameSvrId=0, dtEventTime=0, GameAppID=0,
     logclient.gethandler().send_msg(sendmsg + '\n')
     if debug:
         print sendmsg
+
+
+def join_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
+               PlatID=0, OpenID=0, GuildID=0):
+
+    message = ['JoinGuild']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def refresh_shop(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                 PlatID=0, OpenID=0, ShopType=0, Times=0):
+
+    message = ['RefreshShop']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ShopType)
+    message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def shop_buy(GameSvrId=0, dtEventTime=0, GameAppID=0,
+             PlatID=0, OpenID=0, Ids=0, ItemsCount=0):
+
+    message = ['ShopBuy']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Ids)
+    message.append(ItemsCount)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def buy_stamina(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                PlatID=0, OpenID=0, ResourceType=0, Num=0):
+
+    message = ['BuyStamina']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ResourceType)
+    message.append(Num)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def reset_stage(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                PlatID=0, OpenID=0, StageID=0, Times=0):
+
+    message = ['ResetStage']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(StageID)
+    message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
