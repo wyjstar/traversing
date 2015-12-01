@@ -44,7 +44,7 @@ def get_stages_901(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
 
-    stages_obj, elite_stage_times, act_coin_stage_times, act_exp_stage_times, act_coin_lucky_heros, act_exp_lucky_heros = get_stage_info(stage_id, player)
+    stages_obj, elite_stage_times, act_coin_stage_times, act_exp_stage_times, act_lucky_heros = get_stage_info(stage_id, player)
 
     response = stage_response_pb2.StageInfoResponse()
     for stage_obj in stages_obj:
@@ -64,30 +64,31 @@ def get_stages_901(pro_data, player):
     response.act_coin_stage_times = act_coin_stage_times
     response.act_exp_stage_times = act_exp_stage_times
 
-    construct_lucky_heros(act_coin_lucky_heros, response.act_coin_lucky_heros)
-    construct_lucky_heros(act_exp_lucky_heros, response.act_exp_lucky_heros)
+    construct_lucky_heros(act_lucky_heros, response.stage_lucky_hero)
 
     response.plot_chapter = player.stage_component.plot_chapter
     player.stage_component.save_data()
-    logger.debug(response)
+    logger.debug(response.stage_lucky_hero)
     return response.SerializePartialToString()
 
+def construct_lucky_heros(stage_lucky_heros, response_stage_lucky_hero):
+    for stage_id, v in stage_lucky_heros.items():
+        stage_lucky_hero_pb = response_stage_lucky_hero.add()
+        stage_lucky_hero_pb.stage_id = stage_id
 
-def construct_lucky_heros(lucky_heros, response_lucky_heros):
-    for k, hero in lucky_heros.items():
-        hero_no = hero.get("hero_no")
-        lucky_hero_info_id = hero.get("lucky_hero_info_id")
-        logger.debug("lucky_hero_info_id %s" % lucky_hero_info_id)
-        lucky_hero_info = game_configs.lucky_hero_config.get(lucky_hero_info_id)
-
-        hero_pb = response_lucky_heros.add()
-        hero_pb.hero_no = hero_no
-        hero_pb.pos = lucky_hero_info.set
-        for k, v in lucky_hero_info.get("attr").items():
-            hero_attr = hero_pb.attr.add()
-            hero_attr.attr_type = int(k)
-            hero_attr.attr_value_type = v[0]
-            hero_attr.attr_value = v[1]
+        for k, hero in v.get('heros').items():
+            hero_no = hero.get("hero_no")
+            lucky_hero_info_id = hero.get("lucky_hero_info_id")
+            logger.debug("lucky_hero_info_id %s" % lucky_hero_info_id)
+            lucky_hero_info = game_configs.lucky_hero_config.get(lucky_hero_info_id)
+            hero_pb = stage_lucky_hero_pb.heros.add()
+            hero_pb.hero_no = hero_no
+            hero_pb.pos = lucky_hero_info.set
+            for k, v in lucky_hero_info.get("attr").items():
+                hero_attr = hero_pb.attr.add()
+                hero_attr.attr_type = int(k)
+                hero_attr.attr_value_type = v[0]
+                hero_attr.attr_value = v[1]
 
 
 @remoteserviceHandle('gate')
@@ -359,8 +360,7 @@ def get_stage_info(stage_id, player):
     return response, player.stage_component.elite_stage_info[0], \
         player.stage_component.act_stage_info[0],\
         player.stage_component.act_stage_info[1],\
-        player.stage_component._act_coin_lucky_heros,\
-        player.stage_component._act_exp_lucky_heros
+        player.stage_component._act_lucky_heros
 
 
 def get_chapter_info(chapter_id, player):

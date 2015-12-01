@@ -461,9 +461,15 @@ def add_stamina_2202(request_proto, player):
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')
-def open_next_day_activity_2203(request_proto, player):
-    player.base_info.is_open_next_day_activity = True
+def button_one_time_2203(request_proto, player):
+
+    request = player_request_pb2.ButtonOneTimeRequest()
+    request.ParseFromString(request_proto)
+    button_id = request.button_id
+    logger.debug("button_one_time request %s" % button_id)
+    player.base_info._button_one_time[button_id] = 1
     player.base_info.save_data()
+    logger.debug("button_one_time %s" % player.base_info._button_one_time)
     response = CommonResponse()
     response.result = True
     return response.SerializePartialToString()
@@ -480,7 +486,7 @@ def first_recharge_activity_2204(request_proto, player):
         response.res.result_no = 22041
         return response.SerializePartialToString()
 
-    if player.base_info.first_recharge_activity == 1:
+    if player.base_info._button_one_time[const.FIRST_RECHARGE_BUTTON] == 1:
         response.res.result = False
         response.res.result_no = 22042
         return response.SerializePartialToString()
@@ -489,7 +495,7 @@ def first_recharge_activity_2204(request_proto, player):
     if activity_info:
         logger.error("activity not exist!")
 
-    player.base_info.first_recharge_activity = 1
+    player.base_info._button_one_time[const.FIRST_RECHARGE_BUTTON] = 1
     player.base_info.save_data()
     return_data = gain(player, activity_info.get('reward', {}), const.FIRST_RECHARGE)
     get_return(player, return_data, response.gain)

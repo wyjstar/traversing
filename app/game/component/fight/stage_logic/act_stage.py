@@ -77,11 +77,7 @@ class ActStageLogic(base_stage.BaseStageLogic):
         """
         update hero self attr, plus some attr
         """
-        lucky_heros = {}
-        if self.stage_type == 4:
-            lucky_heros = player.stage_component._act_coin_lucky_heros
-        elif self.stage_type == 5:
-            lucky_heros = player.stage_component._act_exp_lucky_heros
+        lucky_heros = player.stage_component._act_lucky_heros.get(self._stage_id, {}).get('heros', {})
         lucky_add = 0
 
         print("hero_self_attr_origin", hero_self_attr)

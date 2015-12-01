@@ -25,3 +25,8 @@ message ChangeBattleSpeed{
 message ChangeStageStory{
 	required int32 story_id = 1;
 }
+
+// 显示一次的按钮 command 2203
+message ButtonOneTimeRequest{
+	required int32 button_id = 1; //0. 第二天活动开启后的按钮  2. 关卡点我有惊喜
+}
