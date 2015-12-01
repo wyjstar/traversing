@@ -28,13 +28,15 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
         is_new_character = init_player(player)
         PlayersManager().add_player(player)
     else:
-        logger.debug('player exsit!========player.dynamic_id %s new dynamic_id %s' % (player.dynamic_id, dynamic_id))
+        logger.debug('player exsit! player.dynamic_id %s new dynamic_id %s' %
+                     (player.dynamic_id, dynamic_id))
         if player.dynamic_id != dynamic_id:
             logger.error('dynamic id is not same:%s,%s:%s',
                          character_id,
                          dynamic_id,
                          player.dynamic_id)
         player.dynamic_id = dynamic_id
+        player.fund_activity.check_time()
     player.pay.set_pay_arg(pay_arg)  # 设置支付参数
     player.base_info.plat_id = pay_arg.get("plat_id")  # ios 0 android 1
     logger.debug("plat_id %s" % pay_arg.get("plat_id"))
@@ -100,8 +102,10 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
         item_pb.resource_type = item.resource_type
         item_pb.buy_stamina_times = item.buy_stamina_times
         item_pb.last_gain_stamina_time = item.last_gain_stamina_time
-        logger.debug("stamina %s buy_stamina_times %s last_gain_stamina_time %s" % (item.resource_type, item.buy_stamina_times, item.last_gain_stamina_time))
-
+        logger.debug("stami %s buy_stamina_times %s last_gain_stamina_time %s"
+                     % (item.resource_type,
+                        item.buy_stamina_times,
+                        item.last_gain_stamina_time))
 
     logger.debug("stamina %s" % buy_times_pb)
     if player.base_info.heads.head:
@@ -140,7 +144,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     # logger.debug("hero_soul:%d", player.finance.hero_soul)
     # logger.debug("soul_shop_refresh_times:%d", player.soul_shop.refresh_times)
     # mock guild
-    #player.guild.g_id = 1989
+    # player.guild.g_id = 1989
     # 更新7日奖励的状态
     # player.start_target.update_29()
 
@@ -150,9 +154,9 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
             if not hero:
                 continue
             combat_power_hero_lineup(player, hero, slot_no)
-            #awake_hero = player.fight_cache_component.change_hero(hero, hero.hero_info["awakeHeroID"])
+            # awake_hero = player.fight_cache_component.change_hero(hero, hero.hero_info["awakeHeroID"])
 
-            #combat_power_hero_lineup(player, awake_hero, slot_no, "awake")
+            # combat_power_hero_lineup(player, awake_hero, slot_no, "awake")
     logger.debug('login:<%s>%s:%s %s:%s',
                  player,
                  character_id,
@@ -190,6 +194,9 @@ def enter_scene_9(data, player):
         item_pb.resource_type = item.resource_type
         item_pb.buy_stamina_times = item.buy_stamina_times
         item_pb.last_gain_stamina_time = item.last_gain_stamina_time
-        logger.debug("stamina %s buy_stamina_times %s last_gain_stamina_time %s" % (item.resource_type, item.buy_stamina_times, item.last_gain_stamina_time))
+        logger.debug("stami %s buy_stamina_times %s last_gain_stamina_time %s"
+                     % (item.resource_type,
+                        item.buy_stamina_times,
+                        item.last_gain_stamina_time))
 
     return responsedata.SerializeToString()
