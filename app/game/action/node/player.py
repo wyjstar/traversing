@@ -500,14 +500,8 @@ def first_recharge_activity_2204(request_proto, player):
 def heartbeat_1833(data, player):
     response = UpdateHightPowerResponse()
 
-    combat_power = player.line_up_component.combat_power
     hight_power = player.line_up_component.hight_power
-    if hight_power and hight_power >= combat_power:
-        response.hight_power = hight_power
-    else:
-        response.hight_power = combat_power
-        player.line_up_component.hight_power = combat_power
-        player.line_up_component.save_data()
+    response.hight_power = hight_power
     return response.SerializePartialToString()
 
 @remoteserviceHandle('gate')

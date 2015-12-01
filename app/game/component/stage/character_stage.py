@@ -171,7 +171,7 @@ class CharacterStageComponent(Component):
 
         return [self.get_chapter(chapter_id) for chapter_id in chapter_ids]
 
-    def settlement(self, stage_id, result):
+    def settlement(self, stage_id, result, star_num):
         """结算
         """
         stage = self.get_stage(stage_id)
@@ -179,38 +179,48 @@ class CharacterStageComponent(Component):
         if stage.state == -2:  # 未开启
             return False
 
-        stage.update(result)
+        stage.update(result, star_num)
         open_stage_id = game_configs.base_config.get('warFogOpenStage')
         if stage.stage_id == open_stage_id and stage.state == 1:
             logger.debug('reset warfog')
             self.owner.mine.reset_data()
 
         if result:  # win
-            conf = game_configs.stage_config.get('stages')
+            stages_conf = game_configs.stage_config.get('stages')
             chapter_id = None
-            if game_configs.stage_config.get('stages').get(stage_id):  # 关卡
-                chapter_id = conf.get(stage_id).get('chapter')
+            if stages_conf.get(stage_id):  # 关卡
+                chapter_id = stages_conf.get(stage_id).get('chapter')
                 chapter = self.get_chapter(chapter_id)
-                chapter.update(self.calculation_star(chapter_id))
-                next_stages = game_configs.stage_config.get('condition_mapping')
-            # elif game_configs.special_stage_config.get('elite_stages').get(stage_id):  # 精英关卡
+                chapter_star_num = self.calculation_star(chapter_id)
+                chapter.update(chapter_star_num)
+                next_stages = game_configs.stage_config. \
+                    get('condition_mapping')
+
+                if chapter_id != 1:
+                    # 计算星星  星星排行用
+                    self.star_num[chapter_id] = chapter_star_num
+
+                # 根据星星数更新隐藏关卡开启状态
+                chapter_conf = chapter.get_conf()
+                if chapter_star_num == chapter_conf.condition2:
+                    hide_stage_id = game_configs.stage_config. \
+                        get('chapter_hide_stage').get(chapter_id)
+                    hide_stage_obj = self.get_stage(temp_stage_id)
+                    if hide_stage_obj.state == -2:
+                        hide_stage_obj.state = -1
+
             else:
-                next_stages = game_configs.special_stage_config.get('condition_mapping')
+                next_stages = game_configs.special_stage_config. \
+                    get('condition_mapping')
             # 开启下一关卡
             if next_stages.get(stage_id):
                 for stage in [self.get_stage(temp_stage_id) for temp_stage_id in next_stages.get(stage_id)]:
                     state = self.check_stage_state(stage.stage_id)
-                    logger.debug("next stage state===========atk_stage_id %s next_stage_id %s state %s chapter_id %s" %\
-                            (stage_id, stage.stage_id, state, chapter_id))
                     if state == -2:
                         stage.state = -1  # 更新状态开启没打过
-                        if chapter_id and conf.get(stage.stage_id).get('type') == 1:
+                        if chapter_id and stages_conf.get(stage.stage_id).get('type') == 1:
                             logger.debug("next stage win=============")
                             self._stage_progress = stage_id
-            # 计算星星
-            if chapter_id and chapter_id != 1:
-                chapter_star_num = self.calculation_star(chapter_id)
-                self.star_num[chapter_id] = chapter_star_num
 
         return True
 
@@ -226,16 +236,18 @@ class CharacterStageComponent(Component):
         """根据章节ID计算当前星数
         """
         stages_config = game_configs.stage_config.get('stages')
-        chapter_stages_config = [self.get_stage(stage_id) for stage_id, item in stages_config.items() if
+        chapter_stages_config = [item for stage_id, item in stages_config.items() if
                                  not item.chaptersTab and item.chapter == chapter_id]
 
         num = 0
         for stage_config in chapter_stages_config:
-            stage_id = stage_config.stage_id
+            if stage_config.type == 4:
+                continue
+            stage_id = stage_config.id
             stage = self.get_stage(stage_id)
             if not stage.state == 1:
                 continue
-            num += 1
+            num += stage.star_num
         return num
 
     @property

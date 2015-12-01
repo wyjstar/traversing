@@ -291,6 +291,7 @@ def get_target_info_1827(data, player):
     args.ParseFromString(data)
     target_id = args.target_id
     response = start_target_pb2.GetStartTargetRewardResponse()
+    print target_id, '==========================1'
 
     # 第几天登录
     is_open, day = player.start_target.is_open()
@@ -335,4 +336,5 @@ def get_target_info_1827(data, player):
     player.pay.pay(need_gold, const.START_TARGET, func)
 
     response.res.result = True
+    print response, '=================2'
     return response.SerializeToString()

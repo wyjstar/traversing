@@ -15,7 +15,7 @@ import player_response_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage.proto',
   package='',
-  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\x1a\x15player_response.proto\"\"\n\x05Skill\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05\x62uffs\x18\x02 \x03(\x05\"\x84\x03\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\n\n\x02hp\x18\x03 \x01(\x03\x12\x0b\n\x03\x61tk\x18\x04 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x05 \x01(\x02\x12\x11\n\tmagic_def\x18\x06 \x01(\x02\x12\x0b\n\x03hit\x18\x07 \x01(\x02\x12\r\n\x05\x64odge\x18\x08 \x01(\x02\x12\x0b\n\x03\x63ri\x18\t \x01(\x02\x12\x11\n\tcri_coeff\x18\n \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\x0b \x01(\x02\x12\r\n\x05\x62lock\x18\x0c \x01(\x02\x12\x11\n\tductility\x18\r \x01(\x02\x12\r\n\x05level\x18\x17 \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x18 \x01(\x05\x12\x0f\n\x07is_boss\x18\x19 \x01(\x08\x12\x14\n\x0c\x62reak_skills\x18\x1a \x03(\x05\x12\x10\n\x08position\x18\x1b \x01(\x05\x12\x10\n\x08is_break\x18\x1c \x01(\x08\x12\x10\n\x08is_awake\x18\x1d \x01(\x08\x12\x11\n\torigin_no\x18\x1e \x01(\x05\x12\x0e\n\x06hp_max\x18\x1f \x01(\x03\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"e\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\x12\x15\n\x05reset\x18\x04 \x01(\x0b\x32\x06.Reset\x12\x13\n\x0b\x63hest_state\x18\x05 \x01(\x05\"$\n\x05Reset\x12\r\n\x05times\x18\x01 \x02(\x05\x12\x0c\n\x04time\x18\x02 \x02(\x05\"\x81\x01\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x13\n\x0b\x64ragon_gift\x18\x03 \x01(\x05\x12\x14\n\x0c\x61lready_gift\x18\x04 \x03(\x05\x12\x12\n\nnow_random\x18\x05 \x03(\x05\x12\x11\n\tstar_gift\x18\x06 \x01(\x05\";\n\x0cUnparalleled\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05unpar\x18\x02 \x03(\x05\x12\x10\n\x08\x61\x63tivate\x18\x03 \x01(\x08\".\n\x08StepInfo\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tstep_type\x18\x02 \x02(\x05')
+  serialized_pb='\n\x0bstage.proto\x1a\x0c\x63ommon.proto\x1a\x15player_response.proto\"\"\n\x05Skill\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05\x62uffs\x18\x02 \x03(\x05\"\x84\x03\n\nBattleUnit\x12\n\n\x02no\x18\x01 \x02(\x05\x12\x0f\n\x07quality\x18\x02 \x01(\x05\x12\n\n\x02hp\x18\x03 \x01(\x03\x12\x0b\n\x03\x61tk\x18\x04 \x01(\x02\x12\x14\n\x0cphysical_def\x18\x05 \x01(\x02\x12\x11\n\tmagic_def\x18\x06 \x01(\x02\x12\x0b\n\x03hit\x18\x07 \x01(\x02\x12\r\n\x05\x64odge\x18\x08 \x01(\x02\x12\x0b\n\x03\x63ri\x18\t \x01(\x02\x12\x11\n\tcri_coeff\x18\n \x01(\x02\x12\x15\n\rcri_ded_coeff\x18\x0b \x01(\x02\x12\r\n\x05\x62lock\x18\x0c \x01(\x02\x12\x11\n\tductility\x18\r \x01(\x02\x12\r\n\x05level\x18\x17 \x01(\x05\x12\x13\n\x0b\x62reak_level\x18\x18 \x01(\x05\x12\x0f\n\x07is_boss\x18\x19 \x01(\x08\x12\x14\n\x0c\x62reak_skills\x18\x1a \x03(\x05\x12\x10\n\x08position\x18\x1b \x01(\x05\x12\x10\n\x08is_break\x18\x1c \x01(\x08\x12\x10\n\x08is_awake\x18\x1d \x01(\x08\x12\x11\n\torigin_no\x18\x1e \x01(\x05\x12\x0e\n\x06hp_max\x18\x1f \x01(\x03\",\n\x0e\x42\x61ttleUnitGrop\x12\x1a\n\x05group\x18\x01 \x03(\x0b\x32\x0b.BattleUnit\"w\n\x05Stage\x12\x10\n\x08stage_id\x18\x01 \x02(\x05\x12\x0f\n\x07\x61ttacks\x18\x02 \x01(\x05\x12\r\n\x05state\x18\x03 \x01(\x05\x12\x15\n\x05reset\x18\x04 \x01(\x0b\x32\x06.Reset\x12\x13\n\x0b\x63hest_state\x18\x05 \x01(\x05\x12\x10\n\x08star_num\x18\x06 \x01(\x05\"$\n\x05Reset\x12\r\n\x05times\x18\x01 \x02(\x05\x12\x0c\n\x04time\x18\x02 \x02(\x05\"q\n\nStageAward\x12\x12\n\nchapter_id\x18\x01 \x02(\x05\x12\r\n\x05\x61ward\x18\x02 \x03(\x05\x12\x12\n\nnow_random\x18\x03 \x01(\x05\x12\x11\n\tstar_gift\x18\x04 \x01(\x05\x12\x19\n\x11random_gift_times\x18\x05 \x01(\x05\";\n\x0cUnparalleled\x12\n\n\x02id\x18\x01 \x02(\x05\x12\r\n\x05unpar\x18\x02 \x03(\x05\x12\x10\n\x08\x61\x63tivate\x18\x03 \x01(\x08\".\n\x08StepInfo\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tstep_type\x18\x02 \x02(\x05')
 
 
 
@@ -300,6 +300,13 @@ _STAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='star_num', full_name='Stage.star_num', index=5,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -310,7 +317,7 @@ _STAGE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=525,
-  serialized_end=626,
+  serialized_end=644,
 )
 
 
@@ -344,8 +351,8 @@ _RESET = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=628,
-  serialized_end=664,
+  serialized_start=646,
+  serialized_end=682,
 )
 
 
@@ -371,29 +378,22 @@ _STAGEAWARD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='dragon_gift', full_name='StageAward.dragon_gift', index=2,
+      name='now_random', full_name='StageAward.now_random', index=2,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='already_gift', full_name='StageAward.already_gift', index=3,
-      number=4, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
+      name='star_gift', full_name='StageAward.star_gift', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='now_random', full_name='StageAward.now_random', index=4,
-      number=5, type=5, cpp_type=1, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='star_gift', full_name='StageAward.star_gift', index=5,
-      number=6, type=5, cpp_type=1, label=1,
+      name='random_gift_times', full_name='StageAward.random_gift_times', index=4,
+      number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -407,8 +407,8 @@ _STAGEAWARD = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=667,
-  serialized_end=796,
+  serialized_start=684,
+  serialized_end=797,
 )
 
 
@@ -449,8 +449,8 @@ _UNPARALLELED = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=798,
-  serialized_end=857,
+  serialized_start=799,
+  serialized_end=858,
 )
 
 
@@ -484,8 +484,8 @@ _STEPINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=859,
-  serialized_end=905,
+  serialized_start=860,
+  serialized_end=906,
 )
 
 _BATTLEUNITGROP.fields_by_name['group'].message_type = _BATTLEUNIT

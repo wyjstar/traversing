@@ -58,6 +58,7 @@ def get_stages_901(pro_data, player):
         add.reset.times = stage_obj.reset[0]
         add.reset.time = stage_obj.reset[1]
         add.chest_state = stage_obj.chest_state
+        add.star_num = stage_obj.star_num
 
     response.elite_stage_times = elite_stage_times
     response.act_coin_stage_times = act_coin_stage_times
@@ -70,6 +71,7 @@ def get_stages_901(pro_data, player):
     player.stage_component.save_data()
     logger.debug(response)
     return response.SerializePartialToString()
+
 
 def construct_lucky_heros(lucky_heros, response_lucky_heros):
     for k, hero in lucky_heros.items():
@@ -86,6 +88,7 @@ def construct_lucky_heros(lucky_heros, response_lucky_heros):
             hero_attr.attr_type = int(k)
             hero_attr.attr_value_type = v[0]
             hero_attr.attr_value = v[1]
+
 
 @remoteserviceHandle('gate')
 def get_chapter_912(pro_data, player):
@@ -120,9 +123,8 @@ def get_chapter_902(pro_data, player):
         stage_award_add.chapter_id = chapter_obj.chapter_id
         for award in chapter_obj.award_info:
             stage_award_add.award.append(award)
-        stage_award_add.dragon_gift = chapter_obj.dragon_gift
-        for already_gift in chapter_obj.already_gift:
-            stage_award_add.already_gift.append(already_gift)
+        stage_award_add.star_gift = chapter_obj.star_gift
+        stage_award_add.now_random = chapter_obj.now_random
     # logger.debug(response)
     return response.SerializePartialToString()
 
@@ -226,14 +228,15 @@ def stage_start_903(pro_data, player):
 def fight_settlement_904(pro_data, player):
     request = stage_request_pb2.StageSettlementRequest()
     request.ParseFromString(pro_data)
+
     logger.debug("fight_settlement_904 id: %s player_id: %s" % (player.fight_cache_component.stage_id, player.base_info.id))
+
     stage_id = request.stage_id
     result = request.result
 
     # logger.debug("steps:%s", request.steps)
     # player.fight_cache_component.red_units
     stage = player.stage_component.get_stage(stage_id)
-
     stage_config = player.fight_cache_component._get_stage_config()
 
     if stage_config.type not in [1, 2, 3] and request.is_skip:
@@ -269,7 +272,7 @@ def fight_settlement_904(pro_data, player):
     logger.debug("red units: %s" % res[2])
     player.fight_cache_component.damage_percent = res[1]
 
-    star = 0 # star num
+    star = 0  # star num
     for i in range(1, 4):
         star_condition = game_configs.base_config.get('star_condition')
         v = star_condition[i]
@@ -280,7 +283,7 @@ def fight_settlement_904(pro_data, player):
     # todo: 如果跳过或者打败,则不记录通关星级
 
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
-    res = fight_settlement(stage, result, player)
+    res = fight_settlement(stage, result, player, star)
     logger.debug("steps:%s", request.steps)
     logger.debug("fight_settlement_904 end: %s" % time.time())
 
@@ -375,7 +378,7 @@ def get_chapter_info(chapter_id, player):
     return response
 
 
-def fight_settlement(stage, result, player):
+def fight_settlement(stage, result, player, star_num):
     response = stage_response_pb2.StageSettlementResponse()
     res = response.res
     res.result = True
@@ -388,7 +391,7 @@ def fight_settlement(stage, result, player):
         res.message = u"关卡id和战斗缓存id不同"
         return response.SerializeToString()
 
-    stage.settle(result, response)
+    stage.settle(result, response, star_num=star_num)
     #触发黄巾起义
     response.hjqy_stage_id = trigger_hjqy(player, result)
     return response.SerializePartialToString()
@@ -599,14 +602,14 @@ def reset_stage_908(pro_data, player):
 
 @remoteserviceHandle('gate')
 def get_award_909(pro_data, player):
-    """取得章节奖励信息
+    """取得章节奖励
     """
     return get_award(pro_data, player)
 
 
 @remoteserviceHandle('gate')
 def get_award_910(pro_data, player):
-    """取得章节奖励信息
+    """取得章节奖励
     """
     return get_award(pro_data, player)
 
@@ -647,45 +650,20 @@ def get_award(pro_data, player):
         player.stage_component.save_data()
 
     else:
-        if chapter_obj.award_info[-1] == -1:
-            logger.error("can`t receive")
-            response.res.result = False
-            response.res.result_no = 833
-            return response.SerializePartialToString()
-        else:
-            if chapter_obj.dragon_gift == 0:
-                chapter_obj.dragon_gift = 1
-                res = get_gift(player, chapter_obj, chapter_id, response)
-                player.stage_component.save_data()
-            else:
-                star_index = len(chapter_obj.already_gift) - 1
-                if star_index > len(game_configs.base_config.get('starPrice'))-1:
-                    response.res.result = False
-                    response.res.result_no = 862
-                    return response.SerializePartialToString()
-                prize = game_configs.base_config.get('starPrice')[star_index]
-                star_price = parse(prize)
-
-                result = is_afford(player, star_price)
-                if not result.get('result'):
-                    response.res.result = False
-                    response.res.result_no = result.get('result_no')
-                    # common_response.message = u'消费不足2！'
-                    return response.SerializeToString()
-
-                res = get_gift(player, chapter_obj, chapter_id, response)
-                if not res['res']:
-                    response.res.result = False
-                    response.res.result_no = 862
-                    return response.SerializePartialToString()
-                player.stage_component.save_data()
-                consume(player, star_price, const.CHAPTER_AWARD)  # 消耗
-                need_gold = get_consume_gold_num(star_price)
-                player.finance.consume_gold(need_gold, const.CHAPTER_AWARD)
-                player.finance.save_data()
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializePartialToString()
+        # 满星抽奖
+        # if chapter_obj.award_info[-1] == -1:
+        #     logger.error("can`t receive")
+        #     response.res.result = False
+        #     response.res.result_no = 833
+        #     return response.SerializePartialToString()
+        # else:
+        #     pass
 
     response.res.result = True
-    logger.debug(response)
+    # logger.debug(response)
     return response.SerializePartialToString()
 
 
@@ -695,35 +673,6 @@ def get_drop(bag_id):
     common_drop = common_bag.get_drop_items()
     drops.extend(common_drop)
     return drops
-
-
-def get_gift(player, chapter_obj, chapter_id, response):
-    already_gift = chapter_obj.already_gift
-    gift_weight = copy.copy(game_configs.stage_config.get('gift_weight').get(chapter_id))
-    gift_info = game_configs.stage_config.get('gift_info').get(chapter_id)
-    for x in already_gift:
-        del gift_weight[x]
-    if not gift_weight:
-        return {'res':  False}
-    all_weight = 0
-    for (id, weight) in gift_weight.items():
-        all_weight += weight
-    random_num = random.randint(1, all_weight)
-    for (id, weight) in gift_weight.items():
-        if random_num <= weight:
-            gift_id = id
-            break
-        random_num -= weight
-    gift = gift_info[gift_id]
-
-    prize = parse({gift[0]: [gift[2], gift[2], gift[1]]})
-    return_data = gain(player, prize, const.CHAPTER_AWARD)  # 获取
-    get_return(player, return_data, response.drops)
-    response.gift_id = gift_id
-    # already_gift.append(gift_id)
-    chapter_obj.already_gift.append(gift_id)
-
-    return {'res': True, 'gift_id': gift_id}
 
 
 @remoteserviceHandle('gate')
@@ -843,9 +792,3 @@ def trigger_hjqy(player, result, times=1):
     send_mail(conf_id=hjqyOpenReward, receive_id=player.base_info.id)
 
     return stage_id
-
-
-
-
-
-

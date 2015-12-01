@@ -12,13 +12,14 @@ class Stage(object):
     """关卡
     """
     def __init__(self, stage_id, attacks=0, state=-1, reset=None,
-                 drop_num=0, chest_state=0):
+                 drop_num=0, chest_state=0, star_num=0):
         self._stage_id = stage_id   # 关卡编号
         self._attacks = attacks     # 攻击次数
         self._state = state         # 关卡状态 -2: 未开启 -1：已开启但没打 0：输 1：赢
         self._chest_state = chest_state         # 关卡宝箱状态 0: 未开启 1：已开启
-        self._reset = reset if reset else [0, int(time.time())]  # 次数重置 【重置次数， 时间】
+        self._reset = reset if reset else [0, int(time.time())]  # 次数重置 [重置次数， 时间]
         self._drop_num = drop_num   # 本关卡掉落包数量, 当战斗失败时设置,防止玩家强退，来刷最大掉落数
+        self._star_num = star_num  # 通关关卡后得到的星星数量 0-3
 
     @property
     def stage_id(self):
@@ -65,10 +66,19 @@ class Stage(object):
         self._drop_num = drop_num
 
     @property
+    def star_num(self):
+        return self._star_num
+
+    @star_num.setter
+    def star_num(self, v):
+        self._star_num = v
+
+    @property
     def info(self):
         return dict(stage_id=self._stage_id, attacks=self._attacks,
                     state=self._state, reset=self._reset,
-                    drop_num=self._drop_num, chest_state=self._chest_state)
+                    drop_num=self._drop_num, chest_state=self._chest_state,
+                    star_num=self._star_num)
 
     def dumps(self):
         return cPickle.dumps(self.info)
@@ -78,25 +88,39 @@ class Stage(object):
         info = cPickle.loads(data)
         return cls(**info)
 
-    def update(self, result):
+    def update(self, result, num):
         """更新攻击次数和关卡状态
         """
         self._drop_num = 0  # 结算时清空drop_num
         if result:  # win
             self._attacks += 1  # 攻击次数+1
             self._state = 1  # 状态赢
-        else:
-            self._state = 0
+            if num > self._star_num:
+                self.star_num = num
+        # else:
+        #     self._state = 0
 
 
 class StageAward(object):
     """关卡奖励
     """
-    def __init__(self, chapter_id, dragon_gift=-1, award_info=None, already_gift=None):
+    def __init__(self, chapter_id, star_gift=-1, award_info=None,
+                 now_random=0, random_gift_times=0):
         self._chapter_id = chapter_id  # 章节编号
-        self._award_info = award_info  if award_info else [] # 奖励领取信息 list -1:奖励没达成 0：奖励达成没有领取 1：已经领取
-        self._dragon_gift = dragon_gift # 龙纹奖励 int -1:奖励没达成 0：奖励达成没有领取 1：已经领取
-        self._already_gift = already_gift if already_gift else []  # 已领奖励
+
+        # 奖励领取信息 list -1:奖励没达成 0：奖励达成没有领取 1：已经领取
+        self._award_info = award_info if award_info else []
+        self._star_gift = star_gift  # -1:未达成 1:已领取 2已经放弃 3：未处理
+        self._now_random = now_random  # 现在的星级抽奖随机值，0为未随机
+        self._random_gift_times = random_gift_times
+
+    @property
+    def random_gift_times(self):
+        return self._random_gift_times
+
+    @random_gift_times.setter
+    def random_gift_times(self, v):
+        self._random_gift_times = v
 
     @property
     def chapter_id(self):
@@ -109,21 +133,25 @@ class StageAward(object):
         return self._award_info
 
     @property
-    def already_gift(self):
-        return self._already_gift
+    def star_gift(self):
+        return self._star_gift
+
+    @star_gift.setter
+    def star_gift(self, v):
+        self._star_gift = v
 
     @property
-    def dragon_gift(self):
-        return self._dragon_gift
+    def now_random(self):
+        return self._now_random
 
-    @dragon_gift.setter
-    def dragon_gift(self, v):
-        self._dragon_gift = v
+    @now_random.setter
+    def now_random(self, v):
+        self.now_random = v
 
     @property
     def info(self):
         return dict(chapter_id=self._chapter_id, award_info=self._award_info,
-                    dragon_gift=self._dragon_gift, already_gift=self._already_gift)
+                    star_gift=self._star_gift, now_random=self._now_random)
 
     def dumps(self):
         return cPickle.dumps(self.info)
@@ -136,6 +164,7 @@ class StageAward(object):
     def update(self, star_num):
         """根据星星数量更新奖励信息
         """
+        # 奖励领取信息 list -1:奖励没达成 0：奖励达成没有领取 1：已经领取
         award_info = self.check(star_num)
         if self._award_info:  # 领取奖励信息存在
             curr_award_info = []
@@ -152,9 +181,9 @@ class StageAward(object):
             self._award_info = award_info
         if not self._award_info:
             return
-        if self._dragon_gift == -1:
+        if self._star_gift == -1:
             if self._award_info[-1] != -1:
-                self._dragon_gift = 0
+                self._star_gift = 3
 
     def check(self, star_num):
         """根据星星数量判断是否能领取奖励
@@ -179,4 +208,6 @@ class StageAward(object):
                     self._chapter_id and item.chaptersTab:
                 stage = item
                 break
+        if not stage:
+            print self._chapter_id, '================787968686868768687686876868======'
         return stage

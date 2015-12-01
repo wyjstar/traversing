@@ -96,3 +96,8 @@ message DealRandomResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse drops = 2;
 }
+
+//更新显示剧情章节 command:1930
+message UpdataChapterPromptResponse{
+    required CommonResponse res = 1;
+}
