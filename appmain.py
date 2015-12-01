@@ -13,6 +13,7 @@ from gfirefly.server.logobj import logger
 
 
 def dump_stacks(signal, frame):
+    logger.error('signal SIGUSR1 server dump')
     codes = []
     for threadId, stack in sys._current_frames().items():
         for filename, lineno, name, line in traceback.extract_stack(stack):
@@ -22,7 +23,7 @@ def dump_stacks(signal, frame):
             if line:
                 codes.append("  %s" % (line.strip()))
     for line in codes:
-        logger.debug(line)
+        logger.error(line)
 
 
 def print_stack(signal, frame):
