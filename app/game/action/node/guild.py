@@ -208,7 +208,7 @@ def exit_guild_803(data, player):
         # 删除排行
         rank_helper.remove_rank('GuildLevel', g_id)
         # 删除申请加入军团玩家的申请信息
-        del_apply_cache(remote_res.get('apply_ids'))
+        del_apply_cache(remote_res.get('apply_ids'), g_id)
         mail_id = 304
     elif remote_res.get('no') == 2:
         # 团长转让
@@ -233,10 +233,10 @@ def exit_guild_803(data, player):
     return response.SerializeToString()
 
 
-def del_apply_cache(apply_ids):
+def del_apply_cache(apply_ids, g_id):
     for p_id in apply_ids:
         if not netforwarding.push_message('del_apply_cache_remote',
-                                          p_id, guild_obj.g_id):
+                                          p_id, g_id):
             logger.error('del_apply_cache push message fail id:%d' % p_id)
 
 
