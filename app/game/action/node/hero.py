@@ -53,7 +53,7 @@ def hero_upgrade_with_item_103(data, player):
     response.level = hero.level
     response.exp = hero.exp
     # 更新 七日奖励
-    target_update(self.owner, [31])
+    target_update(player, [31])
     return response.SerializeToString()
 
 def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
@@ -99,7 +99,7 @@ def one_key_hero_upgrade_with_item_120(data, player):
     response.exp_item_num.append(res.get('middle_exp_num'))
     response.exp_item_num.append(res.get('big_exp_num'))
     # 更新 七日奖励
-    target_update(self.owner, [31])
+    target_update(player, [31])
     # logger.debug(res)
     # logger.debug(response)
     return response.SerializeToString()
@@ -175,7 +175,7 @@ def hero_break_104(data, player):
         response.res.result_no = res.get('result_no')
         return response.SerializeToString()
     # 更新 七日奖励
-    target_update(self.owner, [32])
+    target_update(player, [32])
     response.res.result = True
     response.break_level = res.get("break_level")
     return response.SerializeToString()
