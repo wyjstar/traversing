@@ -81,7 +81,7 @@ def get_online_and_level_gift_data_1150(data, player):
 
 
 @remoteserviceHandle('gate')
-def get_online_and_level_gift_data_1151(data, player):
+def take_recharge_gift_1151(data, player):
     request = recharge_pb2.GetRechargeGiftRequest()
     request.ParseFromString(data)
 
