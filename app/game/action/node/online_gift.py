@@ -102,9 +102,9 @@ def get_tomorrow_gift_1122(data, player):
     if not tomorrow_gift:
         logger.error('tomorrow gift is not exist')
         return response.SerializeToString()
-    if not tomorrow_gift.get('is_open'):
-        logger.error('tomorrow gift is not open')
-        return response.SerializeToString()
+    # if not tomorrow_gift.get('is_open'):
+    #     logger.error('tomorrow gift is not open')
+    #     return response.SerializeToString()
     if player.base_info.tomorrow_gift != 0:
         logger.error('tomorrow gift is taken!')
         return response.SerializeToString()
