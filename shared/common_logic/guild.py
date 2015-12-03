@@ -10,7 +10,8 @@ from gfirefly.dbentrust.redis_mode import RedisObject
 tb_guild_info = RedisObject('tb_guild_info')
 from shared.common_logic.escort_task import EscortTask
 from shared.common_logic.guild_boss import GuildBoss
-from shared.utils.date_util import get_current_timestamp
+from shared.utils.date_util import str_time_to_timestamp, get_current_timestamp
+from collections import deque
 
 
 class Guild(object):
@@ -37,8 +38,10 @@ class Guild(object):
         self._escort_tasks_invite_rob = {}     # 粮草押运任务邀请
         self._guild_boss = GuildBoss()         # 圣兽
         self._guild_boss_trigger_times = 0     # 圣兽触发次数
+        self._guild_boss_reset_time = 0     # 上次圣兽重置时间
         self._guild_skills = {}                # 军团等级
         self._last_attack_time = 0             # 上次攻击圣兽时间
+        self._escort_tasks_ids = deque([])     # 任务ids
 
         self.init_guild_skills()
 
@@ -69,6 +72,8 @@ class Guild(object):
                 'guild_boss_trigger_times': self._guild_boss_trigger_times,
                 'guild_skills': self._guild_skills,
                 'last_attack_time': self._last_attack_time,
+                'guild_boss_reset_time': self._guild_boss_reset_time,
+                'escort_tasks_ids': self._escort_tasks_ids,
                 }
         return data
 
@@ -101,17 +106,20 @@ class Guild(object):
         self._p_list = data.get("p_list")
         self._apply = data.get("apply")
         self._build = data.get("build")
+        self._escort_tasks_ids = data.get("escort_tasks_ids", deque([]))
 
         # 初始化粮草押运信息
         tb_guild_escort_tasks = tb_guild_info.getObj(self._g_id).getObj('escort_tasks')
-        heros = tb_guild_escort_tasks.hgetall()
-        for task_id, data in heros.items():
+        escort_tasks = tb_guild_escort_tasks.hgetall()
+        for task_id, data in escort_tasks.items():
             task = EscortTask(self)
             task.init_data(data)
             self._escort_tasks[task.task_id] = task
         for k, task in self._escort_tasks.items():
             if task.state == 2:
                 self._escort_tasks_can_rob.append(k)
+                logger.debug("guild_id %s task info %s" % (self._g_id, task))
+        logger.debug("escort_tasks_can_rob init_data %s" % self._escort_tasks_can_rob)
 
         boss = GuildBoss()
         boss.load(data.get("guild_boss", {}))
@@ -390,6 +398,11 @@ class Guild(object):
         task.state = task_info.get("state")
         task.add_player(task_info.get("player_info"), 1, 0, self.guild_info())
         self._escort_tasks[task.task_id] = task
+        self._escort_tasks_ids.append(task.task_id)
+        if len(self._escort_tasks_ids) > 1000:
+            task_id = self._escort_tasks_ids.popleft()
+            del self._escort_task_ids[task_id]
+        task.update_reward()
         task.save_data()
 
     def guild_info(self):
@@ -400,7 +413,7 @@ class Guild(object):
                 }
         return data
 
-    def add_guild_boss(self, stage_id, blue_units, boss_type):
+    def add_guild_boss(self, stage_id, blue_units, boss_type, trigger_player_id, trigger_player_name):
         """docstring for add_boss"""
         logger.debug("add boss %s %s" % ( blue_units, stage_id))
         boss = GuildBoss()
@@ -409,7 +422,25 @@ class Guild(object):
         boss.trigger_time = int(get_current_timestamp())
         boss.hp_max = boss.hp
         boss.boss_type = boss_type
+        boss.trigger_player_id = trigger_player_id
+        boss.trigger_player_name = trigger_player_name
         self._guild_boss = boss
         self._guild_boss_trigger_times = self._guild_boss_trigger_times + 1
         self.save_data()
         return boss
+
+    def reset_guild_boss_trigger_times(self):
+        """
+        重置公会boss召唤次数
+        """
+        str_time = game_configs.base_config.get("AnimalFresh")
+
+        if self._guild_boss_reset_time < str_time_to_timestamp(str_time):
+            self._guild_boss_reset_time = get_current_timestamp()
+            self._guild_boss_trigger_times = 0
+        self.save_data()
+
+    def update_all_escort_task_state(self):
+        """docstring for update_all_task_state"""
+        for escort_task_id, escort_task in self._escort_tasks.items():
+            escort_task.update_task_state()

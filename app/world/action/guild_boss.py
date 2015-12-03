@@ -29,6 +29,9 @@ def guild_boss_init_remote(guild_id):
     guild.guild_boss.check_time()
     guild.save_data()
 
+    # 重置召唤次数
+    guild.reset_guild_boss_trigger_times()
+
     res = dict(
             guild_skills=guild.guild_skills,
             guild_boss_trigger_times=guild.guild_boss_trigger_times,
@@ -40,7 +43,7 @@ def guild_boss_init_remote(guild_id):
     return res
 
 @rootserviceHandle
-def guild_boss_add_remote(guild_id, stage_id, boss_type):
+def guild_boss_add_remote(guild_id, stage_id, boss_type, trigger_player_id, trigger_player_name):
     guild = guild_manager_obj.get_guild_obj(guild_id)
     # 是否存在boss
     if guild.guild_boss.stage_id:
@@ -49,7 +52,7 @@ def guild_boss_add_remote(guild_id, stage_id, boss_type):
 
     blue_units = assemble_monster(stage_id, game_configs.special_stage_config, "guild_boss_stages")
     logger.debug("blue_units %s" % blue_units)
-    guild_boss = guild.add_guild_boss(stage_id, blue_units[0], boss_type)
+    guild_boss = guild.add_guild_boss(stage_id, blue_units[0], boss_type, trigger_player_id, trigger_player_name)
 
 
     return {"result": True, "guild_boss": guild_boss.property_dict()}

@@ -69,7 +69,9 @@ class CharacterStaminaComponent(Component):
         info = self.get_info(resource_type, self._owner)
         current_time = int(time.time())
         logger.debug("info %s" % info)
-        stamina_add = (current_time - item.last_gain_stamina_time) / info.get("recover_period")
+        stamina_add = 0
+        if info.get("recover_period"):
+            stamina_add = (current_time - item.last_gain_stamina_time) / info.get("recover_period")
         # left_stamina = (current_time - item.last_gain_stamina_time) % info.get("recover_period")
         logger.debug("stamina_add %s " % (stamina_add,))
         if self.owner.finance[resource_type] < info.get("max_value"):

@@ -24,6 +24,8 @@ class GuildBoss(object):
         self._trigger_time = 0 # 触发时间
         self._hp_max = 0 # 最大血量
         self._boss_type = 0 # boss 类型
+        self._trigger_player_id = 0 # 召唤者id
+        self._trigger_player_name = "" # 召唤者名字
 
     def load(self, info):
         """docstring for load"""
@@ -35,6 +37,8 @@ class GuildBoss(object):
         self._trigger_time = info.get("trigger_time", 0)
         self._hp_max = info.get("hp_max", 0)
         self._boss_type = info.get("boss_type", 0)
+        self._trigger_player_id = info.get("trigger_player_id", 0)
+        self._trigger_player_name = info.get("trigger_player_name", "")
 
     def property_dict(self):
         data = {
@@ -44,6 +48,8 @@ class GuildBoss(object):
                 "hp_max": self._hp_max,
                 "hp_left": self.hp,
                 "boss_type": self._boss_type,
+                "trigger_player_id": self._trigger_player_id,
+                "trigger_player_name": self._trigger_player_name,
                 }
         logger.debug("boss property_dict %s" % data)
         return data
@@ -60,6 +66,8 @@ class GuildBoss(object):
         self._hp_max = 0
         self._boss_type = 0
         self._blue_units = {}
+        self._trigger_player_id = 0
+        self._trigger_player_name = ""
 
     @property
     def stage_id(self):

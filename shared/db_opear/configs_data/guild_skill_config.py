@@ -23,4 +23,5 @@ class GuildSkillConfig(object):
             if row["type"] not in self.items:
                 self.items[row["type"]] = {}
             self.items[row["type"]][row["Skill_level"]] = CommonItem(row)
+            self.items[row["id"]] = CommonItem(row)
         return self.items

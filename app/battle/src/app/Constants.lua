@@ -273,10 +273,8 @@ TYPE_MINE_MONSTER   = 8          -- 攻占也怪
 TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
 TYPE_HJQY_STAGE     = 10         -- 黄巾起义
 TYPE_TREASURE       = 11         -- 夺宝战斗
-TYPE_BEAST_BATTLE   = 12         -- 圣兽战斗
-
 TYPE_TEST           = 999        -- 测试战斗
-TYPE_ESCORT         = 12        -- 押运
+TYPE_ESCORT         = 13        -- 押运
 
 TYPE_PVP_NORMAL     = 0          --正常的PVP,擂台
 TYPE_PVP_CLEARANCE  = 1          --过关斩将
@@ -553,15 +551,16 @@ EventName = {
     UPDATE_ESCORT_INVITE = "update_escort_invite",
     UPDATE_MY_ESCORT = "update_my_escort",
     UPDATE_ROB_CHARATERINFO = "update_rob_characterInfo",--承接人收到的消息，有人加入劫运了
+
     UPDATE_RUNEBAG = "UPDATE_RUNEBAG",--更新宝石红点
     UPDATE_TRAVEL = "UPDATE_TRAVEL", -- 跟新游历信息
     LEGION_UPDATE_BUILD = "LEGION_UPDATE_BUILD", -- 监听建筑等级变化
     LEGION_UPDATE_BOSS = "LEGION_UPDATE_BOSS", -- 监听圣兽数据变化
     LEGION_UPDATE_APPLICATION = "LEGION_UPDATE_APPLICATION", -- 监听申请入团列表消息变化
-
     UPDATE_ROB_INVITE = "update_rob_invite",
     UPDATE_ESCORT_INVITE = "update_escort_invite",
     UPDATE_MY_ESCORT = "update_my_escort",
+
     UPDATE_RUNEBAG = "UPDATE_RUNEBAG",--更新宝石红点
 }
 
@@ -678,3 +677,4 @@ TaskState = {
     logType_myRob    = 2, -- 我的劫运记录
     logType_Legion   = 3, -- 军团劫押记录
  }
+

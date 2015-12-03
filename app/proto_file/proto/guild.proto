@@ -323,11 +323,10 @@ message PositionChange{
 
 // 获取圣兽模块信息 command 2401
 message GuildBossInitResponse{
-    required int32 skill_points = 1;     // 技能点
-    repeated GuildSkill guild_skill = 2; // 军团技能
-    required int32 trigger_times = 3;    // 军团已经召唤次数
-    required GuildBoss guild_boss = 4;   // 圣兽信息
-    required int32 last_attack_time = 5; // 我上次打的时间
+    repeated GuildSkill guild_skill = 1; // 军团技能
+    required int32 trigger_times = 2;    // 军团已经召唤次数
+    required GuildBoss guild_boss = 3;   // 圣兽信息
+    required int32 last_attack_time = 4; // 我上次打的时间
 }
 
 //军团技能

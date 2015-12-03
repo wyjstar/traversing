@@ -62,8 +62,23 @@ def is_online_remote(key, dynamic_id, data):
 @rootserviceHandle
 def push_object_remote(topic_id, msg, send_list):
     """ send msg to client in send_list
-        send_list:
+        send_list: dynamic_id
     """
+    print(topic_id, msg, send_list, "push_object_remote=============")
+    groot.child('net').push_object_remote(topic_id, str(msg), send_list)
+
+@rootserviceHandle
+def push_object_character_remote(topic_id, msg, send_character_list):
+    """ send msg to client in send_list
+        send_list: character_id
+    """
+    print(topic_id, msg, send_character_list, "push_object_character_remote=============")
+    send_list = []
+    for character_id in send_character_list:
+        oldvcharacter = VCharacterManager().get_by_id(character_id)
+        if oldvcharacter:
+            send_list.append(oldvcharacter.dynamic_id)
+    print(topic_id, msg, send_list, "push_object_character_remote=============")
     groot.child('net').push_object_remote(topic_id, str(msg), send_list)
 
 

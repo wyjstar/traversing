@@ -24,7 +24,6 @@ def init_2401(pro_data, player):
     response = guild_pb2.GuildBossInitResponse()
     data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
     logger.debug("return data %s" % data)
-    response.skill_points = 0
     response.trigger_times = data.get("guild_boss_trigger_times", 0)
     for skill_type, skill_level in data.get("guild_skills", {}).items():
         skill_pb = response.guild_skill.add()
@@ -44,6 +43,8 @@ def construct_boss_pb(data, boss_pb):
     boss_pb.hp_max = data.get("hp_max", 0)
     boss_pb.hp_left = data.get("hp_left", 0)
     boss_pb.boss_type = data.get("boss_type", 0)
+    boss_pb.player_id = data.get("trigger_player_id", 0)
+    boss_pb.player_name = data.get("trigger_player_name", "")
 
 @remoteserviceHandle('gate')
 def trigger_boss_2402(pro_data, player):
@@ -85,13 +86,13 @@ def trigger_boss_2402(pro_data, player):
         response.res.result_no = 240204
         return response.SerializeToString()
 
-    res = remote_gate['world'].guild_boss_add_remote(player.guild.g_id, stage_id, boss_type)
+    res = remote_gate['world'].guild_boss_add_remote(player.guild.g_id, stage_id, boss_type, player.base_info.id, player.base_info.base_name)
     response.res.result = res.get("result")
     if not res.get("result"):
         response.res.result_no = res.get("result_no")
         return response.SerializeToString()
 
-    player.item_package.consume_item(140001, trigger_stone_num)
+    player.item_package.consume_item(140001, consume_num)
 
     return_data = [[const.ITEM, consume_num, 140001]]
     logger.debug(return_data)
@@ -175,26 +176,28 @@ def upgrade_guild_skill_2404(pro_data, player):
     # check
     guild_skill_item = game_configs.guild_skill_config.get(skill_type).get(guild_skills.get(skill_type))
     response.res.result = False
-    #if not is_afford(player, guild_skill_item.Consume):
-        #logger.debug("consume not enough!")
-        #response.res.result_no = 24041
-        #return response.SerializeToString()
+    if not is_afford(player, guild_skill_item.Consume):
+        logger.debug("consume not enough!")
+        response.res.result_no = 24041
+        return response.SerializeToString()
 
-    #for condition2 in guild_skill_item.Skill_condition[2]:
-        #skill_type = condition2 / 100000
-        #skill_level = condition2 % 10
-        #if skill_level > guild_skills[skill_type]:
-            #logger.debug("skill level conidtion not enough!")
-            #response.res.result_no = 24042
-            #return response.SerializeToString()
+    for condition2 in guild_skill_item.Skill_condition[2]:
+        tmp_guild_skill_item = game_configs.guild_skill_config.get(condition2)
+        _skill_type = tmp_guild_skill_item.type
+        skill_level = tmp_guild_skill_item.Skill_level
+        if skill_level > guild_skills[_skill_type]:
+            logger.debug("skill level conidtion not enough!")
+            response.res.result_no = 24042
+            return response.SerializeToString()
 
-    #for condition1 in guild_skill_item.Skill_condition[1]:
-        #skill_type = condition1 / 10000
-        #skill_level = condition1 % 10
-        #if skill_level > build[skill_type]:
-            #logger.debug("guild build level not enough!")
-            #response.res.result_no = 24043
-            #return response.SerializeToString()
+    for condition1 in guild_skill_item.Skill_condition[1]:
+        tmp_guild_item = game_configs.guild_config.get(condition1)
+        guild_type = tmp_guild_item.type
+        guild_level = tmp_guild_item.level
+        if guild_level > build[guild_type]:
+            logger.debug("guild build level not enough!")
+            response.res.result_no = 24043
+            return response.SerializeToString()
 
     res = remote_gate['world'].upgrade_guild_skill_remote(player.guild.g_id, skill_type, guild_skills.get(skill_type)+1)
     if res.get("result"):

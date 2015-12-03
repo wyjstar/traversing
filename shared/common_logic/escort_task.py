@@ -1,13 +1,46 @@
 # -*- coding:utf-8 -*-
 
-#from shared.db_opear.configs_data import game_configs
+from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from shared.utils.date_util import get_current_timestamp
 from gfirefly.dbentrust.redis_mode import RedisObject
+from shared.utils.mail_helper import deal_mail
+from gfirefly.server.globalobject import GlobalObject
+from shared.db_opear.configs_data.data_helper import convert_common_resource2mail
 
 tb_guild_info = RedisObject('tb_guild_info')
 #from shared.utils.pyuuid import get_uuid
 #from app.game.action.node._fight_start_logic import assemble
+
+def get_remote_gate():
+    """docstring for get_remote_gate"""
+    return GlobalObject().child('gate')
+
+def send_mail(conf_id, receive_id, arg1):
+        mail_data, _ = deal_mail(conf_id=conf_id, receive_id=int(receive_id), arg1=arg1)
+        get_remote_gate().push_message_to_transit_remote('receive_mail_remote',
+                                                   int(receive_id), mail_data)
+def calculate_reward(peoplePercentage, robbedPercentage, formula_name, task_item):
+    """docstring for calculate_reward"""
+    logger.debug("peoplePercentage robbedPercentage %s %s " % (peoplePercentage, robbedPercentage))
+    escort_formula = game_configs.formula_config.get("EscortReward").get("formula")
+    assert escort_formula!=None, "escort_formula can not be None!"
+    percent = eval(escort_formula, {"peoplePercentage": peoplePercentage, "robbedPercentage": robbedPercentage})
+
+    # send reward mail
+    mail_arg1 = []
+    mail_arg1.extend(convert_common_resource2mail(task_item.get("reward1")))
+    mail_arg1.extend(convert_common_resource2mail(task_item.get("reward2")))
+    mail_arg1.extend(convert_common_resource2mail(task_item.get("reward3")))
+    logger.debug("mail_arg1 %s percent %s" % (mail_arg1, percent))
+    for tmp in mail_arg1:
+        for _, tmp_info in tmp.items():
+            tmp_info[0] = int(tmp_info[0] * percent)
+            tmp_info[1] = int(tmp_info[1] * percent)
+
+    logger.debug("mail_arg1 %s percent %s" % (mail_arg1, percent))
+    return mail_arg1
+
 
 class EscortTask(object):
     """粮草押运任务"""
@@ -21,14 +54,15 @@ class EscortTask(object):
         self._start_protect_time = 0 #
         self._protect_guild_info = {}
         self._protecters = []
+        self._reward = []
 
-        self._rob_task_infos = {}
+        self._rob_task_infos = []
 
     def init_data(self, info):
         self.load(info)
 
 
-    def add_player(self, player_info, protect_or_rob, header=0, guild_info={}):
+    def add_player(self, player_info, protect_or_rob, rob_no=0, guild_info={}):
         if protect_or_rob == 1:
             if not self._protecters:
                 logger.debug("receive task add player==============")
@@ -36,7 +70,7 @@ class EscortTask(object):
                 self._receive_task_time = int(get_current_timestamp())
             self._protecters.append(player_info)
         elif protect_or_rob == 2:
-            if not header:
+            if not rob_no:
                 rob_task_info = {}
                 rob_task_info["robbers"] = []
                 rob_task_info["robbers"].append(player_info)
@@ -44,9 +78,10 @@ class EscortTask(object):
                 rob_task_info["rob_state"] = 1
                 rob_task_info["rob_receive_task_time"] = int(get_current_timestamp())
                 rob_task_info["rob_guild_info"] = guild_info
-                self._rob_task_infos[player_info.get("id")] = rob_task_info
+                rob_task_info["rob_no"] = len(self._rob_task_infos) + 1
+                self._rob_task_infos.append(rob_task_info)
             else:
-                rob_task_info = self._rob_task_infos.get(header)
+                rob_task_info = self._rob_task_infos[rob_no-1]
                 rob_task_info["robbers"].append(player_info)
         # add player position to player_info
         guild_position = 3
@@ -60,35 +95,61 @@ class EscortTask(object):
 
         return True
 
-    def update_state(self, task_item):
-        self.update_finish(task_item)
-        self.update_start(task_item)
-        self.update_rob_cancel(task_item)
 
     def is_finished(self, task_item):
         if self.state == -1: return False
         if self._start_protect_time and self._start_protect_time + task_item.taskTime < get_current_timestamp():
             return True
         elif not self._start_protect_time and self._receive_task_time + task_item.wait + task_item.taskTime < get_current_timestamp():
+            self._start_protect_time = self._receive_task_time + task_item.wait
             return True
         return False
+
     def is_started(self, task_item):
         if self.state == 1 and \
             self._receive_task_time + task_item.wait > get_current_timestamp() and \
             self._receive_task_time + task_item.wait + task_item.taskTime < get_current_timestamp():
             return True
         return False
+
     def update_rob_state(self, task_item):
-        for _, rob_task_info in self._rob_task_infos.items():
+        for _, rob_task_info in self._rob_task_infos:
             if rob_task_info.get("rob_state") == 1 and \
                 rob_task_info.get("rob_receive_task_time") + 60 < get_current_timestamp():
                 rob_task_info["rob_state"] = 0
 
-        if self.state == 1 and \
-            self._receive_task_time + task_item.wait > get_current_timestamp() and \
-            self._receive_task_time + task_item.wait + task_item.taskTime < get_current_timestamp():
-            return True
-        return False
+    def update_task_state(self):
+        guild = self._owner
+        task_item = game_configs.guild_task_config.get(self._task_no)
+        if self.is_started(task_item):
+            self.state = 2
+            guild.escort_tasks_can_rob.append(self.task_id)
+        if self.is_finished(task_item):
+            self.state = -1
+            self.update_reward(task_item)
+            for player_info in self.protecters:
+                send_mail(conf_id=1001,  receive_id=player_info.get("id"),
+                                      arg1=str(self._reward))
+        self.update_rob_state(task_item)
+        self.save_data()
+
+    def update_reward(self, task_item={}):
+        logger.debug("update_reward================")
+        if not task_item:
+            task_item = game_configs.guild_task_config.get(self._task_no)
+
+        protecters_num = len(self.protecters)
+        print(task_item.peoplePercentage, protecters_num, "update_task_state")
+        peoplePercentage = task_item.peoplePercentage.get(protecters_num)
+        robbedPercentage = 0
+        if self.task_id in self._owner.escort_tasks_can_rob:
+            self._owner.escort_tasks_can_rob.remove(self.task_id)
+        for t in range(self.rob_success_times()):
+            robbedPercentage = robbedPercentage + task_item.robbedPercentage.get(t+1)
+
+
+        mail_arg1 = calculate_reward(peoplePercentage, robbedPercentage, "EscortReward", task_item)
+        self._reward = mail_arg1
 
 
     def rob_success_times(self):
@@ -121,6 +182,7 @@ class EscortTask(object):
                 "protect_guild_info": self._protect_guild_info,
                 "protecters": self._protecters,
                 "rob_task_infos": self._rob_task_infos,
+                "reward": self._reward,
                 }
 
     def load(self, task_info):
@@ -137,17 +199,17 @@ class EscortTask(object):
         self._protecters = task_info.get("protecters")
         self._rob_task_infos = task_info.get("rob_task_infos")
 
-    def update_rob_task_info(self, rob_task_info, header):
-        __rob_task_info = self._rob_task_infos.get(header)
-        __rob_task_info["seed1"] = rob_task_info["seed1"]
-        __rob_task_info["seed2"] = rob_task_info["seed2"]
-        __rob_task_info["rob_reward"] = rob_task_info["rob_reward"]
-        __rob_task_info["rob_result"] = rob_task_info["rob_result"]
-        __rob_task_info["rob_time"] = int(rob_task_info["rob_time"])
+    #def update_rob_task_info(self, rob_task_info, header):
+        #__rob_task_info = self._rob_task_infos.get(header)
+        #__rob_task_info["seed1"] = rob_task_info["seed1"]
+        #__rob_task_info["seed2"] = rob_task_info["seed2"]
+        #__rob_task_info["rob_reward"] = rob_task_info["rob_reward"]
+        #__rob_task_info["rob_result"] = rob_task_info["rob_result"]
+        #__rob_task_info["rob_time"] = int(rob_task_info["rob_time"])
 
-    def cancel_rob_task(self, header):
+    def cancel_rob_task(self, rob_no):
         """取消劫运"""
-        rob_task_info = self._rob_task_infos[header]
+        rob_task_info = self._rob_task_infos[rob_no]
         rob_task_info["rob_state"] = 0
         return rob_task_info
 
