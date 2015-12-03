@@ -335,15 +335,12 @@ def enhance_treasure(no, use_nos, player):
     key_str = 'experienceCost' + str(key_num)
 
     attr_variety = equ_conf.attrVariety
-    attr_v_keys = attr_variety.keys()
+    attr_v_keys1 = attr_variety.keys()
+    attr_v_keys = []
+    for x in attr_v_keys1:
+        attr_v_keys.append(int(x))
     attr_v_keys.sort()
     before_attr_id = 0
-
-    for x in attr_v_keys:
-        if equ_level <= int(x)-1:
-            after_attr_id = attr_variety[x][0]
-        else:
-            break
 
     while level_max > equ_level and all_max_level > equ_level:
         str_config_obj = game_configs.equipment_strengthen_config.get(equ_level)
@@ -360,10 +357,10 @@ def enhance_treasure(no, use_nos, player):
 
     after_attr_id = 0
     for x in attr_v_keys:
-        if equ_level <= int(x)-1:
-            after_attr_id = attr_variety[x][0]
-        else:
+        after_attr_id = attr_variety[str(x)][0]
+        if equ_level < x:
             break
+
     if after_attr_id != before_attr_id:
         mainAttr, minorAttr, prefix, equip_attr_id = init_equipment_attr(treasure_obj.base_info.equipment_no, after_attr_id)
         treasure_obj.attribute.main_attr = mainAttr
