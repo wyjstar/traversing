@@ -5,7 +5,6 @@ created by server on 14-7-9下午2:39.
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
 from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems
-from app.proto_file.shop_pb2 import GetShopItemsResponse
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import is_afford
 # from app.game.core.item_group_helper import is_consume
@@ -463,49 +462,4 @@ def get_shop_items_508(pro_data, player):
     request.ParseFromString(pro_data)
     shop_type = request.shop_type
 
-    response = GetShopItemsResponse()
-
-    # TODO 根据类型 从商店类型表里判断需不需要加入军团
-    if shop_type in guild_shops and player.guild.g_id == 0:
-        response.res.result_no = 846
-        response.res.result = False
-        return response.SerializePartialToString()
-
-    if shop_type in guild_shops:
-        shopdata = player.guild.get_shop_data(shop_type)
-    else:
-        shopdata = player.shop.get_shop_data(shop_type)
-
-    shop_is_open = player.base_info.vip_shop_open
-    _is_open = shop_is_open.get(shop_type, 0)
-    if _is_open == 0:
-        logger.error('shop is not open with vip:%s--%s',
-                     shop_type, shop_is_open)
-        response.res.result_no = 50801
-        response.res.result = False
-        return response.SerializePartialToString()
-
-    if not shopdata:
-        response.res.result = False
-        return response.SerializePartialToString()
-
-    for x in shopdata['item_ids']:
-        response.id.append(x)
-    for k, v in shopdata['items'].items():
-        items = response.items.add()
-        items.item_id = k
-        items.item_num = v
-    for k, v in shopdata['all_items'].items():
-        all_items = response.all_items.add()
-        all_items.item_id = k
-        all_items.item_num = v
-    for k, v in shopdata['guild_items'].items():
-        guild_items = response.guild_items.add()
-        guild_items.item_id = k
-        guild_items.item_num = v
-
-    # logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
-    response.luck_num = int(shopdata['luck_num'])
-    response.res.result = True
-    response.refresh_times = shopdata['refresh_times']
-    return response.SerializePartialToString()
+    return player.build_response_shop_items(shop_type)
