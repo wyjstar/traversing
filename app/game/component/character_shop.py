@@ -3,18 +3,24 @@
 created by server on 14-10-3下午3:43.
 """
 
+import time
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
-import time
 from app.game.core.item_group_helper import do_get_draw_drop_bag
-from app.game.core.item_group_helper import is_afford, consume, \
-    get_consume_gold_num, get_return
+from app.game.core.item_group_helper import is_afford
+from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import get_consume_gold_num
+from app.game.core.item_group_helper import get_return
 from shared.utils.const import const
-from shared.common_logic.shop import guild_shops, get_new_shop_info, \
-    check_time, refresh_shop_info, get_shop_item_ids, \
-    do_auto_refresh_items
+from shared.common_logic.shop import guild_shops
+from shared.common_logic.shop import get_new_shop_info
+from shared.common_logic.shop import check_time
+from shared.common_logic.shop import refresh_shop_info
+from shared.common_logic.shop import get_shop_item_ids
+from shared.common_logic.shop import do_auto_refresh_items
+from app.proto_file.shop_pb2 import GetShopItemsResponse
 
 
 class CharacterShopComponent(Component):
@@ -36,7 +42,8 @@ class CharacterShopComponent(Component):
     def save_data(self):
         shop = tb_character_info.getObj(self.owner.base_info.id)
         if shop:
-            data = {'shop': self._shop_data, 'shop_extra_args': self._shop_extra_args}
+            data = {'shop': self._shop_data,
+                    'shop_extra_args': self._shop_extra_args}
             shop.hmset(data)
         else:
             logger.error('cant find shop:%s', self.owner.base_info.id)
@@ -52,10 +59,10 @@ class CharacterShopComponent(Component):
 
     def get_new_shop_extra_args(self):
         data = {}
-        data['first_coin_draw'] = True # 第一次免费抽取为某个特定武将
-        data['first_gold_draw'] = True # 第一次免费抽取为某个特定武将
-        data['single_coin_draw_times'] = 0 # 元宝单抽次数,十连抽必出紫
-        data['single_gold_draw_times'] = 0 #银两单抽次数,十连抽必出
+        data['first_coin_draw'] = True  # 第一次免费抽取为某个特定武将
+        data['first_gold_draw'] = True  # 第一次免费抽取为某个特定武将
+        data['single_coin_draw_times'] = 0  # 元宝单抽次数,十连抽必出紫
+        data['single_gold_draw_times'] = 0  # 银两单抽次数,十连抽必出
         data['pseudo_times'] = {}
         return data
 
@@ -130,7 +137,7 @@ class CharacterShopComponent(Component):
             # data['last_refresh_time'] = time.time()
             if shop_item.itemNum > 0:
                 __shop_data['item_ids'] = get_shop_item_ids(shop_type,
-                                                                self._shop_data[shop_type]['luck_num'])
+                                                            self._shop_data[shop_type]['luck_num'])
             self.save_data()
 
         result = self._owner.pay.pay(price, const.SHOP_REFRESH, func)
@@ -138,6 +145,54 @@ class CharacterShopComponent(Component):
 
     def auto_refresh_items(self, shop_type):
         do_auto_refresh_items(shop_type, self._shop_data)
+
+    def build_response_shop_items(self, shop_type):
+        response = GetShopItemsResponse()
+
+        # TODO 根据类型 从商店类型表里判断需不需要加入军团
+        if shop_type in guild_shops and self.owner.guild.g_id == 0:
+            response.res.result_no = 846
+            response.res.result = False
+            return response.SerializePartialToString()
+
+        if shop_type in guild_shops:
+            shopdata = self.owner.guild.get_shop_data(shop_type)
+        else:
+            shopdata = self.get_shop_data(shop_type)
+
+        shop_is_open = self.owner.base_info.vip_shop_open
+        _is_open = shop_is_open.get(shop_type, 0)
+        if _is_open == 0:
+            logger.error('shop is not open with vip:%s--%s',
+                         shop_type, shop_is_open)
+            response.res.result_no = 50801
+            response.res.result = False
+            return response.SerializePartialToString()
+
+        if not shopdata:
+            response.res.result = False
+            return response.SerializePartialToString()
+
+        for x in shopdata['item_ids']:
+            response.id.append(x)
+        for k, v in shopdata['items'].items():
+            items = response.items.add()
+            items.item_id = k
+            items.item_num = v
+        for k, v in shopdata['all_items'].items():
+            all_items = response.all_items.add()
+            all_items.item_id = k
+            all_items.item_num = v
+        for k, v in shopdata['guild_items'].items():
+            guild_items = response.guild_items.add()
+            guild_items.item_id = k
+            guild_items.item_num = v
+
+        # logger.debug("getshop items:%s:%s", shop_type, shopdata['item_ids'])
+        response.luck_num = int(shopdata['luck_num'])
+        response.res.result = True
+        response.refresh_times = shopdata['refresh_times']
+        return response.SerializePartialToString()
 
     @property
     def first_coin_draw(self):
