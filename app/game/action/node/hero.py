@@ -16,6 +16,7 @@ from shared.db_opear.configs_data.data_helper import parse
 from shared.utils.const import const
 from app.game.core.notice import push_notice
 from shared.tlog import tlog_action
+from app.game.action.node.start_target import target_update
 
 
 @remoteserviceHandle('gate')
@@ -51,6 +52,8 @@ def hero_upgrade_with_item_103(data, player):
     response.res.result = True
     response.level = hero.level
     response.exp = hero.exp
+    # 更新 七日奖励
+    target_update(self.owner, [31])
     return response.SerializeToString()
 
 def hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player):
@@ -95,8 +98,10 @@ def one_key_hero_upgrade_with_item_120(data, player):
     response.exp_item_num.append(res.get('small_exp_num'))
     response.exp_item_num.append(res.get('middle_exp_num'))
     response.exp_item_num.append(res.get('big_exp_num'))
-    logger.debug(res)
-    logger.debug(response)
+    # 更新 七日奖励
+    target_update(self.owner, [31])
+    # logger.debug(res)
+    # logger.debug(response)
     return response.SerializeToString()
 
 def one_key_hero_upgrade_logic(hero_no, player):
@@ -169,6 +174,8 @@ def hero_break_104(data, player):
         response.res.result = False
         response.res.result_no = res.get('result_no')
         return response.SerializeToString()
+    # 更新 七日奖励
+    target_update(self.owner, [32])
     response.res.result = True
     response.break_level = res.get("break_level")
     return response.SerializeToString()
