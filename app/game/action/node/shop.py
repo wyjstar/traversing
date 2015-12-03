@@ -462,4 +462,4 @@ def get_shop_items_508(pro_data, player):
     request.ParseFromString(pro_data)
     shop_type = request.shop_type
 
-    return player.build_response_shop_items(shop_type)
+    return player.shop.build_response_shop_items(shop_type)
