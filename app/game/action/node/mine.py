@@ -27,7 +27,7 @@ from app.game.core.mail_helper import send_mail
 from app.game.core.task import hook_task, CONDITIONId
 from shared.utils import xtime
 from app.game.action.node.start_target import target_update
-from app.game.component.mine.user_mine import MineType
+from app.game.component.character_mine import MineType
 from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
 from app.game.action.node.pvp_rank import get_pvp_data
