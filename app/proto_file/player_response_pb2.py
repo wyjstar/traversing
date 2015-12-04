@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player_response.proto',
   package='',
-  serialized_pb='\n\x15player_response.proto\x1a\ngame.proto\x1a\x0c\x63ommon.proto\".\n\x0ePlayerResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\x10\n\x08nickname\x18\x02 \x02(\t\"\x86\x01\n\x17NewbeeGuideStepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"2\n\x12\x43hangeHeadResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"/\n\x18UpdateHightPowerResponse\x12\x13\n\x0bhight_power\x18\x01 \x02(\x02')
+  serialized_pb='\n\x15player_response.proto\x1a\ngame.proto\x1a\x0c\x63ommon.proto\".\n\x0ePlayerResponse\x12\n\n\x02id\x18\x01 \x02(\x03\x12\x10\n\x08nickname\x18\x02 \x02(\t\"\x97\x01\n\x17NewbeeGuideStepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0f\n\x07step_id\x18\x04 \x01(\x05\"2\n\x12\x43hangeHeadResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"/\n\x18UpdateHightPowerResponse\x12\x13\n\x0bhight_power\x18\x01 \x02(\x02')
 
 
 
@@ -83,6 +83,13 @@ _NEWBEEGUIDESTEPRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='step_id', full_name='NewbeeGuideStepResponse.step_id', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -93,7 +100,7 @@ _NEWBEEGUIDESTEPRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=100,
-  serialized_end=234,
+  serialized_end=251,
 )
 
 
@@ -120,8 +127,8 @@ _CHANGEHEADRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=236,
-  serialized_end=286,
+  serialized_start=253,
+  serialized_end=303,
 )
 
 
@@ -148,8 +155,8 @@ _UPDATEHIGHTPOWERRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=288,
-  serialized_end=335,
+  serialized_start=305,
+  serialized_end=352,
 )
 
 _NEWBEEGUIDESTEPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
