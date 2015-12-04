@@ -86,7 +86,11 @@ class CharacterPay(Component):
             return
         balance = data['balance']
         gen_balance = data['gen_balance']
+        # add gen balance
+        gen_balance_add = gen_balance - self._owner.base_info.gen_balance
         self._owner.base_info.gen_balance = gen_balance
+        self._owner.finance.gold += gen_balance_add
+        self._owner.finance.save_data()
         isfirst = data['first_save']
         if isfirst == 1:
             tlog_action.log('Recharge', self.owner, isfirst, 1)
@@ -98,9 +102,8 @@ class CharacterPay(Component):
             return False
 
         balance, gen_balance = result # 充值结果：balance 当前值， gen_balance 赠送
-        gen_balance_add = gen_balance - self._owner.base_info.gen_balance
         recharge_balance = balance - self._owner.finance.gold # 累计充值数量
-        if recharge_balance - gen_balance_add > 0:
+        if recharge_balance > 0:
             self._owner.base_info.recharge += recharge_balance
             self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
         self._owner.base_info.gen_balance = gen_balance
@@ -115,13 +118,16 @@ class CharacterPay(Component):
             return False
 
         balance, gen_balance = result # 充值结果：balance 当前值， gen_balance 赠送
+        # add gen balance
         gen_balance_add = gen_balance - self._owner.base_info.gen_balance
+        self._owner.finance.gold += gen_balance_add
+        self._owner.finance.save_data()
         recharge_balance = balance - self._owner.finance.gold # 累计充值数量
 
         self._owner.base_info.gen_balance = gen_balance
         self._owner.base_info.save_data()
 
-        if recharge_balance - gen_balance_add > 0:
+        if recharge_balance > 0:
             #self._owner.recharge.charge(recharge_balance) # 充值活动
             #self._owner.base_info.recharge += recharge_balance
             #self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
@@ -236,7 +242,5 @@ class CharacterPay(Component):
         """
         赠送gold, 用于掉落包中的gold, 更新gold
         """
-        if self._present_m(num):
-            self._owner.finance.gold += num
-            self._owner.finance.save_data()
+        self._present_m(num)
         self.get_balance()
