@@ -31,7 +31,7 @@ message RobEscortTaskInfo{
     optional int32 rob_time = 9;           // 劫运的时间
     optional int32 rob_state = 10;           // 劫运的状态 0：取消状态，1：接受任务，倒计时开始 -1：完成
     optional int32 rob_receive_task_time = 11;        // 劫运接受时间
-    optional int32 rob_no = 12;                 // 劫运no, 用来定位哪个劫运任务
+    optional int32 rob_no = 12 [default = -1];                 // 劫运no, 用来定位哪个劫运任务
 }
 
 // 获取所有押运任务 command:1901
@@ -71,12 +71,18 @@ message ReceiveEscortTaskRequest{
     required string task_id = 1;   // 任务id
     required int32 protect_or_rob = 2; // 押运1 劫运2
     required int32 task_guild_id = 3; // 任务所在公会id
+    optional int32 rob_no = 4 [default = -1]; //
+}
+//接受劫运任务
+message ReceiveEscortTaskResponse{
+    required CommonResponse res = 1;        // 结果
+    optional EscortTask task = 2;          // 任务
 }
 //取消劫运 command 1906 返回 CommonResponse
 message CancelEscortTaskRequest{
     required string task_id = 1; //任务id
     required int32 task_guild_id = 2; // 任务所在公会id
-    optional int32 rob_no = 3; //
+    optional int32 rob_no = 3 [default = -1]; //
 }
 
 // 发布邀请、参与押运/劫运邀请、command:1908
@@ -85,7 +91,7 @@ message InviteEscortTaskRequest{
     required int32 send_or_in = 2; // 发布1 参与2
     required int32 protect_or_rob = 3; // 押运1 劫运2
     required int32 task_guild_id = 4; // 任务所在公会id
-    optional int32 rob_no = 5; //
+    optional int32 rob_no = 5 [default = -1]; //
 }
 //发布邀请后向军团推送信息19082
 //被劫后推送给承接人信息19083
@@ -102,6 +108,7 @@ message StartEscortTaskRequest{
     required string task_id = 1; //任务id
     required int32 protect_or_rob = 2; // 押运1 劫运2
     required int32 task_guild_id = 3; // 任务所在公会id
+    optional int32 rob_no = 4 [default = -1]; //
 }
 // 手动开始押运、劫运返回
 message StartEscortTaskResponse{

@@ -41,7 +41,7 @@ class Guild(object):
         self._guild_boss_reset_time = 0     # 上次圣兽重置时间
         self._guild_skills = {}                # 军团等级
         self._last_attack_time = 0             # 上次攻击圣兽时间
-        self._escort_tasks_ids = deque([])     # 任务ids
+        self._escort_tasks_ids = []     # 任务ids
 
         self.init_guild_skills()
 
@@ -65,7 +65,6 @@ class Guild(object):
                 'p_list': self._p_list,
                 'build': self.build,
                 'apply': self._apply,
-                'escort_tasks': self._escort_tasks,
                 'escort_tasks_invite_protect': self._escort_tasks_invite_protect,
                 'escort_tasks_invite_rob': self._escort_tasks_invite_rob,
                 'guild_boss': self._guild_boss.property_dict(),
@@ -106,7 +105,7 @@ class Guild(object):
         self._p_list = data.get("p_list")
         self._apply = data.get("apply")
         self._build = data.get("build")
-        self._escort_tasks_ids = data.get("escort_tasks_ids", deque([]))
+        self._escort_tasks_ids = data.get("escort_tasks_ids", [])
 
         # 初始化粮草押运信息
         tb_guild_escort_tasks = tb_guild_info.getObj(self._g_id).getObj('escort_tasks')
@@ -389,7 +388,10 @@ class Guild(object):
             self._bless[1] += v2
 
     def get_task_by_id(self, task_id):
-        return self._escort_tasks.get(task_id)
+        task = self._escort_tasks.get(task_id)
+        if not task:
+            logger.debug("task_id %s not exists!" % task_id)
+        return task
 
     def add_task(self, task_info):
         task = EscortTask(self)
@@ -400,7 +402,7 @@ class Guild(object):
         self._escort_tasks[task.task_id] = task
         self._escort_tasks_ids.append(task.task_id)
         if len(self._escort_tasks_ids) > 1000:
-            task_id = self._escort_tasks_ids.popleft()
+            task_id = self._escort_tasks_ids.remove(self._escort_tasks_ids[0])
             del self._escort_task_ids[task_id]
         task.update_reward()
         task.save_data()

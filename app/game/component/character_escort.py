@@ -42,7 +42,7 @@ class CharacterEscortComponent(Component):
 
     def save_data(self):
         character_info = tb_character_info.getObj(self.owner.base_info.id)
-        character_info.set("escort_task", self.property_dict())
+        character_info.hmset({"escort_task": self.property_dict()})
 
     def new_data(self):
         return {'escort_task': self.property_dict()}

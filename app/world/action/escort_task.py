@@ -39,14 +39,16 @@ def get_invite_remote(guild_id, protect_or_rob):
     tasks = {}
     guild = guild_manager_obj.get_guild_obj(guild_id)
     if protect_or_rob == 1:
-        for task_id, guild_id in guild.escort_tasks_invite_protect.items():
+        for task_id, info in guild.escort_tasks_invite_protect.items():
             task = guild.get_task_by_id(task_id)
             tasks[task_id] = construct_task_data(task)
     if protect_or_rob == 2:
-        for task_id, guild_id in guild.escort_tasks_invite_rob.items():
+        for task_id, info in guild.escort_tasks_invite_rob.items():
+            guild_id = info.get("guild_id")
+            rob_no = info.get("rob_no")
             guild = guild_manager_obj.get_guild_obj(guild_id)
             task = guild.get_task_by_id(task_id)
-            tasks[task_id] = construct_task_data(task)
+            tasks[task_id] = construct_task_data(task, rob_no)
 
     return tasks
 
@@ -61,8 +63,8 @@ def get_can_rob_tasks_remote(g_id):
     #logger.debug("get_can_rob_tasks_remote %s" % tasks)
     return tasks
 
-def construct_task_data(task):
-    return task.property_dict()
+def construct_task_data(task, rob_no=-1):
+    return task.property_dict(rob_no)
 
 @rootserviceHandle
 def get_task_by_id_remote(guild_id, task_id):
@@ -73,37 +75,83 @@ def get_task_by_id_remote(guild_id, task_id):
 @rootserviceHandle
 def get_tasks_by_ids_remote(task_ids):
     tasks = {}
-    for task_id, guild_id in task_ids.items():
-        guild = guild_manager_obj.get_guild_obj(guild_id)
+    for task_id, info in task_ids.items():
+        guild = guild_manager_obj.get_guild_obj(info.get("guild_id"))
         task = guild.get_task_by_id(task_id)
-        tasks[task_id] = construct_task_data(task)
+        if not task:
+            continue
+        tasks[task_id] = construct_task_data(task, info.get("rob_no", -1))
     return tasks
 
 @rootserviceHandle
 def add_task_remote(guild_id, task_info):
     guild = guild_manager_obj.get_guild_obj(guild_id)
     guild.add_task(task_info)
-    return True
+    return dict(result=True)
 
 @rootserviceHandle
 def add_player_remote(guild_id, task_id, player_info, protect_or_rob, rob_no):
     logger.debug("add_player_remote %s %s %s %s %s" % (guild_id, task_id, player_info, protect_or_rob, rob_no))
     guild = guild_manager_obj.get_guild_obj(guild_id)
     task = guild.get_task_by_id(task_id)
+    task.update_task_state()
 
     for protecter in task.protecters:
+        # 已存在该玩家，则不能再次加入
         if protecter.get("id") == player_info.get("id"):
+            logger.error("已存在该玩家，则不能再次加入")
             return {'result': False, 'result_no': 190802}
 
+    if protect_or_rob == 2 and task.rob_success_times() >= 2:
+        # 接受劫运任务，如果该任务已经达到最大劫运次数
+        logger.error("该任务已经达到最大劫运次数")
+        return {'result': False, 'result_no': 190803}
+
+    if protect_or_rob == 2 and rob_no == -1 and task.has_robbed(player_info.get("id")):
+        # 已经被劫了
+        logger.error("已经被劫了")
+        return {"result": False, "result_no": 190804}
+
+    if protect_or_rob == 2 and rob_no == -1 and task.has_robbing(player_info.get("id")):
+        # 已经存在正在劫运的任务
+        logger.error("已经存在正在劫运的任务")
+        return {"result": False, "result_no": 190805}
+
+    if protect_or_rob == 1 and task.state == 2:
+        # 任务已经开启
+        logger.error("押运任务已经开启")
+        return {"result": False, "result_no": 190806}
+
+    rob_task_info = {}
+    if rob_no != -1:
+        rob_task_info = task.rob_task_infos[rob_no]
+
+    if protect_or_rob == 2 and rob_task_info and rob_task_info.get("rob_state") == -1:
+        # 任务已经开启
+        logger.error("劫运任务已经完成")
+        return {"result": False, "result_no": 190807}
+
+    if protect_or_rob == 1 and len(task.protecters) == 3:
+        # 押运人数已达上限
+        logger.error("押运人数已达上限")
+        return {"result": False, "result_no": 190808}
+
+    if protect_or_rob == 2 and rob_task_info and len(rob_task_info.get("robbers", [])) == -1:
+        # 押运人数已达上限
+        logger.error("押运人数已达上限")
+        return {"result": False, "result_no": 190809}
 
     player_guild = guild_manager_obj.get_guild_obj(player_info.get("g_id"))
-    task.add_player(player_info, protect_or_rob, rob_no, player_guild.guild_info())
+    res = task.add_player(player_info, protect_or_rob, rob_no, player_guild.guild_info())
+    rob_no = -1
+    if protect_or_rob == 2:
+        rob_no = res.get("rob_no")
     if len(task.protecters)==3 and protect_or_rob == 1:
         logger.debug("team up, then auto start task!")
         start_task(task, guild)
 
     return dict(result=True,
-            task=construct_task_data(task))
+            task=construct_task_data(task, rob_no))
 
 
 @rootserviceHandle
@@ -134,13 +182,13 @@ def send_escort_task_invite_remote(guild_id, task_id, player_guild_id, rob_no, p
     """
     guild = guild_manager_obj.get_guild_obj(player_guild_id)
     if protect_or_rob == 1:
-        guild.escort_tasks_invite_protect[task_id] = {"guild_id" : guild_id, "no": rob_no}
+        guild.escort_tasks_invite_protect[task_id] = {"guild_id" : guild_id, "rob_no": rob_no}
     elif protect_or_rob == 2:
-        guild.escort_tasks_invite_rob[task_id] = {"guild_id" : guild_id, "no": rob_no}
+        guild.escort_tasks_invite_rob[task_id] = {"guild_id" : guild_id, "rob_no": rob_no}
     guild.save_data()
 
     task_guild = guild_manager_obj.get_guild_obj(guild_id)
-    return construct_task_data(task_guild.get_task_by_id(task_id))
+    return construct_task_data(task_guild.get_task_by_id(task_id), rob_no)
 
 @rootserviceHandle
 def cancel_rob_task_remote(guild_id, task_id, rob_no):
@@ -157,25 +205,24 @@ def cancel_rob_task_remote(guild_id, task_id, rob_no):
     #remote_gate.push_message_to_transit_remote('receive_mail_remote',
                                                #int(player_id), mail_data)
 @rootserviceHandle
-def start_rob_escort_remote(guild_id, task_id, rob_no):
+def start_rob_escort_remote(guild_id, task_id, rob_no, player_id):
 
     guild = guild_manager_obj.get_guild_obj(guild_id)
     task = guild.get_task_by_id(task_id)
     # get robbed success num
-    robbed_num = 0
-    has_rob = False
-    for tmp in task.rob_task_infos:
-        if tmp["rob_result"]:
-            robbed_num = robbed_num + 1
-        if tmp.get("rob_no") == rob_no and tmp["rob_result"]:
-            has_rob = True
-    if robbed_num > 2:
-        return {"result": False, "result_no": 190911}
-    if has_rob > 2:
-        return {"result": False, "result_no": 190911}
+    robbed_num = task.rob_success_times()
+
+
+    if task.rob_success_times() >= 2:
+        # 接受劫运任务，如果该任务已经达到最大劫运次数
+        return {'result': False, 'result_no': 190803}
+    if task.has_robbed(player_id):
+        # 已经被劫了
+        return {"result": False, "result_no": 190804}
     # construct battle units
     # update rob task
     task_item = game_configs.guild_task_config.get(task.task_no)
+    logger.debug("task rob task infos %s %s" % (task.rob_task_infos, len(task.rob_task_infos)))
     rob_task_info = task.rob_task_infos[rob_no]
     seed1, seed2 = get_seeds()
     rob_task_info["seed1"] = seed1
@@ -202,6 +249,10 @@ def start_rob_escort_remote(guild_id, task_id, rob_no):
         peoplePercentage = task_item.peoplePercentage.get(robbers_num)
         robbedPercentage = task_item.robbedPercentage.get(robbed_num+1)
         mail_arg1 = calculate_reward(peoplePercentage, robbedPercentage, "SnatchReward", task_item)
+        if robbed_num + 1 >= 2:
+            if task_id in guild.escort_tasks_can_rob:
+                guild.escort_tasks_can_rob.remove(task_id)
+                guild.save_data()
 
         rob_task_info["rob_reward"] = mail_arg1
         for player_info in rob_task_info.get("robbers"):
@@ -209,7 +260,7 @@ def start_rob_escort_remote(guild_id, task_id, rob_no):
     rob_task_info["rob_state"] = -1
     task.update_reward(task_item)
     task.save_data()
-    res = {"result": True, "protecters": task.protecters, "rob_task_info": rob_task_info, "task": construct_task_data(task)}
+    res = {"result": True, "protecters": task.protecters, "rob_task_info": rob_task_info, "task": construct_task_data(task, rob_no)}
     logger.debug("res %s" % res)
     return res
 
@@ -232,8 +283,8 @@ def update_task_state_remote(protect_records, rob_records):
     records = {}
     rob_records.update(protect_records)
 
-    for task_id, guild_id in rob_records.items():
-        guild = guild_manager_obj.get_guild_obj(guild_id)
+    for task_id, info in rob_records.items():
+        guild = guild_manager_obj.get_guild_obj(info.get("guild_id"))
         records[task_id] = guild
 
     for task_id, guild in records.items():

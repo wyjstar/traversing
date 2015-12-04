@@ -23,7 +23,7 @@ def send_mail(conf_id, receive_id, arg1):
 def calculate_reward(peoplePercentage, robbedPercentage, formula_name, task_item):
     """docstring for calculate_reward"""
     logger.debug("peoplePercentage robbedPercentage %s %s " % (peoplePercentage, robbedPercentage))
-    escort_formula = game_configs.formula_config.get("EscortReward").get("formula")
+    escort_formula = game_configs.formula_config.get(formula_name).get("formula")
     assert escort_formula!=None, "escort_formula can not be None!"
     percent = eval(escort_formula, {"peoplePercentage": peoplePercentage, "robbedPercentage": robbedPercentage})
 
@@ -62,7 +62,7 @@ class EscortTask(object):
         self.load(info)
 
 
-    def add_player(self, player_info, protect_or_rob, rob_no=0, guild_info={}):
+    def add_player(self, player_info, protect_or_rob, rob_no=-1, guild_info={}):
         if protect_or_rob == 1:
             if not self._protecters:
                 logger.debug("receive task add player==============")
@@ -70,7 +70,7 @@ class EscortTask(object):
                 self._receive_task_time = int(get_current_timestamp())
             self._protecters.append(player_info)
         elif protect_or_rob == 2:
-            if not rob_no:
+            if rob_no == -1:
                 rob_task_info = {}
                 rob_task_info["robbers"] = []
                 rob_task_info["robbers"].append(player_info)
@@ -78,10 +78,11 @@ class EscortTask(object):
                 rob_task_info["rob_state"] = 1
                 rob_task_info["rob_receive_task_time"] = int(get_current_timestamp())
                 rob_task_info["rob_guild_info"] = guild_info
-                rob_task_info["rob_no"] = len(self._rob_task_infos) + 1
+                rob_no = len(self._rob_task_infos)
+                rob_task_info["rob_no"] = rob_no
                 self._rob_task_infos.append(rob_task_info)
             else:
-                rob_task_info = self._rob_task_infos[rob_no-1]
+                rob_task_info = self._rob_task_infos[rob_no]
                 rob_task_info["robbers"].append(player_info)
         # add player position to player_info
         guild_position = 3
@@ -93,7 +94,7 @@ class EscortTask(object):
             guild_position = 2
         player_info["guild_position"] = guild_position
 
-        return True
+        return dict(rob_no=rob_no)
 
 
     def is_finished(self, task_item):
@@ -113,7 +114,7 @@ class EscortTask(object):
         return False
 
     def update_rob_state(self, task_item):
-        for _, rob_task_info in self._rob_task_infos:
+        for rob_task_info in self._rob_task_infos:
             if rob_task_info.get("rob_state") == 1 and \
                 rob_task_info.get("rob_receive_task_time") + 60 < get_current_timestamp():
                 rob_task_info["rob_state"] = 0
@@ -130,6 +131,8 @@ class EscortTask(object):
             for player_info in self.protecters:
                 send_mail(conf_id=1001,  receive_id=player_info.get("id"),
                                       arg1=str(self._reward))
+            if self.task_id in guild.escort_tasks_can_rob:
+                guild.escort_tasks_can_rob.remove(self._task_id)
         self.update_rob_state(task_item)
         self.save_data()
 
@@ -142,8 +145,6 @@ class EscortTask(object):
         print(task_item.peoplePercentage, protecters_num, "update_task_state")
         peoplePercentage = task_item.peoplePercentage.get(protecters_num)
         robbedPercentage = 0
-        if self.task_id in self._owner.escort_tasks_can_rob:
-            self._owner.escort_tasks_can_rob.remove(self.task_id)
         for t in range(self.rob_success_times()):
             robbedPercentage = robbedPercentage + task_item.robbedPercentage.get(t+1)
 
@@ -160,7 +161,32 @@ class EscortTask(object):
         for rob_task_info in self._rob_task_infos:
             if rob_task_info.get("rob_result"):
                 times = times + 1
+        logger.debug("rob_success_times %s" % times)
+        if times > 2:
+            times = 2
         return times
+
+    def has_robbed(self, player_id):
+        """
+        已经劫过了
+        """
+        res = False
+        for rob_task_info in self._rob_task_infos:
+            if rob_task_info.get("rob_result") and rob_task_info.get("robbers")[0].get("id") == player_id:
+                logger.debug("has_robbed %s %s" %(player_id, rob_task_info.get("robbers")[0].get("id")))
+                res = True
+        return res
+
+    def has_robbing(self, player_id):
+        """
+        存在正在劫运的任务
+        """
+        res = False
+        for rob_task_info in self._rob_task_infos:
+            if rob_task_info.get("rob_state") == 1 and rob_task_info.get("robbers")[0].get("id") == player_id:
+                res = True
+        return res
+
 
     def save_data(self):
         """
@@ -171,8 +197,12 @@ class EscortTask(object):
         if not tb_guild.hset(data['task_id'], data):
             logger.error('save escort task error:%s', data['task_id'])
 
-    def property_dict(self):
+    def property_dict(self, rob_no=-1):
         """docstring for property_dict"""
+        rob_task_infos = self._rob_task_infos
+        if rob_no != -1:
+            rob_task_infos = [self._rob_task_infos[rob_no]]
+
         return {
                 "task_id": self._task_id,
                 "task_no": self._task_no,
@@ -181,7 +211,7 @@ class EscortTask(object):
                 "start_protect_time": self._start_protect_time,
                 "protect_guild_info": self._protect_guild_info,
                 "protecters": self._protecters,
-                "rob_task_infos": self._rob_task_infos,
+                "rob_task_infos": rob_task_infos,
                 "reward": self._reward,
                 }
 
