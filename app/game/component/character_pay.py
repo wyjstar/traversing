@@ -98,10 +98,12 @@ class CharacterPay(Component):
             return False
 
         balance, gen_balance = result # 充值结果：balance 当前值， gen_balance 赠送
+        gen_balance_add = gen_balance - self._owner.base_info.gen_balance
         recharge_balance = balance - self._owner.finance.gold # 累计充值数量
-        if recharge_balance > 0:
+        if recharge_balance - gen_balance_add > 0:
             self._owner.base_info.recharge += recharge_balance
             self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
+        self._owner.base_info.gen_balance = gen_balance
         self._owner.finance.gold = balance
         self._owner.base_info.save_data()
         self._owner.finance.save_data()
@@ -113,8 +115,13 @@ class CharacterPay(Component):
             return False
 
         balance, gen_balance = result # 充值结果：balance 当前值， gen_balance 赠送
+        gen_balance_add = gen_balance - self._owner.base_info.gen_balance
         recharge_balance = balance - self._owner.finance.gold # 累计充值数量
-        if recharge_balance > 0:
+
+        self._owner.base_info.gen_balance = gen_balance
+        self._owner.base_info.save_data()
+
+        if recharge_balance - gen_balance_add > 0:
             #self._owner.recharge.charge(recharge_balance) # 充值活动
             #self._owner.base_info.recharge += recharge_balance
             #self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
@@ -229,5 +236,7 @@ class CharacterPay(Component):
         """
         赠送gold, 用于掉落包中的gold, 更新gold
         """
-        self._present_m(num)
+        if self._present_m(num):
+            self._owner.finance.gold += num
+            self._owner.finance.save_data()
         self.get_balance()
