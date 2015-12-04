@@ -16,6 +16,7 @@ from shared.utils.date_util import get_current_timestamp, is_in_period
 import cPickle
 import copy
 from app.game.core.task import hook_task, CONDITIONId
+from shared.tlog import tlog_action
 
 
 remote_gate = GlobalObject().remote.get('gate')
