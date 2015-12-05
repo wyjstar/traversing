@@ -559,7 +559,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
                     changelevel = afterlevel-beforelevel
                     hero.save_data()
                     if changelevel:
-                        tlog_action.log('HeroUpgrade', player, hero_no, changelevel,
+                        tlog_action.log('HeroUpgrade', player, hero.hero_no, changelevel,
                                         afterlevel, 3, 0, 0, 0, 0)
             # 玩家金钱
             player.finance.coin += stage_config.currency
