@@ -76,6 +76,7 @@ def get_all_mail_info_1301(proto_data, player):
     response.current = player.stamina.get_stamina_times
     # 删除过期公告
     player.mail_component.delete_mails(expire_ids)
+    print response, '====================mails'
     return response.SerializePartialToString()
 
 

@@ -269,7 +269,7 @@ def start_rob_escort_remote(guild_id, task_id, rob_no, player_id):
 
         rob_task_info["rob_reward"] = mail_arg1
         for player_info in rob_task_info.get("robbers"):
-            send_mail(conf_id=1002,  receive_id=player_info.get("id"), arg1=str(mail_arg1))
+            send_mail(conf_id=1002,  receive_id=player_info.get("id"), prize=str(mail_arg1))
     rob_task_info["rob_state"] = -1
     task.update_reward(task_item)
     task.save_data()
@@ -282,8 +282,8 @@ def get_remote_gate():
     return GlobalObject().child('gate')
 
 
-def send_mail(conf_id, receive_id, arg1):
-        mail_data, _ = deal_mail(conf_id=conf_id, receive_id=int(receive_id), arg1=arg1)
+def send_mail(conf_id, receive_id, prize):
+        mail_data, _ = deal_mail(conf_id=conf_id, receive_id=int(receive_id), prize=prize)
         get_remote_gate().push_message_to_transit_remote('receive_mail_remote',
                                                    int(receive_id), mail_data)
 
@@ -304,5 +304,3 @@ def update_task_state_remote(protect_records, rob_records):
         task = guild.get_task_by_id(task_id)
         if not task: continue
         task.update_task_state()
-
-
