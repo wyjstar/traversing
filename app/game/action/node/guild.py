@@ -629,7 +629,14 @@ def bless_809(data, player):
     else:
         player.finance.consume_gold(worship_info[1], const.GUILD_BLESS)
     # 逻辑
-    # player.guild.do_bless(worship_info[4])
+    player.guild.do_bless(worship_info[4])
+    guild_contribution = game_configs.base_config.get('GuildContribution')
+    animal_open_consume = game_configs.base_config.get('AnimalOpenConsume')
+
+    return_data = gain(player, guild_contribution, const.Bless,
+                       multiple=worship_info[4])  # 获取
+    return_data = gain(player, animal_open_consume, const.Bless,
+                       multiple=worship_info[5])  # 获取
 
     # rank_helper.add_rank_info('GuildLevel',
     #                           guild_obj.g_id, guild_obj.level)
