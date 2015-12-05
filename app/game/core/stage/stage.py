@@ -43,10 +43,11 @@ class Stage(object):
                     if not self._elite_drop2_info[x]:
                         self._elite_drop2_info[x] = 1
                         break
-        if self._elite_drop2_info[self.attack_times]:
+        if self._elite_drop2_info[self._attack_times]:
             drop2_state = 1
         if self._elite_drop_times < stage_conf.SpecialDropmax:
             drop1_state = 1
+        self._attack_times += 1
         return drop1_state, drop2_state
 
     @property
