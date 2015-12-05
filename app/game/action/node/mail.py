@@ -76,6 +76,7 @@ def get_all_mail_info_1301(proto_data, player):
     response.current = player.stamina.get_stamina_times
     # 删除过期公告
     player.mail_component.delete_mails(expire_ids)
+    print response, '====================mails'
     return response.SerializePartialToString()
 
 
@@ -197,23 +198,24 @@ def get_prize(player, mail_ids, response):
         if not mail:
             continue
 
-        if mail.config_id:
-            if mail.config_id != game_configs.base_config.get('warFogRobbedMail'):
-                # 除了附文矿被抢
-                mail_conf = game_configs.mail_config.get(mail.config_id)
-                prize = data_helper.parse(mail_conf.rewards)
+        if mail.prize:
+            if isinstance(eval(mail.prize), dict):
+                prize = data_helper.parse(eval(mail.prize))
                 return_data = gain(player, prize, const.MAIL)
                 get_return(player, return_data, response.gain)
-                continue
-        if isinstance(eval(mail.prize), dict):
-            prize = data_helper.parse(eval(mail.prize))
+            elif isinstance(eval(mail.prize), list):
+                for prize_data in eval(mail.prize):
+                    prize = data_helper.parse(prize_data)
+                    return_data = gain(player, prize, const.MAIL)
+                    get_return(player, return_data, response.gain)
+            continue
+        if mail.config_id:
+            # if mail.config_id != game_configs.base_config.get('warFogRobbedMail'):
+                # 除了附文矿被抢
+            mail_conf = game_configs.mail_config.get(mail.config_id)
+            prize = data_helper.parse(mail_conf.rewards)
             return_data = gain(player, prize, const.MAIL)
             get_return(player, return_data, response.gain)
-        elif isinstance(eval(mail.prize), list):
-            for prize_data in eval(mail.prize):
-                prize = data_helper.parse(prize_data)
-                return_data = gain(player, prize, const.MAIL)
-                get_return(player, return_data, response.gain)
 
 
 @remoteserviceHandle('gate')

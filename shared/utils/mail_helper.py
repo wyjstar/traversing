@@ -29,6 +29,8 @@ def deal_mail(conf_id=0, nickname='', receive_id=0, guild_name='',
         mail.pvp_rank = pvp_rank
     if rune_num:
         mail.rune_num = rune_num
+    if prize:
+        mail.prize = prize
     if rank:
         mail.rank = rank
     if integral:

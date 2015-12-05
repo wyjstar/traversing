@@ -16,10 +16,13 @@ def get_remote_gate():
     """docstring for get_remote_gate"""
     return GlobalObject().child('gate')
 
-def send_mail(conf_id, receive_id, arg1):
-        mail_data, _ = deal_mail(conf_id=conf_id, receive_id=int(receive_id), arg1=arg1)
+
+def send_mail(conf_id, receive_id, prize):
+        mail_data, _ = deal_mail(conf_id=conf_id, receive_id=int(receive_id), prize=prize)
         get_remote_gate().push_message_to_transit_remote('receive_mail_remote',
                                                    int(receive_id), mail_data)
+
+
 def calculate_reward(peoplePercentage, robbedPercentage, formula_name, task_item):
     """docstring for calculate_reward"""
     logger.debug("peoplePercentage robbedPercentage %s %s " % (peoplePercentage, robbedPercentage))
@@ -131,8 +134,9 @@ class EscortTask(object):
             self.state = -1
             self.update_reward(task_item)
             for player_info in self.protecters:
-                send_mail(conf_id=1001,  receive_id=player_info.get("id"),
-                                      arg1=str(self._reward))
+                print '===================================abc', self._reward
+                send_mail(conf_id=1001, receive_id=player_info.get("id"),
+                                      prize=str(self._reward))
             if self.task_id in guild.escort_tasks_can_rob:
                 guild.escort_tasks_can_rob.remove(self._task_id)
         self.update_rob_state(task_item)
