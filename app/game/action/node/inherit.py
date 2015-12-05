@@ -23,12 +23,6 @@ def inherit_refine_151(pro_data, player):
 
     response = common_pb2.CommonResponse()
 
-    open_stage_id = game_configs.base_config.get('inheritOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state != 1:
-        response.result = False
-        response.result_no = 837
-        return response.SerializeToString()
-
     origin = player.hero_component.get_hero(origin_id)
     target = player.hero_component.get_hero(target_id)
 
@@ -73,12 +67,6 @@ def inherit_equipment_152(pro_data, player):
     target_id = request.target
 
     response = common_pb2.CommonResponse()
-
-    open_stage_id = game_configs.base_config.get('inheritOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state != 1:
-        response.result = False
-        response.result_no = 837
-        return response.SerializeToString()
 
     origin = player.equipment_component.get_equipment(origin_id)
     target = player.equipment_component.get_equipment(target_id)
@@ -133,12 +121,6 @@ def inherit_upara_153(pro_data, player):
     target_id = request.target
 
     response = common_pb2.CommonResponse()
-
-    open_stage_id = game_configs.base_config.get('inheritOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state != 1:
-        response.result = False
-        response.result_no = 837
-        return response.SerializeToString()
 
     origin_level = player.line_up_component.unpars.get(origin_id)
     target_level = player.line_up_component.unpars.get(target_id)

@@ -152,13 +152,6 @@ def join_guild_802(data, player):
             - the_time
         return response.SerializeToString()
 
-    open_stage_id = game_configs.base_config.get('guildOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state != 1:
-        # "未完成指定关卡"
-        response.res.result = False
-        response.res.result_no = 837
-        return response.SerializeToString()
-
     if m_g_id != 0:
         # "您已加入公会"
         response.res.result = False
@@ -965,12 +958,6 @@ def deal_invite_join_1804(data, player):
     response.res.result = True
 
     if res:
-        open_stage_id = game_configs.base_config.get('guildOpenStage')
-        if player.stage_component.get_stage(open_stage_id).state != 1:
-            response.res.result = False
-            response.res.result_no = 837
-            # response.message = "未完成指定关卡"
-            return response.SerializeToString()
         m_exit_time = player.guild.exit_time
         the_time = int(time.time())-m_exit_time
 
