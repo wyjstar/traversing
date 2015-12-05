@@ -151,9 +151,11 @@ def hero_sacrifice_105(data, player):
     # hero chip
     for hero_chip in args.hero_chips:
         sacrifice_gain = game_configs.chip_config.get("chips").get(hero_chip.hero_chip_no).sacrificeGain
-        for i in range(hero_chip.hero_chip_num):
-            return_data = gain(player, sacrifice_gain, const.HERO_CHIP_SACRIFICE_OPER)
-            get_return(player, return_data, response.gain)
+        return_data = gain(player,
+                           sacrifice_gain,
+                           const.HERO_CHIP_SACRIFICE_OPER,
+                           multiple=hero_chip.hero_chip_num)
+        get_return(player, return_data, response.gain)
         # remove hero_chip
         temp = player.hero_chip_component.get_chip(hero_chip.hero_chip_no)
         if temp:
