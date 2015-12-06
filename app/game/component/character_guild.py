@@ -6,7 +6,6 @@ from app.game.component.Component import Component
 from app.game.redis_mode import tb_guild_info
 from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_character_info
-from app.game.core.guild import Guild
 import time
 from gfirefly.server.globalobject import GlobalObject
 

@@ -581,18 +581,17 @@ def bless_809(data, player):
     bless_type = args.bless_type
 
     g_id = player.guild.g_id
-    data1 = tb_guild_info.getObj(g_id).hgetall()
-    if not data1 or g_id == 0:
+
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 'build', 0)
+    if not remote_res.get('res'):
         response.res.result = False
-        response.res.result_no = 800
+        response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-
+    build_info = remote_res.get('build')
     # {祈福编号：[资源类型,资源消耗量,建设值,福运,获得个人贡献值,圣兽召唤石数量]}
     # worship_info = game_configs.base_config.get('worship').get(bless_type)
-    build_level = guild_obj.build.get(2)
+    build_level = build_info.get(2)
     build_conf = game_configs.guild_config.get(2)[build_level]
     worship_info = build_conf.guild_worship.get(bless_type)
 

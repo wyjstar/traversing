@@ -46,17 +46,7 @@ def create_guild_remote(p_id, g_name, icon_id, apply_guilds):
 
 
 @rootserviceHandle
-def get_my_guild_info_remote(guild_id, p_id):
-    """
-    """
-    guild_obj = guild_manager_obj.get_guild_obj(guild_id, p_id)
-    if not guild_obj:
-        return {'res': False, 'no': 844}
-    return {'res': True, 'guild_info': guild_obj.info,
-            'position': guild_obj.get_position(p_id)}
-
-@rootserviceHandle
-def get_guild_info_remote(guild_id, info_name, p_id):
+def get_guild_info_remote(guild_id, info_names, p_id):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(guild_id)
@@ -70,6 +60,7 @@ def get_guild_info_remote(guild_id, info_name, p_id):
     if p_id:
         res.update(dict(position=guild_obj.get_position(p_id)))
     return res
+
 
 @rootserviceHandle
 def join_guild_remote(g_id, p_id):
