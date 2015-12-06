@@ -374,7 +374,6 @@ def get_reason(shop_type):
     return const.COMMON_BUY
 
 
-
 @remoteserviceHandle('gate')
 def refresh_shop_items_507(pro_data, player):
     """刷新商品列表"""
@@ -408,6 +407,18 @@ def refresh_shop_items_507(pro_data, player):
     for k, v in shopdata['limit_items']:
         response.limit_item_id.append(k)
         response.limit_item_num.append(v)
+
+    if shop_type == 11:
+        # 11活动
+        act_confs = game_configs.activity_config.get(23, [])
+        is_open = 0
+        for act_conf in act_confs:
+            if player.base_info.is_activiy_open(act_conf.id):
+                is_open = 1
+                break
+        if is_open:
+            player.act.add_act23_times()
+            player.act.save_data()
 
     response.luck_num = int(shopdata['luck_num'])
     return response.SerializeToString()

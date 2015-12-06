@@ -182,9 +182,10 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
     return result
 
 
-def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
+def gain(player, item_group, reason, result=None, multiple=1, event_id='', part_multiple=[[],1]):
     """获取
     @param item_group: [obj,obj]
+    act 掉落翻倍. [[type_ids], xs]  [[翻倍类型列表]，系数]
     """
     if result is None:
         result = []
@@ -193,9 +194,14 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
     itid = 0
 
     # 解决符文只能给一个的问题
+    # multiple
+    # part multiple
     group_add = []
     for group_item in item_group:
         type_id = group_item.item_type
+        group_item.num *= multiple
+        if type_id in part_multiple[0]:
+            group_item.num = int(group_item.num * part_multiple[1])
         num = group_item.num
         if type_id == const.RUNT:
             group_item.num = 1
@@ -204,7 +210,7 @@ def gain(player, item_group, reason, result=None, multiple=1, event_id=''):
 
     for group_item in item_group:
         type_id = group_item.item_type
-        num = group_item.num * multiple
+        num = group_item.num
         item_no = group_item.item_no
         front_type_id = type_id # 记录类型，用于武将已存在的情况。
         if type_id == const.COIN:

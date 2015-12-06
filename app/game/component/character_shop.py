@@ -131,6 +131,19 @@ class CharacterShopComponent(Component):
             else:
                 ctype, price = refreshprice.items()[0]
             # print ctype, price
+        if shop_type == 12:
+            # 9活动
+            act_confs = game_configs.activity_config.get(22, [])
+            is_open = 0
+            xs = 1
+            for act_conf in act_confs:
+                if self.owner.base_info.is_activiy_open(act_conf.id):
+                    is_open = 1
+                    xs = act_conf.parameterC[0]
+                    break
+            if is_open:
+                price = int(price*xs)
+
         def func():
             __shop_data['refresh_times'] += 1
             __shop_data['last_refresh_time'] = time.time()

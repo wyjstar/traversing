@@ -18,8 +18,25 @@ class EliteStageLogic(base_stage.BaseStageLogic):
         player = self._player
         conf = self.get_stage_config()
         tm_time = time.localtime(player.stage_component.elite_stage_info[1])
+
+        act_confs = game_configs.activity_config.get(24, [])
+        is_open = 0
+        add_times = 0
+        act_conf1 = None
+        for act_conf in act_confs:
+            if player.base_info.is_activiy_open(act_conf.id):
+                is_open = 1
+                act_conf1 = act_conf
+                break
+        if is_open:
+            add_times = act_conf1.parameterA
+
+        max_times = game_configs.vip_config.get(player.base_info.vip_level). \
+            eliteCopyTimes - player.stage_component. \
+            elite_stage_info[0] + add_times
+
         if tm_time.tm_yday == time.localtime().tm_yday \
-            and game_configs.vip_config.get(player.base_info.vip_level).eliteCopyTimes - player.stage_component.elite_stage_info[0] < conf.timesExpend:
+                and max_times < conf.timesExpend:
             logger.error("精英关卡开始战斗出错: %s" % 805)
             return {'result': False, 'result_no': 805}  # 805 次数不足
         return {'result': True}
