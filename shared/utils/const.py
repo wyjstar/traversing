@@ -52,6 +52,7 @@ const.NECTAR = 13
 const.GUILD_ESCORT_ROB_TIMES = 14
 const.STONE2 = 15
 const.SPIRIT= 16
+const.GUILD_SKILL_POINT = 18
 const.SHOE= 20
 const.EQUIPMENT_ELITE = 21
 const.RESOURCE_MAX = 40

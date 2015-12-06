@@ -5,6 +5,7 @@
 from shared.common_logic.guild import Guild
 from app.world.redis_mode import tb_guild_info
 from shared.utils.random_pick import get_random_items_from_list
+import copy
 
 
 class GuildManager(object):
@@ -14,6 +15,15 @@ class GuildManager(object):
         """
         """
         self._guilds = {}  # {id:obj}
+        print("wzp_abc", tb_guild_info.getAllKeys("tb_guild_info*[0-9]"))
+        for k in tb_guild_info.getAllKeys("tb_guild_info*[0-9]"):
+            k = k.replace("tb_guild_info:", "")
+            print("guild_id", k)
+            data1 = tb_guild_info.getObj(k).hgetall()
+            guild = Guild()
+            guild.init_data(data1)
+            print("%s %s %s k, can-ids, tasks" % (k, guild.escort_tasks_can_rob, guild.escort_tasks.keys))
+            self._guilds[int(k)] = guild
 
     def get_guild_obj(self, g_id):
         """获取军团对象
@@ -54,8 +64,11 @@ class GuildManager(object):
         print("player_g_id", player_g_id, len(self._guilds))
 
         for k, guild in self._guilds.items():
+            print("%s %s %s k, can-ids" % (k, guild.escort_tasks_can_rob, k))
             if len(guild.escort_tasks_can_rob) > 0 and player_g_id != k:
-                guilds[k] = guild.escort_tasks_can_rob
+                guild.update_all_escort_task_state()
+                print("%s %s %s k, can-ids" % (k, guild.escort_tasks_can_rob, k))
+                guilds[k] = copy.deepcopy(guild.escort_tasks_can_rob)
 
         print("get_can_rob_escort_tasks %s" % guilds)
 
@@ -71,8 +84,10 @@ class GuildManager(object):
             while len(task_ids) < target_num:
                 num = len(task_ids)
                 for g_id, tmp_task_ids in guilds.items():
+                    print("tmp_task_ids %s" % tmp_task_ids)
                     tmp_ids = get_random_items_from_list(1, tmp_task_ids)
                     if tmp_ids:
+                        print("tmp_ids %s" % tmp_ids)
                         task_id = tmp_ids[0]
                         tmp_task_ids.remove(task_id)
                         task_ids[task_id] = g_id

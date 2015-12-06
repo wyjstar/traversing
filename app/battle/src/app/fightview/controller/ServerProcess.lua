@@ -48,6 +48,9 @@ function FCProcess:pvp_start()
     self.fightProcess:perform_open_skill()
     while self.fightProcess:check_result() == 0 do
         self.fightProcess:perform_one_step()
+        if self.fightProcess:check_result() ~= 0 then
+            self.fightProcess:next_round()
+        end
     end
     return self.fightProcess:check_result() == 1, self.fightProcess.blue_hp_total - self.fightProcess:get_total_damage(), self.fightProcess.blue_units
 end

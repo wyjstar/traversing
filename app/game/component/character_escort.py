@@ -25,6 +25,7 @@ class CharacterEscortComponent(Component):
         self._rob_times = 0;           # 参与劫运次数
         self._refresh_times = 0;       # 刷新押运列表
         self._refresh_task_time = 0;   # 刷新押运任务列表时间
+        self._last_reset_time = 0;     # 重置次数
 
     def init_data(self, character_info):
         data = character_info.get('escort_task')
@@ -37,10 +38,11 @@ class CharacterEscortComponent(Component):
         self._rob_times = data.get("rob_times")
         self._refresh_times = data.get("refresh_times")
         self._refresh_task_time = data.get("refresh_task_time")
+        self._last_reset_time = data.get("last_reset_time")
 
     def save_data(self):
         character_info = tb_character_info.getObj(self.owner.base_info.id)
-        character_info.set("escort_task", self.property_dict())
+        character_info.hmset({"escort_task": self.property_dict()})
 
     def new_data(self):
         return {'escort_task': self.property_dict()}
@@ -56,6 +58,7 @@ class CharacterEscortComponent(Component):
         data['rob_times'] = self._rob_times
         data['refresh_times'] = self._refresh_times
         data['refresh_task_time'] = self._refresh_task_time
+        data['last_reset_time'] = self._last_reset_time
         return data
 
     @property

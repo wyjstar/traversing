@@ -98,6 +98,7 @@ def create_guild_801(data, player):
                                 g_name,
                                 icon_id,
                                 player.guild.apply_guilds)
+        logger.debug("create_guild_remote=========================")
         if not create_res.get('res'):
             raise ValueError("Guild name repeat!")
             return

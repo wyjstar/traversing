@@ -1,6 +1,6 @@
 small_bag_config={
   [30701001] = {
-  ["type"] = 107,  ["dropId"] = 30701,  ["weight"] = 100,  ["id"] = 30701001,  ["count"] = 32500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30701,  ["weight"] = 100,  ["id"] = 30701001,  ["count"] = 31950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21004051001] = {
   ["type"] = 101,  ["dropId"] = 21004051,  ["weight"] = 100,  ["id"] = 21004051001,  ["count"] = 1,  ["detailID"] = 10014,  ["subId"] = 1,}
 ,  [20611001] = {
@@ -16,7 +16,7 @@ small_bag_config={
 ,  [19000021042] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021042,  ["count"] = 1,  ["detailID"] = 20041,  ["subId"] = 42,}
 ,  [31291001] = {
-  ["type"] = 107,  ["dropId"] = 31291,  ["weight"] = 100,  ["id"] = 31291001,  ["count"] = 96000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31291,  ["weight"] = 100,  ["id"] = 31291001,  ["count"] = 109500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21038031001] = {
   ["type"] = 104,  ["dropId"] = 21038031,  ["weight"] = 100,  ["id"] = 21038031001,  ["count"] = 1,  ["detailID"] = 21000470,  ["subId"] = 1,}
 ,  [21201001] = {
@@ -53,10 +53,8 @@ small_bag_config={
   ["type"] = 103,  ["dropId"] = 21005051,  ["weight"] = 100,  ["id"] = 21005051001,  ["count"] = 1,  ["detailID"] = 1010029,  ["subId"] = 1,}
 ,  [19000041010] = {
   ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 64,  ["id"] = 19000041010,  ["count"] = 1,  ["detailID"] = 40009,  ["subId"] = 10,}
-,  [17001061001] = {
-  ["type"] = 105,  ["dropId"] = 17001061,  ["weight"] = 100,  ["id"] = 17001061001,  ["count"] = 1,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [19000021043] = {
-  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021043,  ["count"] = 1,  ["detailID"] = 20042,  ["subId"] = 43,}
+,  [1314001] = {
+  ["type"] = 102,  ["dropId"] = 1314,  ["weight"] = 100,  ["id"] = 1314001,  ["count"] = 1,  ["detailID"] = 100034,  ["subId"] = 1,}
 ,  [21022041001] = {
   ["type"] = 0,  ["dropId"] = 21022041,  ["weight"] = 100,  ["id"] = 21022041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [31032001] = {
@@ -70,7 +68,7 @@ small_bag_config={
 ,  [21007011001] = {
   ["type"] = 0,  ["dropId"] = 21007011,  ["weight"] = 100,  ["id"] = 21007011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [17001021001] = {
-  ["type"] = 105,  ["dropId"] = 17001021,  ["weight"] = 100,  ["id"] = 17001021001,  ["count"] = 1,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17001021,  ["weight"] = 100,  ["id"] = 17001021001,  ["count"] = 2,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [9000051001] = {
   ["type"] = 107,  ["dropId"] = 9000051,  ["weight"] = 100,  ["id"] = 9000051001,  ["count"] = 500,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [21024001001] = {
@@ -80,7 +78,7 @@ small_bag_config={
 ,  [9000011001] = {
   ["type"] = 107,  ["dropId"] = 9000011,  ["weight"] = 100,  ["id"] = 9000011001,  ["count"] = 3000,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [30441001] = {
-  ["type"] = 107,  ["dropId"] = 30441,  ["weight"] = 100,  ["id"] = 30441001,  ["count"] = 40000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30441,  ["weight"] = 100,  ["id"] = 30441001,  ["count"] = 3600,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1355001] = {
   ["type"] = 103,  ["dropId"] = 1355,  ["weight"] = 100,  ["id"] = 1355001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [60092001] = {
@@ -124,7 +122,7 @@ small_bag_config={
 ,  [1482001] = {
   ["type"] = 105,  ["dropId"] = 1482,  ["weight"] = 100,  ["id"] = 1482001,  ["count"] = 1,  ["detailID"] = 60001,  ["subId"] = 1,}
 ,  [30311001] = {
-  ["type"] = 107,  ["dropId"] = 30311,  ["weight"] = 100,  ["id"] = 30311001,  ["count"] = 21500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30311,  ["weight"] = 100,  ["id"] = 30311001,  ["count"] = 3950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [20221001] = {
   ["type"] = 105,  ["dropId"] = 20221,  ["weight"] = 100,  ["id"] = 20221001,  ["count"] = 3,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [19000041012] = {
@@ -133,10 +131,8 @@ small_bag_config={
   ["type"] = 107,  ["dropId"] = 19000021,  ["weight"] = 500,  ["id"] = 19000021045,  ["count"] = 15,  ["detailID"] = 21,  ["subId"] = 45,}
 ,  [21007051001] = {
   ["type"] = 103,  ["dropId"] = 21007051,  ["weight"] = 100,  ["id"] = 21007051001,  ["count"] = 1,  ["detailID"] = 1010011,  ["subId"] = 1,}
-,  [17002061001] = {
-  ["type"] = 105,  ["dropId"] = 17002061,  ["weight"] = 100,  ["id"] = 17002061001,  ["count"] = 2,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [17001041001] = {
-  ["type"] = 105,  ["dropId"] = 17001041,  ["weight"] = 100,  ["id"] = 17001041001,  ["count"] = 1,  ["detailID"] = 20001,  ["subId"] = 1,}
+,  [30901001] = {
+  ["type"] = 107,  ["dropId"] = 30901,  ["weight"] = 100,  ["id"] = 30901001,  ["count"] = 41950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [20811001] = {
   ["type"] = 105,  ["dropId"] = 20811,  ["weight"] = 100,  ["id"] = 20811001,  ["count"] = 14,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [105640157001] = {
@@ -194,7 +190,7 @@ small_bag_config={
 ,  [11031003] = {
   ["type"] = 107,  ["dropId"] = 11031,  ["weight"] = 100,  ["id"] = 11031003,  ["count"] = 10,  ["detailID"] = 3,  ["subId"] = 3,}
 ,  [31361001] = {
-  ["type"] = 107,  ["dropId"] = 31361,  ["weight"] = 100,  ["id"] = 31361001,  ["count"] = 130500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31361,  ["weight"] = 100,  ["id"] = 31361001,  ["count"] = 185900,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [19000031032] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 1,  ["id"] = 19000031032,  ["count"] = 1,  ["detailID"] = 30031,  ["subId"] = 32,}
 ,  [105900061001] = {
@@ -218,7 +214,7 @@ small_bag_config={
 ,  [40051001] = {
   ["type"] = 107,  ["dropId"] = 40051,  ["weight"] = 100,  ["id"] = 40051001,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [30051001] = {
-  ["type"] = 107,  ["dropId"] = 30051,  ["weight"] = 100,  ["id"] = 30051001,  ["count"] = 3500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30051,  ["weight"] = 100,  ["id"] = 30051001,  ["count"] = 200,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1433001] = {
   ["type"] = 105,  ["dropId"] = 1433,  ["weight"] = 100,  ["id"] = 1433001,  ["count"] = 1,  ["detailID"] = 60001,  ["subId"] = 1,}
 ,  [21046031001] = {
@@ -232,23 +228,19 @@ small_bag_config={
 ,  [105900071001] = {
   ["type"] = 108,  ["dropId"] = 105900071,  ["weight"] = 100,  ["id"] = 105900071001,  ["count"] = 1,  ["detailID"] = 120201,  ["subId"] = 1,}
 ,  [30641001] = {
-  ["type"] = 107,  ["dropId"] = 30641,  ["weight"] = 100,  ["id"] = 30641001,  ["count"] = 22500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30641,  ["weight"] = 100,  ["id"] = 30641001,  ["count"] = 25550,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [20551001] = {
   ["type"] = 105,  ["dropId"] = 20551,  ["weight"] = 100,  ["id"] = 20551001,  ["count"] = 4,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [50011001] = {
   ["type"] = 107,  ["dropId"] = 50011,  ["weight"] = 100,  ["id"] = 50011001,  ["count"] = 25,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [21009051001] = {
   ["type"] = 103,  ["dropId"] = 21009051,  ["weight"] = 100,  ["id"] = 21009051001,  ["count"] = 1,  ["detailID"] = 1010032,  ["subId"] = 1,}
-,  [17003061001] = {
-  ["type"] = 105,  ["dropId"] = 17003061,  ["weight"] = 100,  ["id"] = 17003061001,  ["count"] = 3,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [17002041001] = {
-  ["type"] = 105,  ["dropId"] = 17002041,  ["weight"] = 100,  ["id"] = 17002041001,  ["count"] = 2,  ["detailID"] = 20001,  ["subId"] = 1,}
 ,  [6200041001] = {
   ["type"] = 107,  ["dropId"] = 6200041,  ["weight"] = 100,  ["id"] = 6200041001,  ["count"] = 3000,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [1216001] = {
   ["type"] = 107,  ["dropId"] = 1216,  ["weight"] = 100,  ["id"] = 1216001,  ["count"] = 200,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [21026041001] = {
-  ["type"] = 0,  ["dropId"] = 21026041,  ["weight"] = 100,  ["id"] = 21026041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21028081001] = {
+  ["type"] = 103,  ["dropId"] = 21028081,  ["weight"] = 100,  ["id"] = 21028081001,  ["count"] = 1,  ["detailID"] = 1010066,  ["subId"] = 1,}
 ,  [19000031033] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031033,  ["count"] = 1,  ["detailID"] = 30032,  ["subId"] = 33,}
 ,  [1302001] = {
@@ -268,7 +260,7 @@ small_bag_config={
 ,  [109000019143] = {
   ["type"] = 104,  ["dropId"] = 109000019,  ["weight"] = 100,  ["id"] = 109000019143,  ["count"] = 1,  ["detailID"] = 22000052,  ["subId"] = 143,}
 ,  [17003021001] = {
-  ["type"] = 105,  ["dropId"] = 17003021,  ["weight"] = 100,  ["id"] = 17003021001,  ["count"] = 3,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17003021,  ["weight"] = 100,  ["id"] = 17003021001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [6200021001] = {
   ["type"] = 107,  ["dropId"] = 6200021,  ["weight"] = 100,  ["id"] = 6200021001,  ["count"] = 4000,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [6200221001] = {
@@ -282,7 +274,7 @@ small_bag_config={
 ,  [6200311001] = {
   ["type"] = 107,  ["dropId"] = 6200311,  ["weight"] = 100,  ["id"] = 6200311001,  ["count"] = 1100,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [30511001] = {
-  ["type"] = 107,  ["dropId"] = 30511,  ["weight"] = 100,  ["id"] = 30511001,  ["count"] = 7500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30511,  ["weight"] = 100,  ["id"] = 30511001,  ["count"] = 10300,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [6200201001] = {
   ["type"] = 107,  ["dropId"] = 6200201,  ["weight"] = 100,  ["id"] = 6200201001,  ["count"] = 800,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [60232001] = {
@@ -300,7 +292,7 @@ small_bag_config={
 ,  [19000031034] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031034,  ["count"] = 1,  ["detailID"] = 30033,  ["subId"] = 34,}
 ,  [31101001] = {
-  ["type"] = 107,  ["dropId"] = 31101,  ["weight"] = 100,  ["id"] = 31101001,  ["count"] = 36000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31101,  ["weight"] = 100,  ["id"] = 31101001,  ["count"] = 36500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21029081001] = {
   ["type"] = 103,  ["dropId"] = 21029081,  ["weight"] = 100,  ["id"] = 21029081001,  ["count"] = 1,  ["detailID"] = 1030059,  ["subId"] = 1,}
 ,  [80091001] = {
@@ -342,7 +334,7 @@ small_bag_config={
 ,  [6200051001] = {
   ["type"] = 107,  ["dropId"] = 6200051,  ["weight"] = 100,  ["id"] = 6200051001,  ["count"] = 2900,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [30381001] = {
-  ["type"] = 107,  ["dropId"] = 30381,  ["weight"] = 100,  ["id"] = 30381001,  ["count"] = 30500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30381,  ["weight"] = 100,  ["id"] = 30381001,  ["count"] = 2600,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [100011004] = {
   ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 300,  ["id"] = 100011004,  ["count"] = 1,  ["detailID"] = 10007,  ["subId"] = 4,}
 ,  [60101001] = {
@@ -355,12 +347,10 @@ small_bag_config={
   ["type"] = 102,  ["dropId"] = 90041,  ["weight"] = 100,  ["id"] = 90041001,  ["count"] = 1,  ["detailID"] = 100020,  ["subId"] = 1,}
 ,  [100011007] = {
   ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 300,  ["id"] = 100011007,  ["count"] = 1,  ["detailID"] = 10010,  ["subId"] = 7,}
-,  [19000031035] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 1,  ["id"] = 19000031035,  ["count"] = 1,  ["detailID"] = 30034,  ["subId"] = 35,}
+,  [100011008] = {
+  ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 300,  ["id"] = 100011008,  ["count"] = 1,  ["detailID"] = 10011,  ["subId"] = 8,}
 ,  [30971001] = {
-  ["type"] = 107,  ["dropId"] = 30971,  ["weight"] = 100,  ["id"] = 30971001,  ["count"] = 13000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [17003041001] = {
-  ["type"] = 105,  ["dropId"] = 17003041,  ["weight"] = 100,  ["id"] = 17003041001,  ["count"] = 3,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30971,  ["weight"] = 100,  ["id"] = 30971001,  ["count"] = 74500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [100011009] = {
   ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 300,  ["id"] = 100011009,  ["count"] = 1,  ["detailID"] = 10012,  ["subId"] = 9,}
 ,  [6200031001] = {
@@ -406,7 +396,7 @@ small_bag_config={
 ,  [6200101001] = {
   ["type"] = 107,  ["dropId"] = 6200101,  ["weight"] = 100,  ["id"] = 6200101001,  ["count"] = 1800,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [30251001] = {
-  ["type"] = 107,  ["dropId"] = 30251,  ["weight"] = 100,  ["id"] = 30251001,  ["count"] = 16000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30251,  ["weight"] = 100,  ["id"] = 30251001,  ["count"] = 1500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [100011020] = {
   ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 60,  ["id"] = 100011020,  ["count"] = 1,  ["detailID"] = 10034,  ["subId"] = 20,}
 ,  [6200301001] = {
@@ -422,7 +412,7 @@ small_bag_config={
 ,  [100011024] = {
   ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 60,  ["id"] = 100011024,  ["count"] = 1,  ["detailID"] = 10005,  ["subId"] = 24,}
 ,  [30841001] = {
-  ["type"] = 107,  ["dropId"] = 30841,  ["weight"] = 100,  ["id"] = 30841001,  ["count"] = 64000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30841,  ["weight"] = 100,  ["id"] = 30841001,  ["count"] = 35100,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [100011025] = {
   ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 60,  ["id"] = 100011025,  ["count"] = 1,  ["detailID"] = 10013,  ["subId"] = 25,}
 ,  [105640146001] = {
@@ -472,7 +462,7 @@ small_bag_config={
 ,  [100022001] = {
   ["type"] = 101,  ["dropId"] = 100022,  ["weight"] = 60,  ["id"] = 100022001,  ["count"] = 1,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [30121001] = {
-  ["type"] = 107,  ["dropId"] = 30121,  ["weight"] = 100,  ["id"] = 30121001,  ["count"] = 7000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30121,  ["weight"] = 100,  ["id"] = 30121001,  ["count"] = 500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1335001] = {
   ["type"] = 103,  ["dropId"] = 1335,  ["weight"] = 100,  ["id"] = 1335001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [100022002] = {
@@ -520,7 +510,7 @@ small_bag_config={
 ,  [100022011] = {
   ["type"] = 101,  ["dropId"] = 100022,  ["weight"] = 60,  ["id"] = 100022011,  ["count"] = 1,  ["detailID"] = 10037,  ["subId"] = 11,}
 ,  [31301001] = {
-  ["type"] = 107,  ["dropId"] = 31301,  ["weight"] = 100,  ["id"] = 31301001,  ["count"] = 99500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31301,  ["weight"] = 100,  ["id"] = 31301001,  ["count"] = 164250,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1204001] = {
   ["type"] = 107,  ["dropId"] = 1204,  ["weight"] = 100,  ["id"] = 1204001,  ["count"] = 80,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [6000033001] = {
@@ -582,7 +572,7 @@ small_bag_config={
 ,  [200011021] = {
   ["type"] = 101,  ["dropId"] = 200011,  ["weight"] = 400,  ["id"] = 200011021,  ["count"] = 1,  ["detailID"] = 10042,  ["subId"] = 21,}
 ,  [30581001] = {
-  ["type"] = 107,  ["dropId"] = 30581,  ["weight"] = 100,  ["id"] = 30581001,  ["count"] = 15000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30581,  ["weight"] = 100,  ["id"] = 30581001,  ["count"] = 20050,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [200011022] = {
   ["type"] = 101,  ["dropId"] = 200011,  ["weight"] = 400,  ["id"] = 200011022,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 22,}
 ,  [60243001] = {
@@ -610,7 +600,7 @@ small_bag_config={
 ,  [200011031] = {
   ["type"] = 101,  ["dropId"] = 200011,  ["weight"] = 20,  ["id"] = 200011031,  ["count"] = 1,  ["detailID"] = 10045,  ["subId"] = 31,}
 ,  [31171001] = {
-  ["type"] = 107,  ["dropId"] = 31171,  ["weight"] = 100,  ["id"] = 31171001,  ["count"] = 53500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31171,  ["weight"] = 100,  ["id"] = 31171001,  ["count"] = 84050,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1503001] = {
   ["type"] = 103,  ["dropId"] = 1503,  ["weight"] = 100,  ["id"] = 1503001,  ["count"] = 3,  ["detailID"] = 1030051,  ["subId"] = 1,}
 ,  [200011033] = {
@@ -678,7 +668,7 @@ small_bag_config={
 ,  [100021018] = {
   ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 60,  ["id"] = 100021018,  ["count"] = 1,  ["detailID"] = 10032,  ["subId"] = 18,}
 ,  [30451001] = {
-  ["type"] = 107,  ["dropId"] = 30451,  ["weight"] = 100,  ["id"] = 30451001,  ["count"] = 41500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30451,  ["weight"] = 100,  ["id"] = 30451001,  ["count"] = 7150,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [100021019] = {
   ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 60,  ["id"] = 100021019,  ["count"] = 1,  ["detailID"] = 10033,  ["subId"] = 19,}
 ,  [60112001] = {
@@ -702,9 +692,7 @@ small_bag_config={
 ,  [100021023] = {
   ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 10,  ["id"] = 100021023,  ["count"] = 1,  ["detailID"] = 10004,  ["subId"] = 23,}
 ,  [31041001] = {
-  ["type"] = 107,  ["dropId"] = 31041,  ["weight"] = 100,  ["id"] = 31041001,  ["count"] = 24500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [17005041001] = {
-  ["type"] = 105,  ["dropId"] = 17005041,  ["weight"] = 100,  ["id"] = 17005041001,  ["count"] = 5,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31041,  ["weight"] = 100,  ["id"] = 31041001,  ["count"] = 31450,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [100021024] = {
   ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 10,  ["id"] = 100021024,  ["count"] = 1,  ["detailID"] = 10005,  ["subId"] = 24,}
 ,  [6000031001] = {
@@ -723,8 +711,8 @@ small_bag_config={
   ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 10,  ["id"] = 100021026,  ["count"] = 1,  ["detailID"] = 10015,  ["subId"] = 26,}
 ,  [200021015] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 400,  ["id"] = 200021015,  ["count"] = 1,  ["detailID"] = 10030,  ["subId"] = 15,}
-,  [6000023001] = {
-  ["type"] = 107,  ["dropId"] = 6000023,  ["weight"] = 100,  ["id"] = 6000023001,  ["count"] = 480,  ["detailID"] = 13,  ["subId"] = 1,}
+,  [21002061001] = {
+  ["type"] = 0,  ["dropId"] = 21002061,  ["weight"] = 100,  ["id"] = 21002061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [200021016] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 400,  ["id"] = 200021016,  ["count"] = 1,  ["detailID"] = 10031,  ["subId"] = 16,}
 ,  [12051001] = {
@@ -749,10 +737,12 @@ small_bag_config={
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 400,  ["id"] = 200021023,  ["count"] = 1,  ["detailID"] = 10044,  ["subId"] = 23,}
 ,  [100021031] = {
   ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 10,  ["id"] = 100021031,  ["count"] = 1,  ["detailID"] = 10028,  ["subId"] = 31,}
+,  [17006013001] = {
+  ["type"] = 105,  ["dropId"] = 17006013,  ["weight"] = 100,  ["id"] = 17006013001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [200021025] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 400,  ["id"] = 200021025,  ["count"] = 1,  ["detailID"] = 10049,  ["subId"] = 25,}
-,  [21034001001] = {
-  ["type"] = 0,  ["dropId"] = 21034001,  ["weight"] = 100,  ["id"] = 21034001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21036041001] = {
+  ["type"] = 0,  ["dropId"] = 21036041,  ["weight"] = 100,  ["id"] = 21036041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [100021032] = {
   ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 10,  ["id"] = 100021032,  ["count"] = 1,  ["detailID"] = 10037,  ["subId"] = 32,}
 ,  [200021027] = {
@@ -768,7 +758,7 @@ small_bag_config={
 ,  [200021031] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 20,  ["id"] = 200021031,  ["count"] = 1,  ["detailID"] = 10045,  ["subId"] = 31,}
 ,  [30321001] = {
-  ["type"] = 107,  ["dropId"] = 30321,  ["weight"] = 100,  ["id"] = 30321001,  ["count"] = 23000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30321,  ["weight"] = 100,  ["id"] = 30321001,  ["count"] = 1850,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [200021032] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 20,  ["id"] = 200021032,  ["count"] = 1,  ["detailID"] = 10046,  ["subId"] = 32,}
 ,  [200021033] = {
@@ -786,7 +776,7 @@ small_bag_config={
 ,  [200021038] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 20,  ["id"] = 200021038,  ["count"] = 1,  ["detailID"] = 10065,  ["subId"] = 38,}
 ,  [30911001] = {
-  ["type"] = 107,  ["dropId"] = 30911,  ["weight"] = 100,  ["id"] = 30911001,  ["count"] = 87000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30911,  ["weight"] = 100,  ["id"] = 30911001,  ["count"] = 62900,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [19000041022] = {
   ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 1,  ["id"] = 19000041022,  ["count"] = 1,  ["detailID"] = 40021,  ["subId"] = 22,}
 ,  [6000081001] = {
@@ -896,7 +886,7 @@ small_bag_config={
 ,  [60114001] = {
   ["type"] = 107,  ["dropId"] = 60114,  ["weight"] = 100,  ["id"] = 60114001,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [30061001] = {
-  ["type"] = 107,  ["dropId"] = 30061,  ["weight"] = 100,  ["id"] = 30061001,  ["count"] = 4000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30061,  ["weight"] = 100,  ["id"] = 30061001,  ["count"] = 400,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21006021001] = {
   ["type"] = 0,  ["dropId"] = 21006021,  ["weight"] = 100,  ["id"] = 21006021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21023011001] = {
@@ -922,7 +912,7 @@ small_bag_config={
 ,  [7100014001] = {
   ["type"] = 107,  ["dropId"] = 7100014,  ["weight"] = 100,  ["id"] = 7100014001,  ["count"] = 4560,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [31241001] = {
-  ["type"] = 107,  ["dropId"] = 31241,  ["weight"] = 100,  ["id"] = 31241001,  ["count"] = 76500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31241,  ["weight"] = 100,  ["id"] = 31241001,  ["count"] = 144350,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1405001] = {
   ["type"] = 103,  ["dropId"] = 1405,  ["weight"] = 100,  ["id"] = 1405001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [21037081001] = {
@@ -964,7 +954,7 @@ small_bag_config={
 ,  [21041001001] = {
   ["type"] = 0,  ["dropId"] = 21041001,  ["weight"] = 100,  ["id"] = 21041001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [31111001] = {
-  ["type"] = 107,  ["dropId"] = 31111,  ["weight"] = 100,  ["id"] = 31111001,  ["count"] = 38500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31111,  ["weight"] = 100,  ["id"] = 31111001,  ["count"] = 73000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [16001021001] = {
   ["type"] = 105,  ["dropId"] = 16001021,  ["weight"] = 100,  ["id"] = 16001021001,  ["count"] = 1,  ["detailID"] = 40002,  ["subId"] = 1,}
 ,  [6001031001] = {
@@ -981,8 +971,8 @@ small_bag_config={
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 4,  ["id"] = 19000011009,  ["count"] = 1,  ["detailID"] = 10008,  ["subId"] = 9,}
 ,  [21021011001] = {
   ["type"] = 0,  ["dropId"] = 21021011,  ["weight"] = 100,  ["id"] = 21021011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [1315001] = {
-  ["type"] = 105,  ["dropId"] = 1315,  ["weight"] = 100,  ["id"] = 1315001,  ["count"] = 5,  ["detailID"] = 10001,  ["subId"] = 1,}
+,  [17008021001] = {
+  ["type"] = 105,  ["dropId"] = 17008021,  ["weight"] = 100,  ["id"] = 17008021001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [6001011001] = {
   ["type"] = 107,  ["dropId"] = 6001011,  ["weight"] = 100,  ["id"] = 6001011001,  ["count"] = 10,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [1401001] = {
@@ -994,7 +984,7 @@ small_bag_config={
 ,  [19000041026] = {
   ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 64,  ["id"] = 19000041026,  ["count"] = 1,  ["detailID"] = 40025,  ["subId"] = 26,}
 ,  [30391001] = {
-  ["type"] = 107,  ["dropId"] = 30391,  ["weight"] = 100,  ["id"] = 30391001,  ["count"] = 32000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30391,  ["weight"] = 100,  ["id"] = 30391001,  ["count"] = 5250,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21025011001] = {
   ["type"] = 0,  ["dropId"] = 21025011,  ["weight"] = 100,  ["id"] = 21025011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [60121001] = {
@@ -1016,7 +1006,7 @@ small_bag_config={
 ,  [7100012001] = {
   ["type"] = 107,  ["dropId"] = 7100012,  ["weight"] = 100,  ["id"] = 7100012001,  ["count"] = 1140,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [30981001] = {
-  ["type"] = 107,  ["dropId"] = 30981,  ["weight"] = 100,  ["id"] = 30981001,  ["count"] = 14000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30981,  ["weight"] = 100,  ["id"] = 30981001,  ["count"] = 26900,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [20891001] = {
   ["type"] = 105,  ["dropId"] = 20891,  ["weight"] = 100,  ["id"] = 20891001,  ["count"] = 13,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [1356001] = {
@@ -1054,7 +1044,7 @@ small_bag_config={
 ,  [21043001001] = {
   ["type"] = 0,  ["dropId"] = 21043001,  ["weight"] = 100,  ["id"] = 21043001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30851001] = {
-  ["type"] = 107,  ["dropId"] = 30851,  ["weight"] = 100,  ["id"] = 30851001,  ["count"] = 66500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30851,  ["weight"] = 100,  ["id"] = 30851001,  ["count"] = 52600,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1483001] = {
   ["type"] = 107,  ["dropId"] = 1483,  ["weight"] = 100,  ["id"] = 1483001,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [20761001] = {
@@ -1081,6 +1071,8 @@ small_bag_config={
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 352,  ["id"] = 109000011005,  ["count"] = 1,  ["detailID"] = 21000581,  ["subId"] = 5,}
 ,  [21025051001] = {
   ["type"] = 104,  ["dropId"] = 21025051,  ["weight"] = 100,  ["id"] = 21025051001,  ["count"] = 1,  ["detailID"] = 21000100,  ["subId"] = 1,}
+,  [17009021001] = {
+  ["type"] = 105,  ["dropId"] = 17009021,  ["weight"] = 100,  ["id"] = 17009021001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [50821001] = {
   ["type"] = 107,  ["dropId"] = 50821,  ["weight"] = 100,  ["id"] = 50821001,  ["count"] = 90,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [19000041028] = {
@@ -1090,7 +1082,7 @@ small_bag_config={
 ,  [60125001] = {
   ["type"] = 105,  ["dropId"] = 60125,  ["weight"] = 100,  ["id"] = 60125001,  ["count"] = 5,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [30131001] = {
-  ["type"] = 107,  ["dropId"] = 30131,  ["weight"] = 100,  ["id"] = 30131001,  ["count"] = 7500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30131,  ["weight"] = 100,  ["id"] = 30131001,  ["count"] = 750,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21010021001] = {
   ["type"] = 0,  ["dropId"] = 21010021,  ["weight"] = 100,  ["id"] = 21010021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [20041001] = {
@@ -1102,7 +1094,7 @@ small_bag_config={
 ,  [17010001001] = {
   ["type"] = 105,  ["dropId"] = 17010001,  ["weight"] = 100,  ["id"] = 17010001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
 ,  [30721001] = {
-  ["type"] = 107,  ["dropId"] = 30721,  ["weight"] = 100,  ["id"] = 30721001,  ["count"] = 36000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30721,  ["weight"] = 100,  ["id"] = 30721001,  ["count"] = 23700,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21044001001] = {
   ["type"] = 0,  ["dropId"] = 21044001,  ["weight"] = 100,  ["id"] = 21044001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [20631001] = {
@@ -1118,7 +1110,7 @@ small_bag_config={
 ,  [19000011012] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 64,  ["id"] = 19000011012,  ["count"] = 1,  ["detailID"] = 10011,  ["subId"] = 12,}
 ,  [31311001] = {
-  ["type"] = 107,  ["dropId"] = 31311,  ["weight"] = 100,  ["id"] = 31311001,  ["count"] = 105000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31311,  ["weight"] = 100,  ["id"] = 31311001,  ["count"] = 58300,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21041081001] = {
   ["type"] = 103,  ["dropId"] = 21041081,  ["weight"] = 100,  ["id"] = 21041081001,  ["count"] = 1,  ["detailID"] = 1030063,  ["subId"] = 1,}
 ,  [21221001] = {
@@ -1152,7 +1144,7 @@ small_bag_config={
 ,  [21028011001] = {
   ["type"] = 0,  ["dropId"] = 21028011,  ["weight"] = 100,  ["id"] = 21028011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30591001] = {
-  ["type"] = 107,  ["dropId"] = 30591,  ["weight"] = 100,  ["id"] = 30591001,  ["count"] = 16000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30591,  ["weight"] = 100,  ["id"] = 30591001,  ["count"] = 7550,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [20501001] = {
   ["type"] = 105,  ["dropId"] = 20501,  ["weight"] = 100,  ["id"] = 20501001,  ["count"] = 6,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [21045001001] = {
@@ -1166,7 +1158,7 @@ small_bag_config={
 ,  [105640016001] = {
   ["type"] = 102,  ["dropId"] = 105640016,  ["weight"] = 100,  ["id"] = 105640016001,  ["count"] = 1,  ["detailID"] = 100027,  ["subId"] = 1,}
 ,  [31181001] = {
-  ["type"] = 107,  ["dropId"] = 31181,  ["weight"] = 100,  ["id"] = 31181001,  ["count"] = 56000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31181,  ["weight"] = 100,  ["id"] = 31181001,  ["count"] = 126100,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [109000011013] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 250,  ["id"] = 109000011013,  ["count"] = 1,  ["detailID"] = 21000621,  ["subId"] = 13,}
 ,  [21091001] = {
@@ -1181,8 +1173,8 @@ small_bag_config={
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 250,  ["id"] = 109000011014,  ["count"] = 1,  ["detailID"] = 21000622,  ["subId"] = 14,}
 ,  [21027051001] = {
   ["type"] = 103,  ["dropId"] = 21027051,  ["weight"] = 100,  ["id"] = 21027051001,  ["count"] = 1,  ["detailID"] = 1010044,  ["subId"] = 1,}
-,  [1217001] = {
-  ["type"] = 107,  ["dropId"] = 1217,  ["weight"] = 100,  ["id"] = 1217001,  ["count"] = 210,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [17010021001] = {
+  ["type"] = 105,  ["dropId"] = 17010021,  ["weight"] = 100,  ["id"] = 17010021001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21046081001] = {
   ["type"] = 103,  ["dropId"] = 21046081,  ["weight"] = 100,  ["id"] = 21046081001,  ["count"] = 1,  ["detailID"] = 1030059,  ["subId"] = 1,}
 ,  [21044041001] = {
@@ -1194,7 +1186,7 @@ small_bag_config={
 ,  [1475001] = {
   ["type"] = 103,  ["dropId"] = 1475,  ["weight"] = 100,  ["id"] = 1475001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [30461001] = {
-  ["type"] = 107,  ["dropId"] = 30461,  ["weight"] = 100,  ["id"] = 30461001,  ["count"] = 43500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30461,  ["weight"] = 100,  ["id"] = 30461001,  ["count"] = 10750,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21029011001] = {
   ["type"] = 0,  ["dropId"] = 21029011,  ["weight"] = 100,  ["id"] = 21029011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [60132001] = {
@@ -1210,7 +1202,7 @@ small_bag_config={
 ,  [19000011014] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 64,  ["id"] = 19000011014,  ["count"] = 1,  ["detailID"] = 10013,  ["subId"] = 14,}
 ,  [31051001] = {
-  ["type"] = 107,  ["dropId"] = 31051,  ["weight"] = 100,  ["id"] = 31051001,  ["count"] = 26000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31051,  ["weight"] = 100,  ["id"] = 31051001,  ["count"] = 62950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [109000011017] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 151,  ["id"] = 109000011017,  ["count"] = 1,  ["detailID"] = 21000640,  ["subId"] = 17,}
 ,  [20961001] = {
@@ -1246,7 +1238,7 @@ small_bag_config={
 ,  [21013021001] = {
   ["type"] = 0,  ["dropId"] = 21013021,  ["weight"] = 100,  ["id"] = 21013021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30331001] = {
-  ["type"] = 107,  ["dropId"] = 30331,  ["weight"] = 100,  ["id"] = 30331001,  ["count"] = 24500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30331,  ["weight"] = 100,  ["id"] = 30331001,  ["count"] = 3650,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [20241001] = {
   ["type"] = 105,  ["dropId"] = 20241,  ["weight"] = 100,  ["id"] = 20241001,  ["count"] = 9,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [109000011020] = {
@@ -1260,7 +1252,7 @@ small_bag_config={
 ,  [17004002001] = {
   ["type"] = 107,  ["dropId"] = 17004002,  ["weight"] = 100,  ["id"] = 17004002001,  ["count"] = 40,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [30921001] = {
-  ["type"] = 107,  ["dropId"] = 30921,  ["weight"] = 100,  ["id"] = 30921001,  ["count"] = 6500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30921,  ["weight"] = 100,  ["id"] = 30921001,  ["count"] = 22850,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1385001] = {
   ["type"] = 103,  ["dropId"] = 1385,  ["weight"] = 100,  ["id"] = 1385001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [109000011021] = {
@@ -1286,7 +1278,7 @@ small_bag_config={
 ,  [109000011023] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 151,  ["id"] = 109000011023,  ["count"] = 1,  ["detailID"] = 21000670,  ["subId"] = 23,}
 ,  [50961001] = {
-  ["type"] = 107,  ["dropId"] = 50961,  ["weight"] = 100,  ["id"] = 50961001,  ["count"] = 100,  ["detailID"] = 100,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 50961,  ["weight"] = 100,  ["id"] = 50961001,  ["count"] = 100,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [60136001] = {
   ["type"] = 105,  ["dropId"] = 60136,  ["weight"] = 100,  ["id"] = 60136001,  ["count"] = 5,  ["detailID"] = 20001,  ["subId"] = 1,}
 ,  [30072001] = {
@@ -1342,7 +1334,7 @@ small_bag_config={
 ,  [60134001] = {
   ["type"] = 107,  ["dropId"] = 60134,  ["weight"] = 100,  ["id"] = 60134001,  ["count"] = 200,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [30071001] = {
-  ["type"] = 107,  ["dropId"] = 30071,  ["weight"] = 100,  ["id"] = 30071001,  ["count"] = 4500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30071,  ["weight"] = 100,  ["id"] = 30071001,  ["count"] = 600,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640111001] = {
   ["type"] = 105,  ["dropId"] = 105640111,  ["weight"] = 100,  ["id"] = 105640111001,  ["count"] = 50,  ["detailID"] = 20005,  ["subId"] = 1,}
 ,  [109000011028] = {
@@ -1424,7 +1416,7 @@ small_bag_config={
 ,  [8000041001] = {
   ["type"] = 101,  ["dropId"] = 8000041,  ["weight"] = 100,  ["id"] = 8000041001,  ["count"] = 1,  ["detailID"] = 10044,  ["subId"] = 1,}
 ,  [31121001] = {
-  ["type"] = 107,  ["dropId"] = 31121,  ["weight"] = 100,  ["id"] = 31121001,  ["count"] = 41000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31121,  ["weight"] = 100,  ["id"] = 31121001,  ["count"] = 109500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [600011001] = {
   ["type"] = 107,  ["dropId"] = 600011,  ["weight"] = 100,  ["id"] = 600011001,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [6020001002] = {
@@ -1464,7 +1456,7 @@ small_bag_config={
 ,  [21017021001] = {
   ["type"] = 0,  ["dropId"] = 21017021,  ["weight"] = 100,  ["id"] = 21017021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30401001] = {
-  ["type"] = 107,  ["dropId"] = 30401,  ["weight"] = 100,  ["id"] = 30401001,  ["count"] = 33000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30401,  ["weight"] = 100,  ["id"] = 30401001,  ["count"] = 7850,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [600032001] = {
   ["type"] = 104,  ["dropId"] = 600032,  ["weight"] = 100,  ["id"] = 600032001,  ["count"] = 5,  ["detailID"] = 21000510,  ["subId"] = 1,}
 ,  [60012001] = {
@@ -1580,7 +1572,7 @@ small_bag_config={
 ,  [60145001] = {
   ["type"] = 105,  ["dropId"] = 60145,  ["weight"] = 100,  ["id"] = 60145001,  ["count"] = 10,  ["detailID"] = 20001,  ["subId"] = 1,}
 ,  [30141001] = {
-  ["type"] = 107,  ["dropId"] = 30141,  ["weight"] = 100,  ["id"] = 30141001,  ["count"] = 8000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30141,  ["weight"] = 100,  ["id"] = 30141001,  ["count"] = 300,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105900131001] = {
   ["type"] = 108,  ["dropId"] = 105900131,  ["weight"] = 100,  ["id"] = 105900131001,  ["count"] = 1,  ["detailID"] = 130401,  ["subId"] = 1,}
 ,  [8000101001] = {
@@ -1614,7 +1606,7 @@ small_bag_config={
 ,  [11011003] = {
   ["type"] = 108,  ["dropId"] = 11011,  ["weight"] = 100,  ["id"] = 11011003,  ["count"] = 1,  ["detailID"] = 120101,  ["subId"] = 3,}
 ,  [31321001] = {
-  ["type"] = 107,  ["dropId"] = 31321,  ["weight"] = 100,  ["id"] = 31321001,  ["count"] = 110000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31321,  ["weight"] = 100,  ["id"] = 31321001,  ["count"] = 116550,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [109000011048] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 250,  ["id"] = 109000011048,  ["count"] = 1,  ["detailID"] = 21000720,  ["subId"] = 48,}
 ,  [21231001] = {
@@ -1652,7 +1644,7 @@ small_bag_config={
 ,  [6020001003] = {
   ["type"] = 108,  ["dropId"] = 6020001,  ["weight"] = 100,  ["id"] = 6020001003,  ["count"] = 1,  ["detailID"] = 130301,  ["subId"] = 3,}
 ,  [30601001] = {
-  ["type"] = 107,  ["dropId"] = 30601,  ["weight"] = 100,  ["id"] = 30601001,  ["count"] = 17500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30601,  ["weight"] = 100,  ["id"] = 30601001,  ["count"] = 15150,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1365001] = {
   ["type"] = 103,  ["dropId"] = 1365,  ["weight"] = 100,  ["id"] = 1365001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [21039051001] = {
@@ -1670,7 +1662,7 @@ small_bag_config={
 ,  [11011005] = {
   ["type"] = 108,  ["dropId"] = 11011,  ["weight"] = 100,  ["id"] = 11011005,  ["count"] = 1,  ["detailID"] = 120301,  ["subId"] = 5,}
 ,  [31191001] = {
-  ["type"] = 107,  ["dropId"] = 31191,  ["weight"] = 100,  ["id"] = 31191001,  ["count"] = 59000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31191,  ["weight"] = 100,  ["id"] = 31191001,  ["count"] = 45000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640046001] = {
   ["type"] = 105,  ["dropId"] = 105640046,  ["weight"] = 100,  ["id"] = 105640046001,  ["count"] = 50,  ["detailID"] = 63001,  ["subId"] = 1,}
 ,  [109000011052] = {
@@ -1749,8 +1741,8 @@ small_bag_config={
   ["type"] = 0,  ["dropId"] = 21020061,  ["weight"] = 100,  ["id"] = 21020061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105800031003] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 700,  ["id"] = 105800031003,  ["count"] = 1,  ["detailID"] = 100007,  ["subId"] = 3,}
-,  [19000041041] = {
-  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 16,  ["id"] = 19000041041,  ["count"] = 1,  ["detailID"] = 40040,  ["subId"] = 41,}
+,  [21037051001] = {
+  ["type"] = 103,  ["dropId"] = 21037051,  ["weight"] = 100,  ["id"] = 21037051001,  ["count"] = 1,  ["detailID"] = 1010020,  ["subId"] = 1,}
 ,  [109000011058] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 151,  ["id"] = 109000011058,  ["count"] = 1,  ["detailID"] = 21000770,  ["subId"] = 58,}
 ,  [71012001] = {
@@ -1836,7 +1828,7 @@ small_bag_config={
 ,  [21040011001] = {
   ["type"] = 0,  ["dropId"] = 21040011,  ["weight"] = 100,  ["id"] = 21040011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30801001] = {
-  ["type"] = 107,  ["dropId"] = 30801,  ["weight"] = 100,  ["id"] = 30801001,  ["count"] = 53500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30801,  ["weight"] = 100,  ["id"] = 30801001,  ["count"] = 16000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300011002] = {
   ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 5,  ["id"] = 105300011002,  ["count"] = 1,  ["detailID"] = 100002,  ["subId"] = 2,}
 ,  [20711001] = {
@@ -1880,7 +1872,7 @@ small_bag_config={
 ,  [109000014138] = {
   ["type"] = 104,  ["dropId"] = 109000014,  ["weight"] = 100,  ["id"] = 109000014138,  ["count"] = 1,  ["detailID"] = 22000042,  ["subId"] = 138,}
 ,  [30081001] = {
-  ["type"] = 107,  ["dropId"] = 30081,  ["weight"] = 100,  ["id"] = 30081001,  ["count"] = 4500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30081,  ["weight"] = 100,  ["id"] = 30081001,  ["count"] = 200,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21009071001] = {
   ["type"] = 103,  ["dropId"] = 21009071,  ["weight"] = 100,  ["id"] = 21009071001,  ["count"] = 1,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [21007031001] = {
@@ -1896,7 +1888,7 @@ small_bag_config={
 ,  [109000011068] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 176,  ["id"] = 109000011068,  ["count"] = 1,  ["detailID"] = 22000044,  ["subId"] = 68,}
 ,  [30671001] = {
-  ["type"] = 107,  ["dropId"] = 30671,  ["weight"] = 100,  ["id"] = 30671001,  ["count"] = 27500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30671,  ["weight"] = 100,  ["id"] = 30671001,  ["count"] = 28650,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300011006] = {
   ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 5,  ["id"] = 105300011006,  ["count"] = 1,  ["detailID"] = 100013,  ["subId"] = 6,}
 ,  [21041011001] = {
@@ -1910,7 +1902,7 @@ small_bag_config={
 ,  [105300021004] = {
   ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021004,  ["count"] = 1,  ["detailID"] = 100004,  ["subId"] = 4,}
 ,  [17002011001] = {
-  ["type"] = 105,  ["dropId"] = 17002011,  ["weight"] = 100,  ["id"] = 17002011001,  ["count"] = 2,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17002011,  ["weight"] = 100,  ["id"] = 17002011001,  ["count"] = 3,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [9000021001] = {
   ["type"] = 107,  ["dropId"] = 9000021,  ["weight"] = 100,  ["id"] = 9000021001,  ["count"] = 2000,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [109000011069] = {
@@ -1918,7 +1910,7 @@ small_bag_config={
 ,  [105300011007] = {
   ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 5,  ["id"] = 105300011007,  ["count"] = 1,  ["detailID"] = 100014,  ["subId"] = 7,}
 ,  [31261001] = {
-  ["type"] = 107,  ["dropId"] = 31261,  ["weight"] = 100,  ["id"] = 31261001,  ["count"] = 84500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31261,  ["weight"] = 100,  ["id"] = 31261001,  ["count"] = 102700,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105800031015] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 700,  ["id"] = 105800031015,  ["count"] = 1,  ["detailID"] = 100042,  ["subId"] = 15,}
 ,  [21171001] = {
@@ -1954,7 +1946,7 @@ small_bag_config={
 ,  [21025021001] = {
   ["type"] = 0,  ["dropId"] = 21025021,  ["weight"] = 100,  ["id"] = 21025021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30541001] = {
-  ["type"] = 107,  ["dropId"] = 30541,  ["weight"] = 100,  ["id"] = 30541001,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30541,  ["weight"] = 100,  ["id"] = 30541001,  ["count"] = 11750,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300011010] = {
   ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 5,  ["id"] = 105300011010,  ["count"] = 1,  ["detailID"] = 100024,  ["subId"] = 10,}
 ,  [105800031018] = {
@@ -1974,7 +1966,7 @@ small_bag_config={
 ,  [105300011011] = {
   ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 5,  ["id"] = 105300011011,  ["count"] = 1,  ["detailID"] = 100025,  ["subId"] = 11,}
 ,  [31131001] = {
-  ["type"] = 107,  ["dropId"] = 31131,  ["weight"] = 100,  ["id"] = 31131001,  ["count"] = 43500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31131,  ["weight"] = 100,  ["id"] = 31131001,  ["count"] = 39200,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300021009] = {
   ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021009,  ["count"] = 1,  ["detailID"] = 100023,  ["subId"] = 9,}
 ,  [21041001] = {
@@ -1987,8 +1979,8 @@ small_bag_config={
   ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 5,  ["id"] = 105300011012,  ["count"] = 1,  ["detailID"] = 100026,  ["subId"] = 12,}
 ,  [19000021014] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 16,  ["id"] = 19000021014,  ["count"] = 1,  ["detailID"] = 20013,  ["subId"] = 14,}
-,  [17002071001] = {
-  ["type"] = 105,  ["dropId"] = 17002071,  ["weight"] = 100,  ["id"] = 17002071001,  ["count"] = 2,  ["detailID"] = 20001,  ["subId"] = 1,}
+,  [105800031020] = {
+  ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 150,  ["id"] = 105800031020,  ["count"] = 1,  ["detailID"] = 100010,  ["subId"] = 20,}
 ,  [108000011001] = {
   ["type"] = 105,  ["dropId"] = 108000011,  ["weight"] = 100,  ["id"] = 108000011001,  ["count"] = 10,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [71031001] = {
@@ -2007,18 +1999,16 @@ small_bag_config={
   ["type"] = 105,  ["dropId"] = 105640045,  ["weight"] = 100,  ["id"] = 105640045001,  ["count"] = 5,  ["detailID"] = 30012,  ["subId"] = 1,}
 ,  [21009031001] = {
   ["type"] = 102,  ["dropId"] = 21009031,  ["weight"] = 100,  ["id"] = 21009031001,  ["count"] = 1,  ["detailID"] = 100023,  ["subId"] = 1,}
-,  [17003051001] = {
-  ["type"] = 105,  ["dropId"] = 17003051,  ["weight"] = 100,  ["id"] = 17003051001,  ["count"] = 3,  ["detailID"] = 20001,  ["subId"] = 1,}
 ,  [17001011001] = {
-  ["type"] = 105,  ["dropId"] = 17001011,  ["weight"] = 100,  ["id"] = 17001011001,  ["count"] = 1,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17001011,  ["weight"] = 100,  ["id"] = 17001011001,  ["count"] = 2,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [109000011076] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 50,  ["id"] = 109000011076,  ["count"] = 1,  ["detailID"] = 22000062,  ["subId"] = 76,}
 ,  [30411001] = {
-  ["type"] = 107,  ["dropId"] = 30411,  ["weight"] = 100,  ["id"] = 30411001,  ["count"] = 35000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30411,  ["weight"] = 100,  ["id"] = 30411001,  ["count"] = 3100,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21028061001] = {
   ["type"] = 0,  ["dropId"] = 21028061,  ["weight"] = 100,  ["id"] = 21028061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [60032001] = {
-  ["type"] = 107,  ["dropId"] = 60032,  ["weight"] = 100,  ["id"] = 60032001,  ["count"] = 40,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [21026021001] = {
+  ["type"] = 0,  ["dropId"] = 21026021,  ["weight"] = 100,  ["id"] = 21026021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [20321001] = {
   ["type"] = 105,  ["dropId"] = 20321,  ["weight"] = 100,  ["id"] = 20321001,  ["count"] = 3,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [105300021012] = {
@@ -2034,7 +2024,7 @@ small_bag_config={
 ,  [105800031023] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 150,  ["id"] = 105800031023,  ["count"] = 1,  ["detailID"] = 100031,  ["subId"] = 23,}
 ,  [17003011001] = {
-  ["type"] = 105,  ["dropId"] = 17003011,  ["weight"] = 100,  ["id"] = 17003011001,  ["count"] = 3,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17003011,  ["weight"] = 100,  ["id"] = 17003011001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105300021013] = {
   ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021013,  ["count"] = 1,  ["detailID"] = 100034,  ["subId"] = 13,}
 ,  [20911001] = {
@@ -2076,7 +2066,7 @@ small_bag_config={
 ,  [105300011018] = {
   ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 4,  ["id"] = 105300011018,  ["count"] = 1,  ["detailID"] = 100039,  ["subId"] = 18,}
 ,  [30281001] = {
-  ["type"] = 107,  ["dropId"] = 30281,  ["weight"] = 100,  ["id"] = 30281001,  ["count"] = 18500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30281,  ["weight"] = 100,  ["id"] = 30281001,  ["count"] = 2000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [50992002] = {
   ["type"] = 107,  ["dropId"] = 50992,  ["weight"] = 100,  ["id"] = 50992002,  ["count"] = 300,  ["detailID"] = 5,  ["subId"] = 2,}
 ,  [6200082001] = {
@@ -2100,7 +2090,7 @@ small_bag_config={
 ,  [21046051001] = {
   ["type"] = 103,  ["dropId"] = 21046051,  ["weight"] = 100,  ["id"] = 21046051001,  ["count"] = 1,  ["detailID"] = 1010043,  ["subId"] = 1,}
 ,  [30871001] = {
-  ["type"] = 107,  ["dropId"] = 30871,  ["weight"] = 100,  ["id"] = 30871001,  ["count"] = 73000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30871,  ["weight"] = 100,  ["id"] = 30871001,  ["count"] = 38400,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300021017] = {
   ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021017,  ["count"] = 1,  ["detailID"] = 100038,  ["subId"] = 17,}
 ,  [20781001] = {
@@ -2123,8 +2113,6 @@ small_bag_config={
   ["type"] = 107,  ["dropId"] = 1214,  ["weight"] = 100,  ["id"] = 1214001,  ["count"] = 180,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [6200152001] = {
   ["type"] = 107,  ["dropId"] = 6200152,  ["weight"] = 100,  ["id"] = 6200152001,  ["count"] = 72,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [17002051001] = {
-  ["type"] = 105,  ["dropId"] = 17002051,  ["weight"] = 100,  ["id"] = 17002051001,  ["count"] = 2,  ["detailID"] = 20001,  ["subId"] = 1,}
 ,  [105300011021] = {
   ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 2,  ["id"] = 105300011021,  ["count"] = 1,  ["detailID"] = 100018,  ["subId"] = 21,}
 ,  [500024001] = {
@@ -2148,15 +2136,15 @@ small_bag_config={
 ,  [105900151003] = {
   ["type"] = 108,  ["dropId"] = 105900151,  ["weight"] = 25,  ["id"] = 105900151003,  ["count"] = 1,  ["detailID"] = 120301,  ["subId"] = 3,}
 ,  [30151001] = {
-  ["type"] = 107,  ["dropId"] = 30151,  ["weight"] = 100,  ["id"] = 30151001,  ["count"] = 8500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30151,  ["weight"] = 100,  ["id"] = 30151001,  ["count"] = 600,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105800031030] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 20,  ["id"] = 105800031030,  ["count"] = 1,  ["detailID"] = 100011,  ["subId"] = 30,}
 ,  [500023001] = {
   ["type"] = 105,  ["dropId"] = 500023,  ["weight"] = 100,  ["id"] = 500023001,  ["count"] = 3,  ["detailID"] = 50003,  ["subId"] = 1,}
-,  [17004051001] = {
-  ["type"] = 105,  ["dropId"] = 17004051,  ["weight"] = 100,  ["id"] = 17004051001,  ["count"] = 4,  ["detailID"] = 20001,  ["subId"] = 1,}
+,  [20061001] = {
+  ["type"] = 105,  ["dropId"] = 20061,  ["weight"] = 100,  ["id"] = 20061001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [17003031001] = {
-  ["type"] = 105,  ["dropId"] = 17003031,  ["weight"] = 100,  ["id"] = 17003031001,  ["count"] = 3,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17003031,  ["weight"] = 100,  ["id"] = 17003031001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [6200332001] = {
   ["type"] = 107,  ["dropId"] = 6200332,  ["weight"] = 100,  ["id"] = 6200332001,  ["count"] = 15,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [105300031002] = {
@@ -2172,7 +2160,7 @@ small_bag_config={
 ,  [6200222001] = {
   ["type"] = 107,  ["dropId"] = 6200222,  ["weight"] = 100,  ["id"] = 6200222001,  ["count"] = 58,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [30741001] = {
-  ["type"] = 107,  ["dropId"] = 30741,  ["weight"] = 100,  ["id"] = 30741001,  ["count"] = 39000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30741,  ["weight"] = 100,  ["id"] = 30741001,  ["count"] = 13150,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300021021] = {
   ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021021,  ["count"] = 1,  ["detailID"] = 100018,  ["subId"] = 21,}
 ,  [500022001] = {
@@ -2202,7 +2190,7 @@ small_bag_config={
 ,  [50993003] = {
   ["type"] = 107,  ["dropId"] = 50993,  ["weight"] = 100,  ["id"] = 50993003,  ["count"] = 2,  ["detailID"] = 2,  ["subId"] = 3,}
 ,  [31331001] = {
-  ["type"] = 107,  ["dropId"] = 31331,  ["weight"] = 100,  ["id"] = 31331001,  ["count"] = 115000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31331,  ["weight"] = 100,  ["id"] = 31331001,  ["count"] = 174850,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [6200202001] = {
   ["type"] = 107,  ["dropId"] = 6200202,  ["weight"] = 100,  ["id"] = 6200202001,  ["count"] = 62,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [500021001] = {
@@ -2222,7 +2210,7 @@ small_bag_config={
 ,  [105300011026] = {
   ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 2,  ["id"] = 105300011026,  ["count"] = 1,  ["detailID"] = 100043,  ["subId"] = 26,}
 ,  [30021001] = {
-  ["type"] = 107,  ["dropId"] = 30021,  ["weight"] = 100,  ["id"] = 30021001,  ["count"] = 2000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30021,  ["weight"] = 100,  ["id"] = 30021001,  ["count"] = 150,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [19000011032] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 4,  ["id"] = 19000011032,  ["count"] = 1,  ["detailID"] = 10031,  ["subId"] = 32,}
 ,  [6200182001] = {
@@ -2270,7 +2258,7 @@ small_bag_config={
 ,  [6200052001] = {
   ["type"] = 107,  ["dropId"] = 6200052,  ["weight"] = 100,  ["id"] = 6200052001,  ["count"] = 92,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [31201001] = {
-  ["type"] = 107,  ["dropId"] = 31201,  ["weight"] = 100,  ["id"] = 31201001,  ["count"] = 61500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31201,  ["weight"] = 100,  ["id"] = 31201001,  ["count"] = 90000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [6200252001] = {
   ["type"] = 107,  ["dropId"] = 6200252,  ["weight"] = 100,  ["id"] = 6200252001,  ["count"] = 52,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [21111001] = {
@@ -2281,8 +2269,6 @@ small_bag_config={
   ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021027,  ["count"] = 1,  ["detailID"] = 100044,  ["subId"] = 27,}
 ,  [6200142001] = {
   ["type"] = 107,  ["dropId"] = 6200142,  ["weight"] = 100,  ["id"] = 6200142001,  ["count"] = 74,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [17004071001] = {
-  ["type"] = 105,  ["dropId"] = 17004071,  ["weight"] = 100,  ["id"] = 17004071001,  ["count"] = 4,  ["detailID"] = 20001,  ["subId"] = 1,}
 ,  [6200342001] = {
   ["type"] = 107,  ["dropId"] = 6200342,  ["weight"] = 100,  ["id"] = 6200342001,  ["count"] = 10,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [19000031004] = {
@@ -2307,16 +2293,14 @@ small_bag_config={
   ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 30,  ["id"] = 105300011031,  ["count"] = 1000,  ["detailID"] = 1,  ["subId"] = 31,}
 ,  [6200122001] = {
   ["type"] = 107,  ["dropId"] = 6200122,  ["weight"] = 100,  ["id"] = 6200122001,  ["count"] = 78,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [17005051001] = {
-  ["type"] = 105,  ["dropId"] = 17005051,  ["weight"] = 100,  ["id"] = 17005051001,  ["count"] = 5,  ["detailID"] = 20001,  ["subId"] = 1,}
 ,  [17004031001] = {
-  ["type"] = 105,  ["dropId"] = 17004031,  ["weight"] = 100,  ["id"] = 17004031001,  ["count"] = 4,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17004031,  ["weight"] = 100,  ["id"] = 17004031001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [6200322001] = {
   ["type"] = 107,  ["dropId"] = 6200322,  ["weight"] = 100,  ["id"] = 6200322001,  ["count"] = 20,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [105300021029] = {
   ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021029,  ["count"] = 1,  ["detailID"] = 100005,  ["subId"] = 29,}
 ,  [30481001] = {
-  ["type"] = 107,  ["dropId"] = 30481,  ["weight"] = 100,  ["id"] = 30481001,  ["count"] = 5000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30481,  ["weight"] = 100,  ["id"] = 30481001,  ["count"] = 8950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [60043001] = {
   ["type"] = 107,  ["dropId"] = 60043,  ["weight"] = 100,  ["id"] = 60043001,  ["count"] = 50000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [6100022001] = {
@@ -2344,9 +2328,9 @@ small_bag_config={
 ,  [6100112001] = {
   ["type"] = 107,  ["dropId"] = 6100112,  ["weight"] = 100,  ["id"] = 6100112001,  ["count"] = 100,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [31071001] = {
-  ["type"] = 107,  ["dropId"] = 31071,  ["weight"] = 100,  ["id"] = 31071001,  ["count"] = 30000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31071,  ["weight"] = 100,  ["id"] = 31071001,  ["count"] = 33900,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [17005011001] = {
-  ["type"] = 105,  ["dropId"] = 17005011,  ["weight"] = 100,  ["id"] = 17005011001,  ["count"] = 5,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17005011,  ["weight"] = 100,  ["id"] = 17005011001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105300031012] = {
   ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031012,  ["count"] = 1,  ["detailID"] = 21000110,  ["subId"] = 12,}
 ,  [6200302001] = {
@@ -2382,7 +2366,7 @@ small_bag_config={
 ,  [21014031001] = {
   ["type"] = 103,  ["dropId"] = 21014031,  ["weight"] = 100,  ["id"] = 21014031001,  ["count"] = 1,  ["detailID"] = 1010013,  ["subId"] = 1,}
 ,  [30351001] = {
-  ["type"] = 107,  ["dropId"] = 30351,  ["weight"] = 100,  ["id"] = 30351001,  ["count"] = 27000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30351,  ["weight"] = 100,  ["id"] = 30351001,  ["count"] = 2150,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [6000082001] = {
   ["type"] = 107,  ["dropId"] = 6000082,  ["weight"] = 100,  ["id"] = 6000082001,  ["count"] = 360,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [60041001] = {
@@ -2406,7 +2390,7 @@ small_bag_config={
 ,  [1505001] = {
   ["type"] = 103,  ["dropId"] = 1505,  ["weight"] = 100,  ["id"] = 1505001,  ["count"] = 5,  ["detailID"] = 1030051,  ["subId"] = 1,}
 ,  [30941001] = {
-  ["type"] = 107,  ["dropId"] = 30941,  ["weight"] = 100,  ["id"] = 30941001,  ["count"] = 9000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30941,  ["weight"] = 100,  ["id"] = 30941001,  ["count"] = 68550,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300031016] = {
   ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031016,  ["count"] = 1,  ["detailID"] = 21000480,  ["subId"] = 16,}
 ,  [21018031001] = {
@@ -2448,27 +2432,27 @@ small_bag_config={
 ,  [6000034001] = {
   ["type"] = 105,  ["dropId"] = 6000034,  ["weight"] = 100,  ["id"] = 6000034001,  ["count"] = 30,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [30221001] = {
-  ["type"] = 107,  ["dropId"] = 30221,  ["weight"] = 100,  ["id"] = 30221001,  ["count"] = 13500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21015031001] = {
-  ["type"] = 103,  ["dropId"] = 21015031,  ["weight"] = 100,  ["id"] = 21015031001,  ["count"] = 1,  ["detailID"] = 1010015,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30221,  ["weight"] = 100,  ["id"] = 30221001,  ["count"] = 1150,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21017071001] = {
+  ["type"] = 103,  ["dropId"] = 21017071,  ["weight"] = 100,  ["id"] = 21017071001,  ["count"] = 1,  ["detailID"] = 1010035,  ["subId"] = 1,}
 ,  [105300031019] = {
   ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031019,  ["count"] = 1,  ["detailID"] = 21000540,  ["subId"] = 19,}
 ,  [20131001] = {
   ["type"] = 105,  ["dropId"] = 20131,  ["weight"] = 100,  ["id"] = 20131001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [17005031001] = {
-  ["type"] = 105,  ["dropId"] = 17005031,  ["weight"] = 100,  ["id"] = 17005031001,  ["count"] = 5,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17005031,  ["weight"] = 100,  ["id"] = 17005031001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105800051011] = {
   ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 50,  ["id"] = 105800051011,  ["count"] = 1,  ["detailID"] = 130301,  ["subId"] = 11,}
 ,  [19000021021] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 16,  ["id"] = 19000021021,  ["count"] = 1,  ["detailID"] = 20020,  ["subId"] = 21,}
 ,  [105300041001] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041001,  ["count"] = 5,  ["detailID"] = 1010020,  ["subId"] = 1,}
-,  [6000022001] = {
-  ["type"] = 107,  ["dropId"] = 6000022,  ["weight"] = 100,  ["id"] = 6000022001,  ["count"] = 480,  ["detailID"] = 3,  ["subId"] = 1,}
+,  [21034061001] = {
+  ["type"] = 0,  ["dropId"] = 21034061,  ["weight"] = 100,  ["id"] = 21034061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21002041001] = {
   ["type"] = 0,  ["dropId"] = 21002041,  ["weight"] = 100,  ["id"] = 21002041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30811001] = {
-  ["type"] = 107,  ["dropId"] = 30811,  ["weight"] = 100,  ["id"] = 30811001,  ["count"] = 56000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30811,  ["weight"] = 100,  ["id"] = 30811001,  ["count"] = 31950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300011041] = {
   ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 40,  ["id"] = 105300011041,  ["count"] = 20,  ["detailID"] = 3,  ["subId"] = 41,}
 ,  [6000014001] = {
@@ -2483,6 +2467,8 @@ small_bag_config={
   ["type"] = 107,  ["dropId"] = 6100102,  ["weight"] = 100,  ["id"] = 6100102001,  ["count"] = 100,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [500046001] = {
   ["type"] = 103,  ["dropId"] = 500046,  ["weight"] = 100,  ["id"] = 500046001,  ["count"] = 10,  ["detailID"] = 1010043,  ["subId"] = 1,}
+,  [17006011001] = {
+  ["type"] = 105,  ["dropId"] = 17006011,  ["weight"] = 100,  ["id"] = 17006011001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [60042001] = {
   ["type"] = 107,  ["dropId"] = 60042,  ["weight"] = 100,  ["id"] = 60042001,  ["count"] = 50,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [19000031007] = {
@@ -2518,7 +2504,7 @@ small_bag_config={
 ,  [6000084001] = {
   ["type"] = 105,  ["dropId"] = 6000084,  ["weight"] = 100,  ["id"] = 6000084001,  ["count"] = 15,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [30091001] = {
-  ["type"] = 107,  ["dropId"] = 30091,  ["weight"] = 100,  ["id"] = 30091001,  ["count"] = 5000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30091,  ["weight"] = 100,  ["id"] = 30091001,  ["count"] = 400,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300031023] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031023,  ["count"] = 1,  ["detailID"] = 100021,  ["subId"] = 23,}
 ,  [20001001] = {
@@ -2538,7 +2524,7 @@ small_bag_config={
 ,  [105300031024] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031024,  ["count"] = 1,  ["detailID"] = 100031,  ["subId"] = 24,}
 ,  [30681001] = {
-  ["type"] = 107,  ["dropId"] = 30681,  ["weight"] = 100,  ["id"] = 30681001,  ["count"] = 29000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30681,  ["weight"] = 100,  ["id"] = 30681001,  ["count"] = 10650,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300011045] = {
   ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 40,  ["id"] = 105300011045,  ["count"] = 120,  ["detailID"] = 13,  ["subId"] = 45,}
 ,  [21003041001] = {
@@ -2564,7 +2550,7 @@ small_bag_config={
 ,  [6000052001] = {
   ["type"] = 107,  ["dropId"] = 6000052,  ["weight"] = 100,  ["id"] = 6000052001,  ["count"] = 420,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [31271001] = {
-  ["type"] = 107,  ["dropId"] = 31271,  ["weight"] = 100,  ["id"] = 31271001,  ["count"] = 88000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31271,  ["weight"] = 100,  ["id"] = 31271001,  ["count"] = 154100,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21037021001] = {
   ["type"] = 0,  ["dropId"] = 21037021,  ["weight"] = 100,  ["id"] = 21037021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105300041007] = {
@@ -2579,22 +2565,26 @@ small_bag_config={
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 10,  ["id"] = 105300031026,  ["count"] = 1,  ["detailID"] = 100046,  ["subId"] = 26,}
 ,  [105300011047] = {
   ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 10,  ["id"] = 105300011047,  ["count"] = 240,  ["detailID"] = 13,  ["subId"] = 47,}
-,  [60051001] = {
-  ["type"] = 103,  ["dropId"] = 60051,  ["weight"] = 100,  ["id"] = 60051001,  ["count"] = 2,  ["detailID"] = 1030051,  ["subId"] = 1,}
 ,  [109000026150] = {
   ["type"] = 104,  ["dropId"] = 109000026,  ["weight"] = 100,  ["id"] = 109000026150,  ["count"] = 1,  ["detailID"] = 22000064,  ["subId"] = 150,}
+,  [109000025149] = {
+  ["type"] = 104,  ["dropId"] = 109000025,  ["weight"] = 100,  ["id"] = 109000025149,  ["count"] = 1,  ["detailID"] = 22000063,  ["subId"] = 149,}
+,  [60051001] = {
+  ["type"] = 103,  ["dropId"] = 60051,  ["weight"] = 100,  ["id"] = 60051001,  ["count"] = 2,  ["detailID"] = 1030051,  ["subId"] = 1,}
+,  [109000024148] = {
+  ["type"] = 104,  ["dropId"] = 109000024,  ["weight"] = 100,  ["id"] = 109000024148,  ["count"] = 1,  ["detailID"] = 22000062,  ["subId"] = 148,}
 ,  [105300041008] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041008,  ["count"] = 5,  ["detailID"] = 1010041,  ["subId"] = 8,}
 ,  [12035001] = {
   ["type"] = 101,  ["dropId"] = 12035,  ["weight"] = 100,  ["id"] = 12035001,  ["count"] = 1,  ["detailID"] = 10008,  ["subId"] = 1,}
 ,  [105640086001] = {
   ["type"] = 105,  ["dropId"] = 105640086,  ["weight"] = 100,  ["id"] = 105640086001,  ["count"] = 90,  ["detailID"] = 63001,  ["subId"] = 1,}
-,  [109000025149] = {
-  ["type"] = 104,  ["dropId"] = 109000025,  ["weight"] = 100,  ["id"] = 109000025149,  ["count"] = 1,  ["detailID"] = 22000063,  ["subId"] = 149,}
+,  [109000023147] = {
+  ["type"] = 104,  ["dropId"] = 109000023,  ["weight"] = 100,  ["id"] = 109000023147,  ["count"] = 1,  ["detailID"] = 22000061,  ["subId"] = 147,}
 ,  [6000032001] = {
   ["type"] = 107,  ["dropId"] = 6000032,  ["weight"] = 100,  ["id"] = 6000032001,  ["count"] = 460,  ["detailID"] = 3,  ["subId"] = 1,}
-,  [109000024148] = {
-  ["type"] = 104,  ["dropId"] = 109000024,  ["weight"] = 100,  ["id"] = 109000024148,  ["count"] = 1,  ["detailID"] = 22000062,  ["subId"] = 148,}
+,  [109000022146] = {
+  ["type"] = 104,  ["dropId"] = 109000022,  ["weight"] = 100,  ["id"] = 109000022146,  ["count"] = 1,  ["detailID"] = 22000060,  ["subId"] = 146,}
 ,  [20004001] = {
   ["type"] = 107,  ["dropId"] = 20004,  ["weight"] = 100,  ["id"] = 20004001,  ["count"] = 5,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [1325001] = {
@@ -2603,48 +2593,48 @@ small_bag_config={
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031027,  ["count"] = 1,  ["detailID"] = 100051,  ["subId"] = 27,}
 ,  [21002081001] = {
   ["type"] = 0,  ["dropId"] = 21002081,  ["weight"] = 100,  ["id"] = 21002081001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [109000023147] = {
-  ["type"] = 104,  ["dropId"] = 109000023,  ["weight"] = 100,  ["id"] = 109000023147,  ["count"] = 1,  ["detailID"] = 22000061,  ["subId"] = 147,}
-,  [109000022146] = {
-  ["type"] = 104,  ["dropId"] = 109000022,  ["weight"] = 100,  ["id"] = 109000022146,  ["count"] = 1,  ["detailID"] = 22000060,  ["subId"] = 146,}
-,  [1411001] = {
-  ["type"] = 102,  ["dropId"] = 1411,  ["weight"] = 100,  ["id"] = 1411001,  ["count"] = 1,  ["detailID"] = 100020,  ["subId"] = 1,}
-,  [6200092001] = {
-  ["type"] = 107,  ["dropId"] = 6200092,  ["weight"] = 100,  ["id"] = 6200092001,  ["count"] = 84,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [6000024001] = {
-  ["type"] = 105,  ["dropId"] = 6000024,  ["weight"] = 100,  ["id"] = 6000024001,  ["count"] = 35,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [60021001] = {
+  ["type"] = 103,  ["dropId"] = 60021,  ["weight"] = 100,  ["id"] = 60021001,  ["count"] = 1,  ["detailID"] = 1030051,  ["subId"] = 1,}
 ,  [109000016140] = {
   ["type"] = 104,  ["dropId"] = 109000016,  ["weight"] = 0,  ["id"] = 109000016140,  ["count"] = 1,  ["detailID"] = 22000044,  ["subId"] = 140,}
+,  [1411001] = {
+  ["type"] = 102,  ["dropId"] = 1411,  ["weight"] = 100,  ["id"] = 1411001,  ["count"] = 1,  ["detailID"] = 100020,  ["subId"] = 1,}
+,  [109000015139] = {
+  ["type"] = 104,  ["dropId"] = 109000015,  ["weight"] = 0,  ["id"] = 109000015139,  ["count"] = 1,  ["detailID"] = 22000043,  ["subId"] = 139,}
+,  [6000024001] = {
+  ["type"] = 105,  ["dropId"] = 6000024,  ["weight"] = 100,  ["id"] = 6000024001,  ["count"] = 35,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [109000013137] = {
+  ["type"] = 104,  ["dropId"] = 109000013,  ["weight"] = 100,  ["id"] = 109000013137,  ["count"] = 1,  ["detailID"] = 22000041,  ["subId"] = 137,}
 ,  [105300041009] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041009,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 9,}
 ,  [105300021046] = {
   ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 50,  ["id"] = 105300021046,  ["count"] = 1,  ["detailID"] = 10002,  ["subId"] = 46,}
-,  [109000015139] = {
-  ["type"] = 104,  ["dropId"] = 109000015,  ["weight"] = 0,  ["id"] = 109000015139,  ["count"] = 1,  ["detailID"] = 22000043,  ["subId"] = 139,}
-,  [21019071001] = {
-  ["type"] = 103,  ["dropId"] = 21019071,  ["weight"] = 100,  ["id"] = 21019071001,  ["count"] = 1,  ["detailID"] = 1010041,  ["subId"] = 1,}
-,  [109000013137] = {
-  ["type"] = 104,  ["dropId"] = 109000013,  ["weight"] = 100,  ["id"] = 109000013137,  ["count"] = 1,  ["detailID"] = 22000041,  ["subId"] = 137,}
-,  [16001031001] = {
-  ["type"] = 105,  ["dropId"] = 16001031,  ["weight"] = 100,  ["id"] = 16001031001,  ["count"] = 1,  ["detailID"] = 40003,  ["subId"] = 1,}
 ,  [109000012005] = {
   ["type"] = 107,  ["dropId"] = 109000012,  ["weight"] = 150,  ["id"] = 109000012005,  ["count"] = 250,  ["detailID"] = 1,  ["subId"] = 5,}
+,  [21019071001] = {
+  ["type"] = 103,  ["dropId"] = 21019071,  ["weight"] = 100,  ["id"] = 21019071001,  ["count"] = 1,  ["detailID"] = 1010041,  ["subId"] = 1,}
 ,  [109000012004] = {
   ["type"] = 107,  ["dropId"] = 109000012,  ["weight"] = 50,  ["id"] = 109000012004,  ["count"] = 50,  ["detailID"] = 1,  ["subId"] = 4,}
-,  [105300031028] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031028,  ["count"] = 1,  ["detailID"] = 100052,  ["subId"] = 28,}
+,  [16001031001] = {
+  ["type"] = 105,  ["dropId"] = 16001031,  ["weight"] = 100,  ["id"] = 16001031001,  ["count"] = 1,  ["detailID"] = 40003,  ["subId"] = 1,}
 ,  [109000012003] = {
   ["type"] = 107,  ["dropId"] = 109000012,  ["weight"] = 300,  ["id"] = 109000012003,  ["count"] = 200,  ["detailID"] = 1,  ["subId"] = 3,}
-,  [30551001] = {
-  ["type"] = 107,  ["dropId"] = 30551,  ["weight"] = 100,  ["id"] = 30551001,  ["count"] = 11000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [109000012002] = {
   ["type"] = 107,  ["dropId"] = 109000012,  ["weight"] = 200,  ["id"] = 109000012002,  ["count"] = 150,  ["detailID"] = 1,  ["subId"] = 2,}
+,  [105300031028] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031028,  ["count"] = 1,  ["detailID"] = 100052,  ["subId"] = 28,}
 ,  [109000012001] = {
   ["type"] = 107,  ["dropId"] = 109000012,  ["weight"] = 300,  ["id"] = 109000012001,  ["count"] = 100,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [6000012001] = {
-  ["type"] = 107,  ["dropId"] = 6000012,  ["weight"] = 100,  ["id"] = 6000012001,  ["count"] = 500,  ["detailID"] = 3,  ["subId"] = 1,}
+,  [30551001] = {
+  ["type"] = 107,  ["dropId"] = 30551,  ["weight"] = 100,  ["id"] = 30551001,  ["count"] = 17650,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [109000011077] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 50,  ["id"] = 109000011077,  ["count"] = 1,  ["detailID"] = 22000063,  ["subId"] = 77,}
+,  [109000011072] = {
+  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 100,  ["id"] = 109000011072,  ["count"] = 1,  ["detailID"] = 22000053,  ["subId"] = 72,}
+,  [6000012001] = {
+  ["type"] = 107,  ["dropId"] = 6000012,  ["weight"] = 100,  ["id"] = 6000012001,  ["count"] = 500,  ["detailID"] = 3,  ["subId"] = 1,}
+,  [109000011067] = {
+  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 176,  ["id"] = 109000011067,  ["count"] = 1,  ["detailID"] = 22000043,  ["subId"] = 67,}
 ,  [20461001] = {
   ["type"] = 105,  ["dropId"] = 20461,  ["weight"] = 100,  ["id"] = 20461001,  ["count"] = 3,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [105300041010] = {
@@ -2653,150 +2643,146 @@ small_bag_config={
   ["type"] = 0,  ["dropId"] = 21004041,  ["weight"] = 100,  ["id"] = 21004041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21002001001] = {
   ["type"] = 0,  ["dropId"] = 21002001,  ["weight"] = 100,  ["id"] = 21002001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [109000011072] = {
-  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 100,  ["id"] = 109000011072,  ["count"] = 1,  ["detailID"] = 22000053,  ["subId"] = 72,}
-,  [109000011067] = {
-  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 176,  ["id"] = 109000011067,  ["count"] = 1,  ["detailID"] = 22000043,  ["subId"] = 67,}
-,  [105900011001] = {
-  ["type"] = 108,  ["dropId"] = 105900011,  ["weight"] = 100,  ["id"] = 105900011001,  ["count"] = 1,  ["detailID"] = 120101,  ["subId"] = 1,}
 ,  [109000011064] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 176,  ["id"] = 109000011064,  ["count"] = 1,  ["detailID"] = 22000040,  ["subId"] = 64,}
 ,  [109000011059] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 151,  ["id"] = 109000011059,  ["count"] = 1,  ["detailID"] = 21000772,  ["subId"] = 59,}
-,  [19000031009] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031009,  ["count"] = 1,  ["detailID"] = 30008,  ["subId"] = 9,}
+,  [105900011001] = {
+  ["type"] = 108,  ["dropId"] = 105900011,  ["weight"] = 100,  ["id"] = 105900011001,  ["count"] = 1,  ["detailID"] = 120101,  ["subId"] = 1,}
 ,  [109000011045] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 352,  ["id"] = 109000011045,  ["count"] = 1,  ["detailID"] = 21000702,  ["subId"] = 45,}
 ,  [109000011042] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 352,  ["id"] = 109000011042,  ["count"] = 1,  ["detailID"] = 21000690,  ["subId"] = 42,}
+,  [19000031009] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031009,  ["count"] = 1,  ["detailID"] = 30008,  ["subId"] = 9,}
+,  [109000011041] = {
+  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 352,  ["id"] = 109000011041,  ["count"] = 1,  ["detailID"] = 21000681,  ["subId"] = 41,}
+,  [109000011037] = {
+  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 50,  ["id"] = 109000011037,  ["count"] = 1,  ["detailID"] = 22000032,  ["subId"] = 37,}
 ,  [21021031001] = {
   ["type"] = 103,  ["dropId"] = 21021031,  ["weight"] = 100,  ["id"] = 21021031001,  ["count"] = 1,  ["detailID"] = 1010013,  ["subId"] = 1,}
 ,  [6000102001] = {
   ["type"] = 107,  ["dropId"] = 6000102,  ["weight"] = 100,  ["id"] = 6000102001,  ["count"] = 300,  ["detailID"] = 3,  ["subId"] = 1,}
-,  [109000011041] = {
-  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 352,  ["id"] = 109000011041,  ["count"] = 1,  ["detailID"] = 21000681,  ["subId"] = 41,}
+,  [109000011031] = {
+  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 100,  ["id"] = 109000011031,  ["count"] = 1,  ["detailID"] = 22000021,  ["subId"] = 31,}
 ,  [31141001] = {
-  ["type"] = 107,  ["dropId"] = 31141,  ["weight"] = 100,  ["id"] = 31141001,  ["count"] = 46000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [19000011038] = {
-  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011038,  ["count"] = 1,  ["detailID"] = 10037,  ["subId"] = 38,}
+  ["type"] = 107,  ["dropId"] = 31141,  ["weight"] = 100,  ["id"] = 31141001,  ["count"] = 78400,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [17007011001] = {
+  ["type"] = 105,  ["dropId"] = 17007011,  ["weight"] = 100,  ["id"] = 17007011001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105300041011] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041011,  ["count"] = 5,  ["detailID"] = 1010044,  ["subId"] = 11,}
 ,  [105300021048] = {
   ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 30,  ["id"] = 105300021048,  ["count"] = 5,  ["detailID"] = 10002,  ["subId"] = 48,}
-,  [109000011037] = {
-  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 50,  ["id"] = 109000011037,  ["count"] = 1,  ["detailID"] = 22000032,  ["subId"] = 37,}
-,  [21051001] = {
-  ["type"] = 105,  ["dropId"] = 21051,  ["weight"] = 100,  ["id"] = 21051001,  ["count"] = 29,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [109000011031] = {
-  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 100,  ["id"] = 109000011031,  ["count"] = 1,  ["detailID"] = 22000021,  ["subId"] = 31,}
-,  [51011001] = {
-  ["type"] = 107,  ["dropId"] = 51011,  ["weight"] = 100,  ["id"] = 51011001,  ["count"] = 50,  ["detailID"] = 13,  ["subId"] = 1,}
-,  [6000094001] = {
-  ["type"] = 105,  ["dropId"] = 6000094,  ["weight"] = 100,  ["id"] = 6000094001,  ["count"] = 10,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [109000011030] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 100,  ["id"] = 109000011030,  ["count"] = 1,  ["detailID"] = 22000020,  ["subId"] = 30,}
+,  [21051001] = {
+  ["type"] = 105,  ["dropId"] = 21051,  ["weight"] = 100,  ["id"] = 21051001,  ["count"] = 29,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [109000011029] = {
+  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 176,  ["id"] = 109000011029,  ["count"] = 1,  ["detailID"] = 22000014,  ["subId"] = 29,}
+,  [21038021001] = {
+  ["type"] = 0,  ["dropId"] = 21038021,  ["weight"] = 100,  ["id"] = 21038021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [6000094001] = {
+  ["type"] = 105,  ["dropId"] = 6000094,  ["weight"] = 100,  ["id"] = 6000094001,  ["count"] = 10,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [109000011024] = {
+  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 151,  ["id"] = 109000011024,  ["count"] = 1,  ["detailID"] = 21000671,  ["subId"] = 24,}
 ,  [105300031030] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031030,  ["count"] = 1,  ["detailID"] = 100055,  ["subId"] = 30,}
 ,  [1366001] = {
   ["type"] = 107,  ["dropId"] = 1366,  ["weight"] = 100,  ["id"] = 1366001,  ["count"] = 35,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [109000011029] = {
-  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 176,  ["id"] = 109000011029,  ["count"] = 1,  ["detailID"] = 22000014,  ["subId"] = 29,}
-,  [109000011024] = {
-  ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 151,  ["id"] = 109000011024,  ["count"] = 1,  ["detailID"] = 21000671,  ["subId"] = 24,}
 ,  [109000011015] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 250,  ["id"] = 109000011015,  ["count"] = 1,  ["detailID"] = 21000630,  ["subId"] = 15,}
 ,  [109000011009] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 250,  ["id"] = 109000011009,  ["count"] = 1,  ["detailID"] = 21000600,  ["subId"] = 9,}
-,  [1452001] = {
-  ["type"] = 102,  ["dropId"] = 1452,  ["weight"] = 100,  ["id"] = 1452001,  ["count"] = 1,  ["detailID"] = 100055,  ["subId"] = 1,}
 ,  [109000011006] = {
   ["type"] = 104,  ["dropId"] = 109000011,  ["weight"] = 352,  ["id"] = 109000011006,  ["count"] = 1,  ["detailID"] = 21000582,  ["subId"] = 6,}
+,  [108000014001] = {
+  ["type"] = 105,  ["dropId"] = 108000014,  ["weight"] = 100,  ["id"] = 108000014001,  ["count"] = 1,  ["detailID"] = 50003,  ["subId"] = 1,}
+,  [1452001] = {
+  ["type"] = 102,  ["dropId"] = 1452,  ["weight"] = 100,  ["id"] = 1452001,  ["count"] = 1,  ["detailID"] = 100055,  ["subId"] = 1,}
+,  [108000012001] = {
+  ["type"] = 105,  ["dropId"] = 108000012,  ["weight"] = 100,  ["id"] = 108000012001,  ["count"] = 20,  ["detailID"] = 40001,  ["subId"] = 1,}
 ,  [50221001] = {
   ["type"] = 107,  ["dropId"] = 50221,  ["weight"] = 100,  ["id"] = 50221001,  ["count"] = 60,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [105300021049] = {
   ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021049,  ["count"] = 50,  ["detailID"] = 3,  ["subId"] = 49,}
-,  [108000014001] = {
-  ["type"] = 105,  ["dropId"] = 108000014,  ["weight"] = 100,  ["id"] = 108000014001,  ["count"] = 1,  ["detailID"] = 50003,  ["subId"] = 1,}
-,  [108000012001] = {
-  ["type"] = 105,  ["dropId"] = 108000012,  ["weight"] = 100,  ["id"] = 108000012001,  ["count"] = 20,  ["detailID"] = 40001,  ["subId"] = 1,}
-,  [21030021001] = {
-  ["type"] = 0,  ["dropId"] = 21030021,  ["weight"] = 100,  ["id"] = 21030021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [105900011003] = {
-  ["type"] = 108,  ["dropId"] = 105900011,  ["weight"] = 100,  ["id"] = 105900011003,  ["count"] = 1,  ["detailID"] = 120301,  ["subId"] = 3,}
+,  [200022016] = {
+  ["type"] = 101,  ["dropId"] = 200022,  ["weight"] = 100,  ["id"] = 200022016,  ["count"] = 1,  ["detailID"] = 10055,  ["subId"] = 16,}
 ,  [106000045001] = {
   ["type"] = 105,  ["dropId"] = 106000045,  ["weight"] = 100,  ["id"] = 106000045001,  ["count"] = 5,  ["detailID"] = 10002,  ["subId"] = 1,}
+,  [106000019001] = {
+  ["type"] = 103,  ["dropId"] = 106000019,  ["weight"] = 100,  ["id"] = 106000019001,  ["count"] = 3,  ["detailID"] = 1010020,  ["subId"] = 1,}
+,  [105900011003] = {
+  ["type"] = 108,  ["dropId"] = 105900011,  ["weight"] = 100,  ["id"] = 105900011003,  ["count"] = 1,  ["detailID"] = 120301,  ["subId"] = 3,}
+,  [106000017001] = {
+  ["type"] = 103,  ["dropId"] = 106000017,  ["weight"] = 100,  ["id"] = 106000017001,  ["count"] = 1,  ["detailID"] = 1010020,  ["subId"] = 1,}
 ,  [20003001] = {
   ["type"] = 103,  ["dropId"] = 20003,  ["weight"] = 100,  ["id"] = 20003001,  ["count"] = 3,  ["detailID"] = 1010036,  ["subId"] = 1,}
 ,  [105300031031] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 7,  ["id"] = 105300031031,  ["count"] = 1,  ["detailID"] = 100011,  ["subId"] = 31,}
-,  [106000019001] = {
-  ["type"] = 103,  ["dropId"] = 106000019,  ["weight"] = 100,  ["id"] = 106000019001,  ["count"] = 3,  ["detailID"] = 1010020,  ["subId"] = 1,}
-,  [106000017001] = {
-  ["type"] = 103,  ["dropId"] = 106000017,  ["weight"] = 100,  ["id"] = 106000017001,  ["count"] = 1,  ["detailID"] = 1010020,  ["subId"] = 1,}
 ,  [106000016001] = {
   ["type"] = 107,  ["dropId"] = 106000016,  ["weight"] = 100,  ["id"] = 106000016001,  ["count"] = 15000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [19000021024] = {
-  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 4,  ["id"] = 19000021024,  ["count"] = 1,  ["detailID"] = 20023,  ["subId"] = 24,}
 ,  [106000015001] = {
   ["type"] = 107,  ["dropId"] = 106000015,  ["weight"] = 100,  ["id"] = 106000015001,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [106000014001] = {
   ["type"] = 107,  ["dropId"] = 106000014,  ["weight"] = 100,  ["id"] = 106000014001,  ["count"] = 5000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [19000021024] = {
+  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 4,  ["id"] = 19000021024,  ["count"] = 1,  ["detailID"] = 20023,  ["subId"] = 24,}
+,  [12039001] = {
+  ["type"] = 101,  ["dropId"] = 12039,  ["weight"] = 100,  ["id"] = 12039001,  ["count"] = 1,  ["detailID"] = 10011,  ["subId"] = 1,}
+,  [106000012001] = {
+  ["type"] = 107,  ["dropId"] = 106000012,  ["weight"] = 100,  ["id"] = 106000012001,  ["count"] = 10,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [21003081001] = {
   ["type"] = 103,  ["dropId"] = 21003081,  ["weight"] = 100,  ["id"] = 21003081001,  ["count"] = 1,  ["detailID"] = 1030051,  ["subId"] = 1,}
 ,  [105300041013] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041013,  ["count"] = 5,  ["detailID"] = 1010049,  ["subId"] = 13,}
 ,  [105300021050] = {
   ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 35,  ["id"] = 105300021050,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 50,}
-,  [30412001] = {
-  ["type"] = 105,  ["dropId"] = 30412,  ["weight"] = 100,  ["id"] = 30412001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [106000012001] = {
-  ["type"] = 107,  ["dropId"] = 106000012,  ["weight"] = 100,  ["id"] = 106000012001,  ["count"] = 10,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [105900151005] = {
   ["type"] = 0,  ["dropId"] = 105900151,  ["weight"] = 900,  ["id"] = 105900151005,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 5,}
-,  [105900011004] = {
-  ["type"] = 108,  ["dropId"] = 105900011,  ["weight"] = 100,  ["id"] = 105900011004,  ["count"] = 1,  ["detailID"] = 120401,  ["subId"] = 4,}
 ,  [105900151002] = {
   ["type"] = 108,  ["dropId"] = 105900151,  ["weight"] = 25,  ["id"] = 105900151002,  ["count"] = 1,  ["detailID"] = 120201,  ["subId"] = 2,}
 ,  [105900151001] = {
   ["type"] = 108,  ["dropId"] = 105900151,  ["weight"] = 25,  ["id"] = 105900151001,  ["count"] = 1,  ["detailID"] = 120101,  ["subId"] = 1,}
+,  [105900011004] = {
+  ["type"] = 108,  ["dropId"] = 105900011,  ["weight"] = 100,  ["id"] = 105900011004,  ["count"] = 1,  ["detailID"] = 120401,  ["subId"] = 4,}
+,  [105900121001] = {
+  ["type"] = 108,  ["dropId"] = 105900121,  ["weight"] = 100,  ["id"] = 105900121001,  ["count"] = 1,  ["detailID"] = 130301,  ["subId"] = 1,}
+,  [105900101001] = {
+  ["type"] = 108,  ["dropId"] = 105900101,  ["weight"] = 100,  ["id"] = 105900101001,  ["count"] = 1,  ["detailID"] = 130101,  ["subId"] = 1,}
 ,  [105300031032] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 7,  ["id"] = 105300031032,  ["count"] = 1,  ["detailID"] = 100022,  ["subId"] = 32,}
 ,  [21020071001] = {
   ["type"] = 103,  ["dropId"] = 21020071,  ["weight"] = 100,  ["id"] = 21020071001,  ["count"] = 1,  ["detailID"] = 1010042,  ["subId"] = 1,}
-,  [105900121001] = {
-  ["type"] = 108,  ["dropId"] = 105900121,  ["weight"] = 100,  ["id"] = 105900121001,  ["count"] = 1,  ["detailID"] = 130301,  ["subId"] = 1,}
-,  [30421001] = {
-  ["type"] = 107,  ["dropId"] = 30421,  ["weight"] = 100,  ["id"] = 30421001,  ["count"] = 36500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105900101001] = {
-  ["type"] = 108,  ["dropId"] = 105900101,  ["weight"] = 100,  ["id"] = 105900101001,  ["count"] = 1,  ["detailID"] = 130101,  ["subId"] = 1,}
 ,  [105900081001] = {
   ["type"] = 108,  ["dropId"] = 105900081,  ["weight"] = 100,  ["id"] = 105900081001,  ["count"] = 1,  ["detailID"] = 120301,  ["subId"] = 1,}
+,  [30421001] = {
+  ["type"] = 107,  ["dropId"] = 30421,  ["weight"] = 100,  ["id"] = 30421001,  ["count"] = 6150,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [19000041021] = {
+  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 64,  ["id"] = 19000041021,  ["count"] = 1,  ["detailID"] = 40020,  ["subId"] = 21,}
+,  [105900031001] = {
+  ["type"] = 108,  ["dropId"] = 105900031,  ["weight"] = 100,  ["id"] = 105900031001,  ["count"] = 1,  ["detailID"] = 110201,  ["subId"] = 1,}
 ,  [60052001] = {
   ["type"] = 107,  ["dropId"] = 60052,  ["weight"] = 100,  ["id"] = 60052001,  ["count"] = 60,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [6100111001] = {
-  ["type"] = 107,  ["dropId"] = 6100111,  ["weight"] = 100,  ["id"] = 6100111001,  ["count"] = 1000,  ["detailID"] = 8,  ["subId"] = 1,}
+,  [105300041019] = {
+  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041019,  ["count"] = 5,  ["detailID"] = 1010045,  ["subId"] = 19,}
 ,  [20331001] = {
   ["type"] = 105,  ["dropId"] = 20331,  ["weight"] = 100,  ["id"] = 20331001,  ["count"] = 4,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [105300021051] = {
   ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021051,  ["count"] = 100,  ["detailID"] = 13,  ["subId"] = 51,}
-,  [105900031001] = {
-  ["type"] = 108,  ["dropId"] = 105900031,  ["weight"] = 100,  ["id"] = 105900031001,  ["count"] = 1,  ["detailID"] = 110201,  ["subId"] = 1,}
-,  [21037061001] = {
-  ["type"] = 0,  ["dropId"] = 21037061,  ["weight"] = 100,  ["id"] = 21037061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [105300041021] = {
-  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041021,  ["count"] = 5,  ["detailID"] = 1010048,  ["subId"] = 21,}
 ,  [105900011002] = {
   ["type"] = 108,  ["dropId"] = 105900011,  ["weight"] = 100,  ["id"] = 105900011002,  ["count"] = 1,  ["detailID"] = 120201,  ["subId"] = 2,}
+,  [21037061001] = {
+  ["type"] = 0,  ["dropId"] = 21037061,  ["weight"] = 100,  ["id"] = 21037061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105800051012] = {
+  ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 50,  ["id"] = 105800051012,  ["count"] = 1,  ["detailID"] = 130401,  ["subId"] = 12,}
+,  [105800051010] = {
+  ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 50,  ["id"] = 105800051010,  ["count"] = 1,  ["detailID"] = 130201,  ["subId"] = 10,}
 ,  [1321001] = {
   ["type"] = 102,  ["dropId"] = 1321,  ["weight"] = 100,  ["id"] = 1321001,  ["count"] = 1,  ["detailID"] = 100003,  ["subId"] = 1,}
 ,  [21005041001] = {
   ["type"] = 0,  ["dropId"] = 21005041,  ["weight"] = 100,  ["id"] = 21005041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [19000031010] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031010,  ["count"] = 1,  ["detailID"] = 30009,  ["subId"] = 10,}
-,  [105800051012] = {
-  ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 50,  ["id"] = 105800051012,  ["count"] = 1,  ["detailID"] = 130401,  ["subId"] = 12,}
-,  [105800051010] = {
-  ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 50,  ["id"] = 105800051010,  ["count"] = 1,  ["detailID"] = 130201,  ["subId"] = 10,}
 ,  [105800051009] = {
   ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 50,  ["id"] = 105800051009,  ["count"] = 1,  ["detailID"] = 130101,  ["subId"] = 9,}
 ,  [105800051007] = {
@@ -2805,102 +2791,106 @@ small_bag_config={
   ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 100,  ["id"] = 105800051004,  ["count"] = 1,  ["detailID"] = 110401,  ["subId"] = 4,}
 ,  [105800051003] = {
   ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 100,  ["id"] = 105800051003,  ["count"] = 1,  ["detailID"] = 110301,  ["subId"] = 3,}
+,  [105800051002] = {
+  ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 100,  ["id"] = 105800051002,  ["count"] = 1,  ["detailID"] = 110201,  ["subId"] = 2,}
+,  [105800041001] = {
+  ["type"] = 105,  ["dropId"] = 105800041,  ["weight"] = 100,  ["id"] = 105800041001,  ["count"] = 100,  ["detailID"] = 90001,  ["subId"] = 1,}
 ,  [30882001] = {
   ["type"] = 105,  ["dropId"] = 30882,  ["weight"] = 100,  ["id"] = 30882001,  ["count"] = 29,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [1493001] = {
   ["type"] = 107,  ["dropId"] = 1493,  ["weight"] = 100,  ["id"] = 1493001,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [21022031001] = {
   ["type"] = 103,  ["dropId"] = 21022031,  ["weight"] = 100,  ["id"] = 21022031001,  ["count"] = 1,  ["detailID"] = 1010015,  ["subId"] = 1,}
-,  [105800051002] = {
-  ["type"] = 108,  ["dropId"] = 105800051,  ["weight"] = 100,  ["id"] = 105800051002,  ["count"] = 1,  ["detailID"] = 110201,  ["subId"] = 2,}
-,  [105800041001] = {
-  ["type"] = 105,  ["dropId"] = 105800041,  ["weight"] = 100,  ["id"] = 105800041001,  ["count"] = 100,  ["detailID"] = 90001,  ["subId"] = 1,}
-,  [20921001] = {
-  ["type"] = 105,  ["dropId"] = 20921,  ["weight"] = 100,  ["id"] = 20921001,  ["count"] = 14,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [105800031037] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 20,  ["id"] = 105800031037,  ["count"] = 1,  ["detailID"] = 100054,  ["subId"] = 37,}
 ,  [105800031035] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 20,  ["id"] = 105800031035,  ["count"] = 1,  ["detailID"] = 100049,  ["subId"] = 35,}
+,  [20921001] = {
+  ["type"] = 105,  ["dropId"] = 20921,  ["weight"] = 100,  ["id"] = 20921001,  ["count"] = 14,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [105800031034] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 20,  ["id"] = 105800031034,  ["count"] = 1,  ["detailID"] = 100048,  ["subId"] = 34,}
-,  [105300031034] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031034,  ["count"] = 1,  ["detailID"] = 100047,  ["subId"] = 34,}
 ,  [105800031032] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 20,  ["id"] = 105800031032,  ["count"] = 1,  ["detailID"] = 100033,  ["subId"] = 32,}
 ,  [105800031027] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 150,  ["id"] = 105800031027,  ["count"] = 1,  ["detailID"] = 100052,  ["subId"] = 27,}
-,  [21039021001] = {
-  ["type"] = 0,  ["dropId"] = 21039021,  ["weight"] = 100,  ["id"] = 21039021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105300031034] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031034,  ["count"] = 1,  ["detailID"] = 100047,  ["subId"] = 34,}
 ,  [105800031026] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 150,  ["id"] = 105800031026,  ["count"] = 1,  ["detailID"] = 100051,  ["subId"] = 26,}
 ,  [105800031024] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 150,  ["id"] = 105800031024,  ["count"] = 1,  ["detailID"] = 100032,  ["subId"] = 24,}
-,  [12036001] = {
-  ["type"] = 107,  ["dropId"] = 12036,  ["weight"] = 100,  ["id"] = 12036001,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 1,}
+,  [21039021001] = {
+  ["type"] = 0,  ["dropId"] = 21039021,  ["weight"] = 100,  ["id"] = 21039021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105800031022] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 150,  ["id"] = 105800031022,  ["count"] = 1,  ["detailID"] = 100021,  ["subId"] = 22,}
+,  [105800031019] = {
+  ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 150,  ["id"] = 105800031019,  ["count"] = 1,  ["detailID"] = 100009,  ["subId"] = 19,}
+,  [12036001] = {
+  ["type"] = 107,  ["dropId"] = 12036,  ["weight"] = 100,  ["id"] = 12036001,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 1,}
+,  [105800031017] = {
+  ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 700,  ["id"] = 105800031017,  ["count"] = 1,  ["detailID"] = 100044,  ["subId"] = 17,}
 ,  [105300041016] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041016,  ["count"] = 5,  ["detailID"] = 1010055,  ["subId"] = 16,}
 ,  [105300021053] = {
   ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021053,  ["count"] = 5,  ["detailID"] = 63001,  ["subId"] = 53,}
-,  [105800031020] = {
-  ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 150,  ["id"] = 105800031020,  ["count"] = 1,  ["detailID"] = 100010,  ["subId"] = 20,}
-,  [105800031019] = {
-  ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 150,  ["id"] = 105800031019,  ["count"] = 1,  ["detailID"] = 100009,  ["subId"] = 19,}
-,  [105800031017] = {
-  ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 700,  ["id"] = 105800031017,  ["count"] = 1,  ["detailID"] = 100044,  ["subId"] = 17,}
-,  [105640054001] = {
-  ["type"] = 105,  ["dropId"] = 105640054,  ["weight"] = 100,  ["id"] = 105640054001,  ["count"] = 10,  ["detailID"] = 30002,  ["subId"] = 1,}
-,  [26002021001] = {
-  ["type"] = 105,  ["dropId"] = 26002021,  ["weight"] = 100,  ["id"] = 26002021001,  ["count"] = 3,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [105800031016] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 700,  ["id"] = 105800031016,  ["count"] = 1,  ["detailID"] = 100043,  ["subId"] = 16,}
-,  [105300031035] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031035,  ["count"] = 1,  ["detailID"] = 100048,  ["subId"] = 35,}
 ,  [105800031014] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 700,  ["id"] = 105800031014,  ["count"] = 1,  ["detailID"] = 100041,  ["subId"] = 14,}
 ,  [105800031011] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 700,  ["id"] = 105800031011,  ["count"] = 1,  ["detailID"] = 100029,  ["subId"] = 11,}
+,  [105640054001] = {
+  ["type"] = 105,  ["dropId"] = 105640054,  ["weight"] = 100,  ["id"] = 105640054001,  ["count"] = 10,  ["detailID"] = 30002,  ["subId"] = 1,}
+,  [26002021001] = {
+  ["type"] = 105,  ["dropId"] = 26002021,  ["weight"] = 100,  ["id"] = 26002021001,  ["count"] = 3,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [105800031010] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 700,  ["id"] = 105800031010,  ["count"] = 1,  ["detailID"] = 100028,  ["subId"] = 10,}
-,  [19000021025] = {
-  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 16,  ["id"] = 19000021025,  ["count"] = 1,  ["detailID"] = 20024,  ["subId"] = 25,}
+,  [105300031035] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031035,  ["count"] = 1,  ["detailID"] = 100048,  ["subId"] = 35,}
 ,  [105800031005] = {
   ["type"] = 102,  ["dropId"] = 105800031,  ["weight"] = 700,  ["id"] = 105800031005,  ["count"] = 1,  ["detailID"] = 100016,  ["subId"] = 5,}
-,  [105641003001] = {
-  ["type"] = 105,  ["dropId"] = 105641003,  ["weight"] = 100,  ["id"] = 105641003001,  ["count"] = 1,  ["detailID"] = 63002,  ["subId"] = 1,}
 ,  [105800011001] = {
   ["type"] = 105,  ["dropId"] = 105800011,  ["weight"] = 100,  ["id"] = 105800011001,  ["count"] = 50,  ["detailID"] = 20002,  ["subId"] = 1,}
+,  [105649007001] = {
+  ["type"] = 102,  ["dropId"] = 105649007,  ["weight"] = 100,  ["id"] = 105649007001,  ["count"] = 1,  ["detailID"] = 100040,  ["subId"] = 1,}
+,  [19000021025] = {
+  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 16,  ["id"] = 19000021025,  ["count"] = 1,  ["detailID"] = 20024,  ["subId"] = 25,}
+,  [100021025] = {
+  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 10,  ["id"] = 100021025,  ["count"] = 1,  ["detailID"] = 10013,  ["subId"] = 25,}
+,  [105641003001] = {
+  ["type"] = 105,  ["dropId"] = 105641003,  ["weight"] = 100,  ["id"] = 105641003001,  ["count"] = 1,  ["detailID"] = 63002,  ["subId"] = 1,}
+,  [105300011024] = {
+  ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 2,  ["id"] = 105300011024,  ["count"] = 1,  ["detailID"] = 100030,  ["subId"] = 24,}
 ,  [105300041017] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041017,  ["count"] = 5,  ["detailID"] = 1010058,  ["subId"] = 17,}
 ,  [105300021054] = {
   ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 30,  ["id"] = 105300021054,  ["count"] = 10,  ["detailID"] = 63001,  ["subId"] = 54,}
-,  [105649007001] = {
-  ["type"] = 102,  ["dropId"] = 105649007,  ["weight"] = 100,  ["id"] = 105649007001,  ["count"] = 1,  ["detailID"] = 100040,  ["subId"] = 1,}
-,  [105640001001] = {
-  ["type"] = 105,  ["dropId"] = 105640001,  ["weight"] = 100,  ["id"] = 105640001001,  ["count"] = 5,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [30761001] = {
-  ["type"] = 107,  ["dropId"] = 30761,  ["weight"] = 100,  ["id"] = 30761001,  ["count"] = 43500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21004081001] = {
-  ["type"] = 103,  ["dropId"] = 21004081,  ["weight"] = 100,  ["id"] = 21004081001,  ["count"] = 1,  ["detailID"] = 1010053,  ["subId"] = 1,}
-,  [200021026] = {
-  ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 400,  ["id"] = 200021026,  ["count"] = 1,  ["detailID"] = 10050,  ["subId"] = 26,}
+,  [100022004] = {
+  ["type"] = 101,  ["dropId"] = 100022,  ["weight"] = 60,  ["id"] = 100022004,  ["count"] = 1,  ["detailID"] = 10013,  ["subId"] = 4,}
 ,  [105641004001] = {
   ["type"] = 105,  ["dropId"] = 105641004,  ["weight"] = 100,  ["id"] = 105641004001,  ["count"] = 1,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [1362001] = {
-  ["type"] = 102,  ["dropId"] = 1362,  ["weight"] = 100,  ["id"] = 1362001,  ["count"] = 1,  ["detailID"] = 100016,  ["subId"] = 1,}
-,  [200022016] = {
-  ["type"] = 101,  ["dropId"] = 200022,  ["weight"] = 100,  ["id"] = 200022016,  ["count"] = 1,  ["detailID"] = 10055,  ["subId"] = 16,}
-,  [1461001] = {
-  ["type"] = 102,  ["dropId"] = 1461,  ["weight"] = 100,  ["id"] = 1461001,  ["count"] = 1,  ["detailID"] = 100011,  ["subId"] = 1,}
+,  [30272001] = {
+  ["type"] = 105,  ["dropId"] = 30272,  ["weight"] = 100,  ["id"] = 30272001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21004081001] = {
+  ["type"] = 103,  ["dropId"] = 21004081,  ["weight"] = 100,  ["id"] = 21004081001,  ["count"] = 1,  ["detailID"] = 1010053,  ["subId"] = 1,}
+,  [300011022] = {
+  ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011022,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 22,}
 ,  [105640160001] = {
   ["type"] = 105,  ["dropId"] = 105640160,  ["weight"] = 100,  ["id"] = 105640160001,  ["count"] = 160,  ["detailID"] = 63001,  ["subId"] = 1,}
+,  [1362001] = {
+  ["type"] = 102,  ["dropId"] = 1362,  ["weight"] = 100,  ["id"] = 1362001,  ["count"] = 1,  ["detailID"] = 100016,  ["subId"] = 1,}
+,  [19000011005] = {
+  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011005,  ["count"] = 1,  ["detailID"] = 10004,  ["subId"] = 5,}
+,  [100021006] = {
+  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021006,  ["count"] = 1,  ["detailID"] = 10009,  ["subId"] = 6,}
+,  [105640154001] = {
+  ["type"] = 102,  ["dropId"] = 105640154,  ["weight"] = 100,  ["id"] = 105640154001,  ["count"] = 1,  ["detailID"] = 100048,  ["subId"] = 1,}
 ,  [30291001] = {
-  ["type"] = 107,  ["dropId"] = 30291,  ["weight"] = 100,  ["id"] = 30291001,  ["count"] = 19500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [6000064001] = {
-  ["type"] = 105,  ["dropId"] = 6000064,  ["weight"] = 100,  ["id"] = 6000064001,  ["count"] = 20,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [21002061001] = {
-  ["type"] = 0,  ["dropId"] = 21002061,  ["weight"] = 100,  ["id"] = 21002061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30291,  ["weight"] = 100,  ["id"] = 30291001,  ["count"] = 1300,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105640153001] = {
+  ["type"] = 102,  ["dropId"] = 105640153,  ["weight"] = 100,  ["id"] = 105640153001,  ["count"] = 2,  ["detailID"] = 100033,  ["subId"] = 1,}
+,  [105640151001] = {
+  ["type"] = 102,  ["dropId"] = 105640151,  ["weight"] = 100,  ["id"] = 105640151001,  ["count"] = 2,  ["detailID"] = 100011,  ["subId"] = 1,}
 ,  [21021071001] = {
   ["type"] = 103,  ["dropId"] = 21021071,  ["weight"] = 100,  ["id"] = 21021071001,  ["count"] = 1,  ["detailID"] = 1010040,  ["subId"] = 1,}
 ,  [105300041018] = {
@@ -2909,26 +2899,26 @@ small_bag_config={
   ["type"] = 105,  ["dropId"] = 20201,  ["weight"] = 100,  ["id"] = 20201001,  ["count"] = 3,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [16001011001] = {
   ["type"] = 105,  ["dropId"] = 16001011,  ["weight"] = 100,  ["id"] = 16001011001,  ["count"] = 1,  ["detailID"] = 40001,  ["subId"] = 1,}
-,  [105640154001] = {
-  ["type"] = 102,  ["dropId"] = 105640154,  ["weight"] = 100,  ["id"] = 105640154001,  ["count"] = 1,  ["detailID"] = 100048,  ["subId"] = 1,}
-,  [105640153001] = {
-  ["type"] = 102,  ["dropId"] = 105640153,  ["weight"] = 100,  ["id"] = 105640153001,  ["count"] = 2,  ["detailID"] = 100033,  ["subId"] = 1,}
-,  [105640151001] = {
-  ["type"] = 102,  ["dropId"] = 105640151,  ["weight"] = 100,  ["id"] = 105640151001,  ["count"] = 2,  ["detailID"] = 100011,  ["subId"] = 1,}
-,  [105300031058] = {
-  ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 650,  ["id"] = 105300031058,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 58,}
-,  [11011010001] = {
-  ["type"] = 105,  ["dropId"] = 11011010,  ["weight"] = 100,  ["id"] = 11011010001,  ["count"] = 1,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [19000031011] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031011,  ["count"] = 1,  ["detailID"] = 30010,  ["subId"] = 11,}
-,  [21038061001] = {
-  ["type"] = 0,  ["dropId"] = 21038061,  ["weight"] = 100,  ["id"] = 21038061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105300031057] = {
+  ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 400,  ["id"] = 105300031057,  ["count"] = 50,  ["detailID"] = 21,  ["subId"] = 57,}
 ,  [105640148001] = {
   ["type"] = 105,  ["dropId"] = 105640148,  ["weight"] = 100,  ["id"] = 105640148001,  ["count"] = 40,  ["detailID"] = 30013,  ["subId"] = 1,}
 ,  [105640145001] = {
   ["type"] = 105,  ["dropId"] = 105640145,  ["weight"] = 100,  ["id"] = 105640145001,  ["count"] = 40,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [105640144001] = {
   ["type"] = 102,  ["dropId"] = 105640144,  ["weight"] = 100,  ["id"] = 105640144001,  ["count"] = 1,  ["detailID"] = 100047,  ["subId"] = 1,}
+,  [11011010001] = {
+  ["type"] = 105,  ["dropId"] = 11011010,  ["weight"] = 100,  ["id"] = 11011010001,  ["count"] = 1,  ["detailID"] = 10002,  ["subId"] = 1,}
+,  [19000031011] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031011,  ["count"] = 1,  ["detailID"] = 30010,  ["subId"] = 11,}
+,  [21038061001] = {
+  ["type"] = 0,  ["dropId"] = 21038061,  ["weight"] = 100,  ["id"] = 21038061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105640142001] = {
+  ["type"] = 102,  ["dropId"] = 105640142,  ["weight"] = 100,  ["id"] = 105640142001,  ["count"] = 1,  ["detailID"] = 100022,  ["subId"] = 1,}
+,  [105640141001] = {
+  ["type"] = 102,  ["dropId"] = 105640141,  ["weight"] = 100,  ["id"] = 105640141001,  ["count"] = 1,  ["detailID"] = 100011,  ["subId"] = 1,}
+,  [105300041012] = {
+  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041012,  ["count"] = 5,  ["detailID"] = 1010047,  ["subId"] = 12,}
 ,  [21006041001] = {
   ["type"] = 0,  ["dropId"] = 21006041,  ["weight"] = 100,  ["id"] = 21006041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21004001001] = {
@@ -2936,257 +2926,257 @@ small_bag_config={
 ,  [19000011040] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 1,  ["id"] = 19000011040,  ["count"] = 1,  ["detailID"] = 10039,  ["subId"] = 40,}
 ,  [30881001] = {
-  ["type"] = 107,  ["dropId"] = 30881,  ["weight"] = 100,  ["id"] = 30881001,  ["count"] = 76500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30881,  ["weight"] = 100,  ["id"] = 30881001,  ["count"] = 57600,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300021056] = {
   ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021056,  ["count"] = 3,  ["detailID"] = 63002,  ["subId"] = 56,}
-,  [105640142001] = {
-  ["type"] = 102,  ["dropId"] = 105640142,  ["weight"] = 100,  ["id"] = 105640142001,  ["count"] = 1,  ["detailID"] = 100022,  ["subId"] = 1,}
-,  [105640141001] = {
-  ["type"] = 102,  ["dropId"] = 105640141,  ["weight"] = 100,  ["id"] = 105640141001,  ["count"] = 1,  ["detailID"] = 100011,  ["subId"] = 1,}
-,  [105300041014] = {
-  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041014,  ["count"] = 5,  ["detailID"] = 1010050,  ["subId"] = 14,}
-,  [20791001] = {
-  ["type"] = 105,  ["dropId"] = 20791,  ["weight"] = 100,  ["id"] = 20791001,  ["count"] = 10,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [21018011001] = {
-  ["type"] = 0,  ["dropId"] = 21018011,  ["weight"] = 100,  ["id"] = 21018011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21023031001] = {
-  ["type"] = 103,  ["dropId"] = 21023031,  ["weight"] = 100,  ["id"] = 21023031001,  ["count"] = 1,  ["detailID"] = 1010033,  ["subId"] = 1,}
-,  [105300031038] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031038,  ["count"] = 1,  ["detailID"] = 100054,  ["subId"] = 38,}
+,  [21046041001] = {
+  ["type"] = 0,  ["dropId"] = 21046041,  ["weight"] = 100,  ["id"] = 21046041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [19000021026] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 16,  ["id"] = 19000021026,  ["count"] = 1,  ["detailID"] = 20025,  ["subId"] = 26,}
 ,  [105640136001] = {
   ["type"] = 107,  ["dropId"] = 105640136,  ["weight"] = 100,  ["id"] = 105640136001,  ["count"] = 500000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [20791001] = {
+  ["type"] = 105,  ["dropId"] = 20791,  ["weight"] = 100,  ["id"] = 20791001,  ["count"] = 10,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [105640135001] = {
   ["type"] = 105,  ["dropId"] = 105640135,  ["weight"] = 100,  ["id"] = 105640135001,  ["count"] = 30,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [21023031001] = {
+  ["type"] = 103,  ["dropId"] = 21023031,  ["weight"] = 100,  ["id"] = 21023031001,  ["count"] = 1,  ["detailID"] = 1010033,  ["subId"] = 1,}
+,  [105300031038] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031038,  ["count"] = 1,  ["detailID"] = 100054,  ["subId"] = 38,}
 ,  [105640133001] = {
   ["type"] = 102,  ["dropId"] = 105640133,  ["weight"] = 100,  ["id"] = 105640133001,  ["count"] = 1,  ["detailID"] = 100031,  ["subId"] = 1,}
-,  [60053001] = {
-  ["type"] = 107,  ["dropId"] = 60053,  ["weight"] = 100,  ["id"] = 60053001,  ["count"] = 80000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640132001] = {
   ["type"] = 102,  ["dropId"] = 105640132,  ["weight"] = 100,  ["id"] = 105640132001,  ["count"] = 1,  ["detailID"] = 100020,  ["subId"] = 1,}
+,  [17008011001] = {
+  ["type"] = 105,  ["dropId"] = 17008011,  ["weight"] = 100,  ["id"] = 17008011001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [200011032] = {
   ["type"] = 101,  ["dropId"] = 200011,  ["weight"] = 20,  ["id"] = 200011032,  ["count"] = 1,  ["detailID"] = 10046,  ["subId"] = 32,}
-,  [105300041020] = {
-  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041020,  ["count"] = 5,  ["detailID"] = 1010046,  ["subId"] = 20,}
-,  [105300021057] = {
-  ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021057,  ["count"] = 10,  ["detailID"] = 20001,  ["subId"] = 57,}
+,  [60053001] = {
+  ["type"] = 107,  ["dropId"] = 60053,  ["weight"] = 100,  ["id"] = 60053001,  ["count"] = 80000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640125001] = {
   ["type"] = 105,  ["dropId"] = 105640125,  ["weight"] = 100,  ["id"] = 105640125001,  ["count"] = 25,  ["detailID"] = 30013,  ["subId"] = 1,}
 ,  [105640124001] = {
   ["type"] = 105,  ["dropId"] = 105640124,  ["weight"] = 100,  ["id"] = 105640124001,  ["count"] = 25,  ["detailID"] = 30003,  ["subId"] = 1,}
-,  [11021001] = {
-  ["type"] = 107,  ["dropId"] = 11021,  ["weight"] = 100,  ["id"] = 11021001,  ["count"] = 1,  ["detailID"] = 18,  ["subId"] = 1,}
+,  [105300041020] = {
+  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041020,  ["count"] = 5,  ["detailID"] = 1010046,  ["subId"] = 20,}
+,  [105300021057] = {
+  ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021057,  ["count"] = 10,  ["detailID"] = 20001,  ["subId"] = 57,}
 ,  [105640123001] = {
   ["type"] = 107,  ["dropId"] = 105640123,  ["weight"] = 100,  ["id"] = 105640123001,  ["count"] = 200000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640121001] = {
   ["type"] = 105,  ["dropId"] = 105640121,  ["weight"] = 100,  ["id"] = 105640121001,  ["count"] = 60,  ["detailID"] = 20005,  ["subId"] = 1,}
+,  [11021001] = {
+  ["type"] = 107,  ["dropId"] = 11021,  ["weight"] = 100,  ["id"] = 11021001,  ["count"] = 1,  ["detailID"] = 18,  ["subId"] = 1,}
 ,  [105640116001] = {
   ["type"] = 105,  ["dropId"] = 105640116,  ["weight"] = 100,  ["id"] = 105640116001,  ["count"] = 120,  ["detailID"] = 63001,  ["subId"] = 1,}
-,  [105300031039] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031039,  ["count"] = 1,  ["detailID"] = 100007,  ["subId"] = 39,}
 ,  [105640113001] = {
   ["type"] = 107,  ["dropId"] = 105640113,  ["weight"] = 100,  ["id"] = 105640113001,  ["count"] = 200000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [1403001] = {
-  ["type"] = 105,  ["dropId"] = 1403,  ["weight"] = 100,  ["id"] = 1403001,  ["count"] = 1,  ["detailID"] = 60001,  ["subId"] = 1,}
 ,  [105640112001] = {
   ["type"] = 105,  ["dropId"] = 105640112,  ["weight"] = 100,  ["id"] = 105640112001,  ["count"] = 20,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [7100023001] = {
-  ["type"] = 107,  ["dropId"] = 7100023,  ["weight"] = 100,  ["id"] = 7100023001,  ["count"] = 20,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [105300031039] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031039,  ["count"] = 1,  ["detailID"] = 100007,  ["subId"] = 39,}
 ,  [105640106001] = {
   ["type"] = 105,  ["dropId"] = 105640106,  ["weight"] = 100,  ["id"] = 105640106001,  ["count"] = 110,  ["detailID"] = 63001,  ["subId"] = 1,}
-,  [19000041013] = {
-  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 1,  ["id"] = 19000041013,  ["count"] = 1,  ["detailID"] = 40012,  ["subId"] = 13,}
+,  [1403001] = {
+  ["type"] = 105,  ["dropId"] = 1403,  ["weight"] = 100,  ["id"] = 1403001,  ["count"] = 1,  ["detailID"] = 60001,  ["subId"] = 1,}
+,  [21020011001] = {
+  ["type"] = 0,  ["dropId"] = 21020011,  ["weight"] = 100,  ["id"] = 21020011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [7100023001] = {
+  ["type"] = 107,  ["dropId"] = 7100023,  ["weight"] = 100,  ["id"] = 7100023001,  ["count"] = 20,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [105640103001] = {
   ["type"] = 107,  ["dropId"] = 105640103,  ["weight"] = 100,  ["id"] = 105640103001,  ["count"] = 100000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [30661001] = {
+  ["type"] = 107,  ["dropId"] = 30661,  ["weight"] = 100,  ["id"] = 30661001,  ["count"] = 19100,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105640095001] = {
+  ["type"] = 105,  ["dropId"] = 105640095,  ["weight"] = 100,  ["id"] = 105640095001,  ["count"] = 10,  ["detailID"] = 30013,  ["subId"] = 1,}
 ,  [6010011001] = {
   ["type"] = 107,  ["dropId"] = 6010011,  ["weight"] = 100,  ["id"] = 6010011001,  ["count"] = 500000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [7100019001] = {
   ["type"] = 107,  ["dropId"] = 7100019,  ["weight"] = 100,  ["id"] = 7100019001,  ["count"] = 12540,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105300041045] = {
-  ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 500,  ["id"] = 105300041045,  ["count"] = 40,  ["detailID"] = 63001,  ["subId"] = 45,}
-,  [105640095001] = {
-  ["type"] = 105,  ["dropId"] = 105640095,  ["weight"] = 100,  ["id"] = 105640095001,  ["count"] = 10,  ["detailID"] = 30013,  ["subId"] = 1,}
-,  [30652001] = {
-  ["type"] = 105,  ["dropId"] = 30652,  ["weight"] = 100,  ["id"] = 30652001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21013031001] = {
+  ["type"] = 103,  ["dropId"] = 21013031,  ["weight"] = 100,  ["id"] = 21013031001,  ["count"] = 1,  ["detailID"] = 1010016,  ["subId"] = 1,}
 ,  [105640093001] = {
   ["type"] = 107,  ["dropId"] = 105640093,  ["weight"] = 100,  ["id"] = 105640093001,  ["count"] = 100000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [7100015001] = {
-  ["type"] = 107,  ["dropId"] = 7100015,  ["weight"] = 100,  ["id"] = 7100015001,  ["count"] = 5700,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640092001] = {
   ["type"] = 105,  ["dropId"] = 105640092,  ["weight"] = 100,  ["id"] = 105640092001,  ["count"] = 10,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [105300031053] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 18,  ["id"] = 105300031053,  ["count"] = 1,  ["detailID"] = 100027,  ["subId"] = 53,}
+,  [7100015001] = {
+  ["type"] = 107,  ["dropId"] = 7100015,  ["weight"] = 100,  ["id"] = 7100015001,  ["count"] = 5700,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105640084001] = {
+  ["type"] = 105,  ["dropId"] = 105640084,  ["weight"] = 100,  ["id"] = 105640084001,  ["count"] = 5,  ["detailID"] = 30003,  ["subId"] = 1,}
 ,  [105300031040] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031040,  ["count"] = 1,  ["detailID"] = 100008,  ["subId"] = 40,}
-,  [105300021052] = {
-  ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 35,  ["id"] = 105300021052,  ["count"] = 200,  ["detailID"] = 13,  ["subId"] = 52,}
+,  [6000011001] = {
+  ["type"] = 103,  ["dropId"] = 6000011,  ["weight"] = 100,  ["id"] = 6000011001,  ["count"] = 10,  ["detailID"] = 1010056,  ["subId"] = 1,}
 ,  [105640043001] = {
   ["type"] = 107,  ["dropId"] = 105640043,  ["weight"] = 100,  ["id"] = 105640043001,  ["count"] = 15000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [7100011001] = {
   ["type"] = 107,  ["dropId"] = 7100011,  ["weight"] = 100,  ["id"] = 7100011001,  ["count"] = 80,  ["detailID"] = 27,  ["subId"] = 1,}
-,  [105640084001] = {
-  ["type"] = 105,  ["dropId"] = 105640084,  ["weight"] = 100,  ["id"] = 105640084001,  ["count"] = 5,  ["detailID"] = 30003,  ["subId"] = 1,}
-,  [30161001] = {
-  ["type"] = 107,  ["dropId"] = 30161,  ["weight"] = 100,  ["id"] = 30161001,  ["count"] = 9500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [100021005] = {
-  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021005,  ["count"] = 1,  ["detailID"] = 10008,  ["subId"] = 5,}
 ,  [105640082001] = {
   ["type"] = 105,  ["dropId"] = 105640082,  ["weight"] = 100,  ["id"] = 105640082001,  ["count"] = 5,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [30161001] = {
+  ["type"] = 107,  ["dropId"] = 30161,  ["weight"] = 100,  ["id"] = 30161001,  ["count"] = 900,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105640081001] = {
+  ["type"] = 104,  ["dropId"] = 105640081,  ["weight"] = 100,  ["id"] = 105640081001,  ["count"] = 20,  ["detailID"] = 21000510,  ["subId"] = 1,}
+,  [105640076001] = {
+  ["type"] = 105,  ["dropId"] = 105640076,  ["weight"] = 100,  ["id"] = 105640076001,  ["count"] = 80,  ["detailID"] = 63001,  ["subId"] = 1,}
 ,  [105300041022] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041022,  ["count"] = 5,  ["detailID"] = 1010052,  ["subId"] = 22,}
 ,  [105300021059] = {
   ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021059,  ["count"] = 1,  ["detailID"] = 110101,  ["subId"] = 59,}
 ,  [20071001] = {
   ["type"] = 105,  ["dropId"] = 20071,  ["weight"] = 100,  ["id"] = 20071001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [105640081001] = {
-  ["type"] = 104,  ["dropId"] = 105640081,  ["weight"] = 100,  ["id"] = 105640081001,  ["count"] = 20,  ["detailID"] = 21000510,  ["subId"] = 1,}
+,  [105300031082] = {
+  ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 25,  ["id"] = 105300031082,  ["count"] = 1,  ["detailID"] = 130301,  ["subId"] = 82,}
 ,  [11021002] = {
   ["type"] = 107,  ["dropId"] = 11021,  ["weight"] = 50,  ["id"] = 11021002,  ["count"] = 1,  ["detailID"] = 19,  ["subId"] = 2,}
 ,  [21022071001] = {
   ["type"] = 103,  ["dropId"] = 21022071,  ["weight"] = 100,  ["id"] = 21022071001,  ["count"] = 1,  ["detailID"] = 1010047,  ["subId"] = 1,}
-,  [105640076001] = {
-  ["type"] = 105,  ["dropId"] = 105640076,  ["weight"] = 100,  ["id"] = 105640076001,  ["count"] = 80,  ["detailID"] = 63001,  ["subId"] = 1,}
-,  [105300031083] = {
-  ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 25,  ["id"] = 105300031083,  ["count"] = 1,  ["detailID"] = 130401,  ["subId"] = 83,}
+,  [21046011001] = {
+  ["type"] = 0,  ["dropId"] = 21046011,  ["weight"] = 100,  ["id"] = 21046011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [6200022001] = {
+  ["type"] = 107,  ["dropId"] = 6200022,  ["weight"] = 100,  ["id"] = 6200022001,  ["count"] = 98,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [19000031012] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031012,  ["count"] = 1,  ["detailID"] = 30011,  ["subId"] = 12,}
-,  [300021003] = {
-  ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021003,  ["count"] = 1,  ["detailID"] = 10030,  ["subId"] = 3,}
-,  [100011021] = {
-  ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 0,  ["id"] = 100011021,  ["count"] = 1,  ["detailID"] = 10038,  ["subId"] = 21,}
 ,  [105640071001] = {
   ["type"] = 104,  ["dropId"] = 105640071,  ["weight"] = 100,  ["id"] = 105640071001,  ["count"] = 20,  ["detailID"] = 21000510,  ["subId"] = 1,}
 ,  [105640065001] = {
   ["type"] = 105,  ["dropId"] = 105640065,  ["weight"] = 100,  ["id"] = 105640065001,  ["count"] = 15,  ["detailID"] = 30012,  ["subId"] = 1,}
-,  [80021001] = {
-  ["type"] = 101,  ["dropId"] = 80021,  ["weight"] = 100,  ["id"] = 80021001,  ["count"] = 1,  ["detailID"] = 10020,  ["subId"] = 1,}
+,  [20231001] = {
+  ["type"] = 105,  ["dropId"] = 20231,  ["weight"] = 100,  ["id"] = 20231001,  ["count"] = 6,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [105640063001] = {
   ["type"] = 107,  ["dropId"] = 105640063,  ["weight"] = 100,  ["id"] = 105640063001,  ["count"] = 20000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [19000011041] = {
-  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 4,  ["id"] = 19000011041,  ["count"] = 1,  ["detailID"] = 10040,  ["subId"] = 41,}
-,  [105300041023] = {
-  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041023,  ["count"] = 5,  ["detailID"] = 1010053,  ["subId"] = 23,}
-,  [30751001] = {
-  ["type"] = 107,  ["dropId"] = 30751,  ["weight"] = 100,  ["id"] = 30751001,  ["count"] = 41000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [200021010] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 8000,  ["id"] = 200021010,  ["count"] = 1,  ["detailID"] = 10028,  ["subId"] = 10,}
 ,  [105640061001] = {
   ["type"] = 104,  ["dropId"] = 105640061,  ["weight"] = 100,  ["id"] = 105640061001,  ["count"] = 20,  ["detailID"] = 21000530,  ["subId"] = 1,}
-,  [21005001001] = {
-  ["type"] = 0,  ["dropId"] = 21005001,  ["weight"] = 100,  ["id"] = 21005001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21039061001] = {
+  ["type"] = 0,  ["dropId"] = 21039061,  ["weight"] = 100,  ["id"] = 21039061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105300041023] = {
+  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041023,  ["count"] = 5,  ["detailID"] = 1010053,  ["subId"] = 23,}
+,  [30751001] = {
+  ["type"] = 107,  ["dropId"] = 30751,  ["weight"] = 100,  ["id"] = 30751001,  ["count"] = 26250,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640056001] = {
   ["type"] = 105,  ["dropId"] = 105640056,  ["weight"] = 100,  ["id"] = 105640056001,  ["count"] = 60,  ["detailID"] = 63001,  ["subId"] = 1,}
+,  [30431001] = {
+  ["type"] = 107,  ["dropId"] = 30431,  ["weight"] = 100,  ["id"] = 30431001,  ["count"] = 9250,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21005001001] = {
+  ["type"] = 0,  ["dropId"] = 21005001,  ["weight"] = 100,  ["id"] = 21005001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21021061001] = {
+  ["type"] = 0,  ["dropId"] = 21021061,  ["weight"] = 100,  ["id"] = 21021061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [20661001] = {
   ["type"] = 105,  ["dropId"] = 20661,  ["weight"] = 100,  ["id"] = 20661001,  ["count"] = 18,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [30272001] = {
-  ["type"] = 105,  ["dropId"] = 30272,  ["weight"] = 100,  ["id"] = 30272001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [50231001] = {
-  ["type"] = 107,  ["dropId"] = 50231,  ["weight"] = 100,  ["id"] = 50231001,  ["count"] = 110,  ["detailID"] = 13,  ["subId"] = 1,}
-,  [90021001] = {
-  ["type"] = 101,  ["dropId"] = 90021,  ["weight"] = 100,  ["id"] = 90021001,  ["count"] = 1,  ["detailID"] = 10049,  ["subId"] = 1,}
 ,  [105640044001] = {
   ["type"] = 105,  ["dropId"] = 105640044,  ["weight"] = 100,  ["id"] = 105640044001,  ["count"] = 5,  ["detailID"] = 30002,  ["subId"] = 1,}
+,  [50231001] = {
+  ["type"] = 107,  ["dropId"] = 50231,  ["weight"] = 100,  ["id"] = 50231001,  ["count"] = 110,  ["detailID"] = 13,  ["subId"] = 1,}
+,  [105640042001] = {
+  ["type"] = 105,  ["dropId"] = 105640042,  ["weight"] = 100,  ["id"] = 105640042001,  ["count"] = 5,  ["detailID"] = 10002,  ["subId"] = 1,}
+,  [600064001] = {
+  ["type"] = 105,  ["dropId"] = 600064,  ["weight"] = 100,  ["id"] = 600064001,  ["count"] = 2,  ["detailID"] = 60001,  ["subId"] = 1,}
 ,  [12037001] = {
   ["type"] = 101,  ["dropId"] = 12037,  ["weight"] = 100,  ["id"] = 12037001,  ["count"] = 1,  ["detailID"] = 10009,  ["subId"] = 1,}
 ,  [1444001] = {
   ["type"] = 107,  ["dropId"] = 1444,  ["weight"] = 100,  ["id"] = 1444001,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 1,}
-,  [105640042001] = {
-  ["type"] = 105,  ["dropId"] = 105640042,  ["weight"] = 100,  ["id"] = 105640042001,  ["count"] = 5,  ["detailID"] = 10002,  ["subId"] = 1,}
+,  [105640037001] = {
+  ["type"] = 104,  ["dropId"] = 105640037,  ["weight"] = 100,  ["id"] = 105640037001,  ["count"] = 20,  ["detailID"] = 21000460,  ["subId"] = 1,}
 ,  [21024031001] = {
   ["type"] = 103,  ["dropId"] = 21024031,  ["weight"] = 100,  ["id"] = 21024031001,  ["count"] = 1,  ["detailID"] = 1010004,  ["subId"] = 1,}
-,  [60253001] = {
-  ["type"] = 107,  ["dropId"] = 60253,  ["weight"] = 100,  ["id"] = 60253001,  ["count"] = 5,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [105640033001] = {
+  ["type"] = 105,  ["dropId"] = 105640033,  ["weight"] = 100,  ["id"] = 105640033001,  ["count"] = 40,  ["detailID"] = 63001,  ["subId"] = 1,}
 ,  [105300041024] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041024,  ["count"] = 5,  ["detailID"] = 1010056,  ["subId"] = 24,}
 ,  [105300021061] = {
   ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021061,  ["count"] = 1,  ["detailID"] = 110301,  ["subId"] = 61,}
-,  [105640037001] = {
-  ["type"] = 104,  ["dropId"] = 105640037,  ["weight"] = 100,  ["id"] = 105640037001,  ["count"] = 20,  ["detailID"] = 21000460,  ["subId"] = 1,}
-,  [105640033001] = {
-  ["type"] = 105,  ["dropId"] = 105640033,  ["weight"] = 100,  ["id"] = 105640033001,  ["count"] = 40,  ["detailID"] = 63001,  ["subId"] = 1,}
+,  [105640032001] = {
+  ["type"] = 107,  ["dropId"] = 105640032,  ["weight"] = 100,  ["id"] = 105640032001,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21006061001] = {
+  ["type"] = 0,  ["dropId"] = 21006061,  ["weight"] = 100,  ["id"] = 21006061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [11021003] = {
   ["type"] = 107,  ["dropId"] = 11021,  ["weight"] = 20,  ["id"] = 11021003,  ["count"] = 1,  ["detailID"] = 20,  ["subId"] = 3,}
 ,  [31212001] = {
   ["type"] = 105,  ["dropId"] = 31212,  ["weight"] = 100,  ["id"] = 31212001,  ["count"] = 43,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [105640032001] = {
-  ["type"] = 107,  ["dropId"] = 105640032,  ["weight"] = 100,  ["id"] = 105640032001,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21015071001] = {
-  ["type"] = 103,  ["dropId"] = 21015071,  ["weight"] = 100,  ["id"] = 21015071001,  ["count"] = 1,  ["detailID"] = 1010020,  ["subId"] = 1,}
-,  [21041021001] = {
-  ["type"] = 0,  ["dropId"] = 21041021,  ["weight"] = 100,  ["id"] = 21041021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105640025001] = {
   ["type"] = 105,  ["dropId"] = 105640025,  ["weight"] = 100,  ["id"] = 105640025001,  ["count"] = 10,  ["detailID"] = 30001,  ["subId"] = 1,}
-,  [21251001] = {
-  ["type"] = 105,  ["dropId"] = 21251,  ["weight"] = 100,  ["id"] = 21251001,  ["count"] = 31,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [105640023001] = {
   ["type"] = 105,  ["dropId"] = 105640023,  ["weight"] = 100,  ["id"] = 105640023001,  ["count"] = 30,  ["detailID"] = 63001,  ["subId"] = 1,}
-,  [19000021027] = {
-  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 1,  ["id"] = 19000021027,  ["count"] = 1,  ["detailID"] = 20026,  ["subId"] = 27,}
+,  [21041021001] = {
+  ["type"] = 0,  ["dropId"] = 21041021,  ["weight"] = 100,  ["id"] = 21041021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105640022001] = {
   ["type"] = 107,  ["dropId"] = 105640022,  ["weight"] = 100,  ["id"] = 105640022001,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105300031050] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 19,  ["id"] = 105300031050,  ["count"] = 1,  ["detailID"] = 100006,  ["subId"] = 50,}
-,  [30232001] = {
-  ["type"] = 105,  ["dropId"] = 30232,  ["weight"] = 100,  ["id"] = 30232001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [105300041025] = {
-  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041025,  ["count"] = 5,  ["detailID"] = 1010061,  ["subId"] = 25,}
-,  [105300021062] = {
-  ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021062,  ["count"] = 1,  ["detailID"] = 110401,  ["subId"] = 62,}
+,  [21251001] = {
+  ["type"] = 105,  ["dropId"] = 21251,  ["weight"] = 100,  ["id"] = 21251001,  ["count"] = 31,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [105300031049] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 18,  ["id"] = 105300031049,  ["count"] = 1,  ["detailID"] = 100005,  ["subId"] = 49,}
+,  [19000021027] = {
+  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 1,  ["id"] = 19000021027,  ["count"] = 1,  ["detailID"] = 20026,  ["subId"] = 27,}
+,  [100021007] = {
+  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021007,  ["count"] = 1,  ["detailID"] = 10010,  ["subId"] = 7,}
 ,  [105640017001] = {
   ["type"] = 102,  ["dropId"] = 105640017,  ["weight"] = 100,  ["id"] = 105640017001,  ["count"] = 1,  ["detailID"] = 100040,  ["subId"] = 1,}
 ,  [105640013001] = {
   ["type"] = 105,  ["dropId"] = 105640013,  ["weight"] = 100,  ["id"] = 105640013001,  ["count"] = 20,  ["detailID"] = 63001,  ["subId"] = 1,}
+,  [105300041025] = {
+  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041025,  ["count"] = 5,  ["detailID"] = 1010061,  ["subId"] = 25,}
+,  [105300021062] = {
+  ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021062,  ["count"] = 1,  ["detailID"] = 110401,  ["subId"] = 62,}
 ,  [105640012001] = {
   ["type"] = 107,  ["dropId"] = 105640012,  ["weight"] = 100,  ["id"] = 105640012001,  ["count"] = 5000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [12039001] = {
-  ["type"] = 101,  ["dropId"] = 12039,  ["weight"] = 100,  ["id"] = 12039001,  ["count"] = 1,  ["detailID"] = 10011,  ["subId"] = 1,}
+,  [30152001] = {
+  ["type"] = 105,  ["dropId"] = 30152,  ["weight"] = 100,  ["id"] = 30152001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105640004001] = {
   ["type"] = 105,  ["dropId"] = 105640004,  ["weight"] = 100,  ["id"] = 105640004001,  ["count"] = 3,  ["detailID"] = 30001,  ["subId"] = 1,}
+,  [105640002001] = {
+  ["type"] = 107,  ["dropId"] = 105640002,  ["weight"] = 100,  ["id"] = 105640002001,  ["count"] = 5000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105640001001] = {
+  ["type"] = 105,  ["dropId"] = 105640001,  ["weight"] = 100,  ["id"] = 105640001001,  ["count"] = 5,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [50621001] = {
   ["type"] = 107,  ["dropId"] = 50621,  ["weight"] = 100,  ["id"] = 50621001,  ["count"] = 80,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [105300031044] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031044,  ["count"] = 1,  ["detailID"] = 100030,  ["subId"] = 44,}
-,  [105640002001] = {
-  ["type"] = 107,  ["dropId"] = 105640002,  ["weight"] = 100,  ["id"] = 105640002001,  ["count"] = 5000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105620011001] = {
+  ["type"] = 107,  ["dropId"] = 105620011,  ["weight"] = 100,  ["id"] = 105620011001,  ["count"] = 60,  ["detailID"] = 7,  ["subId"] = 1,}
 ,  [105649003001] = {
   ["type"] = 102,  ["dropId"] = 105649003,  ["weight"] = 100,  ["id"] = 105649003001,  ["count"] = 1,  ["detailID"] = 100016,  ["subId"] = 1,}
 ,  [40011001] = {
   ["type"] = 107,  ["dropId"] = 40011,  ["weight"] = 100,  ["id"] = 40011001,  ["count"] = 20000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105620011001] = {
-  ["type"] = 107,  ["dropId"] = 105620011,  ["weight"] = 100,  ["id"] = 105620011001,  ["count"] = 60,  ["detailID"] = 7,  ["subId"] = 1,}
-,  [30752001] = {
-  ["type"] = 105,  ["dropId"] = 30752,  ["weight"] = 100,  ["id"] = 30752001,  ["count"] = 15,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [30062001] = {
+  ["type"] = 105,  ["dropId"] = 30062,  ["weight"] = 100,  ["id"] = 30062001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [17005021001] = {
+  ["type"] = 105,  ["dropId"] = 17005021,  ["weight"] = 100,  ["id"] = 17005021001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [30031001] = {
-  ["type"] = 107,  ["dropId"] = 30031,  ["weight"] = 100,  ["id"] = 30031001,  ["count"] = 2500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [100011008] = {
-  ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 300,  ["id"] = 100011008,  ["count"] = 1,  ["detailID"] = 10011,  ["subId"] = 8,}
+  ["type"] = 107,  ["dropId"] = 30031,  ["weight"] = 100,  ["id"] = 30031001,  ["count"] = 350,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [11001003002] = {
+  ["type"] = 0,  ["dropId"] = 11001003,  ["weight"] = 100,  ["id"] = 11001003002,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 2,}
 ,  [105300041026] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041026,  ["count"] = 5,  ["detailID"] = 1010065,  ["subId"] = 26,}
 ,  [21006081001] = {
   ["type"] = 103,  ["dropId"] = 21006081,  ["weight"] = 100,  ["id"] = 21006081001,  ["count"] = 1,  ["detailID"] = 1010052,  ["subId"] = 1,}
-,  [21005081001] = {
-  ["type"] = 103,  ["dropId"] = 21005081,  ["weight"] = 100,  ["id"] = 21005081001,  ["count"] = 1,  ["detailID"] = 1030063,  ["subId"] = 1,}
-,  [21031021001] = {
-  ["type"] = 0,  ["dropId"] = 21031021,  ["weight"] = 100,  ["id"] = 21031021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [1313001] = {
-  ["type"] = 102,  ["dropId"] = 1313,  ["weight"] = 100,  ["id"] = 1313001,  ["count"] = 1,  ["detailID"] = 100023,  ["subId"] = 1,}
 ,  [105300041047] = {
   ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 250,  ["id"] = 105300041047,  ["count"] = 1,  ["detailID"] = 30012,  ["subId"] = 47,}
 ,  [105300041046] = {
   ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 150,  ["id"] = 105300041046,  ["count"] = 3,  ["detailID"] = 30013,  ["subId"] = 46,}
+,  [1313001] = {
+  ["type"] = 102,  ["dropId"] = 1313,  ["weight"] = 100,  ["id"] = 1313001,  ["count"] = 1,  ["detailID"] = 100023,  ["subId"] = 1,}
+,  [105300041045] = {
+  ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 500,  ["id"] = 105300041045,  ["count"] = 40,  ["detailID"] = 63001,  ["subId"] = 45,}
+,  [105300016052] = {
+  ["type"] = 105,  ["dropId"] = 105300016,  ["weight"] = 20,  ["id"] = 105300016052,  ["count"] = 2,  ["detailID"] = 63002,  ["subId"] = 52,}
 ,  [11011010002] = {
   ["type"] = 0,  ["dropId"] = 11011010,  ["weight"] = 100,  ["id"] = 11011010002,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 2,}
 ,  [19000031013] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031013,  ["count"] = 1,  ["detailID"] = 30012,  ["subId"] = 13,}
 ,  [105640096001] = {
   ["type"] = 105,  ["dropId"] = 105640096,  ["weight"] = 100,  ["id"] = 105640096001,  ["count"] = 100,  ["detailID"] = 63001,  ["subId"] = 1,}
-,  [31251001] = {
-  ["type"] = 107,  ["dropId"] = 31251,  ["weight"] = 100,  ["id"] = 31251001,  ["count"] = 80500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105300041042] = {
+  ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 400,  ["id"] = 105300041042,  ["count"] = 5,  ["detailID"] = 10003,  ["subId"] = 42,}
 ,  [21023071001] = {
   ["type"] = 103,  ["dropId"] = 21023071,  ["weight"] = 100,  ["id"] = 21023071001,  ["count"] = 1,  ["detailID"] = 1010049,  ["subId"] = 1,}
 ,  [400571001] = {
   ["type"] = 103,  ["dropId"] = 400571,  ["weight"] = 100,  ["id"] = 400571001,  ["count"] = 1,  ["detailID"] = 1030057,  ["subId"] = 1,}
-,  [30661001] = {
-  ["type"] = 107,  ["dropId"] = 30661,  ["weight"] = 100,  ["id"] = 30661001,  ["count"] = 25500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [30261001] = {
+  ["type"] = 107,  ["dropId"] = 30261,  ["weight"] = 100,  ["id"] = 30261001,  ["count"] = 650,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1485001] = {
   ["type"] = 103,  ["dropId"] = 1485,  ["weight"] = 100,  ["id"] = 1485001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [19000011042] = {
@@ -3196,55 +3186,55 @@ small_bag_config={
 ,  [105300021064] = {
   ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021064,  ["count"] = 1,  ["detailID"] = 120201,  ["subId"] = 64,}
 ,  [30621001] = {
-  ["type"] = 107,  ["dropId"] = 30621,  ["weight"] = 100,  ["id"] = 30621001,  ["count"] = 20000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105300041042] = {
-  ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 400,  ["id"] = 105300041042,  ["count"] = 5,  ["detailID"] = 10003,  ["subId"] = 42,}
-,  [31021001] = {
-  ["type"] = 107,  ["dropId"] = 31021,  ["weight"] = 100,  ["id"] = 31021001,  ["count"] = 20500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30621,  ["weight"] = 100,  ["id"] = 30621001,  ["count"] = 8500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105300021036] = {
+  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 2,  ["id"] = 105300021036,  ["count"] = 1,  ["detailID"] = 100041,  ["subId"] = 36,}
+,  [105300041039] = {
+  ["type"] = 107,  ["dropId"] = 105300041,  ["weight"] = 500,  ["id"] = 105300041039,  ["count"] = 50000,  ["detailID"] = 1,  ["subId"] = 39,}
 ,  [21040061001] = {
   ["type"] = 0,  ["dropId"] = 21040061,  ["weight"] = 100,  ["id"] = 21040061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [30431001] = {
-  ["type"] = 107,  ["dropId"] = 30431,  ["weight"] = 100,  ["id"] = 30431001,  ["count"] = 38500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105300041038] = {
+  ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041038,  ["count"] = 1,  ["detailID"] = 10039,  ["subId"] = 38,}
 ,  [20531001] = {
   ["type"] = 105,  ["dropId"] = 20531,  ["weight"] = 100,  ["id"] = 20531001,  ["count"] = 7,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [105300031046] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031046,  ["count"] = 1,  ["detailID"] = 100043,  ["subId"] = 46,}
-,  [105300041039] = {
-  ["type"] = 107,  ["dropId"] = 105300041,  ["weight"] = 500,  ["id"] = 105300041039,  ["count"] = 50000,  ["detailID"] = 1,  ["subId"] = 39,}
-,  [21006001001] = {
-  ["type"] = 0,  ["dropId"] = 21006001,  ["weight"] = 100,  ["id"] = 21006001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [105300041038] = {
-  ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041038,  ["count"] = 1,  ["detailID"] = 10039,  ["subId"] = 38,}
 ,  [105300041037] = {
   ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041037,  ["count"] = 1,  ["detailID"] = 10037,  ["subId"] = 37,}
-,  [6010012001] = {
-  ["type"] = 107,  ["dropId"] = 6010012,  ["weight"] = 100,  ["id"] = 6010012001,  ["count"] = 400,  ["detailID"] = 3,  ["subId"] = 1,}
-,  [30991001] = {
-  ["type"] = 107,  ["dropId"] = 30991,  ["weight"] = 100,  ["id"] = 30991001,  ["count"] = 15500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105300031004] = {
-  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 77,  ["id"] = 105300031004,  ["count"] = 1,  ["detailID"] = 21000210,  ["subId"] = 4,}
+,  [21006001001] = {
+  ["type"] = 0,  ["dropId"] = 21006001,  ["weight"] = 100,  ["id"] = 21006001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105300021052] = {
+  ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 35,  ["id"] = 105300021052,  ["count"] = 200,  ["detailID"] = 13,  ["subId"] = 52,}
+,  [200031028] = {
+  ["type"] = 101,  ["dropId"] = 200031,  ["weight"] = 400,  ["id"] = 200031028,  ["count"] = 1,  ["detailID"] = 10055,  ["subId"] = 28,}
+,  [105300031003] = {
+  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 77,  ["id"] = 105300031003,  ["count"] = 1,  ["detailID"] = 21000200,  ["subId"] = 3,}
+,  [105300031036] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031036,  ["count"] = 1,  ["detailID"] = 100049,  ["subId"] = 36,}
+,  [105300041032] = {
+  ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041032,  ["count"] = 1,  ["detailID"] = 10016,  ["subId"] = 32,}
 ,  [105300041028] = {
   ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041028,  ["count"] = 1,  ["detailID"] = 10004,  ["subId"] = 28,}
 ,  [105300021065] = {
   ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 2,  ["id"] = 105300021065,  ["count"] = 1,  ["detailID"] = 120301,  ["subId"] = 65,}
-,  [105300031037] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031037,  ["count"] = 1,  ["detailID"] = 100050,  ["subId"] = 37,}
-,  [105300041032] = {
-  ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041032,  ["count"] = 1,  ["detailID"] = 10016,  ["subId"] = 32,}
+,  [105300031061] = {
+  ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 200,  ["id"] = 105300031061,  ["count"] = 200000,  ["detailID"] = 1,  ["subId"] = 61,}
+,  [21005081001] = {
+  ["type"] = 103,  ["dropId"] = 21005081,  ["weight"] = 100,  ["id"] = 21005081001,  ["count"] = 1,  ["detailID"] = 1030063,  ["subId"] = 1,}
 ,  [21025031001] = {
   ["type"] = 103,  ["dropId"] = 21025031,  ["weight"] = 100,  ["id"] = 21025031001,  ["count"] = 1,  ["detailID"] = 1010024,  ["subId"] = 1,}
-,  [19000041011] = {
-  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 64,  ["id"] = 19000041011,  ["count"] = 1,  ["detailID"] = 40010,  ["subId"] = 11,}
+,  [105300041014] = {
+  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041014,  ["count"] = 5,  ["detailID"] = 1010050,  ["subId"] = 14,}
 ,  [31211001] = {
-  ["type"] = 107,  ["dropId"] = 31211,  ["weight"] = 100,  ["id"] = 31211001,  ["count"] = 65000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21040041001] = {
-  ["type"] = 0,  ["dropId"] = 21040041,  ["weight"] = 100,  ["id"] = 21040041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31211,  ["weight"] = 100,  ["id"] = 31211001,  ["count"] = 135000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [17009011001] = {
+  ["type"] = 105,  ["dropId"] = 17009011,  ["weight"] = 100,  ["id"] = 17009011001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105300031047] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031047,  ["count"] = 1,  ["detailID"] = 100044,  ["subId"] = 47,}
 ,  [7100025001] = {
   ["type"] = 107,  ["dropId"] = 7100025,  ["weight"] = 100,  ["id"] = 7100025001,  ["count"] = 40,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [105300041015] = {
-  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041015,  ["count"] = 5,  ["detailID"] = 1010054,  ["subId"] = 15,}
+,  [105300041021] = {
+  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041021,  ["count"] = 5,  ["detailID"] = 1010048,  ["subId"] = 21,}
 ,  [21121001] = {
   ["type"] = 105,  ["dropId"] = 21121,  ["weight"] = 100,  ["id"] = 21121001,  ["count"] = 12,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [9100022001] = {
@@ -3253,8 +3243,8 @@ small_bag_config={
   ["type"] = 108,  ["dropId"] = 105900021,  ["weight"] = 100,  ["id"] = 105900021001,  ["count"] = 1,  ["detailID"] = 110101,  ["subId"] = 1,}
 ,  [7100021001] = {
   ["type"] = 107,  ["dropId"] = 7100021,  ["weight"] = 100,  ["id"] = 7100021001,  ["count"] = 15960,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105300041019] = {
-  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 8,  ["id"] = 105300041019,  ["count"] = 5,  ["detailID"] = 1010045,  ["subId"] = 19,}
+,  [105300041015] = {
+  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041015,  ["count"] = 5,  ["detailID"] = 1010054,  ["subId"] = 15,}
 ,  [105300041029] = {
   ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041029,  ["count"] = 1,  ["detailID"] = 10005,  ["subId"] = 29,}
 ,  [105300021066] = {
@@ -3263,114 +3253,114 @@ small_bag_config={
   ["type"] = 105,  ["dropId"] = 105640139,  ["weight"] = 100,  ["id"] = 105640139001,  ["count"] = 140,  ["detailID"] = 63001,  ["subId"] = 1,}
 ,  [7100017001] = {
   ["type"] = 107,  ["dropId"] = 7100017,  ["weight"] = 100,  ["id"] = 7100017001,  ["count"] = 9120,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105300041012] = {
-  ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041012,  ["count"] = 5,  ["detailID"] = 1010047,  ["subId"] = 12,}
 ,  [105300041002] = {
   ["type"] = 103,  ["dropId"] = 105300041,  ["weight"] = 14,  ["id"] = 105300041002,  ["count"] = 5,  ["detailID"] = 1010023,  ["subId"] = 2,}
+,  [105300031083] = {
+  ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 25,  ["id"] = 105300031083,  ["count"] = 1,  ["detailID"] = 130401,  ["subId"] = 83,}
 ,  [1354001] = {
   ["type"] = 105,  ["dropId"] = 1354,  ["weight"] = 100,  ["id"] = 1354001,  ["count"] = 10,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [105640075001] = {
   ["type"] = 105,  ["dropId"] = 105640075,  ["weight"] = 100,  ["id"] = 105640075001,  ["count"] = 20,  ["detailID"] = 30012,  ["subId"] = 1,}
 ,  [7100013001] = {
   ["type"] = 107,  ["dropId"] = 7100013,  ["weight"] = 100,  ["id"] = 7100013001,  ["count"] = 2280,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105300031082] = {
-  ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 25,  ["id"] = 105300031082,  ["count"] = 1,  ["detailID"] = 130301,  ["subId"] = 82,}
 ,  [105300031081] = {
   ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 25,  ["id"] = 105300031081,  ["count"] = 1,  ["detailID"] = 130201,  ["subId"] = 81,}
-,  [50981001] = {
-  ["type"] = 107,  ["dropId"] = 50981,  ["weight"] = 100,  ["id"] = 50981001,  ["count"] = 200,  ["detailID"] = 10,  ["subId"] = 1,}
+,  [21012041001] = {
+  ["type"] = 0,  ["dropId"] = 21012041,  ["weight"] = 100,  ["id"] = 21012041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21032061001] = {
+  ["type"] = 0,  ["dropId"] = 21032061,  ["weight"] = 100,  ["id"] = 21032061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105640011001] = {
   ["type"] = 105,  ["dropId"] = 105640011,  ["weight"] = 100,  ["id"] = 105640011001,  ["count"] = 10,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [50611001] = {
-  ["type"] = 107,  ["dropId"] = 50611,  ["weight"] = 100,  ["id"] = 50611001,  ["count"] = 40,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [105300031077] = {
   ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031077,  ["count"] = 1,  ["detailID"] = 120201,  ["subId"] = 77,}
-,  [21038021001] = {
-  ["type"] = 0,  ["dropId"] = 21038021,  ["weight"] = 100,  ["id"] = 21038021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [12033001] = {
+  ["type"] = 101,  ["dropId"] = 12033,  ["weight"] = 100,  ["id"] = 12033001,  ["count"] = 1,  ["detailID"] = 10006,  ["subId"] = 1,}
+,  [30412001] = {
+  ["type"] = 105,  ["dropId"] = 30412,  ["weight"] = 100,  ["id"] = 30412001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105300041030] = {
   ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041030,  ["count"] = 1,  ["detailID"] = 10013,  ["subId"] = 30,}
-,  [19000031018] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031018,  ["count"] = 1,  ["detailID"] = 30017,  ["subId"] = 18,}
 ,  [105300031073] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 300,  ["id"] = 105300031073,  ["count"] = 5,  ["detailID"] = 63002,  ["subId"] = 73,}
-,  [30501001] = {
-  ["type"] = 107,  ["dropId"] = 30501,  ["weight"] = 100,  ["id"] = 30501001,  ["count"] = 7000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21003001001] = {
-  ["type"] = 0,  ["dropId"] = 21003001,  ["weight"] = 100,  ["id"] = 21003001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [26001011001] = {
-  ["type"] = 105,  ["dropId"] = 26001011,  ["weight"] = 100,  ["id"] = 26001011001,  ["count"] = 3,  ["detailID"] = 40002,  ["subId"] = 1,}
+,  [300011027] = {
+  ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011027,  ["count"] = 1,  ["detailID"] = 10054,  ["subId"] = 27,}
+,  [30271001] = {
+  ["type"] = 107,  ["dropId"] = 30271,  ["weight"] = 100,  ["id"] = 30271001,  ["count"] = 1350,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [60141001] = {
+  ["type"] = 103,  ["dropId"] = 60141,  ["weight"] = 100,  ["id"] = 60141001,  ["count"] = 10,  ["detailID"] = 1010023,  ["subId"] = 1,}
 ,  [105300031069] = {
   ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 300,  ["id"] = 105300031069,  ["count"] = 200,  ["detailID"] = 13,  ["subId"] = 69,}
+,  [105300031068] = {
+  ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 400,  ["id"] = 105300031068,  ["count"] = 100,  ["detailID"] = 13,  ["subId"] = 68,}
 ,  [21007081001] = {
   ["type"] = 103,  ["dropId"] = 21007081,  ["weight"] = 100,  ["id"] = 21007081001,  ["count"] = 1,  ["detailID"] = 1030057,  ["subId"] = 1,}
 ,  [19000031014] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 1,  ["id"] = 19000031014,  ["count"] = 1,  ["detailID"] = 30013,  ["subId"] = 14,}
-,  [105300031068] = {
-  ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 400,  ["id"] = 105300031068,  ["count"] = 100,  ["detailID"] = 13,  ["subId"] = 68,}
-,  [105300011027] = {
-  ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 2,  ["id"] = 105300011027,  ["count"] = 1,  ["detailID"] = 100044,  ["subId"] = 27,}
-,  [19000021029] = {
-  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021029,  ["count"] = 1,  ["detailID"] = 20028,  ["subId"] = 29,}
+,  [105300011032] = {
+  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 20,  ["id"] = 105300011032,  ["count"] = 2000,  ["detailID"] = 1,  ["subId"] = 32,}
+,  [105300011044] = {
+  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 60,  ["id"] = 105300011044,  ["count"] = 60,  ["detailID"] = 13,  ["subId"] = 44,}
 ,  [105300031065] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 300,  ["id"] = 105300031065,  ["count"] = 5,  ["detailID"] = 10003,  ["subId"] = 65,}
 ,  [105300031064] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 300,  ["id"] = 105300031064,  ["count"] = 2,  ["detailID"] = 10003,  ["subId"] = 64,}
-,  [105300011040] = {
-  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 60,  ["id"] = 105300011040,  ["count"] = 10,  ["detailID"] = 3,  ["subId"] = 40,}
+,  [21005061001] = {
+  ["type"] = 0,  ["dropId"] = 21005061,  ["weight"] = 100,  ["id"] = 21005061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [30301001] = {
+  ["type"] = 107,  ["dropId"] = 30301,  ["weight"] = 100,  ["id"] = 30301001,  ["count"] = 2650,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [19000011043] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 1,  ["id"] = 19000011043,  ["count"] = 1,  ["detailID"] = 10042,  ["subId"] = 43,}
 ,  [105300041031] = {
   ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041031,  ["count"] = 1,  ["detailID"] = 10015,  ["subId"] = 31,}
 ,  [21024071001] = {
   ["type"] = 103,  ["dropId"] = 21024071,  ["weight"] = 100,  ["id"] = 21024071001,  ["count"] = 1,  ["detailID"] = 1010043,  ["subId"] = 1,}
-,  [105300031061] = {
-  ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 200,  ["id"] = 105300031061,  ["count"] = 200000,  ["detailID"] = 1,  ["subId"] = 61,}
-,  [30491001] = {
-  ["type"] = 107,  ["dropId"] = 30491,  ["weight"] = 100,  ["id"] = 30491001,  ["count"] = 6000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300031060] = {
   ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 300,  ["id"] = 105300031060,  ["count"] = 100000,  ["detailID"] = 1,  ["subId"] = 60,}
+,  [30491001] = {
+  ["type"] = 107,  ["dropId"] = 30491,  ["weight"] = 100,  ["id"] = 30491001,  ["count"] = 13450,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [11031001] = {
+  ["type"] = 107,  ["dropId"] = 11031,  ["weight"] = 100,  ["id"] = 11031001,  ["count"] = 500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [60063001] = {
   ["type"] = 107,  ["dropId"] = 60063,  ["weight"] = 100,  ["id"] = 60063001,  ["count"] = 100000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [400631001] = {
   ["type"] = 103,  ["dropId"] = 400631,  ["weight"] = 100,  ["id"] = 400631001,  ["count"] = 1,  ["detailID"] = 1030063,  ["subId"] = 1,}
-,  [30261001] = {
-  ["type"] = 107,  ["dropId"] = 30261,  ["weight"] = 100,  ["id"] = 30261001,  ["count"] = 17000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105300031058] = {
+  ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 650,  ["id"] = 105300031058,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 58,}
 ,  [20401001] = {
   ["type"] = 105,  ["dropId"] = 20401,  ["weight"] = 100,  ["id"] = 20401001,  ["count"] = 2,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [105640149001] = {
   ["type"] = 105,  ["dropId"] = 105640149,  ["weight"] = 100,  ["id"] = 105640149001,  ["count"] = 150,  ["detailID"] = 63001,  ["subId"] = 1,}
-,  [105300031057] = {
-  ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 400,  ["id"] = 105300031057,  ["count"] = 50,  ["detailID"] = 21,  ["subId"] = 57,}
+,  [21040021001] = {
+  ["type"] = 0,  ["dropId"] = 21040021,  ["weight"] = 100,  ["id"] = 21040021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21041061001] = {
   ["type"] = 0,  ["dropId"] = 21041061,  ["weight"] = 100,  ["id"] = 21041061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [30832001] = {
-  ["type"] = 105,  ["dropId"] = 30832,  ["weight"] = 100,  ["id"] = 30832001,  ["count"] = 11,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105300031055] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 19,  ["id"] = 105300031055,  ["count"] = 1,  ["detailID"] = 100040,  ["subId"] = 55,}
+,  [105300021055] = {
+  ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 50,  ["id"] = 105300021055,  ["count"] = 1,  ["detailID"] = 63002,  ["subId"] = 55,}
 ,  [105640085001] = {
   ["type"] = 105,  ["dropId"] = 105640085,  ["weight"] = 100,  ["id"] = 105640085001,  ["count"] = 5,  ["detailID"] = 30013,  ["subId"] = 1,}
-,  [105300031053] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 18,  ["id"] = 105300031053,  ["count"] = 1,  ["detailID"] = 100027,  ["subId"] = 53,}
+,  [105300031017] = {
+  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031017,  ["count"] = 1,  ["detailID"] = 21000490,  ["subId"] = 17,}
 ,  [21009041001] = {
   ["type"] = 0,  ["dropId"] = 21009041,  ["weight"] = 100,  ["id"] = 21009041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [105300031018] = {
-  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031018,  ["count"] = 1,  ["detailID"] = 21000500,  ["subId"] = 18,}
 ,  [105300031051] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 19,  ["id"] = 105300031051,  ["count"] = 1,  ["detailID"] = 100016,  ["subId"] = 51,}
+,  [105300031050] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 19,  ["id"] = 105300031050,  ["count"] = 1,  ["detailID"] = 100006,  ["subId"] = 50,}
 ,  [105640021001] = {
   ["type"] = 105,  ["dropId"] = 105640021,  ["weight"] = 100,  ["id"] = 105640021001,  ["count"] = 15,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [105300031049] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 18,  ["id"] = 105300031049,  ["count"] = 1,  ["detailID"] = 100005,  ["subId"] = 49,}
 ,  [105300031048] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031048,  ["count"] = 1,  ["detailID"] = 100045,  ["subId"] = 48,}
 ,  [105300031045] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031045,  ["count"] = 1,  ["detailID"] = 100042,  ["subId"] = 45,}
-,  [31081001] = {
-  ["type"] = 107,  ["dropId"] = 31081,  ["weight"] = 100,  ["id"] = 31081001,  ["count"] = 32000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [1395001] = {
-  ["type"] = 103,  ["dropId"] = 1395,  ["weight"] = 100,  ["id"] = 1395001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [105300031043] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031043,  ["count"] = 1,  ["detailID"] = 100029,  ["subId"] = 43,}
+,  [31081001] = {
+  ["type"] = 107,  ["dropId"] = 31081,  ["weight"] = 100,  ["id"] = 31081001,  ["count"] = 67850,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [1395001] = {
+  ["type"] = 103,  ["dropId"] = 1395,  ["weight"] = 100,  ["id"] = 1395001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
+,  [105300031042] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031042,  ["count"] = 1,  ["detailID"] = 100019,  ["subId"] = 42,}
 ,  [21026031001] = {
   ["type"] = 104,  ["dropId"] = 21026031,  ["weight"] = 100,  ["id"] = 21026031001,  ["count"] = 1,  ["detailID"] = 21000050,  ["subId"] = 1,}
 ,  [80011001] = {
@@ -3379,34 +3369,32 @@ small_bag_config={
   ["type"] = 105,  ["dropId"] = 20991,  ["weight"] = 100,  ["id"] = 20991001,  ["count"] = 25,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [1481001] = {
   ["type"] = 102,  ["dropId"] = 1481,  ["weight"] = 100,  ["id"] = 1481001,  ["count"] = 1,  ["detailID"] = 100033,  ["subId"] = 1,}
-,  [105300031042] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031042,  ["count"] = 1,  ["detailID"] = 100019,  ["subId"] = 42,}
 ,  [105300031041] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 55,  ["id"] = 105300031041,  ["count"] = 1,  ["detailID"] = 100018,  ["subId"] = 41,}
+,  [105300031037] = {
+  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031037,  ["count"] = 1,  ["detailID"] = 100050,  ["subId"] = 37,}
 ,  [105300041033] = {
   ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041033,  ["count"] = 1,  ["detailID"] = 10018,  ["subId"] = 33,}
-,  [105300031036] = {
-  ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031036,  ["count"] = 1,  ["detailID"] = 100049,  ["subId"] = 36,}
 ,  [105300031033] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 6,  ["id"] = 105300031033,  ["count"] = 1,  ["detailID"] = 100033,  ["subId"] = 33,}
 ,  [105300031029] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031029,  ["count"] = 1,  ["detailID"] = 100053,  ["subId"] = 29,}
-,  [21043021001] = {
-  ["type"] = 0,  ["dropId"] = 21043021,  ["weight"] = 100,  ["id"] = 21043021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105300031025] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031025,  ["count"] = 1,  ["detailID"] = 100032,  ["subId"] = 25,}
+,  [21043021001] = {
+  ["type"] = 0,  ["dropId"] = 21043021,  ["weight"] = 100,  ["id"] = 21043021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105300031021] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031021,  ["count"] = 1,  ["detailID"] = 100010,  ["subId"] = 21,}
 ,  [105300031020] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 9,  ["id"] = 105300031020,  ["count"] = 1,  ["detailID"] = 100009,  ["subId"] = 20,}
+,  [105300031018] = {
+  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031018,  ["count"] = 1,  ["detailID"] = 21000500,  ["subId"] = 18,}
 ,  [105300031052] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 19,  ["id"] = 105300031052,  ["count"] = 1,  ["detailID"] = 100017,  ["subId"] = 52,}
-,  [105300031017] = {
-  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031017,  ["count"] = 1,  ["detailID"] = 21000490,  ["subId"] = 17,}
-,  [400591001] = {
-  ["type"] = 103,  ["dropId"] = 400591,  ["weight"] = 100,  ["id"] = 400591001,  ["count"] = 1,  ["detailID"] = 1030059,  ["subId"] = 1,}
 ,  [105300031015] = {
   ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031015,  ["count"] = 1,  ["detailID"] = 21000470,  ["subId"] = 15,}
+,  [400591001] = {
+  ["type"] = 103,  ["dropId"] = 400591,  ["weight"] = 100,  ["id"] = 400591001,  ["count"] = 1,  ["detailID"] = 1030059,  ["subId"] = 1,}
 ,  [105300031013] = {
   ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031013,  ["count"] = 1,  ["detailID"] = 21000220,  ["subId"] = 13,}
 ,  [105300031009] = {
@@ -3415,128 +3403,130 @@ small_bag_config={
   ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 67,  ["id"] = 105300031008,  ["count"] = 1,  ["detailID"] = 21000510,  ["subId"] = 8,}
 ,  [105300031005] = {
   ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 77,  ["id"] = 105300031005,  ["count"] = 1,  ["detailID"] = 21000310,  ["subId"] = 5,}
+,  [105300031004] = {
+  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 77,  ["id"] = 105300031004,  ["count"] = 1,  ["detailID"] = 21000210,  ["subId"] = 4,}
 ,  [105300041034] = {
   ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041034,  ["count"] = 1,  ["detailID"] = 10024,  ["subId"] = 34,}
-,  [105300031003] = {
-  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 77,  ["id"] = 105300031003,  ["count"] = 1,  ["detailID"] = 21000200,  ["subId"] = 3,}
-,  [105300031001] = {
-  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 77,  ["id"] = 105300031001,  ["count"] = 1,  ["detailID"] = 21000090,  ["subId"] = 1,}
 ,  [200031025] = {
   ["type"] = 101,  ["dropId"] = 200031,  ["weight"] = 400,  ["id"] = 200031025,  ["count"] = 1,  ["detailID"] = 10049,  ["subId"] = 25,}
-,  [105300021063] = {
-  ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021063,  ["count"] = 1,  ["detailID"] = 120101,  ["subId"] = 63,}
-,  [60081001] = {
-  ["type"] = 103,  ["dropId"] = 60081,  ["weight"] = 100,  ["id"] = 60081001,  ["count"] = 5,  ["detailID"] = 1010023,  ["subId"] = 1,}
+,  [21036001001] = {
+  ["type"] = 0,  ["dropId"] = 21036001,  ["weight"] = 100,  ["id"] = 21036001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105300031001] = {
+  ["type"] = 104,  ["dropId"] = 105300031,  ["weight"] = 77,  ["id"] = 105300031001,  ["count"] = 1,  ["detailID"] = 21000090,  ["subId"] = 1,}
 ,  [21029021001] = {
   ["type"] = 0,  ["dropId"] = 21029021,  ["weight"] = 100,  ["id"] = 21029021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [6200211001] = {
-  ["type"] = 107,  ["dropId"] = 6200211,  ["weight"] = 100,  ["id"] = 6200211001,  ["count"] = 750,  ["detailID"] = 8,  ["subId"] = 1,}
+,  [31052001] = {
+  ["type"] = 105,  ["dropId"] = 31052,  ["weight"] = 100,  ["id"] = 31052001,  ["count"] = 22,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000021043] = {
+  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021043,  ["count"] = 1,  ["detailID"] = 20042,  ["subId"] = 43,}
+,  [105300021063] = {
+  ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021063,  ["count"] = 1,  ["detailID"] = 120101,  ["subId"] = 63,}
 ,  [19000031015] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 1,  ["id"] = 19000031015,  ["count"] = 1,  ["detailID"] = 30014,  ["subId"] = 15,}
-,  [105300021060] = {
-  ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021060,  ["count"] = 1,  ["detailID"] = 110201,  ["subId"] = 60,}
-,  [21007061001] = {
-  ["type"] = 0,  ["dropId"] = 21007061,  ["weight"] = 100,  ["id"] = 21007061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30962001] = {
   ["type"] = 105,  ["dropId"] = 30962,  ["weight"] = 100,  ["id"] = 30962001,  ["count"] = 19,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [80021001] = {
+  ["type"] = 101,  ["dropId"] = 80021,  ["weight"] = 100,  ["id"] = 80021001,  ["count"] = 1,  ["detailID"] = 10020,  ["subId"] = 1,}
+,  [21035061001] = {
+  ["type"] = 0,  ["dropId"] = 21035061,  ["weight"] = 100,  ["id"] = 21035061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105640064001] = {
   ["type"] = 105,  ["dropId"] = 105640064,  ["weight"] = 100,  ["id"] = 105640064001,  ["count"] = 15,  ["detailID"] = 30002,  ["subId"] = 1,}
 ,  [21008081001] = {
   ["type"] = 103,  ["dropId"] = 21008081,  ["weight"] = 100,  ["id"] = 21008081001,  ["count"] = 1,  ["detailID"] = 1010046,  ["subId"] = 1,}
-,  [21035061001] = {
-  ["type"] = 0,  ["dropId"] = 21035061,  ["weight"] = 100,  ["id"] = 21035061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105300021060] = {
+  ["type"] = 108,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021060,  ["count"] = 1,  ["detailID"] = 110201,  ["subId"] = 60,}
 ,  [19000011044] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011044,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 44,}
 ,  [105300041035] = {
   ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041035,  ["count"] = 1,  ["detailID"] = 10025,  ["subId"] = 35,}
-,  [105300021055] = {
-  ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 50,  ["id"] = 105300021055,  ["count"] = 1,  ["detailID"] = 63002,  ["subId"] = 55,}
-,  [21010041001] = {
-  ["type"] = 0,  ["dropId"] = 21010041,  ["weight"] = 100,  ["id"] = 21010041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [200031028] = {
-  ["type"] = 101,  ["dropId"] = 200031,  ["weight"] = 400,  ["id"] = 200031028,  ["count"] = 1,  ["detailID"] = 10055,  ["subId"] = 28,}
-,  [30361001] = {
-  ["type"] = 107,  ["dropId"] = 30361,  ["weight"] = 100,  ["id"] = 30361001,  ["count"] = 28000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [30561001] = {
-  ["type"] = 107,  ["dropId"] = 30561,  ["weight"] = 100,  ["id"] = 30561001,  ["count"] = 12500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21020051001] = {
-  ["type"] = 104,  ["dropId"] = 21020051,  ["weight"] = 100,  ["id"] = 21020051001,  ["count"] = 1,  ["detailID"] = 21000090,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30561,  ["weight"] = 100,  ["id"] = 30561001,  ["count"] = 6700,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21007061001] = {
+  ["type"] = 0,  ["dropId"] = 21007061,  ["weight"] = 100,  ["id"] = 21007061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [19000041041] = {
+  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 16,  ["id"] = 19000041041,  ["count"] = 1,  ["detailID"] = 40040,  ["subId"] = 41,}
+,  [30361001] = {
+  ["type"] = 107,  ["dropId"] = 30361,  ["weight"] = 100,  ["id"] = 30361001,  ["count"] = 4350,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21015051001] = {
+  ["type"] = 104,  ["dropId"] = 21015051,  ["weight"] = 100,  ["id"] = 21015051001,  ["count"] = 1,  ["detailID"] = 21000050,  ["subId"] = 1,}
+,  [200031029] = {
+  ["type"] = 101,  ["dropId"] = 200031,  ["weight"] = 400,  ["id"] = 200031029,  ["count"] = 1,  ["detailID"] = 10058,  ["subId"] = 29,}
 ,  [60061001] = {
   ["type"] = 103,  ["dropId"] = 60061,  ["weight"] = 100,  ["id"] = 60061001,  ["count"] = 2,  ["detailID"] = 1030051,  ["subId"] = 1,}
 ,  [105300031054] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 19,  ["id"] = 105300031054,  ["count"] = 1,  ["detailID"] = 100028,  ["subId"] = 54,}
 ,  [20271001] = {
   ["type"] = 105,  ["dropId"] = 20271,  ["weight"] = 100,  ["id"] = 20271001,  ["count"] = 2,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [1436001] = {
-  ["type"] = 103,  ["dropId"] = 1436,  ["weight"] = 100,  ["id"] = 1436001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
-,  [21036041001] = {
-  ["type"] = 0,  ["dropId"] = 21036041,  ["weight"] = 100,  ["id"] = 21036041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [17009031001] = {
+  ["type"] = 105,  ["dropId"] = 17009031,  ["weight"] = 100,  ["id"] = 17009031001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [17002031001] = {
+  ["type"] = 105,  ["dropId"] = 17002031,  ["weight"] = 100,  ["id"] = 17002031001,  ["count"] = 3,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [40010001] = {
   ["type"] = 107,  ["dropId"] = 40010,  ["weight"] = 100,  ["id"] = 40010001,  ["count"] = 20,  ["detailID"] = 12,  ["subId"] = 1,}
-,  [200031029] = {
-  ["type"] = 101,  ["dropId"] = 200031,  ["weight"] = 400,  ["id"] = 200031029,  ["count"] = 1,  ["detailID"] = 10058,  ["subId"] = 29,}
-,  [17002031001] = {
-  ["type"] = 105,  ["dropId"] = 17002031,  ["weight"] = 100,  ["id"] = 17002031001,  ["count"] = 2,  ["detailID"] = 20001,  ["subId"] = 1,}
 ,  [19000031031] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031031,  ["count"] = 1,  ["detailID"] = 30030,  ["subId"] = 31,}
+,  [1461001] = {
+  ["type"] = 102,  ["dropId"] = 1461,  ["weight"] = 100,  ["id"] = 1461001,  ["count"] = 1,  ["detailID"] = 100011,  ["subId"] = 1,}
+,  [30201001] = {
+  ["type"] = 107,  ["dropId"] = 30201,  ["weight"] = 100,  ["id"] = 30201001,  ["count"] = 400,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300041036] = {
   ["type"] = 101,  ["dropId"] = 105300041,  ["weight"] = 46,  ["id"] = 105300041036,  ["count"] = 1,  ["detailID"] = 10028,  ["subId"] = 36,}
 ,  [21042061001] = {
   ["type"] = 0,  ["dropId"] = 21042061,  ["weight"] = 100,  ["id"] = 21042061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [30201001] = {
-  ["type"] = 107,  ["dropId"] = 30201,  ["weight"] = 100,  ["id"] = 30201001,  ["count"] = 12000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105300021047] = {
-  ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021047,  ["count"] = 2,  ["detailID"] = 10002,  ["subId"] = 47,}
 ,  [30242001] = {
   ["type"] = 105,  ["dropId"] = 30242,  ["weight"] = 100,  ["id"] = 30242001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [105300021045] = {
-  ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 30,  ["id"] = 105300021045,  ["count"] = 10,  ["detailID"] = 10001,  ["subId"] = 45,}
-,  [21008001001] = {
-  ["type"] = 0,  ["dropId"] = 21008001,  ["weight"] = 100,  ["id"] = 21008001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21033081001] = {
   ["type"] = 103,  ["dropId"] = 21033081,  ["weight"] = 100,  ["id"] = 21033081001,  ["count"] = 1,  ["detailID"] = 1010052,  ["subId"] = 1,}
-,  [30951001] = {
-  ["type"] = 107,  ["dropId"] = 30951,  ["weight"] = 100,  ["id"] = 30951001,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300021028] = {
   ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021028,  ["count"] = 1,  ["detailID"] = 100045,  ["subId"] = 28,}
 ,  [31151001] = {
-  ["type"] = 107,  ["dropId"] = 31151,  ["weight"] = 100,  ["id"] = 31151001,  ["count"] = 48500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31151,  ["weight"] = 100,  ["id"] = 31151001,  ["count"] = 117600,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21008001001] = {
+  ["type"] = 0,  ["dropId"] = 21008001,  ["weight"] = 100,  ["id"] = 21008001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [31192001] = {
   ["type"] = 105,  ["dropId"] = 31192,  ["weight"] = 100,  ["id"] = 31192001,  ["count"] = 17,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [30951001] = {
+  ["type"] = 107,  ["dropId"] = 30951,  ["weight"] = 100,  ["id"] = 30951001,  ["count"] = 24850,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [17005002001] = {
+  ["type"] = 107,  ["dropId"] = 17005002,  ["weight"] = 100,  ["id"] = 17005002001,  ["count"] = 50,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [105300021047] = {
+  ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021047,  ["count"] = 2,  ["detailID"] = 10002,  ["subId"] = 47,}
+,  [1315001] = {
+  ["type"] = 105,  ["dropId"] = 1315,  ["weight"] = 100,  ["id"] = 1315001,  ["count"] = 5,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [19000021030] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 1,  ["id"] = 19000021030,  ["count"] = 1,  ["detailID"] = 20029,  ["subId"] = 30,}
 ,  [20861001] = {
   ["type"] = 105,  ["dropId"] = 20861,  ["weight"] = 100,  ["id"] = 20861001,  ["count"] = 12,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [17005002001] = {
-  ["type"] = 107,  ["dropId"] = 17005002,  ["weight"] = 100,  ["id"] = 17005002001,  ["count"] = 50,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [8000051001] = {
+  ["type"] = 105,  ["dropId"] = 8000051,  ["weight"] = 100,  ["id"] = 8000051001,  ["count"] = 1,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [50631001] = {
   ["type"] = 107,  ["dropId"] = 50631,  ["weight"] = 100,  ["id"] = 50631001,  ["count"] = 130,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [21027031001] = {
   ["type"] = 104,  ["dropId"] = 21027031,  ["weight"] = 100,  ["id"] = 21027031001,  ["count"] = 1,  ["detailID"] = 21000160,  ["subId"] = 1,}
 ,  [400601001] = {
   ["type"] = 103,  ["dropId"] = 400601,  ["weight"] = 100,  ["id"] = 400601001,  ["count"] = 1,  ["detailID"] = 1030060,  ["subId"] = 1,}
-,  [21031081001] = {
-  ["type"] = 103,  ["dropId"] = 21031081,  ["weight"] = 100,  ["id"] = 21031081001,  ["count"] = 1,  ["detailID"] = 1010053,  ["subId"] = 1,}
-,  [105300021040] = {
-  ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021040,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 40,}
-,  [30791001] = {
-  ["type"] = 107,  ["dropId"] = 30791,  ["weight"] = 100,  ["id"] = 30791001,  ["count"] = 51000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105300021045] = {
+  ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 30,  ["id"] = 105300021045,  ["count"] = 10,  ["detailID"] = 10001,  ["subId"] = 45,}
+,  [17010011001] = {
+  ["type"] = 105,  ["dropId"] = 17010011,  ["weight"] = 100,  ["id"] = 17010011001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000011041] = {
+  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 4,  ["id"] = 19000011041,  ["count"] = 1,  ["detailID"] = 10040,  ["subId"] = 41,}
 ,  [22000011001] = {
   ["type"] = 105,  ["dropId"] = 22000011,  ["weight"] = 100,  ["id"] = 22000011001,  ["count"] = 1,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [105300021039] = {
-  ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 50,  ["id"] = 105300021039,  ["count"] = 5000,  ["detailID"] = 1,  ["subId"] = 39,}
-,  [105300021038] = {
-  ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 20,  ["id"] = 105300021038,  ["count"] = 200,  ["detailID"] = 21,  ["subId"] = 38,}
+,  [30791001] = {
+  ["type"] = 107,  ["dropId"] = 30791,  ["weight"] = 100,  ["id"] = 30791001,  ["count"] = 43500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [30832001] = {
+  ["type"] = 105,  ["dropId"] = 30832,  ["weight"] = 100,  ["id"] = 30832001,  ["count"] = 11,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105300031056] = {
   ["type"] = 102,  ["dropId"] = 105300031,  ["weight"] = 19,  ["id"] = 105300031056,  ["count"] = 1,  ["detailID"] = 100041,  ["subId"] = 56,}
-,  [105300021036] = {
-  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 2,  ["id"] = 105300021036,  ["count"] = 1,  ["detailID"] = 100041,  ["subId"] = 36,}
+,  [105300021040] = {
+  ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 40,  ["id"] = 105300021040,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 40,}
 ,  [21044021001] = {
   ["type"] = 0,  ["dropId"] = 21044021,  ["weight"] = 100,  ["id"] = 21044021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [8000051001] = {
-  ["type"] = 105,  ["dropId"] = 8000051,  ["weight"] = 100,  ["id"] = 8000051001,  ["count"] = 1,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [21004061001] = {
-  ["type"] = 0,  ["dropId"] = 21004061,  ["weight"] = 100,  ["id"] = 21004061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [60071001] = {
+  ["type"] = 103,  ["dropId"] = 60071,  ["weight"] = 100,  ["id"] = 60071001,  ["count"] = 3,  ["detailID"] = 1030051,  ["subId"] = 1,}
+,  [105300021039] = {
+  ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 50,  ["id"] = 105300021039,  ["count"] = 5000,  ["detailID"] = 1,  ["subId"] = 39,}
 ,  [1219001] = {
   ["type"] = 107,  ["dropId"] = 1219,  ["weight"] = 100,  ["id"] = 1219001,  ["count"] = 230,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [21012001001] = {
@@ -3555,8 +3545,8 @@ small_bag_config={
   ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 8000,  ["id"] = 300011006,  ["count"] = 1,  ["detailID"] = 10016,  ["subId"] = 6,}
 ,  [300011007] = {
   ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 8000,  ["id"] = 300011007,  ["count"] = 1,  ["detailID"] = 10018,  ["subId"] = 7,}
-,  [17004061001] = {
-  ["type"] = 105,  ["dropId"] = 17004061,  ["weight"] = 100,  ["id"] = 17004061001,  ["count"] = 4,  ["detailID"] = 20001,  ["subId"] = 1,}
+,  [21004061001] = {
+  ["type"] = 0,  ["dropId"] = 21004061,  ["weight"] = 100,  ["id"] = 21004061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [1391001] = {
   ["type"] = 102,  ["dropId"] = 1391,  ["weight"] = 100,  ["id"] = 1391001,  ["count"] = 1,  ["detailID"] = 100006,  ["subId"] = 1,}
 ,  [300011009] = {
@@ -3601,24 +3591,24 @@ small_bag_config={
   ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011028,  ["count"] = 1,  ["detailID"] = 10055,  ["subId"] = 28,}
 ,  [300011029] = {
   ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011029,  ["count"] = 1,  ["detailID"] = 10058,  ["subId"] = 29,}
-,  [300011030] = {
-  ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011030,  ["count"] = 1,  ["detailID"] = 10062,  ["subId"] = 30,}
-,  [105300021033] = {
-  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021033,  ["count"] = 1,  ["detailID"] = 100027,  ["subId"] = 33,}
-,  [105300021031] = {
-  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021031,  ["count"] = 1,  ["detailID"] = 100016,  ["subId"] = 31,}
+,  [21026071001] = {
+  ["type"] = 104,  ["dropId"] = 21026071,  ["weight"] = 100,  ["id"] = 21026071001,  ["count"] = 1,  ["detailID"] = 21000100,  ["subId"] = 1,}
+,  [21038041001] = {
+  ["type"] = 0,  ["dropId"] = 21038041,  ["weight"] = 100,  ["id"] = 21038041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105300021038] = {
+  ["type"] = 107,  ["dropId"] = 105300021,  ["weight"] = 20,  ["id"] = 105300021038,  ["count"] = 200,  ["detailID"] = 21,  ["subId"] = 38,}
 ,  [105300041040] = {
   ["type"] = 107,  ["dropId"] = 105300041,  ["weight"] = 400,  ["id"] = 105300041040,  ["count"] = 100000,  ["detailID"] = 1,  ["subId"] = 40,}
 ,  [105640053001] = {
   ["type"] = 107,  ["dropId"] = 105640053,  ["weight"] = 100,  ["id"] = 105640053001,  ["count"] = 20000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105300021033] = {
+  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021033,  ["count"] = 1,  ["detailID"] = 100027,  ["subId"] = 33,}
 ,  [30472001] = {
   ["type"] = 105,  ["dropId"] = 30472,  ["weight"] = 100,  ["id"] = 30472001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [17004041001] = {
-  ["type"] = 105,  ["dropId"] = 17004041,  ["weight"] = 100,  ["id"] = 17004041001,  ["count"] = 4,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [11031001] = {
-  ["type"] = 107,  ["dropId"] = 11031,  ["weight"] = 100,  ["id"] = 11031001,  ["count"] = 500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105300021020] = {
-  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021020,  ["count"] = 1,  ["detailID"] = 100008,  ["subId"] = 20,}
+,  [21029031001] = {
+  ["type"] = 104,  ["dropId"] = 21029031,  ["weight"] = 100,  ["id"] = 21029031001,  ["count"] = 1,  ["detailID"] = 21000400,  ["subId"] = 1,}
+,  [105300021031] = {
+  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021031,  ["count"] = 1,  ["detailID"] = 100016,  ["subId"] = 31,}
 ,  [106000046001] = {
   ["type"] = 105,  ["dropId"] = 106000046,  ["weight"] = 100,  ["id"] = 106000046001,  ["count"] = 5,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [21043061001] = {
@@ -3626,27 +3616,27 @@ small_bag_config={
 ,  [105300031059] = {
   ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 500,  ["id"] = 105300031059,  ["count"] = 50000,  ["detailID"] = 1,  ["subId"] = 59,}
 ,  [30821001] = {
-  ["type"] = 107,  ["dropId"] = 30821,  ["weight"] = 100,  ["id"] = 30821001,  ["count"] = 59000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30821,  ["weight"] = 100,  ["id"] = 30821001,  ["count"] = 47950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105641002001] = {
   ["type"] = 105,  ["dropId"] = 105641002,  ["weight"] = 100,  ["id"] = 105641002001,  ["count"] = 1,  ["detailID"] = 63001,  ["subId"] = 1,}
-,  [105300021016] = {
-  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021016,  ["count"] = 1,  ["detailID"] = 100037,  ["subId"] = 16,}
+,  [21030021001] = {
+  ["type"] = 0,  ["dropId"] = 21030021,  ["weight"] = 100,  ["id"] = 21030021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [19000021031] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 1,  ["id"] = 19000021031,  ["count"] = 1,  ["detailID"] = 20030,  ["subId"] = 31,}
-,  [30112001] = {
-  ["type"] = 105,  ["dropId"] = 30112,  ["weight"] = 100,  ["id"] = 30112001,  ["count"] = 3,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [105300021020] = {
+  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 5,  ["id"] = 105300021020,  ["count"] = 1,  ["detailID"] = 100008,  ["subId"] = 20,}
 ,  [20731001] = {
   ["type"] = 105,  ["dropId"] = 20731,  ["weight"] = 100,  ["id"] = 20731001,  ["count"] = 8,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [17003071001] = {
-  ["type"] = 105,  ["dropId"] = 17003071,  ["weight"] = 100,  ["id"] = 17003071001,  ["count"] = 3,  ["detailID"] = 20001,  ["subId"] = 1,}
+,  [30112001] = {
+  ["type"] = 105,  ["dropId"] = 30112,  ["weight"] = 100,  ["id"] = 30112001,  ["count"] = 3,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105300041041] = {
   ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 500,  ["id"] = 105300041041,  ["count"] = 20,  ["detailID"] = 10002,  ["subId"] = 41,}
-,  [105300021010] = {
-  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021010,  ["count"] = 1,  ["detailID"] = 100024,  ["subId"] = 10,}
-,  [31062001] = {
-  ["type"] = 105,  ["dropId"] = 31062,  ["weight"] = 100,  ["id"] = 31062001,  ["count"] = 36,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [30332001] = {
-  ["type"] = 105,  ["dropId"] = 30332,  ["weight"] = 100,  ["id"] = 30332001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21036061001] = {
+  ["type"] = 0,  ["dropId"] = 21036061,  ["weight"] = 100,  ["id"] = 21036061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [31021001] = {
+  ["type"] = 107,  ["dropId"] = 31021,  ["weight"] = 100,  ["id"] = 31021001,  ["count"] = 58250,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105300021016] = {
+  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021016,  ["count"] = 1,  ["detailID"] = 100037,  ["subId"] = 16,}
 ,  [1346001] = {
   ["type"] = 107,  ["dropId"] = 1346,  ["weight"] = 100,  ["id"] = 1346001,  ["count"] = 25,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [22000011002] = {
@@ -3689,74 +3679,74 @@ small_bag_config={
   ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021017,  ["count"] = 1,  ["detailID"] = 10058,  ["subId"] = 17,}
 ,  [300021018] = {
   ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021018,  ["count"] = 1,  ["detailID"] = 10062,  ["subId"] = 18,}
-,  [20091001] = {
-  ["type"] = 105,  ["dropId"] = 20091,  ["weight"] = 100,  ["id"] = 20091001,  ["count"] = 2,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [105300021008] = {
-  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021008,  ["count"] = 1,  ["detailID"] = 100015,  ["subId"] = 8,}
+,  [31062001] = {
+  ["type"] = 105,  ["dropId"] = 31062,  ["weight"] = 100,  ["id"] = 31062001,  ["count"] = 36,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21030061001] = {
+  ["type"] = 0,  ["dropId"] = 21030061,  ["weight"] = 100,  ["id"] = 21030061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [30842001] = {
+  ["type"] = 105,  ["dropId"] = 30842,  ["weight"] = 100,  ["id"] = 30842001,  ["count"] = 16,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [17006001001] = {
   ["type"] = 105,  ["dropId"] = 17006001,  ["weight"] = 100,  ["id"] = 17006001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
-,  [17001071001] = {
-  ["type"] = 105,  ["dropId"] = 17001071,  ["weight"] = 100,  ["id"] = 17001071001,  ["count"] = 1,  ["detailID"] = 20001,  ["subId"] = 1,}
 ,  [60062001] = {
   ["type"] = 107,  ["dropId"] = 60062,  ["weight"] = 100,  ["id"] = 60062001,  ["count"] = 70,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [105300021005] = {
-  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021005,  ["count"] = 1,  ["detailID"] = 100012,  ["subId"] = 5,}
+,  [105300021010] = {
+  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021010,  ["count"] = 1,  ["detailID"] = 100024,  ["subId"] = 10,}
 ,  [19000011046] = {
   ["type"] = 107,  ["dropId"] = 19000011,  ["weight"] = 500,  ["id"] = 19000011046,  ["count"] = 10,  ["detailID"] = 21,  ["subId"] = 46,}
 ,  [105300041043] = {
   ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 250,  ["id"] = 105300041043,  ["count"] = 10,  ["detailID"] = 10003,  ["subId"] = 43,}
 ,  [30702001] = {
   ["type"] = 105,  ["dropId"] = 30702,  ["weight"] = 100,  ["id"] = 30702001,  ["count"] = 23,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [105300021003] = {
-  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021003,  ["count"] = 1,  ["detailID"] = 100003,  ["subId"] = 3,}
+,  [105300021008] = {
+  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021008,  ["count"] = 1,  ["detailID"] = 100015,  ["subId"] = 8,}
+,  [105300021005] = {
+  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021005,  ["count"] = 1,  ["detailID"] = 100012,  ["subId"] = 5,}
 ,  [21007041001] = {
   ["type"] = 0,  ["dropId"] = 21007041,  ["weight"] = 100,  ["id"] = 21007041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [105300016052] = {
-  ["type"] = 105,  ["dropId"] = 105300016,  ["weight"] = 20,  ["id"] = 105300016052,  ["count"] = 2,  ["detailID"] = 63002,  ["subId"] = 52,}
 ,  [21034081001] = {
   ["type"] = 103,  ["dropId"] = 21034081,  ["weight"] = 100,  ["id"] = 21034081001,  ["count"] = 1,  ["detailID"] = 1030057,  ["subId"] = 1,}
 ,  [30101001] = {
-  ["type"] = 107,  ["dropId"] = 30101,  ["weight"] = 100,  ["id"] = 30101001,  ["count"] = 5500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [30301001] = {
-  ["type"] = 107,  ["dropId"] = 30301,  ["weight"] = 100,  ["id"] = 30301001,  ["count"] = 20500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30101,  ["weight"] = 100,  ["id"] = 30101001,  ["count"] = 650,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105300021003] = {
+  ["type"] = 102,  ["dropId"] = 105300021,  ["weight"] = 3,  ["id"] = 105300021003,  ["count"] = 1,  ["detailID"] = 100003,  ["subId"] = 3,}
 ,  [105300031062] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 600,  ["id"] = 105300031062,  ["count"] = 5,  ["detailID"] = 10002,  ["subId"] = 62,}
 ,  [21010081001] = {
   ["type"] = 103,  ["dropId"] = 21010081,  ["weight"] = 100,  ["id"] = 21010081001,  ["count"] = 1,  ["detailID"] = 1010066,  ["subId"] = 1,}
-,  [19000041027] = {
-  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 16,  ["id"] = 19000041027,  ["count"] = 1,  ["detailID"] = 40026,  ["subId"] = 27,}
+,  [19000041011] = {
+  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 64,  ["id"] = 19000041011,  ["count"] = 1,  ["detailID"] = 40010,  ["subId"] = 11,}
 ,  [20011001] = {
   ["type"] = 105,  ["dropId"] = 20011,  ["weight"] = 100,  ["id"] = 20011001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [1215001] = {
   ["type"] = 107,  ["dropId"] = 1215,  ["weight"] = 100,  ["id"] = 1215001,  ["count"] = 190,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [19000041027] = {
+  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 16,  ["id"] = 19000041027,  ["count"] = 1,  ["detailID"] = 40026,  ["subId"] = 27,}
 ,  [19000041043] = {
   ["type"] = 107,  ["dropId"] = 19000041,  ["weight"] = 500,  ["id"] = 19000041043,  ["count"] = 25,  ["detailID"] = 21,  ["subId"] = 43,}
 ,  [30342001] = {
   ["type"] = 105,  ["dropId"] = 30342,  ["weight"] = 100,  ["id"] = 30342001,  ["count"] = 13,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [30542001] = {
-  ["type"] = 105,  ["dropId"] = 30542,  ["weight"] = 100,  ["id"] = 30542001,  ["count"] = 11,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105300041044] = {
   ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 750,  ["id"] = 105300041044,  ["count"] = 20,  ["detailID"] = 63001,  ["subId"] = 44,}
 ,  [1301001] = {
   ["type"] = 107,  ["dropId"] = 1301,  ["weight"] = 100,  ["id"] = 1301001,  ["count"] = 5000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [19000031016] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 1,  ["id"] = 19000031016,  ["count"] = 1,  ["detailID"] = 30015,  ["subId"] = 16,}
+,  [31251001] = {
+  ["type"] = 107,  ["dropId"] = 31251,  ["weight"] = 100,  ["id"] = 31251001,  ["count"] = 51350,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21027071001] = {
   ["type"] = 104,  ["dropId"] = 21027071,  ["weight"] = 100,  ["id"] = 21027071001,  ["count"] = 1,  ["detailID"] = 21000210,  ["subId"] = 1,}
-,  [200022011] = {
-  ["type"] = 101,  ["dropId"] = 200022,  ["weight"] = 100,  ["id"] = 200022011,  ["count"] = 1,  ["detailID"] = 10044,  ["subId"] = 11,}
+,  [19000031016] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 1,  ["id"] = 19000031016,  ["count"] = 1,  ["detailID"] = 30015,  ["subId"] = 16,}
+,  [30651001] = {
+  ["type"] = 107,  ["dropId"] = 30651,  ["weight"] = 100,  ["id"] = 30651001,  ["count"] = 9550,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21043051001] = {
   ["type"] = 103,  ["dropId"] = 21043051,  ["weight"] = 100,  ["id"] = 21043051001,  ["count"] = 1,  ["detailID"] = 1010040,  ["subId"] = 1,}
-,  [105300011044] = {
-  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 60,  ["id"] = 105300011044,  ["count"] = 60,  ["detailID"] = 13,  ["subId"] = 44,}
-,  [105300011042] = {
-  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 20,  ["id"] = 105300011042,  ["count"] = 30,  ["detailID"] = 3,  ["subId"] = 42,}
+,  [21010041001] = {
+  ["type"] = 0,  ["dropId"] = 21010041,  ["weight"] = 100,  ["id"] = 21010041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105300031063] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 200,  ["id"] = 105300031063,  ["count"] = 10,  ["detailID"] = 10002,  ["subId"] = 63,}
-,  [21005061001] = {
-  ["type"] = 0,  ["dropId"] = 21005061,  ["weight"] = 100,  ["id"] = 21005061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21039041001] = {
+  ["type"] = 0,  ["dropId"] = 21039041,  ["weight"] = 100,  ["id"] = 21039041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30691001] = {
-  ["type"] = 107,  ["dropId"] = 30691,  ["weight"] = 100,  ["id"] = 30691001,  ["count"] = 30500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30691,  ["weight"] = 100,  ["id"] = 30691001,  ["count"] = 21300,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1473001] = {
   ["type"] = 107,  ["dropId"] = 1473,  ["weight"] = 100,  ["id"] = 1473001,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [19000021032] = {
@@ -3796,7 +3786,7 @@ small_bag_config={
 ,  [300031016] = {
   ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 400,  ["id"] = 300031016,  ["count"] = 1,  ["detailID"] = 10031,  ["subId"] = 16,}
 ,  [31281001] = {
-  ["type"] = 107,  ["dropId"] = 31281,  ["weight"] = 100,  ["id"] = 31281001,  ["count"] = 92000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31281,  ["weight"] = 100,  ["id"] = 31281001,  ["count"] = 54750,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [300031018] = {
   ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 400,  ["id"] = 300031018,  ["count"] = 1,  ["detailID"] = 10036,  ["subId"] = 18,}
 ,  [300031019] = {
@@ -3841,44 +3831,44 @@ small_bag_config={
   ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 20,  ["id"] = 300031038,  ["count"] = 1,  ["detailID"] = 10065,  ["subId"] = 38,}
 ,  [6020022001] = {
   ["type"] = 108,  ["dropId"] = 6020022,  ["weight"] = 100,  ["id"] = 6020022001,  ["count"] = 1,  ["detailID"] = 120101,  ["subId"] = 1,}
-,  [21039041001] = {
-  ["type"] = 0,  ["dropId"] = 21039041,  ["weight"] = 100,  ["id"] = 21039041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30891001] = {
-  ["type"] = 107,  ["dropId"] = 30891,  ["weight"] = 100,  ["id"] = 30891001,  ["count"] = 80000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30891,  ["weight"] = 100,  ["id"] = 30891001,  ["count"] = 20950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [6020022002] = {
   ["type"] = 108,  ["dropId"] = 6020022,  ["weight"] = 100,  ["id"] = 6020022002,  ["count"] = 1,  ["detailID"] = 120201,  ["subId"] = 2,}
+,  [19000021029] = {
+  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021029,  ["count"] = 1,  ["detailID"] = 20028,  ["subId"] = 29,}
 ,  [105300031066] = {
   ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 600,  ["id"] = 105300031066,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 66,}
-,  [17009002001] = {
-  ["type"] = 107,  ["dropId"] = 17009002,  ["weight"] = 100,  ["id"] = 17009002001,  ["count"] = 90,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [21026071001] = {
-  ["type"] = 104,  ["dropId"] = 21026071,  ["weight"] = 100,  ["id"] = 21026071001,  ["count"] = 1,  ["detailID"] = 21000100,  ["subId"] = 1,}
-,  [100021008] = {
-  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021008,  ["count"] = 1,  ["detailID"] = 10011,  ["subId"] = 8,}
-,  [21029031001] = {
-  ["type"] = 104,  ["dropId"] = 21029031,  ["weight"] = 100,  ["id"] = 21029031001,  ["count"] = 1,  ["detailID"] = 21000400,  ["subId"] = 1,}
+,  [50611001] = {
+  ["type"] = 107,  ["dropId"] = 50611,  ["weight"] = 100,  ["id"] = 50611001,  ["count"] = 40,  ["detailID"] = 13,  ["subId"] = 1,}
+,  [105300011042] = {
+  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 20,  ["id"] = 105300011042,  ["count"] = 30,  ["detailID"] = 3,  ["subId"] = 42,}
+,  [21014011001] = {
+  ["type"] = 0,  ["dropId"] = 21014011,  ["weight"] = 100,  ["id"] = 21014011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105300011040] = {
+  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 60,  ["id"] = 105300011040,  ["count"] = 10,  ["detailID"] = 3,  ["subId"] = 40,}
+,  [6100041001] = {
+  ["type"] = 107,  ["dropId"] = 6100041,  ["weight"] = 100,  ["id"] = 6100041001,  ["count"] = 3000,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [30531001] = {
-  ["type"] = 107,  ["dropId"] = 30531,  ["weight"] = 100,  ["id"] = 30531001,  ["count"] = 9500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [11001003002] = {
-  ["type"] = 0,  ["dropId"] = 11001003,  ["weight"] = 100,  ["id"] = 11001003002,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 2,}
+  ["type"] = 107,  ["dropId"] = 30531,  ["weight"] = 100,  ["id"] = 30531001,  ["count"] = 5900,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21011081001] = {
   ["type"] = 103,  ["dropId"] = 21011081,  ["weight"] = 100,  ["id"] = 21011081001,  ["count"] = 1,  ["detailID"] = 1030059,  ["subId"] = 1,}
 ,  [105300041048] = {
   ["type"] = 105,  ["dropId"] = 105300041,  ["weight"] = 400,  ["id"] = 105300041048,  ["count"] = 2,  ["detailID"] = 30011,  ["subId"] = 48,}
+,  [21031021001] = {
+  ["type"] = 0,  ["dropId"] = 21031021,  ["weight"] = 100,  ["id"] = 21031021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30572001] = {
   ["type"] = 105,  ["dropId"] = 30572,  ["weight"] = 100,  ["id"] = 30572001,  ["count"] = 11,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21041071001] = {
   ["type"] = 104,  ["dropId"] = 21041071,  ["weight"] = 100,  ["id"] = 21041071001,  ["count"] = 1,  ["detailID"] = 21000110,  ["subId"] = 1,}
+,  [21026041001] = {
+  ["type"] = 0,  ["dropId"] = 21026041,  ["weight"] = 100,  ["id"] = 21026041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [6200092001] = {
+  ["type"] = 107,  ["dropId"] = 6200092,  ["weight"] = 100,  ["id"] = 6200092001,  ["count"] = 84,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [30171001] = {
+  ["type"] = 107,  ["dropId"] = 30171,  ["weight"] = 100,  ["id"] = 30171001,  ["count"] = 350,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [31132001] = {
   ["type"] = 105,  ["dropId"] = 31132,  ["weight"] = 100,  ["id"] = 31132001,  ["count"] = 16,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [105300011032] = {
-  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 20,  ["id"] = 105300011032,  ["count"] = 2000,  ["detailID"] = 1,  ["subId"] = 32,}
-,  [21037041001] = {
-  ["type"] = 0,  ["dropId"] = 21037041,  ["weight"] = 100,  ["id"] = 21037041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [300021010] = {
-  ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021010,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 10,}
-,  [30171001] = {
-  ["type"] = 107,  ["dropId"] = 30171,  ["weight"] = 100,  ["id"] = 30171001,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105300031067] = {
   ["type"] = 107,  ["dropId"] = 105300031,  ["weight"] = 300,  ["id"] = 105300031067,  ["count"] = 200,  ["detailID"] = 3,  ["subId"] = 67,}
 ,  [21028071001] = {
@@ -3891,362 +3881,358 @@ small_bag_config={
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021033,  ["count"] = 1,  ["detailID"] = 20032,  ["subId"] = 33,}
 ,  [20411001] = {
   ["type"] = 105,  ["dropId"] = 20411,  ["weight"] = 100,  ["id"] = 20411001,  ["count"] = 4,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [105300011024] = {
-  ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 2,  ["id"] = 105300011024,  ["count"] = 1,  ["detailID"] = 100030,  ["subId"] = 24,}
-,  [20161001] = {
-  ["type"] = 105,  ["dropId"] = 20161,  ["weight"] = 100,  ["id"] = 20161001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
+,  [30781001] = {
+  ["type"] = 107,  ["dropId"] = 30781,  ["weight"] = 100,  ["id"] = 30781001,  ["count"] = 29000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21040001001] = {
+  ["type"] = 0,  ["dropId"] = 21040001,  ["weight"] = 100,  ["id"] = 21040001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [20471001] = {
   ["type"] = 105,  ["dropId"] = 20471,  ["weight"] = 100,  ["id"] = 20471001,  ["count"] = 6,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [31162001] = {
-  ["type"] = 105,  ["dropId"] = 31162,  ["weight"] = 100,  ["id"] = 31162001,  ["count"] = 16,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [30122001] = {
-  ["type"] = 105,  ["dropId"] = 30122,  ["weight"] = 100,  ["id"] = 30122001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [105300011027] = {
+  ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 2,  ["id"] = 105300011027,  ["count"] = 1,  ["detailID"] = 100044,  ["subId"] = 27,}
+,  [21045071001] = {
+  ["type"] = 103,  ["dropId"] = 21045071,  ["weight"] = 100,  ["id"] = 21045071001,  ["count"] = 1,  ["detailID"] = 1010062,  ["subId"] = 1,}
 ,  [21045061001] = {
   ["type"] = 0,  ["dropId"] = 21045061,  ["weight"] = 100,  ["id"] = 21045061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [105300011014] = {
-  ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 3,  ["id"] = 105300011014,  ["count"] = 1,  ["detailID"] = 100035,  ["subId"] = 14,}
-,  [21008041001] = {
-  ["type"] = 0,  ["dropId"] = 21008041,  ["weight"] = 100,  ["id"] = 21008041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [20161001] = {
+  ["type"] = 105,  ["dropId"] = 20161,  ["weight"] = 100,  ["id"] = 20161001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
+,  [31162001] = {
+  ["type"] = 105,  ["dropId"] = 31162,  ["weight"] = 100,  ["id"] = 31162001,  ["count"] = 16,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105649002001] = {
   ["type"] = 102,  ["dropId"] = 105649002,  ["weight"] = 100,  ["id"] = 105649002001,  ["count"] = 1,  ["detailID"] = 100006,  ["subId"] = 1,}
 ,  [21015081001] = {
   ["type"] = 103,  ["dropId"] = 21015081,  ["weight"] = 100,  ["id"] = 21015081001,  ["count"] = 1,  ["detailID"] = 1010052,  ["subId"] = 1,}
 ,  [21011001001] = {
   ["type"] = 0,  ["dropId"] = 21011001,  ["weight"] = 100,  ["id"] = 21011001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21025071001] = {
+  ["type"] = 103,  ["dropId"] = 21025071,  ["weight"] = 100,  ["id"] = 21025071001,  ["count"] = 1,  ["detailID"] = 1010023,  ["subId"] = 1,}
+,  [21008041001] = {
+  ["type"] = 0,  ["dropId"] = 21008041,  ["weight"] = 100,  ["id"] = 21008041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [1211001] = {
+  ["type"] = 107,  ["dropId"] = 1211,  ["weight"] = 100,  ["id"] = 1211001,  ["count"] = 150,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [30761001] = {
+  ["type"] = 107,  ["dropId"] = 30761,  ["weight"] = 100,  ["id"] = 30761001,  ["count"] = 39400,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21035081001] = {
   ["type"] = 103,  ["dropId"] = 21035081,  ["weight"] = 100,  ["id"] = 21035081001,  ["count"] = 1,  ["detailID"] = 1010046,  ["subId"] = 1,}
 ,  [30802001] = {
   ["type"] = 105,  ["dropId"] = 30802,  ["weight"] = 100,  ["id"] = 30802001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [1211001] = {
-  ["type"] = 107,  ["dropId"] = 1211,  ["weight"] = 100,  ["id"] = 1211001,  ["count"] = 150,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [50021001] = {
-  ["type"] = 107,  ["dropId"] = 50021,  ["weight"] = 100,  ["id"] = 50021001,  ["count"] = 50,  ["detailID"] = 13,  ["subId"] = 1,}
-,  [60072001] = {
-  ["type"] = 107,  ["dropId"] = 60072,  ["weight"] = 100,  ["id"] = 60072001,  ["count"] = 100,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [1342001] = {
-  ["type"] = 102,  ["dropId"] = 1342,  ["weight"] = 100,  ["id"] = 1342001,  ["count"] = 1,  ["detailID"] = 100029,  ["subId"] = 1,}
 ,  [31022001] = {
   ["type"] = 105,  ["dropId"] = 31022,  ["weight"] = 100,  ["id"] = 31022001,  ["count"] = 21,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105640159001] = {
   ["type"] = 105,  ["dropId"] = 105640159,  ["weight"] = 100,  ["id"] = 105640159001,  ["count"] = 50,  ["detailID"] = 30013,  ["subId"] = 1,}
-,  [31351001] = {
-  ["type"] = 107,  ["dropId"] = 31351,  ["weight"] = 100,  ["id"] = 31351001,  ["count"] = 125000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [105300011014] = {
+  ["type"] = 102,  ["dropId"] = 105300011,  ["weight"] = 3,  ["id"] = 105300011014,  ["count"] = 1,  ["detailID"] = 100035,  ["subId"] = 14,}
 ,  [21030031001] = {
   ["type"] = 104,  ["dropId"] = 21030031,  ["weight"] = 100,  ["id"] = 21030031001,  ["count"] = 1,  ["detailID"] = 21000520,  ["subId"] = 1,}
-,  [6100122001] = {
-  ["type"] = 107,  ["dropId"] = 6100122,  ["weight"] = 100,  ["id"] = 6100122001,  ["count"] = 100,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [60072001] = {
+  ["type"] = 107,  ["dropId"] = 60072,  ["weight"] = 100,  ["id"] = 60072001,  ["count"] = 100,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [21061001] = {
   ["type"] = 105,  ["dropId"] = 21061,  ["weight"] = 100,  ["id"] = 21061001,  ["count"] = 21,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [1383001] = {
   ["type"] = 105,  ["dropId"] = 1383,  ["weight"] = 100,  ["id"] = 1383001,  ["count"] = 1,  ["detailID"] = 60001,  ["subId"] = 1,}
 ,  [51031001] = {
   ["type"] = 107,  ["dropId"] = 51031,  ["weight"] = 100,  ["id"] = 51031001,  ["count"] = 150,  ["detailID"] = 13,  ["subId"] = 1,}
-,  [21006061001] = {
-  ["type"] = 0,  ["dropId"] = 21006061,  ["weight"] = 100,  ["id"] = 21006061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21034001001] = {
+  ["type"] = 0,  ["dropId"] = 21034001,  ["weight"] = 100,  ["id"] = 21034001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [19000031019] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031019,  ["count"] = 1,  ["detailID"] = 30018,  ["subId"] = 19,}
-,  [17005061001] = {
-  ["type"] = 105,  ["dropId"] = 17005061,  ["weight"] = 100,  ["id"] = 17005061001,  ["count"] = 5,  ["detailID"] = 20001,  ["subId"] = 1,}
+,  [31351001] = {
+  ["type"] = 107,  ["dropId"] = 31351,  ["weight"] = 100,  ["id"] = 31351001,  ["count"] = 123950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640031001] = {
   ["type"] = 105,  ["dropId"] = 105640031,  ["weight"] = 100,  ["id"] = 105640031001,  ["count"] = 20,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [19000031042] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031042,  ["count"] = 1,  ["detailID"] = 30041,  ["subId"] = 42,}
-,  [6000083001] = {
-  ["type"] = 107,  ["dropId"] = 6000083,  ["weight"] = 100,  ["id"] = 6000083001,  ["count"] = 360,  ["detailID"] = 13,  ["subId"] = 1,}
-,  [50031001] = {
-  ["type"] = 107,  ["dropId"] = 50031,  ["weight"] = 100,  ["id"] = 50031001,  ["count"] = 100,  ["detailID"] = 13,  ["subId"] = 1,}
-,  [19000021034] = {
-  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 16,  ["id"] = 19000021034,  ["count"] = 1,  ["detailID"] = 20033,  ["subId"] = 34,}
-,  [26002011001] = {
-  ["type"] = 105,  ["dropId"] = 26002011,  ["weight"] = 100,  ["id"] = 26002011001,  ["count"] = 3,  ["detailID"] = 10002,  ["subId"] = 1,}
+,  [21040041001] = {
+  ["type"] = 0,  ["dropId"] = 21040041,  ["weight"] = 100,  ["id"] = 21040041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21015071001] = {
+  ["type"] = 103,  ["dropId"] = 21015071,  ["weight"] = 100,  ["id"] = 21015071001,  ["count"] = 1,  ["detailID"] = 1010020,  ["subId"] = 1,}
+,  [105300011029] = {
+  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 80,  ["id"] = 105300011029,  ["count"] = 500,  ["detailID"] = 1,  ["subId"] = 29,}
+,  [21341001] = {
+  ["type"] = 105,  ["dropId"] = 21341,  ["weight"] = 100,  ["id"] = 21341001,  ["count"] = 38,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [21081001] = {
+  ["type"] = 105,  ["dropId"] = 21081,  ["weight"] = 100,  ["id"] = 21081001,  ["count"] = 31,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [21015001001] = {
   ["type"] = 0,  ["dropId"] = 21015001,  ["weight"] = 100,  ["id"] = 21015001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [50241001] = {
   ["type"] = 107,  ["dropId"] = 50241,  ["weight"] = 100,  ["id"] = 50241001,  ["count"] = 160,  ["detailID"] = 13,  ["subId"] = 1,}
-,  [200021008] = {
-  ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 8000,  ["id"] = 200021008,  ["count"] = 1,  ["detailID"] = 10024,  ["subId"] = 8,}
-,  [26001021001] = {
-  ["type"] = 105,  ["dropId"] = 26001021,  ["weight"] = 100,  ["id"] = 26001021001,  ["count"] = 3,  ["detailID"] = 40002,  ["subId"] = 1,}
+,  [6000064001] = {
+  ["type"] = 105,  ["dropId"] = 6000064,  ["weight"] = 100,  ["id"] = 6000064001,  ["count"] = 20,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [30991001] = {
+  ["type"] = 107,  ["dropId"] = 30991,  ["weight"] = 100,  ["id"] = 30991001,  ["count"] = 53850,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [1436001] = {
+  ["type"] = 103,  ["dropId"] = 1436,  ["weight"] = 100,  ["id"] = 1436001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
+,  [6100122001] = {
+  ["type"] = 107,  ["dropId"] = 6100122,  ["weight"] = 100,  ["id"] = 6100122001,  ["count"] = 100,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [19000031017] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031017,  ["count"] = 1,  ["detailID"] = 30016,  ["subId"] = 17,}
-,  [17001051001] = {
-  ["type"] = 105,  ["dropId"] = 17001051,  ["weight"] = 100,  ["id"] = 17001051001,  ["count"] = 1,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [60141001] = {
-  ["type"] = 103,  ["dropId"] = 60141,  ["weight"] = 100,  ["id"] = 60141001,  ["count"] = 10,  ["detailID"] = 1010023,  ["subId"] = 1,}
-,  [21042071001] = {
-  ["type"] = 104,  ["dropId"] = 21042071,  ["weight"] = 100,  ["id"] = 21042071001,  ["count"] = 1,  ["detailID"] = 21000220,  ["subId"] = 1,}
+,  [21032021001] = {
+  ["type"] = 0,  ["dropId"] = 21032021,  ["weight"] = 100,  ["id"] = 21032021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105300031070] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 600,  ["id"] = 105300031070,  ["count"] = 1,  ["detailID"] = 63001,  ["subId"] = 70,}
+,  [21042071001] = {
+  ["type"] = 104,  ["dropId"] = 21042071,  ["weight"] = 100,  ["id"] = 21042071001,  ["count"] = 1,  ["detailID"] = 21000220,  ["subId"] = 1,}
+,  [21023081001] = {
+  ["type"] = 103,  ["dropId"] = 21023081,  ["weight"] = 100,  ["id"] = 21023081001,  ["count"] = 1,  ["detailID"] = 1030063,  ["subId"] = 1,}
 ,  [300011015] = {
   ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011015,  ["count"] = 1,  ["detailID"] = 10030,  ["subId"] = 15,}
+,  [26002011001] = {
+  ["type"] = 105,  ["dropId"] = 26002011,  ["weight"] = 100,  ["id"] = 26002011001,  ["count"] = 3,  ["detailID"] = 10002,  ["subId"] = 1,}
+,  [200021008] = {
+  ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 8000,  ["id"] = 200021008,  ["count"] = 1,  ["detailID"] = 10024,  ["subId"] = 8,}
 ,  [300011016] = {
   ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011016,  ["count"] = 1,  ["detailID"] = 10031,  ["subId"] = 16,}
 ,  [30631001] = {
-  ["type"] = 107,  ["dropId"] = 30631,  ["weight"] = 100,  ["id"] = 30631001,  ["count"] = 21500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21002031001] = {
-  ["type"] = 0,  ["dropId"] = 21002031,  ["weight"] = 100,  ["id"] = 21002031001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30631,  ["weight"] = 100,  ["id"] = 30631001,  ["count"] = 17050,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [26001021001] = {
+  ["type"] = 105,  ["dropId"] = 26001021,  ["weight"] = 100,  ["id"] = 26001021001,  ["count"] = 3,  ["detailID"] = 40002,  ["subId"] = 1,}
 ,  [30672001] = {
   ["type"] = 105,  ["dropId"] = 30672,  ["weight"] = 100,  ["id"] = 30672001,  ["count"] = 22,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [30711001] = {
-  ["type"] = 107,  ["dropId"] = 30711,  ["weight"] = 100,  ["id"] = 30711001,  ["count"] = 34000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21040001001] = {
-  ["type"] = 0,  ["dropId"] = 21040001,  ["weight"] = 100,  ["id"] = 21040001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21046041001] = {
-  ["type"] = 0,  ["dropId"] = 21046041,  ["weight"] = 100,  ["id"] = 21046041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [60071001] = {
-  ["type"] = 103,  ["dropId"] = 60071,  ["weight"] = 100,  ["id"] = 60071001,  ["count"] = 3,  ["detailID"] = 1030051,  ["subId"] = 1,}
+,  [19000011018] = {
+  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 1,  ["id"] = 19000011018,  ["count"] = 1,  ["detailID"] = 10017,  ["subId"] = 18,}
+,  [26001011001] = {
+  ["type"] = 105,  ["dropId"] = 26001011,  ["weight"] = 100,  ["id"] = 26001011001,  ["count"] = 3,  ["detailID"] = 40002,  ["subId"] = 1,}
 ,  [21034051001] = {
   ["type"] = 103,  ["dropId"] = 21034051,  ["weight"] = 100,  ["id"] = 21034051001,  ["count"] = 1,  ["detailID"] = 1010049,  ["subId"] = 1,}
-,  [300011020] = {
-  ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011020,  ["count"] = 1,  ["detailID"] = 10041,  ["subId"] = 20,}
-,  [21046011001] = {
-  ["type"] = 0,  ["dropId"] = 21046011,  ["weight"] = 100,  ["id"] = 21046011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [19000041001] = {
   ["type"] = 107,  ["dropId"] = 19000041,  ["weight"] = 500,  ["id"] = 19000041001,  ["count"] = 2000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [30271001] = {
-  ["type"] = 107,  ["dropId"] = 30271,  ["weight"] = 100,  ["id"] = 30271001,  ["count"] = 18000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [17007001001] = {
-  ["type"] = 105,  ["dropId"] = 17007001,  ["weight"] = 100,  ["id"] = 17007001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
+,  [1217001] = {
+  ["type"] = 107,  ["dropId"] = 1217,  ["weight"] = 100,  ["id"] = 1217001,  ["count"] = 210,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [300011020] = {
+  ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011020,  ["count"] = 1,  ["detailID"] = 10041,  ["subId"] = 20,}
 ,  [105300031071] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 400,  ["id"] = 105300031071,  ["count"] = 5,  ["detailID"] = 63001,  ["subId"] = 71,}
+,  [17007001001] = {
+  ["type"] = 105,  ["dropId"] = 17007001,  ["weight"] = 100,  ["id"] = 17007001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
+,  [21003001001] = {
+  ["type"] = 0,  ["dropId"] = 21003001,  ["weight"] = 100,  ["id"] = 21003001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30312001] = {
   ["type"] = 105,  ["dropId"] = 30312,  ["weight"] = 100,  ["id"] = 30312001,  ["count"] = 12,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21042041001] = {
-  ["type"] = 0,  ["dropId"] = 21042041,  ["weight"] = 100,  ["id"] = 21042041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21045071001] = {
-  ["type"] = 103,  ["dropId"] = 21045071,  ["weight"] = 100,  ["id"] = 21045071001,  ["count"] = 1,  ["detailID"] = 1010062,  ["subId"] = 1,}
 ,  [30302001] = {
   ["type"] = 105,  ["dropId"] = 30302,  ["weight"] = 100,  ["id"] = 30302001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [31221001] = {
-  ["type"] = 107,  ["dropId"] = 31221,  ["weight"] = 100,  ["id"] = 31221001,  ["count"] = 69000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21002031001] = {
+  ["type"] = 0,  ["dropId"] = 21002031,  ["weight"] = 100,  ["id"] = 21002031001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105640138001] = {
   ["type"] = 105,  ["dropId"] = 105640138,  ["weight"] = 100,  ["id"] = 105640138001,  ["count"] = 30,  ["detailID"] = 30013,  ["subId"] = 1,}
 ,  [21029071001] = {
   ["type"] = 104,  ["dropId"] = 21029071,  ["weight"] = 100,  ["id"] = 21029071001,  ["count"] = 1,  ["detailID"] = 21000530,  ["subId"] = 1,}
-,  [300011027] = {
-  ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011027,  ["count"] = 1,  ["detailID"] = 10054,  ["subId"] = 27,}
+,  [31002001] = {
+  ["type"] = 105,  ["dropId"] = 31002,  ["weight"] = 100,  ["id"] = 31002001,  ["count"] = 34,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [20341001] = {
   ["type"] = 105,  ["dropId"] = 20341,  ["weight"] = 100,  ["id"] = 20341001,  ["count"] = 8,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [30861001] = {
-  ["type"] = 107,  ["dropId"] = 30861,  ["weight"] = 100,  ["id"] = 30861001,  ["count"] = 70000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [31221001] = {
+  ["type"] = 107,  ["dropId"] = 31221,  ["weight"] = 100,  ["id"] = 31221001,  ["count"] = 48100,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640074001] = {
   ["type"] = 105,  ["dropId"] = 105640074,  ["weight"] = 100,  ["id"] = 105640074001,  ["count"] = 20,  ["detailID"] = 30002,  ["subId"] = 1,}
 ,  [40021001] = {
   ["type"] = 107,  ["dropId"] = 40021,  ["weight"] = 100,  ["id"] = 40021001,  ["count"] = 50,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [21011071001] = {
-  ["type"] = 103,  ["dropId"] = 21011071,  ["weight"] = 100,  ["id"] = 21011071001,  ["count"] = 1,  ["detailID"] = 1010047,  ["subId"] = 1,}
-,  [21044071001] = {
-  ["type"] = 104,  ["dropId"] = 21044071,  ["weight"] = 100,  ["id"] = 21044071001,  ["count"] = 1,  ["detailID"] = 21000540,  ["subId"] = 1,}
+,  [21012031001] = {
+  ["type"] = 103,  ["dropId"] = 21012031,  ["weight"] = 100,  ["id"] = 21012031001,  ["count"] = 1,  ["detailID"] = 1010005,  ["subId"] = 1,}
+,  [30722001] = {
+  ["type"] = 105,  ["dropId"] = 30722,  ["weight"] = 100,  ["id"] = 30722001,  ["count"] = 14,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [1424001] = {
   ["type"] = 107,  ["dropId"] = 1424,  ["weight"] = 100,  ["id"] = 1424001,  ["count"] = 100,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [105300031072] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 600,  ["id"] = 105300031072,  ["count"] = 1,  ["detailID"] = 63002,  ["subId"] = 72,}
 ,  [21046061001] = {
   ["type"] = 0,  ["dropId"] = 21046061,  ["weight"] = 100,  ["id"] = 21046061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21044031001] = {
-  ["type"] = 104,  ["dropId"] = 21044031,  ["weight"] = 100,  ["id"] = 21044031001,  ["count"] = 1,  ["detailID"] = 21000480,  ["subId"] = 1,}
-,  [300021007] = {
-  ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021007,  ["count"] = 1,  ["detailID"] = 10040,  ["subId"] = 7,}
+,  [30861001] = {
+  ["type"] = 107,  ["dropId"] = 30861,  ["weight"] = 100,  ["id"] = 30861001,  ["count"] = 19200,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [300021003] = {
+  ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021003,  ["count"] = 1,  ["detailID"] = 10030,  ["subId"] = 3,}
 ,  [1510001] = {
   ["type"] = 107,  ["dropId"] = 1510,  ["weight"] = 100,  ["id"] = 1510001,  ["count"] = 100000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21016081001] = {
   ["type"] = 103,  ["dropId"] = 21016081,  ["weight"] = 100,  ["id"] = 21016081001,  ["count"] = 1,  ["detailID"] = 1030057,  ["subId"] = 1,}
 ,  [21014041001] = {
   ["type"] = 0,  ["dropId"] = 21014041,  ["weight"] = 100,  ["id"] = 21014041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [31182001] = {
-  ["type"] = 105,  ["dropId"] = 31182,  ["weight"] = 100,  ["id"] = 31182001,  ["count"] = 41,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [300011030] = {
+  ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011030,  ["count"] = 1,  ["detailID"] = 10062,  ["subId"] = 30,}
 ,  [30892001] = {
   ["type"] = 105,  ["dropId"] = 30892,  ["weight"] = 100,  ["id"] = 30892001,  ["count"] = 12,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21044011001] = {
-  ["type"] = 0,  ["dropId"] = 21044011,  ["weight"] = 100,  ["id"] = 21044011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [17002001001] = {
-  ["type"] = 105,  ["dropId"] = 17002001,  ["weight"] = 100,  ["id"] = 17002001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
-,  [21043071001] = {
-  ["type"] = 104,  ["dropId"] = 21043071,  ["weight"] = 100,  ["id"] = 21043071001,  ["count"] = 1,  ["detailID"] = 21000330,  ["subId"] = 1,}
-,  [30592001] = {
-  ["type"] = 105,  ["dropId"] = 30592,  ["weight"] = 100,  ["id"] = 30592001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21011071001] = {
+  ["type"] = 103,  ["dropId"] = 21011071,  ["weight"] = 100,  ["id"] = 21011071001,  ["count"] = 1,  ["detailID"] = 1010047,  ["subId"] = 1,}
+,  [30501001] = {
+  ["type"] = 107,  ["dropId"] = 30501,  ["weight"] = 100,  ["id"] = 30501001,  ["count"] = 5150,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [300021007] = {
+  ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021007,  ["count"] = 1,  ["detailID"] = 10040,  ["subId"] = 7,}
+,  [30542001] = {
+  ["type"] = 105,  ["dropId"] = 30542,  ["weight"] = 100,  ["id"] = 30542001,  ["count"] = 11,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [20931001] = {
   ["type"] = 105,  ["dropId"] = 20931,  ["weight"] = 100,  ["id"] = 20931001,  ["count"] = 21,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [21037031001] = {
-  ["type"] = 104,  ["dropId"] = 21037031,  ["weight"] = 100,  ["id"] = 21037031001,  ["count"] = 1,  ["detailID"] = 21000520,  ["subId"] = 1,}
+,  [100021008] = {
+  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021008,  ["count"] = 1,  ["detailID"] = 10011,  ["subId"] = 8,}
 ,  [21033071001] = {
   ["type"] = 104,  ["dropId"] = 21033071,  ["weight"] = 100,  ["id"] = 21033071001,  ["count"] = 1,  ["detailID"] = 21000210,  ["subId"] = 1,}
 ,  [21031031001] = {
   ["type"] = 104,  ["dropId"] = 21031031,  ["weight"] = 100,  ["id"] = 21031031001,  ["count"] = 1,  ["detailID"] = 21000090,  ["subId"] = 1,}
-,  [30182001] = {
-  ["type"] = 105,  ["dropId"] = 30182,  ["weight"] = 100,  ["id"] = 30182001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [17005021001] = {
-  ["type"] = 105,  ["dropId"] = 17005021,  ["weight"] = 100,  ["id"] = 17005021001,  ["count"] = 5,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [21026021001] = {
-  ["type"] = 0,  ["dropId"] = 21026021,  ["weight"] = 100,  ["id"] = 21026021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [600062001] = {
-  ["type"] = 104,  ["dropId"] = 600062,  ["weight"] = 100,  ["id"] = 600062001,  ["count"] = 10,  ["detailID"] = 21000510,  ["subId"] = 1,}
-,  [21027081001] = {
-  ["type"] = 103,  ["dropId"] = 21027081,  ["weight"] = 100,  ["id"] = 21027081001,  ["count"] = 1,  ["detailID"] = 1030060,  ["subId"] = 1,}
-,  [300021014] = {
-  ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021014,  ["count"] = 1,  ["detailID"] = 10050,  ["subId"] = 14,}
+,  [21044071001] = {
+  ["type"] = 104,  ["dropId"] = 21044071,  ["weight"] = 100,  ["id"] = 21044071001,  ["count"] = 1,  ["detailID"] = 21000540,  ["subId"] = 1,}
+,  [17002001001] = {
+  ["type"] = 105,  ["dropId"] = 17002001,  ["weight"] = 100,  ["id"] = 17002001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
+,  [6100081001] = {
+  ["type"] = 107,  ["dropId"] = 6100081,  ["weight"] = 100,  ["id"] = 6100081001,  ["count"] = 2000,  ["detailID"] = 8,  ["subId"] = 1,}
+,  [21037031001] = {
+  ["type"] = 104,  ["dropId"] = 21037031,  ["weight"] = 100,  ["id"] = 21037031001,  ["count"] = 1,  ["detailID"] = 21000520,  ["subId"] = 1,}
+,  [300021010] = {
+  ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021010,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 10,}
+,  [21044031001] = {
+  ["type"] = 104,  ["dropId"] = 21044031,  ["weight"] = 100,  ["id"] = 21044031001,  ["count"] = 1,  ["detailID"] = 21000480,  ["subId"] = 1,}
 ,  [12041001] = {
   ["type"] = 102,  ["dropId"] = 12041,  ["weight"] = 100,  ["id"] = 12041001,  ["count"] = 1,  ["detailID"] = 100003,  ["subId"] = 1,}
-,  [6000073001] = {
-  ["type"] = 107,  ["dropId"] = 6000073,  ["weight"] = 100,  ["id"] = 6000073001,  ["count"] = 380,  ["detailID"] = 13,  ["subId"] = 1,}
+,  [30182001] = {
+  ["type"] = 105,  ["dropId"] = 30182,  ["weight"] = 100,  ["id"] = 30182001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105400011001] = {
   ["type"] = 107,  ["dropId"] = 105400011,  ["weight"] = 100,  ["id"] = 105400011001,  ["count"] = 100,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [300031002] = {
-  ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 8000,  ["id"] = 300031002,  ["count"] = 1,  ["detailID"] = 10004,  ["subId"] = 2,}
-,  [21042021001] = {
-  ["type"] = 0,  ["dropId"] = 21042021,  ["weight"] = 100,  ["id"] = 21042021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [30731001] = {
-  ["type"] = 107,  ["dropId"] = 30731,  ["weight"] = 100,  ["id"] = 30731001,  ["count"] = 37500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [30772001] = {
-  ["type"] = 105,  ["dropId"] = 30772,  ["weight"] = 100,  ["id"] = 30772001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21044011001] = {
+  ["type"] = 0,  ["dropId"] = 21044011,  ["weight"] = 100,  ["id"] = 21044011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21043071001] = {
+  ["type"] = 104,  ["dropId"] = 21043071,  ["weight"] = 100,  ["id"] = 21043071001,  ["count"] = 1,  ["detailID"] = 21000330,  ["subId"] = 1,}
+,  [600062001] = {
+  ["type"] = 104,  ["dropId"] = 600062,  ["weight"] = 100,  ["id"] = 600062001,  ["count"] = 10,  ["detailID"] = 21000510,  ["subId"] = 1,}
+,  [300021014] = {
+  ["type"] = 101,  ["dropId"] = 300021,  ["weight"] = 50,  ["id"] = 300021014,  ["count"] = 1,  ["detailID"] = 10050,  ["subId"] = 14,}
 ,  [21016001001] = {
   ["type"] = 0,  ["dropId"] = 21016001,  ["weight"] = 100,  ["id"] = 21016001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21033001001] = {
-  ["type"] = 0,  ["dropId"] = 21033001,  ["weight"] = 100,  ["id"] = 21033001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [200022018] = {
+  ["type"] = 101,  ["dropId"] = 200022,  ["weight"] = 100,  ["id"] = 200022018,  ["count"] = 1,  ["detailID"] = 10062,  ["subId"] = 18,}
 ,  [105300031074] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 400,  ["id"] = 105300031074,  ["count"] = 1,  ["detailID"] = 20002,  ["subId"] = 74,}
-,  [8000022001] = {
-  ["type"] = 101,  ["dropId"] = 8000022,  ["weight"] = 100,  ["id"] = 8000022001,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 1,}
+,  [300031002] = {
+  ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 8000,  ["id"] = 300031002,  ["count"] = 1,  ["detailID"] = 10004,  ["subId"] = 2,}
 ,  [1207001] = {
   ["type"] = 107,  ["dropId"] = 1207,  ["weight"] = 100,  ["id"] = 1207001,  ["count"] = 110,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [12048001] = {
-  ["type"] = 102,  ["dropId"] = 12048,  ["weight"] = 100,  ["id"] = 12048001,  ["count"] = 1,  ["detailID"] = 100039,  ["subId"] = 1,}
-,  [21041041001] = {
-  ["type"] = 0,  ["dropId"] = 21041041,  ["weight"] = 100,  ["id"] = 21041041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [30252001] = {
-  ["type"] = 105,  ["dropId"] = 30252,  ["weight"] = 100,  ["id"] = 30252001,  ["count"] = 11,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21024051001] = {
-  ["type"] = 104,  ["dropId"] = 21024051,  ["weight"] = 100,  ["id"] = 21024051001,  ["count"] = 1,  ["detailID"] = 21000510,  ["subId"] = 1,}
-,  [21035001001] = {
-  ["type"] = 0,  ["dropId"] = 21035001,  ["weight"] = 100,  ["id"] = 21035001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21013031001] = {
-  ["type"] = 103,  ["dropId"] = 21013031,  ["weight"] = 100,  ["id"] = 21013031001,  ["count"] = 1,  ["detailID"] = 1010016,  ["subId"] = 1,}
-,  [11031005] = {
-  ["type"] = 107,  ["dropId"] = 11031,  ["weight"] = 100,  ["id"] = 11031005,  ["count"] = 10,  ["detailID"] = 13,  ["subId"] = 5,}
-,  [21040081001] = {
-  ["type"] = 103,  ["dropId"] = 21040081,  ["weight"] = 100,  ["id"] = 21040081001,  ["count"] = 1,  ["detailID"] = 1010053,  ["subId"] = 1,}
-,  [21040071001] = {
-  ["type"] = 104,  ["dropId"] = 21040071,  ["weight"] = 100,  ["id"] = 21040071001,  ["count"] = 1,  ["detailID"] = 21000330,  ["subId"] = 1,}
+,  [21015031001] = {
+  ["type"] = 103,  ["dropId"] = 21015031,  ["weight"] = 100,  ["id"] = 21015031001,  ["count"] = 1,  ["detailID"] = 1010015,  ["subId"] = 1,}
+,  [30731001] = {
+  ["type"] = 107,  ["dropId"] = 30731,  ["weight"] = 100,  ["id"] = 30731001,  ["count"] = 35550,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [30772001] = {
+  ["type"] = 105,  ["dropId"] = 30772,  ["weight"] = 100,  ["id"] = 30772001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21042041001] = {
+  ["type"] = 0,  ["dropId"] = 21042041,  ["weight"] = 100,  ["id"] = 21042041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [19000031018] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031018,  ["count"] = 1,  ["detailID"] = 30017,  ["subId"] = 18,}
+,  [8000022001] = {
+  ["type"] = 101,  ["dropId"] = 8000022,  ["weight"] = 100,  ["id"] = 8000022001,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 1,}
+,  [21042021001] = {
+  ["type"] = 0,  ["dropId"] = 21042021,  ["weight"] = 100,  ["id"] = 21042021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [1336001] = {
+  ["type"] = 107,  ["dropId"] = 1336,  ["weight"] = 100,  ["id"] = 1336001,  ["count"] = 20,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [50031001] = {
+  ["type"] = 107,  ["dropId"] = 50031,  ["weight"] = 100,  ["id"] = 50031001,  ["count"] = 100,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [106000013001] = {
   ["type"] = 107,  ["dropId"] = 106000013,  ["weight"] = 100,  ["id"] = 106000013001,  ["count"] = 15,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [19000041002] = {
   ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 16,  ["id"] = 19000041002,  ["count"] = 1,  ["detailID"] = 40001,  ["subId"] = 2,}
-,  [105300011029] = {
-  ["type"] = 107,  ["dropId"] = 105300011,  ["weight"] = 80,  ["id"] = 105300011029,  ["count"] = 500,  ["detailID"] = 1,  ["subId"] = 29,}
-,  [30611001] = {
-  ["type"] = 107,  ["dropId"] = 30611,  ["weight"] = 100,  ["id"] = 30611001,  ["count"] = 18500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [12048001] = {
+  ["type"] = 102,  ["dropId"] = 12048,  ["weight"] = 100,  ["id"] = 12048001,  ["count"] = 1,  ["detailID"] = 100039,  ["subId"] = 1,}
+,  [21041041001] = {
+  ["type"] = 0,  ["dropId"] = 21041041,  ["weight"] = 100,  ["id"] = 21041041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105300031075] = {
   ["type"] = 105,  ["dropId"] = 105300031,  ["weight"] = 300,  ["id"] = 105300031075,  ["count"] = 1,  ["detailID"] = 20003,  ["subId"] = 75,}
 ,  [1465001] = {
   ["type"] = 103,  ["dropId"] = 1465,  ["weight"] = 100,  ["id"] = 1465001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
-,  [6100011001] = {
-  ["type"] = 107,  ["dropId"] = 6100011,  ["weight"] = 100,  ["id"] = 6100011001,  ["count"] = 5000,  ["detailID"] = 8,  ["subId"] = 1,}
+,  [21035001001] = {
+  ["type"] = 0,  ["dropId"] = 21035001,  ["weight"] = 100,  ["id"] = 21035001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21013081001] = {
   ["type"] = 103,  ["dropId"] = 21013081,  ["weight"] = 100,  ["id"] = 21013081001,  ["count"] = 1,  ["detailID"] = 1010053,  ["subId"] = 1,}
 ,  [19000021035] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 16,  ["id"] = 19000021035,  ["count"] = 1,  ["detailID"] = 20034,  ["subId"] = 35,}
 ,  [30172001] = {
   ["type"] = 105,  ["dropId"] = 30172,  ["weight"] = 100,  ["id"] = 30172001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21040021001] = {
-  ["type"] = 0,  ["dropId"] = 21040021,  ["weight"] = 100,  ["id"] = 21040021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21039081001] = {
-  ["type"] = 103,  ["dropId"] = 21039081,  ["weight"] = 100,  ["id"] = 21039081001,  ["count"] = 1,  ["detailID"] = 1030051,  ["subId"] = 1,}
-,  [21039061001] = {
-  ["type"] = 0,  ["dropId"] = 21039061,  ["weight"] = 100,  ["id"] = 21039061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [31002001] = {
-  ["type"] = 105,  ["dropId"] = 31002,  ["weight"] = 100,  ["id"] = 31002001,  ["count"] = 34,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [11031005] = {
+  ["type"] = 107,  ["dropId"] = 11031,  ["weight"] = 100,  ["id"] = 11031005,  ["count"] = 10,  ["detailID"] = 13,  ["subId"] = 5,}
+,  [1342001] = {
+  ["type"] = 102,  ["dropId"] = 1342,  ["weight"] = 100,  ["id"] = 1342001,  ["count"] = 1,  ["detailID"] = 100029,  ["subId"] = 1,}
+,  [21040081001] = {
+  ["type"] = 103,  ["dropId"] = 21040081,  ["weight"] = 100,  ["id"] = 21040081001,  ["count"] = 1,  ["detailID"] = 1010053,  ["subId"] = 1,}
+,  [17002021001] = {
+  ["type"] = 105,  ["dropId"] = 17002021,  ["weight"] = 100,  ["id"] = 17002021001,  ["count"] = 3,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [20211001] = {
   ["type"] = 105,  ["dropId"] = 20211,  ["weight"] = 100,  ["id"] = 20211001,  ["count"] = 5,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [21038071001] = {
-  ["type"] = 104,  ["dropId"] = 21038071,  ["weight"] = 100,  ["id"] = 21038071001,  ["count"] = 1,  ["detailID"] = 21000110,  ["subId"] = 1,}
-,  [12033001] = {
-  ["type"] = 101,  ["dropId"] = 12033,  ["weight"] = 100,  ["id"] = 12033001,  ["count"] = 1,  ["detailID"] = 10006,  ["subId"] = 1,}
+,  [21040071001] = {
+  ["type"] = 104,  ["dropId"] = 21040071,  ["weight"] = 100,  ["id"] = 21040071001,  ["count"] = 1,  ["detailID"] = 21000330,  ["subId"] = 1,}
+,  [30611001] = {
+  ["type"] = 107,  ["dropId"] = 30611,  ["weight"] = 100,  ["id"] = 30611001,  ["count"] = 22700,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21030071001] = {
   ["type"] = 104,  ["dropId"] = 21030071,  ["weight"] = 100,  ["id"] = 21030071001,  ["count"] = 1,  ["detailID"] = 21000550,  ["subId"] = 1,}
-,  [21038051001] = {
-  ["type"] = 103,  ["dropId"] = 21038051,  ["weight"] = 100,  ["id"] = 21038051001,  ["count"] = 1,  ["detailID"] = 1010044,  ["subId"] = 1,}
-,  [21038041001] = {
-  ["type"] = 0,  ["dropId"] = 21038041,  ["weight"] = 100,  ["id"] = 21038041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [60081001] = {
+  ["type"] = 103,  ["dropId"] = 60081,  ["weight"] = 100,  ["id"] = 60081001,  ["count"] = 5,  ["detailID"] = 1010023,  ["subId"] = 1,}
+,  [21039081001] = {
+  ["type"] = 103,  ["dropId"] = 21039081,  ["weight"] = 100,  ["id"] = 21039081001,  ["count"] = 1,  ["detailID"] = 1030051,  ["subId"] = 1,}
 ,  [105300031076] = {
   ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031076,  ["count"] = 1,  ["detailID"] = 120101,  ["subId"] = 76,}
+,  [21038071001] = {
+  ["type"] = 104,  ["dropId"] = 21038071,  ["weight"] = 100,  ["id"] = 21038071001,  ["count"] = 1,  ["detailID"] = 21000110,  ["subId"] = 1,}
 ,  [30241001] = {
-  ["type"] = 107,  ["dropId"] = 30241,  ["weight"] = 100,  ["id"] = 30241001,  ["count"] = 15500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [30912001] = {
-  ["type"] = 105,  ["dropId"] = 30912,  ["weight"] = 100,  ["id"] = 30912001,  ["count"] = 30,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21037051001] = {
-  ["type"] = 103,  ["dropId"] = 21037051,  ["weight"] = 100,  ["id"] = 21037051001,  ["count"] = 1,  ["detailID"] = 1010020,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30241,  ["weight"] = 100,  ["id"] = 30241001,  ["count"] = 1000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21038051001] = {
+  ["type"] = 103,  ["dropId"] = 21038051,  ["weight"] = 100,  ["id"] = 21038051001,  ["count"] = 1,  ["detailID"] = 1010044,  ["subId"] = 1,}
 ,  [30282001] = {
   ["type"] = 105,  ["dropId"] = 30282,  ["weight"] = 100,  ["id"] = 30282001,  ["count"] = 12,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21034041001] = {
-  ["type"] = 0,  ["dropId"] = 21034041,  ["weight"] = 100,  ["id"] = 21034041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21037041001] = {
+  ["type"] = 0,  ["dropId"] = 21037041,  ["weight"] = 100,  ["id"] = 21037041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [31072001] = {
   ["type"] = 105,  ["dropId"] = 31072,  ["weight"] = 100,  ["id"] = 31072001,  ["count"] = 15,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [200031005] = {
-  ["type"] = 101,  ["dropId"] = 200031,  ["weight"] = 8000,  ["id"] = 200031005,  ["count"] = 1,  ["detailID"] = 10015,  ["subId"] = 5,}
 ,  [31232001] = {
   ["type"] = 105,  ["dropId"] = 31232,  ["weight"] = 100,  ["id"] = 31232001,  ["count"] = 26,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21034041001] = {
+  ["type"] = 0,  ["dropId"] = 21034041,  ["weight"] = 100,  ["id"] = 21034041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30762001] = {
   ["type"] = 105,  ["dropId"] = 30762,  ["weight"] = 100,  ["id"] = 30762001,  ["count"] = 25,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21036061001] = {
-  ["type"] = 0,  ["dropId"] = 21036061,  ["weight"] = 100,  ["id"] = 21036061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [300031017] = {
+  ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 400,  ["id"] = 300031017,  ["count"] = 1,  ["detailID"] = 10035,  ["subId"] = 17,}
 ,  [21017081001] = {
   ["type"] = 103,  ["dropId"] = 21017081,  ["weight"] = 100,  ["id"] = 21017081001,  ["count"] = 1,  ["detailID"] = 1010046,  ["subId"] = 1,}
 ,  [21015041001] = {
   ["type"] = 0,  ["dropId"] = 21015041,  ["weight"] = 100,  ["id"] = 21015041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [300031017] = {
-  ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 400,  ["id"] = 300031017,  ["count"] = 1,  ["detailID"] = 10035,  ["subId"] = 17,}
+,  [200031005] = {
+  ["type"] = 101,  ["dropId"] = 200031,  ["weight"] = 8000,  ["id"] = 200031005,  ["count"] = 1,  ["detailID"] = 10015,  ["subId"] = 5,}
 ,  [20801001] = {
   ["type"] = 105,  ["dropId"] = 20801,  ["weight"] = 100,  ["id"] = 20801001,  ["count"] = 20,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [21015051001] = {
-  ["type"] = 104,  ["dropId"] = 21015051,  ["weight"] = 100,  ["id"] = 21015051001,  ["count"] = 1,  ["detailID"] = 21000050,  ["subId"] = 1,}
+,  [30232001] = {
+  ["type"] = 105,  ["dropId"] = 30232,  ["weight"] = 100,  ["id"] = 30232001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [19000031021] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 1,  ["id"] = 19000031021,  ["count"] = 1,  ["detailID"] = 30020,  ["subId"] = 21,}
-,  [30191001] = {
-  ["type"] = 107,  ["dropId"] = 30191,  ["weight"] = 100,  ["id"] = 30191001,  ["count"] = 11500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [30872001] = {
   ["type"] = 105,  ["dropId"] = 30872,  ["weight"] = 100,  ["id"] = 30872001,  ["count"] = 17,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21036001001] = {
-  ["type"] = 0,  ["dropId"] = 21036001,  ["weight"] = 100,  ["id"] = 21036001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [8000092001] = {
   ["type"] = 107,  ["dropId"] = 8000092,  ["weight"] = 100,  ["id"] = 8000092001,  ["count"] = 500000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [8000012001] = {
-  ["type"] = 101,  ["dropId"] = 8000012,  ["weight"] = 100,  ["id"] = 8000012001,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 1,}
-,  [60073001] = {
-  ["type"] = 107,  ["dropId"] = 60073,  ["weight"] = 100,  ["id"] = 60073001,  ["count"] = 100000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [300031022] = {
   ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 400,  ["id"] = 300031022,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 22,}
 ,  [6100072001] = {
   ["type"] = 107,  ["dropId"] = 6100072,  ["weight"] = 100,  ["id"] = 6100072001,  ["count"] = 200,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [1334001] = {
-  ["type"] = 105,  ["dropId"] = 1334,  ["weight"] = 100,  ["id"] = 1334001,  ["count"] = 5,  ["detailID"] = 10001,  ["subId"] = 1,}
+,  [8000012001] = {
+  ["type"] = 101,  ["dropId"] = 8000012,  ["weight"] = 100,  ["id"] = 8000012001,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 1,}
+,  [60073001] = {
+  ["type"] = 107,  ["dropId"] = 60073,  ["weight"] = 100,  ["id"] = 60073001,  ["count"] = 100000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [30512001] = {
   ["type"] = 105,  ["dropId"] = 30512,  ["weight"] = 100,  ["id"] = 30512001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21034071001] = {
   ["type"] = 104,  ["dropId"] = 21034071,  ["weight"] = 100,  ["id"] = 21034071001,  ["count"] = 1,  ["detailID"] = 21000530,  ["subId"] = 1,}
-,  [21034061001] = {
-  ["type"] = 0,  ["dropId"] = 21034061,  ["weight"] = 100,  ["id"] = 21034061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [31352001] = {
-  ["type"] = 105,  ["dropId"] = 31352,  ["weight"] = 100,  ["id"] = 31352001,  ["count"] = 29,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [1334001] = {
+  ["type"] = 105,  ["dropId"] = 1334,  ["weight"] = 100,  ["id"] = 1334001,  ["count"] = 5,  ["detailID"] = 10001,  ["subId"] = 1,}
+,  [1495001] = {
+  ["type"] = 103,  ["dropId"] = 1495,  ["weight"] = 100,  ["id"] = 1495001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [60231001] = {
   ["type"] = 107,  ["dropId"] = 60231,  ["weight"] = 100,  ["id"] = 60231001,  ["count"] = 1600,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21013071001] = {
   ["type"] = 103,  ["dropId"] = 21013071,  ["weight"] = 100,  ["id"] = 21013071001,  ["count"] = 1,  ["detailID"] = 1010043,  ["subId"] = 1,}
-,  [105300031078] = {
-  ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031078,  ["count"] = 1,  ["detailID"] = 120301,  ["subId"] = 78,}
+,  [31352001] = {
+  ["type"] = 105,  ["dropId"] = 31352,  ["weight"] = 100,  ["id"] = 31352001,  ["count"] = 29,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [6200042001] = {
+  ["type"] = 107,  ["dropId"] = 6200042,  ["weight"] = 100,  ["id"] = 6200042001,  ["count"] = 94,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [1331001] = {
   ["type"] = 102,  ["dropId"] = 1331,  ["weight"] = 100,  ["id"] = 1331001,  ["count"] = 1,  ["detailID"] = 100042,  ["subId"] = 1,}
-,  [30152001] = {
-  ["type"] = 105,  ["dropId"] = 30152,  ["weight"] = 100,  ["id"] = 30152001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [1506001] = {
-  ["type"] = 107,  ["dropId"] = 1506,  ["weight"] = 100,  ["id"] = 1506001,  ["count"] = 20000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21017001001] = {
-  ["type"] = 0,  ["dropId"] = 21017001,  ["weight"] = 100,  ["id"] = 21017001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105300031078] = {
+  ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031078,  ["count"] = 1,  ["detailID"] = 120301,  ["subId"] = 78,}
 ,  [300031029] = {
   ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 400,  ["id"] = 300031029,  ["count"] = 1,  ["detailID"] = 10058,  ["subId"] = 29,}
 ,  [19000021016] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021016,  ["count"] = 1,  ["detailID"] = 20015,  ["subId"] = 16,}
+,  [1506001] = {
+  ["type"] = 107,  ["dropId"] = 1506,  ["weight"] = 100,  ["id"] = 1506001,  ["count"] = 20000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21017001001] = {
+  ["type"] = 0,  ["dropId"] = 21017001,  ["weight"] = 100,  ["id"] = 21017001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [31061001] = {
-  ["type"] = 107,  ["dropId"] = 31061,  ["weight"] = 100,  ["id"] = 31061001,  ["count"] = 28000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31061,  ["weight"] = 100,  ["id"] = 31061001,  ["count"] = 94400,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [17003001001] = {
   ["type"] = 105,  ["dropId"] = 17003001,  ["weight"] = 100,  ["id"] = 17003001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
 ,  [31102001] = {
@@ -4255,76 +4241,80 @@ small_bag_config={
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 1,  ["id"] = 19000011029,  ["count"] = 1,  ["detailID"] = 10028,  ["subId"] = 29,}
 ,  [300031034] = {
   ["type"] = 101,  ["dropId"] = 300031,  ["weight"] = 20,  ["id"] = 300031034,  ["count"] = 1,  ["detailID"] = 10052,  ["subId"] = 34,}
+,  [31202001] = {
+  ["type"] = 105,  ["dropId"] = 31202,  ["weight"] = 100,  ["id"] = 31202001,  ["count"] = 25,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [30742001] = {
+  ["type"] = 105,  ["dropId"] = 30742,  ["weight"] = 100,  ["id"] = 30742001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [80031001] = {
   ["type"] = 101,  ["dropId"] = 80031,  ["weight"] = 100,  ["id"] = 80031001,  ["count"] = 1,  ["detailID"] = 10042,  ["subId"] = 1,}
 ,  [19000041003] = {
   ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 1,  ["id"] = 19000041003,  ["count"] = 1,  ["detailID"] = 40002,  ["subId"] = 3,}
-,  [30742001] = {
-  ["type"] = 105,  ["dropId"] = 30742,  ["weight"] = 100,  ["id"] = 30742001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [1336001] = {
-  ["type"] = 107,  ["dropId"] = 1336,  ["weight"] = 100,  ["id"] = 1336001,  ["count"] = 20,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [21033001001] = {
+  ["type"] = 0,  ["dropId"] = 21033001,  ["weight"] = 100,  ["id"] = 21033001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21003061001] = {
+  ["type"] = 0,  ["dropId"] = 21003061,  ["weight"] = 100,  ["id"] = 21003061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [105300031079] = {
   ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 50,  ["id"] = 105300031079,  ["count"] = 1,  ["detailID"] = 120401,  ["subId"] = 79,}
-,  [31302001] = {
-  ["type"] = 105,  ["dropId"] = 31302,  ["weight"] = 100,  ["id"] = 31302001,  ["count"] = 46,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [30341001] = {
-  ["type"] = 107,  ["dropId"] = 30341,  ["weight"] = 100,  ["id"] = 30341001,  ["count"] = 25500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21032061001] = {
-  ["type"] = 0,  ["dropId"] = 21032061,  ["weight"] = 100,  ["id"] = 21032061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [19000021036] = {
-  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 1,  ["id"] = 19000021036,  ["count"] = 1,  ["detailID"] = 20035,  ["subId"] = 36,}
+  ["type"] = 107,  ["dropId"] = 30341,  ["weight"] = 100,  ["id"] = 30341001,  ["count"] = 5500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [12034001] = {
   ["type"] = 101,  ["dropId"] = 12034,  ["weight"] = 100,  ["id"] = 12034001,  ["count"] = 1,  ["detailID"] = 10007,  ["subId"] = 1,}
-,  [30042001] = {
-  ["type"] = 105,  ["dropId"] = 30042,  ["weight"] = 100,  ["id"] = 30042001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [30382001] = {
   ["type"] = 105,  ["dropId"] = 30382,  ["weight"] = 100,  ["id"] = 30382001,  ["count"] = 6,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000021036] = {
+  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 1,  ["id"] = 19000021036,  ["count"] = 1,  ["detailID"] = 20035,  ["subId"] = 36,}
 ,  [21032031001] = {
   ["type"] = 104,  ["dropId"] = 21032031,  ["weight"] = 100,  ["id"] = 21032031001,  ["count"] = 1,  ["detailID"] = 21000310,  ["subId"] = 1,}
+,  [30042001] = {
+  ["type"] = 105,  ["dropId"] = 30042,  ["weight"] = 100,  ["id"] = 30042001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21031081001] = {
+  ["type"] = 103,  ["dropId"] = 21031081,  ["weight"] = 100,  ["id"] = 21031081001,  ["count"] = 1,  ["detailID"] = 1010053,  ["subId"] = 1,}
+,  [30931001] = {
+  ["type"] = 107,  ["dropId"] = 30931,  ["weight"] = 100,  ["id"] = 30931001,  ["count"] = 45700,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21014081001] = {
   ["type"] = 103,  ["dropId"] = 21014081,  ["weight"] = 100,  ["id"] = 21014081001,  ["count"] = 1,  ["detailID"] = 1030063,  ["subId"] = 1,}
-,  [21032021001] = {
-  ["type"] = 0,  ["dropId"] = 21032021,  ["weight"] = 100,  ["id"] = 21032021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [20081001] = {
-  ["type"] = 105,  ["dropId"] = 20081,  ["weight"] = 100,  ["id"] = 20081001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [21012041001] = {
-  ["type"] = 0,  ["dropId"] = 21012041,  ["weight"] = 100,  ["id"] = 21012041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21031061001] = {
   ["type"] = 0,  ["dropId"] = 21031061,  ["weight"] = 100,  ["id"] = 21031061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [8000082001] = {
-  ["type"] = 107,  ["dropId"] = 8000082,  ["weight"] = 100,  ["id"] = 8000082001,  ["count"] = 1000000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [20081001] = {
+  ["type"] = 105,  ["dropId"] = 20081,  ["weight"] = 100,  ["id"] = 20081001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
+,  [30952001] = {
+  ["type"] = 105,  ["dropId"] = 30952,  ["weight"] = 100,  ["id"] = 30952001,  ["count"] = 13,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [30022001] = {
   ["type"] = 105,  ["dropId"] = 30022,  ["weight"] = 100,  ["id"] = 30022001,  ["count"] = 3,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [8000082001] = {
+  ["type"] = 107,  ["dropId"] = 8000082,  ["weight"] = 100,  ["id"] = 8000082001,  ["count"] = 1000000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [50981001] = {
+  ["type"] = 107,  ["dropId"] = 50981,  ["weight"] = 100,  ["id"] = 50981001,  ["count"] = 200,  ["detailID"] = 10,  ["subId"] = 1,}
 ,  [105300031080] = {
   ["type"] = 108,  ["dropId"] = 105300031,  ["weight"] = 25,  ["id"] = 105300031080,  ["count"] = 1,  ["detailID"] = 130101,  ["subId"] = 80,}
 ,  [1203001] = {
   ["type"] = 107,  ["dropId"] = 1203,  ["weight"] = 100,  ["id"] = 1203001,  ["count"] = 70,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [100021004] = {
-  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021004,  ["count"] = 1,  ["detailID"] = 10007,  ["subId"] = 4,}
-,  [21031071001] = {
-  ["type"] = 104,  ["dropId"] = 21031071,  ["weight"] = 100,  ["id"] = 21031071001,  ["count"] = 1,  ["detailID"] = 21000200,  ["subId"] = 1,}
 ,  [21046021001] = {
   ["type"] = 0,  ["dropId"] = 21046021,  ["weight"] = 100,  ["id"] = 21046021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [30931001] = {
-  ["type"] = 107,  ["dropId"] = 30931,  ["weight"] = 100,  ["id"] = 30931001,  ["count"] = 7500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [109000021145] = {
-  ["type"] = 104,  ["dropId"] = 109000021,  ["weight"] = 0,  ["id"] = 109000021145,  ["count"] = 1,  ["detailID"] = 22000054,  ["subId"] = 145,}
+,  [21031071001] = {
+  ["type"] = 104,  ["dropId"] = 21031071,  ["weight"] = 100,  ["id"] = 21031071001,  ["count"] = 1,  ["detailID"] = 21000200,  ["subId"] = 1,}
+,  [17010031001] = {
+  ["type"] = 105,  ["dropId"] = 17010031,  ["weight"] = 100,  ["id"] = 17010031001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [30972001] = {
   ["type"] = 105,  ["dropId"] = 30972,  ["weight"] = 100,  ["id"] = 30972001,  ["count"] = 33,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [60021001] = {
-  ["type"] = 103,  ["dropId"] = 60021,  ["weight"] = 100,  ["id"] = 60021001,  ["count"] = 1,  ["detailID"] = 1030051,  ["subId"] = 1,}
+,  [109000021145] = {
+  ["type"] = 104,  ["dropId"] = 109000021,  ["weight"] = 0,  ["id"] = 109000021145,  ["count"] = 1,  ["detailID"] = 22000054,  ["subId"] = 145,}
 ,  [60103001] = {
   ["type"] = 107,  ["dropId"] = 60103,  ["weight"] = 100,  ["id"] = 60103001,  ["count"] = 20000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [1508001] = {
+  ["type"] = 107,  ["dropId"] = 1508,  ["weight"] = 100,  ["id"] = 1508001,  ["count"] = 50000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21019051001] = {
+  ["type"] = 103,  ["dropId"] = 21019051,  ["weight"] = 100,  ["id"] = 21019051001,  ["count"] = 1,  ["detailID"] = 1010041,  ["subId"] = 1,}
 ,  [30632001] = {
   ["type"] = 105,  ["dropId"] = 30632,  ["weight"] = 100,  ["id"] = 30632001,  ["count"] = 12,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [1375001] = {
   ["type"] = 103,  ["dropId"] = 1375,  ["weight"] = 100,  ["id"] = 1375001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
-,  [1508001] = {
-  ["type"] = 107,  ["dropId"] = 1508,  ["weight"] = 100,  ["id"] = 1508001,  ["count"] = 50000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21016011001] = {
-  ["type"] = 0,  ["dropId"] = 21016011,  ["weight"] = 100,  ["id"] = 21016011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30571001] = {
-  ["type"] = 107,  ["dropId"] = 30571,  ["weight"] = 100,  ["id"] = 30571001,  ["count"] = 13500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30571,  ["weight"] = 100,  ["id"] = 30571001,  ["count"] = 13400,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [21014071001] = {
+  ["type"] = 103,  ["dropId"] = 21014071,  ["weight"] = 100,  ["id"] = 21014071001,  ["count"] = 1,  ["detailID"] = 1010023,  ["subId"] = 1,}
+,  [30612001] = {
+  ["type"] = 105,  ["dropId"] = 30612,  ["weight"] = 100,  ["id"] = 30612001,  ["count"] = 20,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [20671001] = {
   ["type"] = 105,  ["dropId"] = 20671,  ["weight"] = 100,  ["id"] = 20671001,  ["count"] = 6,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [19000031022] = {
@@ -4333,58 +4323,58 @@ small_bag_config={
   ["type"] = 103,  ["dropId"] = 21018081,  ["weight"] = 100,  ["id"] = 21018081001,  ["count"] = 1,  ["detailID"] = 1030060,  ["subId"] = 1,}
 ,  [21016041001] = {
   ["type"] = 0,  ["dropId"] = 21016041,  ["weight"] = 100,  ["id"] = 21016041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21014071001] = {
-  ["type"] = 103,  ["dropId"] = 21014071,  ["weight"] = 100,  ["id"] = 21014071001,  ["count"] = 1,  ["detailID"] = 1010023,  ["subId"] = 1,}
-,  [12042001] = {
-  ["type"] = 102,  ["dropId"] = 12042,  ["weight"] = 100,  ["id"] = 12042001,  ["count"] = 1,  ["detailID"] = 100004,  ["subId"] = 1,}
-,  [30612001] = {
-  ["type"] = 105,  ["dropId"] = 30612,  ["weight"] = 100,  ["id"] = 30612001,  ["count"] = 20,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [19000041031] = {
-  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 1,  ["id"] = 19000041031,  ["count"] = 1,  ["detailID"] = 40030,  ["subId"] = 31,}
-,  [8000062001] = {
-  ["type"] = 107,  ["dropId"] = 8000062,  ["weight"] = 100,  ["id"] = 8000062001,  ["count"] = 2000000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [30211001] = {
-  ["type"] = 107,  ["dropId"] = 30211,  ["weight"] = 100,  ["id"] = 30211001,  ["count"] = 13000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [6100041001] = {
-  ["type"] = 107,  ["dropId"] = 6100041,  ["weight"] = 100,  ["id"] = 6100041001,  ["count"] = 3000,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [21029001001] = {
   ["type"] = 0,  ["dropId"] = 21029001,  ["weight"] = 100,  ["id"] = 21029001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [12042001] = {
+  ["type"] = 102,  ["dropId"] = 12042,  ["weight"] = 100,  ["id"] = 12042001,  ["count"] = 1,  ["detailID"] = 100004,  ["subId"] = 1,}
+,  [19000041031] = {
+  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 1,  ["id"] = 19000041031,  ["count"] = 1,  ["detailID"] = 40030,  ["subId"] = 31,}
+,  [30211001] = {
+  ["type"] = 107,  ["dropId"] = 30211,  ["weight"] = 100,  ["id"] = 30211001,  ["count"] = 750,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [8000062001] = {
+  ["type"] = 107,  ["dropId"] = 8000062,  ["weight"] = 100,  ["id"] = 8000062001,  ["count"] = 2000000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [30252001] = {
+  ["type"] = 105,  ["dropId"] = 30252,  ["weight"] = 100,  ["id"] = 30252001,  ["count"] = 11,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000031020] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031020,  ["count"] = 1,  ["detailID"] = 30019,  ["subId"] = 20,}
+,  [31161001] = {
+  ["type"] = 107,  ["dropId"] = 31161,  ["weight"] = 100,  ["id"] = 31161001,  ["count"] = 42050,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21035071001] = {
   ["type"] = 104,  ["dropId"] = 21035071,  ["weight"] = 100,  ["id"] = 21035071001,  ["count"] = 1,  ["detailID"] = 21000110,  ["subId"] = 1,}
 ,  [21033031001] = {
   ["type"] = 104,  ["dropId"] = 21033031,  ["weight"] = 100,  ["id"] = 21033031001,  ["count"] = 1,  ["detailID"] = 21000100,  ["subId"] = 1,}
-,  [21028081001] = {
-  ["type"] = 103,  ["dropId"] = 21028081,  ["weight"] = 100,  ["id"] = 21028081001,  ["count"] = 1,  ["detailID"] = 1010066,  ["subId"] = 1,}
+,  [21027081001] = {
+  ["type"] = 103,  ["dropId"] = 21027081,  ["weight"] = 100,  ["id"] = 21027081001,  ["count"] = 1,  ["detailID"] = 1030060,  ["subId"] = 1,}
 ,  [31222001] = {
   ["type"] = 105,  ["dropId"] = 31222,  ["weight"] = 100,  ["id"] = 31222001,  ["count"] = 17,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [19000031020] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031020,  ["count"] = 1,  ["detailID"] = 30019,  ["subId"] = 20,}
+,  [20091001] = {
+  ["type"] = 105,  ["dropId"] = 20091,  ["weight"] = 100,  ["id"] = 20091001,  ["count"] = 2,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [21001011001] = {
   ["type"] = 0,  ["dropId"] = 21001011,  ["weight"] = 100,  ["id"] = 21001011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [31161001] = {
-  ["type"] = 107,  ["dropId"] = 31161,  ["weight"] = 100,  ["id"] = 31161001,  ["count"] = 51000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [31202001] = {
-  ["type"] = 105,  ["dropId"] = 31202,  ["weight"] = 100,  ["id"] = 31202001,  ["count"] = 25,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21261001] = {
-  ["type"] = 105,  ["dropId"] = 21261,  ["weight"] = 100,  ["id"] = 21261001,  ["count"] = 47,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [19000021001] = {
   ["type"] = 107,  ["dropId"] = 19000021,  ["weight"] = 500,  ["id"] = 19000021001,  ["count"] = 1250,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [105640052001] = {
-  ["type"] = 105,  ["dropId"] = 105640052,  ["weight"] = 100,  ["id"] = 105640052001,  ["count"] = 10,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [30842001] = {
-  ["type"] = 105,  ["dropId"] = 30842,  ["weight"] = 100,  ["id"] = 30842001,  ["count"] = 16,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21021061001] = {
-  ["type"] = 0,  ["dropId"] = 21021061,  ["weight"] = 100,  ["id"] = 21021061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21007001001] = {
-  ["type"] = 0,  ["dropId"] = 21007001,  ["weight"] = 100,  ["id"] = 21007001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [30482001] = {
-  ["type"] = 105,  ["dropId"] = 30482,  ["weight"] = 100,  ["id"] = 30482001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21018001001] = {
-  ["type"] = 0,  ["dropId"] = 21018001,  ["weight"] = 100,  ["id"] = 21018001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [90021001] = {
+  ["type"] = 101,  ["dropId"] = 90021,  ["weight"] = 100,  ["id"] = 90021001,  ["count"] = 1,  ["detailID"] = 10049,  ["subId"] = 1,}
+,  [21261001] = {
+  ["type"] = 105,  ["dropId"] = 21261,  ["weight"] = 100,  ["id"] = 21261001,  ["count"] = 47,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [21027041001] = {
   ["type"] = 0,  ["dropId"] = 21027041,  ["weight"] = 100,  ["id"] = 21027041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [105640052001] = {
+  ["type"] = 105,  ["dropId"] = 105640052,  ["weight"] = 100,  ["id"] = 105640052001,  ["count"] = 10,  ["detailID"] = 10002,  ["subId"] = 1,}
+,  [21007001001] = {
+  ["type"] = 0,  ["dropId"] = 21007001,  ["weight"] = 100,  ["id"] = 21007001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21027021001] = {
   ["type"] = 0,  ["dropId"] = 21027021,  ["weight"] = 100,  ["id"] = 21027021001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [30482001] = {
+  ["type"] = 105,  ["dropId"] = 30482,  ["weight"] = 100,  ["id"] = 30482001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [6010012001] = {
+  ["type"] = 107,  ["dropId"] = 6010012,  ["weight"] = 100,  ["id"] = 6010012001,  ["count"] = 400,  ["detailID"] = 3,  ["subId"] = 1,}
+,  [21018001001] = {
+  ["type"] = 0,  ["dropId"] = 21018001,  ["weight"] = 100,  ["id"] = 21018001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [60032001] = {
+  ["type"] = 107,  ["dropId"] = 60032,  ["weight"] = 100,  ["id"] = 60032001,  ["count"] = 40,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [30122001] = {
+  ["type"] = 105,  ["dropId"] = 30122,  ["weight"] = 100,  ["id"] = 30122001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [19000041004] = {
   ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 64,  ["id"] = 19000041004,  ["count"] = 1,  ["detailID"] = 40003,  ["subId"] = 4,}
 ,  [105641001001] = {
@@ -4393,174 +4383,176 @@ small_bag_config={
   ["type"] = 107,  ["dropId"] = 60211,  ["weight"] = 100,  ["id"] = 60211001,  ["count"] = 500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [50641001] = {
   ["type"] = 107,  ["dropId"] = 50641,  ["weight"] = 100,  ["id"] = 50641001,  ["count"] = 180,  ["detailID"] = 13,  ["subId"] = 1,}
-,  [6000051001] = {
-  ["type"] = 103,  ["dropId"] = 6000051,  ["weight"] = 100,  ["id"] = 6000051001,  ["count"] = 6,  ["detailID"] = 1010056,  ["subId"] = 1,}
 ,  [31031001] = {
-  ["type"] = 107,  ["dropId"] = 31031,  ["weight"] = 100,  ["id"] = 31031001,  ["count"] = 22500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31031,  ["weight"] = 100,  ["id"] = 31031001,  ["count"] = 87400,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [8000011001] = {
   ["type"] = 101,  ["dropId"] = 8000011,  ["weight"] = 100,  ["id"] = 8000011001,  ["count"] = 1,  ["detailID"] = 10052,  ["subId"] = 1,}
+,  [21025061001] = {
+  ["type"] = 0,  ["dropId"] = 21025061,  ["weight"] = 100,  ["id"] = 21025061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [40031001] = {
   ["type"] = 105,  ["dropId"] = 40031,  ["weight"] = 100,  ["id"] = 40031001,  ["count"] = 1,  ["detailID"] = 60001,  ["subId"] = 1,}
 ,  [60074001] = {
   ["type"] = 105,  ["dropId"] = 60074,  ["weight"] = 100,  ["id"] = 60074001,  ["count"] = 10,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [21025071001] = {
-  ["type"] = 103,  ["dropId"] = 21025071,  ["weight"] = 100,  ["id"] = 21025071001,  ["count"] = 1,  ["detailID"] = 1010023,  ["subId"] = 1,}
-,  [30041001] = {
-  ["type"] = 107,  ["dropId"] = 30041,  ["weight"] = 100,  ["id"] = 30041001,  ["count"] = 3000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [60221001] = {
-  ["type"] = 107,  ["dropId"] = 60221,  ["weight"] = 100,  ["id"] = 60221001,  ["count"] = 1100,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21025061001] = {
-  ["type"] = 0,  ["dropId"] = 21025061,  ["weight"] = 100,  ["id"] = 21025061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [200021003] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 8000,  ["id"] = 200021003,  ["count"] = 1,  ["detailID"] = 10005,  ["subId"] = 3,}
+,  [30041001] = {
+  ["type"] = 107,  ["dropId"] = 30041,  ["weight"] = 100,  ["id"] = 30041001,  ["count"] = 500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [60221001] = {
+  ["type"] = 107,  ["dropId"] = 60221,  ["weight"] = 100,  ["id"] = 60221001,  ["count"] = 1100,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [20002001] = {
   ["type"] = 103,  ["dropId"] = 20002,  ["weight"] = 100,  ["id"] = 20002001,  ["count"] = 2,  ["detailID"] = 1010036,  ["subId"] = 1,}
-,  [21011061001] = {
-  ["type"] = 0,  ["dropId"] = 21011061,  ["weight"] = 100,  ["id"] = 21011061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [1416001] = {
-  ["type"] = 103,  ["dropId"] = 1416,  ["weight"] = 100,  ["id"] = 1416001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
-,  [30712001] = {
-  ["type"] = 105,  ["dropId"] = 30712,  ["weight"] = 100,  ["id"] = 30712001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [17004001001] = {
-  ["type"] = 105,  ["dropId"] = 17004001,  ["weight"] = 100,  ["id"] = 17004001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
 ,  [21024081001] = {
   ["type"] = 103,  ["dropId"] = 21024081,  ["weight"] = 100,  ["id"] = 21024081001,  ["count"] = 1,  ["detailID"] = 1010052,  ["subId"] = 1,}
+,  [21011061001] = {
+  ["type"] = 0,  ["dropId"] = 21011061,  ["weight"] = 100,  ["id"] = 21011061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [30712001] = {
+  ["type"] = 105,  ["dropId"] = 30712,  ["weight"] = 100,  ["id"] = 30712001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [1416001] = {
+  ["type"] = 103,  ["dropId"] = 1416,  ["weight"] = 100,  ["id"] = 1416001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
+,  [21009001001] = {
+  ["type"] = 0,  ["dropId"] = 21009001,  ["weight"] = 100,  ["id"] = 21009001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [17004001001] = {
+  ["type"] = 105,  ["dropId"] = 17004001,  ["weight"] = 100,  ["id"] = 17004001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
+,  [21024051001] = {
+  ["type"] = 104,  ["dropId"] = 21024051,  ["weight"] = 100,  ["id"] = 21024051001,  ["count"] = 1,  ["detailID"] = 21000510,  ["subId"] = 1,}
 ,  [21024041001] = {
   ["type"] = 0,  ["dropId"] = 21024041,  ["weight"] = 100,  ["id"] = 21024041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [1502001] = {
   ["type"] = 103,  ["dropId"] = 1502,  ["weight"] = 100,  ["id"] = 1502001,  ["count"] = 2,  ["detailID"] = 1030051,  ["subId"] = 1,}
 ,  [105900041001] = {
   ["type"] = 108,  ["dropId"] = 105900041,  ["weight"] = 100,  ["id"] = 105900041001,  ["count"] = 1,  ["detailID"] = 110301,  ["subId"] = 1,}
+,  [6100111001] = {
+  ["type"] = 107,  ["dropId"] = 6100111,  ["weight"] = 100,  ["id"] = 6100111001,  ["count"] = 1000,  ["detailID"] = 8,  ["subId"] = 1,}
+,  [17007021001] = {
+  ["type"] = 105,  ["dropId"] = 17007021,  ["weight"] = 100,  ["id"] = 17007021001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [30352001] = {
   ["type"] = 105,  ["dropId"] = 30352,  ["weight"] = 100,  ["id"] = 30352001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [19000041021] = {
-  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 64,  ["id"] = 19000041021,  ["count"] = 1,  ["detailID"] = 40020,  ["subId"] = 21,}
 ,  [6100021001] = {
   ["type"] = 107,  ["dropId"] = 6100021,  ["weight"] = 100,  ["id"] = 6100021001,  ["count"] = 5000,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [21023041001] = {
   ["type"] = 0,  ["dropId"] = 21023041,  ["weight"] = 100,  ["id"] = 21023041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21003061001] = {
-  ["type"] = 0,  ["dropId"] = 21003061,  ["weight"] = 100,  ["id"] = 21003061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [21032071001] = {
   ["type"] = 104,  ["dropId"] = 21032071,  ["weight"] = 100,  ["id"] = 21032071001,  ["count"] = 1,  ["detailID"] = 21000460,  ["subId"] = 1,}
-,  [19000011033] = {
-  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011033,  ["count"] = 1,  ["detailID"] = 10032,  ["subId"] = 33,}
+,  [21013041001] = {
+  ["type"] = 0,  ["dropId"] = 21013041,  ["weight"] = 100,  ["id"] = 21013041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30502001] = {
   ["type"] = 105,  ["dropId"] = 30502,  ["weight"] = 100,  ["id"] = 30502001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [30781001] = {
-  ["type"] = 107,  ["dropId"] = 30781,  ["weight"] = 100,  ["id"] = 30781001,  ["count"] = 48500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [31302001] = {
+  ["type"] = 105,  ["dropId"] = 31302,  ["weight"] = 100,  ["id"] = 31302001,  ["count"] = 46,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [1371001] = {
+  ["type"] = 102,  ["dropId"] = 1371,  ["weight"] = 100,  ["id"] = 1371001,  ["count"] = 1,  ["detailID"] = 100005,  ["subId"] = 1,}
+,  [500012001] = {
+  ["type"] = 105,  ["dropId"] = 500012,  ["weight"] = 100,  ["id"] = 500012001,  ["count"] = 10,  ["detailID"] = 63001,  ["subId"] = 1,}
 ,  [9000031001] = {
   ["type"] = 107,  ["dropId"] = 9000031,  ["weight"] = 100,  ["id"] = 9000031001,  ["count"] = 1500,  ["detailID"] = 8,  ["subId"] = 1,}
-,  [30901001] = {
-  ["type"] = 107,  ["dropId"] = 30901,  ["weight"] = 100,  ["id"] = 30901001,  ["count"] = 83500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [30942001] = {
-  ["type"] = 105,  ["dropId"] = 30942,  ["weight"] = 100,  ["id"] = 30942001,  ["count"] = 31,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [20541001] = {
   ["type"] = 105,  ["dropId"] = 20541,  ["weight"] = 100,  ["id"] = 20541001,  ["count"] = 11,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [21022051001] = {
   ["type"] = 104,  ["dropId"] = 21022051,  ["weight"] = 100,  ["id"] = 21022051001,  ["count"] = 1,  ["detailID"] = 21000310,  ["subId"] = 1,}
-,  [21011041001] = {
-  ["type"] = 0,  ["dropId"] = 21011041,  ["weight"] = 100,  ["id"] = 21011041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21018051001] = {
-  ["type"] = 104,  ["dropId"] = 21018051,  ["weight"] = 100,  ["id"] = 21018051001,  ["count"] = 1,  ["detailID"] = 21000400,  ["subId"] = 1,}
+,  [30942001] = {
+  ["type"] = 105,  ["dropId"] = 30942,  ["weight"] = 100,  ["id"] = 30942001,  ["count"] = 31,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [21011031001] = {
+  ["type"] = 103,  ["dropId"] = 21011031,  ["weight"] = 100,  ["id"] = 21011031001,  ["count"] = 1,  ["detailID"] = 1010010,  ["subId"] = 1,}
 ,  [31112001] = {
   ["type"] = 105,  ["dropId"] = 31112,  ["weight"] = 100,  ["id"] = 31112001,  ["count"] = 23,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [31172001] = {
-  ["type"] = 105,  ["dropId"] = 31172,  ["weight"] = 100,  ["id"] = 31172001,  ["count"] = 25,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [60242001] = {
-  ["type"] = 102,  ["dropId"] = 60242,  ["weight"] = 100,  ["id"] = 60242001,  ["count"] = 1,  ["detailID"] = 200002,  ["subId"] = 1,}
+,  [21018051001] = {
+  ["type"] = 104,  ["dropId"] = 21018051,  ["weight"] = 100,  ["id"] = 21018051001,  ["count"] = 1,  ["detailID"] = 21000400,  ["subId"] = 1,}
+,  [30792001] = {
+  ["type"] = 105,  ["dropId"] = 30792,  ["weight"] = 100,  ["id"] = 30792001,  ["count"] = 26,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21019081001] = {
   ["type"] = 103,  ["dropId"] = 21019081,  ["weight"] = 100,  ["id"] = 21019081001,  ["count"] = 1,  ["detailID"] = 1010066,  ["subId"] = 1,}
 ,  [21017041001] = {
   ["type"] = 0,  ["dropId"] = 21017041,  ["weight"] = 100,  ["id"] = 21017041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [21020051001] = {
+  ["type"] = 104,  ["dropId"] = 21020051,  ["weight"] = 100,  ["id"] = 21020051001,  ["count"] = 1,  ["detailID"] = 21000090,  ["subId"] = 1,}
+,  [21021051001] = {
+  ["type"] = 104,  ["dropId"] = 21021051,  ["weight"] = 100,  ["id"] = 21021051001,  ["count"] = 1,  ["detailID"] = 21000200,  ["subId"] = 1,}
 ,  [30582001] = {
   ["type"] = 105,  ["dropId"] = 30582,  ["weight"] = 100,  ["id"] = 30582001,  ["count"] = 19,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [6200132001] = {
   ["type"] = 107,  ["dropId"] = 6200132,  ["weight"] = 100,  ["id"] = 6200132001,  ["count"] = 76,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [30682001] = {
-  ["type"] = 105,  ["dropId"] = 30682,  ["weight"] = 100,  ["id"] = 30682001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21021051001] = {
-  ["type"] = 104,  ["dropId"] = 21021051,  ["weight"] = 100,  ["id"] = 21021051001,  ["count"] = 1,  ["detailID"] = 21000200,  ["subId"] = 1,}
+,  [21045011001] = {
+  ["type"] = 0,  ["dropId"] = 21045011,  ["weight"] = 100,  ["id"] = 21045011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [6200341001] = {
   ["type"] = 107,  ["dropId"] = 6200341,  ["weight"] = 100,  ["id"] = 6200341001,  ["count"] = 500,  ["detailID"] = 8,  ["subId"] = 1,}
-,  [6200042001] = {
-  ["type"] = 107,  ["dropId"] = 6200042,  ["weight"] = 100,  ["id"] = 6200042001,  ["count"] = 94,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [31092001] = {
   ["type"] = 105,  ["dropId"] = 31092,  ["weight"] = 100,  ["id"] = 31092001,  ["count"] = 38,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21010031001] = {
-  ["type"] = 102,  ["dropId"] = 21010031,  ["weight"] = 100,  ["id"] = 21010031001,  ["count"] = 1,  ["detailID"] = 100034,  ["subId"] = 1,}
+,  [60253001] = {
+  ["type"] = 107,  ["dropId"] = 60253,  ["weight"] = 100,  ["id"] = 60253001,  ["count"] = 5,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [21036071001] = {
   ["type"] = 104,  ["dropId"] = 21036071,  ["weight"] = 100,  ["id"] = 21036071001,  ["count"] = 1,  ["detailID"] = 21000220,  ["subId"] = 1,}
 ,  [21034031001] = {
   ["type"] = 104,  ["dropId"] = 21034031,  ["weight"] = 100,  ["id"] = 21034031001,  ["count"] = 1,  ["detailID"] = 21000320,  ["subId"] = 1,}
-,  [19000011031] = {
-  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 4,  ["id"] = 19000011031,  ["count"] = 1,  ["detailID"] = 10030,  ["subId"] = 31,}
+,  [21010031001] = {
+  ["type"] = 102,  ["dropId"] = 21010031,  ["weight"] = 100,  ["id"] = 21010031001,  ["count"] = 1,  ["detailID"] = 100034,  ["subId"] = 1,}
 ,  [21131001] = {
   ["type"] = 105,  ["dropId"] = 21131,  ["weight"] = 100,  ["id"] = 21131001,  ["count"] = 24,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [30181001] = {
-  ["type"] = 107,  ["dropId"] = 30181,  ["weight"] = 100,  ["id"] = 30181001,  ["count"] = 10500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [21020011001] = {
-  ["type"] = 0,  ["dropId"] = 21020011,  ["weight"] = 100,  ["id"] = 21020011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [19000011031] = {
+  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 4,  ["id"] = 19000011031,  ["count"] = 1,  ["detailID"] = 10030,  ["subId"] = 31,}
+,  [17009002001] = {
+  ["type"] = 107,  ["dropId"] = 17009002,  ["weight"] = 100,  ["id"] = 17009002001,  ["count"] = 90,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [21002011001] = {
   ["type"] = 0,  ["dropId"] = 21002011,  ["weight"] = 100,  ["id"] = 21002011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [12038001] = {
-  ["type"] = 101,  ["dropId"] = 12038,  ["weight"] = 100,  ["id"] = 12038001,  ["count"] = 1,  ["detailID"] = 10010,  ["subId"] = 1,}
+,  [30181001] = {
+  ["type"] = 107,  ["dropId"] = 30181,  ["weight"] = 100,  ["id"] = 30181001,  ["count"] = 650,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [30292001] = {
+  ["type"] = 105,  ["dropId"] = 30292,  ["weight"] = 100,  ["id"] = 30292001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [17006012001] = {
+  ["type"] = 105,  ["dropId"] = 17006012,  ["weight"] = 100,  ["id"] = 17006012001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000011033] = {
+  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011033,  ["count"] = 1,  ["detailID"] = 10032,  ["subId"] = 33,}
 ,  [30222001] = {
   ["type"] = 105,  ["dropId"] = 30222,  ["weight"] = 100,  ["id"] = 30222001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [1371001] = {
-  ["type"] = 102,  ["dropId"] = 1371,  ["weight"] = 100,  ["id"] = 1371001,  ["count"] = 1,  ["detailID"] = 100005,  ["subId"] = 1,}
-,  [21016071001] = {
-  ["type"] = 103,  ["dropId"] = 21016071,  ["weight"] = 100,  ["id"] = 21016071001,  ["count"] = 1,  ["detailID"] = 1010044,  ["subId"] = 1,}
-,  [21013041001] = {
-  ["type"] = 0,  ["dropId"] = 21013041,  ["weight"] = 100,  ["id"] = 21013041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [19000041005] = {
   ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 64,  ["id"] = 19000041005,  ["count"] = 1,  ["detailID"] = 40004,  ["subId"] = 5,}
-,  [500012001] = {
-  ["type"] = 105,  ["dropId"] = 500012,  ["weight"] = 100,  ["id"] = 500012001,  ["count"] = 10,  ["detailID"] = 63001,  ["subId"] = 1,}
+,  [21016071001] = {
+  ["type"] = 103,  ["dropId"] = 21016071,  ["weight"] = 100,  ["id"] = 21016071001,  ["count"] = 1,  ["detailID"] = 1010044,  ["subId"] = 1,}
 ,  [1457001] = {
   ["type"] = 107,  ["dropId"] = 1457,  ["weight"] = 100,  ["id"] = 1457001,  ["count"] = 80,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [600042001] = {
-  ["type"] = 104,  ["dropId"] = 600042,  ["weight"] = 100,  ["id"] = 600042001,  ["count"] = 5,  ["detailID"] = 21000510,  ["subId"] = 1,}
+,  [30822001] = {
+  ["type"] = 105,  ["dropId"] = 30822,  ["weight"] = 100,  ["id"] = 30822001,  ["count"] = 27,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21019001001] = {
   ["type"] = 0,  ["dropId"] = 21019001,  ["weight"] = 100,  ["id"] = 21019001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [20061001] = {
-  ["type"] = 105,  ["dropId"] = 20061,  ["weight"] = 100,  ["id"] = 20061001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [6200141001] = {
-  ["type"] = 107,  ["dropId"] = 6200141,  ["weight"] = 100,  ["id"] = 6200141001,  ["count"] = 1300,  ["detailID"] = 8,  ["subId"] = 1,}
+,  [31172001] = {
+  ["type"] = 105,  ["dropId"] = 31172,  ["weight"] = 100,  ["id"] = 31172001,  ["count"] = 25,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [600042001] = {
+  ["type"] = 104,  ["dropId"] = 600042,  ["weight"] = 100,  ["id"] = 600042001,  ["count"] = 5,  ["detailID"] = 21000510,  ["subId"] = 1,}
 ,  [19000021038] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 4,  ["id"] = 19000021038,  ["count"] = 1,  ["detailID"] = 20037,  ["subId"] = 38,}
 ,  [105640105001] = {
   ["type"] = 105,  ["dropId"] = 105640105,  ["weight"] = 100,  ["id"] = 105640105001,  ["count"] = 15,  ["detailID"] = 30013,  ["subId"] = 1,}
+,  [21018071001] = {
+  ["type"] = 103,  ["dropId"] = 21018071,  ["weight"] = 100,  ["id"] = 21018071001,  ["count"] = 1,  ["detailID"] = 1010031,  ["subId"] = 1,}
+,  [19000041013] = {
+  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 1,  ["id"] = 19000041013,  ["count"] = 1,  ["detailID"] = 40012,  ["subId"] = 13,}
+,  [21016011001] = {
+  ["type"] = 0,  ["dropId"] = 21016011,  ["weight"] = 100,  ["id"] = 21016011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30771001] = {
-  ["type"] = 107,  ["dropId"] = 30771,  ["weight"] = 100,  ["id"] = 30771001,  ["count"] = 46000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [600064001] = {
-  ["type"] = 105,  ["dropId"] = 600064,  ["weight"] = 100,  ["id"] = 600064001,  ["count"] = 2,  ["detailID"] = 60001,  ["subId"] = 1,}
-,  [30812001] = {
-  ["type"] = 105,  ["dropId"] = 30812,  ["weight"] = 100,  ["id"] = 30812001,  ["count"] = 16,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [30522001] = {
-  ["type"] = 105,  ["dropId"] = 30522,  ["weight"] = 100,  ["id"] = 30522001,  ["count"] = 18,  ["detailID"] = 20006,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30771,  ["weight"] = 100,  ["id"] = 30771001,  ["count"] = 14500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640041001] = {
   ["type"] = 104,  ["dropId"] = 105640041,  ["weight"] = 100,  ["id"] = 105640041001,  ["count"] = 20,  ["detailID"] = 21000460,  ["subId"] = 1,}
+,  [100011015] = {
+  ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 60,  ["id"] = 100011015,  ["count"] = 1,  ["detailID"] = 10026,  ["subId"] = 15,}
+,  [30812001] = {
+  ["type"] = 105,  ["dropId"] = 30812,  ["weight"] = 100,  ["id"] = 30812001,  ["count"] = 16,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21012081001] = {
   ["type"] = 103,  ["dropId"] = 21012081,  ["weight"] = 100,  ["id"] = 21012081001,  ["count"] = 1,  ["detailID"] = 1030051,  ["subId"] = 1,}
-,  [1495001] = {
-  ["type"] = 103,  ["dropId"] = 1495,  ["weight"] = 100,  ["id"] = 1495001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
+,  [21010001001] = {
+  ["type"] = 0,  ["dropId"] = 21010001,  ["weight"] = 100,  ["id"] = 21010001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30452001] = {
   ["type"] = 105,  ["dropId"] = 30452,  ["weight"] = 100,  ["id"] = 30452001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [6100091001] = {
   ["type"] = 107,  ["dropId"] = 6100091,  ["weight"] = 100,  ["id"] = 6100091001,  ["count"] = 2000,  ["detailID"] = 8,  ["subId"] = 1,}
-,  [21017071001] = {
-  ["type"] = 103,  ["dropId"] = 21017071,  ["weight"] = 100,  ["id"] = 21017071001,  ["count"] = 1,  ["detailID"] = 1010035,  ["subId"] = 1,}
 ,  [60111001] = {
   ["type"] = 103,  ["dropId"] = 60111,  ["weight"] = 100,  ["id"] = 60111001,  ["count"] = 10,  ["detailID"] = 1010023,  ["subId"] = 1,}
 ,  [21013011001] = {
   ["type"] = 0,  ["dropId"] = 21013011,  ["weight"] = 100,  ["id"] = 21013011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [6200022001] = {
-  ["type"] = 107,  ["dropId"] = 6200022,  ["weight"] = 100,  ["id"] = 6200022001,  ["count"] = 98,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [21016061001] = {
-  ["type"] = 0,  ["dropId"] = 21016061,  ["weight"] = 100,  ["id"] = 21016061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [30852001] = {
+  ["type"] = 105,  ["dropId"] = 30852,  ["weight"] = 100,  ["id"] = 30852001,  ["count"] = 28,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [26001031001] = {
   ["type"] = 105,  ["dropId"] = 26001031,  ["weight"] = 100,  ["id"] = 26001031001,  ["count"] = 3,  ["detailID"] = 40003,  ["subId"] = 1,}
+,  [21016061001] = {
+  ["type"] = 0,  ["dropId"] = 21016061,  ["weight"] = 100,  ["id"] = 21016061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30092001] = {
   ["type"] = 105,  ["dropId"] = 30092,  ["weight"] = 100,  ["id"] = 30092001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [20291001] = {
@@ -4569,16 +4561,14 @@ small_bag_config={
   ["type"] = 107,  ["dropId"] = 6000103,  ["weight"] = 100,  ["id"] = 6000103001,  ["count"] = 300,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [6200251001] = {
   ["type"] = 107,  ["dropId"] = 6200251,  ["weight"] = 100,  ["id"] = 6200251001,  ["count"] = 500,  ["detailID"] = 8,  ["subId"] = 1,}
-,  [21019051001] = {
-  ["type"] = 103,  ["dropId"] = 21019051,  ["weight"] = 100,  ["id"] = 21019051001,  ["count"] = 1,  ["detailID"] = 1010041,  ["subId"] = 1,}
 ,  [8000072001] = {
   ["type"] = 107,  ["dropId"] = 8000072,  ["weight"] = 100,  ["id"] = 8000072001,  ["count"] = 1500000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [31001001] = {
-  ["type"] = 107,  ["dropId"] = 31001,  ["weight"] = 100,  ["id"] = 31001001,  ["count"] = 16500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31001,  ["weight"] = 100,  ["id"] = 31001001,  ["count"] = 80750,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [30372001] = {
   ["type"] = 105,  ["dropId"] = 30372,  ["weight"] = 100,  ["id"] = 30372001,  ["count"] = 14,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [20491001] = {
-  ["type"] = 105,  ["dropId"] = 20491,  ["weight"] = 100,  ["id"] = 20491001,  ["count"] = 3,  ["detailID"] = 10002,  ["subId"] = 1,}
+,  [6000063001] = {
+  ["type"] = 107,  ["dropId"] = 6000063,  ["weight"] = 100,  ["id"] = 6000063001,  ["count"] = 400,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [31042001] = {
   ["type"] = 105,  ["dropId"] = 31042,  ["weight"] = 100,  ["id"] = 31042001,  ["count"] = 14,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [6100042001] = {
@@ -4591,20 +4581,20 @@ small_bag_config={
   ["type"] = 105,  ["dropId"] = 21241,  ["weight"] = 100,  ["id"] = 21241001,  ["count"] = 16,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [6200071001] = {
   ["type"] = 107,  ["dropId"] = 6200071,  ["weight"] = 100,  ["id"] = 6200071001,  ["count"] = 2150,  ["detailID"] = 8,  ["subId"] = 1,}
-,  [30622001] = {
-  ["type"] = 105,  ["dropId"] = 30622,  ["weight"] = 100,  ["id"] = 30622001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [6200292001] = {
-  ["type"] = 107,  ["dropId"] = 6200292,  ["weight"] = 100,  ["id"] = 6200292001,  ["count"] = 35,  ["detailID"] = 2,  ["subId"] = 1,}
-,  [21045011001] = {
-  ["type"] = 0,  ["dropId"] = 21045011,  ["weight"] = 100,  ["id"] = 21045011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [1326001] = {
-  ["type"] = 103,  ["dropId"] = 1326,  ["weight"] = 100,  ["id"] = 1326001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
+,  [100011021] = {
+  ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 0,  ["id"] = 100011021,  ["count"] = 1,  ["detailID"] = 10038,  ["subId"] = 21,}
 ,  [21015011001] = {
   ["type"] = 0,  ["dropId"] = 21015011,  ["weight"] = 100,  ["id"] = 21015011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [6200292001] = {
+  ["type"] = 107,  ["dropId"] = 6200292,  ["weight"] = 100,  ["id"] = 6200292001,  ["count"] = 35,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [1326001] = {
+  ["type"] = 103,  ["dropId"] = 1326,  ["weight"] = 100,  ["id"] = 1326001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
+,  [30682001] = {
+  ["type"] = 105,  ["dropId"] = 30682,  ["weight"] = 100,  ["id"] = 30682001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000031035] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 1,  ["id"] = 19000031035,  ["count"] = 1,  ["detailID"] = 30034,  ["subId"] = 35,}
 ,  [50982002] = {
   ["type"] = 107,  ["dropId"] = 50982,  ["weight"] = 100,  ["id"] = 50982002,  ["count"] = 200,  ["detailID"] = 5,  ["subId"] = 2,}
-,  [19000031039] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031039,  ["count"] = 1,  ["detailID"] = 30038,  ["subId"] = 39,}
 ,  [30322001] = {
   ["type"] = 105,  ["dropId"] = 30322,  ["weight"] = 100,  ["id"] = 30322001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [1412001] = {
@@ -4614,247 +4604,245 @@ small_bag_config={
 ,  [21018041001] = {
   ["type"] = 0,  ["dropId"] = 21018041,  ["weight"] = 100,  ["id"] = 21018041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [31231001] = {
-  ["type"] = 107,  ["dropId"] = 31231,  ["weight"] = 100,  ["id"] = 31231001,  ["count"] = 73000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31231,  ["weight"] = 100,  ["id"] = 31231001,  ["count"] = 96200,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [31091001] = {
-  ["type"] = 107,  ["dropId"] = 31091,  ["weight"] = 100,  ["id"] = 31091001,  ["count"] = 34000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31091,  ["weight"] = 100,  ["id"] = 31091001,  ["count"] = 101750,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [19000011016] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 1,  ["id"] = 19000011016,  ["count"] = 1,  ["detailID"] = 10015,  ["subId"] = 16,}
-,  [21012031001] = {
-  ["type"] = 103,  ["dropId"] = 21012031,  ["weight"] = 100,  ["id"] = 21012031001,  ["count"] = 1,  ["detailID"] = 1010005,  ["subId"] = 1,}
+,  [21011041001] = {
+  ["type"] = 0,  ["dropId"] = 21011041,  ["weight"] = 100,  ["id"] = 21011041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [8000052001] = {
   ["type"] = 107,  ["dropId"] = 8000052,  ["weight"] = 100,  ["id"] = 8000052001,  ["count"] = 2000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [80051001] = {
   ["type"] = 101,  ["dropId"] = 80051,  ["weight"] = 100,  ["id"] = 80051001,  ["count"] = 1,  ["detailID"] = 10062,  ["subId"] = 1,}
 ,  [21001001] = {
   ["type"] = 105,  ["dropId"] = 21001,  ["weight"] = 100,  ["id"] = 21001001,  ["count"] = 18,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [21011031001] = {
-  ["type"] = 103,  ["dropId"] = 21011031,  ["weight"] = 100,  ["id"] = 21011031001,  ["count"] = 1,  ["detailID"] = 1010010,  ["subId"] = 1,}
+,  [30912001] = {
+  ["type"] = 105,  ["dropId"] = 30912,  ["weight"] = 100,  ["id"] = 30912001,  ["count"] = 30,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21037071001] = {
   ["type"] = 104,  ["dropId"] = 21037071,  ["weight"] = 100,  ["id"] = 21037071001,  ["count"] = 1,  ["detailID"] = 21000330,  ["subId"] = 1,}
 ,  [21035031001] = {
   ["type"] = 104,  ["dropId"] = 21035031,  ["weight"] = 100,  ["id"] = 21035031001,  ["count"] = 1,  ["detailID"] = 21000550,  ["subId"] = 1,}
-,  [21010001001] = {
-  ["type"] = 0,  ["dropId"] = 21010001,  ["weight"] = 100,  ["id"] = 21010001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21014011001] = {
-  ["type"] = 0,  ["dropId"] = 21014011,  ["weight"] = 100,  ["id"] = 21014011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30552001] = {
   ["type"] = 105,  ["dropId"] = 30552,  ["weight"] = 100,  ["id"] = 30552001,  ["count"] = 18,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21009001001] = {
-  ["type"] = 0,  ["dropId"] = 21009001,  ["weight"] = 100,  ["id"] = 21009001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [19000041006] = {
-  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 4,  ["id"] = 19000041006,  ["count"] = 1,  ["detailID"] = 40005,  ["subId"] = 6,}
 ,  [20751001] = {
   ["type"] = 105,  ["dropId"] = 20751,  ["weight"] = 100,  ["id"] = 20751001,  ["count"] = 12,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [6000042001] = {
   ["type"] = 107,  ["dropId"] = 6000042,  ["weight"] = 100,  ["id"] = 6000042001,  ["count"] = 440,  ["detailID"] = 3,  ["subId"] = 1,}
+,  [17007031001] = {
+  ["type"] = 105,  ["dropId"] = 17007031,  ["weight"] = 100,  ["id"] = 17007031001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000041006] = {
+  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 4,  ["id"] = 19000041006,  ["count"] = 1,  ["detailID"] = 40005,  ["subId"] = 6,}
 ,  [105300021058] = {
   ["type"] = 105,  ["dropId"] = 105300021,  ["weight"] = 30,  ["id"] = 105300021058,  ["count"] = 20,  ["detailID"] = 20002,  ["subId"] = 58,}
 ,  [30692001] = {
   ["type"] = 105,  ["dropId"] = 30692,  ["weight"] = 100,  ["id"] = 30692001,  ["count"] = 13,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [30192001] = {
   ["type"] = 105,  ["dropId"] = 30192,  ["weight"] = 100,  ["id"] = 30192001,  ["count"] = 10,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [6000083001] = {
+  ["type"] = 107,  ["dropId"] = 6000083,  ["weight"] = 100,  ["id"] = 6000083001,  ["count"] = 360,  ["detailID"] = 13,  ["subId"] = 1,}
+,  [31142001] = {
+  ["type"] = 105,  ["dropId"] = 31142,  ["weight"] = 100,  ["id"] = 31142001,  ["count"] = 24,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [90011001] = {
   ["type"] = 101,  ["dropId"] = 90011,  ["weight"] = 100,  ["id"] = 90011001,  ["count"] = 1,  ["detailID"] = 10044,  ["subId"] = 1,}
 ,  [19000021039] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021039,  ["count"] = 1,  ["detailID"] = 20038,  ["subId"] = 39,}
-,  [31142001] = {
-  ["type"] = 105,  ["dropId"] = 31142,  ["weight"] = 100,  ["id"] = 31142001,  ["count"] = 24,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [21341001] = {
-  ["type"] = 105,  ["dropId"] = 21341,  ["weight"] = 100,  ["id"] = 21341001,  ["count"] = 38,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [21020001001] = {
-  ["type"] = 0,  ["dropId"] = 21020001,  ["weight"] = 100,  ["id"] = 21020001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [6200141001] = {
+  ["type"] = 107,  ["dropId"] = 6200141,  ["weight"] = 100,  ["id"] = 6200141001,  ["count"] = 1300,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [16002011001] = {
   ["type"] = 105,  ["dropId"] = 16002011,  ["weight"] = 100,  ["id"] = 16002011001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [21018071001] = {
-  ["type"] = 103,  ["dropId"] = 21018071,  ["weight"] = 100,  ["id"] = 21018071001,  ["count"] = 1,  ["detailID"] = 1010031,  ["subId"] = 1,}
-,  [105649001001] = {
-  ["type"] = 102,  ["dropId"] = 105649001,  ["weight"] = 100,  ["id"] = 105649001001,  ["count"] = 1,  ["detailID"] = 100005,  ["subId"] = 1,}
+,  [21020001001] = {
+  ["type"] = 0,  ["dropId"] = 21020001,  ["weight"] = 100,  ["id"] = 21020001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [200021026] = {
+  ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 400,  ["id"] = 200021026,  ["count"] = 1,  ["detailID"] = 10050,  ["subId"] = 26,}
 ,  [30782001] = {
   ["type"] = 105,  ["dropId"] = 30782,  ["weight"] = 100,  ["id"] = 30782001,  ["count"] = 15,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [100022004] = {
-  ["type"] = 101,  ["dropId"] = 100022,  ["weight"] = 60,  ["id"] = 100022004,  ["count"] = 1,  ["detailID"] = 10013,  ["subId"] = 4,}
+,  [105649001001] = {
+  ["type"] = 102,  ["dropId"] = 105649001,  ["weight"] = 100,  ["id"] = 105649001001,  ["count"] = 1,  ["detailID"] = 100005,  ["subId"] = 1,}
+,  [51011001] = {
+  ["type"] = 107,  ["dropId"] = 51011,  ["weight"] = 100,  ["id"] = 51011001,  ["count"] = 50,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [30422001] = {
   ["type"] = 105,  ["dropId"] = 30422,  ["weight"] = 100,  ["id"] = 30422001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [19000031023] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031023,  ["count"] = 1,  ["detailID"] = 30022,  ["subId"] = 23,}
-,  [30982001] = {
-  ["type"] = 105,  ["dropId"] = 30982,  ["weight"] = 100,  ["id"] = 30982001,  ["count"] = 13,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [105400021001] = {
-  ["type"] = 107,  ["dropId"] = 105400021,  ["weight"] = 100,  ["id"] = 105400021001,  ["count"] = 1000,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [19000021023] = {
+  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 1,  ["id"] = 19000021023,  ["count"] = 1,  ["detailID"] = 20022,  ["subId"] = 23,}
 ,  [19000021004] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 4,  ["id"] = 19000021004,  ["count"] = 1,  ["detailID"] = 20003,  ["subId"] = 4,}
-,  [30062001] = {
-  ["type"] = 105,  ["dropId"] = 30062,  ["weight"] = 100,  ["id"] = 30062001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [105400021001] = {
+  ["type"] = 107,  ["dropId"] = 105400021,  ["weight"] = 100,  ["id"] = 105400021001,  ["count"] = 1000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21003011001] = {
   ["type"] = 0,  ["dropId"] = 21003011,  ["weight"] = 100,  ["id"] = 21003011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [105640158001] = {
-  ["type"] = 105,  ["dropId"] = 105640158,  ["weight"] = 100,  ["id"] = 105640158001,  ["count"] = 50,  ["detailID"] = 30003,  ["subId"] = 1,}
 ,  [31012001] = {
   ["type"] = 105,  ["dropId"] = 31012,  ["weight"] = 100,  ["id"] = 31012001,  ["count"] = 14,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [6000071001] = {
   ["type"] = 103,  ["dropId"] = 6000071,  ["weight"] = 100,  ["id"] = 6000071001,  ["count"] = 4,  ["detailID"] = 1010056,  ["subId"] = 1,}
-,  [100021006] = {
-  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021006,  ["count"] = 1,  ["detailID"] = 10009,  ["subId"] = 6,}
+,  [105640158001] = {
+  ["type"] = 105,  ["dropId"] = 105640158,  ["weight"] = 100,  ["id"] = 105640158001,  ["count"] = 50,  ["detailID"] = 30003,  ["subId"] = 1,}
+,  [12038001] = {
+  ["type"] = 101,  ["dropId"] = 12038,  ["weight"] = 100,  ["id"] = 12038001,  ["count"] = 1,  ["detailID"] = 10010,  ["subId"] = 1,}
+,  [30652001] = {
+  ["type"] = 105,  ["dropId"] = 30652,  ["weight"] = 100,  ["id"] = 30652001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000011039] = {
+  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011039,  ["count"] = 1,  ["detailID"] = 10038,  ["subId"] = 39,}
 ,  [80041001] = {
   ["type"] = 101,  ["dropId"] = 80041,  ["weight"] = 100,  ["id"] = 80041001,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 1,}
 ,  [105640094001] = {
   ["type"] = 105,  ["dropId"] = 105640094,  ["weight"] = 100,  ["id"] = 105640094001,  ["count"] = 10,  ["detailID"] = 30003,  ["subId"] = 1,}
-,  [1314001] = {
-  ["type"] = 102,  ["dropId"] = 1314,  ["weight"] = 100,  ["id"] = 1314001,  ["count"] = 1,  ["detailID"] = 100034,  ["subId"] = 1,}
+,  [20491001] = {
+  ["type"] = 105,  ["dropId"] = 20491,  ["weight"] = 100,  ["id"] = 20491001,  ["count"] = 3,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [26002031001] = {
   ["type"] = 105,  ["dropId"] = 26002031,  ["weight"] = 100,  ["id"] = 26002031001,  ["count"] = 3,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [30292001] = {
-  ["type"] = 105,  ["dropId"] = 30292,  ["weight"] = 100,  ["id"] = 30292001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [30371001] = {
-  ["type"] = 107,  ["dropId"] = 30371,  ["weight"] = 100,  ["id"] = 30371001,  ["count"] = 29500,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [1453001] = {
-  ["type"] = 105,  ["dropId"] = 1453,  ["weight"] = 100,  ["id"] = 1453001,  ["count"] = 1,  ["detailID"] = 60001,  ["subId"] = 1,}
-,  [21023081001] = {
-  ["type"] = 103,  ["dropId"] = 21023081,  ["weight"] = 100,  ["id"] = 21023081001,  ["count"] = 1,  ["detailID"] = 1030063,  ["subId"] = 1,}
-,  [19000031025] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031025,  ["count"] = 1,  ["detailID"] = 30024,  ["subId"] = 25,}
 ,  [19000041019] = {
   ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 16,  ["id"] = 19000041019,  ["count"] = 1,  ["detailID"] = 40018,  ["subId"] = 19,}
-,  [20281001] = {
-  ["type"] = 105,  ["dropId"] = 20281,  ["weight"] = 100,  ["id"] = 20281001,  ["count"] = 5,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [6000063001] = {
-  ["type"] = 107,  ["dropId"] = 6000063,  ["weight"] = 100,  ["id"] = 6000063001,  ["count"] = 400,  ["detailID"] = 13,  ["subId"] = 1,}
+,  [30371001] = {
+  ["type"] = 107,  ["dropId"] = 30371,  ["weight"] = 100,  ["id"] = 30371001,  ["count"] = 6500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [1453001] = {
+  ["type"] = 105,  ["dropId"] = 1453,  ["weight"] = 100,  ["id"] = 1453001,  ["count"] = 1,  ["detailID"] = 60001,  ["subId"] = 1,}
 ,  [6200121001] = {
   ["type"] = 107,  ["dropId"] = 6200121,  ["weight"] = 100,  ["id"] = 6200121001,  ["count"] = 1600,  ["detailID"] = 8,  ["subId"] = 1,}
+,  [19000031025] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031025,  ["count"] = 1,  ["detailID"] = 30024,  ["subId"] = 25,}
 ,  [6200181001] = {
   ["type"] = 107,  ["dropId"] = 6200181,  ["weight"] = 100,  ["id"] = 6200181001,  ["count"] = 950,  ["detailID"] = 8,  ["subId"] = 1,}
-,  [21081001] = {
-  ["type"] = 105,  ["dropId"] = 21081,  ["weight"] = 100,  ["id"] = 21081001,  ["count"] = 31,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [20281001] = {
+  ["type"] = 105,  ["dropId"] = 20281,  ["weight"] = 100,  ["id"] = 20281001,  ["count"] = 5,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [21211001] = {
   ["type"] = 105,  ["dropId"] = 21211,  ["weight"] = 100,  ["id"] = 21211001,  ["count"] = 15,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [19000011039] = {
-  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011039,  ["count"] = 1,  ["detailID"] = 10038,  ["subId"] = 39,}
+,  [30522001] = {
+  ["type"] = 105,  ["dropId"] = 30522,  ["weight"] = 100,  ["id"] = 30522001,  ["count"] = 18,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [19000031045] = {
   ["type"] = 107,  ["dropId"] = 19000031,  ["weight"] = 500,  ["id"] = 19000031045,  ["count"] = 20,  ["detailID"] = 3,  ["subId"] = 45,}
-,  [21002051001] = {
-  ["type"] = 0,  ["dropId"] = 21002051,  ["weight"] = 100,  ["id"] = 21002051001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [19000031042] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031042,  ["count"] = 1,  ["detailID"] = 30041,  ["subId"] = 42,}
 ,  [100022012] = {
   ["type"] = 101,  ["dropId"] = 100022,  ["weight"] = 60,  ["id"] = 100022012,  ["count"] = 1,  ["detailID"] = 10039,  ["subId"] = 12,}
+,  [19000031039] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031039,  ["count"] = 1,  ["detailID"] = 30038,  ["subId"] = 39,}
 ,  [19000031038] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031038,  ["count"] = 1,  ["detailID"] = 30037,  ["subId"] = 38,}
-,  [100011015] = {
-  ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 60,  ["id"] = 100011015,  ["count"] = 1,  ["detailID"] = 10026,  ["subId"] = 15,}
-,  [19000031036] = {
-  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 4,  ["id"] = 19000031036,  ["count"] = 1,  ["detailID"] = 30035,  ["subId"] = 36,}
+,  [21002051001] = {
+  ["type"] = 0,  ["dropId"] = 21002051,  ["weight"] = 100,  ["id"] = 21002051001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [30162001] = {
   ["type"] = 105,  ["dropId"] = 30162,  ["weight"] = 100,  ["id"] = 30162001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000031036] = {
+  ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 4,  ["id"] = 19000031036,  ["count"] = 1,  ["detailID"] = 30035,  ["subId"] = 36,}
 ,  [19000031040] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 16,  ["id"] = 19000031040,  ["count"] = 1,  ["detailID"] = 30039,  ["subId"] = 40,}
-,  [30961001] = {
-  ["type"] = 107,  ["dropId"] = 30961,  ["weight"] = 100,  ["id"] = 30961001,  ["count"] = 11500,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [17008031001] = {
+  ["type"] = 105,  ["dropId"] = 17008031,  ["weight"] = 100,  ["id"] = 17008031001,  ["count"] = 9,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [200021014] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 400,  ["id"] = 200021014,  ["count"] = 1,  ["detailID"] = 10023,  ["subId"] = 14,}
+,  [6000051001] = {
+  ["type"] = 103,  ["dropId"] = 6000051,  ["weight"] = 100,  ["id"] = 6000051001,  ["count"] = 6,  ["detailID"] = 1010056,  ["subId"] = 1,}
+,  [30961001] = {
+  ["type"] = 107,  ["dropId"] = 30961,  ["weight"] = 100,  ["id"] = 30961001,  ["count"] = 49650,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [30711001] = {
+  ["type"] = 107,  ["dropId"] = 30711,  ["weight"] = 100,  ["id"] = 30711001,  ["count"] = 11850,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21021081001] = {
   ["type"] = 103,  ["dropId"] = 21021081,  ["weight"] = 100,  ["id"] = 21021081001,  ["count"] = 1,  ["detailID"] = 1030051,  ["subId"] = 1,}
 ,  [21019041001] = {
   ["type"] = 0,  ["dropId"] = 21019041,  ["weight"] = 100,  ["id"] = 21019041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [300011022] = {
-  ["type"] = 101,  ["dropId"] = 300011,  ["weight"] = 400,  ["id"] = 300011022,  ["count"] = 1,  ["detailID"] = 10043,  ["subId"] = 22,}
+,  [30752001] = {
+  ["type"] = 105,  ["dropId"] = 30752,  ["weight"] = 100,  ["id"] = 30752001,  ["count"] = 15,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [20871001] = {
   ["type"] = 105,  ["dropId"] = 20871,  ["weight"] = 100,  ["id"] = 20871001,  ["count"] = 17,  ["detailID"] = 10003,  ["subId"] = 1,}
 ,  [105400031001] = {
   ["type"] = 107,  ["dropId"] = 105400031,  ["weight"] = 100,  ["id"] = 105400031001,  ["count"] = 10000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [19000011018] = {
-  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 1,  ["id"] = 19000011018,  ["count"] = 1,  ["detailID"] = 10017,  ["subId"] = 18,}
 ,  [19000031006] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031006,  ["count"] = 1,  ["detailID"] = 30005,  ["subId"] = 6,}
 ,  [1372001] = {
   ["type"] = 102,  ["dropId"] = 1372,  ["weight"] = 100,  ["id"] = 1372001,  ["count"] = 1,  ["detailID"] = 100027,  ["subId"] = 1,}
-,  [19000021037] = {
-  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 4,  ["id"] = 19000021037,  ["count"] = 1,  ["detailID"] = 20036,  ["subId"] = 37,}
 ,  [31342001] = {
   ["type"] = 105,  ["dropId"] = 31342,  ["weight"] = 100,  ["id"] = 31342001,  ["count"] = 19,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000021037] = {
+  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 4,  ["id"] = 19000021037,  ["count"] = 1,  ["detailID"] = 20036,  ["subId"] = 37,}
+,  [30032001] = {
+  ["type"] = 105,  ["dropId"] = 30032,  ["weight"] = 100,  ["id"] = 30032001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [19000041007] = {
   ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 64,  ["id"] = 19000041007,  ["count"] = 1,  ["detailID"] = 40006,  ["subId"] = 7,}
 ,  [21036031001] = {
   ["type"] = 104,  ["dropId"] = 21036031,  ["weight"] = 100,  ["id"] = 21036031001,  ["count"] = 1,  ["detailID"] = 21000510,  ["subId"] = 1,}
-,  [30032001] = {
-  ["type"] = 105,  ["dropId"] = 30032,  ["weight"] = 100,  ["id"] = 30032001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [20231001] = {
-  ["type"] = 105,  ["dropId"] = 20231,  ["weight"] = 100,  ["id"] = 20231001,  ["count"] = 6,  ["detailID"] = 10001,  ["subId"] = 1,}
+,  [19000021034] = {
+  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 16,  ["id"] = 19000021034,  ["count"] = 1,  ["detailID"] = 20033,  ["subId"] = 34,}
 ,  [19000021028] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021028,  ["count"] = 1,  ["detailID"] = 20027,  ["subId"] = 28,}
+,  [30982001] = {
+  ["type"] = 105,  ["dropId"] = 30982,  ["weight"] = 100,  ["id"] = 30982001,  ["count"] = 13,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [105640137001] = {
   ["type"] = 105,  ["dropId"] = 105640137,  ["weight"] = 100,  ["id"] = 105640137001,  ["count"] = 30,  ["detailID"] = 30003,  ["subId"] = 1,}
 ,  [21004011001] = {
   ["type"] = 0,  ["dropId"] = 21004011,  ["weight"] = 100,  ["id"] = 21004011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [19000021040] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 64,  ["id"] = 19000021040,  ["count"] = 1,  ["detailID"] = 20039,  ["subId"] = 40,}
-,  [19000021023] = {
-  ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 1,  ["id"] = 19000021023,  ["count"] = 1,  ["detailID"] = 20022,  ["subId"] = 23,}
+,  [30622001] = {
+  ["type"] = 105,  ["dropId"] = 30622,  ["weight"] = 100,  ["id"] = 30622001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [1322001] = {
   ["type"] = 102,  ["dropId"] = 1322,  ["weight"] = 100,  ["id"] = 1322001,  ["count"] = 1,  ["detailID"] = 100014,  ["subId"] = 1,}
 ,  [105640073001] = {
   ["type"] = 107,  ["dropId"] = 105640073,  ["weight"] = 100,  ["id"] = 105640073001,  ["count"] = 50000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [30852001] = {
-  ["type"] = 105,  ["dropId"] = 30852,  ["weight"] = 100,  ["id"] = 30852001,  ["count"] = 28,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [19000021003] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 16,  ["id"] = 19000021003,  ["count"] = 1,  ["detailID"] = 20002,  ["subId"] = 3,}
 ,  [30262001] = {
   ["type"] = 105,  ["dropId"] = 30262,  ["weight"] = 100,  ["id"] = 30262001,  ["count"] = 4,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21023051001] = {
   ["type"] = 104,  ["dropId"] = 21023051,  ["weight"] = 100,  ["id"] = 21023051001,  ["count"] = 1,  ["detailID"] = 21000460,  ["subId"] = 1,}
+,  [19000011038] = {
+  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011038,  ["count"] = 1,  ["detailID"] = 10037,  ["subId"] = 38,}
 ,  [19000011037] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011037,  ["count"] = 1,  ["detailID"] = 10036,  ["subId"] = 37,}
 ,  [21021001001] = {
   ["type"] = 0,  ["dropId"] = 21021001,  ["weight"] = 100,  ["id"] = 21021001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [100011023] = {
   ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 60,  ["id"] = 100011023,  ["count"] = 1,  ["detailID"] = 10004,  ["subId"] = 23,}
-,  [100021025] = {
-  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 10,  ["id"] = 100021025,  ["count"] = 1,  ["detailID"] = 10013,  ["subId"] = 25,}
+,  [50021001] = {
+  ["type"] = 107,  ["dropId"] = 50021,  ["weight"] = 100,  ["id"] = 50021001,  ["count"] = 50,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [1494001] = {
   ["type"] = 105,  ["dropId"] = 1494,  ["weight"] = 100,  ["id"] = 1494001,  ["count"] = 10,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [19000011005] = {
-  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011005,  ["count"] = 1,  ["detailID"] = 10004,  ["subId"] = 5,}
-,  [19000011004] = {
-  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 64,  ["id"] = 19000011004,  ["count"] = 1,  ["detailID"] = 10003,  ["subId"] = 4,}
 ,  [30492001] = {
   ["type"] = 105,  ["dropId"] = 30492,  ["weight"] = 100,  ["id"] = 30492001,  ["count"] = 17,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [19000011004] = {
+  ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 64,  ["id"] = 19000011004,  ["count"] = 1,  ["detailID"] = 10003,  ["subId"] = 4,}
 ,  [19000011003] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011003,  ["count"] = 1,  ["detailID"] = 10002,  ["subId"] = 3,}
 ,  [19000011001] = {
   ["type"] = 107,  ["dropId"] = 19000011,  ["weight"] = 500,  ["id"] = 19000011001,  ["count"] = 1000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [21030041001] = {
   ["type"] = 0,  ["dropId"] = 21030041,  ["weight"] = 100,  ["id"] = 21030041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [6100011001] = {
+  ["type"] = 107,  ["dropId"] = 6100011,  ["weight"] = 100,  ["id"] = 6100011001,  ["count"] = 5000,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [51041001] = {
   ["type"] = 107,  ["dropId"] = 51041,  ["weight"] = 100,  ["id"] = 51041001,  ["count"] = 200,  ["detailID"] = 13,  ["subId"] = 1,}
-,  [17005071001] = {
-  ["type"] = 105,  ["dropId"] = 17005071,  ["weight"] = 100,  ["id"] = 17005071001,  ["count"] = 5,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [17005001001] = {
-  ["type"] = 105,  ["dropId"] = 17005001,  ["weight"] = 100,  ["id"] = 17005001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
-,  [17004021001] = {
-  ["type"] = 105,  ["dropId"] = 17004021,  ["weight"] = 100,  ["id"] = 17004021001,  ["count"] = 4,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [17004011001] = {
-  ["type"] = 105,  ["dropId"] = 17004011,  ["weight"] = 100,  ["id"] = 17004011001,  ["count"] = 4,  ["detailID"] = 20001,  ["subId"] = 1,}
-,  [100021001] = {
-  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
+,  [6000023001] = {
+  ["type"] = 107,  ["dropId"] = 6000023,  ["weight"] = 100,  ["id"] = 6000023001,  ["count"] = 480,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [31082001] = {
   ["type"] = 105,  ["dropId"] = 31082,  ["weight"] = 100,  ["id"] = 31082001,  ["count"] = 22,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [12044001] = {
-  ["type"] = 102,  ["dropId"] = 12044,  ["weight"] = 100,  ["id"] = 12044001,  ["count"] = 1,  ["detailID"] = 100015,  ["subId"] = 1,}
+,  [17005001001] = {
+  ["type"] = 105,  ["dropId"] = 17005001,  ["weight"] = 100,  ["id"] = 17005001001,  ["count"] = 1,  ["detailID"] = 70001,  ["subId"] = 1,}
 ,  [60241001] = {
   ["type"] = 107,  ["dropId"] = 60241,  ["weight"] = 100,  ["id"] = 60241001,  ["count"] = 2100,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [17004021001] = {
+  ["type"] = 105,  ["dropId"] = 17004021,  ["weight"] = 100,  ["id"] = 17004021001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [17004011001] = {
+  ["type"] = 105,  ["dropId"] = 17004011,  ["weight"] = 100,  ["id"] = 17004011001,  ["count"] = 5,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [12044001] = {
+  ["type"] = 102,  ["dropId"] = 12044,  ["weight"] = 100,  ["id"] = 12044001,  ["count"] = 1,  ["detailID"] = 100015,  ["subId"] = 1,}
+,  [100021001] = {
+  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021001,  ["count"] = 1,  ["detailID"] = 10001,  ["subId"] = 1,}
 ,  [19000031026] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031026,  ["count"] = 1,  ["detailID"] = 30025,  ["subId"] = 26,}
-,  [17003002001] = {
-  ["type"] = 107,  ["dropId"] = 17003002,  ["weight"] = 100,  ["id"] = 17003002001,  ["count"] = 30,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [60102001] = {
   ["type"] = 105,  ["dropId"] = 60102,  ["weight"] = 100,  ["id"] = 60102001,  ["count"] = 5,  ["detailID"] = 20001,  ["subId"] = 1,}
+,  [21018011001] = {
+  ["type"] = 0,  ["dropId"] = 21018011,  ["weight"] = 100,  ["id"] = 21018011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
 ,  [20151001] = {
   ["type"] = 105,  ["dropId"] = 20151,  ["weight"] = 100,  ["id"] = 20151001,  ["count"] = 2,  ["detailID"] = 10001,  ["subId"] = 1,}
-,  [30722001] = {
-  ["type"] = 105,  ["dropId"] = 30722,  ["weight"] = 100,  ["id"] = 30722001,  ["count"] = 14,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [100021002] = {
   ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021002,  ["count"] = 1,  ["detailID"] = 10002,  ["subId"] = 2,}
-,  [17002021001] = {
-  ["type"] = 105,  ["dropId"] = 17002021,  ["weight"] = 100,  ["id"] = 17002021001,  ["count"] = 2,  ["detailID"] = 20001,  ["subId"] = 1,}
+,  [17003002001] = {
+  ["type"] = 107,  ["dropId"] = 17003002,  ["weight"] = 100,  ["id"] = 17003002001,  ["count"] = 30,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [17001031001] = {
-  ["type"] = 105,  ["dropId"] = 17001031,  ["weight"] = 100,  ["id"] = 17001031001,  ["count"] = 1,  ["detailID"] = 20001,  ["subId"] = 1,}
+  ["type"] = 105,  ["dropId"] = 17001031,  ["weight"] = 100,  ["id"] = 17001031001,  ["count"] = 2,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [12024001] = {
   ["type"] = 102,  ["dropId"] = 12024,  ["weight"] = 100,  ["id"] = 12024001,  ["count"] = 1,  ["detailID"] = 100038,  ["subId"] = 1,}
 ,  [30362001] = {
@@ -4863,28 +4851,30 @@ small_bag_config={
   ["type"] = 103,  ["dropId"] = 1345,  ["weight"] = 100,  ["id"] = 1345001,  ["count"] = 5,  ["detailID"] = 1010042,  ["subId"] = 1,}
 ,  [16002031001] = {
   ["type"] = 105,  ["dropId"] = 16002031,  ["weight"] = 300,  ["id"] = 16002031001,  ["count"] = 1,  ["detailID"] = 10003,  ["subId"] = 1,}
+,  [100021004] = {
+  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021004,  ["count"] = 1,  ["detailID"] = 10007,  ["subId"] = 4,}
 ,  [6020022003] = {
   ["type"] = 108,  ["dropId"] = 6020022,  ["weight"] = 100,  ["id"] = 6020022003,  ["count"] = 1,  ["detailID"] = 120301,  ["subId"] = 3,}
-,  [30952001] = {
-  ["type"] = 105,  ["dropId"] = 30952,  ["weight"] = 100,  ["id"] = 30952001,  ["count"] = 13,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [100021005] = {
+  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021005,  ["count"] = 1,  ["detailID"] = 10008,  ["subId"] = 5,}
 ,  [105640083001] = {
   ["type"] = 107,  ["dropId"] = 105640083,  ["weight"] = 100,  ["id"] = 105640083001,  ["count"] = 50000,  ["detailID"] = 1,  ["subId"] = 1,}
-,  [6000011001] = {
-  ["type"] = 103,  ["dropId"] = 6000011,  ["weight"] = 100,  ["id"] = 6000011001,  ["count"] = 10,  ["detailID"] = 1010056,  ["subId"] = 1,}
+,  [30592001] = {
+  ["type"] = 105,  ["dropId"] = 30592,  ["weight"] = 100,  ["id"] = 30592001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21003051001] = {
   ["type"] = 101,  ["dropId"] = 21003051,  ["weight"] = 100,  ["id"] = 21003051001,  ["count"] = 1,  ["detailID"] = 10002,  ["subId"] = 1,}
-,  [6100081001] = {
-  ["type"] = 107,  ["dropId"] = 6100081,  ["weight"] = 100,  ["id"] = 6100081001,  ["count"] = 2000,  ["detailID"] = 8,  ["subId"] = 1,}
+,  [30191001] = {
+  ["type"] = 107,  ["dropId"] = 30191,  ["weight"] = 100,  ["id"] = 30191001,  ["count"] = 1000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [30831001] = {
-  ["type"] = 107,  ["dropId"] = 30831,  ["weight"] = 100,  ["id"] = 30831001,  ["count"] = 61500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30831,  ["weight"] = 100,  ["id"] = 30831001,  ["count"] = 17550,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [105640019001] = {
   ["type"] = 105,  ["dropId"] = 105640019,  ["weight"] = 100,  ["id"] = 105640019001,  ["count"] = 5,  ["detailID"] = 30011,  ["subId"] = 1,}
-,  [100021007] = {
-  ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021007,  ["count"] = 1,  ["detailID"] = 10010,  ["subId"] = 7,}
 ,  [100011033] = {
   ["type"] = 101,  ["dropId"] = 100011,  ["weight"] = 60,  ["id"] = 100011033,  ["count"] = 1,  ["detailID"] = 10039,  ["subId"] = 33,}
 ,  [200011005] = {
   ["type"] = 101,  ["dropId"] = 200011,  ["weight"] = 8000,  ["id"] = 200011005,  ["count"] = 1,  ["detailID"] = 10015,  ["subId"] = 5,}
+,  [31182001] = {
+  ["type"] = 105,  ["dropId"] = 31182,  ["weight"] = 100,  ["id"] = 31182001,  ["count"] = 41,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [20741001] = {
   ["type"] = 105,  ["dropId"] = 20741,  ["weight"] = 100,  ["id"] = 20741001,  ["count"] = 16,  ["detailID"] = 10002,  ["subId"] = 1,}
 ,  [1363001] = {
@@ -4893,14 +4883,12 @@ small_bag_config={
   ["type"] = 103,  ["dropId"] = 21022081,  ["weight"] = 100,  ["id"] = 21022081001,  ["count"] = 1,  ["detailID"] = 1010053,  ["subId"] = 1,}
 ,  [21020041001] = {
   ["type"] = 0,  ["dropId"] = 21020041,  ["weight"] = 100,  ["id"] = 21020041001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [30822001] = {
-  ["type"] = 105,  ["dropId"] = 30822,  ["weight"] = 100,  ["id"] = 30822001,  ["count"] = 27,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [100021009] = {
   ["type"] = 101,  ["dropId"] = 100021,  ["weight"] = 300,  ["id"] = 100021009,  ["count"] = 1,  ["detailID"] = 10012,  ["subId"] = 9,}
-,  [19000041008] = {
-  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 16,  ["id"] = 19000041008,  ["count"] = 1,  ["detailID"] = 40007,  ["subId"] = 8,}
 ,  [200022006] = {
   ["type"] = 101,  ["dropId"] = 200022,  ["weight"] = 100,  ["id"] = 200022006,  ["count"] = 1,  ["detailID"] = 10036,  ["subId"] = 6,}
+,  [19000041008] = {
+  ["type"] = 109,  ["dropId"] = 19000041,  ["weight"] = 16,  ["id"] = 19000041008,  ["count"] = 1,  ["detailID"] = 40007,  ["subId"] = 8,}
 ,  [30462001] = {
   ["type"] = 105,  ["dropId"] = 30462,  ["weight"] = 100,  ["id"] = 30462001,  ["count"] = 16,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [100021010] = {
@@ -4908,31 +4896,31 @@ small_bag_config={
 ,  [6200231001] = {
   ["type"] = 107,  ["dropId"] = 6200231,  ["weight"] = 100,  ["id"] = 6200231001,  ["count"] = 600,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [31011001] = {
-  ["type"] = 107,  ["dropId"] = 31011,  ["weight"] = 100,  ["id"] = 31011001,  ["count"] = 18500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31011,  ["weight"] = 100,  ["id"] = 31011001,  ["count"] = 29150,  ["detailID"] = 1,  ["subId"] = 1,}
+,  [6200211001] = {
+  ["type"] = 107,  ["dropId"] = 6200211,  ["weight"] = 100,  ["id"] = 6200211001,  ["count"] = 750,  ["detailID"] = 8,  ["subId"] = 1,}
 ,  [21039071001] = {
   ["type"] = 104,  ["dropId"] = 21039071,  ["weight"] = 100,  ["id"] = 21039071001,  ["count"] = 1,  ["detailID"] = 21000220,  ["subId"] = 1,}
 ,  [19000021041] = {
   ["type"] = 109,  ["dropId"] = 19000021,  ["weight"] = 4,  ["id"] = 19000021041,  ["count"] = 1,  ["detailID"] = 20040,  ["subId"] = 41,}
-,  [31052001] = {
-  ["type"] = 105,  ["dropId"] = 31052,  ["weight"] = 100,  ["id"] = 31052001,  ["count"] = 22,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [200022011] = {
+  ["type"] = 101,  ["dropId"] = 200022,  ["weight"] = 100,  ["id"] = 200022011,  ["count"] = 1,  ["detailID"] = 10044,  ["subId"] = 11,}
 ,  [31292001] = {
   ["type"] = 105,  ["dropId"] = 31292,  ["weight"] = 100,  ["id"] = 31292001,  ["count"] = 28,  ["detailID"] = 20006,  ["subId"] = 1,}
-,  [30651001] = {
-  ["type"] = 107,  ["dropId"] = 30651,  ["weight"] = 100,  ["id"] = 30651001,  ["count"] = 24000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [6200162001] = {
   ["type"] = 107,  ["dropId"] = 6200162,  ["weight"] = 100,  ["id"] = 6200162001,  ["count"] = 70,  ["detailID"] = 2,  ["subId"] = 1,}
+,  [30332001] = {
+  ["type"] = 105,  ["dropId"] = 30332,  ["weight"] = 100,  ["id"] = 30332001,  ["count"] = 8,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [21005011001] = {
   ["type"] = 0,  ["dropId"] = 21005011,  ["weight"] = 100,  ["id"] = 21005011001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [21030061001] = {
-  ["type"] = 0,  ["dropId"] = 21030061,  ["weight"] = 100,  ["id"] = 21030061001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
+,  [6000073001] = {
+  ["type"] = 107,  ["dropId"] = 6000073,  ["weight"] = 100,  ["id"] = 6000073001,  ["count"] = 380,  ["detailID"] = 13,  ["subId"] = 1,}
 ,  [21331001] = {
   ["type"] = 105,  ["dropId"] = 21331,  ["weight"] = 100,  ["id"] = 21331001,  ["count"] = 19,  ["detailID"] = 10003,  ["subId"] = 1,}
-,  [200022018] = {
-  ["type"] = 101,  ["dropId"] = 200022,  ["weight"] = 100,  ["id"] = 200022018,  ["count"] = 1,  ["detailID"] = 10062,  ["subId"] = 18,}
 ,  [6100012001] = {
   ["type"] = 107,  ["dropId"] = 6100012,  ["weight"] = 100,  ["id"] = 6100012001,  ["count"] = 500,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [30521001] = {
-  ["type"] = 107,  ["dropId"] = 30521,  ["weight"] = 100,  ["id"] = 30521001,  ["count"] = 8500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30521,  ["weight"] = 100,  ["id"] = 30521001,  ["count"] = 15450,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [30562001] = {
   ["type"] = 105,  ["dropId"] = 30562,  ["weight"] = 100,  ["id"] = 30562001,  ["count"] = 7,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [30202001] = {
@@ -4941,10 +4929,12 @@ small_bag_config={
   ["type"] = 105,  ["dropId"] = 31152,  ["weight"] = 100,  ["id"] = 31152001,  ["count"] = 40,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [200021002] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 8000,  ["id"] = 200021002,  ["count"] = 1,  ["detailID"] = 10004,  ["subId"] = 2,}
+,  [60242001] = {
+  ["type"] = 102,  ["dropId"] = 60242,  ["weight"] = 100,  ["id"] = 60242001,  ["count"] = 1,  ["detailID"] = 200002,  ["subId"] = 1,}
 ,  [21022001001] = {
   ["type"] = 0,  ["dropId"] = 21022001,  ["weight"] = 100,  ["id"] = 21022001001,  ["count"] = 1,  ["detailID"] = 0,  ["subId"] = 1,}
-,  [30792001] = {
-  ["type"] = 105,  ["dropId"] = 30792,  ["weight"] = 100,  ["id"] = 30792001,  ["count"] = 26,  ["detailID"] = 20006,  ["subId"] = 1,}
+,  [6000022001] = {
+  ["type"] = 107,  ["dropId"] = 6000022,  ["weight"] = 100,  ["id"] = 6000022001,  ["count"] = 480,  ["detailID"] = 3,  ["subId"] = 1,}
 ,  [200021004] = {
   ["type"] = 101,  ["dropId"] = 200021,  ["weight"] = 8000,  ["id"] = 200021004,  ["count"] = 1,  ["detailID"] = 10013,  ["subId"] = 4,}
 ,  [200021006] = {
@@ -4954,7 +4944,7 @@ small_bag_config={
 ,  [11011001] = {
   ["type"] = 107,  ["dropId"] = 11011,  ["weight"] = 100,  ["id"] = 11011001,  ["count"] = 20000,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [31341001] = {
-  ["type"] = 107,  ["dropId"] = 31341,  ["weight"] = 100,  ["id"] = 31341001,  ["count"] = 120000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 31341,  ["weight"] = 100,  ["id"] = 31341001,  ["count"] = 61950,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [7100024001] = {
   ["type"] = 107,  ["dropId"] = 7100024,  ["weight"] = 100,  ["id"] = 7100024001,  ["count"] = 30,  ["detailID"] = 2,  ["subId"] = 1,}
 ,  [200021009] = {
@@ -4966,7 +4956,7 @@ small_bag_config={
 ,  [19000011006] = {
   ["type"] = 109,  ["dropId"] = 19000011,  ["weight"] = 16,  ["id"] = 19000011006,  ["count"] = 1,  ["detailID"] = 10005,  ["subId"] = 6,}
 ,  [30111001] = {
-  ["type"] = 107,  ["dropId"] = 30111,  ["weight"] = 100,  ["id"] = 30111001,  ["count"] = 6000,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30111,  ["weight"] = 100,  ["id"] = 30111001,  ["count"] = 250,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [19000031027] = {
   ["type"] = 109,  ["dropId"] = 19000031,  ["weight"] = 64,  ["id"] = 19000031027,  ["count"] = 1,  ["detailID"] = 30026,  ["subId"] = 27,}
 ,  [200021018] = {
@@ -4998,7 +4988,7 @@ small_bag_config={
 ,  [30992001] = {
   ["type"] = 105,  ["dropId"] = 30992,  ["weight"] = 100,  ["id"] = 30992001,  ["count"] = 20,  ["detailID"] = 20006,  ["subId"] = 1,}
 ,  [30231001] = {
-  ["type"] = 107,  ["dropId"] = 30231,  ["weight"] = 100,  ["id"] = 30231001,  ["count"] = 14500,  ["detailID"] = 1,  ["subId"] = 1,}
+  ["type"] = 107,  ["dropId"] = 30231,  ["weight"] = 100,  ["id"] = 30231001,  ["count"] = 500,  ["detailID"] = 1,  ["subId"] = 1,}
 ,  [1323001] = {
   ["type"] = 102,  ["dropId"] = 1323,  ["weight"] = 100,  ["id"] = 1323001,  ["count"] = 1,  ["detailID"] = 100025,  ["subId"] = 1,}
 ,  [300011008] = {

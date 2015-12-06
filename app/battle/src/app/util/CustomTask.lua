@@ -63,19 +63,25 @@ function CustomTask:update(dt)
 		if self.callback_ then
 			self.callback_(self, self:getCallTimeDiff())
 		end	
-		self:reset()	
+		self:resetclock()	
+
 	end
 end
+
+function CustomTask:resetclock(  )
+	self.clock_:reset()
+	self.curCount_ = self.count_
+	self.lastTime = self.commonData:getTime() --上次更新时间
+	self.callTime = self.commonData:getTime() --上次回调时间	
+end
+
 --[[--
 重置任务
 ]]
 function CustomTask:reset()
-	self.clock_:reset()
-	self.curCount_ = self.count_
 	self.paused_ = false
 	self.enabled_ = true
-	self.lastTime = self.commonData:getTime() --上次更新时间
-	self.callTime = self.commonData:getTime() --上次回调时间	
+	self:resetclock()
 end
 --[[--
 是否可用

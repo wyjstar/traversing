@@ -329,10 +329,10 @@ function CommonData:setFinance(type_, num)
         self:dispatchEvent(EventName.UPDATE_QJYL)
     elseif type_ == RES_TYPE.ENERGY then
         self:dispatchEvent(EventName.UPDATE_ENERGY) 
-    elseif type_ == RES_TYPE.ROB_NUM then
-        self:dispatchEvent(EventName.UPDATE_ROB_NUM)
     elseif type_ == RES_TYPE.SHOES then -- 游历消耗鞋子需要通知游历主界面和章节游历界面
         self:dispatchEvent(EventName.UPDATE_TRAVEL)
+    elseif type_ == RES_TYPE.ROB_NUM then
+        self:dispatchEvent(EventName.UPDATE_ROB_NUM)
     end
 end
 

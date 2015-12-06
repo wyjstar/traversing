@@ -11,7 +11,7 @@ from app.game.core.item_group_helper import gain, get_return, is_afford, consume
 from shared.utils.const import const
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import get_seeds
-from shared.db_opear.configs_data.common_item import CommonGroupItem
+from shared.utils.date_util import get_current_timestamp
 import cPickle
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -24,7 +24,6 @@ def init_2401(pro_data, player):
     response = guild_pb2.GuildBossInitResponse()
     data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
     logger.debug("return data %s" % data)
-    response.skill_points = data.get("skill_points", 0)
     response.trigger_times = data.get("guild_boss_trigger_times", 0)
     for skill_type, skill_level in data.get("guild_skills", {}).items():
         skill_pb = response.guild_skill.add()
@@ -44,6 +43,8 @@ def construct_boss_pb(data, boss_pb):
     boss_pb.hp_max = data.get("hp_max", 0)
     boss_pb.hp_left = data.get("hp_left", 0)
     boss_pb.boss_type = data.get("boss_type", 0)
+    boss_pb.player_id = data.get("trigger_player_id", 0)
+    boss_pb.player_name = data.get("trigger_player_name", "")
 
 @remoteserviceHandle('gate')
 def trigger_boss_2402(pro_data, player):
@@ -68,30 +69,30 @@ def trigger_boss_2402(pro_data, player):
     stage_id = boss_open_item[0]
     consume_num = boss_open_item[2]
 
-    ## 召唤石是否足够
-    #if trigger_stone_num < boss_open_item[2]:
-        #logger.debug("trigger stone is not enough!")
-        #response.res.result_no = 240201
-        #return response.SerializeToString()
-    ## 召唤次数是否达到上限
-    #if guild_boss_trigger_times >= guild_boss_item.animalOpenTime:
-        #logger.debug("trigger times reach the max!")
-        #response.res.result_no = 240202
-        #return response.SerializeToString()
+    # 召唤石是否足够
+    if trigger_stone_num < boss_open_item[2]:
+        logger.debug("trigger stone is not enough!")
+        response.res.result_no = 240201
+        return response.SerializeToString()
+    # 召唤次数是否达到上限
+    if guild_boss_trigger_times >= guild_boss_item.animalOpenTime:
+        logger.debug("trigger times reach the max!")
+        response.res.result_no = 240202
+        return response.SerializeToString()
 
-    ## 军团等级是否满足此类型boss
-    #if not boss_open_item[1]:
-        #logger.debug("guild level is not enough!")
-        #response.res.result_no = 240204
-        #return response.SerializeToString()
+    # 军团等级是否满足此类型boss
+    if not boss_open_item[1]:
+        logger.debug("guild level is not enough!")
+        response.res.result_no = 240204
+        return response.SerializeToString()
 
-    res = remote_gate['world'].guild_boss_add_remote(player.guild.g_id, stage_id, boss_type)
+    res = remote_gate['world'].guild_boss_add_remote(player.guild.g_id, stage_id, boss_type, player.base_info.id, player.base_info.base_name)
     response.res.result = res.get("result")
     if not res.get("result"):
         response.res.result_no = res.get("result_no")
         return response.SerializeToString()
 
-    player.item_package.consume_item(140001, trigger_stone_num)
+    player.item_package.consume_item(140001, consume_num)
 
     return_data = [[const.ITEM, consume_num, 140001]]
     logger.debug(return_data)
@@ -112,6 +113,15 @@ def battle_2403(pro_data, player):
     logger.debug("request %s" % request)
     response = guild_pb2.GuildBossBattleResponse()
     stage_id = request.stage_id
+
+    coolingTime = game_configs.base_config.get("AnimalCoolingTime")
+    # 冷却时间
+    if player.guild.guild_boss_last_attack_time + coolingTime >= get_current_timestamp():
+        logger.error("attack still in colding time!")
+        response.res.result = False
+        response.res.result_no = 240301
+        return response.SerializePartialToString()
+
 
     line_up = player.line_up_component
     player.fight_cache_component.stage_id = stage_id
@@ -134,11 +144,13 @@ def battle_2403(pro_data, player):
         return_data = gain(player,stage_item.Animal_Kill, const.GUILD_BOSS_KILL)
         get_return(player, return_data, response.gain)
         player.guild.guild_boss_last_attack_time = 0
-        player.guild.save_data()
+    player.guild.guild_boss_last_attack_time = int(get_current_timestamp())
+    player.guild.save_data()
 
     response.seed1 = seed1
     response.seed2 = seed2
 
+    response.res.result = res.get("result")
     if not res.get("result"):
         response.res.result_no = res.get("result_no")
         return response.SerializePartialToString()
@@ -170,20 +182,22 @@ def upgrade_guild_skill_2404(pro_data, player):
         return response.SerializeToString()
 
     for condition2 in guild_skill_item.Skill_condition[2]:
-        skill_type = condition2 / 100000
-        skill_level = condition2 % 10
-        if skill_level > guild_skills[skill_type]:
+        tmp_guild_skill_item = game_configs.guild_skill_config.get(condition2)
+        _skill_type = tmp_guild_skill_item.type
+        skill_level = tmp_guild_skill_item.Skill_level
+        if skill_level > guild_skills[_skill_type]:
             logger.debug("skill level conidtion not enough!")
             response.res.result_no = 24042
             return response.SerializeToString()
 
-    #for condition1 in guild_skill_item.Skill_condition[1]:
-        #skill_type = condition1 / 10000
-        #skill_level = condition1 % 10
-        #if skill_level > build[skill_type]:
-            #logger.debug("guild build level not enough!")
-            #response.res.result_no = 24043
-            #return response.SerializeToString()
+    for condition1 in guild_skill_item.Skill_condition[1]:
+        tmp_guild_item = game_configs.guild_config.get(condition1)
+        guild_type = tmp_guild_item.type
+        guild_level = tmp_guild_item.level
+        if guild_level > build[guild_type]:
+            logger.debug("guild build level not enough!")
+            response.res.result_no = 24043
+            return response.SerializeToString()
 
     res = remote_gate['world'].upgrade_guild_skill_remote(player.guild.g_id, skill_type, guild_skills.get(skill_type)+1)
     if res.get("result"):

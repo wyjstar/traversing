@@ -24,38 +24,50 @@ class GuildBoss(object):
         self._trigger_time = 0 # 触发时间
         self._hp_max = 0 # 最大血量
         self._boss_type = 0 # boss 类型
+        self._trigger_player_id = 0 # 召唤者id
+        self._trigger_player_name = "" # 召唤者名字
 
     def load(self, info):
         """docstring for load"""
         self._stage_id = info.get("stage_id", 0)
-        self._blue_units = info.get("blue_units", {})
+        if info.get("blue_units"):
+            self._blue_units = cPickle.loads(info.get("blue_units"))
+        else:
+            self._blue_units = {}
         self._trigger_time = info.get("trigger_time", 0)
         self._hp_max = info.get("hp_max", 0)
+        self._boss_type = info.get("boss_type", 0)
+        self._trigger_player_id = info.get("trigger_player_id", 0)
+        self._trigger_player_name = info.get("trigger_player_name", "")
 
     def property_dict(self):
-        return {
+        data = {
                 "stage_id": self._stage_id,
                 "blue_units": cPickle.dumps(self._blue_units),
                 "trigger_time": self._trigger_time,
                 "hp_max": self._hp_max,
                 "hp_left": self.hp,
-                "boss_type": self.boss_type,
+                "boss_type": self._boss_type,
+                "trigger_player_id": self._trigger_player_id,
+                "trigger_player_name": self._trigger_player_name,
                 }
-
-    def init_data(self, data):
-        """docstring for init_data"""
-        self._stage_id = data.get("stage_id", 0)
-        self._blue_units = data.get("blue_units", {})
-        self._trigger_time = 0 # 触发时间
-        self._hp_max = data.get("hp_max", False)
-
+        logger.debug("boss property_dict %s" % data)
+        return data
 
     def check_time(self):
         if not self._stage_id: return
         remain_time = game_configs.base_config.get("AnimalChallengeTime").get(self._stage_id)
         if remain_time + self._trigger_time <= get_current_timestamp():
-            self._stage_id = 0
-            self._trigger_time = 0
+            self.reset()
+
+    def reset(self):
+        self._stage_id = 0
+        self._trigger_time = 0
+        self._hp_max = 0
+        self._boss_type = 0
+        self._blue_units = {}
+        self._trigger_player_id = 0
+        self._trigger_player_name = ""
 
     @property
     def stage_id(self):

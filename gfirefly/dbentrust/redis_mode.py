@@ -15,6 +15,14 @@ class RedisObject(object):
         mm = RedisObject(self._name + ':%s' % pk)
         return mm
 
+    def getObjByKey(self, key):
+        mm = RedisObject(key)
+        return mm
+
+    def getAllKeys(self, pattern):
+        client = redis_manager.get_connection(self._name)
+        return client.keys(pattern=pattern)
+
     def new(self, data):
         newdict = {}
         for k, v in data.items():
