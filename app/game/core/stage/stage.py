@@ -146,7 +146,7 @@ class StageAward(object):
 
     @now_random.setter
     def now_random(self, v):
-        self.now_random = v
+        self._now_random = v
 
     @property
     def info(self):

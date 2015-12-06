@@ -675,8 +675,90 @@ def get_star_random_1828(pro_data, player):
     else:
         chapter_obj = chapters_info[0]
 
-    conf = chapter_obj.get_conf()
+    chapter_conf = chapter_obj.get_conf()
     chapter_obj.update(player.stage_component.calculation_star(chapter_id))
+
+    # chapter_obj.random_gift_times
+    if not chapter_obj.now_random:
+        chapter_obj.now_random = chapter_conf.starMagnification
+
+    random_num_conf = game_configs.lottery_config.get(chapter_obj.now_random)
+    if not random_num_conf.Probability:
+        # 已经达到最大值
+        response.res.result = False
+        response.res.result_no = 800
+        logger.error("get_star_random_1828, now_random  max")
+        return response.SerializePartialToString()
+    need_gold = game_configs.base_config.\
+        get('LotteryPrice')[chapter_obj.random_gift_times]
+
+    def func():
+        random_num = do_get_star_random(random_num_conf)
+        response.random_num = random_num
+        chapter_obj.now_random = random_num
+        chapter_obj.random_gift_times += 1
+        chapter_obj.star_gift = 3
+        player.stage_component.save_data()
+
+    player.pay.pay(need_gold, const.STAGE_STAR_GIFT, func)
+
+    response.res.result = True
+    logger.debug(response)
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def deal_random_1829(pro_data, player):
+    """处理随机出来的倍数，领取或者放弃
+    """
+    request = stage_request_pb2.DealRandomRequest()
+    request.ParseFromString(pro_data)
+    chapter_id = request.chapter_id
+
+    response = stage_response_pb2.DealRandomResponse()
+
+    chapters_info = get_chapter_info(chapter_id, player)
+    if len(chapters_info) != 1 or chapter_id == 1 or (chapter_id == 2 and award_type == 2) or len(chapters_info[0].award_info) == 0:
+        logger.error("deal_random_1829,chapter_info dont find,or (chapter_id == 1 and award_type == 2 )")
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializePartialToString()
+    else:
+        chapter_obj = chapters_info[0]
+
+    chapter_conf = chapter_obj.get_conf()
+    chapter_obj.update(player.stage_component.calculation_star(chapter_id))
+
+    if chapter_obj.star_gift != 3 or chapter_obj.random_gift_times == 0:
+        response.res.result = False
+        response.res.result_no = 800
+        logger.error("deal_random_1829, chapter_obj.star_gift != 3 or chapter_obj.random_gift_times == 0")
+        return response.SerializePartialToString()
+
+    drop_num = game_configs.lottery_config.get(chapter_obj.now_random).Magnification
+
+    return_data = gain(player,
+                       chapter_conf.dragonGift,
+                       const.STAGE_STAR_GIFT,
+                       multiple=drop_num)  # 获取
+
+    get_return(player, return_data, response.drops)
+
+    response.res.result = True
+    logger.debug(response)
+    return response.SerializeToString()
+
+
+def do_get_star_random(random_id_conf):
+    random_num = random.randint(1, 100)
+    v = 0
+    for random_id, x in random_id_conf.Probability.items():
+        v += x * 100
+        if v >= random_num:
+            return random_id
+    else:
+        logger.error("get_star_random_1828, do_get_star_random  random_id = 0")
+        return 0
 
 
 def get_drop(bag_id):
