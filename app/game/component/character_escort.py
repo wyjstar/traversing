@@ -147,6 +147,7 @@ class CharacterEscortComponent(Component):
     def refresh_tasks(self):
         """刷新押运列表"""
         items = {}
+        self._tasks = {}
         for _, item in game_configs.guild_task_config.items():
             items[item.id] = item.weights
 

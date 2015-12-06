@@ -97,6 +97,7 @@ def get_escort_record_1902(data, player):
             load_data_to_response(tasks, response.tasks)
 
     elif record_type == 2: # 我的劫运记录
+        logger.debug("rob_records======================== %s" % escort_component.rob_records)
         tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.rob_records)
         load_data_to_response(tasks, response.tasks)
 
@@ -235,12 +236,12 @@ def receive_protect_task(player, task_id):
         logger.error("can't find this task_info!")
         return {'result': False, 'result_no': 190501}
 
-    res = remote_gate["world"].create_guild_remote(player.guild.g_id, task_info)
+    res = remote_gate["world"].get_guild_info_remote(player.guild.g_id, "build", 0)
     if not res.get("result"):
         logger.error("get guild info error!")
-        return {'result': False, 'result_no': 190511}
+        return res
 
-    build = res.get("guild_info").get("build")
+    build = res.get("build")
     guild_item = game_configs.guild_config.get(4).get(build.get(4))
 
 

@@ -6,11 +6,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 2,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 2,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30002,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30002,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -28,11 +28,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 3,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 3,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30003,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30003,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -50,11 +50,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 4,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 4,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30004,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30004,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -72,11 +72,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 5,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 5,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30005,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30005,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -94,11 +94,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 6,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 6,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30006,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30006,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -116,11 +116,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 7,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 7,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30007,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30007,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -138,11 +138,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 8,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 8,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30008,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30008,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -160,11 +160,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 9,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 9,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30009,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30009,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -184,7 +184,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 3,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 3,  ["profit_atk"] = 1100,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["60"] = {
   [1] = 5025,}
 ,  ["24"] = {
@@ -200,7 +200,7 @@ guild_config={
   ["107"] = {
   [1] = 36,  [2] = 36,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 1100,  ["id"] = 80003,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80003,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -220,7 +220,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 7,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 7,  ["profit_atk"] = 5100,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["76"] = {
   [1] = 5064,}
 ,  ["85"] = {
@@ -236,7 +236,7 @@ guild_config={
   ["107"] = {
   [1] = 58,  [2] = 58,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 5100,  ["id"] = 80007,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80007,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -254,11 +254,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 5,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 50001,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 50001,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -278,7 +278,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["40"] = {
   [1] = 5004,}
 ,  ["50"] = {
@@ -294,7 +294,7 @@ guild_config={
   ["107"] = {
   [1] = 30,  [2] = 30,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10001,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10001,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -324,7 +324,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 2,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 2,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["33"] = {
   [1] = 5013,}
 ,  ["22"] = {
@@ -340,7 +340,7 @@ guild_config={
   ["107"] = {
   [1] = 33,  [2] = 33,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10002,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10002,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -374,11 +374,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20001,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20001,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.05,  ["4"] = 0,  ["3"] = 0.05,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -410,11 +410,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 2,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 2,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20002,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20002,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.1,  ["4"] = 0,  ["3"] = 0.1,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -446,11 +446,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 3,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 3,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20003,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20003,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.15,  ["4"] = 0,  ["3"] = 0.15,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -482,11 +482,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 4,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 4,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20004,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20004,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.2,  ["4"] = 0,  ["3"] = 0.2,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -518,11 +518,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 5,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 5,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20005,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20005,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.25,  ["4"] = 0,  ["3"] = 0.25,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -550,7 +550,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 5,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 5,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["60"] = {
   [1] = 5044,}
 ,  ["15"] = {
@@ -566,7 +566,7 @@ guild_config={
   ["107"] = {
   [1] = 46,  [2] = 46,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10005,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10005,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -600,11 +600,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 7,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 7,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20007,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20007,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.35,  ["4"] = 0,  ["3"] = 0.35,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -632,7 +632,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 6,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 6,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["51"] = {
   [1] = 5053,}
 ,  ["17"] = {
@@ -648,7 +648,7 @@ guild_config={
   ["107"] = {
   [1] = 52,  [2] = 52,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10006,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10006,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -678,7 +678,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 4,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 4,  ["profit_atk"] = 1800,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["39"] = {
   [1] = 5033,}
 ,  ["26"] = {
@@ -694,7 +694,7 @@ guild_config={
   ["107"] = {
   [1] = 40,  [2] = 40,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 1800,  ["id"] = 80004,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80004,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -714,7 +714,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 8,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 8,  ["profit_atk"] = 6600,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["42"] = {
   [1] = 5072,}
 ,  ["105"] = {
@@ -730,7 +730,7 @@ guild_config={
   ["107"] = {
   [1] = 64,  [2] = 64,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 6600,  ["id"] = 80008,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80008,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -750,7 +750,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 8,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 8,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["42"] = {
   [1] = 5072,}
 ,  ["105"] = {
@@ -766,7 +766,7 @@ guild_config={
   ["107"] = {
   [1] = 64,  [2] = 64,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10008,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10008,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -796,7 +796,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 9,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 9,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["115"] = {
   [1] = 5085,}
 ,  ["23"] = {
@@ -812,7 +812,7 @@ guild_config={
   ["107"] = {
   [1] = 70,  [2] = 70,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10009,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10009,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -842,7 +842,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 10,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 10,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["25"] = {
   [1] = 5001,}
 ,  ["50"] = {
@@ -858,7 +858,7 @@ guild_config={
   ["107"] = {
   [1] = 80,  [2] = 80,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10010,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10010,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -886,11 +886,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 6,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 60001,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 60001,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -910,7 +910,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["profit_atk"] = 200,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["40"] = {
   [1] = 5004,}
 ,  ["50"] = {
@@ -926,7 +926,7 @@ guild_config={
   ["107"] = {
   [1] = 30,  [2] = 30,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 200,  ["id"] = 80001,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80001,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -946,7 +946,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 5,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 5,  ["profit_atk"] = 2700,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["60"] = {
   [1] = 5044,}
 ,  ["15"] = {
@@ -962,7 +962,7 @@ guild_config={
   ["107"] = {
   [1] = 46,  [2] = 46,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 2700,  ["id"] = 80005,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80005,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -982,7 +982,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 9,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 9,  ["profit_atk"] = 8200,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["115"] = {
   [1] = 5085,}
 ,  ["23"] = {
@@ -998,7 +998,7 @@ guild_config={
   ["107"] = {
   [1] = 70,  [2] = 70,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 8200,  ["id"] = 80009,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80009,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -1016,11 +1016,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 3,  ["level"] = 10,  ["animalOpenTime"] = 6,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 3,  ["level"] = 10,  ["profit_atk"] = 10000,  ["animalOpenTime"] = 6,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 10000,  ["id"] = 40010,  ["escortTimeMax"] = 3,  ["promotion"] = {
+,  ["snatchTimeMax"] = 3,  ["id"] = 40010,  ["escortTimeMax"] = 3,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1044,11 +1044,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 3,  ["level"] = 9,  ["animalOpenTime"] = 6,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 3,  ["level"] = 9,  ["profit_atk"] = 8200,  ["animalOpenTime"] = 6,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 8200,  ["id"] = 40009,  ["escortTimeMax"] = 3,  ["promotion"] = {
+,  ["snatchTimeMax"] = 3,  ["id"] = 40009,  ["escortTimeMax"] = 3,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1072,11 +1072,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 3,  ["level"] = 8,  ["animalOpenTime"] = 6,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 3,  ["level"] = 8,  ["profit_atk"] = 6600,  ["animalOpenTime"] = 6,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 6600,  ["id"] = 40008,  ["escortTimeMax"] = 3,  ["promotion"] = {
+,  ["snatchTimeMax"] = 3,  ["id"] = 40008,  ["escortTimeMax"] = 3,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1106,11 +1106,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 6,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 6,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20006,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20006,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.3,  ["4"] = 0,  ["3"] = 0.3,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -1136,11 +1136,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 2,  ["level"] = 6,  ["animalOpenTime"] = 4,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 2,  ["level"] = 6,  ["profit_atk"] = 3800,  ["animalOpenTime"] = 4,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 3800,  ["id"] = 40006,  ["escortTimeMax"] = 2,  ["promotion"] = {
+,  ["snatchTimeMax"] = 2,  ["id"] = 40006,  ["escortTimeMax"] = 2,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1166,7 +1166,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 3,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 3,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["60"] = {
   [1] = 5025,}
 ,  ["24"] = {
@@ -1182,7 +1182,7 @@ guild_config={
   ["107"] = {
   [1] = 36,  [2] = 36,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10003,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10003,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -1210,11 +1210,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 2,  ["level"] = 4,  ["animalOpenTime"] = 4,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 2,  ["level"] = 4,  ["profit_atk"] = 1800,  ["animalOpenTime"] = 4,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 1800,  ["id"] = 40004,  ["escortTimeMax"] = 2,  ["promotion"] = {
+,  ["snatchTimeMax"] = 2,  ["id"] = 40004,  ["escortTimeMax"] = 2,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1238,11 +1238,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 10,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 10,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30010,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30010,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -1260,11 +1260,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 1,  ["level"] = 2,  ["animalOpenTime"] = 2,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 1,  ["level"] = 2,  ["profit_atk"] = 600,  ["animalOpenTime"] = 2,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 600,  ["id"] = 40002,  ["escortTimeMax"] = 1,  ["promotion"] = {
+,  ["snatchTimeMax"] = 1,  ["id"] = 40002,  ["escortTimeMax"] = 1,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1288,11 +1288,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 1,  ["level"] = 1,  ["animalOpenTime"] = 2,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 1,  ["level"] = 1,  ["profit_atk"] = 200,  ["animalOpenTime"] = 2,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 200,  ["id"] = 40001,  ["escortTimeMax"] = 1,  ["promotion"] = {
+,  ["snatchTimeMax"] = 1,  ["id"] = 40001,  ["escortTimeMax"] = 1,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1316,11 +1316,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 1,  ["level"] = 3,  ["animalOpenTime"] = 2,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 1,  ["level"] = 3,  ["profit_atk"] = 1100,  ["animalOpenTime"] = 2,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 1100,  ["id"] = 40003,  ["escortTimeMax"] = 1,  ["promotion"] = {
+,  ["snatchTimeMax"] = 1,  ["id"] = 40003,  ["escortTimeMax"] = 1,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1344,11 +1344,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 2,  ["level"] = 5,  ["animalOpenTime"] = 4,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 2,  ["level"] = 5,  ["profit_atk"] = 2700,  ["animalOpenTime"] = 4,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 2700,  ["id"] = 40005,  ["escortTimeMax"] = 2,  ["promotion"] = {
+,  ["snatchTimeMax"] = 2,  ["id"] = 40005,  ["escortTimeMax"] = 2,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1372,11 +1372,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 2,  ["level"] = 7,  ["animalOpenTime"] = 4,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 2,  ["level"] = 7,  ["profit_atk"] = 5100,  ["animalOpenTime"] = 4,  ["cohesion"] = {
 }
 ,  ["type"] = 4,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 5100,  ["id"] = 40007,  ["escortTimeMax"] = 2,  ["promotion"] = {
+,  ["snatchTimeMax"] = 2,  ["id"] = 40007,  ["escortTimeMax"] = 2,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
   ["1"] = {
@@ -1402,7 +1402,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 2,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 2,  ["profit_atk"] = 600,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["33"] = {
   [1] = 5013,}
 ,  ["22"] = {
@@ -1418,7 +1418,7 @@ guild_config={
   ["107"] = {
   [1] = 33,  [2] = 33,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 600,  ["id"] = 80002,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80002,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -1438,7 +1438,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 6,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 6,  ["profit_atk"] = 3800,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["51"] = {
   [1] = 5053,}
 ,  ["17"] = {
@@ -1454,7 +1454,7 @@ guild_config={
   ["107"] = {
   [1] = 52,  [2] = 52,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 3800,  ["id"] = 80006,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80006,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -1474,7 +1474,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 10,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 10,  ["profit_atk"] = 10000,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["25"] = {
   [1] = 5001,}
 ,  ["50"] = {
@@ -1490,7 +1490,7 @@ guild_config={
   ["107"] = {
   [1] = 80,  [2] = 80,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 10000,  ["id"] = 80010,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 80010,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -1514,11 +1514,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 9,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 9,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20009,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20009,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.45,  ["4"] = 0,  ["3"] = 0.45,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -1546,7 +1546,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 4,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 4,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["39"] = {
   [1] = 5033,}
 ,  ["26"] = {
@@ -1562,7 +1562,7 @@ guild_config={
   ["107"] = {
   [1] = 40,  [2] = 40,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10004,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10004,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -1596,11 +1596,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 8,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 8,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20008,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20008,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.4,  ["4"] = 0,  ["3"] = 0.4,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -1632,11 +1632,11 @@ guild_config={
 ,}
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 10,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 10,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 2,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 20010,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 20010,  ["escortTimeMax"] = 0,  ["promotion"] = {
   ["1"] = 0.5,  ["4"] = 0,  ["3"] = 0.5,  ["2"] = 0,}
 ,  ["animalOpen"] = {
 }
@@ -1662,11 +1662,11 @@ guild_config={
 }
 ,  ["support"] = {
 }
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 1,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
 }
 ,  ["type"] = 3,  ["collectSupportGift"] = {
 }
-,  ["profit_atk"] = 0,  ["id"] = 30001,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 30001,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }
@@ -1686,7 +1686,7 @@ guild_config={
   ["107"] = {
   [1] = 2,  [2] = 10,  [3] = 2,}
 ,}
-,  ["protectionEscortTimeMax"] = 0,  ["level"] = 7,  ["animalOpenTime"] = 0,  ["cohesion"] = {
+,  ["protectionEscortTimeMax"] = 0,  ["level"] = 7,  ["profit_atk"] = 0,  ["animalOpenTime"] = 0,  ["cohesion"] = {
   ["76"] = {
   [1] = 5064,}
 ,  ["85"] = {
@@ -1702,7 +1702,7 @@ guild_config={
   ["107"] = {
   [1] = 58,  [2] = 58,  [3] = 2,}
 ,}
-,  ["profit_atk"] = 0,  ["id"] = 10007,  ["escortTimeMax"] = 0,  ["promotion"] = {
+,  ["snatchTimeMax"] = 0,  ["id"] = 10007,  ["escortTimeMax"] = 0,  ["promotion"] = {
 }
 ,  ["animalOpen"] = {
 }

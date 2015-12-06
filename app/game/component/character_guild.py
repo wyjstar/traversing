@@ -44,7 +44,7 @@ class CharacterGuildComponent(Component):
         self._exit_time = character_info.get("exit_time")
         self._apply_guilds = character_info.get("apply_guilds")
         self._guild_boss_last_attack_time = character_info.get("guild_boss_last_attack_time", 0)
-        self._mobai = character_info.get("guild_mobai")
+        self._mobai = character_info.get("guild_mobai", [0, [], 1])
         self._mine_help = character_info.get("mine_help")
 
     def save_data(self):
