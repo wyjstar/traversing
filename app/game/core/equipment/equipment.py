@@ -147,12 +147,13 @@ def rand_pick_attr(attr):
                 _, attrValueType, valueMin, valueMax = attr[k]
             attrValue = int(valueMin + random.random() * (valueMax - valueMin))
             # add increment formula
-            # temporary
-            if valueMax == valueMin:
-                valueMax += 1
             inputs = {'EquNumRandom': attrValue,'EquNumMax': valueMax, 'EquNumMin': valueMin, 'grow': attrIncrement}
             if valueMax != valueMin:
                 formula = game_configs.formula_config.get("equGrowUpParameter").get("formula")
+                assert formula!=None, "formula can not be None"
+                attrIncrement = eval(formula, inputs)
+            else:
+                formula = game_configs.formula_config.get("equGrowUpParameter2").get("formula")
                 assert formula!=None, "formula can not be None"
                 attrIncrement = eval(formula, inputs)
             logger.debug("increment value: %s %s" % (attrIncrement, attrIncrement))
