@@ -235,8 +235,17 @@ def receive_protect_task(player, task_id):
         logger.error("can't find this task_info!")
         return {'result': False, 'result_no': 190501}
 
+    res = remote_gate["world"].create_guild_remote(player.guild.g_id, task_info)
+    if not res.get("result"):
+        logger.error("get guild info error!")
+        return {'result': False, 'result_no': 190511}
+
+    build = res.get("guild_info").get("build")
+    guild_item = game_configs.guild_config.get(4).get(build.get(4))
+
+
     escort_component = player.escort_component
-    if escort_component.start_protect_times >= 2: #todo:config
+    if escort_component.start_protect_times >= guild_item.escortTimeMax:
         logger.error("start_protect_times not enough!")
         return {'result': False, 'result_no': 190502}
 

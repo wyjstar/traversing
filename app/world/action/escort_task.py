@@ -141,6 +141,13 @@ def add_player_remote(guild_id, task_id, player_info, protect_or_rob, rob_no):
         logger.error("押运人数已达上限")
         return {"result": False, "result_no": 190809}
 
+    if rob_task_info:
+        for robber in rob_task_info.get("robbers"):
+            # 已存在该玩家，则不能再次加入
+            if robber.get("id") == player_info.get("id"):
+                logger.error("已存在该玩家，则不能再次加入")
+                return {'result': False, 'result_no': 190802}
+
     player_guild = guild_manager_obj.get_guild_obj(player_info.get("g_id"))
     res = task.add_player(player_info, protect_or_rob, rob_no, player_guild.guild_info())
     rob_no = -1
