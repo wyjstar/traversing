@@ -120,6 +120,7 @@ def encourage_heros_1703(data, player):
     boss = player.world_boss.get_boss(boss_id)
     base_config = boss.get_base_config()
 
+    times= 0
     if request.finance_type == 1:
         # 金币鼓舞
         goldcoin_inspire_price = base_config.get("coin_inspire_price")
@@ -155,6 +156,7 @@ def encourage_heros_1703(data, player):
         player.finance.coin -= need_coin
         player.finance.save_data()
         boss.encourage_coin_num += 1
+        times = boss.encourage_coin_num
         boss.last_coin_encourage_time = get_current_timestamp()
 
     if request.finance_type == 2:
@@ -179,8 +181,10 @@ def encourage_heros_1703(data, player):
             return response.SerializePartialToString()
         def func():
             boss.encourage_gold_num += 1
+            times = boss.encourage_gold_num
         player.pay.pay(need_gold, const.ENCOURAGE_HEROS, func)
 
+    tlog_action.log('WorldBossInReward', player, request.finance_type, times)
     player.world_boss.save_data()
     response.result = True
     logger.debug("encourage_coin_num %s" % boss.encourage_coin_num)

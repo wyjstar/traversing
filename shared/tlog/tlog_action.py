@@ -870,6 +870,60 @@ def rob_treasure_truce(player_data, num, num_day):
                               NumDay=num_day)
 
 
+def world_boss_rank_reward(player_id, rank, damage, mail_id):
+
+    log4tx.world_boss_rank_reward(GameSvrId=game_server_id,
+                                  dtEventTime=xtime.strdatetime(),
+                                  GameAppID=game_app_id,
+                                  OpenID=player_id,
+                                  PlatID=plat_id,
+                                  Rank=rank,
+                                  Damage=damage,
+                                  MailID=mail_id)
+
+
+def world_boss_add_up_reward(player_id, damage, mail_id):
+
+    log4tx.world_boss_add_up_reward(GameSvrId=game_server_id,
+                                    dtEventTime=xtime.strdatetime(),
+                                    GameAppID=game_app_id,
+                                    OpenID=player_id,
+                                    PlatID=plat_id,
+                                    Damage=damage,
+                                    MailID=mail_id)
+
+
+def world_boss_in_reward(player_id, mail_id):
+
+    log4tx.world_boss_in_reward(GameSvrId=game_server_id,
+                                dtEventTime=xtime.strdatetime(),
+                                GameAppID=game_app_id,
+                                OpenID=player_id,
+                                PlatID=plat_id,
+                                MailID=mail_id)
+
+
+def world_boss_encourage(player_data, type, times):
+
+    log4tx.world_boss_encourage(GameSvrId=game_server_id,
+                                dtEventTime=xtime.strdatetime(),
+                                GameAppID=game_app_id,
+                                OpenID=player_data.base_info.id,
+                                PlatID=plat_id,
+                                Type=type,
+                                Times=times)
+
+
+def unpar_upgrade(player_data, level):
+
+    log4tx.world_boss_encourage(GameSvrId=game_server_id,
+                                dtEventTime=xtime.strdatetime(),
+                                GameAppID=game_app_id,
+                                OpenID=player_data.base_info.id,
+                                PlatID=plat_id,
+                                Level=level)
+
+
 # TLOG分类打印函数
 
 tlog_funcs = {}
@@ -942,6 +996,11 @@ tlog_funcs['OvercomeAward'] = overcome_award
 tlog_funcs['OvercomeBuyBuff'] = overcome_Buy_Buff
 tlog_funcs['ComposeTreasure'] = compose_treasure
 tlog_funcs['RobTreasureTruce'] = rob_treasure_truce
+tlog_funcs['WorldBossRankReward'] = world_boss_rank_reward
+tlog_funcs['WorldBossAddUpReward'] = world_boss_add_up_reward
+tlog_funcs['WorldBossInReward'] = world_boss_in_reward
+tlog_funcs['WorldBossEncourage'] = world_boss_encourage
+tlog_funcs['UnparUpgrade'] = unpar_upgrade
 
 
 def log(mod, *args, **kwds):

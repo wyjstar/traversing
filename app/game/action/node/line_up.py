@@ -257,6 +257,8 @@ def unpar_upgrade_705(pro_data, player):
     consume(player, resource2, const.UNPAR_UPGRADE)
     _line_up.unpar_level = _line_up.unpar_level + 1
     _line_up.save_data()
+    tlog_action.log('UnparUpgrade', player,
+                    _line_up.unpar_level)
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
