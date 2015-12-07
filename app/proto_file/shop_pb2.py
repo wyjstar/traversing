@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='shop.proto',
   package='',
-  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"%\n\x10RefreshShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\"!\n\x0cGetShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\".\n\x0bShopRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x05\x12\x12\n\nitem_count\x18\x02 \x03(\x05\"\xb7\x01\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x16limit_item_current_num\x18\x04 \x01(\x05\x12\x1a\n\x12limit_item_max_num\x18\x05 \x01(\x05\"\xd1\x01\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\x12\x10\n\x08\x62uyed_id\x18\x03 \x03(\x05\x12\x10\n\x08luck_num\x18\x04 \x01(\x05\x12\x15\n\rrefresh_times\x18\x05 \x01(\x05\x12\x15\n\rlimit_item_id\x18\x06 \x03(\x05\x12\x16\n\x0elimit_item_num\x18\x07 \x03(\x05\x12%\n\x0evip_limit_item\x18\x08 \x03(\x0b\x32\r.VipLimitItem\"1\n\x0cVipLimitItem\x12\x0f\n\x07item_id\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05')
+  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"%\n\x10RefreshShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\"!\n\x0cGetShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\".\n\x0bShopRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x05\x12\x12\n\nitem_count\x18\x02 \x03(\x05\"\xb7\x01\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x16limit_item_current_num\x18\x04 \x01(\x05\x12\x1a\n\x12limit_item_max_num\x18\x05 \x01(\x05\"\xfa\x01\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\x12\x10\n\x08\x62uyed_id\x18\x03 \x03(\x05\x12\x10\n\x08luck_num\x18\x04 \x01(\x05\x12\x15\n\rrefresh_times\x18\x05 \x01(\x05\x12\x15\n\rlimit_item_id\x18\x06 \x03(\x05\x12\x16\n\x0elimit_item_num\x18\x07 \x03(\x05\x12%\n\x0evip_limit_item\x18\x08 \x03(\x0b\x32\r.VipLimitItem\x12\'\n\x07\x63onsume\x18\t \x01(\x0b\x32\x16.GameResourcesResponse\"1\n\x0cVipLimitItem\x12\x0f\n\x07item_id\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05')
 
 
 
@@ -229,6 +229,13 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='consume', full_name='GetShopItemsResponse.consume', index=8,
+      number=9, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -239,7 +246,7 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=337,
-  serialized_end=546,
+  serialized_end=587,
 )
 
 
@@ -273,8 +280,8 @@ _VIPLIMITITEM = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=548,
-  serialized_end=597,
+  serialized_start=589,
+  serialized_end=638,
 )
 
 _SHOPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -282,6 +289,7 @@ _SHOPRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCES
 _SHOPRESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _GETSHOPITEMSRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _GETSHOPITEMSRESPONSE.fields_by_name['vip_limit_item'].message_type = _VIPLIMITITEM
+_GETSHOPITEMSRESPONSE.fields_by_name['consume'].message_type = common_pb2._GAMERESOURCESRESPONSE
 DESCRIPTOR.message_types_by_name['RefreshShopItems'] = _REFRESHSHOPITEMS
 DESCRIPTOR.message_types_by_name['GetShopItems'] = _GETSHOPITEMS
 DESCRIPTOR.message_types_by_name['ShopRequest'] = _SHOPREQUEST

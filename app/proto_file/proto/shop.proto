@@ -39,6 +39,7 @@ message GetShopItemsResponse
     repeated int32 limit_item_id = 6;
     repeated int32 limit_item_num = 7;
     repeated VipLimitItem vip_limit_item = 8;
+    optional GameResourcesResponse consume = 9; //统一消耗
 }
 
 message VipLimitItem
