@@ -735,6 +735,10 @@ def get_star_random_1828(pro_data, player):
         return response.SerializePartialToString()
     need_gold = game_configs.base_config.\
         get('LotteryPrice')[chapter_obj.random_gift_times]
+    if need_gold > player.finance.gold:
+        response.res.result = False
+        response.res.result_no = 102
+        return response.SerializeToString()
 
     def func():
         random_num = do_get_star_random(random_num_conf)
