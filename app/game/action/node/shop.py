@@ -379,7 +379,7 @@ def shop_buy_505(pro_data, player):
         player.pay.pay(need_gold, get_reason(shop_item.get('type')), func)
 
     player.shop.save_data()
-    tlog_action.log('RefreshShop', player, str(request.ids), str(request.item_count))
+    tlog_action.log('ShopBuy', player, str(request.ids), str(request.item_count))
     return response.SerializeToString()
 
 REASON_HASH = {3: const.COMMON_BUY_ITEM,
