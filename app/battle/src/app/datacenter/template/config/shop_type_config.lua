@@ -102,7 +102,7 @@ shop_type_config={
 }
 ,  ["luckyValueLimited"] = 0,  ["freeRefreshTimes"] = 0,  ["luckyValueResetTime"] = "0",  ["refreshPrice"] = {
 }
-,  ["freeRefreshTime"] = "-1",  ["res1Type"] = 10,  ["res2Type"] = 0,  ["allBuyRefresh"] = 0,  ["refreshItem"] = {
+,  ["freeRefreshTime"] = "0:00:00",  ["res1Type"] = 10,  ["res2Type"] = 0,  ["allBuyRefresh"] = 0,  ["refreshItem"] = {
 }
 ,}
 ,  [18] = {

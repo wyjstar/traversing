@@ -33,8 +33,11 @@ class GuildManager(object):
         guild_obj = self._guilds.get(g_id)
         if guild_obj:
             return guild_obj
+        else:
+            print("no guild exist1!")
         data = tb_guild_info.getObj(g_id).hgetall()
         if not data:
+            print("no guild exist2!")
             return None
         else:
             guild_obj = Guild()

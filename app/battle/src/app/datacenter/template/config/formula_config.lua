@@ -294,7 +294,9 @@ formula_config={
 ,  [147] = {
   ["precondition"] = "1",  ["formula"] = "1.5+heroBreak*0.1",  ["clientPrecondition"] = "1",  ["id"] = 147,  ["clientFormula"] = "result=1.5+heroBreak*0.1",  ["key"] = "hjqyDamage",}
 ,  [148] = {
-  ["precondition"] = "1",  ["formula"] = "grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["clientPrecondition"] = "1",  ["id"] = 148,  ["clientFormula"] = "result=grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["key"] = "equGrowUpParameter",}
+  ["precondition"] = "EquNumMax > EquNumMin",  ["formula"] = "grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["clientPrecondition"] = "EquNumMax > EquNumMin",  ["id"] = 148,  ["clientFormula"] = "result=grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["key"] = "equGrowUpParameter",}
+,  [149] = {
+  ["precondition"] = "EquNumMax == EquNumMin",  ["formula"] = "grow*1",  ["clientPrecondition"] = "EquNumMax == EquNumMin",  ["id"] = 149,  ["clientFormula"] = "result=grow*1",  ["key"] = "equGrowUpParameter2",}
 ,  [150] = {
   ["precondition"] = "1",  ["formula"] = "damage_percent*currency",  ["clientPrecondition"] = "1",  ["id"] = 150,  ["clientFormula"] = "result=damage_percent*currency",  ["key"] = "Activitycurrency",}
 ,  [151] = {

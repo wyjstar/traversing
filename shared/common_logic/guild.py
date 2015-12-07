@@ -109,6 +109,9 @@ class Guild(object):
         self._apply = data.get("apply")
         self._build = data.get("build")
         self._escort_tasks_ids = data.get("escort_tasks_ids", [])
+        for i in range(0, 3):
+            self._build[i+1] = 10
+
 
         # 初始化粮草押运信息
         tb_guild_escort_tasks = tb_guild_info.getObj(self._g_id).getObj('escort_tasks')
