@@ -555,7 +555,8 @@ def start_rob_escort(player, task_id, response, task_guild_id, rob_no):
         # 参与劫运次数
         task = res.get("task")
         for no, robber in enumerate(res.get("rob_task_info", {}).get("robbers", [])):
-            push_message("add_guild_activity_times_remote", int(robber.get("id")), task.get("task_no"), 2)
+            if res.get("rob_task_info").get("rob_result", False):
+                push_message("add_guild_activity_times_remote", int(robber.get("id")), task.get("task_no"), 2)
             if no == 0: continue
             push_message("remove_escort_in_times_remote", int(robber.get("id")), 2)
     return res

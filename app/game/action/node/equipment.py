@@ -53,11 +53,6 @@ def enhance_equipment_402(pro_data, player):
     enhance_type = request.type
 
     response = equipment_response_pb2.EnhanceEquipmentResponse()
-    open_stage_id = game_configs.base_config.get('equUpgradeOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state != 1:
-        response.res.result = False
-        response.res.result_no = 837
-        return response.SerializeToString()
 
     enhance_info = enhance_equipment(equipment_id,
                                      enhance_type,
@@ -109,12 +104,6 @@ def compose_equipment_403(pro_data, player):
     equipment_chip_no = request.no
     response = equipment_response_pb2.ComposeEquipmentResponse()
 
-    open_stage_id = game_configs.base_config.get('equAssembleOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state != 1:
-        response.res.result = False
-        response.res.result_no = 837
-        return response.SerializeToString()
-
     data = compose_equipment(equipment_chip_no, player)
     result = data.get('result')
     res = response.res
@@ -159,12 +148,6 @@ def melting_equipment_405(pro_data, player):
     request = equipment_request_pb2.MeltingEquipmentRequest()
     request.ParseFromString(pro_data)
     response = equipment_response_pb2.MeltingEquipmentResponse()
-
-    open_stage_id = game_configs.base_config.get('equRefundOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state != 1:
-        response.res.result = False
-        response.res.result_no = 837
-        return response.SerializeToString()
 
     equipment_ids = request.id
 

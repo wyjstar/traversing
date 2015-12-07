@@ -70,7 +70,7 @@ class CharacterFundActivity(Component):
             if not self.owner.base_info.is_activiy_open(aid):
                 logger.info('activity id:%s is close', aid)
                 del self._data[aid]
-            if self._data[aid]['state'] == 1:
+            elif self._data[aid]['state'] == 1:
                 set_date = set(self._data[aid]['accumulate_days'])
                 set_date.add(_date_now)
                 self._data[aid]['accumulate_days'] = list(set_date)

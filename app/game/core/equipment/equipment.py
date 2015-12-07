@@ -375,6 +375,7 @@ class Equipment(object):
         # 11：加韧性
 
         result = {}
+        result_percent = {}
         varNames = {1: 'baseHp',
                     2: 'baseAtk',
                     3: 'basePdef',
@@ -438,7 +439,8 @@ class Equipment(object):
                     allVars[varNames2[k]] += ai
             elif avt == 2:
                 #if k not in varNames3:
-                allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
+                #allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
+                result_percent[varNames3[k]+"Percent"] = av
                 #jelse:
                 #    raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
         for k, v in self._attribute.minor_attr.items():
@@ -450,7 +452,8 @@ class Equipment(object):
                     allVars[varNames2[k]] += ai
             elif avt == 2:
                 #if k not in varNames3:
-                allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
+                #allVars[varNames2[k]] += (av*hero_self_attr.get(varNames3[k], 0))
+                result_percent[varNames3[k]+"Percent"] = av
                 #else:
                 #    raise Exception('error %s:%s:%s' % avt, k, varNames3[k])
 
@@ -471,6 +474,9 @@ class Equipment(object):
             if not formula:
                 raise Exception('cant find formula by name:%s' % k)
             result[k] = eval(formula.formula, allVars, allVars)
+
+        result.update(result_percent)
+        logger.debug("result_percent %s" % result_percent)
 
         # print 'result:'*4, self._base_info.equipment_no, result
         # print '-'*32

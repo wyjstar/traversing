@@ -81,7 +81,7 @@ def get_online_and_level_gift_data_1150(data, player):
 
 
 @remoteserviceHandle('gate')
-def get_online_and_level_gift_data_1151(data, player):
+def take_recharge_gift_1151(data, player):
     request = recharge_pb2.GetRechargeGiftRequest()
     request.ParseFromString(data)
 
@@ -102,9 +102,9 @@ def get_tomorrow_gift_1122(data, player):
     if not tomorrow_gift:
         logger.error('tomorrow gift is not exist')
         return response.SerializeToString()
-    if not tomorrow_gift.get('is_open'):
-        logger.error('tomorrow gift is not open')
-        return response.SerializeToString()
+    # if not tomorrow_gift.get('is_open'):
+    #     logger.error('tomorrow gift is not open')
+    #     return response.SerializeToString()
     if player.base_info.tomorrow_gift != 0:
         logger.error('tomorrow gift is taken!')
         return response.SerializeToString()

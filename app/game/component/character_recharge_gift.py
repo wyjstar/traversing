@@ -62,7 +62,7 @@ class CharacterRechargeGift(Component):
         self.save_data()
         logger.debug(self._recharge)
 
-        self.owner.fund.recharge(recharge)
+        self.owner.fund_activity.recharge(recharge)
 
     def type_process(self, activity, recharge):
         activity_id = activity.get('id')
@@ -172,6 +172,11 @@ class CharacterRechargeGift(Component):
             recharge_data = self._recharge[recharge_item.gift_id]
             for data in recharge_item.data:
                 if recharge_item.gift_type == 8 and data.recharge_time in recharge_data:
+                    if recharge_data[data.recharge_time] == 0:
+                        response.res.result = False
+                        logger.error('take recharge repeat:%s', recharge_data)
+                        break
+
                     self._get_activity_gift(recharge_item.gift_id, response)
                     recharge_data[data.recharge_time] = 0
                     if not recharge_data:

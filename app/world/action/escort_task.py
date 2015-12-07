@@ -277,7 +277,8 @@ def start_rob_escort_remote(guild_id, task_id, rob_no, player_id):
         robbers_num = len(rob_task_info.get("robbers"))
         peoplePercentage = task_item.peoplePercentage.get(robbers_num)
         robbedPercentage = task_item.robbedPercentage.get(robbed_num+1)
-        mail_arg1 = calculate_reward(peoplePercentage, robbedPercentage, "SnatchReward", task_item)
+        robber_guild = guild_manager_obj.get_guild_obj(rob_task_info.get("rob_guild_info").get("id"))
+        mail_arg1 = calculate_reward(peoplePercentage, robbedPercentage, "SnatchReward", task_item, robber_guild)
         if robbed_num + 1 >= 2:
             if task_id in guild.escort_tasks_can_rob:
                 guild.escort_tasks_can_rob.remove(task_id)

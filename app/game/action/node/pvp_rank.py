@@ -318,13 +318,6 @@ def pvp_fight_request_1505(data, player):
         response.res.result_no = 150508
         return response.SerializeToString()
 
-    open_stage_id = game_configs.base_config.get('arenaOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state != 1:
-        logger.error('pvp_fight_request_1505, stage not open')
-        response.res.result = False
-        response.res.result_no = 837
-        return response.SerializeToString()
-
     before_player_rank = tb_pvp_rank.zscore(player.base_info.id)
     if not before_player_rank:
         before_player_rank = int(tb_pvp_rank.getObj('incr').incr())

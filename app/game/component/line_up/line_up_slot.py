@@ -264,10 +264,10 @@ class LineUpSlotComponent(Component):
         hero_no = hero.hero_no
         quality = hero.hero_info.get("quality")
         break_skill_buff_ids = []
-        hp = attr.get("hpArray")
-        atk = attr.get("atkArray")
-        physical_def = attr.get("physicalDefArray")
-        magic_def = attr.get("magicDefArray")
+        hp = attr.get("hpHeroLine")
+        atk = attr.get("atkHeroLine")
+        physical_def = attr.get("physicalDefHeroLine")
+        magic_def = attr.get("magicDefHeroLine")
         hit = attr.get("hitArray")
         dodge = attr.get("dodgeArray")
         cri = attr.get("criArray")
@@ -331,6 +331,7 @@ class LineUpSlotComponent(Component):
         #self._owner.guild_attr
         logger.debug("update_lord_info========== %s" % self._owner.guild_attr)
         unit = self._owner.get_first_slot().slot_attr
+        logger.debug("update_lord_info========== %s" % unit)
         if not unit:
             return
         lord_obj = tb_character_info.getObj(self._owner._owner.character_id)

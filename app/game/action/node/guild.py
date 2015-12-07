@@ -152,13 +152,6 @@ def join_guild_802(data, player):
             - the_time
         return response.SerializeToString()
 
-    open_stage_id = game_configs.base_config.get('guildOpenStage')
-    if player.stage_component.get_stage(open_stage_id).state != 1:
-        # "未完成指定关卡"
-        response.res.result = False
-        response.res.result_no = 837
-        return response.SerializeToString()
-
     if m_g_id != 0:
         # "您已加入公会"
         response.res.result = False
@@ -965,12 +958,6 @@ def deal_invite_join_1804(data, player):
     response.res.result = True
 
     if res:
-        open_stage_id = game_configs.base_config.get('guildOpenStage')
-        if player.stage_component.get_stage(open_stage_id).state != 1:
-            response.res.result = False
-            response.res.result_no = 837
-            # response.message = "未完成指定关卡"
-            return response.SerializeToString()
         m_exit_time = player.guild.exit_time
         the_time = int(time.time())-m_exit_time
 
@@ -1453,3 +1440,18 @@ def get_guild_dynamics_876(data, player):
     response.res.result = True
     print response, '====================22'
     return response.SerializeToString()
+
+@remoteserviceHandle('gate')
+def get_guild_contribution_880(data, player):
+    """
+    获取军团建设值
+    """
+    response = GetGuildContributionResponse()
+    res = remote_gate["world"].get_guild_info_remote(player.guild.g_id, "contribution", 0)
+    response.contribution = res.get("contribution", 0)
+    res = remote_gate["world"].get_guild_info_remote(player.guild.g_id, "all_contribution", 0)
+    response.all_contribution = res.get("all_contribution", 0)
+    logger.debug(response)
+
+    return response.SerializeToString()
+
