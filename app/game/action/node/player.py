@@ -102,6 +102,7 @@ def new_guide_step_1802(data, player):
         logger.error('error newbee id:%s', request.step_id)
         response.res.result = False
         return response.SerializePartialToString()
+    new_guide_type = new_guide_item.get('SequenceType')
 
     #if request.step_id == GUIDE_LINE_UP:
         #hero_no = int(request.common_id)
@@ -185,11 +186,11 @@ def new_guide_step_1802(data, player):
 
     logger.info('newbee:%s step:%s=>%s',
                 player.base_info.id,
-                player.base_info.newbee_guide_id,
+                player.base_info.newbee_guide,
                 request.step_id)
     my_newbee_sequence = 0
-    if player.base_info.newbee_guide_id:
-        my_newbee_sequence = game_configs.newbee_guide_config.get(player.base_info.newbee_guide_id).get('Sequence')
+    if player.base_info.newbee_guide.get(new_guide_type) is not None:
+        my_newbee_sequence = game_configs.newbee_guide_config.get(player.base_info.newbee_guide[new_guide_type]).get('Sequence')
     if my_newbee_sequence < new_guide_item.get('Sequence'):
         gain_data = new_guide_item.get('rewards')
         return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
@@ -221,10 +222,10 @@ def new_guide_step_1802(data, player):
         # logger.debug("gain_data %s %s" % (gain_data, request.step_id))
         # logger.debug(player.finance.coin)
         tlog_action.log('NewGuide', player, new_guide_item.get('Sequence'),
-                        my_newbee_sequence)
+                        request.step_id)
 
         if my_newbee_sequence < new_guide_item.get('Sequence'):
-            player.base_info.newbee_guide_id = request.step_id
+            player.base_info.newbee_guide[new_guide_type] = request.step_id
             player.base_info.save_data()
     player.pay.pay(need_gold, const.NEW_GUIDE_STEP, func)
     response.res.result = True
