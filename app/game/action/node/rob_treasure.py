@@ -334,7 +334,7 @@ def enhance_treasure(no, use_nos, player):
             str_config_obj = game_configs.equipment_strengthen_config.get(x)
             use_all_exp += str_config_obj.get(key_str)
 
-        use_all_exp *= configs_data.base_config.get('indianaExpImpairment')
+        use_all_exp *= game_configs.base_config.get('indianaExpImpairment')
         all_exp += int(use_all_exp)
     equ_exp = treasure_obj.attribute.exp
     equ_level = treasure_obj.attribute.strengthen_lv
