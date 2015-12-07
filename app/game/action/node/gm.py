@@ -2,7 +2,6 @@
 """
 created by server on 14-7-17下午4:50.
 """
-from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
 from app.game.redis_mode import tb_guild_info
 from gfirefly.server.logobj import logger
@@ -230,27 +229,7 @@ def init_item_remote(data, player):
 
 @remoteserviceHandle('gate')
 def add_guild_level_remote(data, player):
-    args = cPickle.loads(data)
-    level = int(args.get('level'))
-    name = args.get('name')
-    guild_name_data = tb_guild_info.getObj('names')
-    guild_id = guild_name_data.hget(name)
-    if not guild_id:
-        logger.debug('guild name not find')
-        return {'success': 0}
-
-    guild_data = tb_guild_info.getObj(guild_id).hgetall()
-    if not guild_data:
-        logger.debug('guild name not find1')
-        return 0
-    if level > 10:
-        level = 10
-    guild_obj = Guild()
-    guild_obj.init_data(guild_data)
-    guild_obj.level = int(level)
-    remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level)
-    guild_obj.save_data()
-    return {'success': 1}
+    return {'success': 0}
 
 
 @remoteserviceHandle('gate')

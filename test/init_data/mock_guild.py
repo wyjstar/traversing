@@ -3,7 +3,6 @@
 created by server on 14-7-7下午5:29.
 """
 
-from app.game.core.guild import Guild
 from app.proto_file.guild_pb2 import *
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.globalobject import GlobalObject
@@ -13,6 +12,7 @@ remote_gate = GlobalObject().remote.get('gate')
 
 
 def init_guild(player):
+    return
 
     guild_obj = Guild()
     guild_obj.create_guild(player.base_info.id, '自动生成')
