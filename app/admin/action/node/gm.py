@@ -44,7 +44,7 @@ def gm():
                      'get_user_finances', 'get_user_items',
                      'get_user_guild_info', 'get_user_heros',
                      'get_user_eqs', 'copy_user', 'update_server_list',
-                     'add_push_message']
+                     'add_push_message', 'kick_player']
     print request.args, type(request.args)
     if request.args:
         t_dict = request.args
@@ -85,6 +85,16 @@ def update_server_list(args):
     os.system("cp /tmp/server_list.json server_list.json")
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)
+    return {"success": 1}
+
+
+def kick_player(args):
+    print("kick_player=========1")
+    response = AccountKick()
+    response.id = 3
+    remote_gate.push_notice_remote(11,
+                                   response.SerializeToString())
+
     return {"success": 1}
 
 
