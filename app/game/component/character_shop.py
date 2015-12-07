@@ -13,6 +13,7 @@ import time
 from shared.utils.date_util import is_past_time
 from app.game.core.drop_bag import BigBag
 from app.game.core.item_group_helper import do_get_draw_drop_bag
+from app.game.core.item_group_helper import is_afford, consume, get_consume_gold_num, get_return
 
 
 class CharacterShopComponent(Component):
@@ -39,6 +40,7 @@ class CharacterShopComponent(Component):
 
     def new_data(self):
         for t, item in game_configs.shop_type_config.items():
+            print("shop ================", t)
             self._shop_data[t] = self.get_new_shop_info(t)
         self._shop_extra_args = self.get_new_shop_extra_args()
         return {'shop': self._shop_data,
@@ -116,7 +118,7 @@ class CharacterShopComponent(Component):
         max_shop_refresh_times = self.owner.base_info.shop_refresh_times
         return shop_data['refresh_times'] < max_shop_refresh_times
 
-    def refresh_price(self, shop_type):
+    def refresh_price(self, shop_type, response):
         shop_item = game_configs.shop_type_config.get(shop_type)
         if not shop_item:
             raise Exception('error shop type:%s' % shop_type)
@@ -128,21 +130,29 @@ class CharacterShopComponent(Component):
             refreshprice = shop_item.get('refreshPrice')
             if not refreshprice:
                 logger.debug('no refresh price:shop type:%s', shop_type)
-            else:
-                ctype, price = refreshprice.items()[0]
-            # print ctype, price
-        if shop_type == 12:
-            # 9活动
-            act_confs = game_configs.activity_config.get(22, [])
-            is_open = 0
-            xs = 1
-            for act_conf in act_confs:
-                if self.owner.base_info.is_activiy_open(act_conf.id):
-                    is_open = 1
-                    xs = act_conf.parameterC[0]
-                    break
-            if is_open:
-                price = int(price*xs)
+
+            # 道具
+            refresh_items = shop_item.get('refreshItem')
+            has_refresh_item = is_afford(self._owner, refresh_items).get('result')
+            if refresh_items and has_refresh_item:
+                price = 0
+                # 如果有刷新令，则消耗刷新令
+                return_data = consume(self._owner, refresh_items, shop=None, luck_config=None, multiple=1)
+                get_return(self._owner, return_data, response.consume)
+            elif not has_refresh_item or not refresh_items:
+                price = get_consume_gold_num(refreshprice)
+
+                xs = 1
+                if (not has_refresh_item or not refresh_items) and shop_type == 12:
+                    # 9活动
+                    act_confs = game_configs.activity_config.get(22, [])
+                    for act_conf in act_confs:
+                        if self.owner.base_info.is_activiy_open(act_conf.id):
+                            xs = act_conf.parameterC[0]
+                            price = int(price*xs)
+                            break
+                return_data = consume(self._owner, refreshprice, shop=None, luck_config=None, multiple=xs)
+                get_return(self._owner, return_data, response.consume)
 
         def func():
             __shop_data['refresh_times'] += 1

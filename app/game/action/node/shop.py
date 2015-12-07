@@ -388,7 +388,7 @@ def refresh_shop_items_507(pro_data, player):
         response.res.result_no = 50701
         return response.SerializePartialToString()
 
-    response.res.result = player.shop.refresh_price(shop_type)
+    response.res.result = player.shop.refresh_price(shop_type, response)
     if not response.res.result:
         logger.debug("gold not enough!")
         response.res.result = False
@@ -421,6 +421,7 @@ def refresh_shop_items_507(pro_data, player):
             player.act.save_data()
 
     response.luck_num = int(shopdata['luck_num'])
+    logger.debug("response %s", response)
     return response.SerializeToString()
 
 
