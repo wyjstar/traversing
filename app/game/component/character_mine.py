@@ -520,6 +520,9 @@ class CharacterMine(Component):
         _nickname = self.owner.base_info.base_name
         mine = self._mine[position]
 
+        if 'type' not in mine:
+            logger.error('mine info not type!:%s', mine)
+
         if mine['type'] == MineType.PLAYER_FIELD:
             mine = tb_mine.hget(mine['seq'])
 
