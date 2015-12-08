@@ -312,13 +312,21 @@ class Hero(object):
 
     def refine_attr(self):
         attr = CommonItem()
-
         if self.refine != 0:
             _refine_attr = game_configs.seal_config.get(self.refine)
-            if _refine_attr:
-                attr += _refine_attr
-            else:
-                logger.error('cant find refine config:%s', self.refine)
+            #item = CommonItem(dict(hp=0, atk=0, physicalDef=0, magicDef=0))
+            for pulse in range(1, _refine_attr.pulse+1):
+                lst = game_configs.seal_config.get(pulse)
+                for item in lst:
+                    if item.id > _refine_attr.id or item.allInt < 0:
+                        continue
+                    add_item = CommonItem(dict(hp=item.hp, atk=item.atk, physicalDef=item.physicalDef, magicDef=item.magicDef))
+                    attr += add_item
+                if _refine_attr.id == lst[-1].id:
+                    first_item = lst[0]
+                    attr += CommonItem(dict(hp=first_item.hp, atk=first_item.atk, physicalDef=first_item.physicalDef, magicDef=first_item.magicDef))
+
+
         return attr
 
     def runt_attr(self):

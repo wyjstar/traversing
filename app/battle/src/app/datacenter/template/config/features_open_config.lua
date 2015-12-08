@@ -39,8 +39,6 @@ features_open_config={
   ["id"] = 10038,  ["type"] = 38,  ["open"] = 1,  ["open_type"] = 1,}
 ,  [10007] = {
   ["id"] = 10007,  ["type"] = 7,  ["open"] = 1,  ["open_type"] = 1,}
-,  [10039] = {
-  ["id"] = 10039,  ["type"] = 39,  ["open"] = 1,  ["open_type"] = 1,}
 ,  [10008] = {
   ["id"] = 10008,  ["type"] = 8,  ["open"] = 4,  ["open_type"] = 1,}
 ,  [10009] = {
