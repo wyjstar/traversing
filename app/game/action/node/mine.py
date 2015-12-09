@@ -76,11 +76,15 @@ def mine_status(player, response):
         gen_time = mstatus.get('gen_time', None)
         if gen_time is not None:
             one_mine.gen_time = int(gen_time)
+        mine_id = mstatus.get('mine_id', None)
+        if mine_id is not None:
+            one_mine.mine_id = int(mine_id)
 
         if one_mine.type == MineType.PLAYER_FIELD:
             uid = mstatus.get('uid')
             if uid == player.base_info.id:
-                one_mine.fight_power = int(player.line_up_component.combat_power)
+                one_mine.fight_power =\
+                    int(player.line_up_component.combat_power)
                 one_mine.is_guild = player.guild.g_id
             else:
                 one_mine.is_friend = player.friends.is_friend(uid)
@@ -117,6 +121,9 @@ def one_mine_info(player, mstatus, one_mine):
     seek_help = mstatus.get('seek_help', None)
     if seek_help is not None:
         one_mine.seek_help = int(seek_help)
+    mine_id = mstatus.get('mine_id', None)
+    if mine_id is not None:
+        one_mine.mine_id = int(mine_id)
 
     if one_mine.type == MineType.PLAYER_FIELD:
         uid = mstatus.get('uid')
@@ -351,7 +358,11 @@ def harvest_1245(data, player):
     player.runt.save()
     player.start_target.mine_get_runt()
     hook_task(player, CONDITIONId.GAIN_RUNT, 1)
-    tlog_action.log('MineHarvest', player, request.position, str(normal), str(lucky))
+    tlog_action.log('MineHarvest',
+                    player,
+                    request.position,
+                    str(normal),
+                    str(lucky))
     response.res.result = True
     logger.debug('mine harvest:%s', response)
     return response.SerializePartialToString()
