@@ -90,7 +90,7 @@ def get_activity_info():
     activity_id = 0
     timeEnd = 0
     timeStart = 0
-    now = time.time()+1
+    now = time.time()
     for act_conf in act_confs:
         if act_conf.timeEnd <= now:
             continue

@@ -274,10 +274,14 @@ TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
 TYPE_HJQY_STAGE     = 10         -- 黄巾起义
 TYPE_TREASURE       = 11         -- 夺宝战斗
 TYPE_TEST           = 999        -- 测试战斗
+TYPE_ESCORT         = 13        -- 押运
 
 TYPE_PVP_NORMAL     = 0          --正常的PVP,擂台
 TYPE_PVP_CLEARANCE  = 1          --过关斩将
 TYPE_PVP_REVANGE    = 2          --坏蛋反击
+
+TYPE_FORAGE_ROB_BATTLE_VIEW  = 1 --劫运的战斗回放
+TYPE_FORAGE_ROB_BATTLE = 2       --劫运的战斗
 
 TYPE_STAGE_JIA = 3               -- 难度甲
 TYPE_STAGE_YI = 2                -- 难度乙
@@ -445,6 +449,8 @@ TYPE_SHOP = {
     MERIT       = 18,  --功勋商店(黄巾起义)
     TREASURE    = 19,  --珍宝（过关斩将）
     VIP         = 20,  --VIP商店
+    LEGION_NORMAL   = 21,  --公会贡献商店
+    LEGION_DISCOUNT = 22,  --公会免税商店
 }
 
 --[[--
@@ -475,14 +481,8 @@ RES_TYPE = {
     GOD_HERO_SOUL= 29, --将魂
     QJYL         = 13, --琼浆玉露
     ENERGY       = 4,  --精力
+    ROB_NUM      = 14, --劫运次数
 
-}
-
-TRAVEL_EVENT_TYPE = {
-    WAIT        = 1, -- 有等待时间的事件 参数：等待时间（分钟）
-    FIGHT       = 2, -- 战斗的事件 参数：关卡ID
-    QUESTION    = 3, -- 答题事件 参数：languageID（答案选项）]
-    GET         = 4, -- 直接领取奖励事件
 }
 
 -- 次日开启类型
@@ -495,16 +495,15 @@ EventName = {
     UPDATE_TL = "update_tili",--更新体力
     UPDATE_HEAD = "update_head",--更新头像
     UPDATE_ENERGY = "update_energy",--更新精力
+    UPDATE_ROB_NUM = "update_rob_num",--更新劫运次数
     UPDATE_NAME = "update_name",--更新名称
     UPDATE_COMBAT_POWER = "update_combat_power",--更新战斗力
     UPDATE_VIP = "update_vip",--更新VIP
     UPDATE_LEVEL = "update_level",--更新等级
     UPDATE_SILVER = "update_silver",--更新银锭
     UPDATE_GOLD = "update_gold",    --更新元宝
-    UPDATE_SHOES = "update_shoes", --更新鞋子
     UPDATE_FRIEND = "update_friend", --更新好友
     DISABLE_NEXT_REWARD = "disable_next_reward", --禁用次日登陆奖励
-    SUB_SHOES = "sub_shoes", --消耗鞋子
     UPDATE_ACTIVE = "update_active", --更新(精彩活动中的)分享任务
     UPDATE_TASK = "update_task", --更新任务
     UNLOCK_NEW_FEATURE_STAGEID = "UNLOCK_NEW_FEATURE_STAGEID", --当前stageid通知，用于更新新功能开启
@@ -542,10 +541,27 @@ EventName = {
     TRAVEL_EVENT_CHANGE = "TRAVEL_EVENT_CHANGE", -- 游历,加入等待事件到列表中
     UPDATE_LINEUP = "UPDATE_LINEUP",--更新了阵容信息
     UPDATE_LINEUP_ORDER = "UPDATE_LINEUP_ORDER",--更新阵容顺序
+    UPDATE_LINEUP_CHANGED = "UPDATE_LINEUP_CHANGED",--有武将或助威武将更换
     UPDATE_SEVENDAY = "UPDATE_SEVENDAY",  --更新七日红点提示
     UPDATE_QJYL = "UPDATE_QJYL", --更新经脉红点
     UPDATE_SOLDIER_AWAKE_MAX = "UPDATE_SOLDIER_AWAKE_MAX",--更新英雄觉醒等级到最高等级
     CAPTURE_RESP = "CAPTURE_RESP",
+
+    UPDATE_ROB_INVITE = "update_rob_invite",
+    UPDATE_ESCORT_INVITE = "update_escort_invite",
+    UPDATE_MY_ESCORT = "update_my_escort",
+    UPDATE_ROB_CHARATERINFO = "update_rob_characterInfo",--承接人收到的消息，有人加入劫运了
+
+    UPDATE_RUNEBAG = "UPDATE_RUNEBAG",--更新宝石红点
+    UPDATE_TRAVEL = "UPDATE_TRAVEL", -- 跟新游历信息
+    LEGION_UPDATE_BUILD = "LEGION_UPDATE_BUILD", -- 监听建筑等级变化
+    LEGION_UPDATE_BOSS = "LEGION_UPDATE_BOSS", -- 监听圣兽数据变化
+    LEGION_UPDATE_APPLICATION = "LEGION_UPDATE_APPLICATION", -- 监听申请入团列表消息变化
+    UPDATE_ROB_INVITE = "update_rob_invite",
+    UPDATE_ESCORT_INVITE = "update_escort_invite",
+    UPDATE_MY_ESCORT = "update_my_escort",
+
+    UPDATE_RUNEBAG = "UPDATE_RUNEBAG",--更新宝石红点
 }
 
 NoticeColor = {
@@ -613,3 +629,52 @@ MAIL_TYPE = {
     SOCIALLY    = 4, -- 社交
     REMOVE      = 5, -- 准备删除
 }
+
+--押劫类型
+FORAGE_TASK_TYPE = {
+    ESCORT = 1, --押运
+    ROB = 2,    --劫运
+}
+--[[--
+游历事件类型
+]]
+TRAVEL_EVENT_TYPE = {
+    WAIT        = 1, -- 有等待时间的事件 参数：等待时间（分钟）
+    FIGHT       = 2, -- 战斗的事件 参数：关卡ID
+    QUESTION    = 3, -- 答题事件 参数：languageID（答案选项）]
+    GET         = 4, -- 直接领取奖励事件
+}
+--[[--
+军团建筑类型
+]]
+LEGION_BUILDING_TYPE = {
+    YSDT = 1, -- 议事大厅
+    QFD  = 2, -- 祈福殿
+    JTSS = 3, -- 军团商市
+    JJC  = 4, -- 军机处
+    ZZSC = 5, -- 征战沙场
+    GCLD = 6, -- 攻城略地
+}
+
+--[[--
+军团职位
+]]
+LEGION_POS_TYPE = {
+    COMMANDER   = 1, -- 军团长
+    DEPUTYP     = 2, -- 副团长
+    MEMBERS     = 3, -- 团员
+}
+--军团粮草劫押任务状态
+TaskState = {
+    state_complete = -1 ,-- 已经完成
+    state_notReceive = 0, -- 未领取
+    state_ReceiveNotStart = 1, -- 领取未开始
+    state_Start = 2, -- 开启任务
+ }
+ --军团粮草劫押记录类型
+ TaskLogType = {
+    logType_myEscort  = 1 ,-- 我的押运记录
+    logType_myRob    = 2, -- 我的劫运记录
+    logType_Legion   = 3, -- 军团劫押记录
+ }
+

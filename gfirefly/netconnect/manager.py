@@ -137,8 +137,10 @@ class ConnectionManager:
 
     def __write_data(self, connection, topic_id, msg):
         # connection_id = connection.dynamic_id
+        print("__write_data", connection, topic_id)
         try:
             connection.safeToWriteData(topic_id, msg)
+            print("__write_data2", connection, topic_id, len(msg))
         except Exception, e:
             logger.exception(e)
             e = "%s, %s:%s" % (e, topic_id, msg)
@@ -153,6 +155,7 @@ class ConnectionManager:
 
     def pushObject(self, topicID, msg, sendList):
         """主动推送消息"""
+        print("pushObject ", topicID, msg, sendList)
         if isinstance(sendList, list):
             for target in sendList:
                 self._write_data(target, topicID, msg)

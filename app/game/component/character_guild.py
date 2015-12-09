@@ -18,68 +18,76 @@ class CharacterGuildComponent(Component):
     def __init__(self, owner):
         super(CharacterGuildComponent, self).__init__(owner)
         self._g_id = 0  # 公会id
-        self._position = 3  # 职务
+
         self._contribution = 0  # 贡献
         self._all_contribution = 0  # 总贡献
-        self._today_contribution = 0  # 今日贡献
+        self._today_contribution = [0, int(time.time())]  # 今日贡献
+
         self._exit_time = 1  # 上次退出公会时间
-        self._praise = [0, 1]  # 点赞状态（0没点，1点），时间
-        self._bless = [0, [], 0, 1]  # 祈福次数,领取的祈福奖励，今日贡献时间
+        self._praise = [0, 1]  # 点赞次数，时间
+        self._bless = [0, [], 0, 1]  # 祈福次数,领取的祈福奖励，今日贡献， 今日贡献时间
         self._apply_guilds = []  # 已经申请过的军团
         self._guild_rank_flag = 0  # 推荐列表，已经查询到的redis排行标记
+        self._mobai = [0, [], 1]  # ［被膜拜次数，［膜拜李飚］，time］
+        self._guild_boss_last_attack_time = 0  # 上次攻击圣兽时间
+        self._mine_help = []  # 帮助过的时间戳
 
     def init_data(self, character_info):
         """
         初始化公会组件
         """
         self._g_id = character_info.get("guild_id")
-        self._position = character_info.get("position")
         self._contribution = character_info.get("contribution")
         self._all_contribution = character_info.get("all_contribution")
         self._bless = character_info.get('bless')
         self._praise = character_info.get('praise')
         self._exit_time = character_info.get("exit_time")
         self._apply_guilds = character_info.get("apply_guilds")
+        self._guild_boss_last_attack_time = character_info.get("guild_boss_last_attack_time", 0)
+        self._mobai = character_info.get("guild_mobai", [0, [], 1])
+        self._mine_help = character_info.get("mine_help")
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
         data_obj.hmset({'guild_id': self._g_id,
-                        'position': self._position,
                         'contribution': self._contribution,
                         'all_contribution': self._all_contribution,
                         'bless': self._bless,
                         'praise': self._praise,
                         'apply_guilds': self._apply_guilds,
-                        'exit_time': self._exit_time})
+                        'guild_mobai': self._mobai,
+                        'mine_help': self._mine_help,
+                        'exit_time': self._exit_time,
+                        'guild_boss_last_attack_time': self._guild_boss_last_attack_time,
+                        })
 
     def new_data(self):
         data = {'guild_id': self._g_id,
-                'position': self._position,
                 'contribution': self._contribution,
                 'all_contribution': self._all_contribution,
                 'bless': self._bless,
+                'guild_mobai': self._mobai,
+                'mine_help': self._mine_help,
                 'praise': self._praise,
                 'apply_guilds': self._apply_guilds,
-                'exit_time': self._exit_time}
+                'exit_time': self._exit_time,
+                'guild_boss_last_attack_time': self._guild_boss_last_attack_time,
+                }
         return data
 
-    def get_guild_level(self):
-        if self._g_id == "no":
+    @property
+    def today_contribution(self):
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
             return 0
-        data = tb_guild_info.getObj(self._g_id).hgetall()
-        if not data:
-            return 0
-        guild_obj = Guild()
-        guild_obj.init_data(data)
-        return guild_obj.level
+        return self._today_contribution[0]
 
     @property
-    def guild_rank_flag(self):
-        return self._guild_rank_flag
+    def guild_boss_last_attack_time(self):
+        return self._guild_boss_last_attack_time
 
-    @guild_rank_flag.setter
-    def guild_rank_flag(self, value):
-        self._guild_rank_flag = value
+    @guild_boss_last_attack_time.setter
+    def guild_boss_last_attack_time(self, value):
+        self._guild_boss_last_attack_time = value
 
     @property
     def praise(self):
@@ -114,14 +122,6 @@ class CharacterGuildComponent(Component):
         self._apply_guilds = v
 
     @property
-    def position(self):
-        return self._position
-
-    @position.setter
-    def position(self, position):
-        self._position = position
-
-    @property
     def exit_time(self):
         return self._exit_time
 
@@ -146,7 +146,8 @@ class CharacterGuildComponent(Component):
         self._all_contribution = all_contribution
 
     def guild_attr(self):
-        guild_level = self.get_guild_level()
+        # guild_level = self.get_guild_level()
+        guild_level = 1
         guild_info = game_configs.guild_config.get(8).get(guild_level)
         if not guild_info:
             return {}
@@ -157,25 +158,84 @@ class CharacterGuildComponent(Component):
                     magic_def=guild_info.profit_mdef)
 
     @property
-    def contribution(self):
-        return self._contribution
+    def praise_num(self):
+        if time.localtime(self._praise[1]).tm_yday != time.localtime().tm_yday:
+            return 0
+        return self._praise[0]
 
-    @contribution.setter
-    def contribution(self, contribution):
-        self._contribution = contribution
+    def add_praise_times(self):
+        self._praise[0] += 1
+        self._praise[1] = int(time.time())
 
     @property
-    def praise_state(self):
-        if time.localtime(self._praise[1]).tm_yday != time.localtime().tm_yday:
-            self._praise = [0, int(time.time())]
-        return self._praise[0]
+    def praise_time(self):
+        return self._praise[1]
 
     @property
     def bless_times(self):
         if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
-            self._bless = [0, [], 0, int(time.time())]
+            return 0
         return self._bless[0]
 
-    def bless_update(self):
+    @property
+    def bless_gifts(self):
         if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
-            self._bless = [0, [], 0, int(time.time())]
+            return []
+        return self._bless[1]
+
+    @property
+    def today_contribution(self):
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
+            return 0
+        return self._bless[2]
+
+    def do_bless(self, v):
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
+            self._bless = [1, [], v, int(time.time())]
+        else:
+            self._bless[0] += 1
+            self._bless[2] += v
+            self._bless[3] += v
+        self._contribution += v
+        self._all_contribution += v
+
+    def receive_bless_gift(self, v):
+        if time.localtime(self._bless[3]).tm_yday != time.localtime().tm_yday:
+            self._bless = [0, [v], 0, int(time.time())]
+        else:
+            self._bless[1].append(v)
+
+    @property
+    def be_mobai_times(self):
+        if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
+            return 0
+        return self._mobai[0]
+
+    @property
+    def mobai_list(self):
+        if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
+            return []
+        return self._mobai[1]
+
+    def do_mobai(self, v):
+        if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
+            self._mobai = [0, [v], int(time.time())]
+        else:
+            self._mobai[1].append(v)
+
+    def be_mobai(self):
+        if time.localtime(self._mobai[2]).tm_yday != time.localtime().tm_yday:
+            self._mobai = [1, [], int(time.time())]
+        else:
+            self._mobai[0] += 1
+
+    def receive_mobai(self):
+        self._mobai[0] = 0
+
+    @property
+    def mine_help(self):
+        return self._mine_help
+
+    @mine_help.setter
+    def mine_help(self, v):
+        self._mine_help = v

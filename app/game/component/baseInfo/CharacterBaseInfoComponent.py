@@ -613,3 +613,7 @@ class CharacterBaseInfoComponent(Component):
     @property
     def num_gold_comsume(self):
         return self._recharge + self._gen_balance - self.owner.finance.gold
+
+    def guild_escort_rob_times_max(self):
+        """每日购买上限"""
+        return 0

@@ -212,6 +212,7 @@ def get_cur(mine_id, now_data, harvest, start, end, now, increase, stype):
                           now_data)
     return last, stone
 
+
 class PlayerField(Mine):
     """ 玩家占领的野外矿 """
     def __init__(self):
@@ -228,6 +229,7 @@ class PlayerField(Mine):
         self._normal = {}  # 符文石
         self._lucky = {}  # 幸运石
         self._gen_time = 0
+        self._seek_help = 0
 
     def save_info(self):
 #         print 'save_info self.lineup', self._lineup
@@ -243,8 +245,9 @@ class PlayerField(Mine):
                 'lucky_harvest': self._lucky_harvest,
                 'normal_end': self._normal_end,
                 'lucky_end': self._lucky_end,
-                'normal':self._normal,
-                'lucky':self._lucky
+                'normal': self._normal,
+                'seek_help': self._seek_help,
+                'lucky': self._lucky
                 }
 #         print info['lineup']
         return info
@@ -266,6 +269,7 @@ class PlayerField(Mine):
         self._lucky_end = info.get('lucky_end')
         self._normal = info.get('normal')
         self._lucky = info.get('lucky')
+        self._seek_help = info.get('seek_help')
         self._last_time = self._normal_end
         mine = ConfigData.mine(self._mine_id)
         # print 'update_info', self._mine_id

@@ -49,9 +49,10 @@ const.CONSUME_GOLD = 9
 const.GUILD2 = 11
 const.TEAM_EXPERIENCE = 12
 const.NECTAR = 13
-const.STONE1 = 14
+const.GUILD_ESCORT_ROB_TIMES = 14
 const.STONE2 = 15
 const.SPIRIT= 16
+const.GUILD_SKILL_POINT = 18
 const.SHOE= 20
 const.EQUIPMENT_ELITE = 21
 const.RESOURCE_MAX = 40
@@ -207,7 +208,10 @@ const.BUY_TRUCE_ITEM = 72  # 夺宝购买休战符
 const.ROB_TREASURE = 73  # 夺宝
 const.ROB_TREASURE_REWARD = 74  # 夺宝
 const.FUND = 47
+const.GUILD_MOBAI = 75  # 膜拜
 
+const.ESCORT_ROB = 1909  # 劫运公会
+const.REFRESH_ESCORT_TASKS = 1904 # 刷新押运任务
 
 const.LOGIN_GIFT_CONTINUS = 8061
 const.LOGIN_GIFT_CUMULATIVE = 8062
@@ -215,6 +219,9 @@ const.LOGIN_GIFT_CUMULATIVE = 8062
 const.HJQY_ADD_REWARD = 21011
 
 const.HERO_AWAKE = 119   # 英雄觉醒
+const.UPGRADE_GUILD_SKILL = 2404 # 公会技能升级
+const.GUILD_BOSS_IN = 240301 #   公会boss 参与
+const.GUILD_BOSS_KILL = 240302 #  公会boss 击杀
 # 等级流水
 # const.STAGE = 27  # 关卡
 # const.STAGE_SWEEP = 22  # 关卡扫荡
@@ -230,7 +237,7 @@ const.PVB_IN_AWARD = 4 #参与奖
 const.DEBUG = False
 
 const.level_rank_xs = 10000000
-const.power_rank_xs = 1000 
+const.power_rank_xs = 1000
 
 const.BATTLE_PVE = 1
 const.BATTLE_PVP = 6
@@ -238,6 +245,8 @@ const.BATTLE_PVB = 7
 const.BATTLE_MINE_PVE = 8
 const.BATTLE_MINE_PVP = 9
 const.BATTLE_HJQY = 10
+const.BATTLE_GUILD_ESCORT = 13
+const.BATTLE_GUILD_BOSS = 12
 
 const.BOSS_NOT_EXIST = 0 # 不存在
 const.BOSS_LIVE = 1  # 正常

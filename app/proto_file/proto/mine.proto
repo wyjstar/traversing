@@ -25,6 +25,7 @@ message mineData
 	optional bool is_guild = 7;
 	optional bool is_friend = 8;
 	optional int32 fight_power = 9;
+	optional int32 seek_help = 10;
 }
 
 //更新矿点信息1240返回
@@ -83,6 +84,7 @@ message mineDetail
 	optional int32 stage_id = 12; //关卡id
 	optional int32 guard_time = 13;//保护时间
 	optional int32 accelerate_times = 14;
+	optional int32 seek_help = 15;
 }
 
 //1245返回

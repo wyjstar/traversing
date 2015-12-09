@@ -138,6 +138,7 @@ class HjqyBoss(object):
         self._blue_units = data.get("blue_units", {})
         self._is_share = data.get("is_share", False)
         self._hp_max = data.get("hp_max", False)
+        self._trigger_time = data.get("trigger_time", 0)
 
     @property
     def player_id(self):

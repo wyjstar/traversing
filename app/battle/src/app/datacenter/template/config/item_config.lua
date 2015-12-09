@@ -59,6 +59,8 @@ item_config={
   ["func"] = 0,  ["canUse"] = 1,  ["funcArg1"] = 0,  ["describe"] = 0,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 0,  ["type"] = 13,  ["toGet"] = 0,  ["id"] = 64111,  ["useLevel"] = 0,  ["name"] = 1900064111,  ["funcArg2"] = 0,  ["stack"] = 0,  ["res"] = 5064111,  ["dropId"] = 10564111,}
 ,  [64115] = {
   ["func"] = 0,  ["canUse"] = 1,  ["funcArg1"] = 0,  ["describe"] = 0,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 0,  ["type"] = 13,  ["toGet"] = 0,  ["id"] = 64115,  ["useLevel"] = 0,  ["name"] = 1900064115,  ["funcArg2"] = 0,  ["stack"] = 0,  ["res"] = 5064115,  ["dropId"] = 10564115,}
+,  [140001] = {
+  ["func"] = 24,  ["canUse"] = 24,  ["funcArg1"] = 0,  ["describe"] = 2000140001,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 1,  ["type"] = 24,  ["toGet"] = 0,  ["id"] = 140001,  ["useLevel"] = 0,  ["name"] = 1900140001,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5130001,  ["dropId"] = 0,}
 ,  [64000] = {
   ["func"] = 0,  ["canUse"] = 1,  ["funcArg1"] = 0,  ["describe"] = 0,  ["star"] = 2,  ["showcount"] = 0,  ["quality"] = 2,  ["canBatchUse"] = 0,  ["type"] = 12,  ["toGet"] = 0,  ["id"] = 64000,  ["useLevel"] = 0,  ["name"] = 1900064000,  ["funcArg2"] = 0,  ["stack"] = 0,  ["res"] = 5064000,  ["dropId"] = 10564000,}
 ,  [40001] = {
@@ -70,7 +72,7 @@ item_config={
 ,  [63004] = {
   ["func"] = 16,  ["canUse"] = 13,  ["funcArg1"] = 0,  ["describe"] = 2000063004,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 0,  ["type"] = 11,  ["toGet"] = 40050000,  ["id"] = 63004,  ["useLevel"] = 0,  ["name"] = 1900063004,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5063004,  ["dropId"] = 0,}
 ,  [100001] = {
-  ["func"] = 0,  ["canUse"] = 20,  ["funcArg1"] = 0,  ["describe"] = 2000100001,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 1,  ["type"] = 20,  ["toGet"] = 40100001,  ["id"] = 100001,  ["useLevel"] = 0,  ["name"] = 1900100001,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5100001,  ["dropId"] = 0,}
+  ["func"] = 23,  ["canUse"] = 20,  ["funcArg1"] = 0,  ["describe"] = 2000100001,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 1,  ["type"] = 20,  ["toGet"] = 40100001,  ["id"] = 100001,  ["useLevel"] = 0,  ["name"] = 1900100001,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5100001,  ["dropId"] = 0,}
 ,  [30001] = {
   ["func"] = 2,  ["canUse"] = 1,  ["funcArg1"] = 30011,  ["describe"] = 2000030001,  ["star"] = 2,  ["showcount"] = 0,  ["quality"] = 2,  ["canBatchUse"] = 1,  ["type"] = 4,  ["toGet"] = 40030001,  ["id"] = 30001,  ["useLevel"] = 0,  ["name"] = 1900030001,  ["funcArg2"] = 1,  ["stack"] = 1,  ["res"] = 5030001,  ["dropId"] = 10530001,}
 ,  [30003] = {
@@ -92,7 +94,7 @@ item_config={
 ,  [64112] = {
   ["func"] = 0,  ["canUse"] = 1,  ["funcArg1"] = 0,  ["describe"] = 0,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 0,  ["type"] = 13,  ["toGet"] = 0,  ["id"] = 64112,  ["useLevel"] = 0,  ["name"] = 1900064112,  ["funcArg2"] = 0,  ["stack"] = 0,  ["res"] = 5064112,  ["dropId"] = 10564112,}
 ,  [90001] = {
-  ["func"] = 0,  ["canUse"] = 1,  ["funcArg1"] = 0,  ["describe"] = 2000090001,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 1,  ["type"] = 19,  ["toGet"] = 40090001,  ["id"] = 90001,  ["useLevel"] = 0,  ["name"] = 1900090001,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5090001,  ["dropId"] = 0,}
+  ["func"] = 22,  ["canUse"] = 19,  ["funcArg1"] = 0,  ["describe"] = 2000090001,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 1,  ["type"] = 19,  ["toGet"] = 40090001,  ["id"] = 90001,  ["useLevel"] = 0,  ["name"] = 1900090001,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5090001,  ["dropId"] = 0,}
 ,  [80004] = {
   ["func"] = 0,  ["canUse"] = 1,  ["funcArg1"] = 0,  ["describe"] = 0,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 0,  ["type"] = 15,  ["toGet"] = 40080004,  ["id"] = 80004,  ["useLevel"] = 0,  ["name"] = 1900080004,  ["funcArg2"] = 0,  ["stack"] = 0,  ["res"] = 5070005,  ["dropId"] = 10580004,}
 ,  [80003] = {
@@ -112,7 +114,7 @@ item_config={
 ,  [20004] = {
   ["func"] = 0,  ["canUse"] = 3,  ["funcArg1"] = 0,  ["describe"] = 2000020004,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 4,  ["canBatchUse"] = 0,  ["type"] = 3,  ["toGet"] = 40020004,  ["id"] = 20004,  ["useLevel"] = 0,  ["name"] = 1900020004,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5020004,  ["dropId"] = 0,}
 ,  [10003] = {
-  ["func"] = 1,  ["canUse"] = 2,  ["funcArg1"] = 200,  ["describe"] = 2000010003,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 0,  ["type"] = 1,  ["toGet"] = 40010003,  ["id"] = 10003,  ["useLevel"] = 0,  ["name"] = 1900010003,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5010003,  ["dropId"] = 0,}
+  ["func"] = 1,  ["canUse"] = 2,  ["funcArg1"] = 1000,  ["describe"] = 2000010003,  ["star"] = 5,  ["showcount"] = 0,  ["quality"] = 5,  ["canBatchUse"] = 0,  ["type"] = 1,  ["toGet"] = 40010003,  ["id"] = 10003,  ["useLevel"] = 0,  ["name"] = 1900010003,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5010003,  ["dropId"] = 0,}
 ,  [62001] = {
   ["func"] = 0,  ["canUse"] = 1,  ["funcArg1"] = 0,  ["describe"] = 2000062001,  ["star"] = 3,  ["showcount"] = 0,  ["quality"] = 3,  ["canBatchUse"] = 1,  ["type"] = 8,  ["toGet"] = 0,  ["id"] = 62001,  ["useLevel"] = 0,  ["name"] = 1900062001,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5062001,  ["dropId"] = 10562001,}
 ,  [64101] = {
@@ -120,9 +122,9 @@ item_config={
 ,  [50003] = {
   ["func"] = 11,  ["canUse"] = 7,  ["funcArg1"] = 0,  ["describe"] = 2000050003,  ["star"] = 3,  ["showcount"] = 0,  ["quality"] = 3,  ["canBatchUse"] = 0,  ["type"] = 6,  ["toGet"] = 40050000,  ["id"] = 50003,  ["useLevel"] = 0,  ["name"] = 1900050003,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5050003,  ["dropId"] = 0,}
 ,  [10001] = {
-  ["func"] = 1,  ["canUse"] = 2,  ["funcArg1"] = 50,  ["describe"] = 2000010001,  ["star"] = 2,  ["showcount"] = 0,  ["quality"] = 2,  ["canBatchUse"] = 0,  ["type"] = 1,  ["toGet"] = 40010001,  ["id"] = 10001,  ["useLevel"] = 0,  ["name"] = 1900010001,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5010001,  ["dropId"] = 0,}
+  ["func"] = 1,  ["canUse"] = 2,  ["funcArg1"] = 100,  ["describe"] = 2000010001,  ["star"] = 2,  ["showcount"] = 0,  ["quality"] = 2,  ["canBatchUse"] = 0,  ["type"] = 1,  ["toGet"] = 40010001,  ["id"] = 10001,  ["useLevel"] = 0,  ["name"] = 1900010001,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5010001,  ["dropId"] = 0,}
 ,  [10002] = {
-  ["func"] = 1,  ["canUse"] = 2,  ["funcArg1"] = 100,  ["describe"] = 2000010002,  ["star"] = 3,  ["showcount"] = 0,  ["quality"] = 3,  ["canBatchUse"] = 0,  ["type"] = 1,  ["toGet"] = 40010002,  ["id"] = 10002,  ["useLevel"] = 0,  ["name"] = 1900010002,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5010002,  ["dropId"] = 0,}
+  ["func"] = 1,  ["canUse"] = 2,  ["funcArg1"] = 500,  ["describe"] = 2000010002,  ["star"] = 3,  ["showcount"] = 0,  ["quality"] = 3,  ["canBatchUse"] = 0,  ["type"] = 1,  ["toGet"] = 40010002,  ["id"] = 10002,  ["useLevel"] = 0,  ["name"] = 1900010002,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5010002,  ["dropId"] = 0,}
 ,  [20001] = {
   ["func"] = 0,  ["canUse"] = 3,  ["funcArg1"] = 0,  ["describe"] = 2000020001,  ["star"] = 2,  ["showcount"] = 0,  ["quality"] = 2,  ["canBatchUse"] = 0,  ["type"] = 3,  ["toGet"] = 40020001,  ["id"] = 20001,  ["useLevel"] = 0,  ["name"] = 1900020001,  ["funcArg2"] = 0,  ["stack"] = 1,  ["res"] = 5020001,  ["dropId"] = 0,}
 ,  [20002] = {

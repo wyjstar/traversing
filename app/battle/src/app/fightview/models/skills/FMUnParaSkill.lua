@@ -34,6 +34,9 @@ function FMUnParaSkill:ctor(unpar_type_id, unpar_other_id, base_info, process)
 end
 
 function FMUnParaSkill:get_skill_buffs(skill_id)
+    if skill_id == 0 then
+        return
+    end
     skill_info = self.soldierTemplate:getSkillTempLateById(skill_id)
     if skill_info then
         for _, buff_id in pairs(skill_info.group) do
@@ -73,6 +76,9 @@ function FMUnParaSkill:get_hero_nos()
 end
 
 function FMUnParaSkill:is_full()
+    if not self.unpar_type_id then
+        return false
+    end
     --只进行最后的三段攻击--
     if self.mp == self.mp_max then
         return true
@@ -99,7 +105,7 @@ function FMUnParaSkill:skill_buffs()
 end
 
 function FMUnParaSkill:clear_mp()
-    if self.unpar_type_id then
+    if not self.unpar_type_id then
         return
     end
     --释放技能后，减少怒气
@@ -132,9 +138,10 @@ function FMUnParaSkill:is_ready()
     end
     if self.max_used_times <= self.used_times then
         -- 达到使用上限
-        print("reach max use time==================")
+        print("reach max use time==================",self.mp,self.mp_max)
         return false
     end
+    print("FMUnParaSkill:is_ready==>",self.mp,self.mp_max)
     if self:is_auto() then
         -- 自动释放
         return self:is_full()

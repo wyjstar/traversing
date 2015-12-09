@@ -78,7 +78,7 @@ formula_config={
 ,  [39] = {
   ["precondition"] = "1",  ["formula"] = "ductilityHero+ductilityEqu+ductilitySetEqu+ductilitylink",  ["clientPrecondition"] = "1",  ["id"] = 39,  ["clientFormula"] = "result=ductilityHero+ductilityEqu+ductilitySetEqu+ductilitylink",  ["key"] = "ductilityArray",}
 ,  [40] = {
-  ["precondition"] = "1",  ["formula"] = "hpArray/6+atkArray/3+(physicalDefArray+magicDefArray)/2+hitArray-hero_info.hit+dodgeArray-hero_info.dodge+criArray-hero_info.cri+criCoeffArray-hero_info.criCoeff+criDedCoeffArray-hero_info.criDedCoeff+blockArray*2-2*hero_info.block+ductilityArray-hero_info.ductility",  ["clientPrecondition"] = "1",  ["id"] = 40,  ["clientFormula"] = "result=lineup_attr.hpArray/6+lineup_attr.atkArray/3+(lineup_attr.physicalDefArray+lineup_attr.magicDefArray)/2+lineup_attr.hitArray-hero_info.hit+lineup_attr.dodgeArray-hero_info.dodge+lineup_attr.criArray-hero_info.cri+lineup_attr.criCoeffArray-hero_info.criCoeff+lineup_attr.criDedCoeffArray-hero_info.criDedCoeff+lineup_attr.blockArray*2-2*hero_info.block+lineup_attr.ductilityArray-hero_info.ductility",  ["key"] = "fightValueArray1",}
+  ["precondition"] = "1",  ["formula"] = "hpArray/6+atkArray/3+(physicalDefArray+magicDefArray)/2+hitArray-hero_info.hit+dodgeArray-hero_info.dodge+criArray-hero_info.cri+criCoeffArray-hero_info.criCoeff+criDedCoeffArray-hero_info.criDedCoeff+blockArray*2-2*hero_info.block+ductilityArray-hero_info.ductility",  ["clientPrecondition"] = "1",  ["id"] = 40,  ["clientFormula"] = "result=lineup_attr.hpArray/6+lineup_attr.atkArray/3+(lineup_attr.physicalDefArray+lineup_attr.magicDefArray)/2+lineup_attr.hitArray-hero_info.hit+lineup_attr.dodgeArray-hero_info.dodge+lineup_attr.criArray-hero_info.cri+lineup_attr.criCoeffArray-hero_info.criCoeff+lineup_attr.criDedCoeffArray-hero_info.criDedCoeff+lineup_attr.blockArray*2-2*hero_info.block+lineup_attr.ductilityArray-hero_info.ductility",  ["key"] = "fightValueArray",}
 ,  [41] = {
   ["precondition"] = "1",  ["formula"] = "fightValueArray1+fightValueArray2+fightValueArray3+fightValueArray4+fightValueArray5+fightValueArray6",  ["clientPrecondition"] = "1",  ["id"] = 41,  ["clientFormula"] = "result=fightValueArray1+fightValueArray2+fightValueArray3+fightValueArray4+fightValueArray5+fightValueArray6",  ["key"] = "fightValuePlayer",}
 ,  [42] = {
@@ -294,7 +294,9 @@ formula_config={
 ,  [147] = {
   ["precondition"] = "1",  ["formula"] = "1.5+heroBreak*0.1",  ["clientPrecondition"] = "1",  ["id"] = 147,  ["clientFormula"] = "result=1.5+heroBreak*0.1",  ["key"] = "hjqyDamage",}
 ,  [148] = {
-  ["precondition"] = "1",  ["formula"] = "grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["clientPrecondition"] = "1",  ["id"] = 148,  ["clientFormula"] = "result=grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["key"] = "equGrowUpParameter",}
+  ["precondition"] = "EquNumMax > EquNumMin",  ["formula"] = "grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["clientPrecondition"] = "EquNumMax > EquNumMin",  ["id"] = 148,  ["clientFormula"] = "result=grow*0.2+(EquNumRandom-EquNumMin)*1.0/(EquNumMax-EquNumMin)*1*grow*0.8",  ["key"] = "equGrowUpParameter",}
+,  [149] = {
+  ["precondition"] = "EquNumMax == EquNumMin",  ["formula"] = "grow*1",  ["clientPrecondition"] = "EquNumMax == EquNumMin",  ["id"] = 149,  ["clientFormula"] = "result=grow*1",  ["key"] = "equGrowUpParameter2",}
 ,  [150] = {
   ["precondition"] = "1",  ["formula"] = "damage_percent*currency",  ["clientPrecondition"] = "1",  ["id"] = 150,  ["clientFormula"] = "result=damage_percent*currency",  ["key"] = "Activitycurrency",}
 ,  [151] = {
@@ -306,9 +308,9 @@ formula_config={
 ,  [154] = {
   ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/1000",  ["clientPrecondition"] = "1",  ["id"] = 154,  ["clientFormula"] = "result=ActivityExpDrop/1000",  ["key"] = "ActivityExpDropConvert_3",}
 ,  [155] = {
-  ["precondition"] = "skill_buff.effectId == 30 and skill_buff.valueType ==1",  ["formula"] = "(1.5*wslevel^2+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 155,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "peerlessDamage1",}
+  ["precondition"] = "skill_buff.effectId == 30",  ["formula"] = "(1.5*wslevel^2+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 155,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "peerlessDamage1",}
 ,  [156] = {
-  ["precondition"] = "skill_buff.effectId == 30 and skill_buff.valueType ==2",  ["formula"] = "(1.5*wslevel^2+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 156,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "peerlessDamage2",}
+  ["precondition"] = "skill_buff.effectId == 30",  ["formula"] = "(1.5*wslevel^2+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 156,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "peerlessDamage2",}
 ,  [157] = {
   ["precondition"] = "1",  ["formula"] = "hero_info.hp*parameters",  ["clientPrecondition"] = "1",  ["id"] = 157,  ["clientFormula"] = "result=hero_info.hp*parameters",  ["key"] = "hero_Breakthrough.hp",}
 ,  [158] = {
@@ -318,5 +320,7 @@ formula_config={
 ,  [160] = {
   ["precondition"] = "1",  ["formula"] = "hero_info.magicDef*parameters",  ["clientPrecondition"] = "1",  ["id"] = 160,  ["clientFormula"] = "result=hero_info.magicDef*parameters",  ["key"] = "hero_Breakthrough.magicDef",}
 ,  [161] = {
-  ["precondition"] = "1",  ["formula"] = "hpArray*0.1+atkArray*0.2+(physicalDefArray+magicDefArray)*0.4+(hitArray+dodgeArray+criArray+criCoeffArray+criDedCoeffArray+blockArray+ductilityArray)*5-14500",  ["clientPrecondition"] = "1",  ["id"] = 161,  ["clientFormula"] = "result=lineup_attr.hpArray*0.1+lineup_attr.atkArray*0.2+(lineup_attr.physicalDefArray+lineup_attr.magicDefArray)*0.4+(lineup_attr.hitArray+lineup_attr.dodgeArray+lineup_attr.criArray+lineup_attr.criCoeffArray+lineup_attr.criDedCoeffArray+lineup_attr.blockArray+lineup_attr.ductilityArray)*5-14500",  ["key"] = "fightValueArray",}
+  ["precondition"] = "1",  ["formula"] = "peoplePercentage*(1-robbedPercentage)",  ["clientPrecondition"] = "1",  ["id"] = 161,  ["clientFormula"] = "result=peoplePercentage*(1-robbedPercentage)",  ["key"] = "EscortReward",}
+,  [162] = {
+  ["precondition"] = "1",  ["formula"] = "peoplePercentage*robbedPercentage",  ["clientPrecondition"] = "1",  ["id"] = 162,  ["clientFormula"] = "result=peoplePercentage*robbedPercentage",  ["key"] = "SnatchReward",}
 ,}

@@ -1,0 +1,121 @@
+import "stage.proto";
+import "guild.proto";
+import "pvp_rank.proto";
+import "common.proto";
+import "friend.proto";
+
+//记录
+message EscortTask{
+    required string task_id = 1;                  // 任务id
+    required int32 task_no = 2;                   // 任务no, 对应数值表id
+    required int32 state = 3;                     // 0: 初始状态的任务; 1: 接受任务，倒计时开始 2: 开始押运的任务; -1:已经完成的任务
+    optional int32 receive_task_time = 4;         // 接受任务时间
+    optional int32 start_protect_time = 5;        // 开始押运任务时间
+                                                  //
+    optional GuildRank protect_guild_info = 6;    // 保护方所在公会信息
+    repeated CharacterInfo protecters = 7;        // 保护押运的玩家, 其中第一个为开始押运的玩家
+    optional GameResourcesResponse reward = 8;   // 最终的奖励, 根据人数增加
+    repeated RobEscortTaskInfo rob_task_infos = 9;// 劫运记录信息
+    optional int32 last_send_invite_time = 10;    // 上次发送押运邀请时间
+}
+
+// 劫运相关信息, 包含战斗
+message RobEscortTaskInfo{
+    optional GuildRank rob_guild_info = 1;  // 劫方所在公会信息
+    repeated CharacterInfo robbers = 2;     // 劫运的玩家, 其中第一个为开始劫运的玩家   CharacterInfo
+	repeated BattleUnitGrop red = 3;        // 我方数据
+	repeated BattleUnitGrop blue = 4;       // 敌方数据
+    optional int32 seed1 = 5;               // 战斗种子，用于回放战斗
+    optional int32 seed2 = 6;               //
+    optional GameResourcesResponse rob_reward = 7; // 劫取
+    optional bool rob_result = 8;           // 劫运的结果
+    optional int32 rob_time = 9;           // 劫运的时间
+    optional int32 rob_state = 10;           // 劫运的状态 0：取消状态，1：接受任务，倒计时开始 -1：完成
+    optional int32 rob_receive_task_time = 11;        // 劫运接受时间
+    optional int32 rob_no = 12 [default = -1];                 // 劫运no, 用来定位哪个劫运任务
+    optional int32 last_send_invite_time = 13;    // 上次发送劫运邀请时间
+}
+
+// 获取所有押运任务 command:1901
+message GetEscortTasksResponse{                          
+    required int32 start_protect_times = 1;       // 开始押运次数
+    required int32 protect_times = 2;             // 保护押运次数
+    /*required int32 start_rob_times = 3;         // 开始劫运次数*/
+    required int32 rob_times = 4;                 // 参与劫运次数
+    required int32 refresh_times = 5;             // 刷新任务次数
+    repeated EscortTask tasks = 6;                // 所有押运任务列表 任务id，任务no，任务state
+    repeated EscortTask can_rob_tasks = 7;        // 所有可劫运任务 任务id, 任务no，任务state, 任务来源(军团及保护者信息), 开始时间，
+    repeated EscortTask tasks_protect_invite = 8; // 押运申请
+    repeated EscortTask tasks_rob_invite = 9;     // 劫运申请
+    /*repeated EscortTask my_protect_tasks = 10;    // 我的押运记录*/
+    optional EscortTask my_current_task = 11;     // 我的当前押运任务
+    optional EscortTask my_current_rob_task = 12;     // 我的当前劫运任务
+}
+
+//获取押运记录 command:1902
+message GetEscortRecordsRequest{
+    required int32 record_type = 1; // 我的押运记录1，我的劫运记录2，军团记录3
+    optional bool current = 2;   // 如果True，则为当前任务
+}
+message GetEscortRecordsResponse{
+    repeated EscortTask tasks = 1;  // 记录列表
+}
+
+//刷新可劫运任务 commond 1903
+//刷新押运任务commond 1904
+message RefreshEscortTaskResponse{
+    required CommonResponse res = 1;        // 结果
+    repeated EscortTask tasks = 2;          // 可劫运任务或者押运任务
+}
+
+//接受押运、劫运任务 command 1905 返回CommonResponse
+message ReceiveEscortTaskRequest{
+    required string task_id = 1;   // 任务id
+    required int32 protect_or_rob = 2; // 押运1 劫运2
+    required int32 task_guild_id = 3; // 任务所在公会id
+    optional int32 rob_no = 4 [default = -1]; //
+}
+//接受劫运任务
+message ReceiveEscortTaskResponse{
+    required CommonResponse res = 1;        // 结果
+    optional EscortTask task = 2;          // 任务
+}
+//取消劫运 command 1906 返回 CommonResponse
+message CancelEscortTaskRequest{
+    required string task_id = 1; //任务id
+    required int32 task_guild_id = 2; // 任务所在公会id
+    optional int32 rob_no = 3 [default = -1]; //
+}
+
+// 发布邀请、参与押运/劫运邀请、command:1908
+message InviteEscortTaskRequest{
+    required string task_id = 1;   // 任务id
+    required int32 send_or_in = 2; // 发布1 参与2
+    required int32 protect_or_rob = 3; // 押运1 劫运2
+    required int32 task_guild_id = 4; // 任务所在公会id
+    optional int32 rob_no = 5 [default = -1]; //
+}
+//发布邀请后向军团推送信息19082
+//被劫后推送给承接人信息19083
+//推送给承接人信息  19081
+//1.接受邀请，加入队伍 只要CharacterInfo
+message InviteEscortTaskPushResponse{
+    required EscortTask task = 1;
+    required int32 protect_or_rob = 2; // 押运1 劫运2
+}
+
+// 手动开始押运command:1909
+// 劫运开始请求 command:1910
+message StartEscortTaskRequest{
+    required string task_id = 1; //任务id
+    required int32 protect_or_rob = 2; // 押运1 劫运2
+    required int32 task_guild_id = 3; // 任务所在公会id
+    optional int32 rob_no = 4 [default = -1]; //
+}
+// 手动开始押运、劫运返回
+message StartEscortTaskResponse{
+    required CommonResponse res = 1;        // 结果
+    optional RobEscortTaskInfo rob_task_info = 2;
+    optional GameResourcesResponse consume = 3; // 消耗
+}
+

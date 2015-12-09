@@ -130,11 +130,66 @@ def acc_mine_time_remote(uid, seq, change_time):
                      uid, _mine['uid'])
         return False
 
-    _mine['normal_harvest'] -= change_time
-    _mine['lucky_harvest'] -= change_time
-    _mine['normal_end'] -= change_time
-    _mine['lucky_end'] -= change_time
-    _mine['last_time'] -= change_time
+    acc_mine_time(seq, _mine, change_time)
+    return True
 
+
+def guild_seek_help(seq, uid):
+    if type(seq) is unicode:
+        seq = seq.encode('utf-8')
+
+    _mine = user_mine.get(seq)
+
+    if not _mine or uid != _mine['uid']:
+        logger.error('acc mine time uid changed:%s-%s',
+                     uid, _mine['uid'])
+        return False
+    print _mine, '===============================111111111===1111'
+    if _mine['seek_help']:
+        return False
+
+    _mine['seek_help'] = 1
     tb_mine.hset(seq, _mine)
     return True
+
+
+def check_guild_seek_help(seq, uid):
+    if type(seq) is unicode:
+        seq = seq.encode('utf-8')
+
+    _mine = user_mine.get(seq)
+
+    if not _mine or uid != _mine['uid']:
+        logger.error('acc mine time uid changed:%s-%s',
+                     uid, _mine['uid'])
+        return False
+    if time.time() >= _mine['last_time']:
+        return False
+    return True
+
+
+def guild_help(seq, uid, pid, shorten_time):  # uid矿主人ID，pid帮助人ID
+    if type(seq) is unicode:
+        seq = seq.encode('utf-8')
+
+    _mine = user_mine.get(seq)
+
+    if not _mine or uid != _mine['uid']:
+        logger.error('acc mine time uid changed:%s-%s',
+                     uid, _mine['uid'])
+        return False
+    if time.time() >= _mine['last_time']:
+        return False
+    # 加速
+    acc_mine_time(seq, _mine, shorten_time)
+    return True
+
+
+def acc_mine_time(seq, mine, change_time):
+    print change_time, '=================bbb1'
+    mine['normal_harvest'] -= change_time
+    mine['lucky_harvest'] -= change_time
+    mine['normal_end'] -= change_time
+    mine['lucky_end'] -= change_time
+    mine['last_time'] -= change_time
+    tb_mine.hset(seq, mine)

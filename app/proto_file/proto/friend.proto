@@ -49,6 +49,7 @@ message CharacterInfo{
     optional int32 fight_times = 20; // 攻击次数
     optional int32 fight_last_time = 21; // 攻击次数
     optional BattleUnit friend_info = 22; //好友信息，
+    optional int32 guild_position = 23; // 军团职位
 }
 
 // player friend items

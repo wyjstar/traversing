@@ -23,6 +23,15 @@ class RobotGuild(Robot):
         argument.ParseFromString(message)
         print argument
         self.on_command_finish()
+    """
+    def command_rob_treasure_init(self):
+        self.send_message('', 858)
+
+    def rob_treasure_init_858(self, message):
+        argument = RobTreasureInitResponse()
+        argument.ParseFromString(message)
+        print argument
+        self.on_command_finish()
 
     def command_rob_treasure_truce(self):
         argument1 = RobTreasureTruceRequest()
@@ -97,10 +106,8 @@ class RobotGuild(Robot):
         argument.ParseFromString(message)
         print argument
         self.on_command_finish()
-
     # =====================
 
-    """
     def command_start_target_get(self):
         argument1 = GetStartTargetRewardRequest()
         argument1.target_id = 29001

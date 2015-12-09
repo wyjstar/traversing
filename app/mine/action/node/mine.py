@@ -78,6 +78,7 @@ def mine_settle_remote(uid, seq, fight_result, nickname, hold):
         if hold:
             _mine['uid'] = uid
             _mine['nickname'] = nickname
+            _mine['seek_help'] = 0
 
         get_cur_data(_mine, int(time.time()))
         for k, v in _mine['normal'].items():
