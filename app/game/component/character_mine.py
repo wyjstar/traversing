@@ -534,6 +534,7 @@ class CharacterMine(Component):
         info['last_time'] = mine.get('last_time', 0)
         info['gen_time'] = mine.get('gen_time', 0)
         info['seek_help'] = mine.get('seek_help', 0)
+        info['mine_id'] = mine.get('mine_id', 0)
 
         info['position'] = position
         return info
