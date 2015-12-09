@@ -39,6 +39,7 @@ class CharacterEscortComponent(Component):
         self._refresh_times = data.get("refresh_times")
         self._refresh_task_time = data.get("refresh_task_time")
         self._last_reset_time = data.get("last_reset_time")
+        self.check_time()
 
     def save_data(self):
         character_info = tb_character_info.getObj(self.owner.base_info.id)
@@ -142,6 +143,10 @@ class CharacterEscortComponent(Component):
         if self._refresh_task_time < escort_refresh:
             self.refresh_tasks()
             self._refresh_task_time = int(get_current_timestamp())
+            self._start_protect_times = 0
+            self._refresh_times = 0
+            self._protect_times = 0
+            self._rob_times = 0
             self.save_data()
 
     def refresh_tasks(self):

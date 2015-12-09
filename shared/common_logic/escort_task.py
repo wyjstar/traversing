@@ -55,6 +55,7 @@ class EscortTask(object):
         self._protect_guild_info = {}
         self._protecters = []
         self._reward = []
+        self._last_send_invite_time = 0
 
         self._rob_task_infos = []
 
@@ -114,9 +115,10 @@ class EscortTask(object):
         return False
 
     def update_rob_state(self, task_item):
+
         for rob_task_info in self._rob_task_infos:
             if rob_task_info.get("rob_state") == 1 and \
-                rob_task_info.get("rob_receive_task_time") + 60 < get_current_timestamp():
+                rob_task_info.get("rob_receive_task_time") + task_item.wait < get_current_timestamp():
                 rob_task_info["rob_state"] = 0
 
     def update_task_state(self):
@@ -213,6 +215,7 @@ class EscortTask(object):
                 "protecters": self._protecters,
                 "rob_task_infos": rob_task_infos,
                 "reward": self._reward,
+                "last_send_invite_time": self._last_send_invite_time,
                 }
 
     def load(self, task_info):
@@ -228,6 +231,7 @@ class EscortTask(object):
         self._protect_guild_info = task_info.get("protect_guild_info")
         self._protecters = task_info.get("protecters")
         self._rob_task_infos = task_info.get("rob_task_infos")
+        self._last_send_invite_time = task_info.get("last_send_invite_time", 0)
 
     #def update_rob_task_info(self, rob_task_info, header):
         #__rob_task_info = self._rob_task_infos.get(header)
@@ -308,3 +312,11 @@ class EscortTask(object):
     @rob_task_infos.setter
     def rob_task_infos(self, value):
         self._rob_task_infos = value
+
+    @property
+    def last_send_invite_time(self):
+        return self._last_send_invite_time
+
+    @last_send_invite_time.setter
+    def last_send_invite_time(self, value):
+        self._last_send_invite_time = value

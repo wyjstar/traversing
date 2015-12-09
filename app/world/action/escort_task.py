@@ -156,6 +156,7 @@ def add_player_remote(guild_id, task_id, player_info, protect_or_rob, rob_no):
     if len(task.protecters)==3 and protect_or_rob == 1:
         logger.debug("team up, then auto start task!")
         start_task(task, guild)
+    logger.debug("rob_no %s" % rob_no)
 
     return dict(result=True,
             task=construct_task_data(task, rob_no))
@@ -188,10 +189,15 @@ def send_escort_task_invite_remote(guild_id, task_id, player_guild_id, rob_no, p
     发送邀请到玩家所在公会
     """
     guild = guild_manager_obj.get_guild_obj(player_guild_id)
+    task_guild = guild_manager_obj.get_guild_obj(guild_id)
+    task = task_guild.get_task_by_id(task_id)
     if protect_or_rob == 1:
         guild.escort_tasks_invite_protect[task_id] = {"guild_id" : guild_id, "rob_no": rob_no}
+        task.last_send_invite_time = int(get_current_timestamp())
+
     elif protect_or_rob == 2:
         guild.escort_tasks_invite_rob[task_id] = {"guild_id" : guild_id, "rob_no": rob_no}
+        task.rob_task_infos[rob_no]["last_send_invite_time"] = int(get_current_timestamp())
     guild.save_data()
 
     task_guild = guild_manager_obj.get_guild_obj(guild_id)

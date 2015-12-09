@@ -12,6 +12,7 @@ from shared.utils.const import const
 from gfirefly.server.globalobject import GlobalObject
 from app.game.action.node._fight_start_logic import assemble
 from app.game.action.root.netforwarding import push_message
+from shared.utils.date_util import get_current_timestamp
 import cPickle
 import copy
 
@@ -59,10 +60,9 @@ def get_all_task_info_1901(pro_data, player):
     # 我的押运任务
     tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.protect_records)
     #record_util(player.base_info.id, tasks, response.my_protect_tasks)
-    # 我的押运任务
-    for task_id, task in tasks.items():
-        update_task_pb(task, response.my_current_task)
-    get_my_current_task(tasks, response.my_current_task, player.base_info.id)
+    # 我的当前任务
+    #task = get_my_current_task(tasks, player.base_info.id)
+    #update_task_pb(task, response.my_current_task)
     # 我的劫运任务
     tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.rob_records)
     get_my_current_rob_task(player.base_info.id, tasks, response.my_current_rob_task)
@@ -91,7 +91,9 @@ def get_escort_record_1902(data, player):
         tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.protect_records)
         logger.debug("======================== %s" % tasks)
         if current:
-            get_my_current_task(tasks, response.tasks.add(), player.base_info.id)
+            task = get_my_current_task(tasks, player.base_info.id)
+            if task:
+                update_task_pb(task, response.tasks.add())
         else:
             logger.debug("1======================== %s" % tasks)
             load_data_to_response(tasks, response.tasks)
@@ -105,18 +107,17 @@ def get_escort_record_1902(data, player):
         tasks = remote_gate["world"].get_guild_task_records_remote(player.guild.g_id)
         load_data_to_response(tasks, response.tasks)
 
-
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
-def get_my_current_task(tasks, task_pb, player_id):
+def get_my_current_task(tasks, player_id):
     """我的押运任务, 筛选我的"""
     for task_id, task in tasks.items():
         protecter0 = task.get("protecters")[0].get("id")
         logger.debug("task protecter0 %s player_id %s" % (protecter0, player_id))
         if task.get("state") in [1, 2] and protecter0 == player_id:
             logger.debug("task protecter0 %s player_id %s" % (protecter0, player_id))
-            update_task_pb(task, task_pb)
+            return task
 
 def get_my_current_rob_task(player_id, tasks, task_pb):
     for task_id, task in tasks.items():
@@ -215,11 +216,10 @@ def receive_rob_escort_task_1907(data, player):
     task_id = request.task_id
     #protect_or_rob = request.protect_or_rob
     task_guild_id = request.task_guild_id
-    rob_no = request.rob_no
 
     response = escort_pb2.ReceiveEscortTaskResponse()
 
-    res = receive_rob_task(player, task_id, task_guild_id, rob_no)
+    res = receive_rob_task(player, task_id, task_guild_id)
     if res.get("result"):
         task = res.get("task")
         update_task_pb(task, response.task)
@@ -262,7 +262,7 @@ def receive_protect_task(player, task_id):
     escort_component.save_data()
     return {'result': True}
 
-def receive_rob_task(player, task_id, task_guild_id, rob_no):
+def receive_rob_task(player, task_id, task_guild_id):
     """
     接受劫运任务
     """
@@ -281,12 +281,13 @@ def receive_rob_task(player, task_id, task_guild_id, rob_no):
     #if player.base_info.id in task.get('rob_task_infos') and task.get():
         #logger.debug("this task has been robbed!")
         #return {'result': False, 'result_no': 190902}
-    escort_component.rob_records[task.get("task_id")] = dict(guild_id=task_guild_id, rob_no=rob_no)
-    escort_component.save_data()
 
     logger.debug("receive_rob_task, start=======")
     res = remote_gate["world"].add_player_remote(task_guild_id, task_id, get_player_info(player), 2, -1)
     logger.debug("receive_rob_task, end=======")
+    if res.get('result'):
+        escort_component.rob_records[task.get("task_id")] = dict(guild_id=task_guild_id, rob_no=res.get('task').get('rob_task_infos')[0].get('rob_no'))
+        escort_component.save_data()
 
     return res
 
@@ -359,6 +360,16 @@ def send_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
     if not task:
         logger.error("can't find this task!")
         return {'result': False, 'result_no': 190801}
+    AnnouncementCoolingTime = game_configs.base_config.get("AnnouncementCoolingTime", 0)
+    if protect_or_rob == 1:
+        last_send_invite_time = task.get("last_send_invite_time", 0)
+        if last_send_invite_time + AnnouncementCoolingTime > int(get_current_timestamp()):
+            return {'result': False, 'result_no': 190804}
+    if protect_or_rob == 2:
+        last_send_invite_time = task.get("rob_task_infos")[0].get("last_send_invite_time", 0)
+        if last_send_invite_time + AnnouncementCoolingTime > int(get_current_timestamp()):
+            return {'result': False, 'result_no': 190804}
+
 
     push_response = escort_pb2.InviteEscortTaskPushResponse()
     update_task_pb(task, push_response.task)
@@ -386,6 +397,23 @@ def in_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
     """
     参与邀请
     """
+
+    res = remote_gate["world"].get_guild_info_remote(player.guild.g_id, "build", 0)
+    if not res.get("result"):
+        logger.error("get guild info error!")
+        return res
+
+    build = res.get("build")
+    guild_item = game_configs.guild_config.get(4).get(build.get(4))
+
+    escort_component = player.escort_component
+    if protect_or_rob == 1 and escort_component.protect_times >= guild_item.protectionEscortTimeMax:
+        logger.error("protect_times not enough!")
+        return {'result': False, 'result_no': 190802}
+    if protect_or_rob == 2 and escort_component.rob_times >= guild_item.snatchTimeMax:
+        logger.error("rob_times not enough!")
+        return {'result': False, 'result_no': 190803}
+
     # add CharacterInfo to the task
     res = remote_gate["world"].add_player_remote(task_guild_id, task_id, get_player_info(player), protect_or_rob, rob_no)
     if not res.get("result"):
@@ -395,8 +423,12 @@ def in_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
     push_response = escort_pb2.InviteEscortTaskPushResponse()
     update_task_pb(task, push_response.task)
     push_response.protect_or_rob = protect_or_rob
-    player.escort_component.protect_records[task_id] = dict(guild_id=player.guild.g_id)
+    if protect_or_rob == 1:
+        player.escort_component.protect_records[task_id] = dict(guild_id=task_guild_id)
+    if protect_or_rob == 2:
+        player.escort_component.rob_records[task_id] = dict(guild_id=task_guild_id, rob_no=rob_no)
     player.escort_component.save_data()
+
     if protect_or_rob == 1:
         player_id = task.get("protecters")[0].get("id")
     else:
@@ -507,6 +539,7 @@ def update_task_pb(task, task_pb):
     task_pb.state = task.get("state")
     task_pb.receive_task_time = task.get("receive_task_time", 0)
     task_pb.start_protect_time = task.get("start_protect_time", 0)
+    task_pb.last_send_invite_time = task.get("last_send_invite_time", 0)
     update_guild_pb(task.get("protect_guild_info", {}), task_pb.protect_guild_info)
     update_player_infos_pb(task.get("protecters", []), task_pb.protecters)
     # reward
@@ -563,6 +596,9 @@ def update_rob_task_info_pb(protecters, rob_task_info, rob_task_info_pb, protect
     rob_task_info_pb.rob_receive_task_time = rob_task_info.get("rob_receive_task_time", 0)
     # rob_no
     rob_task_info_pb.rob_no = rob_task_info.get("rob_no", 0)
+    # last_send_invite_time
+    rob_task_info_pb.last_send_invite_time = rob_task_info.get("last_send_invite_time", 0)
+
 
 def update_side_battle_unit_pb(player_infos, battle_unit_groups_pb):
     for player_info in player_infos:

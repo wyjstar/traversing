@@ -16,6 +16,7 @@ message EscortTask{
     repeated CharacterInfo protecters = 7;        // 保护押运的玩家, 其中第一个为开始押运的玩家
     optional GameResourcesResponse reward = 8;   // 最终的奖励, 根据人数增加
     repeated RobEscortTaskInfo rob_task_infos = 9;// 劫运记录信息
+    optional int32 last_send_invite_time = 10;    // 上次发送押运邀请时间
 }
 
 // 劫运相关信息, 包含战斗
@@ -32,6 +33,7 @@ message RobEscortTaskInfo{
     optional int32 rob_state = 10;           // 劫运的状态 0：取消状态，1：接受任务，倒计时开始 -1：完成
     optional int32 rob_receive_task_time = 11;        // 劫运接受时间
     optional int32 rob_no = 12 [default = -1];                 // 劫运no, 用来定位哪个劫运任务
+    optional int32 last_send_invite_time = 13;    // 上次发送劫运邀请时间
 }
 
 // 获取所有押运任务 command:1901

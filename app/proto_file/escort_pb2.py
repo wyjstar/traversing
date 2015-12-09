@@ -18,7 +18,7 @@ import friend_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='escort.proto',
   package='',
-  serialized_pb='\n\x0c\x65scort.proto\x1a\x0bstage.proto\x1a\x0bguild.proto\x1a\x0epvp_rank.proto\x1a\x0c\x63ommon.proto\x1a\x0c\x66riend.proto\"\x94\x02\n\nEscortTask\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x0f\n\x07task_no\x18\x02 \x02(\x05\x12\r\n\x05state\x18\x03 \x02(\x05\x12\x19\n\x11receive_task_time\x18\x04 \x01(\x05\x12\x1a\n\x12start_protect_time\x18\x05 \x01(\x05\x12&\n\x12protect_guild_info\x18\x06 \x01(\x0b\x32\n.GuildRank\x12\"\n\nprotecters\x18\x07 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x06reward\x18\x08 \x01(\x0b\x32\x16.GameResourcesResponse\x12*\n\x0erob_task_infos\x18\t \x03(\x0b\x32\x12.RobEscortTaskInfo\"\xcb\x02\n\x11RobEscortTaskInfo\x12\"\n\x0erob_guild_info\x18\x01 \x01(\x0b\x32\n.GuildRank\x12\x1f\n\x07robbers\x18\x02 \x03(\x0b\x32\x0e.CharacterInfo\x12\x1c\n\x03red\x18\x03 \x03(\x0b\x32\x0f.BattleUnitGrop\x12\x1d\n\x04\x62lue\x18\x04 \x03(\x0b\x32\x0f.BattleUnitGrop\x12\r\n\x05seed1\x18\x05 \x01(\x05\x12\r\n\x05seed2\x18\x06 \x01(\x05\x12*\n\nrob_reward\x18\x07 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x12\n\nrob_result\x18\x08 \x01(\x08\x12\x10\n\x08rob_time\x18\t \x01(\x05\x12\x11\n\trob_state\x18\n \x01(\x05\x12\x1d\n\x15rob_receive_task_time\x18\x0b \x01(\x05\x12\x12\n\x06rob_no\x18\x0c \x01(\x05:\x02-1\"\xd8\x02\n\x16GetEscortTasksResponse\x12\x1b\n\x13start_protect_times\x18\x01 \x02(\x05\x12\x15\n\rprotect_times\x18\x02 \x02(\x05\x12\x11\n\trob_times\x18\x04 \x02(\x05\x12\x15\n\rrefresh_times\x18\x05 \x02(\x05\x12\x1a\n\x05tasks\x18\x06 \x03(\x0b\x32\x0b.EscortTask\x12\"\n\rcan_rob_tasks\x18\x07 \x03(\x0b\x32\x0b.EscortTask\x12)\n\x14tasks_protect_invite\x18\x08 \x03(\x0b\x32\x0b.EscortTask\x12%\n\x10tasks_rob_invite\x18\t \x03(\x0b\x32\x0b.EscortTask\x12$\n\x0fmy_current_task\x18\x0b \x01(\x0b\x32\x0b.EscortTask\x12(\n\x13my_current_rob_task\x18\x0c \x01(\x0b\x32\x0b.EscortTask\"?\n\x17GetEscortRecordsRequest\x12\x13\n\x0brecord_type\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x08\"6\n\x18GetEscortRecordsResponse\x12\x1a\n\x05tasks\x18\x01 \x03(\x0b\x32\x0b.EscortTask\"U\n\x19RefreshEscortTaskResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1a\n\x05tasks\x18\x02 \x03(\x0b\x32\x0b.EscortTask\"n\n\x18ReceiveEscortTaskRequest\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x16\n\x0eprotect_or_rob\x18\x02 \x02(\x05\x12\x15\n\rtask_guild_id\x18\x03 \x02(\x05\x12\x12\n\x06rob_no\x18\x04 \x01(\x05:\x02-1\"T\n\x19ReceiveEscortTaskResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x04task\x18\x02 \x01(\x0b\x32\x0b.EscortTask\"U\n\x17\x43\x61ncelEscortTaskRequest\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x15\n\rtask_guild_id\x18\x02 \x02(\x05\x12\x12\n\x06rob_no\x18\x03 \x01(\x05:\x02-1\"\x81\x01\n\x17InviteEscortTaskRequest\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x12\n\nsend_or_in\x18\x02 \x02(\x05\x12\x16\n\x0eprotect_or_rob\x18\x03 \x02(\x05\x12\x15\n\rtask_guild_id\x18\x04 \x02(\x05\x12\x12\n\x06rob_no\x18\x05 \x01(\x05:\x02-1\"Q\n\x1cInviteEscortTaskPushResponse\x12\x19\n\x04task\x18\x01 \x02(\x0b\x32\x0b.EscortTask\x12\x16\n\x0eprotect_or_rob\x18\x02 \x02(\x05\"l\n\x16StartEscortTaskRequest\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x16\n\x0eprotect_or_rob\x18\x02 \x02(\x05\x12\x15\n\rtask_guild_id\x18\x03 \x02(\x05\x12\x12\n\x06rob_no\x18\x04 \x01(\x05:\x02-1\"\x8b\x01\n\x17StartEscortTaskResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12)\n\rrob_task_info\x18\x02 \x01(\x0b\x32\x12.RobEscortTaskInfo\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0c\x65scort.proto\x1a\x0bstage.proto\x1a\x0bguild.proto\x1a\x0epvp_rank.proto\x1a\x0c\x63ommon.proto\x1a\x0c\x66riend.proto\"\xb3\x02\n\nEscortTask\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x0f\n\x07task_no\x18\x02 \x02(\x05\x12\r\n\x05state\x18\x03 \x02(\x05\x12\x19\n\x11receive_task_time\x18\x04 \x01(\x05\x12\x1a\n\x12start_protect_time\x18\x05 \x01(\x05\x12&\n\x12protect_guild_info\x18\x06 \x01(\x0b\x32\n.GuildRank\x12\"\n\nprotecters\x18\x07 \x03(\x0b\x32\x0e.CharacterInfo\x12&\n\x06reward\x18\x08 \x01(\x0b\x32\x16.GameResourcesResponse\x12*\n\x0erob_task_infos\x18\t \x03(\x0b\x32\x12.RobEscortTaskInfo\x12\x1d\n\x15last_send_invite_time\x18\n \x01(\x05\"\xea\x02\n\x11RobEscortTaskInfo\x12\"\n\x0erob_guild_info\x18\x01 \x01(\x0b\x32\n.GuildRank\x12\x1f\n\x07robbers\x18\x02 \x03(\x0b\x32\x0e.CharacterInfo\x12\x1c\n\x03red\x18\x03 \x03(\x0b\x32\x0f.BattleUnitGrop\x12\x1d\n\x04\x62lue\x18\x04 \x03(\x0b\x32\x0f.BattleUnitGrop\x12\r\n\x05seed1\x18\x05 \x01(\x05\x12\r\n\x05seed2\x18\x06 \x01(\x05\x12*\n\nrob_reward\x18\x07 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x12\n\nrob_result\x18\x08 \x01(\x08\x12\x10\n\x08rob_time\x18\t \x01(\x05\x12\x11\n\trob_state\x18\n \x01(\x05\x12\x1d\n\x15rob_receive_task_time\x18\x0b \x01(\x05\x12\x12\n\x06rob_no\x18\x0c \x01(\x05:\x02-1\x12\x1d\n\x15last_send_invite_time\x18\r \x01(\x05\"\xd8\x02\n\x16GetEscortTasksResponse\x12\x1b\n\x13start_protect_times\x18\x01 \x02(\x05\x12\x15\n\rprotect_times\x18\x02 \x02(\x05\x12\x11\n\trob_times\x18\x04 \x02(\x05\x12\x15\n\rrefresh_times\x18\x05 \x02(\x05\x12\x1a\n\x05tasks\x18\x06 \x03(\x0b\x32\x0b.EscortTask\x12\"\n\rcan_rob_tasks\x18\x07 \x03(\x0b\x32\x0b.EscortTask\x12)\n\x14tasks_protect_invite\x18\x08 \x03(\x0b\x32\x0b.EscortTask\x12%\n\x10tasks_rob_invite\x18\t \x03(\x0b\x32\x0b.EscortTask\x12$\n\x0fmy_current_task\x18\x0b \x01(\x0b\x32\x0b.EscortTask\x12(\n\x13my_current_rob_task\x18\x0c \x01(\x0b\x32\x0b.EscortTask\"?\n\x17GetEscortRecordsRequest\x12\x13\n\x0brecord_type\x18\x01 \x02(\x05\x12\x0f\n\x07\x63urrent\x18\x02 \x01(\x08\"6\n\x18GetEscortRecordsResponse\x12\x1a\n\x05tasks\x18\x01 \x03(\x0b\x32\x0b.EscortTask\"U\n\x19RefreshEscortTaskResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1a\n\x05tasks\x18\x02 \x03(\x0b\x32\x0b.EscortTask\"n\n\x18ReceiveEscortTaskRequest\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x16\n\x0eprotect_or_rob\x18\x02 \x02(\x05\x12\x15\n\rtask_guild_id\x18\x03 \x02(\x05\x12\x12\n\x06rob_no\x18\x04 \x01(\x05:\x02-1\"T\n\x19ReceiveEscortTaskResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x19\n\x04task\x18\x02 \x01(\x0b\x32\x0b.EscortTask\"U\n\x17\x43\x61ncelEscortTaskRequest\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x15\n\rtask_guild_id\x18\x02 \x02(\x05\x12\x12\n\x06rob_no\x18\x03 \x01(\x05:\x02-1\"\x81\x01\n\x17InviteEscortTaskRequest\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x12\n\nsend_or_in\x18\x02 \x02(\x05\x12\x16\n\x0eprotect_or_rob\x18\x03 \x02(\x05\x12\x15\n\rtask_guild_id\x18\x04 \x02(\x05\x12\x12\n\x06rob_no\x18\x05 \x01(\x05:\x02-1\"Q\n\x1cInviteEscortTaskPushResponse\x12\x19\n\x04task\x18\x01 \x02(\x0b\x32\x0b.EscortTask\x12\x16\n\x0eprotect_or_rob\x18\x02 \x02(\x05\"l\n\x16StartEscortTaskRequest\x12\x0f\n\x07task_id\x18\x01 \x02(\t\x12\x16\n\x0eprotect_or_rob\x18\x02 \x02(\x05\x12\x15\n\rtask_guild_id\x18\x03 \x02(\x05\x12\x12\n\x06rob_no\x18\x04 \x01(\x05:\x02-1\"\x8b\x01\n\x17StartEscortTaskResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12)\n\rrob_task_info\x18\x02 \x01(\x0b\x32\x12.RobEscortTaskInfo\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse')
 
 
 
@@ -93,6 +93,13 @@ _ESCORTTASK = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='last_send_invite_time', full_name='EscortTask.last_send_invite_time', index=9,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -103,7 +110,7 @@ _ESCORTTASK = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=87,
-  serialized_end=363,
+  serialized_end=394,
 )
 
 
@@ -198,6 +205,13 @@ _ROBESCORTTASKINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='last_send_invite_time', full_name='RobEscortTaskInfo.last_send_invite_time', index=12,
+      number=13, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -207,8 +221,8 @@ _ROBESCORTTASKINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=366,
-  serialized_end=697,
+  serialized_start=397,
+  serialized_end=759,
 )
 
 
@@ -298,8 +312,8 @@ _GETESCORTTASKSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=700,
-  serialized_end=1044,
+  serialized_start=762,
+  serialized_end=1106,
 )
 
 
@@ -333,8 +347,8 @@ _GETESCORTRECORDSREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1046,
-  serialized_end=1109,
+  serialized_start=1108,
+  serialized_end=1171,
 )
 
 
@@ -361,8 +375,8 @@ _GETESCORTRECORDSRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1111,
-  serialized_end=1165,
+  serialized_start=1173,
+  serialized_end=1227,
 )
 
 
@@ -396,8 +410,8 @@ _REFRESHESCORTTASKRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1167,
-  serialized_end=1252,
+  serialized_start=1229,
+  serialized_end=1314,
 )
 
 
@@ -445,8 +459,8 @@ _RECEIVEESCORTTASKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1254,
-  serialized_end=1364,
+  serialized_start=1316,
+  serialized_end=1426,
 )
 
 
@@ -480,8 +494,8 @@ _RECEIVEESCORTTASKRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1366,
-  serialized_end=1450,
+  serialized_start=1428,
+  serialized_end=1512,
 )
 
 
@@ -522,8 +536,8 @@ _CANCELESCORTTASKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1452,
-  serialized_end=1537,
+  serialized_start=1514,
+  serialized_end=1599,
 )
 
 
@@ -578,8 +592,8 @@ _INVITEESCORTTASKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1540,
-  serialized_end=1669,
+  serialized_start=1602,
+  serialized_end=1731,
 )
 
 
@@ -613,8 +627,8 @@ _INVITEESCORTTASKPUSHRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1671,
-  serialized_end=1752,
+  serialized_start=1733,
+  serialized_end=1814,
 )
 
 
@@ -662,8 +676,8 @@ _STARTESCORTTASKREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1754,
-  serialized_end=1862,
+  serialized_start=1816,
+  serialized_end=1924,
 )
 
 
@@ -704,8 +718,8 @@ _STARTESCORTTASKRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1865,
-  serialized_end=2004,
+  serialized_start=1927,
+  serialized_end=2066,
 )
 
 _ESCORTTASK.fields_by_name['protect_guild_info'].message_type = guild_pb2._GUILDRANK
