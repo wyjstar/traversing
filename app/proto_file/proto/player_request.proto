@@ -9,6 +9,9 @@ message CreatePlayerRequest{
      optional string nickname = 1;//角色昵称
 }
 
+message UpGuideRequest{
+	required int32 guide_id = 1;  // 引导ID
+}
 message NewbeeGuideStepRequest{
 	required int32 step_id = 1;
     optional string common_id = 2; // 用于装备，符文，武将等

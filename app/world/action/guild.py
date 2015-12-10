@@ -470,7 +470,7 @@ def up_build_remote(g_id, p_id, build_type):
     guild_obj.contribution -= build_conf.exp
     guild_obj.save_data()
 
-    return {'res': True}
+    return {'res': True, 'build_level': guild_obj.build.get(build_type)}
 
 
 @rootserviceHandle
@@ -661,6 +661,7 @@ def mine_help_remote(g_id, p_id, seek_time, already_helps):
 
     help_ids = []
     p_ids = []  # 所有的成员ID
+    uids = []
     for _, x in guild_obj.p_list.items():
         p_ids += x
     for _time, [mine_id, u_id, times] in guild_obj.mine_help.items():
@@ -680,11 +681,12 @@ def mine_help_remote(g_id, p_id, seek_time, already_helps):
             times += 1
             guild_obj.mine_help[_time] = [mine_id, u_id, times]
             help_ids.append(_time)
+        uids.append(u_id)
 
     # help_ids 这次帮助的列表 加上 之前帮助的而且这个请求还存在的
     # already_helps 之前已经帮助过的列表
     # guild_obj.mine_help 军团里所有的请求
-    return {'res': True, 'help_ids': help_ids, 'p_list': guild_obj.p_list}
+    return {'res': True, 'help_ids': help_ids, 'uids': uids}
 
 
 @rootserviceHandle

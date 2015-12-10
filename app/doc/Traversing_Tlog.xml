@@ -272,89 +272,6 @@
         <entry name="ReasonEventID" type="string" size="64"  desc="事件关联ID" />
     </struct>
 
-    <!--创建军团-->
-    <struct name="CreatGuild" version="1" desc="创建军团">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="GuildId" type="string" size="64" desc="军团ID" />
-        <entry name="UserLevel" type="int"  desc="玩家等级" />
-    </struct>  
-
-    <!--处理加入军团-->
-    <struct name="JoinGuild" version="1" desc="创建军团">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="GuildId" type="string" size="64" desc="军团ID" />
-        <entry name="BeHandler" type="int" desc="被处理玩家ID" />
-        <entry name="ResType" type="int" desc="处理结果，1同意2拒绝3全部拒绝" />
-    </struct>
-
-    <!--退出军团-->
-    <struct name="ExitGuild" version="1" desc="退出军团">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="GuildId" type="string" size="64" desc="军团ID" />
-    </struct>
-
-    <!--转让军团-->
-    <struct name="GuildChangePresident" version="1" desc="转让军团">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="GuildId" type="string" size="64" desc="军团ID" />
-        <entry name="TargetId" type="int" desc="被转让玩家ID" />
-    </struct>  
-
-    <!--踢出军团--> 
-    <struct name="GuildKick" version="1" desc="踢出军团">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="GuildId" type="string" size="64" desc="军团ID" />
-        <entry name="TargetId" type="int" desc="被踢出玩家ID" />
-    </struct>
-
-    <!--军团晋升-->
-    <struct name="GuildPromotion" version="1" desc="踢出军团">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="GuildId" type="string" size="64" desc="军团ID" />
-        <entry name="BeID" type="int" desc="被顶下玩家ID" />
-    </struct>
-
-    <!--军团膜拜--> 
-    <struct name="GuildWorship" version="1" desc="踢出军团">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="GuildId" type="string" size="64" desc="军团ID" />
-        <entry name="WorshipType" type="int" desc="膜拜类型" />
-    </struct>
 
     <!--游历结算--> 
     <struct name="TravelSettle" version="1" desc="游历结算">
@@ -1001,6 +918,413 @@
 
     </struct>
 
+
+    <!--===================================================-->
+    <!--终极迭代三期-->
+    <!--===================================================-->
+
+
+    <!--枭雄 伤害排名奖励-->
+
+    <struct name="WorldBossRankReward" version="1" desc="枭雄 伤害排名奖励">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="Rank"               type="int"                                            desc="排行" />
+        <entry name="Damage"             type="int"                                            desc="伤害" />
+        <entry name="MailID"             type="int"                                            desc="邮件ID用于查询奖励等信息" />
+
+    </struct>
+
+    <!--枭雄 累积奖励-->
+
+    <struct name="WorldBossAddUpReward" version="1" desc="枭雄 累积奖励">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="Damage"             type="int"                                            desc="伤害" />
+        <entry name="MailID"             type="int"                                            desc="邮件ID用于查询奖励等信息" />
+
+    </struct>
+
+    <!--枭雄 参与奖励-->
+
+    <struct name="WorldBossInReward" version="1" desc="枭雄 参与奖励">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="MailID"             type="int"                                            desc="邮件ID用于查询奖励等信息" />
+
+    </struct>
+
+    <!--枭雄 鼓舞-->
+
+    <struct name="WorldBossEncourage" version="1" desc="枭雄 参与奖励">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="Type"               type="int"                                            desc="鼓舞类型1钻石2金币" />
+        <entry name="Times"               type="int"                                            desc="次数" />
+
+    </struct>
+
+    <!--无双升级-->
+
+    <struct name="UnparUpgrade" version="1" desc="无双升级">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="ID"                 type="int"                                            desc="无双ID" />
+        <entry name="Level"              type="int"                                            desc="升级后的等级" />
+
+    </struct>
+
+    <!--成长引导-->
+
+    <struct name="UpGuide" version="1" desc="成长引导">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
+
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+        <entry name="ID"                 type="int"                                            desc="引导ID" />
+
+    </struct>
+
+    <!--创建军团-->
+
+    <struct name="CreatGuild" version="1" desc="创建军团">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1" />
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId"            type="string"        size="64" desc="军团ID" />
+        <entry name="UserLevel"          type="int"                                            desc="玩家等级" />
+        <entry name="Icon"               type="int"                                            desc="图标ID" />
+    </struct>  
+
+    <!--军团建筑升级-->
+
+    <struct name="GuildBuildUp" version="1" desc="军团建筑升级">
+        <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
+        <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1" />
+        <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId"            type="string"        size="64" desc="军团ID" />
+        <entry name="BuildLevel"         type="int"                                            desc="建筑等级" />
+        <entry name="BuildType"         type="int"                                            desc="建筑类型" />
+    </struct>  
+
+    <!--处理加入军团-->
+
+    <struct name="DealJoinGuild" version="1" desc="创建军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="BeHandler" type="int" desc="被处理玩家ID" />
+        <entry name="ResType" type="int" desc="处理结果，1同意2拒绝3全部拒绝" />
+    </struct>
+
+    <!--退出军团-->
+
+    <struct name="ExitGuild" version="1" desc="退出军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+    </struct>
+
+    <!--转让军团-->
+
+    <struct name="GuildChangePresident" version="1" desc="转让军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="TargetId" type="int" desc="被转让玩家ID" />
+    </struct>  
+
+    <!--踢出军团--> 
+    <struct name="GuildKick" version="1" desc="踢出军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="TargetId" type="int" desc="被踢出玩家ID" />
+    </struct>
+
+    <!--团长领取赞的奖励--> 
+    <struct name="CaptainReceiveZan" version="1" desc="团长领取赞的奖励">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="Num" type="int" desc="被赞的个数,具体得到什么，读表" />
+    </struct>
+
+    <!--秘境帮助--> 
+    <struct name="MineHelp" version="1" desc="秘境帮助">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="BeHelpIds" type="string" desc="被帮助的玩家列表，str的形式写'[1,2,3]'" />
+    </struct>
+
+    <!--祈福--> 
+    <struct name="GuildWorship" version="1" desc="祈福">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="WorshipType" type="int" desc="膜拜类型" />
+        <entry name="WorshipTimes" type="int" desc="祈福次数" />
+    </struct>
+
+    <!--领取祈福宝箱奖励--> 
+    <struct name="GuildWorshipGift" version="1" desc="踢出军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="BuildLevel" type="int" desc="建筑等级" />
+        <entry name="GiftNo" type="int" desc="礼物编号" />
+    </struct>
+
+    <!--召唤圣兽--> 
+    <struct name="TriggerBoss" version="1" desc="召唤圣兽">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="BossType" type="int" desc="boss类型" />
+    </struct>
+
+    <!--击杀圣兽--> 
+    <struct name="GuildBossBattle" version="1" desc="击杀圣兽">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="BossType" type="int" desc="boss类型" />
+        <entry name="Result" type="int" desc="战斗结果1杀死2没杀死" />
+    </struct>
+
+    <!--升级军团技能--> 
+    <struct name="UpgradeGuildSkill" version="1" desc="升级军团技能">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="SkillType" type="int" desc="技能类型" />
+        <entry name="Level" type="int" desc="level" />
+        <entry name="Num" type="int" desc="消耗技能点" />
+    </struct>
+
+    <!--刷新任务列表--> 
+    <struct name="RefreshEscortTasks" version="1" desc="刷新任务列表">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="Times" type="int" desc="次数" />
+    </struct>
+
+    <!--接受押运任务--> 
+    <struct name="ReceiveEscortTask" version="1" desc="接受押运任务">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+    </struct>
+
+    <!--接受劫运任务--> 
+    <struct name="ReceiveRobEscortTask" version="1" desc="接受劫运任务">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
+    </struct>
+
+    <!--取消劫运任务--> 
+    <struct name="CancelEscortTask" version="1" desc="取消劫运任务">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
+    </struct>
+
+    <!--发送或接受邀请--> 
+    <struct name="GuildTaskInvite" version="1" desc="发送或接受邀请">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="次数" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
+        <entry name="SendOrIN" type="int" desc="发布1 参与2" />
+        <entry name="ProtectOrRob" type="int" desc="押运1 劫运2" />
+        <entry name="RobNo" type="int" desc="默认－1" />
+    </struct>
+
+    <!--手动开始押运--> 
+    <struct name="StartProtectEscort" version="1" desc="手动开始押运">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
+    </struct>
+
+    <!--手动开始劫运--> 
+    <struct name="StartRobEscort" version="1" desc="手动开始劫运">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="TaskID" type="int" desc="任务ID" />
+        <entry name="TaskGuildID" type="int" desc="任务军团id" />
+    </struct>
+
+
+    <!--申请加入军团--> 
+    <struct name="JoinGuild" version="1" desc="申请加入军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildID" type="int" desc="军团id" />
+    </struct>
+
+
+    <!--商城刷新--> 
+    <struct name="RefreshShop" version="1" desc="商城刷新">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="ShopType" type="int" desc="商城类型" />
+        <entry name="Times" type="int" desc="刷新次数" />
+    </struct>
+
+
+    <!--商城购买--> 
+    <struct name="ShopBuy" version="1" desc="商城购买">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="Ids" type="string" size="32" desc="购买的物品id的组成的字符串:'[123,123,123]'" />
+        <entry name="ItemsCount" type="string" size="32" desc="购买的物品个数组成的字符串:'[123,123,123]'" />
+    </struct>
+
+
+    <!--购买可恢复资源--> 
+    <struct name="BuyStamina" version="1" desc="购买可恢复资源">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="ResourceType" type="int" desc="资源类型" />
+        <entry name="Num" type="int" desc="资源类型数量" />
+    </struct>
+
+
+    <!--重置关卡次数--> 
+    <struct name="ResetStage" version="1" desc="申请加入军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="StageID" type="int" desc="关卡ID" />
+        <entry name="Times" type="int" desc="今日第几次重置" />
+    </struct>
 
 </metalib>
 <!--

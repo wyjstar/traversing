@@ -25,6 +25,7 @@ from shared.utils.date_util import string_to_timestamp
 #from shared.utils.const import const
 from shared.common_logic.lucky_hero import update_lucky_hero
 #from app.game.core.mail_helper import send_mail
+from shared.tlog import tlog_action
 
 def get_remote_gate():
     """docstring for get_remote_gate"""
@@ -202,6 +203,8 @@ class WorldBoss(BaseBoss):
                 logger.debug("send_award_top_ten: player_id %s, value %s, mail_id %s, rank: %s" % (player_id, v, mail_id, up))
                 send_mail(conf_id=mail_id, receive_id=player_id, rank=up)
                 #self.send_award(player_id, const.PVB_TOP_TEN_AWARD, big_bag_id, k+up)
+                tlog_action.log('WorldBossRankReward', player_id, up,
+                                v, mail_id)
 
     def send_award_add_up(self):
         """
@@ -219,6 +222,7 @@ class WorldBoss(BaseBoss):
 
                     send_mail(conf_id=reward_info[1], receive_id=player_id, damage=int(v))
                     #self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
+                    tlog_action.log('WorldBossAddUpReward', player_id, v, mail_id)
                     break
                 else:
                     continue
@@ -260,6 +264,7 @@ class WorldBoss(BaseBoss):
             logger.debug("send_award_in==== %s %s" % (player_id, v))
             #self.send_award(player_id, const.PVB_IN_AWARD, int(v))
             send_mail(conf_id=mail_id, receive_id=player_id)
+            tlog_action.log('WorldBossInReward', player_id, mail_id)
 
     def send_award(self, player_id, award_type, award, rank_no=0):
         """

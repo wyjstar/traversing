@@ -181,8 +181,31 @@ def sweep_flow(GameSvrId=0, dtEventTime=0, GameAppID=0,
         print sendmsg
 
 
+def guild_build_up(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                   PlatID=0, OpenID=0, GuildId=0, BuildLevel=0,
+                   BuildType=0):
+
+    message = ['GuildBuildUp']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildId)
+    message.append(BuildLevel)
+    message.append(BuildType)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
 def creat_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                PlatID=0, OpenID=0, GuildId=0, UserLevel=0):
+                PlatID=0, OpenID=0, GuildId=0, UserLevel=0,
+                Icon=0):
 
     message = ['CreatGuild']
 
@@ -194,6 +217,7 @@ def creat_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(GuildId)
     message.append(UserLevel)
+    message.append(Icon)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -302,7 +326,8 @@ def guild_promotion(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def guild_worship(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                  PlatID=0, OpenID=0, GuildId=0, WorshipType=0):
+                  PlatID=0, OpenID=0, GuildId=0, WorshipType=0,
+                  WorshipTimes=0):
 
     message = ['GuildWorship']
 
@@ -314,6 +339,29 @@ def guild_worship(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(GuildId)
     message.append(WorshipType)
+    message.append(WorshipTimes)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def guild_worship_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                       PlatID=0, OpenID=0, GuildId=0, BuildLevel=0,
+                       GiftNo=0):
+
+    message = ['GuildWorshipGift']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildId)
+    message.append(BuildLevel)
+    message.append(GiftNo)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -1499,6 +1547,471 @@ def rob_treasure_truce(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(Num)
     message.append(NumDay)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def world_boss_rank_reward(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                           PlatID=0, OpenID=0, Rank=0, Damage=0,
+                           MailID=0):
+
+    message = ['WorldBossRankReward']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Rank)
+    message.append(Damage)
+    message.append(MailID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def world_boss_add_up_reward(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                             PlatID=0, OpenID=0, Damage=0, MailID=0):
+
+    message = ['WorldBossAddUpReward']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Damage)
+    message.append(MailID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def world_boss_in_reward(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                         PlatID=0, OpenID=0, MailID=0):
+
+    message = ['WorldBossInReward']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(MailID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def world_boss_encourage(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                         PlatID=0, OpenID=0, Type=0, Times=0):
+
+    message = ['WorldBossEncourage']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Type)
+    message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def unpar_upgrade(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                  PlatID=0, OpenID=0, Level=0):
+
+    message = ['UnparUpgrade']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Level)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def up_guide(GameSvrId=0, dtEventTime=0, GameAppID=0,
+             PlatID=0, OpenID=0, ID=0):
+
+    message = ['UpGuide']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def captain_receive_zan(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                        PlatID=0, OpenID=0, GuildID=0, Num=0):
+
+    message = ['CaptainReceiveZan']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(Num)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def mine_help(GameSvrId=0, dtEventTime=0, GameAppID=0,
+              PlatID=0, OpenID=0, GuildID=0, BeHelpIds=0):
+
+    message = ['MineHelp']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(BeHelpIds)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def trigger_boss(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                 PlatID=0, OpenID=0, GuildID=0, BossType=0):
+
+    message = ['MineHelp']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(BossType)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def guild_boss_battle(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                      PlatID=0, OpenID=0, GuildID=0, BossType=0,
+                      Result=0):
+
+    message = ['GuildBossBattle']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(SkillType)
+    message.append(Level)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def upgrade_guild_skill(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                        PlatID=0, OpenID=0, GuildID=0, SkillType=0,
+                        Level=0, Num=0):
+
+    message = ['UpgradeGuildSkill']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(SkillType)
+    message.append(Level)
+    message.append(Num)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def refresh_escort_tasks(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                         PlatID=0, OpenID=0, Times=0):
+
+    message = ['RefreshEscortTasks']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def receive_escort_task(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                        PlatID=0, OpenID=0, TaskID=0):
+
+    message = ['ReceiveEscortTask']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def receive_rob_escort_task(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                            PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0):
+
+    message = ['ReceiveRobEscortTask']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def cancel_escort_task(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                       PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0):
+
+    message = ['CancelEscortTask']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def guild_task_invite(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                      PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0,
+                      SendOrIn=0, ProtectOrRob=0, RobNo=0):
+
+    message = ['GuildTaskInvite']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
+    message.append(SendOrIn)
+    message.append(ProtectOrRob)
+    message.append(RobNo)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def start_protect_escort(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                         PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0):
+
+    message = ['StartProtectEscort']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def start_rob_escort(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                     PlatID=0, OpenID=0, TaskID=0, TaskGuildID=0):
+
+    message = ['StartRobEscort']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+    message.append(TaskGuildID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def join_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
+               PlatID=0, OpenID=0, GuildID=0):
+
+    message = ['JoinGuild']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def refresh_shop(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                 PlatID=0, OpenID=0, ShopType=0, Times=0):
+
+    message = ['RefreshShop']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ShopType)
+    message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def shop_buy(GameSvrId=0, dtEventTime=0, GameAppID=0,
+             PlatID=0, OpenID=0, Ids=0, ItemsCount=0):
+
+    message = ['ShopBuy']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Ids)
+    message.append(ItemsCount)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def buy_stamina(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                PlatID=0, OpenID=0, ResourceType=0, Num=0):
+
+    message = ['BuyStamina']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ResourceType)
+    message.append(Num)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def reset_stage(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                PlatID=0, OpenID=0, StageID=0, Times=0):
+
+    message = ['ResetStage']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(StageID)
+    message.append(Times)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

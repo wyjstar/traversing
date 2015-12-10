@@ -140,7 +140,7 @@ class CharacterStageComponent(Component):
         stage_obj = self._stage_info.get(stage_id, None)
         if not stage_obj:
             # stage_obj = Stage(stage_id, state=1, star_num=3)
-            stage_obj = Stage(stage_id, state=-2)
+            stage_obj = Stage(stage_id, state=1)
             self._stage_info[stage_id] = stage_obj
         return stage_obj
 
@@ -160,12 +160,12 @@ class CharacterStageComponent(Component):
     def get_stages(self):
         """取得全部关卡信息
         """
-        #stage_open_max = game_configs.base_config.get('stage_open_max')
+        stage_open_max = game_configs.base_config.get('stage_open_max')
         stages_config = game_configs.stage_config.get('stages')
         elite_stages = game_configs.special_stage_config.get('elite_stages')
         act_stages = game_configs.special_stage_config.get('act_stages')
-        # return [self.get_stage(stage_id) for stage_id, item in stages_config.items() if not item.chaptersTab and item.chapter <= stage_open_max] + \
-        return [self.get_stage(stage_id) for stage_id, item in stages_config.items() if not item.chaptersTab] + \
+        # return [self.get_stage(stage_id) for stage_id, item in stages_config.items() if not item.chaptersTab] + \
+        return [self.get_stage(stage_id) for stage_id, item in stages_config.items() if not item.chaptersTab and item.chapter <= stage_open_max] + \
                [self.get_stage(stage_id) for stage_id, item in elite_stages.items()] + \
                [self.get_stage(stage_id) for stage_id, item in act_stages.items()]
 
