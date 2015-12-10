@@ -1097,7 +1097,8 @@
         <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
-        <entry name="Num" type="int" desc="被赞的个数,具体得到什么，读表" />
+        <entry name="Num" type="int" desc="被赞的个数" />
+        <entry name="MoneyNum" type="int" desc="累计金币" />
     </struct>
 
     <!--秘境帮助--> 

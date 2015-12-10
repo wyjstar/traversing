@@ -521,6 +521,7 @@ def captailn_receive_remote(g_id, p_id):
     build_level = guild_obj.build.get(1)
     build_conf = game_configs.guild_config.get(1)[build_level]
 
+    money_num = guild_obj.praise_money
     if guild_obj.praise_money <= 0:
         return {'res': False, 'no': 800}
 
