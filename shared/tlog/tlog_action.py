@@ -1153,7 +1153,7 @@ def buy_stamina(player_data, resource_type, num):
 
 def reset_stage(player_data, stage_id, times):
 
-    log4tx.buy_stamina(GameSvrId=game_server_id,
+    log4tx.reset_stage(GameSvrId=game_server_id,
                        dtEventTime=xtime.strdatetime(),
                        GameAppID=game_app_id,
                        OpenID=player_data.base_info.id,
