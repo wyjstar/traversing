@@ -4,7 +4,7 @@ Created on 2014-2-23
 连接管理器
 @author: lan (www.9miao.com)
 """
-from gfirefly.server.globalobject import GlobalObject
+# from gfirefly.server.globalobject import GlobalObject
 from app.proto_file.account_pb2 import AccountKick
 from gfirefly.server.logobj import logger
 from connection import Connection
@@ -12,6 +12,7 @@ from shared.utils.const import const
 import traceback
 import collections
 import gevent
+import errno
 
 
 class ConnectionManager:
@@ -150,6 +151,10 @@ class ConnectionManager:
             # if dynamic_id != 0:
             #     remote_gate = GlobalObject().remote['gate']
             #     remote_gate.net_conn_lost_remote_noresult(connection_id)
+        except IOError as e:
+            logger.error(e)
+            # if e.errno == errno.EPIPE:
+            #     pass
         except:
             logger.error(traceback.format_exc())
 
