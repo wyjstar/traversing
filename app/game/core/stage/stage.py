@@ -13,7 +13,7 @@ class Stage(object):
     """关卡
     """
     def __init__(self, stage_id, attacks=0, state=-1, reset=None,
-                 drop_num=0, chest_state=0, star_num=3, attack_times=0,
+                 drop_num=0, chest_state=0, star_num=0, attack_times=0,
                  elite_drop2_info=None, elite_drop_times=0):
         self._stage_id = stage_id   # 关卡编号
         self._attacks = attacks     # 攻击次数
