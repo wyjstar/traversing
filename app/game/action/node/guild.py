@@ -565,7 +565,7 @@ def bless_809(data, player):
 
     response.res.result = True
     # response.message = "膜拜成功"
-    tlog_action.log('GuildWorship', player, g_id, bless_type, player.base_info.guild_worship_times)
+    tlog_action.log('GuildWorship', player, g_id, bless_type, player.guild.bless_times)
     return response.SerializeToString()
 
 
@@ -1066,7 +1066,7 @@ def captailn_receive_1806(data, player):
     return_data = gain(player, dorp_item, const.ReceivePraiseGift)  # 获取
     get_return(player, return_data, response.gain)
     tlog_action.log('CaptainReceiveZan', player, player.guild.g_id,
-                    money_num)
+                    money_num, remote_res.get('praise_times'))
 
     response.res.result = True
     return response.SerializeToString()

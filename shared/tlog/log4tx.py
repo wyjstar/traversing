@@ -1674,7 +1674,8 @@ def up_guide(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def captain_receive_zan(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                        PlatID=0, OpenID=0, GuildID=0, Num=0):
+                        PlatID=0, OpenID=0, GuildID=0, Num=0,
+                        MoneyNum=0):
 
     message = ['CaptainReceiveZan']
 
@@ -1686,6 +1687,7 @@ def captain_receive_zan(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(GuildID)
     message.append(Num)
+    message.append(MoneyNum)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -1952,6 +1954,25 @@ def refresh_shop(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(ShopType)
     message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def shop_buy1(GameSvrId=0, dtEventTime=0, GameAppID=0,
+              PlatID=0, OpenID=0, ShopID=0):
+
+    message = ['ShopBuy1']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ShopID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
