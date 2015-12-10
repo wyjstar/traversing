@@ -1130,6 +1130,16 @@ def refresh_shop(player_data, shop_type, times):
                         Times=times)
 
 
+def shop_buy1(player_data, shop_id):
+
+    log4tx.shop_buy1(GameSvrId=game_server_id,
+                     dtEventTime=xtime.strdatetime(),
+                     GameAppID=game_app_id,
+                     OpenID=player_data.base_info.id,
+                     PlatID=plat_id,
+                     ShopID=shop_id)
+
+
 def shop_buy(player_data, ids, items_count):
 
     log4tx.shop_buy(GameSvrId=game_server_id,
@@ -1258,6 +1268,7 @@ tlog_funcs['StartRobEscort'] = start_rob_escort
 tlog_funcs['JoinGuild'] = join_guild
 tlog_funcs['RefreshShop'] = refresh_shop
 tlog_funcs['ShopBuy'] = shop_buy
+tlog_funcs['ShopBuy1'] = shop_buy1
 tlog_funcs['BuyStamina'] = buy_stamina
 tlog_funcs['ResetStage'] = reset_stage
 

@@ -565,7 +565,7 @@ def bless_809(data, player):
 
     response.res.result = True
     # response.message = "膜拜成功"
-    tlog_action.log('GuildWorship', player, g_id, bless_type, player.base_info.guild_worship_times)
+    tlog_action.log('GuildWorship', player, g_id, bless_type, player.guild.bless_times)
     return response.SerializeToString()
 
 

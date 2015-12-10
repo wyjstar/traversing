@@ -1961,6 +1961,25 @@ def refresh_shop(GameSvrId=0, dtEventTime=0, GameAppID=0,
         print sendmsg
 
 
+def shop_buy1(GameSvrId=0, dtEventTime=0, GameAppID=0,
+              PlatID=0, OpenID=0, ShopID=0):
+
+    message = ['ShopBuy1']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ShopID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
 def shop_buy(GameSvrId=0, dtEventTime=0, GameAppID=0,
              PlatID=0, OpenID=0, Ids=0, ItemsCount=0):
 

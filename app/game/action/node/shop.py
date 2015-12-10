@@ -190,6 +190,7 @@ def shop_oper(pro_data, player, reason):
                 hook_task(player, CONDITIONId.HERO_GET_LIANG, 10)
 
         send_tlog(player, shop_item)
+        tlog_action.log('ShopBuy1', player, shop_id)
 
     player.pay.pay(need_gold, reason, func)
 
