@@ -1066,7 +1066,7 @@ def captailn_receive_1806(data, player):
     return_data = gain(player, dorp_item, const.ReceivePraiseGift)  # 获取
     get_return(player, return_data, response.gain)
     tlog_action.log('CaptainReceiveZan', player, player.guild.g_id,
-                    money_num)
+                    money_num, remote_res.get('praise_times'))
 
     response.res.result = True
     return response.SerializeToString()

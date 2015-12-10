@@ -960,7 +960,7 @@ def unpar_upgrade(player_data, level):
                          Level=level)
 
 
-def captain_receive_zan(player_data, guild_id, num):
+def captain_receive_zan(player_data, guild_id, num, money_num):
 
     log4tx.captain_receive_zan(GameSvrId=game_server_id,
                                dtEventTime=xtime.strdatetime(),
@@ -968,7 +968,8 @@ def captain_receive_zan(player_data, guild_id, num):
                                OpenID=player_data.base_info.id,
                                PlatID=plat_id,
                                GuildID=guild_id,
-                               Num=num)
+                               Num=num,
+                               MoneyNum=money_num)
 
 
 def mine_help(player_data, guild_id, be_help_ids):
