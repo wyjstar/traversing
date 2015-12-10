@@ -140,7 +140,7 @@ class CharacterStageComponent(Component):
         stage_obj = self._stage_info.get(stage_id, None)
         if not stage_obj:
             # stage_obj = Stage(stage_id, state=1, star_num=3)
-            stage_obj = Stage(stage_id, state=-2)
+            stage_obj = Stage(stage_id, state=1)
             self._stage_info[stage_id] = stage_obj
         return stage_obj
 

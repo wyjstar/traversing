@@ -130,7 +130,7 @@ def create_guild_801(data, player):
 
     response.res.result = True
     tlog_action.log('CreatGuild', player, player.guild.g_id,
-                    player.base_info.level)
+                    player.base_info.level, icon_id)
     # hook task
     hook_task(player, CONDITIONId.JOIN_GUILD, 1)
     return response.SerializeToString()
@@ -181,6 +181,7 @@ def join_guild_802(data, player):
 
     player.guild.apply_guilds.append(g_id)
     player.guild.save_data()
+    tlog_action.log('JoinGuild', player, player.guild.g_id)
 
     response.res.result = True
     return response.SerializeToString()
@@ -374,10 +375,13 @@ def deal_apply_805(data, player):
             send_mail(conf_id=303, receive_id=p_id,
                       guild_name=remote_res['guild_name'])
             tlog_action.log('DealJoinGuild', player, g_id,
-                            p_id, 1)
+                            p_id, res_type)
 
     else:
         if res_type == 3:
+            for p_id in p_ids:
+                tlog_action.log('DealJoinGuild', player, g_id,
+                                p_id, res_type)
             p_ids = remote_res['applys']
 
         for p_id in p_ids:
@@ -470,6 +474,7 @@ def kick_807(data, player):
                   guild_name=remote_res.get('name'))
 
         clear_related_data(be_kick_id)
+        tlog_action.log('GuildKick', player, g_id, be_kick_id)
 
     response.res.result = True
     return response.SerializeToString()
@@ -560,7 +565,7 @@ def bless_809(data, player):
 
     response.res.result = True
     # response.message = "膜拜成功"
-    tlog_action.log('GuildWorship', player, g_id, bless_type)
+    tlog_action.log('GuildWorship', player, g_id, bless_type, player.base_info.guild_worship_times)
     return response.SerializeToString()
 
 
@@ -1060,6 +1065,8 @@ def captailn_receive_1806(data, player):
 
     return_data = gain(player, dorp_item, const.ReceivePraiseGift)  # 获取
     get_return(player, return_data, response.gain)
+    tlog_action.log('CaptainReceiveZan', player, player.guild.g_id,
+                    money_num)
 
     response.res.result = True
     return response.SerializeToString()
@@ -1106,6 +1113,7 @@ def get_bless_gift_1808(data, player):
 
     player.guild.receive_bless_gift(gift_no)
     player.guild.save_data()
+    tlog_action.log('GuildWorshipGift', player, g_id, build_level, gift_no)
     response.res.result = True
     return response.SerializeToString()
 
@@ -1208,6 +1216,9 @@ def up_build_870(data, player):
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
     response.res.result = True
+    tlog_action.log('GuildBuildUp', player, player.guild.g_id,
+                    remote_res.get('build_level'),
+                    build_type)
     return response.SerializeToString()
 
 
@@ -1408,6 +1419,9 @@ def mine_help_list_875(data, player):
     player.guild.mine_help = help_ids
     player.guild.save_data()
 
+    tlog_action.log('MineHelp', player, player.guild.g_id,
+                    str(remote_res.get('uids')))
+
     response.res.result = True
     return response.SerializeToString()
 
@@ -1426,7 +1440,6 @@ def get_guild_dynamics_876(data, player):
         response.res.result_no = remote_res.get('result_no')
         return response.SerializeToString()
     dynamics = remote_res.get('dynamics')
-    print dynamics, '========================111'
     for dynamic in dynamics:
         _dynamic = GuildDynamic()
         dynamic_pb = response.dynamics.add()
@@ -1434,8 +1447,8 @@ def get_guild_dynamics_876(data, player):
         dynamic_pb.CopyFrom(_dynamic)
 
     response.res.result = True
-    print response, '====================22'
     return response.SerializeToString()
+
 
 @remoteserviceHandle('gate')
 def get_guild_contribution_880(data, player):
@@ -1450,4 +1463,3 @@ def get_guild_contribution_880(data, player):
     logger.debug(response)
 
     return response.SerializeToString()
-

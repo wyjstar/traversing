@@ -14,7 +14,7 @@ from app.proto_file import recharge_pb2
 from app.proto_file import player_pb2
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
 from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest, \
-    ChangeHeadRequest
+    ChangeHeadRequest, UpGuideRequest
 from app.proto_file.player_response_pb2 import NewbeeGuideStepResponse, \
     ChangeHeadResponse, UpdateHightPowerResponse
 from gfirefly.server.globalobject import remoteserviceHandle
@@ -89,6 +89,18 @@ GUIDE_EQUIP_STRENGTH = [40031, 40032, 40033]
 GUIDE_HERO_UPGRADE = 30013
 GUIDE_HERO_BREAK = 40008
 GUIDE_EQUIP_SHOP = 40044
+
+
+@remoteserviceHandle('gate')
+def up_guide_1816(data, player):
+    request = UpGuideRequest()
+    request.ParseFromString(data)
+    response = CommonResponse()
+    guide_id = request.guide_id
+
+    tlog_action.log('UpGuide', player, guide_id)
+    response.result = True
+    return response.SerializePartialToString()
 
 
 @remoteserviceHandle('gate')
