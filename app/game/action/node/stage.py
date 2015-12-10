@@ -742,7 +742,9 @@ def get_star_random_1828(pro_data, player):
         return response.SerializeToString()
 
     def func():
-        random_num = do_get_star_random(random_num_conf)
+        random_num = 10005
+        if not request.is_newbee:
+            random_num = do_get_star_random(random_num_conf)
         response.random_num = random_num
         chapter_obj.now_random = random_num
         chapter_obj.random_gift_times += 1

@@ -65,6 +65,7 @@ message OpenStageChestRequest{
 // 1828
 message GetStarRandomRequest{
     required int32 chapter_id = 1;//章节编号
+    optional int32 is_newbee = 2;//是不是新手引导
 }
 
 // 1829
