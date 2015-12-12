@@ -175,6 +175,7 @@ def battle_2103(pro_data, player):
     response.seed2 = seed2
     response.attack_type = attack_type
     response.hjqy_coin = meritorious_service
+    response.stage_id = stage_id
     response.res.result = True
 
     hook_task(player, CONDITIONId.HJQY, 1)

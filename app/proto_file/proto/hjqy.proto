@@ -61,6 +61,7 @@ message HjqyBattleResponse{
     optional int32 seed2= 10;            // 随机种子2
     optional int32 attack_type = 11;     // 普通攻击:1，全力一击:2
     optional int32 hjqy_coin = 12;     // 功勋
+    optional int32 stage_id = 13;     // stage id
 }
 //结算奖励, 发放时间
 
