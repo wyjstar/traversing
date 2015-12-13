@@ -46,7 +46,7 @@ def create_guild_remote(p_id, g_name, icon_id, apply_guilds):
 
 
 @rootserviceHandle
-def get_guild_info_remote(guild_id, info_names, p_id):
+def get_guild_info_remote(guild_id, info_name, p_id):
     """
     """
     guild_obj = guild_manager_obj.get_guild_obj(guild_id)
@@ -75,7 +75,7 @@ def join_guild_remote(g_id, p_id):
             get('guildApplyMaxNum'):
         # "军团申请人数已满
         return {'res': False, 'no': 859}
-    if guild_obj.get_p_num() >= game_configs.guild_config. \
+    if guild_obj.p_num >= game_configs.guild_config. \
             get(1).get(guild_obj.build[1]).p_max:
         # "公会已满员"
         return {'res': False, 'no': 845}
@@ -98,7 +98,7 @@ def exit_guild_remote(guild_id, p_id):
     if not position:
         # "您不在此公会"
         return {'res': False, 'no': 850}
-    p_num = guild_obj.get_p_num()
+    p_num = guild_obj.p_num
     if p_num == 1:
         # 删名字
         guild_name_data = tb_guild_info.getObj('names')
@@ -159,7 +159,7 @@ def cheak_deal_apply_remote(g_id, p_ids, p_id, deal_type):
         return {'res': False, 'no': 800}
 
     if deal_type == 1:
-        p_num = guild_obj.get_p_num()
+        p_num = guild_obj.p_num
         p_max = game_configs.guild_config.get(1).get(guild_obj.build[1]).p_max
         if p_num+len(p_ids) > p_max:
             # "超出公会人数上限"

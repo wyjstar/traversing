@@ -13,7 +13,8 @@ from shared.common_logic.guild_boss import GuildBoss
 from shared.utils.date_util import str_time_to_timestamp, get_current_timestamp
 from collections import deque
 from shared.utils.date_util import get_current_timestamp
-from shared.common_logic.shop import guild_shops, check_time, get_new_shop_info
+from shared.common_logic.shop import guild_shops, check_time, get_new_shop_info, \
+    refresh_shop_info
 
 
 class Guild(object):
@@ -52,7 +53,8 @@ class Guild(object):
     @property
     def info(self):
         data = self._info
-        data['p_num'] = self.get_p_num()
+        data['p_num'] = self.p_num
+        data['level'] = self.level
         return data
 
     @property
@@ -89,10 +91,7 @@ class Guild(object):
         self._g_id = g_id
         self._icon_id = icon_id
         self._p_list = {1: [p_id]}
-        for t, item in game_configs.shop_type_config.items():
-            if t not in guild_shops:
-                continue
-            self._shop_data[t] = get_new_shop_info(t)
+        refresh_shop_info(self._shop_data, 1)
 
         guild_obj = tb_guild_info.getObj(self._g_id)
         guild_obj.new(self._info)
@@ -179,7 +178,8 @@ class Guild(object):
     def editor_call(self, call):
         self._call = call
 
-    def get_p_num(self):
+    @property
+    def p_num(self):
         num = 0
         for p_list in self._p_list.values():
             num += len(p_list)
@@ -251,11 +251,11 @@ class Guild(object):
 
     @property
     def level(self):
-        return self._level
-
-    @level.setter
-    def level(self, level):
-        self._level = level
+        level = 0
+        build_info = self.build
+        for b_type, b_level in build_info.items():
+            level += b_level
+        return 0
 
     @property
     def call(self):

@@ -461,6 +461,7 @@ class CharacterMine(Component):
             else:
                 mine['type'] = MineType.SHOP
                 self.owner.shop.auto_refresh_items(7)
+                self.owner.shop.save_data()
 
         if stype == MineType.COPY:
             result = mine_boss()

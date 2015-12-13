@@ -9,9 +9,12 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 import time
 from app.game.core.item_group_helper import do_get_draw_drop_bag
-from app.game.core.item_group_helper import is_afford, consume, get_consume_gold_num, get_return
+from app.game.core.item_group_helper import is_afford, consume, \
+    get_consume_gold_num, get_return
 from shared.utils.const import const
-from shared.common_logic.shop import guild_shops, get_new_shop_info, check_time, refresh_shop_info
+from shared.common_logic.shop import guild_shops, get_new_shop_info, \
+    check_time, refresh_shop_info, get_shop_item_ids, \
+    do_auto_refresh_items
 
 
 class CharacterShopComponent(Component):
@@ -134,7 +137,8 @@ class CharacterShopComponent(Component):
         result = self._owner.pay.pay(price, const.SHOP_REFRESH, func)
         return result
 
-
+    def auto_refresh_items(self, shop_type):
+        do_auto_refresh_items(shop_type, self._shop_data)
 
     @property
     def first_coin_draw(self):

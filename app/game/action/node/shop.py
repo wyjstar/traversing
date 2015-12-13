@@ -468,6 +468,7 @@ def get_shop_items_508(pro_data, player):
     request = GetShopItems()
     request.ParseFromString(pro_data)
     shop_type = request.shop_type
+    print shop_type, '============================shop_type'
 
     response = GetShopItemsResponse()
 
@@ -479,8 +480,10 @@ def get_shop_items_508(pro_data, player):
 
     if shop_type in guild_shops:
         shopdata = player.guild.get_shop_data(shop_type)
+        print shopdata, '==================guildshop'
     else:
         shopdata = player.shop.get_shop_data(shop_type)
+        print shopdata, '==================playershop'
 
     shop_is_open = player.base_info.vip_shop_open
     _is_open = shop_is_open.get(shop_type, 0)

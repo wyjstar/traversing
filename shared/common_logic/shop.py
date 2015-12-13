@@ -33,7 +33,8 @@ def get_shop_item_ids(shop_type, luck_num):
     items = {}
     for item in game_configs.shop_config.get(shop_type, []):
         if item.weight == -1:
-            continue
+            items[item.id] = 1
+            #continue
         elif item.weight == -2:
             weights = sorted(item.get('weightGroup'), reverse=True)
             for w in weights:
@@ -50,6 +51,7 @@ def get_shop_item_ids(shop_type, luck_num):
     if not shop_item:
         raise Exception('error shop type:%s' % shop_type)
     item_num = shop_item.get('itemNum')
+    print items, '============================================= get shop item ids'
     if item_num == -1:
         return items.keys()
     if not items:
@@ -57,7 +59,7 @@ def get_shop_item_ids(shop_type, luck_num):
     return random_multi_pick_without_repeat(items, item_num)
 
 
-def auto_refresh_items(type_shop, shop_data):
+def do_auto_refresh_items(type_shop, shop_data):
     logger.debug("auto_refresh_items=========")
     if type_shop in shop_data:
         ids = get_shop_item_ids(type_shop,
@@ -81,6 +83,7 @@ def check_time(shop_data):
         if current_day != refresh_day:
             v['refresh_times'] = 0
             v['items'] = {}
+            v['guild_items'] = {}
             v['last_refresh_time'] = time.time()
 
         luck_day = localtime(v['luck_time']).tm_yday
@@ -95,24 +98,26 @@ def check_time(shop_data):
             continue
         logger.debug("%s %s" % (freeRefreshTime, v['last_auto_refresh_time']))
         if time.time() > is_past_time(freeRefreshTime, v['last_auto_refresh_time']):
-            auto_refresh_items(k, shop_data)
+            do_auto_refresh_items(k, shop_data)
 
 
 def refresh_shop_info(shop_data, is_guild_shop):
     for t, item in game_configs.shop_type_config.items():
-        if (is_guild_shop and t not in guild_shops) or (not is_guild_shop and t in guild_shops):
-            continue
+        if (is_guild_shop and t in guild_shops) or (not is_guild_shop and t not in guild_shops):
             shop_data[t] = get_new_shop_info(t)
 
 
 def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
     shop_item = game_configs.shop_config.get(shop_id)
-    shop_id_buyed_num_day = shop['items'].get(shop_id, 0)
+    shop_id_buyed_num = shop['items'].get(shop_id, 0)
     # shop_id_buyed_num_all = shop['all_items'].get(shop_id, 0)
     # guild_shop_id_buyed_num_day = shop['guild_items'].get(shop_id, 0)
-    if shop_item.batch != -1 and shop_id_buyed_num_day >= shop_item.batch:
-        return {'res': False, 'no': 851}
+    limit_type = ''
+    if shop_item.batch != -1:
+        limit_type = 'items'
+        if shop_id_buyed_num >= shop_item.batch:
+            return {'res': False, 'no': 851}
 
     if shop_item.limitVIP:
         limit_num = shop_item.limitVIP.get(vip_level, 0)
@@ -163,7 +168,8 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
-    shop[limit_type][shop_id] = shop_id_buyed_num + item_count
+    if limit_type:
+        shop[limit_type][shop_id] = shop_id_buyed_num + item_count
 
     _lucky_attr = 0
     shop_item_attr = shop_item.get('attr')

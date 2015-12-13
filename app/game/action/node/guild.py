@@ -744,11 +744,20 @@ def get_guild_rank_810(data, player):
 
 
 def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
+
+    """
+    remote_res = remote_gate['world'].join_guild_remote(g_id, p_id)
+    if not remote_res.get('res'):
+        response.res.result = False
+        response.res.result_no = remote_res.get('no')
+        return response.SerializeToString()
+    """
+
     data1 = tb_guild_info.getObj(g_id).hgetall()
     # if data1:
     guild_obj = Guild()
     guild_obj.init_data(data1)
-    if rank_type == 2 and guild_obj.get_p_num() >= \
+    if rank_type == 2 and guild_obj.p_num >= \
             game_configs.guild_config.get(8).get(guild_obj.build[1]).p_max:
         return False
     guild_rank = response.guild_rank.add()
@@ -767,7 +776,7 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
         logger.error('guild rank, president player not fond,id:%s',
                      president_id)
 
-    guild_rank.p_num = guild_obj.get_p_num()
+    guild_rank.p_num = guild_obj.p_num
     guild_rank.call = guild_obj.call
     if player.base_info.id in guild_obj.apply:
         guild_rank.be_apply = 1
@@ -876,7 +885,7 @@ def get_guild_info_812(data, player):
     position = guild_obj.get_position(player.base_info.id)
     response.g_id = g_id
     response.name = guild_obj.name
-    response.member_num = guild_obj.get_p_num()
+    response.member_num = guild_obj.p_num
     response.contribution = guild_obj.contribution
     response.all_contribution = guild_obj.all_contribution
     response.icon_id = guild_obj.icon_id
@@ -1026,7 +1035,7 @@ def invite_join_1803(data, player):
 
     guild_p_max = game_configs.guild_config.get(8).get(guild_obj.level).p_max
 
-    if guild_obj.get_p_num()+1 > guild_p_max:
+    if guild_obj.p_num+1 > guild_p_max:
         response.res.result = False
         response.res.result_no = 845
         # response.message = "超出公会人数上限"
@@ -1144,7 +1153,7 @@ def deal_invite_join_1804(data, player):
             #response.message = "你已经有军团了"
             return response.SerializeToString()
 
-        if guild_obj.get_p_num()+1 > game_configs.guild_config.get(8).get(guild_obj.level).p_max:
+        if guild_obj.p_num+1 > game_configs.guild_config.get(8).get(guild_obj.level).p_max:
             response.res.result = False
             response.res.result_no = 845
             # response.message = "超出公会人数上限"
@@ -1352,7 +1361,7 @@ def find_guild_1809(data, player):
             logger.error('guild rank, president player not fond,id:%s',
                          president_id)
 
-        guild_rank.p_num = guild_obj.get_p_num()
+        guild_rank.p_num = guild_obj.p_num
         guild_rank.call = guild_obj.call
         if player.base_info.id in guild_obj.apply:
             guild_rank.be_apply = 1
