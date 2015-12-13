@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='activity.proto',
   package='',
-  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"#\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\"X\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"[\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05')
+  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"#\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\"X\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"m\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05\x12\x10\n\x08\x61\x63t_type\x18\x04 \x01(\x05')
 
 
 
@@ -138,6 +138,13 @@ _GETACTINFORESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='act_type', full_name='GetActInfoResponse.act_type', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -148,7 +155,7 @@ _GETACTINFORESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=198,
-  serialized_end=289,
+  serialized_end=307,
 )
 
 _GETACTGIFTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
