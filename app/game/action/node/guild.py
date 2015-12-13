@@ -181,7 +181,7 @@ def join_guild_802(data, player):
 
     player.guild.apply_guilds.append(g_id)
     player.guild.save_data()
-    tlog_action.log('JoinGuild', player, player.guild.g_id)
+    tlog_action.log('JoinGuild', player, g_id)
 
     response.res.result = True
     return response.SerializeToString()

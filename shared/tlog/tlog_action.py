@@ -994,17 +994,6 @@ def trigger_boss(player_data, guild_id, boss_type):
                         BossType=boss_type)
 
 
-def trigger_boss(player_data, guild_id, boss_type):
-
-    log4tx.trigger_boss(GameSvrId=game_server_id,
-                        dtEventTime=xtime.strdatetime(),
-                        GameAppID=game_app_id,
-                        OpenID=player_data.base_info.id,
-                        PlatID=plat_id,
-                        GuildID=guild_id,
-                        BossType=boss_type)
-
-
 def guild_boss_battle(player_data, guild_id, boss_type, result):
 
     log4tx.guild_boss_battle(GameSvrId=game_server_id,
@@ -1111,12 +1100,12 @@ def start_rob_escort(player_data, task_id, task_guild_id):
 
 def join_guild(player_data, guild_id):
 
-    log4tx.start_rob_escort(GameSvrId=game_server_id,
-                            dtEventTime=xtime.strdatetime(),
-                            GameAppID=game_app_id,
-                            OpenID=player_data.base_info.id,
-                            PlatID=plat_id,
-                            GuildID=guild_id)
+    log4tx.join_guild(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      GuildID=guild_id)
 
 
 def refresh_shop(player_data, shop_type, times):

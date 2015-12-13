@@ -1718,7 +1718,7 @@ def mine_help(GameSvrId=0, dtEventTime=0, GameAppID=0,
 def trigger_boss(GameSvrId=0, dtEventTime=0, GameAppID=0,
                  PlatID=0, OpenID=0, GuildID=0, BossType=0):
 
-    message = ['MineHelp']
+    message = ['TriggerBoss']
 
     message.append(GameSvrId)
     message.append(dtEventTime)

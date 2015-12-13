@@ -528,7 +528,7 @@ def captailn_receive_remote(g_id, p_id):
     guild_obj.receive_praise_money()
     guild_obj.save_data()
     return {'res': True, 'build_level': build_level,
-            'money_num': money_num, 'praise_times',
+            'money_num': money_num, 'praise_times':
             guild_obj.praise_num}
 
 
