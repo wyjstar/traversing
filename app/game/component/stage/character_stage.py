@@ -215,6 +215,7 @@ class CharacterStageComponent(Component):
                     hide_stage_obj = self.get_stage(temp_stage_id)
                     if hide_stage_obj.state == -2:
                         hide_stage_obj.state = -1
+                # 获取那蛋疼的掉落
 
             else:
                 next_stages = game_configs.special_stage_config. \

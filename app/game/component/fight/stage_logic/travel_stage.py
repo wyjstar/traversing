@@ -24,7 +24,7 @@ class TravelStageLogic(base_stage.BaseStageLogic):
         """docstring for stage_config"""
         return stage_util.get_stage_config(game_configs.stage_config, "travel_fight_stages", self._stage_id)
 
-    def settle(self, result, response):
+    def settle(self, result, response, star_num=0):
         """
         战斗结算
         """

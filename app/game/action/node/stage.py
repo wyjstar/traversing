@@ -667,8 +667,8 @@ def get_star_random_1828(pro_data, player):
     response = stage_response_pb2.GetStarRandomResponse()
 
     chapters_info = get_chapter_info(chapter_id, player)
-    if len(chapters_info) != 1 or chapter_id == 1 or (chapter_id == 2 and award_type ==2) or len(chapters_info[0].award_info) == 0:
-        logger.error("chapter_info dont find,or (chapter_id == 1 and award_type == 2 ) or ")
+    if len(chapters_info) != 1 or chapter_id == 1 or chapter_id == 2 or len(chapters_info[0].award_info) == 0:
+        logger.error("chapter_info dont find,or chapter_id == 1 or chapter_id == 2")
         response.res.result = False
         response.res.result_no = 831
         return response.SerializePartialToString()
@@ -677,6 +677,13 @@ def get_star_random_1828(pro_data, player):
 
     chapter_conf = chapter_obj.get_conf()
     chapter_obj.update(player.stage_component.calculation_star(chapter_id))
+
+    if (chapter_obj.star_gift == 3 and chapter_obj.now_random) or chapter_obj.star_gift == 1:
+        # 已经达到最大值
+        response.res.result = False
+        response.res.result_no = 800
+        logger.error("get_star_random_1828, please deal random, or alreaday get gift")
+        return response.SerializePartialToString()
 
     # chapter_obj.random_gift_times
     if not chapter_obj.now_random:
@@ -737,12 +744,26 @@ def deal_random_1829(pro_data, player):
 
     drop_num = game_configs.lottery_config.get(chapter_obj.now_random).Magnification
 
-    return_data = gain(player,
-                       chapter_conf.dragonGift,
-                       const.STAGE_STAR_GIFT,
-                       multiple=drop_num)  # 获取
+    if request.res == 1:
 
-    get_return(player, return_data, response.drops)
+        return_data = gain(player,
+                           chapter_conf.dragonGift,
+                           const.STAGE_STAR_GIFT,
+                           multiple=drop_num)  # 获取
+
+        get_return(player, return_data, response.drops)
+        chapter_obj.star_gift = 1
+    else:  # res 为2， 放弃
+        random_num_conf = game_configs.lottery_config.get(chapter_obj.now_random)
+        if not random_num_conf.Probability:
+            # 已经达到最大值
+            response.res.result = False
+            response.res.result_no = 800
+            logger.error("get_star_random_1828, now_random  max")
+            return response.SerializePartialToString()
+        chapter_obj.star_gift = 2
+
+    player.stage_component.save_data()
 
     response.res.result = True
     logger.debug(response)

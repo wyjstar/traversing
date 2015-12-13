@@ -21,6 +21,18 @@ class Stage(object):
         self._drop_num = drop_num   # 本关卡掉落包数量, 当战斗失败时设置,防止玩家强退，来刷最大掉落数
         self._star_num = star_num  # 通关关卡后得到的星星数量 0-3
 
+        # self._attack_times = attack_times  # 通关次数， 用来计算掉落
+        # self._elite_drop2_info = elite_drop2_info  # 保底包 掉落信息 [0，0，0，0，0，1，0]
+        # self._elite_drop_times = elite_drop_times  # 随机精英包本周期内已经掉落次数
+
+    @property
+    def attack_times(self):
+        return self._attack_times
+
+    @attack_times.setter
+    def attack_times(self, v):
+        self._attack_times = v
+
     @property
     def stage_id(self):
         return self._stage_id
@@ -112,7 +124,7 @@ class StageAward(object):
         self._award_info = award_info if award_info else []
         self._star_gift = star_gift  # -1:未达成 1:已领取 2已经放弃 3：未处理
         self._now_random = now_random  # 现在的星级抽奖随机值，0为未随机
-        self._random_gift_times = random_gift_times
+        self._random_gift_times = random_gift_times  # 获取随机值的次数，用来计算梯度费用
 
     @property
     def random_gift_times(self):

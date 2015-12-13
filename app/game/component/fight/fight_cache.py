@@ -387,10 +387,10 @@ class CharacterFightCacheComponent(Component):
                 common_bag = BigBag(self._common_drop)
                 common_drop = common_bag.get_drop_items()
                 drops.extend(common_drop)
-
-            elite_bag = BigBag(self._elite_drop)
-            elite_drop = elite_bag.get_drop_items()
-            drops.extend(elite_drop)
+            if self._elite_drop and stage_info.type != 1:
+                elite_bag = BigBag(self._elite_drop)
+                elite_drop = elite_bag.get_drop_items()
+                drops.extend(elite_drop)
 
         if stage_info.type == 4:
             # 宝库活动副本
