@@ -1097,7 +1097,8 @@
         <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
-        <entry name="Num" type="int" desc="被赞的个数,具体得到什么，读表" />
+        <entry name="Num" type="int" desc="被赞的个数" />
+        <entry name="MoneyNum" type="int" desc="累计金币" />
     </struct>
 
     <!--秘境帮助--> 
@@ -1285,6 +1286,18 @@
 
         <entry name="ShopType" type="int" desc="商城类型" />
         <entry name="Times" type="int" desc="刷新次数" />
+    </struct>
+
+
+    <!--抽卡--> 
+    <struct name="ShopBuy1" version="1" desc="抽卡">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="ShopID" type="int" desc="商品ID" />
     </struct>
 
 

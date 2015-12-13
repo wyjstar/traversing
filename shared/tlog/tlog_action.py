@@ -960,7 +960,7 @@ def unpar_upgrade(player_data, level):
                          Level=level)
 
 
-def captain_receive_zan(player_data, guild_id, num):
+def captain_receive_zan(player_data, guild_id, num, money_num):
 
     log4tx.captain_receive_zan(GameSvrId=game_server_id,
                                dtEventTime=xtime.strdatetime(),
@@ -968,7 +968,8 @@ def captain_receive_zan(player_data, guild_id, num):
                                OpenID=player_data.base_info.id,
                                PlatID=plat_id,
                                GuildID=guild_id,
-                               Num=num)
+                               Num=num,
+                               MoneyNum=money_num)
 
 
 def mine_help(player_data, guild_id, be_help_ids):
@@ -980,17 +981,6 @@ def mine_help(player_data, guild_id, be_help_ids):
                      PlatID=plat_id,
                      GuildID=guild_id,
                      BeHelpIds=be_help_ids)
-
-
-def trigger_boss(player_data, guild_id, boss_type):
-
-    log4tx.trigger_boss(GameSvrId=game_server_id,
-                        dtEventTime=xtime.strdatetime(),
-                        GameAppID=game_app_id,
-                        OpenID=player_data.base_info.id,
-                        PlatID=plat_id,
-                        GuildID=guild_id,
-                        BossType=boss_type)
 
 
 def trigger_boss(player_data, guild_id, boss_type):
@@ -1110,12 +1100,12 @@ def start_rob_escort(player_data, task_id, task_guild_id):
 
 def join_guild(player_data, guild_id):
 
-    log4tx.start_rob_escort(GameSvrId=game_server_id,
-                            dtEventTime=xtime.strdatetime(),
-                            GameAppID=game_app_id,
-                            OpenID=player_data.base_info.id,
-                            PlatID=plat_id,
-                            GuildID=guild_id)
+    log4tx.join_guild(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+                      GuildID=guild_id)
 
 
 def refresh_shop(player_data, shop_type, times):
@@ -1127,6 +1117,16 @@ def refresh_shop(player_data, shop_type, times):
                         PlatID=plat_id,
                         ShopType=shop_type,
                         Times=times)
+
+
+def shop_buy1(player_data, shop_id):
+
+    log4tx.shop_buy1(GameSvrId=game_server_id,
+                     dtEventTime=xtime.strdatetime(),
+                     GameAppID=game_app_id,
+                     OpenID=player_data.base_info.id,
+                     PlatID=plat_id,
+                     ShopID=shop_id)
 
 
 def shop_buy(player_data, ids, items_count):
@@ -1257,6 +1257,7 @@ tlog_funcs['StartRobEscort'] = start_rob_escort
 tlog_funcs['JoinGuild'] = join_guild
 tlog_funcs['RefreshShop'] = refresh_shop
 tlog_funcs['ShopBuy'] = shop_buy
+tlog_funcs['ShopBuy1'] = shop_buy1
 tlog_funcs['BuyStamina'] = buy_stamina
 tlog_funcs['ResetStage'] = reset_stage
 
