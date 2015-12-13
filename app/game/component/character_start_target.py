@@ -44,8 +44,8 @@ class CharacterStartTargetComponent(Component):
         self._conditions = v
 
     def condition_update(self, type, v):
-        if self._conditions[type] and self._conditions[type] > v:
-            pass
+        if self._conditions.get(type) and self._conditions[type] > v:
+            return
         else:
             self._conditions[type] = v
 
