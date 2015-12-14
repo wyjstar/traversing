@@ -583,7 +583,7 @@ def bless_809(data, player):
     g_id = player.guild.g_id
 
     remote_res = remote_gate['world'].get_guild_info_remote(g_id, 'build', 0)
-    if not remote_res.get('res'):
+    if not remote_res.get('result'):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
@@ -740,34 +740,30 @@ def get_guild_rank_810(data, player):
 
     player.guild.save_data()
     response.res.result = True
+    print response, '==================guild rank list'
     return response.SerializeToString()
 
 
 def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
 
-    """
-    remote_res = remote_gate['world'].join_guild_remote(g_id, p_id)
-    if not remote_res.get('res'):
-        response.res.result = False
-        response.res.result_no = remote_res.get('no')
-        return response.SerializeToString()
-    """
+    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 0, 0)
+    if not remote_res.get('result'):
+        print 'deal guild rank ====================3', remote_res
+        return False
+    guild_info = remote_res.get('guild_info')
 
-    data1 = tb_guild_info.getObj(g_id).hgetall()
-    # if data1:
-    guild_obj = Guild()
-    guild_obj.init_data(data1)
-    if rank_type == 2 and guild_obj.p_num >= \
-            game_configs.guild_config.get(8).get(guild_obj.build[1]).p_max:
+    if rank_type == 2 and guild_info.get('p_num') >= \
+            game_configs.guild_config.get(1).get(guild_info.get('build')[1]).p_max:
+        print 'deal guild rank ====================2'
         return False
     guild_rank = response.guild_rank.add()
-    guild_rank.g_id = guild_obj.g_id
+    guild_rank.g_id = guild_info.get('id')
     guild_rank.rank = rank_num
-    guild_rank.name = guild_obj.name
-    guild_rank.level = 1
-    guild_rank.icon_id = guild_obj.icon_id
+    guild_rank.name = guild_info.get('name')
+    guild_rank.level = guild_info.get('level')
+    guild_rank.icon_id = guild_info.get('icon_id')
 
-    president_id = guild_obj.p_list.get(1)[0]
+    president_id = guild_info.get('p_list').get(1)[0]
     char_obj = tb_character_info.getObj(president_id)
     if char_obj.exists():
         guild_rank.president = char_obj.hget('nickname')
@@ -776,12 +772,13 @@ def deal_rank_response_info(player, response, g_id, rank_num, rank_type=1):
         logger.error('guild rank, president player not fond,id:%s',
                      president_id)
 
-    guild_rank.p_num = guild_obj.p_num
-    guild_rank.call = guild_obj.call
-    if player.base_info.id in guild_obj.apply:
+    guild_rank.p_num = guild_info.get('p_num')
+    guild_rank.call = guild_info.get('call')
+    if player.base_info.id in guild_info.get('apply'):
         guild_rank.be_apply = 1
     else:
         guild_rank.be_apply = 0
+    print 'deal guild rank ====================1'
     return True
 
 
