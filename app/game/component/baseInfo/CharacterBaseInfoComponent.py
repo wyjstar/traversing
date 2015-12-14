@@ -200,6 +200,7 @@ class CharacterBaseInfoComponent(Component):
             MineOpt.updata_level('user_level', self.owner.base_info.id,
                                  self._level-1, self._level)
             if self._level == max_level:
+                self._exp = 0
                 return
 
         # hook task

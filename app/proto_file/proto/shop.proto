@@ -26,6 +26,7 @@ message ShopResponse
     optional GameResourcesResponse gain = 3;
     optional int32 limit_item_current_num = 4;
     optional int32 limit_item_max_num = 5;
+    optional bool is_all_buy = 6; // 是否已经全部购买
 }
 
 //获取武魂商城列表 command:507
