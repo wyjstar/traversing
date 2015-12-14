@@ -114,3 +114,19 @@ class GuildBoss(object):
     @hp_max.setter
     def hp_max(self, value):
         self._hp_max = value
+
+    @property
+    def trigger_player_id(self):
+        return self._trigger_player_id
+
+    @trigger_player_id.setter
+    def trigger_player_id(self, value):
+        self._trigger_player_id = value
+
+    @property
+    def trigger_player_name(self):
+        return self._trigger_player_name
+
+    @trigger_player_name.setter
+    def trigger_player_name(self, value):
+        self._trigger_player_name = value
