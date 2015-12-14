@@ -254,6 +254,12 @@ def dat(end, start, dur):
     return int((end-start) / (dur*60))
 
 
+def check_mine(mine):
+    for k in mine.keys():
+        if not mine[k]:
+            del mine[k]
+
+
 class CharacterMine(Component):
     def __init__(self, owner):
         Component.__init__(self, owner)
@@ -271,10 +277,12 @@ class CharacterMine(Component):
         self._reset_times = character_info.get('reset_times')
         self._tby = character_info.get('day_before')
         self._lively = character_info.get('lively')
+        check_mine(self._mine)
         # self.save_data()
         logger.debug('mine init data: %s', self._mine)
 
     def save_data(self):
+        check_mine(self._mine)
         mine_obj = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(mine=self._mine,
                     reset_day=self._reset_day,

@@ -121,6 +121,8 @@ def pvp_top_rank_request_1501(data, player):
 def pvp_player_rank_request_1502(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
+    player_ranks = player.pvp.pvp_arena_players
+
     if player.pvp.pvp_upstage_challenge_rank != 0:
         _up_stage_rank = player.pvp.pvp_upstage_challenge_rank
         _id = int(tb_pvp_rank.zrangebyscore(_up_stage_rank, _up_stage_rank)[0])
@@ -166,8 +168,6 @@ def pvp_player_rank_request_1502(data, player):
     #         rank_item = response.rank_items.add()
     #         rank_item.rank = _rank
     #         _with_pvp_info(rank_item, char_id)
-
-    player_ranks = player.pvp.pvp_arena_players
 
     records = tb_pvp_rank.zrangebyscore(min(player_ranks), max(player_ranks),
                                         withscores=True)
