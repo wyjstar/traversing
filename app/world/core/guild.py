@@ -112,6 +112,7 @@ class Guild(object):
         self._p_list = data.get("p_list")
         self._apply = data.get("apply")
         self._build = data.get("build")
+        self._shop_data = data.get("shop_data")
         self._escort_tasks_ids = data.get("escort_tasks_ids", [])
 
 
