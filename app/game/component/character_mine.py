@@ -473,7 +473,8 @@ class CharacterMine(Component):
                 self.owner.shop.save_data()
 
                 response = self.owner.shop.build_response_shop_items(7)
-                remote_gate.push_object_remote(508, response, _uid)
+                dynamic_id = self.owner.dynamic_id
+                remote_gate.push_object_remote(508, response, dynamic_id)
 
         if stype == MineType.COPY:
             result = mine_boss()
