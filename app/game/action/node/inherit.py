@@ -47,18 +47,20 @@ def inherit_refine_151(pro_data, player):
         logger.error("origin hero %s refine <= target hero %s refine!" % (origin_id, target_id))
         response.result = False
         return response.SerializeToString()
+    i_value = 0
 
     def func():
         target.refine = origin.refine
         origin.refine = 0
         target.save_data()
         origin.save_data()
+        i_value = target.refine
     gold = game_configs.base_config.get("heroInheritPrice")
     player.pay.pay(gold, const.INHERIT_REFINE, func)
 
     player.finance.save_data()
     response.result = True
-    tlog_action.log('Inherit', player, 1, 0, origin_id, 0, target_id)
+    tlog_action.log('Inherit', player, 1, 0, origin_id, 0, target_id, i_value)
     return response.SerializeToString()
 
 
@@ -97,9 +99,12 @@ def inherit_equipment_152(pro_data, player):
         response.result = False
         return response.SerializeToString()
 
+    i_value = 0
+
     def func():
         """docstring for func"""
         target.attribute.strengthen_lv = origin.attribute.strengthen_lv
+        i_value = target.attribute.strengthen_lv
 
         origin.attribute.strengthen_lv = 1
         # 传承强化过程
@@ -116,7 +121,8 @@ def inherit_equipment_152(pro_data, player):
     tlog_action.log('Inherit', player, 2, origin.base_info.id,
                     origin.base_info.equipment_no,
                     target.base_info.id,
-                    target.base_info.equipment_no)
+                    target.base_info.equipment_no,
+                    i_value)
     return response.SerializeToString()
 
 
@@ -158,5 +164,5 @@ def inherit_upara_153(pro_data, player):
     need_gold = game_configs.base_config.get("warriorsInheritPrice")
     player.pay.pay(need_gold, const.INHERIT_UPARA, func)
     response.result = True
-    tlog_action.log('Inherit', player, 1, 0, origin_id, 0, target_id)
+    tlog_action.log('Inherit', player, 1, 0, origin_id, 0, target_id, 0)
     return response.SerializeToString()

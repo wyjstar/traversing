@@ -495,13 +495,14 @@ class CharacterLineUpComponent(Component):
         """docstring for get_red_unpar_data, 用于战斗逻辑"""
 
         unpar_other_id = 0
+        unpar_job = 0
         unpar_level = self._unpar_level
         unpar_item = game_configs.skill_peerless_grade_config.get(unpar_level)
         unpar_type_id = unpar_item.get("type"+str(self._unpar_type), 0)
 
         unpar_effect_item = game_configs.skill_peerless_effect_config.get(self._unpar_other_id)
-        unpar_job = unpar_effect_item.type
         if unpar_effect_item:
+            unpar_job = unpar_effect_item.type
             hero_num = 0
             for hero_no in unpar_effect_item.trigger:
                 if hero_no in self._ever_have_heros:

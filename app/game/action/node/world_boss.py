@@ -63,10 +63,6 @@ def get_fight_info(data, player):
     boss = player.world_boss.get_boss(boss_id)
     boss.stage_id = response.stage_id
 
-
-    #print response, "-"*80
-    print boss.stage_id
-
     boss.reset_info()  # 重设信息
 
     response.encourage_coin_num = boss.encourage_coin_num
@@ -78,8 +74,6 @@ def get_fight_info(data, player):
     response.gold_reborn_times = boss.gold_reborn_times
     response.last_coin_encourage_time = int(boss.last_coin_encourage_time)
     logger.debug("gold_reborn_times %s " % response.gold_reborn_times)
-    #print response
-    print "*" * 80
     # 奇遇
     if boss.fight_times not in boss.debuff_skill:
         debuff_skill = game_configs.base_config.get("world_boss").get("debuff_skill")
@@ -182,7 +176,7 @@ def encourage_heros_1703(data, player):
             return response.SerializePartialToString()
         def func():
             boss.encourage_gold_num += 1
-            times = boss.encourage_gold_num
+        times = boss.encourage_gold_num
         player.pay.pay(need_gold, const.ENCOURAGE_HEROS, func)
 
     tlog_action.log('WorldBossEncourage', player, request.finance_type, times)
@@ -209,7 +203,6 @@ def pvb_reborn_1704(data, player):
 
     money_relive_price = base_config.get('gold_relive_price')
     need_gold = money_relive_price[-1] if boss.gold_reborn_times >= len(money_relive_price) else money_relive_price[boss.gold_reborn_times]
-    print need_gold, gold, "*"*80
     current_time = get_current_timestamp()
 
     not_free = current_time - boss.last_fight_time < base_config.get("free_relive_time")
@@ -242,7 +235,6 @@ def pvb_fight_start_1705(pro_data, player):
     logger.debug("fight start..")
     request = world_boss_pb2.PvbStartRequest()
     request.ParseFromString(pro_data)
-    print request, "request"
 
     best_skill_id = request.unparalleled  # 无双编号
     line_up = request.lineup
@@ -253,7 +245,6 @@ def pvb_fight_start_1705(pro_data, player):
 
     response = PvbFightResponse()
     res = response.res
-    print("world_boss_line_up:", line_up)
 
     if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_WORLD_BOSS):
         response.res.result = False

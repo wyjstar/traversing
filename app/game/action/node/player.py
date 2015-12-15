@@ -348,6 +348,7 @@ def buy_stamina_2201(request_proto, player):
         player.finance.save_data()
         player.stamina.save_data()
         logger.debug("buy stamina++++++++++++++++++++")
+        tlog_action.log('BuyStamina', player, resource_type, num)
 
     player.pay.pay(need_gold*num, const.BUY_STAMINA, func)
     response.buy_times = item.buy_stamina_times

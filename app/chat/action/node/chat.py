@@ -103,4 +103,5 @@ def send_message_1002(character_id, dynamic_id, room_id, content,
         response.content = content
         noderemote.push_object_remote(1000, response.SerializeToString(), ids)
 
+    print 'chat response ========================'
     return {'result': True}

@@ -222,7 +222,7 @@ class WorldBoss(BaseBoss):
 
                     send_mail(conf_id=reward_info[1], receive_id=player_id, damage=int(v))
                     #self.send_award(player_id, const.PVB_ADD_UP_AWARD, reward_info[1])
-                    tlog_action.log('WorldBossAddUpReward', player_id, v, mail_id)
+                    tlog_action.log('WorldBossAddUpReward', player_id, v, reward_info[1])
                     break
                 else:
                     continue

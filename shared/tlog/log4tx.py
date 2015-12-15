@@ -118,7 +118,7 @@ def hero_sacrifice(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 def inherit(GameSvrId=0, dtEventTime=0, GameAppID=0,
             PlatID=0, OpenID=0, InheritType=0, OriginId=0, OriginItemId=0,
-            TargetId=0, TargetItemId=0):
+            TargetId=0, TargetItemId=0, InheritValue=0):
 
     message = ['Inherit']
 
@@ -133,6 +133,7 @@ def inherit(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OriginItemId)
     message.append(TargetId)
     message.append(TargetItemId)
+    message.append(InheritValue)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -1674,7 +1675,8 @@ def up_guide(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def captain_receive_zan(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                        PlatID=0, OpenID=0, GuildID=0, Num=0):
+                        PlatID=0, OpenID=0, GuildID=0, Num=0,
+                        MoneyNum=0):
 
     message = ['CaptainReceiveZan']
 
@@ -1686,6 +1688,7 @@ def captain_receive_zan(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(GuildID)
     message.append(Num)
+    message.append(MoneyNum)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -1716,7 +1719,7 @@ def mine_help(GameSvrId=0, dtEventTime=0, GameAppID=0,
 def trigger_boss(GameSvrId=0, dtEventTime=0, GameAppID=0,
                  PlatID=0, OpenID=0, GuildID=0, BossType=0):
 
-    message = ['MineHelp']
+    message = ['TriggerBoss']
 
     message.append(GameSvrId)
     message.append(dtEventTime)
@@ -1952,6 +1955,25 @@ def refresh_shop(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(ShopType)
     message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def shop_buy1(GameSvrId=0, dtEventTime=0, GameAppID=0,
+              PlatID=0, OpenID=0, ShopID=0):
+
+    message = ['ShopBuy1']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ShopID)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
