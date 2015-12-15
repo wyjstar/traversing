@@ -126,7 +126,7 @@ def hero_break(player_data, hero_id, level):
 
 
 def inherit(player_data, inherit_type, origin_id, origin_item_id,
-            target_id, target_item_id):
+            target_id, target_item_id, inherit_value):
 
     log4tx.inherit(GameSvrId=game_server_id,
                    dtEventTime=xtime.strdatetime(),
@@ -137,7 +137,8 @@ def inherit(player_data, inherit_type, origin_id, origin_item_id,
                    OriginItemId=origin_item_id,
                    TargetId=target_id,
                    TargetItemId=target_item_id,
-                   InheritType=inherit_type)
+                   InheritType=inherit_type,
+                   InheritValue=inherit_value)
 
 
 def stage_flow(player_data, stage_id, result):

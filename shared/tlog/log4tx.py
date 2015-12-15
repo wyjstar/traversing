@@ -118,7 +118,7 @@ def hero_sacrifice(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 def inherit(GameSvrId=0, dtEventTime=0, GameAppID=0,
             PlatID=0, OpenID=0, InheritType=0, OriginId=0, OriginItemId=0,
-            TargetId=0, TargetItemId=0):
+            TargetId=0, TargetItemId=0, InheritValue=0):
 
     message = ['Inherit']
 
@@ -133,6 +133,7 @@ def inherit(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OriginItemId)
     message.append(TargetId)
     message.append(TargetItemId)
+    message.append(InheritValue)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
