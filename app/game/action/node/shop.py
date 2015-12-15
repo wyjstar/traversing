@@ -4,7 +4,7 @@ created by server on 14-7-9下午2:39.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
-from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems
+from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems, GetShopItemsResponse
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import is_afford
 # from app.game.core.item_group_helper import is_consume
@@ -78,6 +78,10 @@ def shop_oper(pro_data, player, reason):
         card_draw = game_configs.base_config.get("CardFirst")
         return_data = gain(player, card_draw, reason)  # 获取
         get_return(player, return_data, response.gain)
+
+        extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
+        get_return(player, extra_return_data, response.gain)
+
         player.shop.first_gold_draw = False
         player.shop.single_gold_draw_times += 1
         player.shop.save_data()

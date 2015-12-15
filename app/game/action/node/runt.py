@@ -20,6 +20,7 @@ import copy
 from shared.utils.const import const
 from app.game.action.node.start_target import target_update
 from shared.tlog import tlog_action
+from shared.common_logic.feature_open import is_not_open, FO_RUNT_ADD
 
 
 @remoteserviceHandle('gate')
@@ -32,6 +33,10 @@ def runt_set_841(data, player):
     runt_set_infos = args.runt_set_info
 
     response = RuntSetResponse()
+    if is_not_open(player, FO_RUNT_ADD):
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
 
     hero = player.hero_component.get_hero(hero_no)
     for runt_set_info in runt_set_infos:
@@ -407,5 +412,8 @@ def make_runt_857(data, player):
                     new_runt_no)
 
     player.runt.save()
+    # 7日活动
+    new_runt_conf = game_configs.stone_config.get('stones').get(get_runt_id)
+    player.start_target.mine_mix_runt(new_runt_conf.quality)
     response.res.result = True
     return response.SerializeToString()

@@ -35,7 +35,7 @@ def init_hero(player):
     # ===============================================
     for k, val in game_configs.hero_config.items():
         if val.type == 0:
-            hero1 = player.hero_component.add_hero(k)
+            hero1 = player.hero_component.add_hero_without_save(k)
             hero1.hero_no = k
             hero1.level = 1
             hero1.break_level = 0

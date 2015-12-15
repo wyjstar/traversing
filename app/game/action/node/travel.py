@@ -22,6 +22,7 @@ from shared.tlog import tlog_action
 from app.game.core.item_group_helper import is_afford, consume
 from app.game.core.item_group_helper import gain, get_return
 from app.game.core.task import hook_task, CONDITIONId
+from shared.common_logic.feature_open import is_not_open, FO_TRAVEL
 
 
 xs = 100000
@@ -36,7 +37,7 @@ def travel_831(data, player):
     stage_id = args.stage_id
     response = TravelResponse()
 
-    if game_configs.base_config.get('travelOpenLevel') > player.base_info.level:
+    if is_not_open(player, FO_TRAVEL):
         response.res.result = False
         response.res.result_no = 811  # 等级不够
         return response.SerializeToString()

@@ -17,6 +17,7 @@ from app.game.action.node.start_target import target_update
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import consume, is_afford
 from shared.utils.const import const
+from shared.common_logic.feature_open import is_not_open, FO_CHANGE_EQUIPMENT
 
 
 @remoteserviceHandle('gate')
@@ -392,6 +393,8 @@ def change_equipment(slot_no, no, equipment_id, player):
     @return:
     """
     # logger.debug("change equipment id %s %s %s", slot_no, no, equipment_id)
+    if is_not_open(player, FO_CHANGE_EQUIPMENT):
+        return {"result": False, "result_no": 837}
 
     # 检验装备是否存在
     if equipment_id != '0' and not check_have_equipment(player, equipment_id):
@@ -439,6 +442,8 @@ def line_up_info(player, response=None):
     response.unpar_other_id = _line_up.unpar_other_id
     for hero_no in _line_up._ever_have_heros:
         response.ever_have_heros.append(hero_no)
+    for name in _line_up.unpar_names:
+        response.unpar_names.append(str(name))
 
     response.caption_pos = _line_up.caption_pos
     logger.debug("line_up_info caption_pos %s" % response.caption_pos)
@@ -547,4 +552,20 @@ def set_captain_709(pro_data, player):
     player.line_up_component.save_data(["caption_pos"])
     response.result = True
     logger.debug(response)
+    return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def active_unpar_710(pro_data, player):
+    """
+    激活无双
+    """
+    request = line_up_pb2.ActiveUnparaRequest()
+    request.ParseFromString(pro_data)
+    logger.debug("request %s" % request)
+    unpar_names = player.line_up_component.unpar_names
+    if request.name not in unpar_names:
+        unpar_names.append(request.name)
+    player.line_up_component.save_data()
+    response = CommonResponse()
+    response.result = True
     return response.SerializePartialToString()

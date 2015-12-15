@@ -187,10 +187,14 @@ function execute_treat(attacker, target, buff_info, is_cri, extra_msgs)
 end
 
 -- 无双值
-function unpara(attacker, target, buff_info, playerLevel, extra_msgs)
+function unpara(attacker, buff_info, target)
     local baseTemplate = getTemplateManager():getBaseTemplate()
     local job_value = baseTemplate:getBaseInfoById("ws_job")[tostring(attacker.unpar_job)]
     local warriorsDamage = getFormulaTemplate():getFunc("peerlessDamage")(attacker.unpar_level, buff_info, job_value)
+    
+    if target then
+        target:set_hp(target:get_hp() - warriorsDamage)
+    end
     return warriorsDamage
     --playerLevel = playerLevel or 1
     --local atkArray = process.redAtkArray
@@ -210,7 +214,6 @@ function unpara(attacker, target, buff_info, playerLevel, extra_msgs)
     --m1 = m1.."--基础伤害:"..roundNumberIfNumber(warriorsDamage)
     --m1 = m1.."--实际伤害:"..roundNumberIfNumber(warriorsLastDamage).."("..playerLevel..")"
     --table.insert(extra_msgs, m1)
-    --target:set_hp(target:get_hp() - warriorsLastDamage)
 end
 
 -- 怪物无双值

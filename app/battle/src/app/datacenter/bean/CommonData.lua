@@ -53,6 +53,7 @@ function CommonData:updateRefreshTime24(task,dt)
     getNetManager():getActivityNet():sendGetLoginGiftListMsg()      -- 累计登陆奖励
     getNetManager():getActivityNet():sendZcjbGetdata()              -- 招财进宝奖励
     getNetManager():getActivityNet():sendGetBrewInfoMsg()           -- 煮酒数据
+    getNetManager():getActivityNet():sendGetLegionList()            -- 军团活动奖励
     getNetManager():getInstanceNet():sendGetAllStageInfoMsg()       -- 全部关卡信息
     getNetManager():getLoginNet():sendRefreshPlayer()               -- 刷新登陆信息
     getNetManager():getSignNet():sendGetSignListMsg()               -- 签到刷新
@@ -105,6 +106,7 @@ function CommonData:setData(data)
     self.GameLoginResponse = data                       --commonData全部数据
 
     self.accountId = data.id                            --玩家id
+    print("accountId:",self.accountId)
     self.nickname = data.nickname                       --玩家昵称
     self.register_time = data.register_time
     --cclog("----π－－－－"..self.register_time.."等级:"..data.level)
@@ -123,13 +125,12 @@ function CommonData:setData(data)
     self.normalHeroTimes = data.fine_hero_times           --良将累计抽取次数
     self.godHeroTimes = data.excellent_hero_times         --神将累计抽取次数
 
-    --data.newbee_guide_id = 20030
     if (data.newbee_guide_id == 0) then
         getNewGManager():updateBaseInfo(GuideId.G_GUIDE_START)  --新手引导记录编号
     else
         getNewGManager():updateBaseInfo(data.newbee_guide_id)
     end
-    print("---------------------------------------------------")
+    print("---------------------------------------------------data.newbee_guide_id",data.newbee_guide_id)
 
     -- self.gold = data.gold                               --元宝
     -- self.coin = data.coin                               --金币
@@ -224,6 +225,20 @@ function CommonData:getStoryId()
 end
 
 --[[--
+    设置是否显示战队提升
+]]
+function CommonData:setShowUpgrad(_value)
+    self.showUpgrad = _value
+end
+
+--[[--
+    获取是否显示战队提升
+]]
+function CommonData:getShowUpgrad()
+    return self.showUpgrad
+end
+
+--[[--
     刷新用户数据
     - 返回的数据结构与Login相同，但是目前只有以下字段有数据，需要添加时与服务协商添加
 ]]
@@ -266,7 +281,7 @@ end
 
 --次日开启功能是否已开启过
 function CommonData:getIsCiriOpend()
-    return self.isCiriOpened
+    return self.isCiriOpened ~= 0 
 end
 
 function CommonData:setPowerRank(rank)
@@ -405,14 +420,17 @@ end
 -- 元气
 function CommonData:setYuanqi(num)
     self:setFinance(RES_TYPE.YUANQI, num)
+    self:dispatchEvent(EventName.UPDATE_YUANQI)
 end
 -- 元气
 function CommonData:subYuanqi(num)
     self:subFinance(RES_TYPE.YUANQI, num)
+    self:dispatchEvent(EventName.UPDATE_YUANQI)
 end
 -- 元气
 function CommonData:addYuanqi(num)
     self:addFinance(RES_TYPE.YUANQI, num)
+    self:dispatchEvent(EventName.UPDATE_YUANQI)
 end
 --是否有Vip礼包
 function CommonData:getVipGift()
@@ -589,6 +607,10 @@ function CommonData:setUserName(cur_name)
 end
 
 function CommonData:getUserName() return self.nickname end
+--判定是否创建昵称
+function CommonData:isCreateUserName()
+    return self.nickname ~= nil and self.nickname ~= "" 
+end
 
 --vip
 function CommonData:setVip(cur_vip)
@@ -638,6 +660,13 @@ function CommonData:setLevel(level)
         self:dispatchEvent(EventName.UPDATE_ACTIVE)
         self:dispatchEvent(EventName.UPDATE_LEVEL)
 
+        -- if self.oldLevel and self.oldLevel >0 then
+        --     local newFeatures = FeaturesOPEN.checkNewFeatures(1,self.level)
+        --     if newFeatures and #newFeatures > 0 then
+                self:dispatchEvent(EventName.UPDATE_NEW_FEATURE)
+        --     end
+        -- end
+
         -- 将等级写入到userdefault中
         saveTeamLevel(self.level)
     end 
@@ -681,10 +710,22 @@ end
 --[[--
     增加精力
 ]]
-function CommonData:addEnergy()
+function CommonData:addEnergy(num)
       self:addFinance(RES_TYPE.ENERGY, num)
 end
 
+--[[--
+    获取召唤石数量
+]]
+function CommonData:getCallStone()
+       return self:getFinance(RES_TYPE.CALL_STONE)
+end
+--[[--
+    增加召唤石
+]]
+function CommonData:addCallStone(num)
+      self:addFinance(RES_TYPE.CALL_STONE, num)
+end
 --元宝
 function CommonData:setGold(cur_gold)
     -- self.gold = cur_gold
@@ -779,7 +820,7 @@ end
 function CommonData:updateCombatPower() 
     local power = roundNumber(getCalculationManager():getCalculation():CombatPowerAllSoldierLineUp())
     self:setCombatPower(power)
-
+    print("CommonData:updateCombatPower",power)
     self:dispatchEvent(EventName.UPDATE_COMBAT_POWER) 
 end
 

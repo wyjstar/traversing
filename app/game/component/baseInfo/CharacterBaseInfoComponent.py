@@ -32,7 +32,7 @@ class CharacterBaseInfoComponent(Component):
         self._level = 1  # 当前等级
         self._exp = 0  # 当前等级获得的经验
 
-        self._newbee_guide_id = 0
+        self._newbee_guide = {}
         self._gag = 1    # 禁言到这个时间戳
         self._closure = 1    # 封停到这个时间戳
 
@@ -65,7 +65,7 @@ class CharacterBaseInfoComponent(Component):
         tb_character_level.zadd(self._level, self.id)
         self._exp = character_info['exp']
 
-        self._newbee_guide_id = character_info['newbee_guide_id']
+        self._newbee_guide = character_info.get('newbee_guide', {})
 
         self._gag = character_info['gag']
         self._closure = character_info['closure']
@@ -107,7 +107,7 @@ class CharacterBaseInfoComponent(Component):
                     exp=self.exp,
                     gag=self._gag,
                     closure=self._closure,
-                    newbee_guide_id=self._newbee_guide_id,
+                    newbee_guide=self._newbee_guide,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString(),
@@ -137,7 +137,7 @@ class CharacterBaseInfoComponent(Component):
                     gag=self._gag,
                     closure=self._closure,
                     nickname=u'',
-                    newbee_guide_id=self._newbee_guide_id,
+                    newbee_guide=self._newbee_guide,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString(),
@@ -433,12 +433,12 @@ class CharacterBaseInfoComponent(Component):
         return self._heads.now_head
 
     @property
-    def newbee_guide_id(self):
-        return self._newbee_guide_id
+    def newbee_guide(self):
+        return self._newbee_guide
 
-    @newbee_guide_id.setter
-    def newbee_guide_id(self, value):
-        self._newbee_guide_id = value
+    @newbee_guide.setter
+    def newbee_guide(self, value):
+        self._newbee_guide = value
 
     @property
     def upgrade_time(self):

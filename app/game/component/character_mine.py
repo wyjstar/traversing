@@ -254,6 +254,12 @@ def dat(end, start, dur):
     return int((end-start) / (dur*60))
 
 
+def check_mine(mine):
+    for k in mine.keys():
+        if not mine[k]:
+            del mine[k]
+
+
 class CharacterMine(Component):
     def __init__(self, owner):
         Component.__init__(self, owner)
@@ -271,10 +277,12 @@ class CharacterMine(Component):
         self._reset_times = character_info.get('reset_times')
         self._tby = character_info.get('day_before')
         self._lively = character_info.get('lively')
+        check_mine(self._mine)
         # self.save_data()
         logger.debug('mine init data: %s', self._mine)
 
     def save_data(self):
+        check_mine(self._mine)
         mine_obj = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(mine=self._mine,
                     reset_day=self._reset_day,
@@ -465,7 +473,8 @@ class CharacterMine(Component):
                 self.owner.shop.save_data()
 
                 response = self.owner.shop.build_response_shop_items(7)
-                remote_gate.push_object_remote(508, response, _uid)
+                dynamic_id = self.owner.dynamic_id
+                remote_gate.push_object_remote(508, response, dynamic_id)
 
         if stype == MineType.COPY:
             result = mine_boss()
@@ -511,6 +520,7 @@ class CharacterMine(Component):
         mine_infos = []
 
         for pos in self._mine.keys():
+            logger.debug("mine pos %s" % pos)
             info = self.mine_info(pos)
             mine_infos.append(info)
         return mine_infos
@@ -519,6 +529,9 @@ class CharacterMine(Component):
         _uid = self.owner.base_info.id
         _nickname = self.owner.base_info.base_name
         mine = self._mine[position]
+
+        if 'type' not in mine:
+            logger.error('mine info not type!:%s', mine)
 
         if mine['type'] == MineType.PLAYER_FIELD:
             mine = tb_mine.hget(mine['seq'])
@@ -531,6 +544,7 @@ class CharacterMine(Component):
         info['last_time'] = mine.get('last_time', 0)
         info['gen_time'] = mine.get('gen_time', 0)
         info['seek_help'] = mine.get('seek_help', 0)
+        info['mine_id'] = mine.get('mine_id', 0)
 
         info['position'] = position
         return info

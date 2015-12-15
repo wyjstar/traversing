@@ -120,6 +120,7 @@ def compose_rob_treasure_860(data, player):
         chip = player.equipment_chip_component.get_chip(chip_no)
         chip.chip_num -= compose_num
     player.equipment_chip_component.save_data()
+    player.start_target.add_treasure(equipment_obj.equipment_config_info.type, equipment_obj.equipment_config_info.quality)
 
     equ = response.equ
     equipment_obj.update_pb(equ)
@@ -318,11 +319,23 @@ def enhance_treasure(no, use_nos, player):
     all_exp = 0
     for use_no in use_nos:
         use_treasure_obj = player.equipment_component.get_equipment(use_no)
+        use_treasure_level = use_treasure_obj.attribute.strengthen_lv
         use_equ_conf = game_configs.equipment_config.get(use_treasure_obj.base_info.equipment_no)
+
+        key_num = use_equ_conf.currencyDir
+        key_str = 'experienceCost' + str(key_num)
+
         if use_equ_conf.type not in need_type:
             logger.debug('rob_treasure_enhance_866: item error!')
             return {'result': False, 'result_no': 800, 'message': u''}
-        all_exp += use_equ_conf.exp
+
+        use_all_exp = use_equ_conf.exp + use_treasure_obj.attribute.exp
+        for x in range(1, use_treasure_level):
+            str_config_obj = game_configs.equipment_strengthen_config.get(x)
+            use_all_exp += str_config_obj.get(key_str)
+
+        use_all_exp *= game_configs.base_config.get('indianaExpImpairment')
+        all_exp += int(use_all_exp)
     equ_exp = treasure_obj.attribute.exp
     equ_level = treasure_obj.attribute.strengthen_lv
     level_max = player.base_info.level + game_configs.base_config.get('max_equipment_special_strength')

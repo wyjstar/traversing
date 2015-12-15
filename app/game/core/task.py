@@ -190,6 +190,8 @@ def update_condition(player, cid, num):
 
 
 def hook_task(player, cid, num, is_lively=False, proto_data=''):
+    #import traceback
+    #traceback.print_stack()
 
     player.task.update()
 

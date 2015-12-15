@@ -32,6 +32,7 @@ from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
 from app.game.action.node.pvp_rank import get_pvp_data
 import time
+from shared.common_logic.feature_open import is_not_open, FO_MINE
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -76,11 +77,15 @@ def mine_status(player, response):
         gen_time = mstatus.get('gen_time', None)
         if gen_time is not None:
             one_mine.gen_time = int(gen_time)
+        mine_id = mstatus.get('mine_id', None)
+        if mine_id is not None:
+            one_mine.mine_id = int(mine_id)
 
         if one_mine.type == MineType.PLAYER_FIELD:
             uid = mstatus.get('uid')
             if uid == player.base_info.id:
-                one_mine.fight_power = int(player.line_up_component.combat_power)
+                one_mine.fight_power =\
+                    int(player.line_up_component.combat_power)
                 one_mine.is_guild = player.guild.g_id
             else:
                 one_mine.is_friend = player.friends.is_friend(uid)
@@ -117,6 +122,9 @@ def one_mine_info(player, mstatus, one_mine):
     seek_help = mstatus.get('seek_help', None)
     if seek_help is not None:
         one_mine.seek_help = int(seek_help)
+    mine_id = mstatus.get('mine_id', None)
+    if mine_id is not None:
+        one_mine.mine_id = int(mine_id)
 
     if one_mine.type == MineType.PLAYER_FIELD:
         uid = mstatus.get('uid')
@@ -220,6 +228,7 @@ def reset_1242(data, player):
                     response.res.result = True
                 player.pay.pay(need_gold, const.MINE_RESET, func)
     player.mine.save_data()
+    player.start_target.mine_refresh()
 
     reset_times, _, _ = player.mine.reset_times
     tlog_action.log('MineReset', player, reset_times,
@@ -348,8 +357,13 @@ def harvest_1245(data, player):
 
     player.mine.save_data()
     player.runt.save()
+    player.start_target.mine_get_runt()
     hook_task(player, CONDITIONId.GAIN_RUNT, 1)
-    tlog_action.log('MineHarvest', player, request.position, str(normal), str(lucky))
+    tlog_action.log('MineHarvest',
+                    player,
+                    request.position,
+                    str(normal),
+                    str(lucky))
     response.res.result = True
     logger.debug('mine harvest:%s', response)
     return response.SerializePartialToString()
@@ -581,7 +595,7 @@ def process_mine_result(player, position, fight_result,
 
     mail_id = game_configs.base_config.get('warFogRobbedMail')
     send_mail(conf_id=mail_id, receive_id=target, rune_num=prize_num,
-              prize=prize, nickname=player.base_info.base_name)
+              prize=str(prize), nickname=player.base_info.base_name)
 
 
 @remoteserviceHandle('gate')
@@ -606,11 +620,15 @@ def settle_1252(data, player):
     # todo: set settle time to calculate acc_mine
     process_mine_result(player, pos, result, None, 0, 1)
     # 7日奖励 占领矿点
-    if player.start_target.is_open():
-        player.start_target.condition_add(41, 1)
-        player.start_target.save_data()
-        # 更新 七日奖励
-        target_update(player, [41])
+    mine_id = player.mine._mine[pos].get("mine_id")
+    mine_item = game_configs.mine_config.get(mine_id)
+    logger.debug("mine_id %s mine_item %s" % (mine_id, mine_item))
+    if mine_item and player.start_target.is_open():
+        #player.start_target.condition_add(41, 1)
+        #player.start_target.save_data()
+        player.start_target.mine_win(mine_item.quality)
+        ## 更新 七日奖励
+        #target_update(player, [41])
 
     response.result = True
     return response.SerializePartialToString()
@@ -626,11 +644,15 @@ def battle_1253(data, player):
     red_best_skill_id = request.unparalleled  # 无双编号
     red_units = {}
     blue_units = {}
+    response = mine_pb2.MineBattleResponse()
 
     logger.debug("%s pos" % pos)
+    if is_not_open(player, FO_MINE):
+        response.res.result = True
+        response.res.result_no = 837
+        return response.SerializePartialToString()
 
     mine_info = player.mine.get_info(pos)
-    response = mine_pb2.MineBattleResponse()
 
     is_pvp = player.mine.is_pvp(pos)  # 根据矿所在位置判断pve or pvp
     # print mine_info, "*"*80

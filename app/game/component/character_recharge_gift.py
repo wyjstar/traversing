@@ -15,6 +15,7 @@ from app.proto_file import db_pb2
 from shared.tlog import tlog_action
 from app.game.core.rebate_fun import rebate_call
 from app.game.core.mail_helper import send_mail
+from app.game.action.node.start_target import target_update
 
 RECHARGE_GIFT_TYPE = [7, 8, 9, 10]
 
@@ -242,6 +243,13 @@ class CharacterRechargeGift(Component):
         self._owner.base_info.recharge += charge_num
         self._owner.base_info.max_single_recharge = max(charge_num, self._owner.base_info.max_single_recharge)
         self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
+
+        # 七日活动 累积充值
+        if self._owner.start_target.is_open():
+            self._owner.start_target.condition_update(44, self._owner.base_info.recharge)
+            self._owner.start_target.save_data()
+            # 更新 七日奖励
+            target_update(self.owner, [44])
 
         # 活动
         self._owner.recharge.charge(charge_num)

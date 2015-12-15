@@ -34,6 +34,7 @@ class CharacterFightCacheComponent(Component):
         self._stage = None
         self.seed1 = 0  # 战斗校验种子
         self.seed2 = 0
+        self.fid = 0 # 缓存强援助阵
 
     def init_data(self, c):
         return

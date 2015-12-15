@@ -78,82 +78,8 @@ def nickname_create_5(request_proto, player):
     return response.SerializeToString()
 
 
-@remoteserviceHandle('gate')
-def buy_stamina_6(request_proto, player):
-    """购买体力"""
-    response = CommonResponse()
-
-    current_vip_level = player.base_info.vip_level
-    current_buy_stamina_times = player.stamina.buy_stamina_times
-    # current_stamina = player.stamina.stamina
-    current_gold = player.finance.gold
-
-    available_buy_stamina_times = game_configs.vip_config.get(current_vip_level).get("buyStaminaMax")
-
-    logger.debug("available_buy_stamina_times:%s,%s", available_buy_stamina_times,
-                 current_buy_stamina_times)
-    # 校验购买次数上限
-    if current_buy_stamina_times >= available_buy_stamina_times:
-        response.result = False
-        response.result_no = 11
-        return response.SerializePartialToString()
-
-    need_gold = game_configs.base_config.get("price_buy_manual").get(current_buy_stamina_times+1)[1]
-    logger.debug("need_gold++++++++++++++++%s", need_gold)
-    # 校验金币是否不足
-    if need_gold > current_gold:
-        logger.debug("gold not enough++++++++++++")
-        response.result = False
-        response.result_no = 102
-        return response.SerializePartialToString()
-
-    max_stamina = max_of_stamina()
-    if player.stamina.stamina >= max_stamina:
-        logger.debug("stamina is full++++++++++++")
-        response.result = False
-        response.result_no = 105
-        return response.SerializePartialToString()
-
-    def func():
-        player.stamina.buy_stamina_times += 1
-        player.stamina.stamina += 120
-        player.stamina.last_buy_stamina_time = int(time.time())
-        player.stamina.save_data()
-        logger.debug("buy stamina++++++++++++++++++++")
-
-    player.pay.pay(need_gold, const.BUY_STAMINA, func)
-
-    response.result = True
-    return response.SerializePartialToString()
 
 
-@remoteserviceHandle('gate')
-def add_stamina_7(request_proto, player):
-    """按时自动增长资源"""
-    response = CommonResponse()
-
-    # 校验时间是否足够
-    current_time = int(time.time())
-    last_gain_stamina_time = player.stamina.stamina
-
-    if current_time - last_gain_stamina_time < 270:
-        logger.debug("add stamina time not enough +++++++++++++++++++++")
-        response.result_no = 12
-        response.result = False
-        return response.SerializePartialToString()
-
-    max_stamina = max_of_stamina()
-    if player.stamina.stamina >= max_stamina:
-        logger.debug("has reach max stamina ++++++++++++++++++++++")
-        response.result_no = 13
-        response.result = False
-        return response.SerializePartialToString()
-    player.stamina.stamina += 1
-
-    player.stamina.last_gain_stamina_time = current_time
-    player.stamina.save_data()
-    response.result = True
-    return response.SerializePartialToString()
 
 
 GUIDE_SET_RUNT = [50029, 50032, 50035]
@@ -176,6 +102,7 @@ def new_guide_step_1802(data, player):
         logger.error('error newbee id:%s', request.step_id)
         response.res.result = False
         return response.SerializePartialToString()
+    new_guide_type = new_guide_item.get('SequenceType')
 
     #if request.step_id == GUIDE_LINE_UP:
         #hero_no = int(request.common_id)
@@ -259,11 +186,11 @@ def new_guide_step_1802(data, player):
 
     logger.info('newbee:%s step:%s=>%s',
                 player.base_info.id,
-                player.base_info.newbee_guide_id,
+                player.base_info.newbee_guide,
                 request.step_id)
     my_newbee_sequence = 0
-    if player.base_info.newbee_guide_id:
-        my_newbee_sequence = game_configs.newbee_guide_config.get(player.base_info.newbee_guide_id).get('Sequence')
+    if player.base_info.newbee_guide.get(new_guide_type) is not None:
+        my_newbee_sequence = game_configs.newbee_guide_config.get(player.base_info.newbee_guide[new_guide_type]).get('Sequence')
     if my_newbee_sequence < new_guide_item.get('Sequence'):
         gain_data = new_guide_item.get('rewards')
         return_data = gain(player, gain_data, const.NEW_GUIDE_STEP)
@@ -295,10 +222,10 @@ def new_guide_step_1802(data, player):
         # logger.debug("gain_data %s %s" % (gain_data, request.step_id))
         # logger.debug(player.finance.coin)
         tlog_action.log('NewGuide', player, new_guide_item.get('Sequence'),
-                        my_newbee_sequence)
+                        request.step_id)
 
         if my_newbee_sequence < new_guide_item.get('Sequence'):
-            player.base_info.newbee_guide_id = request.step_id
+            player.base_info.newbee_guide[new_guide_type] = request.step_id
             player.base_info.save_data()
     player.pay.pay(need_gold, const.NEW_GUIDE_STEP, func)
     response.res.result = True
@@ -399,7 +326,7 @@ def buy_stamina_2201(request_proto, player):
     if current_value >= info.get("max_value"):
         logger.debug("stamina is full++++++++++++")
         response.res.result = False
-        response.res.result_no = 105
+        response.res.result_no = 220101
         return response.SerializePartialToString()
 
     def func():

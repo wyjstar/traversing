@@ -200,7 +200,7 @@ class CharacterPvpComponent(Component):
         types = [20001, 20002, 20003]
         ids = get_player_ids(self.owner.base_info.id,
                              int(character_info.hget('attackPoint')),
-                             types, 46)
+                             types, 47)
         if not ids:
             return False
         logger.debug('reset overcome:%s', ids)

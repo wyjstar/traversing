@@ -118,7 +118,7 @@ def hero_self_attr(player, hero, stage=None):
     atkHeroBase = eval(atkHero_formula, all_vars)
     atkHero_formula = game_configs.formula_config.get("atkHeroSelf").get("formula")
     atkHero = eval(atkHero_formula, dict(atkHeroBase=atkHeroBase, AwakePercent=hero.awake_info.addition))
-    print("hero awake_percent: ",hpHeroBase, hpHero, hero.awake_info.addition)
+    #print("hero awake_percent: ",hpHeroBase, hpHero, hero.awake_info.addition)
 
     # pdefHero
     # hero_info.physicalDef+hero_info.growPhysicalDef*heroLevel+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone

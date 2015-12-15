@@ -10,12 +10,15 @@ const.POS_ARMY = cc.p(320, 260)
 const.POS_ENEMY = cc.p(320, 700)
 
 const.BACK_FROM_CIRIKAIQI = "BACK_FROM_CIRIKAIQI"
+const.BACK_FROM_NEXTDAY = "BACK_FROM_NEXTDAY"  --次日奖励返回主界面
 
 const.POS_UNPARA_ICON_STAGE = cc.p(130,200)
 const.POS_UNPARA_ICON_FIGHT = cc.p(55,55)
 const.FIGHT_POS_UNPARA_ICON = cc.p(130,355)
 BIG_SCALE = 0.58
 TYPE_ACTIVITY_LIMIT_SHOP = "limitShop"  --限时商店类型
+
+NEWGUIDE_HIDESTAGE_GID = 3501 --新手引导，隐藏关卡的id
 
 const.HOME_ARMY = {
     [1] = {point = cc.pAdd(const.POS_ARMY, cc.p(-190, 90)), scale = BIG_SCALE},
@@ -215,6 +218,8 @@ const.EVENT_GUILD_FIGHT_AWAKE       = "GUILD_FIGHT_AWAKE" --演示战斗中的�
 const.EVENT_BLOOD_FLASH             = "BLOOD_FLASH"         --红色
 
 const.FONT_NAME                     = MINI_BLACK_FONT_NAME
+
+const.NOT_EXIT_WORDS                = {"郃"} --字库中不存在的字体
 
 const.CURSOR_INPUT_DONE             = "CURSOR_INPUT_DONE"  
 const.CURSOR_INPUT_CHANGE           = "CURSOR_INPUT_CHANGE"
@@ -488,6 +493,7 @@ RES_TYPE = {
     ENERGY       = 4,  --精力
     ROB_NUM      = 14, --劫运次数
     GONGXIAN     = 10, --公会个人贡献值
+    CALL_STONE   = 15, --军团召唤石
 }
 
 -- 次日开启类型
@@ -505,8 +511,10 @@ EventName = {
     UPDATE_COMBAT_POWER = "update_combat_power",--更新战斗力
     UPDATE_VIP = "update_vip",--更新VIP
     UPDATE_LEVEL = "update_level",--更新等级
+    UPDATE_NEW_FEATURE = "update_new_feature",--有新功能开启
     UPDATE_SILVER = "update_silver",--更新银锭
     UPDATE_GOLD = "update_gold",    --更新元宝
+    UPDATE_YUANQI = "UPDATE_YUANQI",--更新元气
     UPDATE_FRIEND = "update_friend", --更新好友
     DISABLE_NEXT_REWARD = "disable_next_reward", --禁用次日登陆奖励
     UPDATE_ACTIVE = "update_active", --更新(精彩活动中的)分享任务
@@ -540,6 +548,7 @@ EventName = {
     UPDATE_SOLDIER_BREAK = "UPDATE_SOLDIER_BREAK", --更新英雄突破等级
     UPDATE_CHAT = "update_chat", --更新聊天提示
     UPDATE_REFRESH_24 = "UPDATE_REFRESH_24",   --24点更新
+    UPDATE_EQUIP_ADD = "UPDATE_EQUIP_ADD",  --获得装备
     UPDATE_EQUIP_STRENGTH_LV = "UPDATE_EQUIP_STRENGTH_LV",--装备强化等级清算
     UPDATE_LINEUP_EQUIP_STRENGTH_LV = "UPDATE_LINEUP_EQUIP_STRENGTH_LV", --阵容中装备强化等级
     UPDATE_LINEUP_WS_UPGRADE = "UPDATE_LINEUP_WS_UPGRADE",--无双升级
@@ -547,9 +556,12 @@ EventName = {
     UPDATE_LINEUP = "UPDATE_LINEUP",--更新了阵容信息
     UPDATE_LINEUP_ORDER = "UPDATE_LINEUP_ORDER",--更新阵容顺序
     UPDATE_LINEUP_CHANGED = "UPDATE_LINEUP_CHANGED",--有武将或助威武将更换
+    UPDATE_LINEUP_RUNE_CHANGED = "UPDATE_LINEUP_RUNE_CHANGED",--武将符文变化
     UPDATE_SEVENDAY = "UPDATE_SEVENDAY",  --更新七日红点提示
     UPDATE_QJYL = "UPDATE_QJYL", --更新经脉红点
     UPDATE_SOLDIER_AWAKE_MAX = "UPDATE_SOLDIER_AWAKE_MAX",--更新英雄觉醒等级到最高等级
+    UPDATE_SOLDIER_AWAKE_LEVEL = "UPDATE_SOLDIER_AWAKE_LEVEL",--更新英雄觉醒等级
+    UPDATE_SOLDIER_CHANGE = "UPDATE_SOLDIER_CHANGE",
     CAPTURE_RESP = "CAPTURE_RESP",
 
     UPDATE_ROB_INVITE = "update_rob_invite",
@@ -558,7 +570,6 @@ EventName = {
     UPDATE_ROB_CHARATERINFO = "update_rob_characterInfo",--承接人收到的消息，有人加入劫运了
     UPDATE_RUNEBAG = "UPDATE_RUNEBAG",--更新宝石红点
     UPDATE_TRAVEL = "UPDATE_TRAVEL", -- 跟新游历信息
-    UPDATE_RUNEBAG = "UPDATE_RUNEBAG",--更新宝石红点
     UPDATE_LEGION_BLESS_NUM = "UPDATE_LEGION_BLESS_NUM", --祈福次数变化
     UPDATE_LEGION_ZAN_MONEY = "UPDATE_LEGION_ZAN_MONEY",  --团长膜拜奖励变化
     UPDATE_LEGION_ZAN_NUM = "UPDATE_LEGION_ZAN_NUM",      --团员点赞数变化
@@ -567,6 +578,9 @@ EventName = {
     UPDATE_LEGION_YSDT = "UPDATE_LEGION_YSDT", -- 更新议事大厅建筑红点
     UPDATE_LEGION_QFD = "UPDATE_LEGION_QFD", -- 更新祈福殿建筑红点
     UPDATE_LEGION_JJC = "UPDATE_LEGION_JJC", -- 更新军机处建筑红点
+
+    LEGION_REMOVE_HUB = "LEGION_REMOVE_HUB", -- 移除军团中转UI
+    UPDATE_LINEUP_GODDESS_ACTIVED = "UPDATE_LINEUP_GODDESS_ACTIVED", --激活女神
 }
 
 NoticeColor = {
@@ -588,6 +602,7 @@ G_PLATFORM.QQ = 2           -- QQ平台
 G_PLATFORM.QHALL = 3        -- 游戏大厅平台
 
 const.C_WS_MAX_LEVEL = 3
+LOADING_FOR_ENTERGAME = 999999 --进入游戏
 
 --定义网络错误代码
 const.NET_ERR_CODE = {
@@ -649,6 +664,16 @@ TRAVEL_EVENT_TYPE = {
     QUESTION    = 3, -- 答题事件 参数：languageID（答案选项）]
     GET         = 4, -- 直接领取奖励事件
 }
+
+--[[--
+"成长基金"任务状态
+]]
+GROW_ACTIVITY_STATE = {
+    UNOPEN  = 0, -- 未激活
+    OPEN    = 1, -- 已激活
+    GOT     = 2, -- 已获得
+}
+
 --[[--
 军团建筑类型
 ]]
@@ -660,7 +685,6 @@ LEGION_BUILDING_TYPE = {
     ZZSC = 5, -- 征战沙场
     GCLD = 6, -- 攻城略地
 }
-
 --[[--
 军团职位
 ]]
@@ -689,4 +713,16 @@ TaskState = {
     RECOMMEND_LEGION = 3,--军团推荐
     SEARCH_LEGION = 4,--查找军团
 }
+SUCCESS_TYPE = {
+    COMPOSE = 1,--合成成功
+    AWAKE = 2,--觉醒段升成功
+    UPGRADE = 3,--升级成功
+    BREAK = 4,--突破成功
+}
+REWARD_STATE = {
+    STATE_CANNOT = 0,--不能领取
+    STATE_CAN = 1,--可领取
+    STATE_ISGOT = 2,--已领取
+}
+
 

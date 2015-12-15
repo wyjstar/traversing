@@ -110,7 +110,7 @@ def pvp_start(red_units, blue_units, red_unpar_data, blue_unpar_data, seed1, see
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        unpar_type = red_unpar_data.get("unpar_type", 0),
+        unpar_type_id = red_unpar_data.get("unpar_type", 0),
         unpar_other_id = red_unpar_data.get("unpar_other_id", 0),
         unpar_level = red_unpar_data.get("unpar_level", 1),
         unpar_job = red_unpar_data.get("unpar_job", 1),
@@ -147,7 +147,7 @@ def pve_start(red_units, blue_groups, red_unpar_data, blue_unpar_data, f_unit, s
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        unpar_type = red_unpar_data.get("unpar_type", 0),
+        unpar_type_id = red_unpar_data.get("unpar_type", 0),
         unpar_other_id = red_unpar_data.get("unpar_other_id", 0),
         unpar_level = red_unpar_data.get("unpar_level", 1),
         unpar_job = red_unpar_data.get("unpar_job", 1),
@@ -183,7 +183,7 @@ def world_boss_start(red_units,  blue_units, red_unpar_data, blue_unpar_data, de
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        unpar_type = red_unpar_data.get("unpar_type", 0),
+        unpar_type_id = red_unpar_data.get("unpar_type", 0),
         unpar_other_id = red_unpar_data.get("unpar_other_id", 0),
         unpar_level = red_unpar_data.get("unpar_level", 1),
         unpar_job = red_unpar_data.get("unpar_job", 1),
@@ -212,7 +212,7 @@ def hjqy_start(red_units,  blue_units, red_unpar_data, blue_unpar_data, attack_t
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        unpar_type = red_unpar_data.get("unpar_type", 0),
+        unpar_type_id = red_unpar_data.get("unpar_type", 0),
         unpar_other_id = red_unpar_data.get("unpar_other_id", 0),
         unpar_level = red_unpar_data.get("unpar_level", 1),
         unpar_job = red_unpar_data.get("unpar_job", 1),
@@ -246,7 +246,7 @@ def mine_pvp_start(red_units, blue_units, red_unpar_data, blue_unpar_data, seed1
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        unpar_type = red_unpar_data.get("unpar_type", 0),
+        unpar_type_id = red_unpar_data.get("unpar_type", 0),
         unpar_other_id = red_unpar_data.get("unpar_other_id", 0),
         unpar_level = red_unpar_data.get("unpar_level", 1),
         unpar_job = red_unpar_data.get("unpar_job", 1),
@@ -278,7 +278,7 @@ def mine_start(red_units, blue_units, red_unpar_data, blue_unpar_data, seed1, se
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        unpar_type = red_unpar_data.get("unpar_type", 0),
+        unpar_type_id = red_unpar_data.get("unpar_type", 0),
         unpar_other_id = red_unpar_data.get("unpar_other_id", 0),
         unpar_level = red_unpar_data.get("unpar_level", 1),
         unpar_job = red_unpar_data.get("unpar_job", 1),
@@ -334,7 +334,7 @@ def guild_boss_start(red_units, blue_units, red_unpar_data, blue_unpar_data, see
     fight_data = lua.table(
         red = lua.table_from(red),
         blue = lua.table_from(blue),
-        unpar_type = red_unpar_data.get("unpar_type", 0),
+        unpar_type_id = red_unpar_data.get("unpar_type", 0),
         unpar_other_id = red_unpar_data.get("unpar_other_id", 0),
         unpar_level = red_unpar_data.get("unpar_level", 1),
         unpar_job = red_unpar_data.get("unpar_job", 1),

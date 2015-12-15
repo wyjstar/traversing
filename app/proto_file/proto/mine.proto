@@ -26,6 +26,7 @@ message mineData
 	optional bool is_friend = 8;
 	optional int32 fight_power = 9;
 	optional int32 seek_help = 10;
+	optional int32 mine_id = 11;
 }
 
 //更新矿点信息1240返回

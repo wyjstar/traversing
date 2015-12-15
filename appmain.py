@@ -40,6 +40,7 @@ def print_stack(signal, frame):
 if __name__ == "__main__":
     signal.signal(signal.SIGUSR1, print_stack)
     signal.signal(signal.SIGUSR2, dump_stacks)
+    #signal.signal(signal.SIGPIPE, signal.SIG_DFL)
 
     args = sys.argv
     servername = None

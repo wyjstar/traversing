@@ -11,6 +11,7 @@ from app.battle.battle_unit import BattleUnit
 from app.battle.server_process import pvp_start, pve_start, mine_start, mine_pvp_start, guild_pvp_start
 from random import randint
 from shared.utils.const import const
+from shared.common_logic.feature_open import is_not_open, FO_FRIEND_SUPPORT
 
 
 def pvp_process(player, line_up, red_units, blue_units, seed1, seed2, fight_type):
@@ -124,7 +125,7 @@ def fight_start(stage, fid, player):
     char_obj = tb_character_info.getObj(fid)
     lord_data = char_obj.hget('lord_attr_info')
     f_unit = None
-    if lord_data:
+    if lord_data and not is_not_open(player, FO_FRIEND_SUPPORT):
         info = lord_data.get('info')
         f_unit = BattleUnit.loads(info)
     else:

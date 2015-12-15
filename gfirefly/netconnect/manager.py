@@ -4,7 +4,7 @@ Created on 2014-2-23
 连接管理器
 @author: lan (www.9miao.com)
 """
-from gfirefly.server.globalobject import GlobalObject
+# from gfirefly.server.globalobject import GlobalObject
 from app.proto_file.account_pb2 import AccountKick
 from gfirefly.server.logobj import logger
 from connection import Connection
@@ -12,6 +12,7 @@ from shared.utils.const import const
 import traceback
 import collections
 import gevent
+# import errno
 
 
 class ConnectionManager:
@@ -132,15 +133,14 @@ class ConnectionManager:
     def _write_data(self, connection_id, topic_id, msg):
         connection = self.getConnectionByID(connection_id)
         if not connection:
+            logger.error('cant not find :%s--%s', connection_id, topic_id)
             return
         self.__write_data(connection, topic_id, msg)
 
     def __write_data(self, connection, topic_id, msg):
         # connection_id = connection.dynamic_id
-        print("__write_data", connection, topic_id)
         try:
             connection.safeToWriteData(topic_id, msg)
-            print("__write_data2", connection, topic_id, len(msg))
         except Exception, e:
             logger.exception(e)
             e = "%s, %s:%s" % (e, topic_id, msg)
@@ -150,12 +150,15 @@ class ConnectionManager:
             # if dynamic_id != 0:
             #     remote_gate = GlobalObject().remote['gate']
             #     remote_gate.net_conn_lost_remote_noresult(connection_id)
+        except IOError as e:
+            logger.error(e)
+            # if e.errno == errno.EPIPE:
+            #     pass
         except:
             logger.error(traceback.format_exc())
 
     def pushObject(self, topicID, msg, sendList):
         """主动推送消息"""
-        print("pushObject ", topicID, msg, sendList)
         if isinstance(sendList, list):
             for target in sendList:
                 self._write_data(target, topicID, msg)

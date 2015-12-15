@@ -102,6 +102,7 @@ class LineUpSlotComponent(Component):
 
         equipment_slot = self._equipment_slots.get(no)
         equipment_slot.equipment_id = equipment_id
+        self.update_lord_info()
 
         return True
 
@@ -328,10 +329,14 @@ class LineUpSlotComponent(Component):
         """
         更新主将属性
         """
+        #import traceback
+        #traceback.print_stack()
+        if self._slot_no != self._owner._caption_pos:
+            return
         #self._owner.guild_attr
         logger.debug("update_lord_info========== %s" % self._owner.guild_attr)
         unit = self._owner.get_first_slot().slot_attr
-        logger.debug("update_lord_info========== %s" % unit)
+        #logger.debug("update_lord_info========== %s" % unit)
         if not unit:
             return
         lord_obj = tb_character_info.getObj(self._owner._owner.character_id)

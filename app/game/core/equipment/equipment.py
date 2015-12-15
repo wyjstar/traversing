@@ -258,7 +258,7 @@ class Equipment(object):
     def enhance(self, player):
         """强化
         """
-        strength_max = player.base_info.level + self.strength_max
+        strength_max = self.strength_max(player)
         before_lv = self._attribute.strengthen_lv
         enhance_lv = 1
         extra_enhance = self.get_extra_enhance_times(player) * enhance_lv
@@ -266,6 +266,7 @@ class Equipment(object):
         strengthen_lv = extra_enhance + before_lv
         if strengthen_lv > strength_max:
             strengthen_lv = strength_max
+
         self._attribute.strengthen_lv = strengthen_lv
         after_lv = self._attribute.strengthen_lv
 
@@ -428,8 +429,8 @@ class Equipment(object):
                        growDuctility=0,
                        equLevel=self._attribute.strengthen_lv)
 
-        print("self._attribute.main_attr====", self.base_info.equipment_no)
-        print(self._attribute.main_attr)
+        #print("self._attribute.main_attr====", self.base_info.equipment_no)
+        #print(self._attribute.main_attr)
         for k, v in self._attribute.main_attr.items():
             assert varNames[k] in allVars
             avt, av, ai = v
@@ -485,10 +486,10 @@ class Equipment(object):
 
         return CommonItem(result)
 
-    @property
-    def strength_max(self):
+    def strength_max(self, player):
         """获取装备上限为玩家等级+strength_max"""
-        return game_configs.base_config.get("max_equipment_strength")
+        max_equipment_lv = game_configs.base_config.get("max_equipment_strength") + player.base_info.level
+        return min(max_equipment_lv, game_configs.base_config.get("equ_level_max"))
 
     @property
     def enhance_record(self):

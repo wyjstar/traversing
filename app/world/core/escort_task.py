@@ -92,9 +92,10 @@ class EscortTask(object):
                 rob_no = len(self._rob_task_infos)
                 rob_task_info["rob_no"] = rob_no
                 self._rob_task_infos.append(rob_task_info)
-            elif len(rob_task_info["robbers"]) < 3:
+            else:
                 rob_task_info = self._rob_task_infos[rob_no]
-                rob_task_info["robbers"].append(player_info)
+                if len(rob_task_info["robbers"]) < 3:
+                    rob_task_info["robbers"].append(player_info)
         # add player position to player_info
         guild_position = 3
         p_list = guild_info.get("p_list", {})

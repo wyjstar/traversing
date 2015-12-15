@@ -57,16 +57,6 @@ guide_config={
   [1] = 0,  [2] = 1100607,}
 ,}
 ,  ["colour4"] = 0,  ["type"] = 1,  ["id"] = 6,  ["name"] = 5200000006,  ["formula"] = "0",  ["max"] = 9,  ["goto"] = 6,  ["colour1"] = 0,  ["colour3"] = 0,}
-,  [7] = {
-  ["functionName"] = "\"\"",  ["condition"] = 19,  ["functionOpen"] = {
-  ["1"] = "cookingWineOpenStage",}
-,  ["openText"] = 5220000004,  ["colour2"] = 0,  ["failGuide"] = {
-}
-,  ["text"] = 5210000002,  ["open"] = {
-  ["1"] = {
-  [1] = 0,  [2] = 1100703,}
-,}
-,  ["colour4"] = 0,  ["type"] = 1,  ["id"] = 7,  ["name"] = 5200000007,  ["formula"] = "0",  ["max"] = 4,  ["goto"] = 7,  ["colour1"] = 0,  ["colour3"] = 0,}
 ,  [8] = {
   ["functionName"] = "\"\"",  ["condition"] = 22,  ["functionOpen"] = {
   ["1"] = "travelOpenStage",}
@@ -117,7 +107,7 @@ guide_config={
   ["functionName"] = "checkSoldierBreak",  ["condition"] = 103,  ["functionOpen"] = {
   ["1"] = "heroBreakOpenStage",}
 ,  ["openText"] = 0,  ["colour2"] = 210,  ["failGuide"] = {
-  ["1"] = 100405,}
+  ["2"] = 6,}
 ,  ["text"] = 5210002003,  ["open"] = {
 }
 ,  ["colour4"] = 420,  ["type"] = 2,  ["id"] = 2003,  ["name"] = 5200002003,  ["formula"] = "guide2003",  ["max"] = 420,  ["goto"] = 14,  ["colour1"] = 105,  ["colour3"] = 315,}
@@ -133,7 +123,7 @@ guide_config={
   ["functionName"] = "checkSoldierTotem",  ["condition"] = 104,  ["functionOpen"] = {
   ["1"] = "totemOpenStage",}
 ,  ["openText"] = 0,  ["colour2"] = 120,  ["failGuide"] = {
-  ["1"] = 100607,}
+  ["2"] = 28,}
 ,  ["text"] = 5210002004,  ["open"] = {
 }
 ,  ["colour4"] = 240,  ["type"] = 2,  ["id"] = 2004,  ["name"] = 5200002004,  ["formula"] = "guide2004",  ["max"] = 240,  ["goto"] = 16,  ["colour1"] = 60,  ["colour3"] = 180,}
@@ -141,7 +131,7 @@ guide_config={
   ["functionName"] = "checkSoldierChange",  ["condition"] = 101,  ["functionOpen"] = {
 }
 ,  ["openText"] = 0,  ["colour2"] = 30,  ["failGuide"] = {
-  ["1"] = 100101,}
+  ["2"] = 1,}
 ,  ["text"] = 5210002001,  ["open"] = {
 }
 ,  ["colour4"] = 60,  ["type"] = 2,  ["id"] = 2001,  ["name"] = 5200002001,  ["formula"] = "guide2001",  ["max"] = 60,  ["goto"] = 12,  ["colour1"] = 15,  ["colour3"] = 45,}
@@ -149,7 +139,7 @@ guide_config={
   ["functionName"] = "checkSoldierMeridian",  ["condition"] = 105,  ["functionOpen"] = {
   ["1"] = "sealOpenStage",}
 ,  ["openText"] = 0,  ["colour2"] = 240,  ["failGuide"] = {
-  ["1"] = 100703,}
+  ["2"] = 11,}
 ,  ["text"] = 5210002005,  ["open"] = {
 }
 ,  ["colour4"] = 480,  ["type"] = 2,  ["id"] = 2005,  ["name"] = 5200002005,  ["formula"] = "guide2005",  ["max"] = 480,  ["goto"] = 17,  ["colour1"] = 120,  ["colour3"] = 360,}
@@ -157,7 +147,7 @@ guide_config={
   ["functionName"] = "checkSoldierUpgrade",  ["condition"] = 102,  ["functionOpen"] = {
 }
 ,  ["openText"] = 0,  ["colour2"] = 30,  ["failGuide"] = {
-  ["1"] = 100201,}
+  ["2"] = 1,}
 ,  ["text"] = 5210002002,  ["open"] = {
 }
 ,  ["colour4"] = 60,  ["type"] = 2,  ["id"] = 2002,  ["name"] = 5200002002,  ["formula"] = "guide2002",  ["max"] = 60,  ["goto"] = 13,  ["colour1"] = 15,  ["colour3"] = 45,}
@@ -165,7 +155,7 @@ guide_config={
   ["functionName"] = "checkSoldierCheer",  ["condition"] = 106,  ["functionOpen"] = {
 }
 ,  ["openText"] = 0,  ["colour2"] = 30,  ["failGuide"] = {
-  ["2"] = 15,}
+  ["2"] = 10,}
 ,  ["text"] = 5210002006,  ["open"] = {
 }
 ,  ["colour4"] = 60,  ["type"] = 2,  ["id"] = 2006,  ["name"] = 5200002006,  ["formula"] = "guide2006",  ["max"] = 60,  ["goto"] = 15,  ["colour1"] = 15,  ["colour3"] = 45,}
@@ -173,7 +163,7 @@ guide_config={
   ["functionName"] = "checkEquipStrength",  ["condition"] = 108,  ["functionOpen"] = {
   ["1"] = "equWearOpenStage",}
 ,  ["openText"] = 0,  ["colour2"] = 120,  ["failGuide"] = {
-  ["1"] = 100205,}
+  ["2"] = 1,}
 ,  ["text"] = 5210002008,  ["open"] = {
 }
 ,  ["colour4"] = 240,  ["type"] = 2,  ["id"] = 2008,  ["name"] = 5200002008,  ["formula"] = "guide2008",  ["max"] = 240,  ["goto"] = 12,  ["colour1"] = 60,  ["colour3"] = 180,}

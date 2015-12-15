@@ -33,6 +33,7 @@ from app.game.core.equipment.equipment_chip import EquipmentChip
 from shared.db_opear.configs_data.data_helper import parse
 import types
 from shared.tlog import tlog_action
+from shared.common_logic.feature_open import is_not_open, FO_PVP_RANK, FO_ROB_TREASURE
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -120,6 +121,8 @@ def pvp_top_rank_request_1501(data, player):
 def pvp_player_rank_request_1502(data, player):
     response = pvp_rank_pb2.PlayerRankResponse()
 
+    player_ranks = player.pvp.pvp_arena_players
+
     if player.pvp.pvp_upstage_challenge_rank != 0:
         _up_stage_rank = player.pvp.pvp_upstage_challenge_rank
         _id = int(tb_pvp_rank.zrangebyscore(_up_stage_rank, _up_stage_rank)[0])
@@ -165,8 +168,6 @@ def pvp_player_rank_request_1502(data, player):
     #         rank_item = response.rank_items.add()
     #         rank_item.rank = _rank
     #         _with_pvp_info(rank_item, char_id)
-
-    player_ranks = player.pvp.pvp_arena_players
 
     records = tb_pvp_rank.zrangebyscore(min(player_ranks), max(player_ranks),
                                         withscores=True)
@@ -279,6 +280,10 @@ def pvp_fight_request_1505(data, player):
     response = pvp_rank_pb2.PvpFightResponse()
     request.ParseFromString(data)
     # player.pvp.check_time()
+    if is_not_open(player, FO_PVP_RANK):
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializePartialToString()
 
     arena_consume = game_configs.base_config.get('arenaConsume')
     result = is_afford(player, arena_consume)  # 校验
@@ -779,6 +784,12 @@ def GetPvpOvercomeInfo_1513(data, player):
 def pvp_rob_treasure_864(data, player):
     request = pvp_rank_pb2.PvpRobTreasureRequest()
     response = pvp_rank_pb2.PvpFightResponse()
+    if is_not_open(player, FO_ROB_TREASURE):
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializePartialToString()
+
+
     request.ParseFromString(data)
     uid = request.uid
     chip_id = request.chip_id
@@ -861,13 +872,13 @@ def pvp_rob_treasure_864(data, player):
 
 
 def deal_target_player(player, target_id, chip_id):
-    target_data = tb_character_info.getObj(target_id)
-    isexist = target_data.exists()
+    target_data_obj = tb_character_info.getObj(target_id)
+    isexist = target_data_obj.exists()
     if not isexist:
         logger.error('deal_target_player, player id error')
         return
 
-    target_data = target_data.hmget(['equipment_chips'])
+    target_data = target_data_obj.hmget(['equipment_chips'])
 
     chips = target_data.get('equipment_chips')
     chips_obj = {}
@@ -887,8 +898,8 @@ def deal_target_player(player, target_id, chip_id):
         props = {}
         for chip_id_x, chip_obj in chips_obj.items():
             if chip_obj.chip_num:  # 如果chip num == 0, 则不保存
-                props[no] = chip_obj.chip_num
-        target_data.hset('equipment_chips', props)
+                props[chip_id_x] = chip_obj.chip_num
+        target_data_obj.hset('equipment_chips', props)
 
     mail_arg1 = [{104: [1, 1, chip_id]}]
     send_mail(conf_id=701,  receive_id=target_id,
