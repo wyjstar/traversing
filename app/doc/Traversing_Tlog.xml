@@ -245,6 +245,7 @@
         <entry name="OriginItemId"        type="string"            size="64"                            desc="模型id" />
         <entry name="TargetId"           type="int"                                            desc="目标id" />
         <entry name="TargetItemId"        type="string"        size="64"                        desc="模型id" />
+        <entry name="InheritValue"           type="int"                                            desc="传承值，炼体ID" />
     </struct>
 
     <!--单局流水表-->
