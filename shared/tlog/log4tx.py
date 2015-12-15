@@ -1749,7 +1749,7 @@ def guild_boss_battle(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(GuildID)
-    message.append(SkillType)
+    message.append(BossType)
     message.append(Level)
 
     sendmsg = _format(message)
