@@ -2,7 +2,6 @@
 """
 created by server on 14-8-8下午2:45.
 """
-import urllib
 from robotbase import RobotBase
 from app.proto_file import account_pb2
 from app.proto_file import player_request_pb2
@@ -12,20 +11,21 @@ from app.proto_file.player_request_pb2 import CreatePlayerRequest
 
 
 class Robot(RobotBase):
-    def __init__(self):
-        self.id = 0
-        self.nickname = ''
+    # def __init__(self):
+    #     self.id = 0
+    #     self.nickname = ''
 
-    def __init__(self, manager, passport, nickname):
-        RobotBase.__init__(self)
+    def __init__(self, socket, manager, passport, nickname):
+        RobotBase.__init__(self, socket)
 
         self.on_connection_made = self.connection_made
         self.on_account_login_result = None
-        #self.on_character_login_result = None
+        # self.on_character_login_result = None
 
         self._passport = passport
         self._nickname = nickname  # 'bab5'
         manager.register_robot(self)
+        self.connection_made()
 
     def connection_made(self):
         argument = account_pb2.AccountLoginRequest()

@@ -36,7 +36,7 @@ class CharacterShopComponent(Component):
         self._shop_extra_args = character_info.get('shop_extra_args',
                                                    self.get_new_shop_extra_args())
         check_time(self._shop_data)
-        refresh_shop_info(self._shop_data, 0)
+        # refresh_shop_info(self._shop_data, 0)
         self.save_data()
 
     def save_data(self):
@@ -192,6 +192,7 @@ class CharacterShopComponent(Component):
         response.luck_num = int(shopdata['luck_num'])
         response.res.result = True
         response.refresh_times = shopdata['refresh_times']
+        print response, shop_type, '====================shop item 508'
         return response.SerializePartialToString()
 
     @property

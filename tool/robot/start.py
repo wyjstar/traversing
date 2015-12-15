@@ -1,7 +1,10 @@
 # -*- coding:utf-8 -*-
 
-from twisted.internet import reactor
 from gevent import monkey
+monkey.patch_all()
+
+import sys
+import gevent
 from robotmanager import RobotManager
 from sfsm import Sfsm
 from robot import Robot
@@ -18,7 +21,6 @@ from robot_zhangchao import RobotZhangChao
 from robot_escort_task import RobotEscortTask
 from robot_guild_boss import RobotGuildBoss
 
-monkey.patch_all()
 
 RED = '\033[31m'
 GREEN = '\033[32m'
@@ -62,7 +64,7 @@ def enter_command(e):
     elif select == '2':
         fsm.robotaction()
     elif select == '3':
-        reactor.stop()
+        sys.exit(0)
 
 
 def enter_addrobot(e):
@@ -134,13 +136,13 @@ fsm = Sfsm(events=[('start',  'none',  'command'),
 
 
 def tick():
-    if fsm.current == 'none':
-        fsm.start()
-    else:
-        fsm()
-    reactor.callLater(0, tick)
+    while True:
+        if fsm.current == 'none':
+            fsm.start()
+        else:
+            fsm()
+        gevent.sleep(0)
 
 
 if __name__ == '__main__':
-    reactor.callLater(0, tick)
-    reactor.run()
+    tick()
