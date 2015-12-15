@@ -10,6 +10,7 @@ from app.proto_file.rebate_pb2 import rebateDraw, rebateResp
 from shared.db_opear.configs_data import game_configs, data_helper
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
+from shared.tlog import tlog_action
 
 @remoteserviceHandle('gate')
 def rebate_info_5432(data, player):
