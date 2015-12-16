@@ -241,11 +241,11 @@ def fight_settlement_904(pro_data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
 
-    res = (True, 1, 1, -1, {})
+    check_res = (True, 1, 1, -1, {})
     if not request.is_skip:
-        res = pve_process_check(player, result, request.steps, const.BATTLE_PVE)
+        check_res = pve_process_check(player, result, request.steps, const.BATTLE_PVE)
 
-    if not request.is_skip and not res[0]:
+    if not request.is_skip and not check_res[0]:
         logger.error("pve_process_check error!=================")
         os.system("cp output ..")
         res.result = False
@@ -279,17 +279,17 @@ def fight_settlement_904(pro_data, player):
         friend_fight_times[fid].append(int(time.time()))
         player.friends.save_data()
 
-    logger.debug("damage percent: %s" % res[1])
-    logger.debug("red units: %s" % res[2])
-    player.fight_cache_component.damage_percent = res[1]
+    logger.debug("damage percent: %s" % check_res[1])
+    logger.debug("red units: %s" % check_res[2])
+    player.fight_cache_component.damage_percent = check_res[1]
 
     star = 0  # star num
     stage_info = player.fight_cache_component.stage_info
     red_units = stage_info.get('red_units')
 
-    round_to_kill_num = res[4]
-    red_left_num = res[3]
-    red_left_hp_percent = res[2]
+    round_to_kill_num = check_res[4]
+    red_left_num = check_res[3]
+    red_left_hp_percent = check_res[2]
     death_num = len(red_units) - red_left_num
     for i in range(1, 4):
         star_condition = game_configs.base_config.get('star_condition')
