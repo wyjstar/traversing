@@ -3,6 +3,7 @@ import urllib
 import gevent
 import json
 import socket
+import time
 
 
 HOST = '127.0.0.1'
@@ -16,6 +17,7 @@ class RobotManager:
         self._robot_login_fail_num = 0
         self._robot_login_success_num = 0
         self._robots = []
+        self._login_begin_time = 0
 
     @property
     def count(self):
@@ -73,9 +75,15 @@ class RobotManager:
             com(*args)
 
     def is_robots_logined(self):
-        return self._robot_count == self._robot_login_success_num
+        result = self._robot_count == self._robot_login_success_num
+        if result:
+            peroid = time.time() - self._login_begin_time
+            print 'login finished: FPS:%s use time:%s',\
+                  self._robot_count/peroid, peroid
+        return result
 
     def add_robot(self, robot_type, number):
+        self._login_begin_time = time.time()
         for _ in range(int(number)):
             while self._robot_processing_num >= 200:
                 gevent.sleep(1)
