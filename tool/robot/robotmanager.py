@@ -2,9 +2,7 @@
 import urllib
 import gevent
 import json
-
-from twisted.internet import reactor
-from twisted.internet.protocol import ClientCreator
+import socket
 
 
 HOST = '127.0.0.1'
@@ -89,11 +87,12 @@ class RobotManager:
             self._robot_count += 1
             self._robot_processing_num += 1
 
-            reactor.callLater(0, add_robot, robot_type, self, robot_name, pwd, robot_nickname)
+            gevent.spawn(add_robot_run, robot_type, self,
+                         robot_name, pwd, robot_nickname)
             print 'add a client'
 
 
-def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
+def add_robot_run(robot_type, manager, robot_name, pwd, robot_nickname):
     register_url = 'http://localhost:30004/register?name=%s&pwd=%s' % \
                    (robot_name, pwd)
     register_response = json.loads((urllib.urlopen(register_url)).read())
@@ -128,6 +127,7 @@ def add_robot(robot_type, manager, robot_name, pwd, robot_nickname):
     print 'login game success'
     game_passport = login_game_response.get('passport')
 
-
-    c = ClientCreator(reactor, robot_type, manager, game_passport, robot_nickname)
-    c.connectTCP(net_ip, net_port)
+    skt = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    skt.connect((net_ip, net_port))
+    print 'tcp connect game success'
+    robot_type(skt, manager, game_passport, robot_nickname)

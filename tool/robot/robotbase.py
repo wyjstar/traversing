@@ -5,8 +5,7 @@ created by server on 14-8-21下午2:45.
 
 import struct
 import inspect
-from twisted.internet import protocol
-from twisted.internet import reactor
+import gevent
 
 
 def build_data(send_str, command_id):
@@ -35,13 +34,14 @@ def parse_data(data):
     return command, message
 
 
-class RobotBase(protocol.Protocol):
-    def __init__(self):
+class RobotBase():
+    def __init__(self, socket):
         self.on_command_error = None
         self.on_connection_lost = None
         self.on_connection_made = None
         self.on_command_finish = None
 
+        self._socket = socket
         self._distributor = {}
         self._commands = []
         self._command_args = []
@@ -53,7 +53,7 @@ class RobotBase(protocol.Protocol):
                 self._command_args.append(inspect.getargspec(fun)[0])
             if key[-1].isdigit():
                 self._distributor[key[-1]] = attr
-
+        gevent.spawn(self.receive)
         # print self._commands
         # print self._distributor
 
@@ -65,12 +65,17 @@ class RobotBase(protocol.Protocol):
     def commands_args(self):
         return self._command_args
 
+    def receive(self):
+        while True:
+            data = self._socket.recv(1024)
+            self.dataReceived(data)
+
     def send_message(self, argument, command_id):
         if argument:
             data = build_data(argument.SerializeToString(), command_id)
         else:
             data = build_data('', command_id)
-        self.transport.write(data)
+        self._socket.sendall(data)
 
     def connectionMade(self):
         self.on_connection_made()
@@ -84,8 +89,7 @@ class RobotBase(protocol.Protocol):
 
         fun = getattr(self, self._distributor[str(command)])
         if fun:
-            reactor.callLater(0, fun, message)
-            #fun(message)
+            gevent.spawn(fun, message)
         else:
             self.on_command_error()
             print 'cant find processor by command:', command
