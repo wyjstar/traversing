@@ -216,11 +216,11 @@ formula_config={
 ,  [108] = {
   ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["formula"] = "atkArray*skill_buff.valueEffect/100",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["id"] = 108,  ["clientFormula"] = "result=atkArray*skill_buff.valueEffect/100",  ["key"] = "damage_4",}
 ,  [109] = {
-  ["precondition"] = "1",  ["formula"] = "(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["clientPrecondition"] = "1",  ["id"] = 109,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "warriorsDamage",}
+  ["precondition"] = "1",  ["formula"] = "500",  ["clientPrecondition"] = "1",  ["id"] = 109,  ["clientFormula"] = "result=500",  ["key"] = "warriorsDamage",}
 ,  [110] = {
   ["precondition"] = "1",  ["formula"] = "warriorsBaseDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*playerLevel",  ["clientPrecondition"] = "1",  ["id"] = 110,  ["clientFormula"] = "result=warriorsBaseDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*playerLevel",  ["key"] = "warriorsLastDamage",}
 ,  [111] = {
-  ["precondition"] = "1",  ["formula"] = "atk*1.5",  ["clientPrecondition"] = "1",  ["id"] = 111,  ["clientFormula"] = "result=atk*1.5",  ["key"] = "monster_warriors_atkArray",}
+  ["precondition"] = "1",  ["formula"] = "atk*1",  ["clientPrecondition"] = "1",  ["id"] = 111,  ["clientFormula"] = "result=atk*1",  ["key"] = "monster_warriors_atkArray",}
 ,  [112] = {
   ["precondition"] = "skill_buff.effectId == 26 and skill_buff.valueType == 1",  ["formula"] = "allHeal+skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId == 26 and skill_buff.valueType == 1",  ["id"] = 112,  ["clientFormula"] = "result=allHeal+skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["key"] = "heal_1",}
 ,  [113] = {
@@ -242,7 +242,7 @@ formula_config={
 ,  [121] = {
   ["precondition"] = "seatHero==6",  ["formula"] = "[3,1,2,6,4,5]",  ["clientPrecondition"] = "seatHero==6",  ["id"] = 121,  ["clientFormula"] = "result=[3,1,2,6,4,5]",  ["key"] = "defaultAttackSequence_6",}
 ,  [122] = {
-  ["precondition"] = "1",  ["formula"] = "hp*0.1+atk*0.2+(physicalDef+magicDef)*0.4+(hit+dodge+cri+criCoeff+criDedCoeff+block+ductility)*5",  ["clientPrecondition"] = "1",  ["id"] = 122,  ["clientFormula"] = "result=equ_attr.hp*0.1+equ_attr.atk*0.2+(equ_attr.physicalDef+equ_attr.magicDef)*0.4+(equ_attr.hit+equ_attr.dodge+equ_attr.cri+equ_attr.criCoeff+equ_attr.criDedCoeff+equ_attr.block+equ_attr.ductility)*5",  ["key"] = "equFightValue",}
+  ["precondition"] = "1",  ["formula"] = "hp/6+atk/3+(physicalDef+magicDef)/2+hit+dodge+cri+criCoeff+criDedCoeff+ductility+block*2",  ["clientPrecondition"] = "1",  ["id"] = 122,  ["clientFormula"] = "result=equ_attr.hp/6+equ_attr.atk/3+(equ_attr.physicalDef+equ_attr.magicDef)/2+equ_attr.hit+equ_attr.dodge+equ_attr.cri+equ_attr.criCoeff+equ_attr.criDedCoeff+equ_attr.block*2+equ_attr.ductility",  ["key"] = "equFightValue",}
 ,  [123] = {
   ["precondition"] = "1",  ["formula"] = "1 if moonCardSurplusDay < 9999999 else 0",  ["clientPrecondition"] = "1",  ["id"] = 123,  ["clientFormula"] = "result=(moonCardSurplusDay < 4 and 1) or 0",  ["key"] = "moonCard",}
 ,  [124] = {

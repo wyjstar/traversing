@@ -594,4 +594,41 @@ function CustomScrollView:jumpToBottom()
     end
 end
 
+--[[--
+滑动动画
+@param table opt 参数设置
+{
+    ["delayTime"],  -- 初始延时
+    ["delayRow"],   -- 行间延时
+    ["delayLine"],  -- 列间延时
+    ["boundWidth"], -- 回弹距离
+    ["delayBound"], -- 回弹延时
+    ["itemWidth"],  -- 初始的位置
+}
+]]
+function CustomScrollView:runItemAction(opt)
+    opt = opt or {}
+    local dTime     = opt.delayTime or 0.05
+    local dRow      = opt.delayRow or 0.09
+    local dLine     = opt.delayLine or 0.07
+    local bWidth    = opt.boundWidth or 10
+    local dBound    = opt.delayBound or 0.05
+    local iWidth    = opt.itemWidth or self.touchSize.width
+
+    for k,v in pairs(self.buttons) do
+        v:setPositionX(v:getPositionX() + iWidth)
+    end
+
+    local size = self.direction == CustomScrollView.DIRECTION_VERTICAL and self.columns or self.lines -- 竖向使用columns, 横向使用lines
+    for k,v in pairs(self.buttons) do
+        local rowNum = tonumber(string.format("%d", (k-1)/size)) -- 行号,从0开始
+        local lineNum = (k-1) % size -- 列号,从0开始
+        local que = cc.Sequence:create(
+            cc.MoveBy:create(dTime + rowNum*dRow + lineNum*dLine, cc.p(-iWidth-bWidth, 0)),
+            cc.MoveBy:create(dBound, cc.p(bWidth, 0))
+        )
+        v:runAction(que)
+    end
+end
+
 return CustomScrollView
