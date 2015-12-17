@@ -196,13 +196,16 @@ function FMUnParaSkill:get_begin_action()
 end
 
 -- 构造attacker:view 可以统一处理
-function FMUnParaSkill:construct_attacker(side)
+function FMUnParaSkill:construct_attacker()
     local fight_type = self.process.fight_type
     local attacker = {}
     -- 判断怪物无双
-    if (fight_type == TYPE_STAGE_ELITE or fight_type == TYPE_STAGE_ACTIVITY or fight_type == TYPE_STAGE_NORMAL) and side == "blue" then
+    print("===================blueunpara", fight_type, TYPE_STAGE_ELITE, side)
+    if (fight_type == TYPE_STAGE_ELITE or fight_type == TYPE_STAGE_ACTIVITY or fight_type == TYPE_STAGE_NORMAL) and self.side == "blue" then
         for k, v in pairs(self.process.blue_units) do
+                print("===================blueunpara1")
             if v.is_boss then
+                print("===================blueunpara2")
                 attacker.is_monster = true -- 判断是否是怪物无双
                 attacker.boss = v
             end

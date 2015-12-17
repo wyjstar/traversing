@@ -430,24 +430,29 @@ def hero_sacrifice_oper(heros, player):
         break_item_num += hero.break_item_num
 
     # baseconfig {1000000: 'item_id'}
-    exp_items = game_configs.base_config.get("sacrificeGainExp")
 
-    keys = []
-    try:
-        keys = sorted([int(item) for item in list(exp_items)], reverse=True)
-    except Exception:
-        logger.error("base_config sacrificeGainExp key must be int type:%s.",
-                     str(exp_items))
-        return
-
-    for exp in keys:
-        item_no = exp_items.get(exp)
-        config = game_configs.item_config.get(item_no)
-        exp = config.get("funcArg1")
-        if total_exp/exp > 0:
-            exp_item_no = item_no
-            exp_item_num = total_exp/exp
-            break
+    logger.debug("total_exp %s" % total_exp)
+    formula_info = game_configs.formula_config.get("sacrificeExp_3")
+    pre_formula = formula_info.get("precondition")
+    formula = formula_info.get("formula")
+    cal_vars = dict(expHero=total_exp)
+    if eval(pre_formula, cal_vars):
+        exp_item_no = 10003
+        exp_item_num = eval(formula, cal_vars)
+    formula_info = game_configs.formula_config.get("sacrificeExp_2")
+    pre_formula = formula_info.get("precondition")
+    formula = formula_info.get("formula")
+    cal_vars = dict(expHero=total_exp)
+    if eval(pre_formula, cal_vars):
+        exp_item_no = 10002
+        exp_item_num = eval(formula, cal_vars)
+    formula_info = game_configs.formula_config.get("sacrificeExp_1")
+    pre_formula = formula_info.get("precondition")
+    formula = formula_info.get("formula")
+    cal_vars = dict(expHero=total_exp)
+    if eval(pre_formula, cal_vars):
+        exp_item_no = 10001
+        exp_item_num = eval(formula, cal_vars)
     heroAwakeBack = game_configs.base_config.get('heroAwakeBack')
     heroBreakBack = game_configs.base_config.get('heroBreakBack')
     awake_item_num = int(awake_item_num * heroAwakeBack)

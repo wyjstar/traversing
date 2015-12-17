@@ -216,11 +216,11 @@ formula_config={
 ,  [108] = {
   ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["formula"] = "atkArray*skill_buff.valueEffect/100",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["id"] = 108,  ["clientFormula"] = "result=atkArray*skill_buff.valueEffect/100",  ["key"] = "damage_4",}
 ,  [109] = {
-  ["precondition"] = "1",  ["formula"] = "500",  ["clientPrecondition"] = "1",  ["id"] = 109,  ["clientFormula"] = "result=500",  ["key"] = "warriorsDamage",}
+  ["precondition"] = "1",  ["formula"] = "(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["clientPrecondition"] = "1",  ["id"] = 109,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "warriorsDamage",}
 ,  [110] = {
   ["precondition"] = "1",  ["formula"] = "warriorsBaseDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*playerLevel",  ["clientPrecondition"] = "1",  ["id"] = 110,  ["clientFormula"] = "result=warriorsBaseDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*playerLevel",  ["key"] = "warriorsLastDamage",}
 ,  [111] = {
-  ["precondition"] = "1",  ["formula"] = "atk*1",  ["clientPrecondition"] = "1",  ["id"] = 111,  ["clientFormula"] = "result=atk*1",  ["key"] = "monster_warriors_atkArray",}
+  ["precondition"] = "1",  ["formula"] = "atk*1.5",  ["clientPrecondition"] = "1",  ["id"] = 111,  ["clientFormula"] = "result=atk*1.5",  ["key"] = "monster_warriors_atkArray",}
 ,  [112] = {
   ["precondition"] = "skill_buff.effectId == 26 and skill_buff.valueType == 1",  ["formula"] = "allHeal+skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId == 26 and skill_buff.valueType == 1",  ["id"] = 112,  ["clientFormula"] = "result=allHeal+skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["key"] = "heal_1",}
 ,  [113] = {

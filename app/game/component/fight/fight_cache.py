@@ -200,6 +200,7 @@ class CharacterFightCacheComponent(Component):
             round_monsters = {}
 
             boss_position = monster_group_config.bossPosition
+            print("boss_position %s" % boss_position)
 
             for j in range(6):
                 pos = j + 1

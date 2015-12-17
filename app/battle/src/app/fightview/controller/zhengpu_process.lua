@@ -291,9 +291,12 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
     end
     skill:clear()
     -- 在攻击技能触发完成后，处理mp
-    skill:add_mp(is_mp_skill)
+    --if self.current_skill_type == TYPE_NORMAL then
+        --skill:add_mp(is_mp_skill)
+    --end
 
     if self.current_skill_type == TYPE_NORMAL then
+        skill:add_mp(is_mp_skill)
         self.red_unpara_skill:add_mp()
         self.blue_unpara_skill:add_mp()
     end
