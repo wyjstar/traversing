@@ -122,6 +122,9 @@ def battle_2403(pro_data, player):
         response.res.result_no = 240301
         return response.SerializePartialToString()
 
+    data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
+    logger.debug("return data %s" % data)
+    boss_info = data.get("guild_boss")
 
     line_up = player.line_up_component
     player.fight_cache_component.stage_id = stage_id
@@ -131,7 +134,7 @@ def battle_2403(pro_data, player):
     unpar_type = line_up.unpar_type
     unpar_other_id = line_up.unpar_other_id
     res = remote_gate['world'].guild_boss_battle_remote(player.guild.g_id, str_red_units, unpar_type, unpar_other_id, seed1, seed2)
-    boss_info = res.get("guild_boss")
+    #boss_info = res.get("guild_boss")
     blue_units = cPickle.loads(boss_info.get("blue_units"))
     pvp_assemble_units(red_units, blue_units, response)
 

@@ -25,6 +25,7 @@ def get_all_task_info_1901(pro_data, player):
     """取得所有押运信息"""
     response = escort_pb2.GetEscortTasksResponse()
     escort_component = player.escort_component
+    escort_component.check_time()
 
     response.start_protect_times = escort_component.start_protect_times
     response.protect_times = escort_component.protect_times
@@ -355,20 +356,23 @@ def invite_1908(data, player):
 
 def send_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
     """docstring for send_invite"""
+    AnnouncementCoolingTime = game_configs.base_config.get("AnnouncementCoolingTime", 0)
+    task = remote_gate["world"].get_task_by_id_remote(task_guild_id, task_id)
+    if protect_or_rob == 1:
+        last_send_invite_time = task.get("last_send_invite_time", 0)
+        if last_send_invite_time + AnnouncementCoolingTime > int(get_current_timestamp()):
+            logger.error("last_send_invite_time %s AnnouncementCoolingTime %s current %s" % (last_send_invite_time, AnnouncementCoolingTime, int(get_current_timestamp())))
+            return {'result': False, 'result_no': 190804}
+    if protect_or_rob == 2:
+        last_send_invite_time = task.get("rob_task_infos")[0].get("last_send_invite_time", 0)
+        if last_send_invite_time + AnnouncementCoolingTime > int(get_current_timestamp()):
+            logger.error("last_send_invite_time %s AnnouncementCoolingTime %s current %s" % (last_send_invite_time, AnnouncementCoolingTime, int(get_current_timestamp())))
+            return {'result': False, 'result_no': 190804}
 
     task = remote_gate["world"].send_escort_task_invite_remote(task_guild_id, task_id, player.guild.g_id, rob_no, protect_or_rob)
     if not task:
         logger.error("can't find this task!")
         return {'result': False, 'result_no': 190801}
-    AnnouncementCoolingTime = game_configs.base_config.get("AnnouncementCoolingTime", 0)
-    if protect_or_rob == 1:
-        last_send_invite_time = task.get("last_send_invite_time", 0)
-        if last_send_invite_time + AnnouncementCoolingTime > int(get_current_timestamp()):
-            return {'result': False, 'result_no': 190804}
-    if protect_or_rob == 2:
-        last_send_invite_time = task.get("rob_task_infos")[0].get("last_send_invite_time", 0)
-        if last_send_invite_time + AnnouncementCoolingTime > int(get_current_timestamp()):
-            return {'result': False, 'result_no': 190804}
 
 
     push_response = escort_pb2.InviteEscortTaskPushResponse()
