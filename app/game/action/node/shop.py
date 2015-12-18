@@ -4,7 +4,7 @@ created by server on 14-7-9下午2:39.
 """
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
-from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems
+from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems, GetShopItemsResponse
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import is_afford
 # from app.game.core.item_group_helper import is_consume
