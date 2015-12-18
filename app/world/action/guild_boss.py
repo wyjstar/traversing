@@ -66,6 +66,7 @@ def guild_boss_battle_remote(guild_id, str_red_units, unpar_type, unpar_other_id
     boss = guild.guild_boss
     red_units = cPickle.loads(str_red_units)
     blue_units = boss.blue_units
+    logger.debug("blue unit length %s" % len(blue_units))
 
     origin_hp = boss.hp
     fight_result = guild_boss_start(red_units,  blue_units, unpar_type, unpar_other_id, 0, 0, seed1, seed2)
@@ -83,7 +84,6 @@ def guild_boss_battle_remote(guild_id, str_red_units, unpar_type, unpar_other_id
     guild.save_data()
     return dict(
             result=True,
-            guild_boss=boss.property_dict(),
             fight_result = fight_result,
             )
 @rootserviceHandle

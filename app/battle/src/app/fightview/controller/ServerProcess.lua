@@ -46,13 +46,19 @@ end
 function FCProcess:pvp_start()
     print("FCProcess:pvp_start============")
     self.fightProcess:perform_open_skill()
+    final_res = 0
     while self.fightProcess:check_result() == 0 do
         self.fightProcess:perform_one_step()
-        if self.fightProcess:check_result() ~= 0 then
+        res = self.fightProcess:check_result()
+        if res ~= 0 then
+            final_res = self.fightProcess:check_final_result(res) 
+            if final_res ~= 0 then
+                break
+            end
             self.fightProcess:next_round()
         end
     end
-    return self.fightProcess:check_result() == 1, self.fightProcess.blue_hp_total - self.fightProcess:get_total_damage(), self.fightProcess.blue_units
+    return final_res == 1, self.fightProcess.blue_hp_total - self.fightProcess:get_total_damage(), self.fightProcess.blue_units
 end
 
 --开始战斗pve 
