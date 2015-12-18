@@ -78,6 +78,7 @@ def get_tasks_by_ids_remote(task_ids):
     for task_id, info in task_ids.items():
         guild = guild_manager_obj.get_guild_obj(info.get("guild_id"))
         task = guild.get_task_by_id(task_id)
+        task.update_task_state()
         if not task:
             continue
         tasks[task_id] = construct_task_data(task, info.get("rob_no", -1))
