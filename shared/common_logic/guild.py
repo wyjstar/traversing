@@ -395,6 +395,7 @@ class Guild(object):
         task = self._escort_tasks.get(task_id)
         if not task:
             logger.debug("task_id %s not exists!" % task_id)
+        task.update_task_state()
         return task
 
     def add_task(self, task_info):

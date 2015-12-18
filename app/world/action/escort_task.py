@@ -78,7 +78,6 @@ def get_tasks_by_ids_remote(task_ids):
     for task_id, info in task_ids.items():
         guild = guild_manager_obj.get_guild_obj(info.get("guild_id"))
         task = guild.get_task_by_id(task_id)
-        task.update_task_state()
         if not task:
             continue
         tasks[task_id] = construct_task_data(task, info.get("rob_no", -1))
@@ -95,7 +94,6 @@ def add_player_remote(guild_id, task_id, player_info, protect_or_rob, rob_no):
     logger.debug("add_player_remote %s %s %s %s %s" % (guild_id, task_id, player_info, protect_or_rob, rob_no))
     guild = guild_manager_obj.get_guild_obj(guild_id)
     task = guild.get_task_by_id(task_id)
-    task.update_task_state()
 
     for protecter in task.protecters:
         # 已存在该玩家，则不能再次加入
@@ -294,6 +292,8 @@ def update_task_state_remote(protect_records, rob_records):
     """
     根据时间调整任务状态
     """
+    return
+
     records = {}
     rob_records.update(protect_records)
 
