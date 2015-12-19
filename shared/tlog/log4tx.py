@@ -1604,3 +1604,22 @@ def unpar_upgrade(GameSvrId=0, dtEventTime=0, GameAppID=0,
     logclient.gethandler().send_msg(sendmsg + '\n')
     if debug:
         print sendmsg
+
+
+def up_guide(GameSvrId=0, dtEventTime=0, GameAppID=0,
+             PlatID=0, OpenID=0, ID=0):
+
+    message = ['UpGuide']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg

@@ -914,6 +914,16 @@ def world_boss_encourage(player_data, type, times):
                                 Times=times)
 
 
+def up_guide(player_data, level):
+
+    log4tx.up_guide(GameSvrId=game_server_id,
+                    dtEventTime=xtime.strdatetime(),
+                    GameAppID=game_app_id,
+                    OpenID=player_data.base_info.id,
+                    PlatID=plat_id,
+                    ID=id)
+
+
 def unpar_upgrade(player_data, level):
 
     log4tx.world_boss_encourage(GameSvrId=game_server_id,
@@ -1001,6 +1011,7 @@ tlog_funcs['WorldBossAddUpReward'] = world_boss_add_up_reward
 tlog_funcs['WorldBossInReward'] = world_boss_in_reward
 tlog_funcs['WorldBossEncourage'] = world_boss_encourage
 tlog_funcs['UnparUpgrade'] = unpar_upgrade
+tlog_funcs['UpGuide'] = up_guide
 
 
 def log(mod, *args, **kwds):
