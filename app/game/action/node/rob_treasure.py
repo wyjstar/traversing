@@ -103,7 +103,7 @@ def compose_rob_treasure_860(data, player):
         if not chip:
             logger.error('rob_treasure_truce_841, use item times not enough')
             response.res.result = False
-            response.res.result_no = 102
+            response.res.result_no = 8601
             return response.SerializeToString()
 
         compose_num = chip.compose_num
@@ -112,7 +112,7 @@ def compose_rob_treasure_860(data, player):
         if chip_num < compose_num:
             logger.error('rob_treasure_truce_841, use item times not enough')
             response.res.result = False
-            response.res.result_no = 102
+            response.res.result_no = 8601
             return response.SerializeToString()
 
     equipment_obj = player.equipment_component.add_equipment(treasure_id)
@@ -258,17 +258,17 @@ def rob_treasure_reward_863(data, player):
 
     x = [0, 1, 2]
     random.shuffle(x)
-    return_data = gain(player, [drops[x[0]]],
-                       const.ROB_TREASURE_REWARD)
-    get_return(player, return_data, response.gain)
+    return_data = [[drops[x[0]].item_type, drops[x[0]].num, drops[x[0]].item_no]]
+    # gain(player, [drops[x[0]]], const.ROB_TREASURE_REWARD)
+    get_return(player, return_data, response.look_gain.add())
 
-    return_data = gain(player, [drops[x[1]]],
-                       const.ROB_TREASURE_REWARD)
+    # return_data = gain(player, [drops[x[1]]], const.ROB_TREASURE_REWARD)
+    return_data = [[drops[x[1]].item_type, drops[x[1]].num, drops[x[1]].item_no]]
     get_return(player, return_data, response.look_gain.add())
 
     return_data = gain(player, [drops[x[2]]],
                        const.ROB_TREASURE_REWARD)
-    get_return(player, return_data, response.look_gain.add())
+    get_return(player, return_data, response.gain)
 
     player.rob_treasure.can_receive = 0
     player.rob_treasure.save_data()
