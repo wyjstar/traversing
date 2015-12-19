@@ -1504,3 +1504,122 @@ def rob_treasure_truce(GameSvrId=0, dtEventTime=0, GameAppID=0,
     logclient.gethandler().send_msg(sendmsg + '\n')
     if debug:
         print sendmsg
+
+
+def world_boss_rank_reward(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                           PlatID=0, OpenID=0, Rank=0, Damage=0,
+                           MailID=0):
+
+    message = ['WorldBossRankReward']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Rank)
+    message.append(Damage)
+    message.append(MailID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def world_boss_add_up_reward(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                             PlatID=0, OpenID=0, Damage=0, MailID=0):
+
+    message = ['WorldBossAddUpReward']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Damage)
+    message.append(MailID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def world_boss_in_reward(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                         PlatID=0, OpenID=0, MailID=0):
+
+    message = ['WorldBossInReward']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(MailID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def world_boss_encourage(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                         PlatID=0, OpenID=0, Type=0, Times=0):
+
+    message = ['WorldBossEncourage']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Type)
+    message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def unpar_upgrade(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                  PlatID=0, OpenID=0, Level=0):
+
+    message = ['UnparUpgrade']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Level)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def up_guide(GameSvrId=0, dtEventTime=0, GameAppID=0,
+             PlatID=0, OpenID=0, ID=0):
+
+    message = ['UpGuide']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
