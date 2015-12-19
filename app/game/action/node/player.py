@@ -170,15 +170,9 @@ def up_guide_1816(data, player):
     request = UpGuideRequest()
     request.ParseFromString(data)
     response = CommonResponse()
+    guide_id = request.guide_id
 
-    guide_item = game_configs.newbee_guide_config.get(request.id)
-    if not guide_item:
-        logger.debug("up_guide_1815 id error ++++++++++++++++++++++")
-        response.result_no = 800
-        response.result = False
-        return response.SerializePartialToString()
-
-    tlog_action.log('UpGuide', player, request.id)
+    tlog_action.log('UpGuide', player, guide_id)
     response.result = True
     return response.SerializePartialToString()
 

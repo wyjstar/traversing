@@ -10,7 +10,7 @@ message CreatePlayerRequest{
 }
 
 message UpGuideRequest{
-	required int32 id = 1;  // 引导ID
+	required int32 guide_id = 1;  // 引导ID
 }
 message NewbeeGuideStepRequest{
 	required int32 step_id = 1;

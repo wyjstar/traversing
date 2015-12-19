@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='player_request.proto',
   package='',
-  serialized_pb='\n\x14player_request.proto\"#\n\x12PlayerLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"\'\n\x13\x43reatePlayerRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t\"\x1c\n\x0eUpGuideRequest\x12\n\n\x02id\x18\x01 \x02(\x05\"S\n\x16NewbeeGuideStepRequest\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tcommon_id\x18\x02 \x01(\t\x12\x15\n\rsub_common_id\x18\x03 \x01(\t\"$\n\x11\x43hangeHeadRequest\x12\x0f\n\x07hero_id\x18\x01 \x02(\x05\"\"\n\x11\x43hangeBattleSpeed\x12\r\n\x05speed\x18\x01 \x02(\x05\"$\n\x10\x43hangeStageStory\x12\x10\n\x08story_id\x18\x01 \x02(\x05\")\n\x14\x42uttonOneTimeRequest\x12\x11\n\tbutton_id\x18\x01 \x02(\x05')
+  serialized_pb='\n\x14player_request.proto\"#\n\x12PlayerLoginRequest\x12\r\n\x05token\x18\x01 \x02(\t\"\'\n\x13\x43reatePlayerRequest\x12\x10\n\x08nickname\x18\x01 \x01(\t\"\"\n\x0eUpGuideRequest\x12\x10\n\x08guide_id\x18\x01 \x02(\x05\"S\n\x16NewbeeGuideStepRequest\x12\x0f\n\x07step_id\x18\x01 \x02(\x05\x12\x11\n\tcommon_id\x18\x02 \x01(\t\x12\x15\n\rsub_common_id\x18\x03 \x01(\t\"$\n\x11\x43hangeHeadRequest\x12\x0f\n\x07hero_id\x18\x01 \x02(\x05\"\"\n\x11\x43hangeBattleSpeed\x12\r\n\x05speed\x18\x01 \x02(\x05\"$\n\x10\x43hangeStageStory\x12\x10\n\x08story_id\x18\x01 \x02(\x05\")\n\x14\x42uttonOneTimeRequest\x12\x11\n\tbutton_id\x18\x01 \x02(\x05')
 
 
 
@@ -82,7 +82,7 @@ _UPGUIDEREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='UpGuideRequest.id', index=0,
+      name='guide_id', full_name='UpGuideRequest.guide_id', index=0,
       number=1, type=5, cpp_type=1, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -98,7 +98,7 @@ _UPGUIDEREQUEST = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=102,
-  serialized_end=130,
+  serialized_end=136,
 )
 
 
@@ -139,8 +139,8 @@ _NEWBEEGUIDESTEPREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=132,
-  serialized_end=215,
+  serialized_start=138,
+  serialized_end=221,
 )
 
 
@@ -167,8 +167,8 @@ _CHANGEHEADREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=217,
-  serialized_end=253,
+  serialized_start=223,
+  serialized_end=259,
 )
 
 
@@ -195,8 +195,8 @@ _CHANGEBATTLESPEED = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=255,
-  serialized_end=289,
+  serialized_start=261,
+  serialized_end=295,
 )
 
 
@@ -223,8 +223,8 @@ _CHANGESTAGESTORY = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=291,
-  serialized_end=327,
+  serialized_start=297,
+  serialized_end=333,
 )
 
 
@@ -251,8 +251,8 @@ _BUTTONONETIMEREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=329,
-  serialized_end=370,
+  serialized_start=335,
+  serialized_end=376,
 )
 
 DESCRIPTOR.message_types_by_name['PlayerLoginRequest'] = _PLAYERLOGINREQUEST

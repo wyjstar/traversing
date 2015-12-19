@@ -914,7 +914,7 @@ def world_boss_encourage(player_data, type, times):
                                 Times=times)
 
 
-def up_guide(player_data, level):
+def up_guide(player_data, id):
 
     log4tx.up_guide(GameSvrId=game_server_id,
                     dtEventTime=xtime.strdatetime(),
