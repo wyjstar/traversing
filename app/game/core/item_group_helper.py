@@ -248,6 +248,8 @@ def gain(player, item_group, reason,
                 player.hero_chip_component.add_chip(hero_chip)
                 player.hero_chip_component.save_data()
                 after_num = player.hero_chip_component.get_chip(item_no).num
+            else:
+                logger.error('chip config not found:%', item_no)
 
         elif type_id == const.ITEM:
             item = Item(item_no, num)
@@ -326,6 +328,8 @@ def gain(player, item_group, reason,
                 player.equipment_chip_component.add_chip(chip)
                 player.equipment_chip_component.save_data()
                 after_num = player.equipment_chip_component.get_chip(item_no).chip_num
+            else:
+                logger.error('chip config not found:%', item_no)
 
         elif type_id == const.STAMINA:
             player.stamina.stamina += num
