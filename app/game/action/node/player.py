@@ -71,6 +71,8 @@ def nickname_create_5(request_proto, player):
                                   nickname,
                                   player.base_info.gag)
 
+    tlog_action.log('CreateNickname', player, nickname)
+
     response.result = True
     return response.SerializeToString()
 

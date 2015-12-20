@@ -157,7 +157,7 @@ def battle_2103(pro_data, player):
             level=player.base_info.level)
 
     str_red_units = cPickle.dumps(red_units)
-    fight_result, boss_state, current_damage_hp = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2)
+    fight_result, boss_state, current_damage_hp, is_kill = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, red_best_skill_level, attack_type, seed1, seed2)
     logger.debug("============battle over")
 
     # 消耗讨伐令
@@ -168,7 +168,7 @@ def battle_2103(pro_data, player):
     hjqyMeritoriousServiceRate = game_configs.base_config.get("hjqyMeritoriousServiceRate")
     meritorious_service = player.fight_cache_component._get_stage_config().meritorious_service
     logger.debug("========= %s %s ========"%(is_in_period(hjqyMeritoriousServiceOpenTime), hjqyMeritoriousServiceOpenTime ))
-    if is_in_period(hjqyMeritoriousServiceOpenTime): # 增加功勋的活动
+    if is_in_period(hjqyMeritoriousServiceOpenTime):  # 增加功勋的活动
         meritorious_service = meritorious_service * hjqyMeritoriousServiceRate
     player.finance.add(const.HJQYCOIN, meritorious_service, reason=const.HJQY_BATTLE)
     player.finance.save_data()
@@ -185,6 +185,8 @@ def battle_2103(pro_data, player):
     response.res.result = True
 
     hook_task(player, CONDITIONId.HJQY, 1)
+
+    tlog_action.log('BattleHJQY', player, boss_id, is_kill)
 
     # start target
     if player.start_target.is_open():

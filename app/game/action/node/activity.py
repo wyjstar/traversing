@@ -13,6 +13,7 @@ from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -37,18 +38,14 @@ def get_act_gift_1832(data, player):
         res = get_20_gift(player, act_conf, response)
     elif act_type == 21:  # 通关关卡
         res = get_21_gift(player, act_conf, response)
-    elif act_type == 23:  # 精华商店刷新
-        res = get_23_gift(player, act_conf, response)
     if res:
-        if act_type == 23:
-            player.act.act23_info[2] = 1
+        if received_ids:
+            player.act.received_ids.get(act_type).append(act_id)
         else:
-            if received_ids:
-                player.act.received_ids.get(act_type).append(act_id)
-            else:
-                player.act.received_ids[act_type] = [act_id]
+            player.act.received_ids[act_type] = [act_id]
         player.act.save_data()
         response.res.result = True
+        tlog_action.log('Activity', player, act_id)
 
     return response.SerializeToString()
 
@@ -60,16 +57,6 @@ def get_20_gift(player, act_conf, response):  # 战力
         return 0
     gain_data = act_conf.reward
     return_data = gain(player, gain_data, const.ACT20)
-    get_return(player, return_data, response.gain)
-    return 1
-
-
-def get_23_gift(player, act_conf, response):  # 通关关卡
-    if player.act.act23_state:
-        response.res.result_no = 800
-        return 0
-    gain_data = act_conf.reward
-    return_data = gain(player, gain_data, const.ACT21)
     get_return(player, return_data, response.gain)
     return 1
 
@@ -110,10 +97,6 @@ def get_act_info_1831(data, player):
     if received_ids:
         for id in received_ids:
             response.received_act_ids.append(id)
-    if act_type == 23:
-        response.times = player.act.act23_times
-        if player.act.act23_state:
-            response.received_act_ids.append(act_id)
     response.res.result = True
     return response.SerializeToString()
 
@@ -158,6 +141,7 @@ def get_activity_28_gift_1834(data, player):
                        const.act_28,
                        multiple=quantity)
     get_return(player, return_data, response.gain)
+    tlog_action.log('GodHeroExchange', player, activity_id, quantity)
 
     response.res.result = True
     return response.SerializeToString()

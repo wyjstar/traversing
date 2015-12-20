@@ -14,6 +14,7 @@ from app.proto_file.sign_in_pb2 import GetSignInResponse, SignInBoxRequest
 from shared.utils.const import const
 from shared.utils.xtime import timestamp_to_date
 from gfirefly.server.logobj import logger
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -64,14 +65,20 @@ def sign_in_1401(pro_data, player):
     #vip双倍
     print("vip================", player.base_info.vip_level, sign_in_info.get("vipDouble"))
     if player.base_info.vip_level > 0 and \
-        sign_in_info.get("vipDouble") and \
-        player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+            sign_in_info.get("vipDouble") and \
+            player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+        is_double = 1
+    else:
+        is_double = 0
+
+    if is_double:
         return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT, multiple=2)
         get_return(player, return_data, response.gain)
     else:
         return_data = gain(player, sign_in_info.get("reward"), const.SIGN_GIFT)
         get_return(player, return_data, response.gain)
     print(response.gain)
+    tlog_action.log('SignIn', player, day, is_double)
 
     response.res.result = True
     return response.SerializePartialToString()
@@ -105,6 +112,8 @@ def continus_sign_in_1402(pro_data, player):
         return response.SerializePartialToString()
     return_data = gain(player, reward, const.CONTINUS_SIGN)
     get_return(player, return_data, response.gain)
+
+    tlog_action.log('ContinusSignIn', player, days)
 
     response.res.result = True
     logger.debug(response)
@@ -158,8 +167,13 @@ def repair_sign_in_1403(pro_data, player):
 
         #vip双倍
         if player.base_info.vip_level > 0 and \
-            sign_in_info.get("vipDouble") and \
-            player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+                sign_in_info.get("vipDouble") and \
+                player.base_info.vip_level >= sign_in_info.get("vipDouble"):
+            is_double = 1
+        else:
+            is_double = 0
+
+        if is_double:
             return_data = gain(player, sign_in_info.get("reward"), const.REPAIR_SIGN, multiple=2)
             get_return(player, return_data, response.gain)
         else:
@@ -168,6 +182,7 @@ def repair_sign_in_1403(pro_data, player):
 
         player.sign_in_component.repair_sign_in_times += 1
         player.sign_in_component.save_data()
+        tlog_action.log('RepairSignIn', player, day, len(player.sign_in_component.sign_in_days))
     player.pay.pay(need_gold, const.REPAIR_SIGN, func)
     response.res.result = True
     print(response.gain)
@@ -203,6 +218,7 @@ def sign_in_box_1404(pro_data, player):
 
     player.sign_in_component.box_sign_in_prize.append(_id)
     player.sign_in_component.save_data()
+    tlog_action.log('SignInBox', player, _id)
 
     response.res.result = True
     logger.debug(response)

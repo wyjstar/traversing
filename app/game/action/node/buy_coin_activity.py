@@ -10,6 +10,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils.const import const
 from gfirefly.server.logobj import logger
 from shared.utils.date_util import days_to_current, get_current_timestamp
+from shared.tlog import tlog_action
 
 @remoteserviceHandle('gate')
 def get_buy_coin_activity_1407(data, player):
@@ -101,6 +102,9 @@ def buy_coin_activity_1406(data, player):
 
         player.finance.add_coin(int(add_coin_nums), const.BUY_COIN_ACT)
         player.finance.save_data()
+        tlog_action.log('BuyCoin', player, need_gold,
+                        player.buy_coin.buy_times,
+                        int(add_coin_nums))
 
     res = player.pay.pay(need_gold, const.BUY_COIN_ACT, func)
     response.res.result = res

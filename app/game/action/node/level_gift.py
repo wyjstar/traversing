@@ -8,6 +8,7 @@ from app.proto_file import level_gift_pb2
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -31,6 +32,7 @@ def get_level_gift_1131(data, player):
 
             player.level_gift.received_gift_ids.append(request.gift_id)
             player.level_gift.save_data()
+            tlog_action.log('LevelGift', player, request.gift_id)
 
             response.result = True
             return response.SerializeToString()
