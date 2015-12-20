@@ -181,8 +181,29 @@ def sweep_flow(GameSvrId=0, dtEventTime=0, GameAppID=0,
         print sendmsg
 
 
+def guild_build_up(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                   PlatID=0, OpenID=0, GuildId=0, BuildLevel=0):
+
+    message = ['GuildBuildUp']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildId)
+    message.append(BuildLevel)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
 def creat_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                PlatID=0, OpenID=0, GuildId=0, UserLevel=0):
+                PlatID=0, OpenID=0, GuildId=0, UserLevel=0,
+                Icon=0):
 
     message = ['CreatGuild']
 
@@ -194,6 +215,7 @@ def creat_guild(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(GuildId)
     message.append(UserLevel)
+    message.append(Icon)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')
@@ -1618,6 +1640,46 @@ def up_guide(GameSvrId=0, dtEventTime=0, GameAppID=0,
     message.append(OpenID)
 
     message.append(ID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def captain_receive_zan(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                        PlatID=0, OpenID=0, GuildID=0, Num=0):
+
+    message = ['CaptainReceiveZan']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(Num)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def mine_help(GameSvrId=0, dtEventTime=0, GameAppID=0,
+              PlatID=0, OpenID=0, GuildID=0, BeHelpIds=0):
+
+    message = ['MineHelp']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildID)
+    message.append(BeHelpIds)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

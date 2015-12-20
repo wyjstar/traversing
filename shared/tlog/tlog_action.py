@@ -163,7 +163,18 @@ def sweep_flow(player_data, stage_id, times, reason_event_id):
                       ReasonEventID=reason_event_id)
 
 
-def creat_guild(player_data, guild_id, user_level):
+def guild_build_up(player_data, guild_id, build_level):
+
+    log4tx.guild_build_up(GameSvrId=game_server_id,
+                          dtEventTime=xtime.strdatetime(),
+                          GameAppID=game_app_id,
+                          OpenID=player_data.base_info.id,
+                          PlatID=plat_id,
+                          GuildId=guild_id,
+                          BuildLevel=build_level)
+
+
+def creat_guild(player_data, guild_id, user_level, icon):
 
     log4tx.creat_guild(GameSvrId=game_server_id,
                        dtEventTime=xtime.strdatetime(),
@@ -171,7 +182,8 @@ def creat_guild(player_data, guild_id, user_level):
                        OpenID=player_data.base_info.id,
                        PlatID=plat_id,
                        GuildId=guild_id,
-                       UserLevel=user_level)
+                       UserLevel=user_level,
+                       Icon=icon)
 
 
 def deal_join_guild(player_data, guild_id, behandler, res_type):
@@ -926,12 +938,34 @@ def up_guide(player_data, id):
 
 def unpar_upgrade(player_data, level):
 
-    log4tx.world_boss_encourage(GameSvrId=game_server_id,
-                                dtEventTime=xtime.strdatetime(),
-                                GameAppID=game_app_id,
-                                OpenID=player_data.base_info.id,
-                                PlatID=plat_id,
-                                Level=level)
+    log4tx.unpar_upgrade(GameSvrId=game_server_id,
+                         dtEventTime=xtime.strdatetime(),
+                         GameAppID=game_app_id,
+                         OpenID=player_data.base_info.id,
+                         PlatID=plat_id,
+                         Level=level)
+
+
+def captain_receive_zan(player_data, guild_id, num):
+
+    log4tx.captain_receive_zan(GameSvrId=game_server_id,
+                               dtEventTime=xtime.strdatetime(),
+                               GameAppID=game_app_id,
+                               OpenID=player_data.base_info.id,
+                               PlatID=plat_id,
+                               GuildID=guild_id,
+                               Num=num)
+
+
+def mine_help(player_data, guild_id, be_help_ids):
+
+    log4tx.mine_help(GameSvrId=game_server_id,
+                     dtEventTime=xtime.strdatetime(),
+                     GameAppID=game_app_id,
+                     OpenID=player_data.base_info.id,
+                     PlatID=plat_id,
+                     GuildID=guild_id,
+                     BeHelpIds=be_help_ids)
 
 
 # TLOG分类打印函数
@@ -1012,6 +1046,7 @@ tlog_funcs['WorldBossInReward'] = world_boss_in_reward
 tlog_funcs['WorldBossEncourage'] = world_boss_encourage
 tlog_funcs['UnparUpgrade'] = unpar_upgrade
 tlog_funcs['UpGuide'] = up_guide
+tlog_funcs['CaptainReceiveZan'] = captain_receive_zan
 
 
 def log(mod, *args, **kwds):
