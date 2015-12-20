@@ -110,12 +110,6 @@ class CharacterPay(Component):
         if recharge_balance > 0:
             self._owner.base_info.recharge += recharge_balance
             self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
-            # 七日活动 累积充值
-            if self._owner.start_target.is_open():
-                self._owner.start_target.condition_update(44, self._owner.base_info.recharge)
-                self._owner.start_target.save_data()
-                # 更新 七日奖励
-                target_update(self.owner, [44])
         self._owner.base_info.gen_balance = gen_balance
         self._owner.finance.gold = balance
         self._owner.base_info.save_data()
