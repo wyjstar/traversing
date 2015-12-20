@@ -594,7 +594,7 @@ def process_mine_result(player, position, fight_result,
 
     mail_id = game_configs.base_config.get('warFogRobbedMail')
     send_mail(conf_id=mail_id, receive_id=target, rune_num=prize_num,
-              prize=prize, nickname=player.base_info.base_name)
+              prize=str(prize), nickname=player.base_info.base_name)
 
 
 @remoteserviceHandle('gate')
