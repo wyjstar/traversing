@@ -241,7 +241,19 @@ def guild_promotion(player_data, guild_id, be_id):
                            BeId=be_id)
 
 
-def guild_worship(player_data, guild_id, worship_type):
+def guild_worship_gift(player_data, guild_id, build_level, gift_no):
+
+    log4tx.guild_worship_gift(GameSvrId=game_server_id,
+                              dtEventTime=xtime.strdatetime(),
+                              GameAppID=game_app_id,
+                              OpenID=player_data.base_info.id,
+                              PlatID=plat_id,
+                              GuildId=guild_id,
+                              BuildLevel=build_level,
+                              GiftNo=gift_no)
+
+
+def guild_worship(player_data, guild_id, worship_type, worship_times):
 
     log4tx.guild_worship(GameSvrId=game_server_id,
                          dtEventTime=xtime.strdatetime(),
@@ -249,7 +261,8 @@ def guild_worship(player_data, guild_id, worship_type):
                          OpenID=player_data.base_info.id,
                          PlatID=plat_id,
                          GuildId=guild_id,
-                         WorshipType=worship_type)
+                         WorshipType=worship_type,
+                         WorshipTimes=worship_times)
 
 
 def travel_settle(player_data, stage, event_id, parameter, res,
@@ -988,6 +1001,7 @@ tlog_funcs['GuildChangePresident'] = guild_change_president
 tlog_funcs['GuildKick'] = guild_kick
 tlog_funcs['GuildPromotion'] = guild_promotion
 tlog_funcs['GuildWorship'] = guild_worship
+tlog_funcs['GuildWorshipGift'] = guild_worship_gift
 tlog_funcs['TravelSettle'] = travel_settle
 tlog_funcs['AutoTravel'] = auto_travel
 tlog_funcs['HeroRefine'] = hero_refine

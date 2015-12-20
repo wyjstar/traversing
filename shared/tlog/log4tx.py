@@ -324,7 +324,8 @@ def guild_promotion(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
 
 def guild_worship(GameSvrId=0, dtEventTime=0, GameAppID=0,
-                  PlatID=0, OpenID=0, GuildId=0, WorshipType=0):
+                  PlatID=0, OpenID=0, GuildId=0, WorshipType=0,
+                  WorshipTimes=0):
 
     message = ['GuildWorship']
 
@@ -336,6 +337,29 @@ def guild_worship(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(GuildId)
     message.append(WorshipType)
+    message.append(WorshipTimes)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def guild_worship_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                       PlatID=0, OpenID=0, GuildId=0, BuildLevel=0,
+                       GiftNo=0):
+
+    message = ['GuildWorshipGift']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GuildId)
+    message.append(BuildLevel)
+    message.append(GiftNo)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

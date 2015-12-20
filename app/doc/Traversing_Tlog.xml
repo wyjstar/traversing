@@ -273,18 +273,6 @@
     </struct>
 
 
-    <!--军团膜拜--> 
-    <struct name="GuildWorship" version="1" desc="踢出军团">
-        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
-        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
-        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
-        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
-        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
-
-        <entry name="GuildId" type="string" size="64" desc="军团ID" />
-        <entry name="WorshipType" type="int" desc="膜拜类型" />
-    </struct>
-
     <!--游历结算--> 
     <struct name="TravelSettle" version="1" desc="游历结算">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
@@ -1122,6 +1110,33 @@
         <entry name="GuildId" type="string" size="64" desc="军团ID" />
         <entry name="BeHelpIds" type="string" desc="被帮助的玩家列表，str的形式写'[1,2,3]'" />
     </struct>
+
+    <!--祈福--> 
+    <struct name="GuildWorship" version="1" desc="踢出军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="WorshipType" type="int" desc="膜拜类型" />
+        <entry name="WorshipTimes" type="int" desc="祈福次数" />
+    </struct>
+
+    <!--领取祈福宝箱奖励--> 
+    <struct name="GuildWorshipGift" version="1" desc="踢出军团">
+        <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
+        <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
+        <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
+        <entry name="PlatID" type="int" defaultvalue="0" desc="ios 0/android 1" />
+        <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
+
+        <entry name="GuildId" type="string" size="64" desc="军团ID" />
+        <entry name="BuildLevel" type="int" desc="建筑等级" />
+        <entry name="GiftNo" type="int" desc="礼物编号" />
+    </struct>
+
 
 </metalib>
 <!--

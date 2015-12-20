@@ -560,7 +560,7 @@ def bless_809(data, player):
 
     response.res.result = True
     # response.message = "膜拜成功"
-    tlog_action.log('GuildWorship', player, g_id, bless_type)
+    tlog_action.log('GuildWorship', player, g_id, bless_type, player.base_info.guild_worship_times)
     return response.SerializeToString()
 
 
@@ -1116,6 +1116,7 @@ def get_bless_gift_1808(data, player):
 
     player.guild.receive_bless_gift(gift_no)
     player.guild.save_data()
+    tlog_action.log('GuildWorshipGift', player, g_id, build_level, gift_no)
     response.res.result = True
     return response.SerializeToString()
 
