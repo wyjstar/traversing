@@ -861,13 +861,13 @@ def pvp_rob_treasure_864(data, player):
 
 
 def deal_target_player(player, target_id, chip_id):
-    target_data = tb_character_info.getObj(target_id)
-    isexist = target_data.exists()
+    target_data_obj = tb_character_info.getObj(target_id)
+    isexist = target_data_obj.exists()
     if not isexist:
         logger.error('deal_target_player, player id error')
         return
 
-    target_data = target_data.hmget(['equipment_chips'])
+    target_data = target_data_obj.hmget(['equipment_chips'])
 
     chips = target_data.get('equipment_chips')
     chips_obj = {}
@@ -888,7 +888,7 @@ def deal_target_player(player, target_id, chip_id):
         for chip_id_x, chip_obj in chips_obj.items():
             if chip_obj.chip_num:  # 如果chip num == 0, 则不保存
                 props[chip_id_x] = chip_obj.chip_num
-        target_data.hset('equipment_chips', props)
+        target_data_obj.hset('equipment_chips', props)
 
     mail_arg1 = [{104: [1, 1, chip_id]}]
     send_mail(conf_id=701,  receive_id=target_id,
