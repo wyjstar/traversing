@@ -12,7 +12,6 @@ from gtwisted.core import reactor
 from app.proto_file.common_pb2 import GetGoldResponse
 import traceback
 from shared.utils.const import const
-from app.game.action.node.start_target import target_update
 
 remote_gate = GlobalObject().remote.get('gate')
 

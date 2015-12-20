@@ -15,6 +15,7 @@ from app.proto_file import db_pb2
 from shared.tlog import tlog_action
 from app.game.core.rebate_fun import rebate_call
 from app.game.core.mail_helper import send_mail
+from app.game.action.node.start_target import target_update
 
 RECHARGE_GIFT_TYPE = [7, 8, 9, 10]
 
