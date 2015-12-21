@@ -277,7 +277,7 @@ def change_battle_speed_848(data, player):
 @remoteserviceHandle('gate')
 def recharge_11010(data, player):
     response = recharge_pb2.InitRecharge()
-    for recharge_id in player.base_info._first_recharge_ids:
+    for recharge_id in player.base_info.first_recharge_ids:
         response.recharge_ids.append(recharge_id)
 
     return response.SerializePartialToString()

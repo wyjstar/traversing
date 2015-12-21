@@ -42,6 +42,3 @@ def __login(token):
     res = verify_login(token)
     # logger.debug(res)
     return res
-    if res > 0:
-        return {'result': True, 'ret': '\'%s\'' % res}
-    return {'result': False, "ret": res}

@@ -92,7 +92,7 @@ def mine_status(player, response):
                 data_obj = tb_character_info.getObj(uid)
                 if data_obj.exists():
                     data = data_obj.hmget(['guild_id', 'attackPoint'])
-                    one_mine.is_guild = data['guild_id'] != 0
+                    one_mine.is_guild = data['guild_id'] != player.guild.g_id
                     one_mine.fight_power = int(data['attackPoint'])
                 else:
                     logger.errr('mine info cant find uid:%s', uid)
