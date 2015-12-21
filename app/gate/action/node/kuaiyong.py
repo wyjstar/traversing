@@ -23,13 +23,13 @@ def recharge_response():
 
     logger.debug('kuaiyong recharge:%s', request.form)
 
-    result = recharge_verify(post_sign,
-                             post_notify_data,
-                             post_orderid,
-                             post_dealseq,
-                             post_uid,
-                             post_subject,
-                             post_v)
+    result, fee = recharge_verify(post_sign,
+                                  post_notify_data,
+                                  post_orderid,
+                                  post_dealseq,
+                                  post_uid,
+                                  post_subject,
+                                  post_v)
 
     if result:
         player_id = int(post_dealseq.split('_')[0])
@@ -40,7 +40,7 @@ def recharge_response():
             return 'failed'
         child_node = GlobalObject().child(oldvcharacter.node)
         result = child_node.kuaiyong_recharge_remote(oldvcharacter.dynamic_id,
-                                                     post_subject,
+                                                     post_subject, fee,
                                                      True)
         if result:
             return 'success'

@@ -1750,7 +1750,7 @@ def guild_boss_battle(GameSvrId=0, dtEventTime=0, GameAppID=0,
 
     message.append(GuildID)
     message.append(BossType)
-    message.append(Level)
+    message.append(Result)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

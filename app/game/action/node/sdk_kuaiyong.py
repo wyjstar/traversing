@@ -22,17 +22,21 @@ def kuaiyong_flowid_12000(data, player):
 
 
 @remoteserviceHandle('gate')
-def kuaiyong_recharge_remote(subject, is_online, player):
+def kuaiyong_recharge_remote(subject, fee, is_online, player):
     logger.debug('kuaiyong_recharge_remote:%s', subject)
 
     recharge_item = game_configs.recharge_config.get('ios').get(subject)
     if recharge_item is None:
         logger.error('not in rechargeconfig:%s', subject)
         return False
+    if fee != recharge_item.get('currence'):
+        logger.error('recharge fee is wrong:%s-%s',
+                     fee, recharge_item.get('currence'))
+        return False
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
-    player.recharge.recharge_gain(recharge_item, response) #发送奖励邮件
+    player.recharge.recharge_gain(recharge_item, response)  # 发送奖励邮件
 
     remote_gate.push_object_remote(12001,
                                    response.SerializeToString(),

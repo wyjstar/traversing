@@ -86,8 +86,8 @@ end
 
 function cclog(data)
 end
---function print(...)
---end
+function print(...)
+end
 local fcProcess = FCProcess.new("FCProcess")
 
 function setData(fightData, fightType, level)

@@ -36,7 +36,6 @@ class VCharacterManager:
         if old_dynamic_id in self.client_character:
             del self.client_character[old_dynamic_id]
         self.client_character[vcharacter.dynamic_id] = vcharacter.character_id
-        print("client_character keys %s" % self.client_character.keys())
 
     def drop_by_dynamic_id(self, dynamic_id):
         """

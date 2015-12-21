@@ -49,6 +49,16 @@ function BuffSetForView:add_on_buff_util(target_unit, buff, value, buff_group)
     table.insert(buff_group, temp)
 end
 
+function BuffSetForView:str_data(buff_group)
+    print("BuffSetForView:str_data====")
+    for i,v in pairs(buff_group) do
+        print("buff_id", v.buff_info.id)
+        target_info = v.target_infos[1]
+        print("target_no", target_info.value, target_info.target_unit.no)
+        print("continue_num", v.continue_num)
+    end
+end
+
 -- 添加buff data
 function BuffSetForView:add_data(target_unit)
     local temp = {

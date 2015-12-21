@@ -54,12 +54,15 @@ function FMBuffManager:perform_hp_mp_buff(process)
                 buff:perform_hp_mp_buff(self.owner)
                 process.temp_buff_set:add_before_buff(self.owner, buff, buff.value)
                 print("perform_hp_mp_buff=======", buff.skill_buff_info.id, buff.continue_num)
+
                 if buff.continue_num <= 0 then
                     table.remove(buffs, i)
                 else
                     i = i + 1
                 end
             end
+            --appendFile2("hp_mp_buff=========", 1)
+            --appendFile2(self.owner:str_data(), 1)
         end
     end
 end
@@ -130,9 +133,9 @@ function FMBuffManager:_add_buff(buff, effect_id, replace, result)
     end
     if not table.inv(effectIds, effect_id) then
         appendFile2("buff前："..self.owner:str_data(), 1)
+        buff.value = buff:get_buff_value_util(self.owner)
     end
     if buff.continue_num > 0 then
-        buff.value = buff:get_buff_value_util(self.owner)
         if replace then
             self.buffs[effect_id] = {buff}
         else
