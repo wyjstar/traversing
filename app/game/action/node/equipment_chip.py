@@ -15,7 +15,7 @@ def get_equipment_chips_407(pro_data, player):
     for equipment_chip in player.equipment_chip_component.get_all():
         if equipment_chip.chip_num == 0:
             continue
-        if not game_configs.chip_config.get(equipment_chip.chip_no):
+        if not game_configs.chip_config.get('chips').get(equipment_chip.chip_no):
             del player.equipment_chip_component._chips[equipment_chip.chip_no]
             continue
 

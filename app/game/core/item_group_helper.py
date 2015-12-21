@@ -243,7 +243,7 @@ def gain(player, item_group, reason,
             player.finance.save_data()
 
         elif type_id == const.HERO_CHIP:
-            if game_configs.chip_config.get(item_no):
+            if game_configs.chip_config.get('chips').get(item_no):
                 hero_chip = HeroChip(item_no, num)
                 player.hero_chip_component.add_chip(hero_chip)
                 player.hero_chip_component.save_data()
@@ -321,7 +321,7 @@ def gain(player, item_group, reason,
                                 itid, item_no, reason, after_num, event_id)
 
         elif type_id == const.EQUIPMENT_CHIP:
-            if game_configs.chip_config.get(item_no):
+            if game_configs.chip_config.get('chips').get(item_no):
                 chip = EquipmentChip(item_no, num)
                 player.equipment_chip_component.add_chip(chip)
                 player.equipment_chip_component.save_data()
