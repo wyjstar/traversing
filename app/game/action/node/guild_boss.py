@@ -22,15 +22,23 @@ def init_2401(pro_data, player):
     """获取guild_boss信息
     """
     response = guild_pb2.GuildBossInitResponse()
-    data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
-    logger.debug("return data %s" % data)
-    response.trigger_times = data.get("guild_boss_trigger_times", 0)
-    for skill_type, skill_level in data.get("guild_skills", {}).items():
-        skill_pb = response.guild_skill.add()
-        skill_pb.skill_type = skill_type
-        skill_pb.skill_level = skill_level
-    construct_boss_pb(data.get("guild_boss"), response.guild_boss)
-    response.last_attack_time = player.guild.guild_boss_last_attack_time
+    res = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
+    response.res.result = res.get("result")
+    logger.debug("return res %s" % res)
+
+    if not res.get("result"):
+        logger.error("guild boss init error!")
+        response.res.result_no = res.get("result_no")
+        return response.SerializeToString()
+
+    response.trigger_times = res.get("guild_boss_trigger_times", 0)
+    construct_boss_pb(res.get("guild_boss"), response.guild_boss)
+    last_attack_time = player.guild.guild_boss_last_attack_time
+    if res.get("guild_boss").get("boss_id") != last_attack_time.get("boss_id"):
+            last_attack_time["boss_id"] = res.get("guild_boss").get("boss_id")
+            last_attack_time["time"] = 0
+
+    response.last_attack_time = last_attack_time.get("time")
 
     logger.debug("response %s" % response)
     return response.SerializeToString()
@@ -97,7 +105,9 @@ def trigger_boss_2402(pro_data, player):
     return_data = [[const.ITEM, consume_num, 140001]]
     logger.debug(return_data)
     get_return(player, return_data, response.consume)
-
+    player.guild.guild_boss_last_attack_time["boss_id"] = res.get("guild_boss").get("boss_id")
+    player.guild.guild_boss_last_attack_time["time"] = 0
+    logger.debug("guild_boss_last_attack_time %s " % (player.guild.guild_boss_last_attack_time))
     construct_boss_pb(res.get("guild_boss"), response.guild_boss)
     logger.debug("response %s" % response)
     return response.SerializeToString()
@@ -116,7 +126,7 @@ def battle_2403(pro_data, player):
 
     coolingTime = game_configs.base_config.get("AnimalCoolingTime")
     # 冷却时间
-    if player.guild.guild_boss_last_attack_time + coolingTime >= get_current_timestamp():
+    if player.guild.guild_boss_last_attack_time.get("time") + coolingTime >= get_current_timestamp():
         logger.error("attack still in colding time!")
         response.res.result = False
         response.res.result_no = 240301
@@ -146,8 +156,8 @@ def battle_2403(pro_data, player):
     if fight_result:
         return_data = gain(player,stage_item.Animal_Kill, const.GUILD_BOSS_KILL)
         get_return(player, return_data, response.gain)
-        player.guild.guild_boss_last_attack_time = 0
-    player.guild.guild_boss_last_attack_time = int(get_current_timestamp())
+        player.guild.guild_boss_last_attack_time["time"] = 0
+    player.guild.guild_boss_last_attack_time["time"] = int(get_current_timestamp())
     player.guild.save_data()
 
     response.seed1 = seed1
