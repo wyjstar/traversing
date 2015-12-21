@@ -175,14 +175,12 @@ class CharacterPvpComponent(Component):
                 if x > num:
                     num = x
 
-        print '========================num', num
         power = character_info.hget('attackPoint')
         if not power:
             power = 100
         ids = get_player_ids(self.owner.base_info.id,
                              power,
                              types, num+1)
-        print '=====================================ids:', ids
         if [0, 0] in ids:
             ids.remove([0, 0])
         self._rob_treasure = ids
@@ -505,7 +503,7 @@ def get_overcomes_by_score(rank, player_id, player_ap):
         random.shuffle(res)
         res = filter(lambda x: int(x[0]) != player_id, res)
         ids.add(res[_] for _ in range(count))
-        print _min, _max, ids
+        # print _min, _max, ids
 
     return arraged_ids(ids)
 
@@ -529,7 +527,7 @@ def get_overcomes_by_rank(rank, player_id, player_ap):
         random.shuffle(res)
         res = filter(lambda x: int(x[0]) != player_id, res)
         ids.add(res[_] for _ in range(count))
-        print _min, _max, ids
+        # print _min, _max, ids
 
     return arraged_ids(ids)
 
