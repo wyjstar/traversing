@@ -77,7 +77,7 @@ def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
     result = parse_str(decode_notify_data)
     dealseq = result['dealseq']
     fee = result['fee']
-    payresult = result['payresult'],
+    payresult = result['payresult']
 
     logger.debug('dealseq:%s fee:%s payresult:%s', dealseq, fee, payresult)
 
