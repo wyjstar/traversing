@@ -150,9 +150,9 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
             if not hero:
                 continue
             combat_power_hero_lineup(player, hero, slot_no)
-            awake_hero = player.fight_cache_component.change_hero(hero, hero.hero_info["awakeHeroID"])
+            #awake_hero = player.fight_cache_component.change_hero(hero, hero.hero_info["awakeHeroID"])
 
-            combat_power_hero_lineup(player, awake_hero, slot_no, "awake")
+            #combat_power_hero_lineup(player, awake_hero, slot_no, "awake")
     logger.debug('login:<%s>%s:%s %s:%s',
                  player,
                  character_id,

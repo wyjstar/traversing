@@ -19,6 +19,7 @@ import cPickle
 class GuildBoss(object):
     """docstring for GuildBoss"""
     def __init__(self):
+        self._boss_id = ""
         self._stage_id = 0     # 关卡id
         self._blue_units = {}  # 怪物信息
         self._trigger_time = 0 # 触发时间
@@ -39,6 +40,7 @@ class GuildBoss(object):
         self._boss_type = info.get("boss_type", 0)
         self._trigger_player_id = info.get("trigger_player_id", 0)
         self._trigger_player_name = info.get("trigger_player_name", "")
+        self._boss_id = info.get("boss_id", "")
 
     def property_dict(self):
         data = {
@@ -50,6 +52,7 @@ class GuildBoss(object):
                 "boss_type": self._boss_type,
                 "trigger_player_id": self._trigger_player_id,
                 "trigger_player_name": self._trigger_player_name,
+                "boss_id": self._boss_id,
                 }
         logger.debug("boss property_dict %s" % data)
         return data
@@ -61,6 +64,7 @@ class GuildBoss(object):
             self.reset()
 
     def reset(self):
+        self._boss_id = ""
         self._stage_id = 0
         self._trigger_time = 0
         self._hp_max = 0

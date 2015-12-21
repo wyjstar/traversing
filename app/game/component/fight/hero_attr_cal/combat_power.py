@@ -4,9 +4,32 @@ created by server on 14-12-29下午2:03.
 """
 from shared.db_opear.configs_data import game_configs
 from shared.utils import pprint
+from gfirefly.server.globalobject import GlobalObject
 
 LOG_NAME = ""
 LOG = False
+
+remote_gate = GlobalObject().remote.get('gate')
+
+def get_guild_attr(player):
+    attr = dict(hp=0, atk=0, physical_def=0, magic_def=0)
+    if not player.guild.g_id:
+        return attr
+    res = remote_gate['world'].get_guild_info_remote(player.guild.g_id, "guild_skills", 0)
+    if not res.get("result"):
+        return attr
+    guild_skills = res.get("guild_skills")
+    for skill_type, skill_level in guild_skills.items():
+        if skill_type == 1:
+            attr["hp"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_hp
+        if skill_type == 2:
+            attr["atk"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_atk
+        if skill_type == 3:
+            attr["physical_def"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_pdef
+        if skill_type == 4:
+            attr["magic_def"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_mdef
+    return attr
+
 
 
 def hero_self_attr(player, hero, stage=None):
@@ -203,8 +226,7 @@ def hero_lineup_attr(player, hero, line_up_slot_no, stage=None):
     # 助威
     cheer_attr = _cheer_attr(player)
     # 公会
-    guild_attr = player.guild.guild_attr()
-
+    guild_attr = get_guild_attr(player)
     log(hero.hero_no, "武将自身", "", self_attr)
     log(hero.hero_no, "武将装备", log_equ(line_up_slot), equ_attr)
     log(hero.hero_no, "武将套装", "与装备一致", set_equ_attr)

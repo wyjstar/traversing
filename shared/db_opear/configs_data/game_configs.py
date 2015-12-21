@@ -197,5 +197,9 @@ if __name__ == '__main__':
     print ggzj_config
     print base_config.get("EscortFresh")
     print guild_skill_config
+    print(special_stage_config.get("guild_boss_stages").get(910001))
+    #print ggzj_config
+    #print base_config.get("EscortFresh")
+    #print guild_skill_config
     #print arena_fight_config
     #print awake_config

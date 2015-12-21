@@ -29,7 +29,7 @@ class CharacterGuildComponent(Component):
         self._apply_guilds = []  # 已经申请过的军团
         self._guild_rank_flag = 0  # 推荐列表，已经查询到的redis排行标记
         self._mobai = [0, [], 1]  # ［被膜拜次数，［膜拜李飚］，time］
-        self._guild_boss_last_attack_time = 0  # 上次攻击圣兽时间
+        self._guild_boss_last_attack_time = {"time": 0, "boss_id": ''}  # 上次攻击圣兽时间
         self._mine_help = []  # 帮助过的时间戳
 
     def init_data(self, character_info):
@@ -43,7 +43,9 @@ class CharacterGuildComponent(Component):
         self._praise = character_info.get('praise')
         self._exit_time = character_info.get("exit_time")
         self._apply_guilds = character_info.get("apply_guilds")
-        self._guild_boss_last_attack_time = character_info.get("guild_boss_last_attack_time", 0)
+        self._guild_boss_last_attack_time = character_info.get("guild_boss_last_attack_time", self._guild_boss_last_attack_time)
+        if type(self._guild_boss_last_attack_time) == int:
+            self._guild_boss_last_attack_time = {"time": 0, "boss_id": ''}  # 上次攻击圣兽时间
         self._mobai = character_info.get("guild_mobai", [0, [], 1])
         self._mine_help = character_info.get("mine_help")
 
@@ -146,7 +148,6 @@ class CharacterGuildComponent(Component):
         self._all_contribution = all_contribution
 
     def guild_attr(self):
-        # guild_level = self.get_guild_level()
         guild_level = 1
         guild_info = game_configs.guild_config.get(8).get(guild_level)
         if not guild_info:

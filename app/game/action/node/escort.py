@@ -59,7 +59,7 @@ def get_all_task_info_1901(pro_data, player):
     tasks = remote_gate["world"].get_invite_remote(player.guild.g_id, 2)
     load_data_to_response(tasks, response.tasks_rob_invite)
     # 我的押运任务
-    tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.protect_records)
+    #tasks = remote_gate["world"].get_tasks_by_ids_remote(escort_component.protect_records)
     #record_util(player.base_info.id, tasks, response.my_protect_tasks)
     # 我的当前任务
     #task = get_my_current_task(tasks, player.base_info.id)
@@ -125,7 +125,7 @@ def get_my_current_rob_task(player_id, tasks, task_pb):
         if not task.get("rob_task_infos"):
             continue
         for rob_task_info in task.get("rob_task_infos", []):
-            if player_id == rob_task_info.get("robbers")[0].get("id") and rob_task_info.get("rob_state")==1:
+            if player_id == rob_task_info.get("robbers")[0].get("id") and rob_task_info.get("rob_state")==1 and task.get("state") == 2:
                 task["rob_task_infos"] = [rob_task_info]
                 update_task_pb(task, task_pb)
                 break
@@ -362,12 +362,12 @@ def send_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
         last_send_invite_time = task.get("last_send_invite_time", 0)
         if last_send_invite_time + AnnouncementCoolingTime > int(get_current_timestamp()):
             logger.error("last_send_invite_time %s AnnouncementCoolingTime %s current %s" % (last_send_invite_time, AnnouncementCoolingTime, int(get_current_timestamp())))
-            return {'result': False, 'result_no': 190804}
+            return {'result': False, 'result_no': 1908041}
     if protect_or_rob == 2:
         last_send_invite_time = task.get("rob_task_infos")[0].get("last_send_invite_time", 0)
         if last_send_invite_time + AnnouncementCoolingTime > int(get_current_timestamp()):
             logger.error("last_send_invite_time %s AnnouncementCoolingTime %s current %s" % (last_send_invite_time, AnnouncementCoolingTime, int(get_current_timestamp())))
-            return {'result': False, 'result_no': 190804}
+            return {'result': False, 'result_no': 1908041}
 
     task = remote_gate["world"].send_escort_task_invite_remote(task_guild_id, task_id, player.guild.g_id, rob_no, protect_or_rob)
     if not task:
