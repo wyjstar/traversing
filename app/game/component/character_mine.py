@@ -661,11 +661,9 @@ class CharacterMine(Component):
             return False
         _mine = self._mine[pos]
         if _mine['type'] != MineType.PLAYER_FIELD:
-            print '===============444'
             return False
         mine = tb_mine.hget(_mine['seq'])
         if mine.get('seek_help'):
-            print '===============555', mine
             return False
 
         _uid = self.owner.base_info.id
@@ -673,5 +671,4 @@ class CharacterMine(Component):
         result = remote_gate['world'].mine_seek_help_remote(_uid,
                                                             _mine['seq'],
                                                             _g_id)
-        print result, '==========333'
         return result
