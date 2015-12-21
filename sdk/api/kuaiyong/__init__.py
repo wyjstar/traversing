@@ -75,7 +75,9 @@ def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
     logger.debug('Notify data decoded as %s', decode_notify_data)
 
     result = parse_str(decode_notify_data)
-    dealseq, fee, payresult = result['dealseq'], result['fee'], result['payresult'],
+    dealseq = result['dealseq']
+    fee = result['fee']
+    payresult = result['payresult'],
 
     logger.debug('dealseq:%s fee:%s payresult:%s', dealseq, fee, payresult)
 
@@ -83,14 +85,14 @@ def recharge_verify(post_sign, post_notify_data, post_orderid, post_dealseq,
     if dealseq != post_dealseq:
         logger.debug(" Dealseq values did not match:%s-%s",
                      dealseq, post_dealseq)
-        return False
+        return False, 0
 
     if payresult != '0':
         logger.error("recharge fail payresult:%s", payresult)
-        return False
+        return False, 0
 
     logger.debug('kuaiyong verify success!')
-    return True
+    return True, fee
 
 
 if __name__ == '__main__':
