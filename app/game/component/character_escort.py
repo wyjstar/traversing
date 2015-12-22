@@ -7,7 +7,7 @@ from app.game.redis_mode import tb_character_info
 #from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
 from shared.utils.date_util import str_time_to_timestamp, get_current_timestamp
-from shared.utils.random_pick import random_multi_pick_without_repeat
+from shared.utils.random_pick import random_multi_pick
 from shared.utils.pyuuid import get_uuid
 
 
@@ -157,7 +157,7 @@ class CharacterEscortComponent(Component):
             items[item.id] = item.weights
 
         task_num = game_configs.base_config.get('EscortTaskShowQuantity')
-        task_nos = random_multi_pick_without_repeat(items, task_num)
+        task_nos = random_multi_pick(items, task_num)
         for task_no in task_nos:
             task = {}
             task_id = get_uuid()
