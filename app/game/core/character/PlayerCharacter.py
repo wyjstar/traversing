@@ -119,7 +119,7 @@ class PlayerCharacter(object):
                 hero.break_level = 0
                 hero.exp = 0
                 hero.save_data()
-                self.line_up_component.change_hero(1, hero_id, 0)
+                self.line_up_component.change_hero(pos, hero_id, 0)
                 self.line_up_component.save_data()
             self.friends.add_applicant(999)
             self.friends.add_friend(999)
