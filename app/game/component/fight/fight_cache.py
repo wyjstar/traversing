@@ -505,7 +505,8 @@ class CharacterFightCacheComponent(Component):
             if not hero_item or hero_item.type == 1:
                 continue
             line_up_slot = self.line_up_slots.get(red.slot_no)
-            if hero.is_awake():
+            logger.debug("hero no %s awakeHeroID %s" % (hero.hero_no, hero_item.get("awakeHeroID")))
+            if hero.is_awake() and hero_item.get('awakeHeroID'):
                 target_hero_no = hero_item.get('awakeHeroID')
                 break_hero_obj = self.change_hero(hero, target_hero_no)
 

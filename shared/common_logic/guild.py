@@ -11,10 +11,9 @@ tb_guild_info = RedisObject('tb_guild_info')
 from shared.common_logic.escort_task import EscortTask
 from shared.common_logic.guild_boss import GuildBoss
 from shared.utils.date_util import str_time_to_timestamp, get_current_timestamp
-from collections import deque
-from shared.utils.date_util import get_current_timestamp
 from shared.common_logic.shop import guild_shops, check_time, get_new_shop_info, \
     refresh_shop_info
+from shared.utils.pyuuid import get_uuid
 
 
 class Guild(object):
@@ -395,6 +394,7 @@ class Guild(object):
         task = self._escort_tasks.get(task_id)
         if not task:
             logger.debug("task_id %s not exists!" % task_id)
+            return None
         task.update_task_state()
         return task
 
@@ -424,6 +424,7 @@ class Guild(object):
         """docstring for add_boss"""
         logger.debug("add boss %s %s" % ( blue_units, stage_id))
         boss = GuildBoss()
+        boss._boss_id = get_uuid()
         boss.blue_units = blue_units
         boss.stage_id = stage_id
         boss.trigger_time = int(get_current_timestamp())

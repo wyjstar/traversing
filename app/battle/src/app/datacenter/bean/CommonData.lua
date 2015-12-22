@@ -186,9 +186,9 @@ function CommonData:setData(data)
             self.buy_times[v.resource_type] = {resource_type=v.resource_type,buy_stamina_times = v.buy_stamina_times,last_gain_time = v.last_gain_stamina_time}
         end
         --TODO:ADD RES_TYPE.ROB_NUM
-        if self.buy_times[RES_TYPE.ROB_NUM] == nil then
-            self.buy_times[RES_TYPE.ROB_NUM] = {resource_type=RES_TYPE.ROB_NUM,buy_stamina_times = 0,last_gain_time = 0}
-        end
+        -- if self.buy_times[RES_TYPE.ROB_NUM] == nil then
+        --     self.buy_times[RES_TYPE.ROB_NUM] = {resource_type=RES_TYPE.ROB_NUM,buy_stamina_times = 0,last_gain_time = 0}
+        -- end
     end
     print("buy_times:====>")
     table.print(self.buy_times)
@@ -329,6 +329,8 @@ function CommonData:setFinance(type_, num)
         self:dispatchEvent(EventName.UPDATE_QJYL)
     elseif type_ == RES_TYPE.ENERGY then
         self:dispatchEvent(EventName.UPDATE_ENERGY) 
+    elseif type_ == RES_TYPE.ROB_NUM then
+        self:dispatchEvent(EventName.UPDATE_ROB_NUM)
     elseif type_ == RES_TYPE.SHOES then -- 游历消耗鞋子需要通知游历主界面和章节游历界面
         self:dispatchEvent(EventName.UPDATE_TRAVEL)
     elseif type_ == RES_TYPE.ROB_NUM then
@@ -682,6 +684,12 @@ end
 function CommonData:addEnergy()
       self:addFinance(RES_TYPE.ENERGY, num)
 end
+--[[--
+    获取公会技能点数
+]]
+function CommonData:getSkillPoints()
+    return self:getFinance(RES_TYPE.SKILL_POINTS)
+end
 
 --元宝
 function CommonData:setGold(cur_gold)
@@ -837,7 +845,11 @@ end
     
 ]]
 function CommonData:getRobNum()
-    return self.finances[RES_TYPE.ROB_NUM]
+    return self:getFinance(RES_TYPE.ROB_NUM)
+end
+
+function CommonData:subRobNum(subnum)
+    self:subFinance(RES_TYPE.ROB_NUM,subnum)
 end
 
 --[[--

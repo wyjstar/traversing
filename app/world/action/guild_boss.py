@@ -26,6 +26,9 @@ def guild_boss_init_remote(guild_id):
     """
     guild = guild_manager_obj.get_guild_obj(guild_id)
 
+    if not guild:
+        return {'result': False, 'result_no': 844}
+
     guild.guild_boss.check_time()
     guild.save_data()
 
@@ -33,6 +36,7 @@ def guild_boss_init_remote(guild_id):
     guild.reset_guild_boss_trigger_times()
 
     res = dict(
+            result=True,
             guild_skills=guild.guild_skills,
             guild_boss_trigger_times=guild.guild_boss_trigger_times,
             guild_boss=guild.guild_boss.property_dict(),

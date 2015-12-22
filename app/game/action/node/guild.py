@@ -940,6 +940,11 @@ def get_guild_info_812(data, player):
             response.have_apply = 0
     response.be_mobai_times = player.guild.be_mobai_times
 
+    for skill_type, skill_level in guild_obj.guild_skills.items():
+        skill_pb = response.guild_skill.add()
+        skill_pb.skill_type = skill_type
+        skill_pb.skill_level = skill_level
+
     response.res.result = True
     print response, '================================================11111'
     return response.SerializeToString()
