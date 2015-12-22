@@ -64,7 +64,6 @@ function CustomTask:update(dt)
 			self.callback_(self, self:getCallTimeDiff())
 		end	
 		self:resetclock()	
-
 	end
 end
 

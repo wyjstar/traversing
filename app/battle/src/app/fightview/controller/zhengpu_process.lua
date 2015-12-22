@@ -66,6 +66,9 @@ function FightProcess:init(fight_type)
     self.init_blue_units_num = table.nums(self.blue_groups[1])
     self.playerLevel=getDataManager():getCommonData():getLevel()
     self.best_skill_used_num = 0
+    if self.fight_times_max == TYPE_ESCORT then
+        self.fight_times_max = self.baseTemplate:getBaseInfoById("max_times_fight")
+    end
     self:logInfo()
     -- self.red_unpara_skill.mp_step = 50
     -- self.buddy_skill.mp_step = 50

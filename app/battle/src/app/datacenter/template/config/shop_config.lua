@@ -3027,7 +3027,7 @@ shop_config={
 ,  ["dutyFree"] = {
 }
 ,  ["alternativeConsume"] = {
-  ["1"] = {
+  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
 ,  ["consume"] = {
@@ -3909,7 +3909,7 @@ shop_config={
 ,  ["dutyFree"] = {
 }
 ,  ["alternativeConsume"] = {
-  ["2"] = {
+  ["107"] = {
   [1] = 295,  [2] = 295,  [3] = 2,}
 ,}
 ,  ["consume"] = {
@@ -18729,7 +18729,7 @@ shop_config={
 ,  ["dutyFree"] = {
 }
 ,  ["alternativeConsume"] = {
-  ["1"] = {
+  ["107"] = {
   [1] = 200000,  [2] = 200000,  [3] = 1,}
 ,}
 ,  ["consume"] = {
