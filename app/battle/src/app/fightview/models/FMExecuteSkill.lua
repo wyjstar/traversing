@@ -47,7 +47,7 @@ function check_block(attacker, target, buff_info)
         return false
     end
     local random = get_random_int(1, 99)
-    local blockArray = attacker:get_block()
+    local blockArray = target:get_block()
     isBlock = getFormulaTemplate():getFunc("isBlock")(blockArray, random)
     if isBlock == 0 then
         return false
