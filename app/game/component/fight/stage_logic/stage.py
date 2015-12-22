@@ -59,4 +59,6 @@ class StageLogic(base_stage.BaseStageLogic):
             hook_task(player, CONDITIONId.ANY_STAGE, 1)
             hook_task(player, CONDITIONId.STAGE, stage_id)
 
-        tlog_action.log('RoundFlow', player, stage_id, 1, 0, result)
+            tlog_action.log('RoundFlow', player, stage_id, 1, 0, 1)
+        else:
+            tlog_action.log('RoundFlow', player, stage_id, 1, 0, 0)

@@ -85,7 +85,7 @@ def pvp_daily_award_tick():
 
 
 def do_pvp_daily_award_tick():
-    reactor.callLater(60*60*24, do_pvp_daily_award_tick)
+    # reactor.callLater(60*60*24, do_pvp_daily_award_tick)
     try:
         pvp_daily_award()
     except Exception, e:

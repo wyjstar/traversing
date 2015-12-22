@@ -92,7 +92,10 @@ class CharacterRuntComponent(Component):
         mainAttr, minorAttr = {}, {}
 
         main_num = conf.mainAttrNum
-        minor_num = conf.minorAttrNum
+        if conf.minorAttrNum:
+            minor_num = random.randint(conf.minorAttrNum[0], conf.minorAttrNum[1])
+        else:
+            minor_num = 0
 
         main_pool = copy.copy(conf.mainAttr)
         minor_pool = copy.copy(conf.minorAttr)

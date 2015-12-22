@@ -60,4 +60,6 @@ class EliteStageLogic(base_stage.BaseStageLogic):
             # hook task
             hook_task(player, CONDITIONId.STAGE, stage_id)
             hook_task(player, CONDITIONId.ANY_ELITE_STAGE, 1)
-        tlog_action.log('RoundFlow', player, stage_id, 2, 0, result)
+            tlog_action.log('RoundFlow', player, stage_id, 2, 0, 1)
+        else:
+            tlog_action.log('RoundFlow', player, stage_id, 2, 0, 0)

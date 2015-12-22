@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='kuaiyong.proto',
   package='',
-  serialized_pb='\n\x0ekuaiyong.proto\x1a\x0c\x63ommon.proto\")\n\x16KuaiyongFlowIdResponse\x12\x0f\n\x07\x66low_id\x18\x01 \x01(\t\"^\n\x18KuaiyongRechargeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0ekuaiyong.proto\x1a\x0c\x63ommon.proto\")\n\x16KuaiyongFlowIdResponse\x12\x0f\n\x07\x66low_id\x18\x01 \x01(\t\"~\n\x18KuaiyongRechargeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x04info\x18\x03 \x01(\x0b\x32\x10.GetGoldResponse')
 
 
 
@@ -68,6 +68,13 @@ _KUAIYONGRECHARGERESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='info', full_name='KuaiyongRechargeResponse.info', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -78,11 +85,12 @@ _KUAIYONGRECHARGERESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=75,
-  serialized_end=169,
+  serialized_end=201,
 )
 
 _KUAIYONGRECHARGERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _KUAIYONGRECHARGERESPONSE.fields_by_name['gain'].message_type = common_pb2._GAMERESOURCESRESPONSE
+_KUAIYONGRECHARGERESPONSE.fields_by_name['info'].message_type = common_pb2._GETGOLDRESPONSE
 DESCRIPTOR.message_types_by_name['KuaiyongFlowIdResponse'] = _KUAIYONGFLOWIDRESPONSE
 DESCRIPTOR.message_types_by_name['KuaiyongRechargeResponse'] = _KUAIYONGRECHARGERESPONSE
 

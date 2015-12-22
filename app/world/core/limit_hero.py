@@ -81,7 +81,7 @@ def tick_limit_hero():
     if act_data['start_time']:
         # need_time = int(act_data['start_time']-time.time())
         print act_data['start_time'], 'limit hero start time ============'
-        te_manager.add_event(act_data['end_time'], 1, tick_limit_hero)
+        te_manager.add_event(act_data['start_time'], 1, tick_limit_hero)
         # reactor.callLater(need_time, tick_limit_hero)
 
 

@@ -4,9 +4,10 @@ from shared.tlog import log4tx
 from shared.utils import xtime
 # from utils.log import log_except
 from gfirefly.server.logobj import logger
+from gfirefly.server.globalobject import GlobalObject
 import time
 
-game_server_id = 1
+game_server_id = GlobalObject().allconfig['server_no']
 game_app_id = 1
 plat_id = 1
 

@@ -7,4 +7,5 @@ message KuaiyongFlowIdResponse{
 message KuaiyongRechargeResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
+    optional GetGoldResponse info = 3;
 }
