@@ -45,6 +45,7 @@ if game_configs.base_config.get('initial') and GlobalObject().json_config.get("n
     hero.level = rhero_level
     hero.break_level = 0
     hero.exp = 0
+    player.line_up_component.update_guild_attr()
 
     player.line_up_component.change_hero(1, rhero_id, 0)
     PlayersManager().add_player(player)

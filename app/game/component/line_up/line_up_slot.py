@@ -302,6 +302,7 @@ class LineUpSlotComponent(Component):
         ((攻击 + 物防 + 魔防) * 血量) ^ 战斗力系数A * （命中率 + 闪避率） * （1 + 暴击率 * （暴击伤害系数 + 暴击伤害减免系数 - 100）/ 10000）*
         (（100 + 格挡率 * （1 - 格挡伤害系数）) / 100 * 战斗力系数B）
         """
+        self._owner.update_guild_attr()
         unit = self.slot_attr
         if not unit:
             return 0
@@ -327,10 +328,15 @@ class LineUpSlotComponent(Component):
         """
         更新主将属性
         """
+        #self._owner.guild_attr
+        logger.debug("update_lord_info========== %s" % self._owner.guild_attr)
         unit = self._owner.get_first_slot().slot_attr
         if not unit:
             return
         lord_obj = tb_character_info.getObj(self._owner._owner.character_id)
+        logger.debug("update_lord_attr========== %s" % self._owner._owner.character_id)
+        logger.debug(lord_obj)
+        logger.debug(unit.dumps())
         if lord_obj:
             ap = self.combat_power_lineup()
             data = {'info': unit.dumps(), 'power': ap}

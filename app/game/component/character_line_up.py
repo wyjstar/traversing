@@ -14,6 +14,10 @@ from app.game.action.node.line_up import line_up_info
 from app.game.core.task import hook_task, CONDITIONId
 from app.game.action.node.start_target import target_update
 
+from gfirefly.server.globalobject import GlobalObject
+
+remote_gate = GlobalObject().remote.get('gate')
+
 
 class CharacterLineUpComponent(Component):
     """用户英雄阵容组件
@@ -47,6 +51,7 @@ class CharacterLineUpComponent(Component):
         self._friend_fight_last_time = 0
         self._hight_power = 0
         self._caption_pos = 1
+        self.guild_attr = {}
 
     def init_data(self, character_info):
         line_up_slots = character_info.get('line_up_slots')
@@ -357,6 +362,7 @@ class CharacterLineUpComponent(Component):
     def combat_power(self):
         """总战斗力
         """
+        self.update_guild_attr()
         _power = 0
         for slot in self._line_up_slots.values():
             each_power = slot.combat_power_lineup()
@@ -445,4 +451,26 @@ class CharacterLineUpComponent(Component):
                 self._caption_pos = k
                 break
 
-
+    def update_guild_attr(self):
+        print("update_guild_attr============== %s" % self.guild_attr)
+        attr = dict(hp=0, atk=0, physical_def=0, magic_def=0)
+        if not self._owner.guild.g_id:
+            self.guild_attr = attr
+            print("update_guild_attr============== %s" % self.guild_attr)
+            return
+        res = remote_gate['world'].get_guild_info_remote(self._owner.guild.g_id, "guild_skills", 0)
+        if not res.get("result"):
+            self.guild_attr = attr
+            return
+        guild_skills = res.get("guild_skills")
+        for skill_type, skill_level in guild_skills.items():
+            if skill_type == 1:
+                attr["hp"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_hp
+            if skill_type == 2:
+                attr["atk"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_atk
+            if skill_type == 3:
+                attr["physical_def"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_pdef
+            if skill_type == 4:
+                attr["magic_def"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_mdef
+        self.guild_attr = attr
+        print("update_guild_attr============== %s" % self.guild_attr)

@@ -58,6 +58,7 @@ class CharacterFightCacheComponent(Component):
 
     def get_red_units(self):
         """docstring for get_red_units"""
+        self._owner.line_up_component.update_guild_attr()
         red_units = {}
         for no, slot in self.line_up_slots.items():
             logger.debug("xxxxxx%s" % no)
