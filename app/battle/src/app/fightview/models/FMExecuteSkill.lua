@@ -37,9 +37,15 @@ function check_hit(buff_info, attacker, target)
     local dodgeArray2 = target:get_dodge()
     isHit = getFormulaTemplate():getFunc("isHit")(hitArray1, dodgeArray2, random)
     if isHit == 0 then
-        return false
+        isHit = false
+    else
+        isHit = true
     end
-    return true
+    appendFile2("判断命中：随机数:("..tostring(random)..
+                ") 攻方命中率:("..tostring(hitArray1)..
+                ") 受方闪避率:("..tostring(dodgeArray2)..
+                ") 是否命中:"..tostring(isHit)..") \n", 0)
+    return isHit
 end
 
 function check_block(attacker, target, buff_info)
