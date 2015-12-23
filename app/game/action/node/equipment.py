@@ -177,7 +177,7 @@ def melting_equipment_405(pro_data, player):
     player.finance.coin += total_strength_coin
     player.finance.save_data()
 
-    response.cgr.finance.coin += total_strength_coin
+    #response.cgr.finance.coin += total_strength_coin
     change = response.cgr.finance.finance_changes.add()
     change.item_type = 107
     change.item_num = total_strength_coin
