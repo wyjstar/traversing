@@ -236,6 +236,7 @@ class EscortTask(object):
         self._protecters = task_info.get("protecters")
         self._rob_task_infos = task_info.get("rob_task_infos")
         self._last_send_invite_time = task_info.get("last_send_invite_time", 0)
+        self._reward = task_info.get("reward", [])
 
     #def update_rob_task_info(self, rob_task_info, header):
         #__rob_task_info = self._rob_task_infos.get(header)
