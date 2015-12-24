@@ -7,7 +7,7 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.globalobject import GlobalObject
 from app.proto_file import guild_pb2
 from gfirefly.server.logobj import logger
-from app.game.core.item_group_helper import gain, get_return, is_afford, consume
+from app.game.core.item_group_helper import gain, get_return, is_afford
 from shared.utils.const import const
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import get_seeds
@@ -153,21 +153,20 @@ def battle_2403(pro_data, player):
     return_data = gain(player,stage_item.Animal_Participate, const.GUILD_BOSS_IN)
     get_return(player, return_data, response.gain)
 
+    response.fight_result = fight_result
     if fight_result:
-        return_data = gain(player,stage_item.Animal_Kill, const.GUILD_BOSS_KILL)
-        get_return(player, return_data, response.gain)
         player.guild.guild_boss_last_attack_time["time"] = 0
     player.guild.guild_boss_last_attack_time["time"] = int(get_current_timestamp())
     player.guild.save_data()
 
     response.seed1 = seed1
     response.seed2 = seed2
+    response.guild_skill_point = res.get('guild_skill_point')
 
     response.res.result = res.get("result")
     if not res.get("result"):
         response.res.result_no = res.get("result_no")
         return response.SerializePartialToString()
-
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
@@ -178,17 +177,25 @@ def upgrade_guild_skill_2404(pro_data, player):
     """
     request = guild_pb2.UpGuildSkillRequest()
     request.ParseFromString(pro_data)
-    logger.debug("request %s" % request)
+    logger.error("request %s" % request)
     response = guild_pb2.UpGuildSkillResponse()
-    logger.debug("request %s" % request)
+    logger.error("request %s" % request)
     skill_type = request.skill_type
     data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
     guild_skills = data.get("guild_skills")
     build = data.get("build")
-    logger.debug("guild_skill_config %s" % game_configs.guild_skill_config.get(skill_type))
+    skill_level = guild_skills.get(skill_type)
+    logger.debug("skill level %s" % skill_level)
     # check
-    guild_skill_item = game_configs.guild_skill_config.get(skill_type).get(guild_skills.get(skill_type))
+    guild_skill_item = game_configs.guild_skill_config.get(skill_type).get(skill_level)
+    logger.debug("guild_skill_config %s" % guild_skill_item)
     response.res.result = False
+
+    if guild_skills.get(skill_type) >= 10:
+        logger.debug("guild skill %s has reach the max!" % skill_type)
+        response.res.result_no = 24044
+        return response.SerializeToString()
+
     if not is_afford(player, guild_skill_item.Consume):
         logger.debug("consume not enough!")
         response.res.result_no = 24041
@@ -212,11 +219,12 @@ def upgrade_guild_skill_2404(pro_data, player):
             response.res.result_no = 24043
             return response.SerializeToString()
 
-    res = remote_gate['world'].upgrade_guild_skill_remote(player.guild.g_id, skill_type, guild_skills.get(skill_type)+1)
+    res = remote_gate['world'].upgrade_guild_skill_remote(player.guild.g_id, skill_type)
     if res.get("result"):
         # consume
-        return_data = consume(player, guild_skill_item.Consume, const.UPGRADE_GUILD_SKILL)
-        get_return(player, return_data, response.consume)
+        #return_data = consume(player, guild_skill_item.Consume, const.UPGRADE_GUILD_SKILL)
+        #get_return(player, return_data, response.consume)
+        response.guild_skill_point = guild_skill_item.Consumption
 
     response.res.result = res.get("result")
     logger.debug("response %s" % response)

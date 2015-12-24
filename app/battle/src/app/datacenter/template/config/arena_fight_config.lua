@@ -62,7 +62,7 @@ arena_fight_config={
 ,  [11] = {
   ["type"] = 1,  ["Description"] = 5800000011,  ["play_rank"] = {
   [1] = 201,  [2] = 210,}
-,  ["id"] = 11,  ["Gradient"] = 4,  ["choose"] = "[[200,210,10]]",  ["Reward"] = {
+,  ["id"] = 11,  ["Gradient"] = 4,  ["choose"] = "[[201,210,10]]",  ["Reward"] = {
 }
 ,}
 ,  [12] = {

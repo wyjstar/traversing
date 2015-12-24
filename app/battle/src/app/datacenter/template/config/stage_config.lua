@@ -560,7 +560,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1052,7 +1052,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1096,7 +1096,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1118,7 +1118,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1184,7 +1184,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1206,7 +1206,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1252,7 +1252,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4098,7 +4098,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4120,7 +4120,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4142,7 +4142,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4164,7 +4164,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4186,7 +4186,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4230,7 +4230,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4276,7 +4276,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4320,7 +4320,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4342,7 +4342,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4364,7 +4364,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4386,7 +4386,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4408,7 +4408,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4430,7 +4430,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4476,7 +4476,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4522,7 +4522,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4568,7 +4568,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4590,7 +4590,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4612,7 +4612,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4634,7 +4634,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4656,7 +4656,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4678,7 +4678,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4722,7 +4722,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4766,7 +4766,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4810,7 +4810,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4832,7 +4832,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4854,7 +4854,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4876,7 +4876,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4898,7 +4898,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4944,7 +4944,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -4990,7 +4990,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5034,7 +5034,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5080,7 +5080,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5102,7 +5102,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5124,7 +5124,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5146,7 +5146,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5168,7 +5168,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5212,7 +5212,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5256,7 +5256,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5302,7 +5302,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5362,7 +5362,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5384,7 +5384,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5406,7 +5406,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5428,7 +5428,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5450,7 +5450,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5494,7 +5494,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5540,7 +5540,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6226,7 +6226,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6286,7 +6286,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 30,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 30,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6356,7 +6356,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 30,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 30,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6668,7 +6668,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6690,7 +6690,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6712,7 +6712,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6734,7 +6734,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6818,7 +6818,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6864,7 +6864,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6910,7 +6910,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6932,7 +6932,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7000,7 +7000,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7022,7 +7022,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7066,7 +7066,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7110,7 +7110,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7154,7 +7154,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7176,7 +7176,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7260,7 +7260,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7306,7 +7306,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7352,7 +7352,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7396,7 +7396,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7442,7 +7442,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7464,7 +7464,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7508,7 +7508,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7530,7 +7530,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7574,7 +7574,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7618,7 +7618,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7664,7 +7664,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7724,7 +7724,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7794,7 +7794,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7816,7 +7816,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7860,7 +7860,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7906,7 +7906,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7950,7 +7950,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7972,7 +7972,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -8038,7 +8038,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -8060,7 +8060,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -8106,7 +8106,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -8166,7 +8166,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9216,7 +9216,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9306,7 +9306,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9350,7 +9350,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9394,7 +9394,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9438,7 +9438,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9460,7 +9460,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9592,7 +9592,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9638,7 +9638,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9682,7 +9682,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9728,7 +9728,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9750,7 +9750,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9794,7 +9794,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9860,7 +9860,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9904,7 +9904,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9950,7 +9950,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10010,7 +10010,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10080,7 +10080,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10148,7 +10148,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10194,7 +10194,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10238,7 +10238,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10260,7 +10260,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10326,7 +10326,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10410,7 +10410,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10470,7 +10470,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10540,7 +10540,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10608,7 +10608,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10630,7 +10630,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10674,7 +10674,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10718,7 +10718,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11052,7 +11052,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11136,7 +11136,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11182,7 +11182,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11228,7 +11228,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11250,7 +11250,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11272,7 +11272,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11294,7 +11294,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11338,7 +11338,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11384,7 +11384,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11428,7 +11428,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11450,7 +11450,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11494,7 +11494,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11538,7 +11538,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11582,7 +11582,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11604,7 +11604,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11626,7 +11626,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11648,7 +11648,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11756,7 +11756,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12006,7 +12006,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12298,7 +12298,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12506,7 +12506,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12636,7 +12636,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 30,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 30,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12682,7 +12682,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12748,7 +12748,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12792,7 +12792,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12906,7 +12906,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -13012,7 +13012,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -13058,7 +13058,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -13128,7 +13128,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -13262,7 +13262,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 2,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
