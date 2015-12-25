@@ -470,7 +470,8 @@ def up_build_remote(g_id, p_id, build_type):
     guild_obj.contribution -= build_conf.exp
     guild_obj.save_data()
 
-    return {'res': True, 'build_level': guild_obj.build.get(build_type)}
+    return {'res': True, 'build_level': guild_obj.build.get(build_type),
+            'level': guild_obj.level}
 
 
 @rootserviceHandle

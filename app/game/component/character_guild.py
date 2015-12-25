@@ -3,7 +3,6 @@
 created by server on 14-7-24下午6:32.
 """
 from app.game.component.Component import Component
-from app.game.redis_mode import tb_guild_info
 from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_character_info
 import time

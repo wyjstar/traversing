@@ -110,7 +110,9 @@ def create_guild_801(data, player):
             return
 
         guild_info = create_res.get('guild_info')
-        rank_helper.add_rank_info('GuildLevel', guild_info.get('id'), 1)
+        rank_value = (9999-guild_info.get('id')) + (guild_info.get('level')*10000)
+        print rank_value, '=============guild rank value'
+        rank_helper.add_rank_info('GuildLevel', guild_info.get('id'), rank_value)
 
         player.guild.g_id = guild_info.get('id')
         player.guild.exit_time = 1
@@ -1215,6 +1217,9 @@ def up_build_870(data, player):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
+    rank_value = (9999-g_id) + (remote_res.get('level')*10000)
+    print rank_value, '=============guild rank value'
+    rank_helper.add_rank_info('GuildLevel', g_id, rank_value)
     response.res.result = True
     tlog_action.log('GuildBuildUp', player, player.guild.g_id,
                     remote_res.get('build_level'),
