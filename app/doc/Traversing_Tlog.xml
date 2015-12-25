@@ -334,7 +334,6 @@
 
         <entry name="Sequence" type="int" desc="传来的新手引导步数" />
         <entry name="MySequence" type="int" desc="已存的新手引导步数" />
-        <entry name="HaveDrop" type="int" desc="是否有掉落 1 or 0" />
     </struct>
 
     <!--在线人数-->
@@ -460,7 +459,7 @@
     </struct>
 
     <!--在线奖励-->
-    <struct name="OnLineGift" version="1" desc="在线奖励">
+    <struct name="OnlineGift" version="1" desc="在线奖励">
         <entry name="GameSvrId" type="string" size="25" desc="登录的游戏服务器编号" />
         <entry name="dtEventTime" type="datetime" desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID" type="string" size="32" desc="游戏APPID" />
@@ -864,7 +863,7 @@
 
     <!--过关斩将领取奖励-->
 
-    <struct name="OvercomeReset" version="1" desc="过关斩将领取奖励">
+    <struct name="OvercomeAward" version="1" desc="过关斩将领取奖励">
         <entry name="GameSvrId"          type="string"        size="25"                        desc="登录的游戏服务器编号" />
         <entry name="dtEventTime"        type="datetime"                                       desc="游戏事件的时间, 格式 YYYY-MM-DD HH:MM:SS" />
         <entry name="GameAppID"          type="string"        size="32"                        desc="游戏APPID" />
