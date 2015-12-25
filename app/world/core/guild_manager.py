@@ -2,7 +2,7 @@
 """
 @author: cui
 """
-from shared.common_logic.guild import Guild
+from app.world.core.guild import Guild
 from app.world.redis_mode import tb_guild_info
 from shared.utils.random_pick import get_random_items_from_list
 import copy

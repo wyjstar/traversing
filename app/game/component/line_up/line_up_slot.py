@@ -334,9 +334,6 @@ class LineUpSlotComponent(Component):
         if not unit:
             return
         lord_obj = tb_character_info.getObj(self._owner._owner.character_id)
-        logger.debug("update_lord_attr========== %s" % self._owner._owner.character_id)
-        logger.debug(lord_obj)
-        logger.debug(unit.dumps())
         if lord_obj:
             ap = self.combat_power_lineup()
             data = {'info': unit.dumps(), 'power': ap}

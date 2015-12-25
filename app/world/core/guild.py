@@ -9,7 +9,7 @@ from gfirefly.dbentrust.redis_mode import RedisObject
 
 tb_guild_info = RedisObject('tb_guild_info')
 from shared.common_logic.escort_task import EscortTask
-from shared.common_logic.guild_boss import GuildBoss
+from app.world.core.guild_boss import GuildBoss
 from shared.utils.date_util import str_time_to_timestamp, get_current_timestamp
 from shared.common_logic.shop import guild_shops, check_time, get_new_shop_info, \
     refresh_shop_info
