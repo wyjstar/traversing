@@ -130,7 +130,7 @@ class Guild(object):
         self._guild_boss = boss
         self._guild_boss_trigger_times = data.get("guild_boss_trigger_times", 0)
         self._guild_skills = data.get("guild_skills", self._guild_skills)
-        self._skill_point = data.get("skill_point", self._guild_skills)
+        self._skill_point = data.get("skill_point", self._skill_point)
 
     def init_guild_skills(self):
         """docstring for init_guild_skills"""
