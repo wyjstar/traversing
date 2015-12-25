@@ -192,12 +192,7 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
-    for v in activity_config[4]:
-        print v
-    print ggzj_config
-    print base_config.get("EscortFresh")
-    print guild_skill_config
-    print(special_stage_config.get("guild_boss_stages").get(910001))
+    print special_stage_config.get("guild_boss_stages").get(920004)
     #print ggzj_config
     #print base_config.get("EscortFresh")
     #print guild_skill_config

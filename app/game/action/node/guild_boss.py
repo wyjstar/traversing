@@ -11,7 +11,7 @@ from app.game.core.item_group_helper import gain, get_return, is_afford
 from shared.utils.const import const
 from app.game.action.node._fight_start_logic import pvp_assemble_units
 from app.game.action.node._fight_start_logic import get_seeds
-from shared.utils.date_util import get_current_timestamp
+from shared.utils.date_util import get_current_timestamp, is_in_period
 import cPickle
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -58,6 +58,14 @@ def construct_boss_pb(data, boss_pb):
 def trigger_boss_2402(pro_data, player):
     """召唤圣兽
     """
+    guild_boss_open_time_item = game_configs.base_config.get("AnimalOpenTime")
+    response = guild_pb2.TriggerGuildBossResponse()
+    response.res.result = False
+    if not is_in_period(guild_boss_open_time_item):
+        logger.debug("feature not open!")
+        response.res.result_no = 30000
+        return response.SerializeToString()
+
     request = guild_pb2.TriggerGuildBossRequest()
     request.ParseFromString(pro_data)
     logger.debug("request %s" % request)
@@ -65,8 +73,6 @@ def trigger_boss_2402(pro_data, player):
     trigger_stone_num = 0
     item = player.item_package.get_item(140001)
     if item: trigger_stone_num = item.num
-    response = guild_pb2.TriggerGuildBossResponse()
-    response.res.result = False
 
     data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
     build = data.get("build")

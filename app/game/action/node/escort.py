@@ -12,7 +12,7 @@ from shared.utils.const import const
 from gfirefly.server.globalobject import GlobalObject
 from app.game.action.node._fight_start_logic import assemble
 from app.game.action.root.netforwarding import push_message
-from shared.utils.date_util import get_current_timestamp
+from shared.utils.date_util import get_current_timestamp, is_in_period
 import cPickle
 import copy
 
@@ -237,6 +237,11 @@ def receive_protect_task(player, task_id):
         logger.error("can't find this task_info!")
         return {'result': False, 'result_no': 190501}
 
+    escort_open_time_item = game_configs.base_config.get("EscortOpenTime")
+    if not is_in_period(escort_open_time_item):
+        logger.error("feature not open!")
+        return {'result': False, 'result_no': 30000}
+
     res = remote_gate["world"].get_guild_info_remote(player.guild.g_id, "build", 0)
     if not res.get("result"):
         logger.error("get guild info error!")
@@ -268,6 +273,10 @@ def receive_rob_task(player, task_id, task_guild_id):
     接受劫运任务
     """
     receive_rob_times = player.finance[const.GUILD_ESCORT_ROB_TIMES]
+    escort_open_time_item = game_configs.base_config.get("EscortOpenTime")
+    if not is_in_period(escort_open_time_item):
+        logger.error("feature not open!")
+        return {'result': False, 'result_no': 30000}
 
     if receive_rob_times <= 0:
         logger.error("receive_rob_times! %s" % receive_rob_times)
@@ -340,6 +349,13 @@ def invite_1908(data, player):
     protect_or_rob = request.protect_or_rob
     task_guild_id = request.task_guild_id
     rob_no = request.rob_no
+
+    escort_open_time_item = game_configs.base_config.get("EscortOpenTime")
+    if not is_in_period(escort_open_time_item):
+        logger.error("feature not open!")
+        response.result = False
+        response.result_no = 30000
+        return response.SerializePartialToString()
     res = None
     if send_or_in == 1:
         res = send_invite(player, task_id, protect_or_rob, task_guild_id, rob_no)
@@ -485,6 +501,12 @@ def start_rob_escort_1910(data, player):
 
 def start_protect_escort(player, task_guild_id, task_id):
     """docstring for start_protect_escort"""
+
+    escort_open_time_item = game_configs.base_config.get("EscortOpenTime")
+    if not is_in_period(escort_open_time_item):
+        logger.error("feature not open!")
+        return {'result': False, 'result_no': 30000}
+
     res = remote_gate["world"].start_protect_task_remote(task_guild_id, task_id)
 
     # 参与押运次数

@@ -77,8 +77,6 @@ def guild_boss_battle_remote(guild_id, str_red_units, unpar_type, unpar_other_id
 
     logger.debug("blue unit length %s" % len(blue_units))
     boss.blue_units = blue_units
-    if fight_result:
-        boss.reset()
 
     current_damage_hp = origin_hp - boss.hp
     logger.debug("origin_hp %s, current_hp %s, current_damage_hp %s" % (origin_hp, boss.hp, current_damage_hp))
@@ -86,8 +84,9 @@ def guild_boss_battle_remote(guild_id, str_red_units, unpar_type, unpar_other_id
     guild_skill_point = 0
     if fight_result:
         stage_item = game_configs.special_stage_config.get("guild_boss_stages").get(boss.stage_id)
-        guild.skill_point += stage_item.Animal_Kill
-        guild_skill_point = stage_item.Animal_Kill
+        guild.skill_point += stage_item.Animal_Kill_Over
+        guild_skill_point = stage_item.Animal_Kill_Over
+        boss.reset()
         guild.save_data()
 
     logger.debug("guildboss_battle_remote over===================")

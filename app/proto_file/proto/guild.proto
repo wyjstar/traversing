@@ -102,7 +102,7 @@ message GetGuildInfoResponse{
     optional int32 my_day_contribution = 28;  //我的今日共贡献值
     optional int32 be_mobai_times = 29;  // 被膜拜次数
     repeated GuildSkill guild_skill = 30; //军团技能
-    repeated int32 skill_point = 31; //军团技能点
+    optional int32 skill_point = 31; //军团技能点
 }
 
 message BuildInfo{
