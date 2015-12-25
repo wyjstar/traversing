@@ -203,9 +203,7 @@ class CharacterBaseInfoComponent(Component):
         return False
 
     def addexp(self, exp, reason):
-        # =====Tlog================
-        tlog_action.log('PlayerExpFlow', self.owner, self.level, exp, reason)
-
+        before_lv = self.level
         max_level = game_configs.base_config.get('player_level_max')
         if self.level == max_level:
             return
@@ -218,6 +216,8 @@ class CharacterBaseInfoComponent(Component):
             if self.level == max_level:
                 self._exp = 0
                 break
+        # =====Tlog================
+        tlog_action.log('PlayerExpFlow', self.owner, before_lv, exp, reason)
 
     def generate_google_id(self, channel):
         if self._google_consume_id == '':
