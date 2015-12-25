@@ -60,6 +60,7 @@ def get_guild_info_remote(guild_id, info_name, p_id):
         res.update({'result': True, 'guild_info': guild_obj.guild_data})
     if p_id:
         res.update(dict(position=guild_obj.get_position(p_id)))
+    logger.debug("get_guild_info: %s" % res)
     return res
 
 

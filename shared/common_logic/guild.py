@@ -431,6 +431,7 @@ class Guild(object):
                 'bless_luck_num': self.bless_luck_num,
                 'bless_num': self.bless_num,
                 'guild_skills': self._guild_skills,
+                'skill_point': self._skill_point,
                 }
         return data
 

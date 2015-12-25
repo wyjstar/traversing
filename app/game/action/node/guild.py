@@ -812,7 +812,7 @@ def get_guild_info_812(data, player):
         skill_pb = response.guild_skill.add()
         skill_pb.skill_type = skill_type
         skill_pb.skill_level = skill_level
-    response.skill_point = guild_info.skill_point
+    response.skill_point = guild_info.get('skill_point')
 
     response.res.result = True
     return response.SerializeToString()
