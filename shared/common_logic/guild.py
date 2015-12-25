@@ -46,6 +46,7 @@ class Guild(object):
         self._mine_help = {}                   # {time:[mine_id, u_id]}
         self._escort_tasks_ids = []            # 任务ids
         self._shop_data = {}                   # {shop_type: shop_info}  军团商店
+        self._skill_point = 0                  # 技能点
 
         self.init_guild_skills()
 
@@ -73,6 +74,7 @@ class Guild(object):
                 'guild_boss_reset_time': self._guild_boss_reset_time,
                 'escort_tasks_ids': self._escort_tasks_ids,
                 'shop_data': self._shop_data,
+                'skill_point': self._skill_point,
                 }
         return data
 
@@ -128,6 +130,7 @@ class Guild(object):
         self._guild_boss = boss
         self._guild_boss_trigger_times = data.get("guild_boss_trigger_times", 0)
         self._guild_skills = data.get("guild_skills", self._guild_skills)
+        self._skill_point = data.get("skill_point", self._guild_skills)
 
     def init_guild_skills(self):
         """docstring for init_guild_skills"""
@@ -179,15 +182,12 @@ class Guild(object):
 
     @property
     def build(self):
-        build_info = {}
         build_conf = game_configs.base_config.get('guild_level')
         for build_type, build_level in build_conf.items():
             if build_level >= 1:
-                if self._build.get(build_type):
-                    build_info[build_type] = self._build.get(build_type)
-                else:
-                    build_info[build_type] = build_level
-        return build_info
+                if not self._build.get(build_type):
+                    self._build[build_type] = build_level
+        return self._build
 
     @build.setter
     def build(self, v):
@@ -320,6 +320,14 @@ class Guild(object):
     @guild_skills.setter
     def guild_skills(self, values):
         self._guild_skills = values
+
+    @property
+    def skill_point(self):
+        return self._skill_point
+
+    @skill_point.setter
+    def skill_point(self, values):
+        self._skill_point = values
 
     @property
     def guild_boss_trigger_times(self):

@@ -34,7 +34,7 @@ class RobotGuildBoss(Robot):
 
     def command_2battle(self):
         request = guild_pb2.GuildBossBattleRequest()
-        request.stage_id = 900001
+        request.stage_id = 910001
         print(request)
         self.send_message(request, 2403)
 

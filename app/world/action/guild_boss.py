@@ -77,27 +77,40 @@ def guild_boss_battle_remote(guild_id, str_red_units, unpar_type, unpar_other_id
 
     logger.debug("blue unit length %s" % len(blue_units))
     boss.blue_units = blue_units
-    if fight_result:
-        boss.reset()
 
     current_damage_hp = origin_hp - boss.hp
     logger.debug("origin_hp %s, current_hp %s, current_damage_hp %s" % (origin_hp, boss.hp, current_damage_hp))
 
+    guild_skill_point = 0
+    if fight_result:
+        stage_item = game_configs.special_stage_config.get("guild_boss_stages").get(boss.stage_id)
+        guild.skill_point += stage_item.Animal_Kill_Over
+        guild_skill_point = stage_item.Animal_Kill_Over
+        boss.reset()
+        guild.save_data()
 
     logger.debug("guildboss_battle_remote over===================")
     guild.save_data()
     return dict(
             result=True,
             fight_result = fight_result,
+            guild_skill_point = guild_skill_point,
             )
 @rootserviceHandle
-def upgrade_guild_skill_remote(guild_id, skill_type, skill_level):
+def upgrade_guild_skill_remote(guild_id, skill_type):
     """ 获取玩家伤害信息
     """
-    logger.debug("upgrade_guild_skill_remote : (%s, %s)" % (skill_type, skill_level))
+    logger.debug("upgrade_guild_skill_remote : (%s, %s)" % (skill_type, guild_id))
     guild = guild_manager_obj.get_guild_obj(guild_id)
-    guild.guild_skills[skill_type] = skill_level
+
+    skill_level = guild.guild_skills.get(skill_type)
+    # 消耗技能点
+    guild_skill_item = game_configs.guild_skill_config.get(skill_type).get(skill_level)
+    guild.skill_point -= guild_skill_item.Consumption
+
+    guild.guild_skills[skill_type] = skill_level + 1
     guild.save_data()
+
     return dict(
             result=True)
 
