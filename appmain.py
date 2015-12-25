@@ -9,15 +9,20 @@ import signal
 import traceback
 from gfirefly.server.server import FFServer
 from gfirefly.server.globalobject import GlobalObject
+from gfirefly.server.logobj import logger
 
 
 def dump_stacks(signal, frame):
     codes = []
     for threadId, stack in sys._current_frames().items():
         for filename, lineno, name, line in traceback.extract_stack(stack):
-            codes.append('File: "%s", line %d, in %s' % (filename, lineno, name))
+            codes.append('File: "%s", line %d, in %s' % (filename,
+                                                         lineno,
+                                                         name))
             if line:
                 codes.append("  %s" % (line.strip()))
+    for line in codes:
+        logger.debug(line)
 
 
 def print_stack(signal, frame):
