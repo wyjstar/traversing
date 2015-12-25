@@ -1,6 +1,7 @@
 g_notice = g_notice or {}   -- 通知的宏定义
 g_other  = g_other or {}    -- 其他字符串宏定义
 g_friendSubmodule = g_friendSubmodule or {}     -- 好友子模块名称定义
+G_PLATFORM = G_PLATFORM or {}       -- 平台定义
 
 G_BOTTOM_DEFINE = G_BOTTOM_DEFINE or {}       -- 按钮属性宏定义
 G_LOCK_DEFINE = G_LOCK_DEFINE or {}             -- 功能锁宏定义
@@ -292,6 +293,10 @@ CONFIG_CARD_EFFECTA_Y = 162.5
 CONFIG_CARD_EFFECTB_X = 146.5
 CONFIG_CARD_EFFECTB_Y = 162.5   
 
+CONFIG_CARD_SCALE = 0.8
+CONFIG_CARD_MONSTER_SCALE = 0.6
+CONFIG_CARD_FIGHT_SCALE = 0.7
+
 CONFIG_FIRST_OFF_HEIGHT = 50
 
 
@@ -403,7 +408,7 @@ G_BOTTOM_DEFINE.GET_COINS_JUMP = {
     ["selectedFrame"] = "#lan_common_qzc.png",
     ["disabledFrame"] = nil,
     ["callBack"] = function ()
-        getOtherModule():showUIView("activity.PVActivityPage", 5)
+        getOtherModule():showUIView("activity.PVActivityPage", ACTIVITY_TYPE().GETWEALTH)
     end,
 }
 
@@ -425,7 +430,7 @@ RES_TYPE = {
     FEAT         = 25,  --功勋
     STAMINA      = 7 ,  --体力
     YUANQI       = 16,  --元气
-    PVP_SCROE    = 8,   --PVP声望
+    PVP_SCROE    = 8,   --PVP军功
     GOLD         = 2,   --金币
     COIN         = 1,   --银锭
     EQUIP_SOUL   = 21,  --装备精华
@@ -459,7 +464,7 @@ EventName = {
     UPDATE_MAIL = "UPDATE_MAIL", -- 更新邮件通知
     FULL_MAIL = "FULL_MAIL", -- 邮箱已满消息
     UPDATE_SCRECT_PLACE = "UPDATE_SCRECT_PLACE", --更新秘境数据通知
-
+    UPDATE_RECHARGE_NUM = "UPDATE_RECHARGE_NUM",  --更新累计充值数据
     UPDATE_GGZJ = "UPDATE_GGZJ", --更新过关斩将红点
     UPDATE_BOSS = "UPDATE_BOSS", --更新枭雄红点
     UPDATE_SOLDIER = "UPDATE_SOLDIER", --更新武将红点
@@ -468,10 +473,13 @@ EventName = {
     UPDATE_SIGN = "UPDATE_SIGN", -- 更新签到
     UPDATE_HJQY = "UPDATE_HJQY", -- 更新黄巾起义
     UPDATE_ZHENGZHAN = "UPDATE_ZHENGZHAN", -- 更新征战按钮红点
-
+    UPDATE_HOME_FIRSTRECHARGEREWARD_BTN = "UPDATE_HOME_FIRSTRECHARGEREWARD_BTN", --更新home页面的首冲好礼状态
     GUIDE_HANDLE = "GUIDE_HANDLE", --新手引导（出现小手）
     UPDATE_LEGION_APPLY_LIST = "UPDATE_LEGION_APPLY_LIST", --军团申请列表更新
     UPDATE_LEGION_INFO = "UPDATE_LEGION_INFO", --军团信息更新
+    SUB_PVP_SCROE = "SUB_PVP_SCROE", --消耗军功
+    UPDATE_MAX_COMBAT_POWER = "update_max_combat_power",--更新历史最高战斗力
+    REFRESH_EQUIP_SHOP = "REFRESH_EQUIP_SHOP", --精华商店刷新次数
 }
 
 NoticeColor = {
@@ -482,4 +490,10 @@ NoticeColor = {
     [5] = ui.COLOR_PURPLE,
     [6] = ui.COLOR_PURPLE,
 }
+
+
+G_PLATFORM.NONE = 0         -- 无平台
+G_PLATFORM.WEIXIN = 1       -- 微信平台
+G_PLATFORM.QQ = 2           -- QQ平台
+G_PLATFORM.QHALL = 3        -- 游戏大厅平台
 

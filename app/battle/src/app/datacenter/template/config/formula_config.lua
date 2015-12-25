@@ -252,23 +252,23 @@ formula_config={
 ,  [126] = {
   ["precondition"] = "1",  ["formula"] = "playerLuckyValue/50000",  ["clientPrecondition"] = "1",  ["id"] = 126,  ["clientFormula"] = "result=playerLuckyValue/50000",  ["key"] = "shopLuckyValue",}
 ,  [127] = {
-  ["precondition"] = "seatHero=1",  ["formula"] = "[1,2,3,4,5,6]",  ["clientPrecondition"] = "seatHero=1",  ["id"] = 127,  ["clientFormula"] = "result=[1,2,3,4,5,6]",  ["key"] = "defaultAttackSequence_1 ",}
+  ["precondition"] = "seatHero==1",  ["formula"] = "[1,2,3,4,5,6]",  ["clientPrecondition"] = "seatHero==1",  ["id"] = 127,  ["clientFormula"] = "result=[1,2,3,4,5,6]",  ["key"] = "defaultAttackSequence_1 ",}
 ,  [128] = {
-  ["precondition"] = "seatHero=2",  ["formula"] = "[2,3,1,5,6,4]",  ["clientPrecondition"] = "seatHero=2",  ["id"] = 128,  ["clientFormula"] = "result=[2,3,1,5,6,4]",  ["key"] = "defaultAttackSequence_2",}
+  ["precondition"] = "seatHero==2",  ["formula"] = "[2,3,1,5,6,4]",  ["clientPrecondition"] = "seatHero==2",  ["id"] = 128,  ["clientFormula"] = "result=[2,3,1,5,6,4]",  ["key"] = "defaultAttackSequence_2",}
 ,  [129] = {
-  ["precondition"] = "seatHero=3",  ["formula"] = "[3,1,2,6,4,5]",  ["clientPrecondition"] = "seatHero=3",  ["id"] = 129,  ["clientFormula"] = "result=[3,1,2,6,4,5]",  ["key"] = "defaultAttackSequence_3 ",}
+  ["precondition"] = "seatHero==3",  ["formula"] = "[3,1,2,6,4,5]",  ["clientPrecondition"] = "seatHero==3",  ["id"] = 129,  ["clientFormula"] = "result=[3,1,2,6,4,5]",  ["key"] = "defaultAttackSequence_3 ",}
 ,  [130] = {
-  ["precondition"] = "seatHero=4",  ["formula"] = "[1,2,3,4,5,6]",  ["clientPrecondition"] = "seatHero=4",  ["id"] = 130,  ["clientFormula"] = "result=[1,2,3,4,5,6]",  ["key"] = "defaultAttackSequence_4",}
+  ["precondition"] = "seatHero==4",  ["formula"] = "[1,2,3,4,5,6]",  ["clientPrecondition"] = "seatHero==4",  ["id"] = 130,  ["clientFormula"] = "result=[1,2,3,4,5,6]",  ["key"] = "defaultAttackSequence_4",}
 ,  [131] = {
-  ["precondition"] = "seatHero=5",  ["formula"] = "[2,3,1,5,6,4]",  ["clientPrecondition"] = "seatHero=5",  ["id"] = 131,  ["clientFormula"] = "result=[2,3,1,5,6,4]",  ["key"] = "defaultAttackSequence_5",}
+  ["precondition"] = "seatHero==5",  ["formula"] = "[2,3,1,5,6,4]",  ["clientPrecondition"] = "seatHero==5",  ["id"] = 131,  ["clientFormula"] = "result=[2,3,1,5,6,4]",  ["key"] = "defaultAttackSequence_5",}
 ,  [132] = {
-  ["precondition"] = "seatHero=6",  ["formula"] = "[3,1,2,6,4,5]",  ["clientPrecondition"] = "seatHero=6",  ["id"] = 132,  ["clientFormula"] = "result=[3,1,2,6,4,5]",  ["key"] = "defaultAttackSequence_6",}
+  ["precondition"] = "seatHero==6",  ["formula"] = "[3,1,2,6,4,5]",  ["clientPrecondition"] = "seatHero==6",  ["id"] = 132,  ["clientFormula"] = "result=[3,1,2,6,4,5]",  ["key"] = "defaultAttackSequence_6",}
 ,  [133] = {
   ["precondition"] = "1",  ["formula"] = "hp*0.1+atk*0.2+(physicalDef+magicDef)*0.4+(hit+dodge+cri+criCoeff+criDedCoeff+block+ductility)*5",  ["clientPrecondition"] = "1",  ["id"] = 133,  ["clientFormula"] = "result=equ_attr.hp*0.1+equ_attr.atk*0.2+(equ_attr.physicalDef+equ_attr.magicDef)*0.4+(equ_attr.hit+equ_attr.dodge+equ_attr.cri+equ_attr.criCoeff+equ_attr.criDedCoeff+equ_attr.block+equ_attr.ductility)*5",  ["key"] = "equFightValue",}
 ,  [134] = {
   ["precondition"] = "1",  ["formula"] = "damage if damage<=10000 else 10000+damage/10",  ["clientPrecondition"] = "1",  ["id"] = 134,  ["clientFormula"] = "result=(damage <= 10000 and damage) or 10000+damage/10",  ["key"] = "coinWarFogboss",}
 ,  [135] = {
-  ["precondition"] = "1",  ["formula"] = "1 if moonCardSurplusDay < 4 else 0",  ["clientPrecondition"] = "1",  ["id"] = 135,  ["clientFormula"] = "result=(moonCardSurplusDay < 4 and 1) or 0",  ["key"] = "moonCard",}
+  ["precondition"] = "1",  ["formula"] = "1 if moonCardSurplusDay < 9999999 else 0",  ["clientPrecondition"] = "1",  ["id"] = 135,  ["clientFormula"] = "result=(moonCardSurplusDay < 4 and 1) or 0",  ["key"] = "moonCard",}
 ,  [136] = {
   ["precondition"] = "1",  ["formula"] = "1 if weekCardSurplusDay < 4 else 0",  ["clientPrecondition"] = "1",  ["id"] = 136,  ["clientFormula"] = "result=(weekCardSurplusDay < 3 and 1) or 0",  ["key"] = "weekCard",}
 ,  [137] = {
