@@ -55,7 +55,7 @@ class CharacterEquipmentPackageComponent(Component):
     def new_data(self):
         return {}
 
-    def add_equipment(self, equipment_no, lucky_attr):
+    def add_equipment(self, equipment_no, lucky_attr=0):
         """添加装备
         """
         character_id = self.owner.base_info.id
