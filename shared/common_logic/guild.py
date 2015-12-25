@@ -485,3 +485,12 @@ class Guild(object):
         check_time(self._shop_data)
         self.save_data()
         return self._shop_data[shop_type]
+
+    def guild_info(self):
+        data = {'id': self._g_id,
+                'name': self._name,
+                'icon_id': self._icon_id,
+                'p_list': self._p_list,
+                'p_num': self.p_num,
+                }
+        return data
