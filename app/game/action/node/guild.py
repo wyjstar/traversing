@@ -110,9 +110,10 @@ def create_guild_801(data, player):
             return
 
         guild_info = create_res.get('guild_info')
-        rank_value = (9999-guild_info.get('id')) + (guild_info.get('level')*10000)
-        print rank_value, '=============guild rank value'
-        rank_helper.add_rank_info('GuildLevel', guild_info.get('id'), rank_value)
+        add_guild_rank(guild_info.get('id'), guild_info.get('level'))
+        # rank_value = (99999-guild_info.get('id')) + (guild_info.get('level')*100000)
+        # print rank_value, '=============guild rank value'
+        # rank_helper.add_rank_info('GuildLevel', guild_info.get('id'), rank_value)
 
         player.guild.g_id = guild_info.get('id')
         player.guild.exit_time = 1
@@ -136,6 +137,12 @@ def create_guild_801(data, player):
     # hook task
     hook_task(player, CONDITIONId.JOIN_GUILD, 1)
     return response.SerializeToString()
+
+
+def add_guild_rank(guild_id, guild_level):
+    rank_value = (99999-guild_id) + (guild_level*100000)
+    print rank_value, '=============guild rank value'
+    rank_helper.add_rank_info('GuildLevel', guild_id, rank_value)
 
 
 @remoteserviceHandle('gate')
@@ -1217,9 +1224,11 @@ def up_build_870(data, player):
         response.res.result = False
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
-    rank_value = (9999-g_id) + (remote_res.get('level')*10000)
-    print rank_value, '=============guild rank value'
-    rank_helper.add_rank_info('GuildLevel', g_id, rank_value)
+    # rank_value = (99999-g_id) + (remote_res.get('level')*100000)
+    # print rank_value, '=============guild rank value'
+    # rank_helper.add_rank_info('GuildLevel', g_id, rank_value)
+
+    add_guild_rank(g_id, remote_res.get('level'))
     response.res.result = True
     tlog_action.log('GuildBuildUp', player, player.guild.g_id,
                     remote_res.get('build_level'),
