@@ -26,7 +26,7 @@ def init_equipment_attr(equipment_no, attr_id=0):
         return mainAttr, minorAttr
 
     equip_attr_id = equipment_item.attr if attr_id == 0 else attr_id
-    logger('init_equipment_attr %s %s', equip_attr_id, attr_id)
+    logger.debug('init_equipment_attr %s %s', equip_attr_id, attr_id)
     equipment_attr_item = EQUIP_ATTR_CONFIG.get(int(equip_attr_id))
     if not equipment_attr_item:
         logger.error('error equipment attr no:%s:%s',
