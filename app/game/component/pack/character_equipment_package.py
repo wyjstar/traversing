@@ -38,7 +38,7 @@ class CharacterEquipmentPackageComponent(Component):
             minor_attr = equipment_info.get('minor_attr', {})
             is_guard = equipment_info.get('is_guard')  # guard
             prefix = equipment_info.get('prefix')  # prefix
-            attr_id = equipment_info.get('attr_id')  # attr_id
+            attr_id = equipment_info.get('attr_id', 0)  # attr_id
 
             enhance_info = equipment_data.get('enhance_info')  # 装备强化花费记录
             nobbing_effect = equipment_data.get('nobbing_effect')  # 装备锤炼效果
