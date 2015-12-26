@@ -30,6 +30,7 @@ from shared.utils.random_pick import random_pick_with_weight
 from app.game.core.mail_helper import send_mail
 import cPickle
 from app.game.core.task import hook_task, CONDITIONId
+import os
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -216,6 +217,7 @@ def fight_settlement_904(pro_data, player):
 
     if not request.is_skip and not pve_process_check(player, result, request.steps, const.BATTLE_PVE):
         logger.error("pve_process_check error!=================")
+        os.system("cp output ..")
         response = stage_response_pb2.StageSettlementResponse()
         res = response.res
         res.result = False
