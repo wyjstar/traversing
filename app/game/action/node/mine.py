@@ -553,7 +553,7 @@ def process_mine_result(player, position, fight_result,
     nickname = result['old_nickname']
 
     if fight_result is not True:
-        send_mail(conf_id=122, receive_id=target, nickname=nickname)
+        send_mail(conf_id=122, receive_id=target, nickname=player.base_info.base_name)
         return
 
     warFogLootRatio = game_configs.base_config['warFogLootRatio']
