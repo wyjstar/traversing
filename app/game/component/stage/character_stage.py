@@ -23,7 +23,7 @@ class CharacterStageComponent(Component):
         self._stage_info = {}             # 关卡信息
         self._award_info = {}             # 按章节记录奖励信息
                                           # self._elite_stage_info = {}
-        self._elite_stage_info = [0, 1]   # 精英关卡相关信息, {今日挑战次数，最后挑战日期}
+        self._elite_stage_info = [0, 0, 1]   # 精英关卡相关信息, {今日挑战次数，今日重置次数，最后挑战日期}
                                           # self._act_stage = {}
         self._act_stage_info = [0, 0, 1]  # 活动关卡相关信息, {今日挑战宝库次数，今日挑战校场次数,最后挑战日期}
         self._stage_up_time = 1           # 关卡挑战次数 更新 时间
@@ -73,9 +73,10 @@ class CharacterStageComponent(Component):
         logger.debug("character_stage check time")
         logger.debug(self._act_stage_info)
 
-        if is_next_day(current_time_stamp, self._elite_stage_info[1]):
+        if is_next_day(current_time_stamp, self._elite_stage_info[2]):
             self._elite_stage_info[0] = 0
-            self._elite_stage_info[1] = current_time_stamp
+            self._elite_stage_info[1] = 0
+            self._elite_stage_info[2] = current_time_stamp
         if is_next_day(current_time_stamp, self._act_stage_info[2]):
             self._act_stage_info[0] = 0
             self._act_stage_info[1] = 0
@@ -267,7 +268,7 @@ class CharacterStageComponent(Component):
         return self._already_look_hide_stage
 
     @already_look_hide_stage.setter
-    def elite_stage_info(self, v):
+    def already_look_hide_stage(self, v):
         self._already_look_hide_stage = v
 
     @property

@@ -44,7 +44,7 @@ def get_stages_901(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
 
-    stages_obj, elite_stage_times, act_coin_stage_times, act_exp_stage_times, act_lucky_heros = get_stage_info(stage_id, player)
+    stages_obj, elite_stage_times, elite_stage_reset_times, act_coin_stage_times, act_exp_stage_times, act_lucky_heros = get_stage_info(stage_id, player)
 
     response = stage_response_pb2.StageInfoResponse()
     for stage_obj in stages_obj:
@@ -61,6 +61,7 @@ def get_stages_901(pro_data, player):
         add.star_num = stage_obj.star_num
 
     response.elite_stage_times = elite_stage_times
+    response.elite_stage_reset_times = elite_stage_reset_times
     response.act_coin_stage_times = act_coin_stage_times
     response.act_exp_stage_times = act_exp_stage_times
 
@@ -364,17 +365,10 @@ def get_stage_info(stage_id, player):
         response.extend(stages_obj)
 
     player.stage_component.check_time() #  时间改变，重置数据
-    #if time.localtime(player.stage_component.elite_stage_info[1]).tm_yday == time.localtime().tm_yday:
-        #elite_stage_times = player.stage_component.elite_stage_info[0]
-    #else:
-        #elite_stage_times = 0
 
-    #if time.localtime(player.stage_component.act_stage_info[1]).tm_yday == time.localtime().tm_yday:
-        #act_stage_times = player.stage_component.act_stage_info[0]
-    #else:
-        #act_stage_times = 0
-
-    return response, player.stage_component.elite_stage_info[0], \
+    return response, \
+        player.stage_component.elite_stage_info[0], \
+        player.stage_component.elite_stage_info[1],\
         player.stage_component.act_stage_info[0],\
         player.stage_component.act_stage_info[1],\
         player.stage_component._act_lucky_heros

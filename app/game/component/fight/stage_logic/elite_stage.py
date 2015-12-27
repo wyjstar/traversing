@@ -17,7 +17,7 @@ class EliteStageLogic(base_stage.BaseStageLogic):
         """校验关卡是否开启"""
         player = self._player
         conf = self.get_stage_config()
-        tm_time = time.localtime(player.stage_component.elite_stage_info[1])
+        tm_time = time.localtime(player.stage_component.elite_stage_info[2])
 
         act_confs = game_configs.activity_config.get(24, [])
         is_open = 0
@@ -50,12 +50,12 @@ class EliteStageLogic(base_stage.BaseStageLogic):
         player = self._player
         stage_id = self._stage_id
         conf = self.get_stage_config()
-        tm_time = time.localtime(player.stage_component.elite_stage_info[1])
+        tm_time = time.localtime(player.stage_component.elite_stage_info[2])
         if result:
             if tm_time.tm_yday == time.localtime().tm_yday:
                 player.stage_component.elite_stage_info[0] += conf.timesExpend
             else:
-                player.stage_component.elite_stage_info = [conf.timesExpend, int(time.time())]
+                player.stage_component.elite_stage_info = [conf.timesExpend, 0, int(time.time())]
             stage_util.settle(player, result, response, conf, star_num=star_num)
             # hook task
             hook_task(player, CONDITIONId.STAGE, stage_id)

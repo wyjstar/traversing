@@ -12,6 +12,7 @@ message StageInfoResponse{
 	optional int32 act_exp_stage_times = 6;  //活动校场
     repeated StageLuckyHeroItems stage_lucky_hero = 7; //活动关卡幸运武将
     repeated int32 already_look_hide_stage = 8; //活动关卡幸运武将
+    repeated int32 elite_stage_reset_times = 9; //精英关卡重置次数
 }
 
 //请求章节奖励信息返回 command:902
@@ -49,6 +50,7 @@ message StageSettlementResponse{
 	optional GameResourcesResponse drops = 2;
     optional int32 hjqy_stage_id = 3; //黄巾起义关卡id
     optional int32 star_num = 4; //星星数
+    optional int32 battle_res = 5; //战斗结果  精英关卡
 }
 
 // 请求队形信息: 905
