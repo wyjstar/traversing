@@ -410,7 +410,7 @@ def fight_settlement(stage, result, player, star_num):
 
     stage.settle(result, response, star_num=star_num)
     # 触发黄巾起义
-    hjqy_stage_id = trigger_hjqy(player, result, times)
+    hjqy_stage_id = trigger_hjqy(player, result)
     response.hjqy_stage_id = hjqy_stage_id
     if hjqy_stage_id:
         tlog_action.log('TriggerHJQY', player, stage_id, hjqy_stage_id)
