@@ -13315,9 +13315,7 @@ stage_config={
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 600,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
 ,  ["res"] = 1003,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 10600001,}
-,}
+}
 ,  ["id"] = 100103,  ["fristGift"] = {
 }
 ,  ["open"] = {

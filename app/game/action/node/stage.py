@@ -291,17 +291,34 @@ def fight_settlement_904(pro_data, player):
     stage_info = player.fight_cache_component.stage_info
     red_units = stage_info.get('red_units')
 
-    death_num = len(red_units) - res[2]
+    round_to_kill_num = res[4]
+    red_left_num = res[3]
+    red_left_hp_percent = res[2]
+    death_num = len(red_units) - red_left_num
     for i in range(1, 4):
         star_condition = game_configs.base_config.get('star_condition')
         v = star_condition[i]
-        if death_num >= v and res[2] != 0:
+        if death_num >= v and red_left_num != 0:
             star = i
             break
 
     if request.is_skip:
         star = 3
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
+    ELITE_STAGE = 2
+    if request.stage_type == ELITE_STAGE:
+        conditions = stage_config.ClearanceConditions
+        for k, cond in conditions.items():
+            if k == 1 and (cond[0] in round_to_kill_num or round_to_kill_num[cond[0]] < cond[1]):
+                    result = False
+                    break
+            if k == 2 and (death_num > cond[0]):
+                    result = False
+                    break
+            if k == 3 and (red_left_hp_percent < cond[0]):
+                    result = False
+                    break
+
     res = fight_settlement(stage, result, player, star)
     logger.debug("steps:%s", request.steps)
     logger.debug("fight_settlement_904 end: %s" % time.time())

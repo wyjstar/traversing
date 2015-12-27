@@ -55,6 +55,7 @@ function CommonData:updateRefreshTime24(task,dt)
     getNetManager():getLoginNet():sendRefreshPlayer()               -- 刷新登陆信息
     getNetManager():getSignNet():sendGetSignListMsg()               -- 签到刷新
     getNetManager():getSevenDayNet():sendGetDayList(0)              -- 七日活动刷新
+    getNetManager():getSoldierNet():sendGetSoldierMsg()             -- 武将数据刷新
     --重置定时器
     task:setEnabled(false)
     self:initRefreshTime24()
@@ -1321,7 +1322,7 @@ function CommonData:isJingMaiRedDotInHome()
     --         local nextSealID = getTemplateManager():getSealTemplate():getNext(sealID)
     --         print("_LZD:-----2--------", v.hero_no, sealID, nextSealID)
     --         local sealCost = getTemplateManager():getSealTemplate():getExpend(nextSealID)
-    --         if sealCost and qjyl >= sealCost then -- 可以点穴
+    --         if sealCost and sealCost > 0 and qjyl >= sealCost then -- 可以点穴
     --             return true
     --         end
     --     end

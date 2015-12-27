@@ -402,6 +402,7 @@ class CharacterFightCacheComponent(Component):
             assert formula!=None, "Activitycurrency formula can not be None!"
             coin_num = eval(formula, {"damage_percent": self.damage_percent,"currency": stage_info.currency})
             drops.append(CommonGroupItem(const.COIN, coin_num, coin_num, const.RESOURCE))
+            self.add_settle_coin(drops, stage_info.currency)
 
         elif stage_info.type == 5:
             # 校场活动副本
@@ -424,14 +425,24 @@ class CharacterFightCacheComponent(Component):
                 assert formula!=None, "ActivityExpDrop formula can not be None!"
                 exp_item_num = eval(formula, {"ActivityExpDrop": exp_drop})
                 drops.append(CommonGroupItem(10003, exp_item_num, exp_item_num, const.ITEM))
+            self.add_settle_coin(drops, stage_info.currency)
         elif stage_info.type == 6:
             # 精英活动副本
             hero_soul_num = stage_info.reward
             drops.append(CommonGroupItem(const.RESOURCE, hero_soul_num, hero_soul_num, const.HERO_SOUL))
+            self.add_settle_coin(drops, stage_info.currency)
+            drops.extend(stage_info.ClearanceReward)
+
 
         logger.debug("drops %s" % drops)
 
         return drops
+
+    def add_settle_coin(self, drops, coin):
+        """docstring for add_settle_coin"""
+        drops.append(CommonGroupItem(const.RESOURCE, coin, coin, const.COIN))
+
+
 
     def __break_hero_units(self, red_units):
         self._not_replace = []
