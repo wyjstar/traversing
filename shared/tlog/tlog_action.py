@@ -413,6 +413,247 @@ def equipment_melting(player_data, equipmeng_no, equipmeng_id):
                              EquipmentId=equipmeng_id)
 
 
+def create_nickname(player_data, nickname):
+
+    log4tx.create_nickname(GameSvrId=game_server_id,
+                           dtEventTime=xtime.strdatetime(),
+                           GameAppID=game_app_id,
+                           OpenID=player_data.base_info.id,
+                           PlatID=plat_id,
+
+                           Nickname=nickname)
+
+
+def start_target_get_gift(player_data, target_id):
+
+    log4tx.start_target_get_gift(GameSvrId=game_server_id,
+                                 dtEventTime=xtime.strdatetime(),
+                                 GameAppID=game_app_id,
+                                 OpenID=player_data.base_info.id,
+                                 PlatID=plat_id,
+
+                                 TargetID=target_id)
+
+
+def sign_in(player_data, day, is_double):
+
+    log4tx.sign_in(GameSvrId=game_server_id,
+                   dtEventTime=xtime.strdatetime(),
+                   GameAppID=game_app_id,
+                   OpenID=player_data.base_info.id,
+                   PlatID=plat_id,
+
+                   Day=day,
+                   IsDouble=is_double)
+
+
+def continus_sign_in(player_data, day):
+
+    log4tx.continus_sign_in(GameSvrId=game_server_id,
+                            dtEventTime=xtime.strdatetime(),
+                            GameAppID=game_app_id,
+                            OpenID=player_data.base_info.id,
+                            PlatID=plat_id,
+
+                            Day=day)
+
+
+def repair_sign_in(player_data, day, day1):
+
+    log4tx.repair_sign_in(GameSvrId=game_server_id,
+                          dtEventTime=xtime.strdatetime(),
+                          GameAppID=game_app_id,
+                          OpenID=player_data.base_info.id,
+                          PlatID=plat_id,
+
+                          Day=day,
+                          Day1=day1)
+
+
+def sign_in_box(player_data, box_id):
+
+    log4tx.sign_in_box(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+
+                       BoxID=box_id)
+
+
+def online_gift(player_data, gift_id):
+
+    log4tx.online_gift(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+
+                       GiftID=gift_id)
+
+
+def login_gift(player_data, activity_id):
+
+    log4tx.login_gift(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+
+                      ActivityID=activity_id)
+
+
+def feast(player_data, stamina):
+
+    log4tx.feast(GameSvrId=game_server_id,
+                 dtEventTime=xtime.strdatetime(),
+                 GameAppID=game_app_id,
+                 OpenID=player_data.base_info.id,
+                 PlatID=plat_id,
+
+                 Stamina=stamina)
+
+
+def activity(player_data, activity_id):
+
+    log4tx.activity(GameSvrId=game_server_id,
+                    dtEventTime=xtime.strdatetime(),
+                    GameAppID=game_app_id,
+                    OpenID=player_data.base_info.id,
+                    PlatID=plat_id,
+
+                    ActivityID=activity_id)
+
+
+def level_gift(player_data, activity_id):
+
+    log4tx.level_gift(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+
+                      ActivityID=activity_id)
+
+
+def share(player_data, tid):
+
+    log4tx.share(GameSvrId=game_server_id,
+                 dtEventTime=xtime.strdatetime(),
+                 GameAppID=game_app_id,
+                 OpenID=player_data.base_info.id,
+                 PlatID=plat_id,
+
+                 TaskID=tid)
+
+
+def draw_rebate(player_data, rid):
+
+    log4tx.draw_rebate(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+
+                       RebateID=rid)
+
+
+def buy_coin(player_data, need_gold, buy_times, coin_num):
+
+    log4tx.buy_coin(GameSvrId=game_server_id,
+                    dtEventTime=xtime.strdatetime(),
+                    GameAppID=game_app_id,
+                    OpenID=player_data.base_info.id,
+                    PlatID=plat_id,
+
+                    NeedGold=need_gold,
+                    BuyTimes=buy_times,
+                    CoinNum=coin_num)
+
+
+def god_hero_exchange(player_data, activity_id, exchange_num):
+
+    log4tx.god_hero_exchange(GameSvrId=game_server_id,
+                             dtEventTime=xtime.strdatetime(),
+                             GameAppID=game_app_id,
+                             OpenID=player_data.base_info.id,
+                             PlatID=plat_id,
+
+                             ActivityID=activity_id,
+                             ExchangeNum=exchange_num)
+
+
+def trigger_hjqy(player_data, stage_id, hjqy_stage_id):
+
+    log4tx.trigger_hjqy(GameSvrId=game_server_id,
+                        dtEventTime=xtime.strdatetime(),
+                        GameAppID=game_app_id,
+                        OpenID=player_data.base_info.id,
+                        PlatID=plat_id,
+
+                        StageID=stage_id,
+                        HJQYStageID=hjqy_stage_id)
+
+
+def battle_hjqy(player_data, boss_id, is_kill):
+
+    log4tx.battle_hjqy(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+
+                       BossID=boss_id,
+                       IsKill=is_kill)
+
+
+def open_chest(player_data, stage_id):
+
+    log4tx.open_chest(GameSvrId=game_server_id,
+                      dtEventTime=xtime.strdatetime(),
+                      GameAppID=game_app_id,
+                      OpenID=player_data.base_info.id,
+                      PlatID=plat_id,
+
+                      StageID=stage_id)
+
+
+def open_star_chest(player_data, chapter_id, award_type):
+
+    log4tx.open_star_chest(GameSvrId=game_server_id,
+                           dtEventTime=xtime.strdatetime(),
+                           GameAppID=game_app_id,
+                           OpenID=player_data.base_info.id,
+                           PlatID=plat_id,
+
+                           ChapterID=chapter_id,
+                           AwardType=award_type)
+
+
+def star_random(player_data, random_num, times):
+
+    log4tx.star_random(GameSvrId=game_server_id,
+                       dtEventTime=xtime.strdatetime(),
+                       GameAppID=game_app_id,
+                       OpenID=player_data.base_info.id,
+                       PlatID=plat_id,
+
+                       RandomNum=random_num,
+                       Times=times)
+
+
+def deal_star_random(player_data, random_num, deal_type):
+
+    log4tx.deal_star_random(GameSvrId=game_server_id,
+                            dtEventTime=xtime.strdatetime(),
+                            GameAppID=game_app_id,
+                            OpenID=player_data.base_info.id,
+                            PlatID=plat_id,
+
+                            RandomNum=random_num,
+                            DealType=deal_type)
+
+
 # TLOG分类打印函数
 tlog_funcs = {}
 tlog_funcs['PlayerLogin'] = player_login
@@ -446,6 +687,28 @@ tlog_funcs['HeroSacrifice'] = hero_sacrifice
 tlog_funcs['EquipmentEnhance'] = equipment_enhance
 tlog_funcs['EquipmentCompose'] = equipment_compose
 tlog_funcs['EquipmentMelting'] = equipment_melting
+
+tlog_funcs['CreateNickname'] = create_nickname
+tlog_funcs['StartTargetGetGift'] = start_target_get_gift
+tlog_funcs['SignIn'] = sign_in
+tlog_funcs['ContinusSignIn'] = continus_sign_in
+tlog_funcs['RepairSignIn'] = repair_sign_in
+tlog_funcs['SignInBox'] = sign_in_box
+tlog_funcs['OnlineGift'] = online_gift
+tlog_funcs['LoginGift'] = login_gift
+tlog_funcs['Feast'] = feast
+tlog_funcs['Activity'] = activity
+tlog_funcs['LevelGift'] = level_gift
+tlog_funcs['Share'] = share
+tlog_funcs['DrawRebate'] = draw_rebate
+tlog_funcs['BuyCoin'] = buy_coin
+tlog_funcs['GodHeroExchange'] = god_hero_exchange
+tlog_funcs['TriggerHJQY'] = trigger_hjqy
+tlog_funcs['BattleHJQY'] = battle_hjqy
+tlog_funcs['OpenChest'] = open_chest
+tlog_funcs['OpenStarChest'] = open_star_chest
+tlog_funcs['StarRandom'] = star_random
+tlog_funcs['DealStarRandom'] = deal_star_random
 
 
 def log(mod, *args, **kwds):

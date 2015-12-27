@@ -409,8 +409,11 @@ def fight_settlement(stage, result, player, star_num):
         return response.SerializeToString()
 
     stage.settle(result, response, star_num=star_num)
-    #触发黄巾起义
-    response.hjqy_stage_id = trigger_hjqy(player, result)
+    # 触发黄巾起义
+    hjqy_stage_id = trigger_hjqy(player, result)
+    response.hjqy_stage_id = hjqy_stage_id
+    if hjqy_stage_id:
+        tlog_action.log('TriggerHJQY', player, stage_id, hjqy_stage_id)
     response.star_num = star_num
     logger.debug("drops %s" % response.drops)
     logger.debug("star_num %s" % response.star_num)
@@ -564,8 +567,11 @@ def stage_sweep(stage_id, times, player, sweep_type):
 
     player.pay.pay(need_gold, const.STAGE_SWEEP, func)
 
-    #触发黄巾起义
-    response.hjqy_stage_id = trigger_hjqy(player, result, times)
+    # 触发黄巾起义
+    hjqy_stage_id = trigger_hjqy(player, result, times)
+    response.hjqy_stage_id = hjqy_stage_id
+    if hjqy_stage_id:
+        tlog_action.log('TriggerHJQY', player, stage_id, hjqy_stage_id)
 
     res.result = True
     tlog_action.log('SweepFlow', player, stage_id, times, tlog_event_id)
@@ -656,6 +662,7 @@ def get_award_909(pro_data, player):
         return_data = gain(player, drop, const.CHAPTER_AWARD)
         get_return(player, return_data, response.drops)
         player.stage_component.save_data()
+        tlog_action.log('OpenStarChest', player, chapter_id, award_type)
 
     else:
         response.res.result = False
@@ -723,6 +730,7 @@ def get_star_random_1828(pro_data, player):
         chapter_obj.random_gift_times += 1
         chapter_obj.star_gift = 3
         player.stage_component.save_data()
+        tlog_action.log('StarRandom', player, random_num, chapter_obj.random_gift_times)
 
     player.pay.pay(need_gold, const.STAGE_STAR_GIFT, func)
 
@@ -787,6 +795,7 @@ def deal_random_1829(pro_data, player):
             return response.SerializePartialToString()
         chapter_obj.star_gift = 2
 
+    tlog_action.log('DealStarRandom', player, chapter_obj.now_random, request.res)
     player.stage_component.save_data()
 
     response.res.result = True
@@ -844,6 +853,7 @@ def open_chest_1811(pro_data, player):
 
     stage_obj.chest_state = 1
     player.stage_component.save_data()
+    tlog_action.log('OpenChest', player, stage_id)
 
     response.res.result = True
     # logger.debug(response)

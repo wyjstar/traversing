@@ -10,6 +10,7 @@ from gfirefly.server.logobj import logger
 from app.proto_file import online_gift_pb2
 from app.proto_file import recharge_pb2
 from shared.utils.const import const
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -43,6 +44,7 @@ def get_online_gift_1121(data, player):
                 player.online_gift.received_gift_ids.append(request.gift_id)
                 # player.online_gift.reset()
                 player.online_gift.save_data()
+                tlog_action.log('OnlineGift', player, request.gift_id)
 
                 response.result = True
                 return response.SerializeToString()

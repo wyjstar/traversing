@@ -6,6 +6,7 @@ from app.proto_file.feast_pb2 import EatFeastResponse, GetEatTimeResponse
 from gfirefly.server.globalobject import remoteserviceHandle
 from shared.db_opear.configs_data import game_configs
 import time
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -72,6 +73,7 @@ def eat_feast(player):
             player.stamina.save_data()
             player.feast.last_eat_time = int(time.time())
             player.feast.save_data()
+            tlog_action.log('Feast', player, player.stamina.stamina)
             return 2
     # 没到时间
     return 3

@@ -95,7 +95,9 @@ def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, r
     player_info["damage_hp"] = current_damage_hp
     hjqy_manager.add_rank_item(player_info) # 添加排行
 
+    is_kill = 0
     if boss.get_state() == const.BOSS_DEAD: # 击杀boss
+        is_kill = 1
         # send last kill reward mail
         hjqyKillBossReward = game_configs.base_config.get("hjqyKillBossRewardID")
         mail_data, _ = deal_mail(conf_id=hjqyKillBossReward, receive_id=int(player_id))
@@ -106,7 +108,7 @@ def hjqy_battle_remote(player_info, boss_id, str_red_units, red_best_skill_id, r
     #return dict(result=result, state=boss.get_state())
     logger.debug("hjqy_battle_remote over===================")
     boss.save_data()
-    return result, boss.get_state(), current_damage_hp
+    return result, boss.get_state(), current_damage_hp, is_kill
 
 @rootserviceHandle
 def blue_units_remote(boss_id):

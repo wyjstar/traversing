@@ -11,6 +11,7 @@ from shared.utils.const import const
 from app.game.core.task import task_status, get_condition_info, \
     CONDITIONId, UPDATE_CONDITION_ADD, UPDATE_CONDITION_COVER, \
     UPDATE_CONDITION_COVER_RANK
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -100,6 +101,7 @@ def share_1823(data, player):
 
     player.task.tasks[tid] = 2
     player.task.save_data()
+    tlog_action.log('Share', player, tid)
 
     response.tid = tid
     response.res.result = True

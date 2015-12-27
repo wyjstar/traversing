@@ -8,6 +8,7 @@ from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import gain, get_return
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
+from shared.tlog import tlog_action
 
 
 @remoteserviceHandle('gate')
@@ -52,6 +53,8 @@ def get_login_gift_826(pro_data, player):
     #activity_type = args.activity_type
     response = GetLoginGiftResponse()
     res, err_no = get_login_gift(activity_id, response, player)
+    if res:
+        tlog_action.log('LoginGift', player, activity_id)
     response.result = res
     if err_no:
             response.result_no = err_no

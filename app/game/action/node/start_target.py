@@ -10,6 +10,7 @@ from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 import time
+from shared.tlog import tlog_action
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -358,6 +359,8 @@ def get_target_info_1827(data, player):
                 player.start_target.target_info[target_id] = [1, info.get('jindu') + 1]
         else:
             player.start_target.target_info[target_id] = [3, 0]
+
+        tlog_action.log('StartTargetGetGift', player, target_id)
 
     player.pay.pay(need_gold, const.START_TARGET, func)
     player.start_target.save_data()

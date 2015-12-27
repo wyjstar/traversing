@@ -50,12 +50,12 @@ def draw_rebate_5433(data, player):
             return_data = gain(player, day_reward,
                                const.RECHARGE)  # 获取
             get_return(player, return_data, response.gain)
+            tlog_action.log('DrawRebate', player, req.rid)
         else:
             response.res.result = False
             response.res.result_no = 54332
     else:
         response.res.result = False
         response.res.result_no = 54331
-        
     print 'draw_rebate_5433', response
     return response.SerializePartialToString()

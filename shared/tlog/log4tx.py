@@ -740,3 +740,412 @@ def equipment_melting(GameSvrId=0, dtEventTime=0, GameAppID=0,
     logclient.gethandler().send_msg(sendmsg + '\n')
     if debug:
         print sendmsg
+
+
+def create_nickname(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                    PlatID=0, OpenID=0, Nickname=0):
+
+    message = ['CreateNickname']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Nickname)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def start_target_get_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                          PlatID=0, OpenID=0, TargetID=0):
+
+    message = ['StartTargetGetGift']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TargetID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
+            PlatID=0, OpenID=0, Day=0, IsDouble=0):
+
+    message = ['SignIn']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Day)
+    message.append(IsDouble)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def continus_sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                     PlatID=0, OpenID=0, Day=0):
+
+    message = ['ContinusSignIn']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Day)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def repair_sign_in(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                   PlatID=0, OpenID=0, Day=0, Day1=0):
+
+    message = ['RepairSignIn']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Day)
+    message.append(Day1)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def sign_in_box(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                PlatID=0, OpenID=0, BoxID=0):
+
+    message = ['SignInBox']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(BoxID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def online_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                PlatID=0, OpenID=0, GiftID=0):
+
+    message = ['OnlineGift']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(GiftID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def login_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
+               PlatID=0, OpenID=0, ActivityID=0):
+
+    message = ['LoginGift']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ActivityID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def feast(GameSvrId=0, dtEventTime=0, GameAppID=0,
+          PlatID=0, OpenID=0, Stamina=0):
+
+    message = ['Feast']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(Stamina)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def activity(GameSvrId=0, dtEventTime=0, GameAppID=0,
+             PlatID=0, OpenID=0, ActivityID=0):
+
+    message = ['Activity']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ActivityID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def level_gift(GameSvrId=0, dtEventTime=0, GameAppID=0,
+               PlatID=0, OpenID=0, ActivityID=0):
+
+    message = ['LevelGift']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ActivityID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def share(GameSvrId=0, dtEventTime=0, GameAppID=0,
+          PlatID=0, OpenID=0, TaskID=0):
+
+    message = ['Share']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(TaskID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def draw_rebate(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                PlatID=0, OpenID=0, RebateID=0):
+
+    message = ['DrawRebate']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(RebateID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def buy_coin(GameSvrId=0, dtEventTime=0, GameAppID=0,
+             PlatID=0, OpenID=0, NeedGold=0, BuyTimes=0, CoinNum=0):
+
+    message = ['BuyCoin']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(NeedGold)
+    message.append(BuyTimes)
+    message.append(CoinNum)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def god_hero_exchange(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                      PlatID=0, OpenID=0, ActivityID=0, ExchangeNum=0):
+
+    message = ['GodHeroExchange']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ActivityID)
+    message.append(ExchangeNum)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def trigger_hjqy(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                 PlatID=0, OpenID=0, StageID=0, HJQYStageID=0):
+
+    message = ['TriggerHJQY']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(StageID)
+    message.append(HJQYStageID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def battle_hjqy(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                PlatID=0, OpenID=0, BossID=0, IsKill=0):
+
+    message = ['TriggerHJQY']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(BossID)
+    message.append(IsKill)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def open_chest(GameSvrId=0, dtEventTime=0, GameAppID=0,
+               PlatID=0, OpenID=0, StageID=0):
+
+    message = ['OpenChest']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(StageID)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def open_star_chest(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                    PlatID=0, OpenID=0, ChapterID=0, AwardType=0):
+
+    message = ['OpenStarChest']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(ChapterID)
+    message.append(AwardType)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def star_random(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                PlatID=0, OpenID=0, RandomNum=0, Times=0):
+
+    message = ['StarRandom']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(RandomNum)
+    message.append(Times)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
+
+
+def deal_star_random(GameSvrId=0, dtEventTime=0, GameAppID=0,
+                     PlatID=0, OpenID=0, RandomNum=0, DealType=0):
+
+    message = ['DealStarRandom']
+
+    message.append(GameSvrId)
+    message.append(dtEventTime)
+    message.append(GameAppID)
+    message.append(PlatID)
+    message.append(OpenID)
+
+    message.append(RandomNum)
+    message.append(DealType)
+
+    sendmsg = _format(message)
+    logclient.gethandler().send_msg(sendmsg + '\n')
+    if debug:
+        print sendmsg
