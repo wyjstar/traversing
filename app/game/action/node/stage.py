@@ -420,8 +420,9 @@ def fight_settlement(stage, result, player, star_num):
         return response.SerializeToString()
 
     stage.settle(result, response, star_num=star_num)
-    #触发黄巾起义
+    # 触发黄巾起义
     response.hjqy_stage_id = trigger_hjqy(player, result)
+    response.battle_res = result
     response.star_num = star_num
     logger.debug("drops %s" % response.drops)
     logger.debug("star_num %s" % response.star_num)
@@ -957,5 +958,39 @@ def look_hide_stage_1842(pro_data, player):
         player.stage_component.save_data()
 
     response = stage_response_pb2.LookHideStageResponse()
+    response.res.result = True
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def elite_stage_times_reset_1845(pro_data, player):
+    """重置精英关卡攻打次数
+    """
+    response = stage_response_pb2.EliteStageTimesResetResponse()
+
+    tm_time = time.localtime(player.stage_component.elite_stage_info[2])
+    max_add_times = game_configs.vip_config.get(player.base_info.vip_level).eliteCopyAdditionalTimes
+
+    is_to
+    if tm_time.tm_yday != time.localtime().tm_yday:
+        player.stage_component.elite_stage_info = [0, 0, int(time.time())]
+
+    if player.stage_component.elite_stage_info[1] >= max_add_times:
+        response.res.result = False
+        response.res.result_no = 805
+        return response.SerializePartialToString()
+    need_gold = game_configs.base_config.get('eliteDuplicatePrice')[player.stage_component.elite_stage_info[1]]
+    if player.finance.gold < need_gold:
+        logger.error("gold not enough")
+        response.res.result = False
+        response.res.result_no = 102
+        return response.SerializePartialToString()
+
+    def func():
+        player.stage_component.elite_stage_info[1] += 1
+        player.stage_component.save_data()
+
+    player.pay.pay(need_gold, const.GUILD_CREATE, func)
+
     response.res.result = True
     return response.SerializePartialToString()

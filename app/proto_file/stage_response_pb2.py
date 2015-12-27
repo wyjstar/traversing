@@ -15,7 +15,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='stage_response.proto',
   package='',
-  serialized_pb='\n\x14stage_response.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"\x80\x02\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\x12\x19\n\x11\x65lite_stage_times\x18\x02 \x02(\x05\x12\x17\n\x0f\x61\x63t_stage_times\x18\x03 \x01(\x05\x12\x14\n\x0cplot_chapter\x18\x04 \x01(\x05\x12\x1c\n\x14\x61\x63t_coin_stage_times\x18\x05 \x01(\x05\x12\x1b\n\x13\x61\x63t_exp_stage_times\x18\x06 \x01(\x05\x12.\n\x10stage_lucky_hero\x18\x07 \x03(\x0b\x32\x14.StageLuckyHeroItems\x12\x1f\n\x17\x61lready_look_hide_stage\x18\x08 \x03(\x05\"7\n\x13\x43hapterInfoResponse\x12 \n\x0bstage_award\x18\x01 \x03(\x0b\x32\x0b.StageAward\"9\n\x19UpdataPlotChapterResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"\x86\x03\n\x12StageStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x64rop_num\x18\x02 \x01(\x05\x12\x18\n\x03red\x18\x04 \x03(\x0b\x32\x0b.BattleUnit\x12\x1d\n\x04\x62lue\x18\x05 \x03(\x0b\x32\x0f.BattleUnitGrop\x12\x1b\n\x06\x66riend\x18\x06 \x01(\x0b\x32\x0b.BattleUnit\x12\x12\n\nhero_unpar\x18\x07 \x01(\x05\x12\x18\n\x10hero_unpar_level\x18\x08 \x01(\x05\x12\x15\n\rmonster_unpar\x18\t \x01(\x05\x12\x1c\n\x07replace\x18\n \x01(\x0b\x32\x0b.BattleUnit\x12\x12\n\nreplace_no\x18\x0b \x01(\x05\x12\x1a\n\x05\x61wake\x18\x0c \x03(\x0b\x32\x0b.BattleUnit\x12\x10\n\x08\x61wake_no\x18\r \x03(\x05\x12\r\n\x05seed1\x18\x0e \x01(\x05\x12\r\n\x05seed2\x18\x0f \x01(\x05\x12\'\n\x07\x63onsume\x18\x10 \x01(\x0b\x32\x16.GameResourcesResponse\"\x87\x01\n\x17StageSettlementResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x15\n\rhjqy_stage_id\x18\x03 \x01(\x05\x12\x10\n\x08star_num\x18\x04 \x01(\x05\"#\n\x11\x46ormationResponse\x12\x0e\n\x06lineup\x18\x01 \x03(\x05\"4\n\x14UnparalleledResponse\x12\x1c\n\x05unpar\x18\x01 \x03(\x0b\x32\r.Unparalleled\"\x99\x01\n\x12StageSweepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x03(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x15\n\rhjqy_stage_id\x18\x04 \x01(\x05\"2\n\x12ResetStageResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"i\n\x11StarAwardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0f\n\x07gift_id\x18\x03 \x01(\x05\"]\n\x16OpenStageChestResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"I\n\x15GetStarRandomResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nrandom_num\x18\x02 \x01(\x05\"Y\n\x12\x44\x65\x61lRandomResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\";\n\x1bUpdataChapterPromptResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"5\n\x15LookHideStageResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
+  serialized_pb='\n\x14stage_response.proto\x1a\x0bstage.proto\x1a\x0c\x63ommon.proto\"\xa1\x02\n\x11StageInfoResponse\x12\x15\n\x05stage\x18\x01 \x03(\x0b\x32\x06.Stage\x12\x19\n\x11\x65lite_stage_times\x18\x02 \x02(\x05\x12\x17\n\x0f\x61\x63t_stage_times\x18\x03 \x01(\x05\x12\x14\n\x0cplot_chapter\x18\x04 \x01(\x05\x12\x1c\n\x14\x61\x63t_coin_stage_times\x18\x05 \x01(\x05\x12\x1b\n\x13\x61\x63t_exp_stage_times\x18\x06 \x01(\x05\x12.\n\x10stage_lucky_hero\x18\x07 \x03(\x0b\x32\x14.StageLuckyHeroItems\x12\x1f\n\x17\x61lready_look_hide_stage\x18\x08 \x03(\x05\x12\x1f\n\x17\x65lite_stage_reset_times\x18\t \x03(\x05\"7\n\x13\x43hapterInfoResponse\x12 \n\x0bstage_award\x18\x01 \x03(\x0b\x32\x0b.StageAward\"9\n\x19UpdataPlotChapterResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"\x86\x03\n\x12StageStartResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x10\n\x08\x64rop_num\x18\x02 \x01(\x05\x12\x18\n\x03red\x18\x04 \x03(\x0b\x32\x0b.BattleUnit\x12\x1d\n\x04\x62lue\x18\x05 \x03(\x0b\x32\x0f.BattleUnitGrop\x12\x1b\n\x06\x66riend\x18\x06 \x01(\x0b\x32\x0b.BattleUnit\x12\x12\n\nhero_unpar\x18\x07 \x01(\x05\x12\x18\n\x10hero_unpar_level\x18\x08 \x01(\x05\x12\x15\n\rmonster_unpar\x18\t \x01(\x05\x12\x1c\n\x07replace\x18\n \x01(\x0b\x32\x0b.BattleUnit\x12\x12\n\nreplace_no\x18\x0b \x01(\x05\x12\x1a\n\x05\x61wake\x18\x0c \x03(\x0b\x32\x0b.BattleUnit\x12\x10\n\x08\x61wake_no\x18\r \x03(\x05\x12\r\n\x05seed1\x18\x0e \x01(\x05\x12\r\n\x05seed2\x18\x0f \x01(\x05\x12\'\n\x07\x63onsume\x18\x10 \x01(\x0b\x32\x16.GameResourcesResponse\"\x9b\x01\n\x17StageSettlementResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x15\n\rhjqy_stage_id\x18\x03 \x01(\x05\x12\x10\n\x08star_num\x18\x04 \x01(\x05\x12\x12\n\nbattle_res\x18\x05 \x01(\x08\"#\n\x11\x46ormationResponse\x12\x0e\n\x06lineup\x18\x01 \x03(\x05\"4\n\x14UnparalleledResponse\x12\x1c\n\x05unpar\x18\x01 \x03(\x0b\x32\r.Unparalleled\"\x99\x01\n\x12StageSweepResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x03(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x15\n\rhjqy_stage_id\x18\x04 \x01(\x05\"2\n\x12ResetStageResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"i\n\x11StarAwardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x0f\n\x07gift_id\x18\x03 \x01(\x05\"]\n\x16OpenStageChestResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"I\n\x15GetStarRandomResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x12\n\nrandom_num\x18\x02 \x01(\x05\"Y\n\x12\x44\x65\x61lRandomResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12%\n\x05\x64rops\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\";\n\x1bUpdataChapterPromptResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"5\n\x15LookHideStageResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\"<\n\x1c\x45liteStageTimesResetResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse')
 
 
 
@@ -83,6 +83,13 @@ _STAGEINFORESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='elite_stage_reset_times', full_name='StageInfoResponse.elite_stage_reset_times', index=8,
+      number=9, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -93,7 +100,7 @@ _STAGEINFORESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=52,
-  serialized_end=308,
+  serialized_end=341,
 )
 
 
@@ -120,8 +127,8 @@ _CHAPTERINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=310,
-  serialized_end=365,
+  serialized_start=343,
+  serialized_end=398,
 )
 
 
@@ -148,8 +155,8 @@ _UPDATAPLOTCHAPTERRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=367,
-  serialized_end=424,
+  serialized_start=400,
+  serialized_end=457,
 )
 
 
@@ -274,8 +281,8 @@ _STAGESTARTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=427,
-  serialized_end=817,
+  serialized_start=460,
+  serialized_end=850,
 )
 
 
@@ -314,6 +321,13 @@ _STAGESETTLEMENTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='battle_res', full_name='StageSettlementResponse.battle_res', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -323,8 +337,8 @@ _STAGESETTLEMENTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=820,
-  serialized_end=955,
+  serialized_start=853,
+  serialized_end=1008,
 )
 
 
@@ -351,8 +365,8 @@ _FORMATIONRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=957,
-  serialized_end=992,
+  serialized_start=1010,
+  serialized_end=1045,
 )
 
 
@@ -379,8 +393,8 @@ _UNPARALLELEDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=994,
-  serialized_end=1046,
+  serialized_start=1047,
+  serialized_end=1099,
 )
 
 
@@ -428,8 +442,8 @@ _STAGESWEEPRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1049,
-  serialized_end=1202,
+  serialized_start=1102,
+  serialized_end=1255,
 )
 
 
@@ -456,8 +470,8 @@ _RESETSTAGERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1204,
-  serialized_end=1254,
+  serialized_start=1257,
+  serialized_end=1307,
 )
 
 
@@ -498,8 +512,8 @@ _STARAWARDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1256,
-  serialized_end=1361,
+  serialized_start=1309,
+  serialized_end=1414,
 )
 
 
@@ -533,8 +547,8 @@ _OPENSTAGECHESTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1363,
-  serialized_end=1456,
+  serialized_start=1416,
+  serialized_end=1509,
 )
 
 
@@ -568,8 +582,8 @@ _GETSTARRANDOMRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1458,
-  serialized_end=1531,
+  serialized_start=1511,
+  serialized_end=1584,
 )
 
 
@@ -603,8 +617,8 @@ _DEALRANDOMRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1533,
-  serialized_end=1622,
+  serialized_start=1586,
+  serialized_end=1675,
 )
 
 
@@ -631,8 +645,8 @@ _UPDATACHAPTERPROMPTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1624,
-  serialized_end=1683,
+  serialized_start=1677,
+  serialized_end=1736,
 )
 
 
@@ -659,8 +673,36 @@ _LOOKHIDESTAGERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1685,
-  serialized_end=1738,
+  serialized_start=1738,
+  serialized_end=1791,
+)
+
+
+_ELITESTAGETIMESRESETRESPONSE = _descriptor.Descriptor(
+  name='EliteStageTimesResetResponse',
+  full_name='EliteStageTimesResetResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='res', full_name='EliteStageTimesResetResponse.res', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1793,
+  serialized_end=1853,
 )
 
 _STAGEINFORESPONSE.fields_by_name['stage'].message_type = stage_pb2._STAGE
@@ -690,6 +732,7 @@ _DEALRANDOMRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPO
 _DEALRANDOMRESPONSE.fields_by_name['drops'].message_type = common_pb2._GAMERESOURCESRESPONSE
 _UPDATACHAPTERPROMPTRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _LOOKHIDESTAGERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
+_ELITESTAGETIMESRESETRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 DESCRIPTOR.message_types_by_name['StageInfoResponse'] = _STAGEINFORESPONSE
 DESCRIPTOR.message_types_by_name['ChapterInfoResponse'] = _CHAPTERINFORESPONSE
 DESCRIPTOR.message_types_by_name['UpdataPlotChapterResponse'] = _UPDATAPLOTCHAPTERRESPONSE
@@ -705,6 +748,7 @@ DESCRIPTOR.message_types_by_name['GetStarRandomResponse'] = _GETSTARRANDOMRESPON
 DESCRIPTOR.message_types_by_name['DealRandomResponse'] = _DEALRANDOMRESPONSE
 DESCRIPTOR.message_types_by_name['UpdataChapterPromptResponse'] = _UPDATACHAPTERPROMPTRESPONSE
 DESCRIPTOR.message_types_by_name['LookHideStageResponse'] = _LOOKHIDESTAGERESPONSE
+DESCRIPTOR.message_types_by_name['EliteStageTimesResetResponse'] = _ELITESTAGETIMESRESETRESPONSE
 
 class StageInfoResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -795,6 +839,12 @@ class LookHideStageResponse(_message.Message):
   DESCRIPTOR = _LOOKHIDESTAGERESPONSE
 
   # @@protoc_insertion_point(class_scope:LookHideStageResponse)
+
+class EliteStageTimesResetResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _ELITESTAGETIMESRESETRESPONSE
+
+  # @@protoc_insertion_point(class_scope:EliteStageTimesResetResponse)
 
 
 # @@protoc_insertion_point(module_scope)

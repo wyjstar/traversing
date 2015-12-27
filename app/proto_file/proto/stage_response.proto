@@ -50,7 +50,7 @@ message StageSettlementResponse{
 	optional GameResourcesResponse drops = 2;
     optional int32 hjqy_stage_id = 3; //黄巾起义关卡id
     optional int32 star_num = 4; //星星数
-    optional int32 battle_res = 5; //战斗结果  精英关卡
+    optional bool battle_res = 5; //战斗结果  精英关卡
 }
 
 // 请求队形信息: 905
@@ -107,6 +107,12 @@ message UpdataChapterPromptResponse{
 
 // 1841
 message LookHideStageResponse
+{
+    required CommonResponse res = 1;
+}
+
+// 1845
+message EliteStageTimesResetResponse
 {
     required CommonResponse res = 1;
 }

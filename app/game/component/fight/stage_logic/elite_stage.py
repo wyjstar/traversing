@@ -31,9 +31,7 @@ class EliteStageLogic(base_stage.BaseStageLogic):
         if is_open:
             add_times = act_conf1.parameterA
 
-        max_times = game_configs.vip_config.get(player.base_info.vip_level). \
-            eliteCopyTimes - player.stage_component. \
-            elite_stage_info[0] + add_times
+        max_times = game_configs.base_config.get('eliteDuplicateTime') + add_times
 
         if tm_time.tm_yday == time.localtime().tm_yday \
                 and max_times < conf.timesExpend:
