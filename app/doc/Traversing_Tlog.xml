@@ -354,7 +354,7 @@
         <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="EquipmentNo" type="int" desc="装备编号,配置ID" />
-        <entry name="EquipmentId" type="int" desc="装备ID,唯一uuid" />
+        <entry name="EquipmentId" type="string"        size="64" desc="装备ID,唯一uuid" />
         <entry name="BeforeLevel" type="int" desc="强化前等级" />
         <entry name="AfterLevel" type="int" desc="强化后等级" />
     </struct>
@@ -368,7 +368,7 @@
         <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="EquipmentNo" type="int" desc="装备编号,配置ID" />
-        <entry name="EquipmentId" type="int" desc="装备ID,唯一uuid" />
+        <entry name="EquipmentId" type="string"        size="64" desc="装备ID,唯一uuid" />
     </struct>
 
     <!--装备熔炼-->
@@ -380,7 +380,7 @@
         <entry name="OpenID"            type="string"        size="64"                        desc="用户OPENID号" />
 
         <entry name="EquipmentNo" type="int" desc="装备编号,配置ID" />
-        <entry name="EquipmentId" type="int" desc="装备ID,唯一uuid" />
+        <entry name="EquipmentId" type="string"        size="64" desc="装备ID,唯一uuid" />
     </struct>
 
 
@@ -991,7 +991,6 @@
         <entry name="PlatID"             type="int"                        defaultvalue="0"    desc="ios 0/android 1"/>
 
         <entry name="OpenID"             type="string"        size="64"                        desc="用户OPENID号" />
-        <entry name="ID"                 type="int"                                            desc="无双ID" />
         <entry name="Level"              type="int"                                            desc="升级后的等级" />
 
     </struct>
