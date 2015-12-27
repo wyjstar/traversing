@@ -51,7 +51,7 @@ class CharacterStartTargetComponent(Component):
             self._conditions[type] = v
 
     def condition_add(self, type, v):
-        if self._conditions[type]:
+        if self._conditions.get(type):
             self._conditions[type] += v
         else:
             self._conditions[type] = v
