@@ -91,7 +91,7 @@ def update_excel(args):
     print("update_excell=========2")
     os.system("cd /tmp; unzip -o config.zip")
     os.system("cp /tmp/excel_cpickle config/excel_cpickle")
-    os.system("cp -r /tmp/lua/ app/battle/src/app/datacenter/template/config/")
+    os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
 
     com = "curl localhost:%s/reloadmodule" % MASTER_WEBPORT
     os.system(com)

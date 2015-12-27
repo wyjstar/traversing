@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     if os.path.exists('/tmp/excel_cpickle'):
         os.system("cp /tmp/excel_cpickle config/excel_cpickle")
-        os.system("cp -r /tmp/lua/ app/battle/src/app/datacenter/template/config/")
+        os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
 
 
     if os.path.exists('/tmp/server_list.json'):
