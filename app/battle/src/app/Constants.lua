@@ -536,6 +536,7 @@ EventName = {
     UPDATE_LINEUP = "UPDATE_LINEUP",--更新了阵容信息
     UPDATE_SEVENDAY = "UPDATE_SEVENDAY",  --更新七日红点提示
     UPDATE_QJYL = "UPDATE_QJYL", --更新经脉红点
+    UPDATE_SOLDIER_AWAKE = "UPDATE_SOLDIER_AWAKE", --更新英雄觉醒等级
 }
 
 NoticeColor = {

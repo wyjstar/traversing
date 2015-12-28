@@ -58,7 +58,7 @@ def pve_process_check(player, fight_result, steps, fight_type):
         res = mine_start(red_units, blue_units, red_best_skill_id, red_best_skill_level,
                             monster_unpara, 1, seed1, seed2, steps, player.base_info.level)
     logger.debug("pve_start %s %s" % (res, fight_result))
-    return res[0] == fight_result, res[1], res[2]
+    return res[0] == fight_result, res[1], res[2], res[3], res[4]
     #except Exception, e:
         ##logger.debug(e)
         #raise e

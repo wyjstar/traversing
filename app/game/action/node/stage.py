@@ -44,7 +44,7 @@ def get_stages_901(pro_data, player):
     request.ParseFromString(pro_data)
     stage_id = request.stage_id
 
-    stages_obj, elite_stage_times, act_coin_stage_times, act_exp_stage_times, act_lucky_heros = get_stage_info(stage_id, player)
+    stages_obj, elite_stage_times, elite_stage_reset_times, act_coin_stage_times, act_exp_stage_times, act_lucky_heros = get_stage_info(stage_id, player)
 
     response = stage_response_pb2.StageInfoResponse()
     for stage_obj in stages_obj:
@@ -61,6 +61,7 @@ def get_stages_901(pro_data, player):
         add.star_num = stage_obj.star_num
 
     response.elite_stage_times = elite_stage_times
+    response.elite_stage_reset_times = elite_stage_reset_times
     response.act_coin_stage_times = act_coin_stage_times
     response.act_exp_stage_times = act_exp_stage_times
 
@@ -290,17 +291,34 @@ def fight_settlement_904(pro_data, player):
     stage_info = player.fight_cache_component.stage_info
     red_units = stage_info.get('red_units')
 
-    death_num = len(red_units) - res[2]
+    round_to_kill_num = res[4]
+    red_left_num = res[3]
+    red_left_hp_percent = res[2]
+    death_num = len(red_units) - red_left_num
     for i in range(1, 4):
         star_condition = game_configs.base_config.get('star_condition')
         v = star_condition[i]
-        if death_num >= v and res[2] != 0:
+        if death_num >= v and red_left_num != 0:
             star = i
             break
 
     if request.is_skip:
         star = 3
     stage = get_stage_by_stage_type(request.stage_type, stage_id, player)
+    ELITE_STAGE = 2
+    if request.stage_type == ELITE_STAGE:
+        conditions = stage_config.ClearanceConditions
+        for k, cond in conditions.items():
+            if k == 1 and (cond[0] in round_to_kill_num or round_to_kill_num[cond[0]] < cond[1]):
+                    result = False
+                    break
+            if k == 2 and (death_num > cond[0]):
+                    result = False
+                    break
+            if k == 3 and (red_left_hp_percent < cond[0]):
+                    result = False
+                    break
+
     res = fight_settlement(stage, result, player, star)
     logger.debug("steps:%s", request.steps)
     logger.debug("fight_settlement_904 end: %s" % time.time())
@@ -364,17 +382,10 @@ def get_stage_info(stage_id, player):
         response.extend(stages_obj)
 
     player.stage_component.check_time() #  时间改变，重置数据
-    #if time.localtime(player.stage_component.elite_stage_info[1]).tm_yday == time.localtime().tm_yday:
-        #elite_stage_times = player.stage_component.elite_stage_info[0]
-    #else:
-        #elite_stage_times = 0
 
-    #if time.localtime(player.stage_component.act_stage_info[1]).tm_yday == time.localtime().tm_yday:
-        #act_stage_times = player.stage_component.act_stage_info[0]
-    #else:
-        #act_stage_times = 0
-
-    return response, player.stage_component.elite_stage_info[0], \
+    return response, \
+        player.stage_component.elite_stage_info[0], \
+        player.stage_component.elite_stage_info[1],\
         player.stage_component.act_stage_info[0],\
         player.stage_component.act_stage_info[1],\
         player.stage_component._act_lucky_heros
@@ -414,6 +425,7 @@ def fight_settlement(stage, result, player, star_num):
     response.hjqy_stage_id = hjqy_stage_id
     if hjqy_stage_id:
         tlog_action.log('TriggerHJQY', player, stage_id, hjqy_stage_id)
+    response.battle_res = result
     response.star_num = star_num
     logger.debug("drops %s" % response.drops)
     logger.debug("star_num %s" % response.star_num)
@@ -956,5 +968,39 @@ def look_hide_stage_1842(pro_data, player):
         player.stage_component.save_data()
 
     response = stage_response_pb2.LookHideStageResponse()
+    response.res.result = True
+    return response.SerializePartialToString()
+
+
+@remoteserviceHandle('gate')
+def elite_stage_times_reset_1845(pro_data, player):
+    """重置精英关卡攻打次数
+    """
+    response = stage_response_pb2.EliteStageTimesResetResponse()
+
+    tm_time = time.localtime(player.stage_component.elite_stage_info[2])
+    max_add_times = game_configs.vip_config.get(player.base_info.vip_level).eliteCopyAdditionalTimes
+
+    if tm_time.tm_yday != time.localtime().tm_yday:
+        player.stage_component.elite_stage_info = [0, 0, int(time.time())]
+
+    if player.stage_component.elite_stage_info[1] >= max_add_times:
+        response.res.result = False
+        response.res.result_no = 805
+        return response.SerializePartialToString()
+    need_gold = game_configs.base_config.get('eliteDuplicatePrice')[player.stage_component.elite_stage_info[1]]
+    if player.finance.gold < need_gold:
+        logger.error("gold not enough")
+        response.res.result = False
+        response.res.result_no = 102
+        return response.SerializePartialToString()
+
+    def func():
+        player.stage_component.elite_stage_info[1] += 1
+        player.stage_component.elite_stage_info[0] = 0
+        player.stage_component.save_data()
+
+    player.pay.pay(need_gold, const.GUILD_CREATE, func)
+
     response.res.result = True
     return response.SerializePartialToString()

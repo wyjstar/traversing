@@ -57,6 +57,9 @@ function FightProcess:init(fight_type)
     --总回合数
     self.max_round = table.nums(self.blue_groups)
     self.blue_hp_total = self:get_blue_hp_total()
+    self.red_hp_total = self:get_red_hp_total()
+    self.round_to_kill_num = {}
+    self.init_blue_units_num = table.nums(self.blue_groups[1])
     self.playerLevel=getDataManager():getCommonData():getLevel()
     self:logInfo()
     -- self.red_unpara_skill.mp_step = 50
@@ -593,6 +596,7 @@ function FightProcess:set_normal_step()
     end
     if self.red_step == 7 and self.blue_step == 7 then
         cclog("FightProcess:set_step=======>next round")
+        self.round_to_kill_num[self.current_fight_times] = self.init_blue_units_num - table.nums(self.blue_groups[1])
         self.current_fight_times = self.current_fight_times + 1
         appendFile2("current_fight_times:"..self.current_fight_times, 0)
         self.red_step = 1 
@@ -746,6 +750,14 @@ function FightProcess:get_blue_hp_total()
     return total
 end
 
+function FightProcess:get_red_hp_total()
+    local total = 0
+    for _, unit in pairs(self.red_units) do
+        total = total + unit.hp
+    end
+    return total
+end
+
 -- 累计伤害
 function FightProcess:get_total_damage()
     local left = 0
@@ -765,6 +777,15 @@ function FightProcess:get_replace()
         end
     end
     return nil
+end
+
+-- 我方剩余血量
+function FightProcess:get_red_units_left_hp()
+    local left = 0
+    for _,unit in pairs(self.red_units) do
+        left = left + unit.hp
+    end
+    return left
 end
 
 function FightProcess:is_last_hero_dead(target_unit)
