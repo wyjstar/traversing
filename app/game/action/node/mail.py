@@ -245,6 +245,7 @@ def get_prize_1306(proto_data, player):
         return response.SerializePartialToString()
 
     mail.is_got_prize = True
+    mail.is_readed = True
     player.mail_component.save_mail(mail_id)
 
     get_prize(player, [mail_id], response)
