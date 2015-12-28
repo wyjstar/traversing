@@ -258,7 +258,7 @@ class CharacterStageComponent(Component):
 
         num = 0
         for stage_config in chapter_stages_config:
-            if stage_config.type == 4:
+            if stage_config.type not in [1, 2, 3]:
                 continue
             stage_id = stage_config.id
             stage = self.get_stage(stage_id)
