@@ -5,7 +5,6 @@ created by cui
 import re
 import time
 from app.game.core.PlayersManager import PlayersManager
-from shared.common_logic.guild import Guild
 from app.proto_file.guild_pb2 import *
 from app.game.redis_mode import tb_guild_info
 from app.game.redis_mode import tb_character_info
