@@ -22,7 +22,7 @@ Ranking.init('StarRank2', 99999)
 Ranking.init('LimitHeroRank', 99999)
 
 
-do_tick_rank()
+# do_tick_rank()
 te_manager.add_event(24*60*60, 2, do_tick_rank)
 
 
