@@ -981,7 +981,6 @@ def elite_stage_times_reset_1845(pro_data, player):
     tm_time = time.localtime(player.stage_component.elite_stage_info[2])
     max_add_times = game_configs.vip_config.get(player.base_info.vip_level).eliteCopyAdditionalTimes
 
-    is_to
     if tm_time.tm_yday != time.localtime().tm_yday:
         player.stage_component.elite_stage_info = [0, 0, int(time.time())]
 
@@ -998,6 +997,7 @@ def elite_stage_times_reset_1845(pro_data, player):
 
     def func():
         player.stage_component.elite_stage_info[1] += 1
+        player.stage_component.elite_stage_info[0] = 0
         player.stage_component.save_data()
 
     player.pay.pay(need_gold, const.GUILD_CREATE, func)

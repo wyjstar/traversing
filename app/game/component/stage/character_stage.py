@@ -105,7 +105,7 @@ class CharacterStageComponent(Component):
                 'award_info': dict(
                     [(chapter_id, stage_award.dumps()) for chapter_id, stage_award in
                      self._award_info.iteritems()]),
-                'elite_stage': [0, int(time.time())],
+                'elite_stage': [0, 0, int(time.time())],
                 'plot_chapter': 1,
                 'act_stage': [0, 0, int(time.time())],
                 'stage_progress': self._stage_progress,
