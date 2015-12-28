@@ -112,8 +112,8 @@ class EscortTask(object):
 
     def is_started(self, task_item):
         if self.state == 1 and \
-            self._receive_task_time + task_item.wait > get_current_timestamp() and \
-            self._receive_task_time + task_item.wait + task_item.taskTime < get_current_timestamp():
+            self._receive_task_time + task_item.wait < get_current_timestamp() and \
+            self._receive_task_time + task_item.wait + task_item.taskTime > get_current_timestamp():
             return True
         return False
 
