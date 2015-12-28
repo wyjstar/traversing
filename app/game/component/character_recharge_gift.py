@@ -79,7 +79,7 @@ class CharacterRechargeGift(Component):
         _date_now = int(time.mktime(time.strptime(str_time,
                                                   '%Y-%m-%d %H:%M:%S')))
         _time_now = int(time.time())
-        _str_activity_period = activity.get('parameterT')
+        # _str_activity_period = activity.get('parameterT')
 
         if _str_activity_period != '0':
             begin, end = _str_activity_period.split(' - ')
