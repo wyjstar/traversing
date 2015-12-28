@@ -117,10 +117,10 @@ def get_chapter_902(pro_data, player):
     request.ParseFromString(pro_data)
     chapter_id = request.chapter_id
 
-    chapters_id = get_chapter_info(chapter_id, player)
+    chapter_objs = get_chapter_info(chapter_id, player)
 
     response = stage_response_pb2.ChapterInfoResponse()
-    for chapter_obj in chapters_id:
+    for chapter_obj in chapter_objs:
         if len(chapter_obj.award_info) == 0:
             continue
         stage_award_add = response.stage_award.add()
