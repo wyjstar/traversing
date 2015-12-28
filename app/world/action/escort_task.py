@@ -15,7 +15,7 @@ from app.game.action.node._fight_start_logic import get_seeds
 from shared.utils.date_util import get_current_timestamp
 from app.world.core.guild_manager import guild_manager_obj
 from gfirefly.server.globalobject import GlobalObject
-from shared.common_logic.escort_task import calculate_reward
+from app.world.core.escort_task import calculate_reward
 
 @rootserviceHandle
 def get_guild_task_records_remote(guild_id):
