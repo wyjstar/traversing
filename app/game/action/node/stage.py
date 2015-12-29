@@ -847,7 +847,14 @@ def open_chest_1811(pro_data, player):
     stage_id = request.stage_id
     response = stage_response_pb2.OpenStageChestResponse()
 
-    stage_config = game_configs.stage_config.get('stages').get(stage_id)
+    if game_configs.stage_config.get('stages').get(stage_id):
+        stage_config = game_configs.stage_config.get(
+            'stages').get(stage_id)
+    if game_configs.special_stage_config.get(
+            'elite_stages').get(stage_id):
+        stage_config = game_configs.special_stage_config.get(
+            'elite_stages').get(stage_id)
+
     if not stage_config:
         response.res.result = False
         response.res.result_no = 800
