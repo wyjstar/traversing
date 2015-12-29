@@ -228,6 +228,7 @@ def stage_start_903(pro_data, player):
         player.friends.save_data()
 
     player.fight_cache_component.red_best_skill_id = 0
+    logger.debug(response)
     return response.SerializePartialToString()
 
 

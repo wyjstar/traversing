@@ -293,7 +293,7 @@ def receive_rob_task(player, task_id, task_guild_id):
         #return {'result': False, 'result_no': 190902}
 
     logger.debug("receive_rob_task, start=======")
-    res = remote_gate["world"].add_player_remote(task_guild_id, task_id, get_player_info(player), 2, -1)
+    res = remote_gate["world"].add_player_remote(task_guild_id, task_id, get_player_info(player), 2, -1, {})
     logger.debug("receive_rob_task, end=======")
     if res.get('result'):
         escort_component.rob_records[task.get("task_id")] = dict(guild_id=task_guild_id, rob_no=res.get('task').get('rob_task_infos')[0].get('rob_no'))
@@ -435,7 +435,7 @@ def in_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
         return {'result': False, 'result_no': 190803}
 
     # add CharacterInfo to the task
-    res = remote_gate["world"].add_player_remote(task_guild_id, task_id, get_player_info(player), protect_or_rob, rob_no)
+    res = remote_gate["world"].add_player_remote(task_guild_id, task_id, get_player_info(player), protect_or_rob, rob_no, escort_component.protect_records)
     if not res.get("result"):
         return res
     task = res.get("task")
