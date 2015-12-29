@@ -90,7 +90,7 @@ def add_task_remote(guild_id, task_info):
     return dict(result=True)
 
 @rootserviceHandle
-def add_player_remote(guild_id, task_id, player_info, protect_or_rob, rob_no):
+def add_player_remote(guild_id, task_id, player_info, protect_or_rob, rob_no, protect_records):
     logger.debug("add_player_remote %s %s %s %s %s" % (guild_id, task_id, player_info, protect_or_rob, rob_no))
     guild = guild_manager_obj.get_guild_obj(guild_id)
     task = guild.get_task_by_id(task_id)
@@ -151,6 +151,18 @@ def add_player_remote(guild_id, task_id, player_info, protect_or_rob, rob_no):
             if robber.get("id") == player_info.get("id"):
                 logger.error("已存在该玩家，则不能再次加入")
                 return {'result': False, 'result_no': 190802}
+
+    if protect_or_rob == 1:
+        for task_id, info in protect_records.items():
+            task = guild.get_task_by_id(task_id)
+            if not task: continue
+
+            for k, protecter in enumerate(task.protecters):
+                if k != 0 and protecter.get("id") == player_info.get("id"):
+                    logger.error("该玩家已经处于辅助劫运中，则不能再次加入!")
+                    return {'result': False, 'result_no': 190811}
+
+
 
     player_guild = guild_manager_obj.get_guild_obj(player_info.get("g_id"))
     res = task.add_player(player_info, protect_or_rob, rob_no, player_guild.guild_info())

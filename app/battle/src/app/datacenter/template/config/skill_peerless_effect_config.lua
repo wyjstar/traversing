@@ -1,7 +1,7 @@
 skill_peerless_effect_config={
   [1] = {
   ["peerless3"] = 8100007,  ["type"] = 1,  ["peerless2"] = 8100006,  ["id"] = 1,  ["womanIcon"] = 5029,  ["peerless1"] = 8100005,  ["peerless4"] = 8100008,  ["peerlessText"] = 7000002005,  ["trigger"] = {
-  [1] = 10048,  [2] = 10054,  [3] = 10049,  [4] = 10030,}
+  [1] = 10048,  [2] = 10054,  [3] = 10049,  [4] = 10001,}
 ,}
 ,  [2] = {
   ["peerless3"] = 8100011,  ["type"] = 1,  ["peerless2"] = 8100010,  ["id"] = 2,  ["womanIcon"] = 5029,  ["peerless1"] = 8100009,  ["peerless4"] = 8100012,  ["peerlessText"] = 7000002006,  ["trigger"] = {
@@ -17,7 +17,7 @@ skill_peerless_effect_config={
 ,}
 ,  [5] = {
   ["peerless3"] = 8100023,  ["type"] = 2,  ["peerless2"] = 8100022,  ["id"] = 5,  ["womanIcon"] = 5029,  ["peerless1"] = 8100021,  ["peerless4"] = 8100024,  ["peerlessText"] = 7000002009,  ["trigger"] = {
-  [1] = 10048,  [2] = 10054,  [3] = 10049,  [4] = 10030,}
+  [1] = 10048,  [2] = 10054,  [3] = 10049,  [4] = 10001,}
 ,}
 ,  [6] = {
   ["peerless3"] = 8100027,  ["type"] = 2,  ["peerless2"] = 8100026,  ["id"] = 6,  ["womanIcon"] = 5029,  ["peerless1"] = 8100025,  ["peerless4"] = 8100028,  ["peerlessText"] = 7000002010,  ["trigger"] = {
@@ -33,7 +33,7 @@ skill_peerless_effect_config={
 ,}
 ,  [9] = {
   ["peerless3"] = 8100039,  ["type"] = 3,  ["peerless2"] = 8100038,  ["id"] = 9,  ["womanIcon"] = 5029,  ["peerless1"] = 8100037,  ["peerless4"] = 8100040,  ["peerlessText"] = 7000002013,  ["trigger"] = {
-  [1] = 10048,  [2] = 10054,  [3] = 10049,  [4] = 10030,}
+  [1] = 10048,  [2] = 10054,  [3] = 10049,  [4] = 10001,}
 ,}
 ,  [10] = {
   ["peerless3"] = 8100043,  ["type"] = 3,  ["peerless2"] = 8100042,  ["id"] = 10,  ["womanIcon"] = 5029,  ["peerless1"] = 8100041,  ["peerless4"] = 8100044,  ["peerlessText"] = 7000002014,  ["trigger"] = {
@@ -49,7 +49,7 @@ skill_peerless_effect_config={
 ,}
 ,  [13] = {
   ["peerless3"] = 8100055,  ["type"] = 4,  ["peerless2"] = 8100054,  ["id"] = 13,  ["womanIcon"] = 5029,  ["peerless1"] = 8100053,  ["peerless4"] = 8100056,  ["peerlessText"] = 7000002017,  ["trigger"] = {
-  [1] = 10048,  [2] = 10054,  [3] = 10049,  [4] = 10030,}
+  [1] = 10048,  [2] = 10054,  [3] = 10049,  [4] = 10001,}
 ,}
 ,  [14] = {
   ["peerless3"] = 8100059,  ["type"] = 4,  ["peerless2"] = 8100058,  ["id"] = 14,  ["womanIcon"] = 5029,  ["peerless1"] = 8100057,  ["peerless4"] = 8100060,  ["peerlessText"] = 7000002018,  ["trigger"] = {

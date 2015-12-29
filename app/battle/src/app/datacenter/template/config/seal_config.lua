@@ -932,7 +932,7 @@ seal_config={
 ,  [700040] = {
   ["cri"] = 0,  ["allInt"] = 190,  ["coordinate"] = {
   [1] = 424,  [2] = 260,}
-,  ["magicDef"] = 336,  ["pulse"] = 7,  ["physicalDef"] = 0,  ["dodge"] = 0,  ["block"] = 0,  ["criDedCoeff"] = 0,  ["atk"] = 0,  ["next"] = 800001,  ["id"] = 700040,  ["name"] = 0,  ["acupoint"] = 40,  ["hp"] = 0,  ["ductility"] = 0,  ["step"] = 4,  ["heroLevelRestrictions"] = 80,  ["hit"] = 0,  ["expend"] = {
+,  ["magicDef"] = 336,  ["pulse"] = 7,  ["physicalDef"] = 0,  ["dodge"] = 0,  ["block"] = 0,  ["criDedCoeff"] = 0,  ["atk"] = 0,  ["next"] = 800001,  ["id"] = 700040,  ["name"] = 0,  ["acupoint"] = 40,  ["hp"] = 0,  ["ductility"] = 0,  ["step"] = 4,  ["heroLevelRestrictions"] = 70,  ["hit"] = 0,  ["expend"] = {
   ["107"] = {
   [1] = 1442,  [2] = 1442,  [3] = 13,}
 ,}
