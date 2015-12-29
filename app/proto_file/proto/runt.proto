@@ -59,3 +59,14 @@ message BuildRuntResponse{
     required CommonResponse res = 1;
     optional Runt1 refresh_runt = 2;
 }
+
+// 857 合成
+message MakeRuntRequest{
+    repeated bytes runt_no = 1;
+    optional int32 num = 2;
+}
+
+message MakeRuntResponse{
+    required CommonResponse res = 1;
+    optional Runt1 runt = 2;
+}

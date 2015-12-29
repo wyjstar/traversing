@@ -9,7 +9,9 @@ from app.proto_file.runt_pb2 import RuntSetRequest, RuntSetResponse, \
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import consume
+from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import is_afford
+from shared.db_opear.configs_data.data_helper import parse
 import random
 import time
 from shared.utils.pyuuid import get_uuid
@@ -316,5 +318,70 @@ def build_runt_846(data, player):
     player.runt.save()
     player.finance.save_data()
 
+    response.res.result = True
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def make_runt_857(data, player):
+    """合成宝石"""
+    args = MakeRuntRequest()
+    args.ParseFromString(data)
+    runts = args.runt_no
+    num = args.num
+    response = MakeRuntResponse()
+
+    item_type = game_configs.base_config.get('stonesynthesis')[0]
+    item_id = game_configs.base_config.get('stonesynthesis')[1]
+    price = parse({item_type: [num, num, item_id]})
+
+    is_afford = is_afford(player, price)  # 校验
+    if not is_afford.get('result'):
+        logger.error('make_runt_857, item not enough')
+        response.res.result = False
+        response.res.result_no = result.get('result_no')
+        return response.SerializeToString()
+
+    if len(runts) < 5:
+        logger.error('make_runt_857, rune count dont enough')
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+
+    return_data = consume(player, price, const.RUNT_MAKE)  # 消耗
+
+    runt_conf = None
+    for runt_no in runts:
+        runt_info = player.runt.m_runt.get(runt_no)
+        if not runt_info:
+            logger.error('make_runt_857,runt no dont find,runt no:%s', runt_no)
+            response.res.result = False
+            response.res.result_no = 800
+            return response.SerializeToString()
+        if not runt_conf:
+            runt_conf = game_configs.stone_config.get('stones').get(runt_info[0])
+        if runt_conf.id != runt_info[0]:
+            logger.error('make_runt_857, rune different types')
+            response.res.result = False
+            response.res.result_no = 800
+            return response.SerializeToString()
+    for runt_no in runts:
+        del player.runt.m_runt[runt_no]
+
+    new_runt_no = 0
+
+    random_num = runt_conf.synthesis[0]+runt_conf.synthesis[1]*num
+    if random.random() <= random_num:
+        get_runt_id = runt_conf.synthesis[2]
+    else:
+        get_runt_id = runt_conf.id
+    new_runt_no = player.runt.add_runt(get_runt_id)
+
+    runt_info = player.runt.m_runt.get(new_runt_no)
+    runt_pb = response.runt.add()
+    [runt_id, main_attr, minor_attr] = runt_info
+    player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
+
+    player.runt.save()
     response.res.result = True
     return response.SerializeToString()
