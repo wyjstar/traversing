@@ -66,6 +66,13 @@ message ResetPvpOvercomeTime{
 	required int32 times = 1;
 }
 
+//865
+message RobTreasureMoreTimesRequest{
+    required int32 uid = 1;
+    required int32 chip_id = 2;
+    required int32 times = 3;
+}
+
 // 进入关卡战斗返回 command:1503
 message PvpFightResponse{
     optional CommonResponse res = 1;
@@ -97,7 +104,7 @@ message RobTreasureMoreTimesResponse{
 message RobTreasureReward{
     optional GameResourcesResponse gain = 1; // 宝箱随机掉落
     repeated  GameResourcesResponse look_gain = 2;
-    repeated PvpFightResponse fight_info=3;
+    optional PvpFightResponse fight_info=3;
 }
 
 message PvpOvercomeAwardRequest{
