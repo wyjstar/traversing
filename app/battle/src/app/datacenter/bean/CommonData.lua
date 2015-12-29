@@ -684,12 +684,6 @@ end
 function CommonData:addEnergy()
       self:addFinance(RES_TYPE.ENERGY, num)
 end
---[[--
-    获取公会技能点数
-]]
-function CommonData:getSkillPoints()
-    return self:getFinance(RES_TYPE.SKILL_POINTS)
-end
 
 --元宝
 function CommonData:setGold(cur_gold)
@@ -1354,5 +1348,20 @@ function CommonData:getIsDuoBaoRed()
         return false
     end 
 end
+--[[--
+获得贡献值
+]]
+function CommonData:getGongxian()
+    return self:getFinance(RES_TYPE.GONGXIAN)
+end
+--[[--
+增加贡献值，可以为负
+]]
+function CommonData:addGongxian(num)
+    local gongxian = self:getGongxian() + num 
+    self:setFinance(RES_TYPE.GONGXIAN,gongxian)
+end
+
+
 return CommonData
 

@@ -308,9 +308,7 @@ formula_config={
 ,  [154] = {
   ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/1000",  ["clientPrecondition"] = "1",  ["id"] = 154,  ["clientFormula"] = "result=ActivityExpDrop/1000",  ["key"] = "ActivityExpDropConvert_3",}
 ,  [155] = {
-  ["precondition"] = "skill_buff.effectId == 30",  ["formula"] = "(1.5*wslevel^2+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 155,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "peerlessDamage1",}
-,  [156] = {
-  ["precondition"] = "skill_buff.effectId == 30",  ["formula"] = "(1.5*wslevel^2+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 156,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "peerlessDamage2",}
+  ["precondition"] = "skill_buff.effectId == 30",  ["formula"] = "(1.5*wslevel*wslevel+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 155,  ["clientFormula"] = "result=(1.5*wslevel*wslevel+20)*skill_buff.valueEffect/job",  ["key"] = "peerlessDamage",}
 ,  [157] = {
   ["precondition"] = "1",  ["formula"] = "hero_info.hp*parameters",  ["clientPrecondition"] = "1",  ["id"] = 157,  ["clientFormula"] = "result=hero_info.hp*parameters",  ["key"] = "hero_Breakthrough.hp",}
 ,  [158] = {

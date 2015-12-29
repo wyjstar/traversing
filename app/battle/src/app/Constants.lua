@@ -15,7 +15,6 @@ const.POS_UNPARA_ICON_STAGE = cc.p(130,200)
 const.POS_UNPARA_ICON_FIGHT = cc.p(55,55)
 const.FIGHT_POS_UNPARA_ICON = cc.p(130,355)
 BIG_SCALE = 0.58
-BOSS_SCALE = 1.4
 TYPE_ACTIVITY_LIMIT_SHOP = "limitShop"  --限时商店类型
 
 const.HOME_ARMY = {
@@ -441,18 +440,22 @@ G_BOTTOM_DEFINE.GET_COINS_JUMP = {
 guid_titlle = {war = "GUID_OPEN_WAR"}
 
 TYPE_SHOP = {
-    SHOP_ITEM   = 3,   --商城-道具
-    SHOP_GIFT   = 4,   --商城-礼包
-    SECRETPLACE = 7,   --秘境商店
-    SOUL        = 9,   --武魂商店(武将炼化)
-    PVP         = 10,  --军功商店(擂台)
-    SMELT       = 11,  --精华商店(装备炼化)
-    SHOP_EQUIP  = 12,  --商城-装备
-    MERIT       = 18,  --功勋商店(黄巾起义)
-    TREASURE    = 19,  --珍宝（过关斩将）
-    VIP         = 20,  --VIP商店
+    SHOP_ITEM       = 3,   --商城-道具
+    SHOP_GIFT       = 4,   --商城-礼包
+    SECRETPLACE     = 7,   --秘境商店
+    SOUL            = 9,   --武魂商店(武将炼化)
+    PVP             = 10,  --军功商店(擂台)
+    SMELT           = 11,  --精华商店(装备炼化)
+    SHOP_EQUIP      = 12,  --商城-装备
+    SMELT_NEW       = 13, -- 新手引导(精华商店)
+    SOUL_NEW        = 15, -- 新手引导(武魂商店)
+    SHOP_EQUIP_NEW  = 16, -- 新手引导(装备商店)
+    MERIT           = 18,  --功勋商店(黄巾起义)
+    TREASURE        = 19,  --珍宝（过关斩将）
+    VIP             = 20,  --VIP商店
     LEGION_NORMAL   = 21,  --公会贡献商店
     LEGION_DISCOUNT = 22,  --公会免税商店
+    VIP_GIFT        = 24, -- VIP每日礼包
 }
 
 --[[--
@@ -484,8 +487,7 @@ RES_TYPE = {
     QJYL         = 13, --琼浆玉露
     ENERGY       = 4,  --精力
     ROB_NUM      = 14, --劫运次数
-    SKILL_POINTS = 18, --公会技能点数
-
+    GONGXIAN     = 10, --公会个人贡献值
 }
 
 -- 次日开启类型
@@ -556,14 +558,12 @@ EventName = {
     UPDATE_ROB_CHARATERINFO = "update_rob_characterInfo",--承接人收到的消息，有人加入劫运了
     UPDATE_RUNEBAG = "UPDATE_RUNEBAG",--更新宝石红点
     UPDATE_TRAVEL = "UPDATE_TRAVEL", -- 跟新游历信息
-    LEGION_UPDATE_BUILD = "LEGION_UPDATE_BUILD", -- 监听建筑等级变化
-    LEGION_UPDATE_BOSS = "LEGION_UPDATE_BOSS", -- 监听圣兽数据变化
-    LEGION_UPDATE_APPLICATION = "LEGION_UPDATE_APPLICATION", -- 监听申请入团列表消息变化
-    UPDATE_ROB_INVITE = "update_rob_invite",
-    UPDATE_ESCORT_INVITE = "update_escort_invite",
-    UPDATE_MY_ESCORT = "update_my_escort",
     UPDATE_RUNEBAG = "UPDATE_RUNEBAG",--更新宝石红点
-
+    UPDATE_LEGION_BLESS_NUM = "UPDATE_LEGION_BLESS_NUM", --祈福次数变化
+    UPDATE_LEGION_ZAN_MONEY = "UPDATE_LEGION_ZAN_MONEY",  --团长膜拜奖励变化
+    UPDATE_LEGION_ZAN_NUM = "UPDATE_LEGION_ZAN_NUM",      --团员点赞数变化
+    UPDATE_LEGION_MINEHELP = "UPDATE_LEGION_MINEHELP",     --秘境帮助变化
+    REFRESH_RECHARGE_SHOP_NOTICE = "REFRESH_RECHARGE_SHOP_NOTICE", -- 充值成功,商店ui更新
     UPDATE_LEGION_YSDT = "UPDATE_LEGION_YSDT", -- 更新议事大厅建筑红点
     UPDATE_LEGION_QFD = "UPDATE_LEGION_QFD", -- 更新祈福殿建筑红点
     UPDATE_LEGION_JJC = "UPDATE_LEGION_JJC", -- 更新军机处建筑红点
@@ -682,4 +682,11 @@ TaskState = {
     logType_myRob    = 2, -- 我的劫运记录
     logType_Legion   = 3, -- 军团劫押记录
  }
+
+ LEGION_CELL_TYPE = {
+    RANK_IN_LEGION = 1,--自己在军团中时的军团排行
+    RANK_OUT_LEGION = 2,--自己没有军团时的军团排行
+    RECOMMEND_LEGION = 3,--军团推荐
+    SEARCH_LEGION = 4,--查找军团
+}
 

@@ -169,8 +169,8 @@ function initTESTData()
             --controller.addChild(UnitView.new(unit))
         end
     end
-    local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7, 1, 1)
+    local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12, 1, 1)
     -- local buddySkill = constructBuddySkill(mockBattleUnit(0, 12, "red"))
     --print(buddySkill.unit.no, "buddySkill=================")
     --local redUnParaSkill = nil 
@@ -273,11 +273,11 @@ function initGuideData()
             updateBlueUnitViewProperty(unit)
         end
     end
-    local redUnParaSkill = constructUnparaSkill(10020, 1, const.HOME_ARMY, "red", 7)
+    local redUnParaSkill = constructUnparaSkill(10020, 1, const.HOME_ARMY, "red", 7, 1, 1)
 
     redUnParaSkill.mp_step = 8
 
-    local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
+    local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12, 1, 1)
     -- local buddySkill = constructBuddySkill(mockBattleUnit(10001, 12, "red"))
     return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
@@ -308,8 +308,8 @@ function initMineData(data)
             --optional int32 blue_best_skill_id = 6;       // 无双
                 --optional int32 blue_best_skill_level = 7; // 无双
 
-    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7, data.unpar_level, data.unpar_job)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12, 1, 1)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
     return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
@@ -344,8 +344,8 @@ function initWorldBossData()
         end
     end
 
-    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7, data.unpar_level, data.unpar_job)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12, 1, 1)
     --local buddySkill = constructBuddySkillWithTemplate(10001, 30)
     --local buddySkill = constructBattleUnit(data.replace, "blue")
     return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
@@ -378,9 +378,9 @@ function initStageData(data)
         table.insert(blueGroup, blueUnits)
     end
 
-    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7 )
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7, data.unpar_level, data.unpar_job )
     --local redUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ARMY, "red", 7 )
-    local blueUnParaSkill = constructUnparaSkill(data.monster_unpar, 0, const.HOME_ENEMY, "blue", 7+12)
+    local blueUnParaSkill = constructUnparaSkill(data.monster_unpar, 0, const.HOME_ENEMY, "blue", 7+12, 1, 1)
     --local buddySkill = constructBuddySkillWithTemplate(10001, 30)
     local buddySkill = constructBuddySkill(data.friend)
     --print(buddySkill.unit.no, "buddySkill=================")
@@ -411,8 +411,8 @@ function initPvpData(data)
 
     --local redUnParaSkill = constructUnparaSkill(data.red_skill, data.red_skill_level, const.HOME_ARMY, "red", 7)
     --local blueUnParaSkill = constructUnparaSkill(data.blue_skill, data.blue_skill_level, const.HOME_ENEMY, "blue", 7+12)
-    local redUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ARMY, "red", 7, data.unpar_level, data.unpar_job)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12, 1, 1)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
     return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
@@ -452,8 +452,8 @@ function initGuildEscortPvpData(data)
 
     --local redUnParaSkill = constructUnparaSkill(data.red_skill, data.red_skill_level, const.HOME_ARMY, "red", 7)
     --local blueUnParaSkill = constructUnparaSkill(data.blue_skill, data.blue_skill_level, const.HOME_ENEMY, "blue", 7+12)
-    local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7, data.unpar_level, data.unpar_job)
+    local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12, 1, 1)
     --local buddySkill = constructBuddySkill(data.replace)
     --print(buddySkill.unit.no, "buddySkill=================")
     return redGroup, blueGroup, redUnParaSkill, blueUnParaSkill, buddySkill
@@ -488,8 +488,8 @@ function initHjqyData(data)
     else
         process.damage_rate = 0
     end
-    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7, data.unpar_level, data.unpar_job)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12, 1, 1)
     --local redUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ARMY, "red", 7)
     --local blueUnParaSkill = constructUnparaSkill(0, 1, const.HOME_ENEMY, "blue", 7+12)
     --local buddySkill = constructBuddySkill(data.replace)
@@ -520,8 +520,8 @@ function initBeastData(data)
         end
     end
 
-    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7)
-    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12)
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7, data.unpar_level, data.unpar_job)
+    local blueUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ENEMY, "blue", 7+12, 1, 1)
 
     return {redUnits}, {blueUnits}, redUnParaSkill, blueUnParaSkill, buddySkill
 end
@@ -720,17 +720,19 @@ function updateBossUnitViewProperty(unit)
 end
 
 -- 构造无双技能
-function constructUnparaSkill(unpar_type_id, unpar_other_id, HOMES, side, viewPos)
+function constructUnparaSkill(unpar_type_id, unpar_other_id, HOMES, side, viewPos, unpar_level, unpar_job)
     if unpar_type_id == 0 then
         unpar_type_id = nil
     end
-    print("constructUnparaSkill=============", unpar_type_id, unpar_other_id)
+    print("constructUnparaSkill=============", unpar_type_id, unpar_other_id, unpar_level, unpar_job)
     local base_info = baseTemplate:getBaseInfoById("wushang_value_config")
     local unpara_skill = UnParaSkill.new(unpar_type_id, unpar_other_id, base_info, process)
 
     unpara_skill.HOME = HOMES[7]
     unpara_skill.side = side
     unpara_skill.viewPos = viewPos
+    unpara_skill.level = unpar_level
+    unpara_skill.job = unpar_job
     return unpara_skill
 end
 

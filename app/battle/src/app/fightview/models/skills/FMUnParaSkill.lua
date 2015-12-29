@@ -30,6 +30,8 @@ function FMUnParaSkill:ctor(unpar_type_id, unpar_other_id, base_info, process)
     self.HOME = {}
     self.side = ""
     self.viewPos = 0
+    self.level = level
+    self.job = job
     self.max_used_times = self.baseTemplate:getBaseInfoById("wushuangTimeMax")
 end
 
@@ -211,10 +213,14 @@ function FMUnParaSkill:construct_attacker(side)
     attacker.viewPos = self.viewPos
     attacker.HOME = self.HOME
     attacker.buff_manager = FMBuffManager.new(attacker)
+    attacker.unpar_level = self.level
+    attacker.unpar_job = self.job
     attacker.str_data = function()
         local info = "unpara skill:"
         info = info.."unpar_type_id:"..self.unpar_type_id.."---"
         info = info.."unpar_other_id:"..self.unpar_other_id.."---"
+        info = info.."level:"..self.level.."---"
+        info = info.."job:"..self.job.."---"
         info = info.."mp:"..self.mp.."---"
         return info end
     return attacker

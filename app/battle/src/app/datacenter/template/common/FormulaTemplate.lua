@@ -26,7 +26,8 @@ formulaArgs={
     ["heal_2"] = {"(skill_buff)", "(allHeal, skill_buff, heroLevel)"}, 
     ["skillbuffEffct_1"] = {"(skill_buff)", "(skill_buff, heroLevel)"},
     ["skillbuffEffct_2"] = {"(skill_buff)", "(skill_buff, attrHero)"},
-    ["hjqyDamage"] = {false, "(heroBreak)"}
+    ["hjqyDamage"] = {false, "(heroBreak)"},
+    ["peerlessDamage"] = {false, "(wslevel, skill_buff, job)"},
 }
 
 function FormulaTemplate:ctor(controller)
