@@ -32,9 +32,10 @@ class EliteStageLogic(base_stage.BaseStageLogic):
             add_times = act_conf1.parameterA
 
         max_times = game_configs.base_config.get('eliteDuplicateTime') + add_times
+        shengxia_times = max_times - conf.timesExpend - player.stage_component.elite_stage_info[0]
 
         if tm_time.tm_yday == time.localtime().tm_yday \
-                and max_times < conf.timesExpend:
+                and shengxia_times < 0:
             logger.error("精英关卡开始战斗出错: %s" % 805)
             return {'result': False, 'result_no': 805}  # 805 次数不足
         return {'result': True}
