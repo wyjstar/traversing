@@ -474,3 +474,14 @@ class CharacterLineUpComponent(Component):
                 attr["magic_def"] = game_configs.guild_skill_config.get(skill_type).get(skill_level).profit_mdef
         self.guild_attr = attr
         print("update_guild_attr============== %s" % self.guild_attr)
+
+    def get_red_unpar_data(self):
+        """docstring for get_red_unpar_data, 用于战斗逻辑"""
+
+        unpar_type = self._unpar_type
+        unpar_other_id = self._unpar_other_id
+        unpar_level = self._unpar_level
+        unpar_job = game_configs.skill_peerless_effect_config.get(unpar_level).type
+        red_unpar_data = dict(unpar_type=unpar_type, unpar_other_id=unpar_other_id, unpar_level=unpar_level, unpar_job=unpar_job)
+        return red_unpar_data
+
