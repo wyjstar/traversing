@@ -330,17 +330,18 @@ def make_runt_857(data, player):
     args.ParseFromString(data)
     runts = args.runt_no
     num = args.num
+    print args, '==================================', num
     response = MakeRuntResponse()
 
     item_type = game_configs.base_config.get('stonesynthesis')[0]
     item_id = game_configs.base_config.get('stonesynthesis')[1]
     price = parse({item_type: [num, num, item_id]})
 
-    is_afford = is_afford(player, price)  # 校验
-    if not is_afford.get('result'):
+    is_afford_res = is_afford(player, price)  # 校验
+    if num and not is_afford_res.get('result'):
         logger.error('make_runt_857, item not enough')
         response.res.result = False
-        response.res.result_no = result.get('result_no')
+        response.res.result_no = is_afford_res.get('result_no')
         return response.SerializeToString()
 
     if len(runts) < 5:
@@ -349,7 +350,8 @@ def make_runt_857(data, player):
         response.res.result_no = 800
         return response.SerializeToString()
 
-    return_data = consume(player, price, const.RUNT_MAKE)  # 消耗
+    if num:
+        return_data = consume(player, price, const.RUNT_MAKE)  # 消耗
 
     runt_conf = None
     for runt_no in runts:
@@ -379,7 +381,7 @@ def make_runt_857(data, player):
     new_runt_no = player.runt.add_runt(get_runt_id)
 
     runt_info = player.runt.m_runt.get(new_runt_no)
-    runt_pb = response.runt.add()
+    runt_pb = response.runt
     [runt_id, main_attr, minor_attr] = runt_info
     player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
 
