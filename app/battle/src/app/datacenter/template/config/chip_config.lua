@@ -556,7 +556,7 @@ chip_config={
   ["107"] = {
   [1] = 80,  [2] = 80,  [3] = 3,}
 ,}
-,  ["toGet"] = 20030051,  ["id"] = 1030051,  ["needNum"] = 100,  ["resId"] = 1300511,  ["WhetherGain"] = 1,  ["combineResult"] = 30051,  ["location"] = 0,  ["language"] = 1601030051,  ["quality"] = 6,}
+,  ["toGet"] = 20030051,  ["id"] = 1030051,  ["needNum"] = 200,  ["resId"] = 1300511,  ["WhetherGain"] = 1,  ["combineResult"] = 30051,  ["location"] = 0,  ["language"] = 1601030051,  ["quality"] = 6,}
 ,  [21000310] = {
   ["type"] = 2,  ["sacrificeGain"] = {
   ["107"] = {
@@ -602,7 +602,7 @@ chip_config={
   ["107"] = {
   [1] = 80,  [2] = 80,  [3] = 3,}
 ,}
-,  ["toGet"] = 20030059,  ["id"] = 1030059,  ["needNum"] = 100,  ["resId"] = 1300591,  ["WhetherGain"] = 1,  ["combineResult"] = 30059,  ["location"] = 0,  ["language"] = 1601030059,  ["quality"] = 6,}
+,  ["toGet"] = 20030059,  ["id"] = 1030059,  ["needNum"] = 200,  ["resId"] = 1300591,  ["WhetherGain"] = 1,  ["combineResult"] = 30059,  ["location"] = 0,  ["language"] = 1601030059,  ["quality"] = 6,}
 ,  [21000804] = {
   ["type"] = 2,  ["sacrificeGain"] = {
 }
@@ -618,7 +618,7 @@ chip_config={
   ["107"] = {
   [1] = 80,  [2] = 80,  [3] = 3,}
 ,}
-,  ["toGet"] = 20030057,  ["id"] = 1030057,  ["needNum"] = 100,  ["resId"] = 1300571,  ["WhetherGain"] = 1,  ["combineResult"] = 30057,  ["location"] = 0,  ["language"] = 1601030057,  ["quality"] = 6,}
+,  ["toGet"] = 20030057,  ["id"] = 1030057,  ["needNum"] = 200,  ["resId"] = 1300571,  ["WhetherGain"] = 1,  ["combineResult"] = 30057,  ["location"] = 0,  ["language"] = 1601030057,  ["quality"] = 6,}
 ,  [21000110] = {
   ["type"] = 2,  ["sacrificeGain"] = {
   ["107"] = {
@@ -648,7 +648,7 @@ chip_config={
   ["107"] = {
   [1] = 80,  [2] = 80,  [3] = 3,}
 ,}
-,  ["toGet"] = 20030060,  ["id"] = 1030060,  ["needNum"] = 100,  ["resId"] = 1300601,  ["WhetherGain"] = 1,  ["combineResult"] = 30060,  ["location"] = 0,  ["language"] = 1601030060,  ["quality"] = 6,}
+,  ["toGet"] = 20030060,  ["id"] = 1030060,  ["needNum"] = 200,  ["resId"] = 1300601,  ["WhetherGain"] = 1,  ["combineResult"] = 30060,  ["location"] = 0,  ["language"] = 1601030060,  ["quality"] = 6,}
 ,  [21000663] = {
   ["type"] = 2,  ["sacrificeGain"] = {
 }
@@ -680,7 +680,7 @@ chip_config={
   ["107"] = {
   [1] = 80,  [2] = 80,  [3] = 3,}
 ,}
-,  ["toGet"] = 20030063,  ["id"] = 1030063,  ["needNum"] = 100,  ["resId"] = 1300631,  ["WhetherGain"] = 1,  ["combineResult"] = 30063,  ["location"] = 0,  ["language"] = 1601030063,  ["quality"] = 6,}
+,  ["toGet"] = 20030063,  ["id"] = 1030063,  ["needNum"] = 200,  ["resId"] = 1300631,  ["WhetherGain"] = 1,  ["combineResult"] = 30063,  ["location"] = 0,  ["language"] = 1601030063,  ["quality"] = 6,}
 ,  [21000100] = {
   ["type"] = 2,  ["sacrificeGain"] = {
   ["107"] = {

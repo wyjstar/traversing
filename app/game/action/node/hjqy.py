@@ -155,9 +155,8 @@ def battle_2103(pro_data, player):
             level=player.base_info.level)
 
     str_red_units = cPickle.dumps(red_units)
-    unpar_type = player.line_up_component.unpar_type
-    unpar_other_id = player.line_up_component.unpar_other_id
-    fight_result, boss_state, current_damage_hp, is_kill = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, unpar_type, unpar_other_id, attack_type, seed1, seed2)
+    red_unpar_data = player.line_up_component.get_red_unpar_data()
+    fight_result, boss_state, current_damage_hp, is_kill = remote_gate['world'].hjqy_battle_remote(player_info, boss_id, str_red_units, red_unpar_data, attack_type, seed1, seed2)
 
     logger.debug("============battle over")
 
