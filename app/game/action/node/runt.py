@@ -350,8 +350,6 @@ def make_runt_857(data, player):
         response.res.result_no = 800
         return response.SerializeToString()
 
-    if num:
-        return_data = consume(player, price, const.RUNT_MAKE)  # 消耗
 
     runt_conf = None
     for runt_no in runts:
@@ -368,8 +366,20 @@ def make_runt_857(data, player):
             response.res.result = False
             response.res.result_no = 800
             return response.SerializeToString()
+
+    is_afford_res = is_afford(player, runt_conf.consume)  # 校验
+    if num and not is_afford_res.get('result'):
+        logger.error('make_runt_857, item not enough')
+        response.res.result = False
+        response.res.result_no = is_afford_res.get('result_no')
+        return response.SerializeToString()
+
     for runt_no in runts:
         del player.runt.m_runt[runt_no]
+
+    if num:
+        consume(player, price, const.RUNT_MAKE)  # 消耗
+    consume(player, runt_conf.consume, const.RUNT_MAKE)  # 消耗
 
     new_runt_no = 0
 

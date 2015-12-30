@@ -20,6 +20,7 @@ class StoneConfig(object):
         for row in config_value:
             data_helper.convert_keystr2num(row.get('mainAttr'))
             data_helper.convert_keystr2num(row.get('minorAttr'))
+            row["consume"] = parse(row.get("consume"))
             item = CommonItem(row)
             if item.weight:
                 self._weight.append([item.id, weights+item.weight])
