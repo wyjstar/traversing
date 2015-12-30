@@ -5,7 +5,8 @@ created by server on 14-7-17上午11:07.
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file.runt_pb2 import RuntSetRequest, RuntSetResponse, \
     RuntPickRequest, RuntPickResponse, InitRuntResponse, RefreshRuntResponse, \
-    RefiningRuntRequest, RefiningRuntResponse, BuildRuntResponse
+    RefiningRuntRequest, RefiningRuntResponse, BuildRuntResponse, \
+    MakeRuntResponse, MakeRuntRequest
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from app.game.core.item_group_helper import consume
