@@ -44,6 +44,7 @@ message TaskRewardResponse
 message ShareRequest
 {
     required int32 tid = 1; //任务ID
+    optional int32 share_type = 2; //分享类型 1qq 2微信
 }
 
 message ShareResponse

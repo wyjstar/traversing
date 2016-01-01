@@ -36,8 +36,10 @@ def get_act_gift_1832(data, player):
         return response.SerializeToString()
     if act_type == 20:  # 战力
         res = get_20_gift(player, act_conf, response)
+        tlog_arg = player.line_up_component.combat_power
     elif act_type == 21:  # 通关关卡
         res = get_21_gift(player, act_conf, response)
+        tlog_arg = player.stage_component.rank_stage_progress
     if res:
         if received_ids:
             player.act.received_ids.get(act_type).append(act_id)

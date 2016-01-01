@@ -747,7 +747,7 @@ def get_star_random_1828(pro_data, player):
         chapter_obj.random_gift_times += 1
         chapter_obj.star_gift = 3
         player.stage_component.save_data()
-        tlog_action.log('StarRandom', player, random_num, chapter_obj.random_gift_times)
+        tlog_action.log('StarRandom', player, random_num, chapter_obj.random_gift_times, chapter_id)
 
     player.pay.pay(need_gold, const.STAGE_STAR_GIFT, func)
 
@@ -812,7 +812,7 @@ def deal_random_1829(pro_data, player):
             return response.SerializePartialToString()
         chapter_obj.star_gift = 2
 
-    tlog_action.log('DealStarRandom', player, chapter_obj.now_random, request.res)
+    tlog_action.log('DealStarRandom', player, chapter_obj.now_random, request.res, chapter_id)
     player.stage_component.save_data()
 
     response.res.result = True
@@ -1009,7 +1009,7 @@ def elite_stage_times_reset_1845(pro_data, player):
 
     def func():
         player.stage_component.elite_stage_info[1] += 1
-        player.stage_component.elite_stage_info[0] -= 0
+        player.stage_component.elite_stage_info[0] -= 1
         player.stage_component.save_data()
 
     player.pay.pay(need_gold, const.GUILD_CREATE, func)
