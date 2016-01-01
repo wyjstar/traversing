@@ -1010,7 +1010,7 @@ def elite_stage_times_reset_1845(pro_data, player):
 
     def func():
         player.stage_component.elite_stage_info[1] += 1
-        player.stage_component.elite_stage_info[0] -= 0
+        player.stage_component.elite_stage_info[0] -= 1
         player.stage_component.save_data()
 
     player.pay.pay(need_gold, const.GUILD_CREATE, func)
