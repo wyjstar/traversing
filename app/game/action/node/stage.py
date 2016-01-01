@@ -997,6 +997,7 @@ def elite_stage_times_reset_1845(pro_data, player):
         player.stage_component.elite_stage_info = [0, 0, int(time.time())]
 
     if player.stage_component.elite_stage_info[1] >= max_add_times:
+        logger.error('elite_stage_times_reset_1845,times not enough:%s', player.stage_component.elite_stage_info[1])
         response.res.result = False
         response.res.result_no = 805
         return response.SerializePartialToString()

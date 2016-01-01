@@ -201,6 +201,7 @@ const.act_28 = 67  # 关卡宝箱
 
 const.START_TARGET = 68  # 开服7日活动
 const.STAGE_STAR_GIFT = 69  # 满星抽奖
+const.RUNT_MAKE = 70  # 宝石合成
 
 
 const.LOGIN_GIFT_CONTINUS = 8061
