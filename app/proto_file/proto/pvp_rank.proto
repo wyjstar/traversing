@@ -99,6 +99,7 @@ message PvpFightResponse{
 message RobTreasureMoreTimesResponse{
     required CommonResponse res = 1;
     repeated RobTreasureReward one_time_info=2;
+}
 
 // 夺宝战利品
 message RobTreasureReward{

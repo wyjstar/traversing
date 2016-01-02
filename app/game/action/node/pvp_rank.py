@@ -34,6 +34,7 @@ from shared.db_opear.configs_data.data_helper import parse
 import types
 from shared.tlog import tlog_action
 from shared.common_logic.feature_open import is_not_open, FO_PVP_RANK, FO_ROB_TREASURE
+from app.game.core.drop_bag import BigBag
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -787,15 +788,55 @@ def GetPvpOvercomeInfo_1513(data, player):
 def pvp_rob_treasure_864(data, player):
     request = pvp_rank_pb2.PvpRobTreasureRequest()
     response = pvp_rank_pb2.PvpFightResponse()
+    request.ParseFromString(data)
+    uid = request.uid
+    chip_id = request.chip_id
+    chip_conf = check_can_rob(player, uid, chip_id, 1, response)
+    deal_pvp_rob_fight(player, uid, chip_id, response, chip_conf)
+
+    player.pvp.reset_rob_treasure()
+    player.pvp.save_data()
+    response.res.result = True
+    logger.debug("response ==================== : %s" % response)
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def pvp_rob_treasure_more_times_1504(data, player):
+    request = pvp_rank_pb2.RobTreasureMoreTimesRequest()
+    response = pvp_rank_pb2.RobTreasureMoreTimesResponse()
+    request.ParseFromString(data)
+    uid = request.uid
+    chip_id = request.chip_id
+    times = request.times
+    chip_conf = check_can_rob(player, uid, chip_id, times, response)
+    for _ in range(times):
+        one_times_response = response.one_time_info.add()
+        fight_response = one_times_response.fight_info
+        fight_result = deal_pvp_rob_fight(player, uid, chip_id, fight_response, chip_conf)
+        if fight_result:
+            indiana_conf = get_indiana_conf(player, uid, chip_conf)
+            common_bag = BigBag(indiana_conf.reward)
+            drops = common_bag.get_drop_items()
+
+            x = random.randint(0, 2)
+            return_data = gain(player, [drops[x]],
+                               const.ROB_TREASURE_REWARD)
+            get_return(player, return_data, one_times_response.gain)
+
+    player.pvp.reset_rob_treasure()
+    player.pvp.save_data()
+    response.res.result = True
+    logger.debug("response ==================== : %s" % response)
+    return response.SerializeToString()
+
+
+def check_can_rob(player, uid, chip_id, times, response):
     if is_not_open(player, FO_ROB_TREASURE):
         response.res.result = False
         response.res.result_no = 837
         return response.SerializePartialToString()
 
-
-    request.ParseFromString(data)
-    uid = request.uid
-    chip_id = request.chip_id
     player_ids = player.pvp.rob_treasure
     flag = 0
     for player_id, ap in player_ids:
@@ -834,18 +875,22 @@ def pvp_rob_treasure_864(data, player):
         return response.SerializeToString()
 
     price = game_configs.base_config.get('indianaConsume')
-    is_afford_res = is_afford(player, price)  # 校验
+    is_afford_res = is_afford(player, price, multiple=times)  # 校验
 
     if not is_afford_res.get('result'):
         logger.error('rob_treasure_truce_841, item not enough')
         response.res.result = False
         response.res.result_no = is_afford_res.get('result_no')
         return response.SerializeToString()
+    return chip_conf
 
+
+def deal_pvp_rob_fight(player, uid, chip_id, one_times_response, chip_conf):
+    price = game_configs.base_config.get('indianaConsume')
     return_data = consume(player, price, const.ROB_TREASURE)  # 消耗
-    get_return(player, return_data, response.consume)
+    get_return(player, return_data, one_times_response.consume)
 
-    fight_result = pvp_fight(player, uid, [], 0, response,
+    fight_result = pvp_fight(player, uid, [], 0, one_times_response,
                              is_copy_unit=True)
 
     logger.debug("fight revenge result:%s" % fight_result)
@@ -861,17 +906,11 @@ def pvp_rob_treasure_864(data, player):
             gain_items = parse({104: [1, 1, chip_id]})
             return_data = gain(player, gain_items,
                                const.ROB_TREASURE)
-            get_return(player, return_data, response.gain)
+            get_return(player, return_data, one_times_response.gain)
 
             # 处理被打玩家
             deal_target_player(player, uid, chip_id)
-    player.pvp.reset_rob_treasure()
-    player.pvp.save_data()
-
-    response.res.result = True
-
-    logger.debug("response ==================== : %s" % response)
-    return response.SerializeToString()
+    return fight_result
 
 
 def deal_target_player(player, target_id, chip_id):
@@ -911,6 +950,7 @@ def deal_target_player(player, target_id, chip_id):
 
 def get_indiana_conf(player, target_id, chip_conf):
     color_info = player.rob_treasure.get_target_color_info(target_id)
+    print target_id, color_info, chip_conf, '====================== get indiana conf'
     quality = chip_conf.quality
     treasure_conf = game_configs.equipment_config.get(chip_conf.combineResult)
     treasure_type = 1

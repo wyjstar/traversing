@@ -184,6 +184,7 @@ class CharacterPvpComponent(Component):
         if [0, 0] in ids:
             ids.remove([0, 0])
         self._rob_treasure = ids
+        print ids, '============================reset rob treasure'
 
     def reset_overcome(self):
         _times = self.pvp_overcome_refresh_count + 1
@@ -443,7 +444,7 @@ def get_player_ids(player_id, player_ap, types, num):
         for _id, ap in robot_ids:
             ids.append([_id, ap])
 
-        logger.error('reset overcome not enough player:%s(%s)', ids, index)
+        # logger.error('reset overcome not enough player:%s(%s)', ids, index)
         return ids
 
     # types = [20001, 20002, 20003]
