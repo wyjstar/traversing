@@ -393,7 +393,7 @@ def make_runt_857(data, player):
     runt_info = player.runt.m_runt.get(new_runt_no)
     runt_pb = response.runt
     [runt_id, main_attr, minor_attr] = runt_info
-    player.runt.deal_runt_pb(runt_no, runt_id, main_attr, minor_attr, runt_pb)
+    player.runt.deal_runt_pb(new_runt_no, runt_id, main_attr, minor_attr, runt_pb)
 
     player.runt.save()
     response.res.result = True
