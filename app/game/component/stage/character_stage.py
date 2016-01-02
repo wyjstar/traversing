@@ -210,9 +210,9 @@ class CharacterStageComponent(Component):
                 next_stages = game_configs.stage_config. \
                     get('condition_mapping')
 
-                if chapter_id != 1:
-                    # 计算星星  星星排行用
-                    self.star_num[chapter_id] = chapter_star_num
+                # if chapter_id != 1:
+                # 计算星星  星星排行用
+                self.star_num[chapter_id] = chapter_star_num
 
                 # 根据星星数更新隐藏关卡开启状态
                 chapter_conf = chapter.get_conf()
