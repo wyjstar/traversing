@@ -792,6 +792,11 @@ def pvp_rob_treasure_864(data, player):
     uid = request.uid
     chip_id = request.chip_id
     chip_conf = check_can_rob(player, uid, chip_id, 1, response)
+    check_res, res_no, chip_conf = check_can_rob(player, uid, chip_id, 1, response)
+    if not check_res:
+        response.res.result = False
+        response.res.result_no = res_no
+        return response.SerializePartialToString()
     deal_pvp_rob_fight(player, uid, chip_id, response, chip_conf)
 
     player.pvp.reset_rob_treasure()
@@ -809,7 +814,11 @@ def pvp_rob_treasure_more_times_1504(data, player):
     uid = request.uid
     chip_id = request.chip_id
     times = request.times
-    chip_conf = check_can_rob(player, uid, chip_id, times, response)
+    check_res, res_no, chip_conf = check_can_rob(player, uid, chip_id, times, response)
+    if not check_res:
+        response.res.result = False
+        response.res.result_no = res_no
+        return response.SerializePartialToString()
     for _ in range(times):
         one_times_response = response.one_time_info.add()
         fight_response = one_times_response.fight_info
@@ -833,9 +842,7 @@ def pvp_rob_treasure_more_times_1504(data, player):
 
 def check_can_rob(player, uid, chip_id, times, response):
     if is_not_open(player, FO_ROB_TREASURE):
-        response.res.result = False
-        response.res.result_no = 837
-        return response.SerializePartialToString()
+        return False, 837, None
 
     player_ids = player.pvp.rob_treasure
     flag = 0
@@ -846,16 +853,12 @@ def check_can_rob(player, uid, chip_id, times, response):
 
     if not flag:
         logger.error('pvp_rob_treasure_864, uid error')
-        response.res.result = False
-        response.res.result_no = 800
-        return response.SerializeToString()
+        return False, 800, None
 
     chip_conf = game_configs.chip_config.get('chips', {}).get(chip_id, None)
     if not chip_conf:
         logger.error('pvp_rob_treasure_864, chip_id error')
-        response.res.result = False
-        response.res.result_no = 800
-        return response.SerializeToString()
+        return False, 800, None
     treasure_id = chip_conf.combineResult
 
     chips = game_configs.chip_config.get('map').get(treasure_id)
@@ -870,19 +873,16 @@ def check_can_rob(player, uid, chip_id, times, response):
     default_chips = game_configs.base_config.get('indianaDefaultId')
     if not can_rob and treasure_id not in default_chips:
         logger.error('pvp_rob_treasure_864, dont have one chip')
-        response.res.result = False
-        response.res.result_no = 800
-        return response.SerializeToString()
+        return False, 800, None
 
     price = game_configs.base_config.get('indianaConsume')
     is_afford_res = is_afford(player, price, multiple=times)  # 校验
 
     if not is_afford_res.get('result'):
         logger.error('rob_treasure_truce_841, item not enough')
-        response.res.result = False
-        response.res.result_no = is_afford_res.get('result_no')
-        return response.SerializeToString()
-    return chip_conf
+        return False, 800, None
+    print chip_conf, '=====================================chip config'
+    return True, 0, chip_conf
 
 
 def deal_pvp_rob_fight(player, uid, chip_id, one_times_response, chip_conf):
