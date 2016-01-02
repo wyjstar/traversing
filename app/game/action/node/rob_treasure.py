@@ -83,6 +83,7 @@ def rob_treasure_init_858(data, player):
 
     deal_player_infos(player, response)
     response.refresh_time = player.rob_treasure.refresh_time
+    print response, '===============init rob response'
     return response.SerializeToString()
 
 

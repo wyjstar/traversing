@@ -72,7 +72,7 @@ class CharacterStartTargetComponent(Component):
         now = int(time.time())
         register_time = self.owner.base_info.register_time
         act_conf = game_configs.activity_type_config.get(202)
-        total_time = int(act_conf.parameterT)
+        # total_time = int(act_conf.parameterT)
         time.localtime(register_time)
 
         t0 = time.localtime(now)
@@ -89,8 +89,8 @@ class CharacterStartTargetComponent(Component):
             logger.debug("202 activity type close by timeStart timeEnd.")
             return 0, day
 
-        if (now - register_time) > (total_time*60*60):
-            return 0, day
+        # if (now - register_time) > (total_time*60*60):
+        #     return 0, day
 
         return 1, day
 

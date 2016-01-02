@@ -79,12 +79,14 @@ class CharacterRechargeGift(Component):
         _date_now = int(time.mktime(time.strptime(str_time,
                                                   '%Y-%m-%d %H:%M:%S')))
         _time_now = int(time.time())
-        _str_activity_period = activity.get('parameterT')
+        # _str_activity_period = activity.get('parameterT')
 
         if _str_activity_period != '0':
             begin, end = _str_activity_period.split(' - ')
-            begin = time.mktime(time.strptime(begin, '%Y-%m-%d %H:%M:%S'))
-            end = time.mktime(time.strptime(end, '%Y-%m-%d %H:%M:%S'))
+            # begin = time.mktime(time.strptime(begin, '%Y-%m-%d %H:%M:%S'))
+            # end = time.mktime(time.strptime(end, '%Y-%m-%d %H:%M:%S'))
+            begin = activity.get("timeStart")
+            end = activity.get("timeEnd")
 
             if _time_now < begin or _time_now > end:
                 logger.debug('activity:%s not in time:now%s:begin:%s:end:%s',

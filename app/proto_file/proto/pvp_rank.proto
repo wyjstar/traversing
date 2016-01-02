@@ -66,9 +66,16 @@ message ResetPvpOvercomeTime{
 	required int32 times = 1;
 }
 
+//865
+message RobTreasureMoreTimesRequest{
+    required int32 uid = 1;
+    required int32 chip_id = 2;
+    required int32 times = 3;
+}
+
 // 进入关卡战斗返回 command:1503
 message PvpFightResponse{
-    required CommonResponse res = 1;
+    optional CommonResponse res = 1;
     repeated BattleUnit red = 2;         // 红方数据 自己
     repeated BattleUnit blue = 3;        // 对方数据
     optional int32 red_skill = 4;        // 我方无双
@@ -85,6 +92,20 @@ message PvpFightResponse{
     optional int32 rank_incr = 15;
     optional GameResourcesResponse consume = 16;
     optional int32 before_rank = 17;
+}
+
+
+// 连续五次夺宝  command:1504
+message RobTreasureMoreTimesResponse{
+    required CommonResponse res = 1;
+    repeated RobTreasureReward one_time_info=2;
+}
+
+// 夺宝战利品
+message RobTreasureReward{
+    optional GameResourcesResponse gain = 1; // 宝箱随机掉落
+    repeated  GameResourcesResponse look_gain = 2;
+    optional PvpFightResponse fight_info=3;
 }
 
 message PvpOvercomeAwardRequest{

@@ -35,3 +35,20 @@ message chatMessageResponse{
     required string content = 3;//消息内容
     optional int32 time = 4;
 }
+
+// 获取聊天记录 1004
+message GetChatHistoryRequest{
+    required int32 channel = 1;//消息的频道  1.世界 2.公会 3.私聊 4.GM 5.系统通告 6.军团通告
+}
+
+// 获取聊天记录 1004
+message GetChatHistoryResponse{
+    required int32 channel = 1;//消息的频道  1.世界 2.公会 3.私聊 4.GM 5.系统通告 6.军团通告
+    repeated ChatHistory chat_history=2;
+}
+
+message ChatHistory{
+    required ChatObjectInfo owner = 1;
+    required string content = 2;//消息内容
+    optional int32 time = 3;
+}
