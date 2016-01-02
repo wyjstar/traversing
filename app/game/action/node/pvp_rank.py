@@ -286,6 +286,7 @@ def pvp_fight_request_1505(data, player):
                 hook_task(player, CONDITIONId.PVP_RANK, request.challenge_rank)
             player.pvp.pvp_high_rank = min(player.pvp.pvp_high_rank,
                                            request.challenge_rank)
+            logger.debug(" history_high_rank %s current %s" % (player.pvp.pvp_high_rank, before_player_rank))
 
             # 首次达到某名次的奖励
             arena_rank_up_rewards = game_configs.base_config.get('arenaRankUpRewards')

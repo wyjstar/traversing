@@ -102,6 +102,10 @@ if __name__ == '__main__':
                 level_period = v.get('level')
                 level = random.randint(level_period[0], level_period[1])
                 hero_ids = init_line_up(player, v, level)
+                # set player level to hero level
+                for t_hero in player.hero_component.get_heros():
+                    if t_hero.hero_no in hero_ids:
+                        t_hero.level = level
                 hero_levels = player.line_up_component.hero_levels
                 red_units = player.fight_cache_component.red_unit
                 print red_units
@@ -119,6 +123,7 @@ if __name__ == '__main__':
                                  unpar_skill_level=0,
                                  copy_units=red_units,
                                  copy_slots=slots)
+                print("hero_levels========", hero_levels)
                 pvp_rank[rank] = rank_item
                 break
 
@@ -131,7 +136,12 @@ if __name__ == '__main__':
             if rank in range(rank_period[0] - 1, rank_period[1] + 1):
                 level_period = v.get('level')
                 level = random.randint(level_period[0], level_period[1])
+
                 hero_ids = init_line_up(player, v, level)
+                # set player level to hero level
+                for t_hero in player.hero_component.get_heros():
+                    if t_hero.hero_no in hero_ids:
+                        t_hero.level = level
                 hero_levels = player.line_up_component.hero_levels
                 red_units = player.fight_cache_component.red_unit
                 print red_units
