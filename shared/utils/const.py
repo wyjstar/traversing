@@ -225,7 +225,7 @@ const.BOSS_LIVE = 1  # 正常
 const.BOSS_DEAD = 2      # 已死
 const.BOSS_RUN_AWAY = 3  # 逃走
 
-const.ROBOT_NUM = 3000
+const.ROBOT_NUM = 2000
 
 const.OPEN_FEATURE_HJQY = 1 # 黄巾起义
 const.OPEN_FEATURE_TASK = 2 # 任务系统

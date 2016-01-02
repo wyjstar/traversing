@@ -2,6 +2,7 @@
 echo "current branch:"
 git rev-parse --abbrev-ref HEAD
 # make sure
+echo "package type: $1"
 echo -n "version: "
 read version
 
@@ -85,10 +86,12 @@ if [ "$confirm" != "Y" ];then
     exit 0
 fi
 
+echo "echo:" $1
 ftp -n<<!
 open 192.168.1.90 21003
 user server server
 cd server
+cd $1
 bin
 put $package.tar.gz
 put $package.md5
