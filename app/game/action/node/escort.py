@@ -518,6 +518,17 @@ def remove_escort_in_times_remote(protect_or_rob, is_online, player):
         player.escort_component.rob_times += 1
     player.escort_component.save_data()
 
+@remoteserviceHandle('gate')
+def add_guild_activity_times_remote(task_no, protect_or_rob, is_online, player):
+    """
+    添加活动信息
+    """
+    logger.debug("add_guild_activity_times_remote============%s %s" % (task_no, protect_or_rob))
+    if protect_or_rob == 1:
+        player.guild_activity.add_protect_escort_times(task_no)
+    elif protect_or_rob == 2:
+        player.guild_activity.add_rob_escort_times(task_no)
+
 
 def start_rob_escort(player, task_id, response, task_guild_id, rob_no):
     """
@@ -541,6 +552,7 @@ def start_rob_escort(player, task_id, response, task_guild_id, rob_no):
         # 参与劫运次数
         task = res.get("task")
         for no, robber in enumerate(res.get("rob_task_info", {}).get("robbers", [])):
+            push_message("add_guild_activity_times_remote", int(robber.get("id")), task.get("task_no"), 2)
             if no == 0: continue
             push_message("remove_escort_in_times_remote", int(robber.get("id")), 2)
     return res

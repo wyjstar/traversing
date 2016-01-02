@@ -44,6 +44,7 @@ from character_fund_activity import CharacterFundActivity
 from character_buy_coin_activity import CharacterBuyCoinActivity
 from character_start_target import CharacterStartTargetComponent
 from character_escort import CharacterEscortComponent
+from character_guild_activity import CharacterGuildActivityComponent
 
 
 __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
@@ -65,5 +66,6 @@ __all__ = ['CharacterLineUpComponent', 'CharacterOnlineGift',
            'CharacterTaskComponent', 'CharacterStartTargetComponent',
            'CharacterHjqyComponent', 'CharacterActComponent',
            'CharacterRobTreasureComponent', 'CharacterFundActivity',
-           'CharacterEscortComponent'
+           'CharacterEscortComponent',
+           'CharacterGuildActivityComponent'
            ]
