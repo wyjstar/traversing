@@ -126,11 +126,11 @@ def runt_pick_842(data, player):
     #     response.res.result_no = 101  # 银币不足
     #     return response.SerializeToString()
 
-    if len(player.runt.m_runt) + len(runts) > \
-            game_configs.base_config.get('totemStash'):
-        response.res.result = False
-        response.res.result_no = 824
-        return response.SerializeToString()
+    # if len(player.runt.m_runt) + len(runts) > \
+    #         game_configs.base_config.get('totemStash'):
+    #     response.res.result = False
+    #     response.res.result_no = 824
+    #     return response.SerializeToString()
 
     now = int(time.time())
     for runt_info in runts:
