@@ -264,7 +264,7 @@ class CharacterMine(Component):
     def __init__(self, owner):
         Component.__init__(self, owner)
 
-        self._reset_day = ''  # 上次重置时间
+        self._reset_day = 0  # 上次重置时间
         self._reset_times = 0  # 已重置次数
         self._tby = ''  # 玩家活跃度周期
         self._lively = 0  # 玩家活跃度，每两天刷新一次
@@ -313,6 +313,7 @@ class CharacterMine(Component):
             if int(sp_id) != 0:
                 mine['lucky'][int(sp_id)] = 0
 
+        self._mine = {}
         self._mine[0] = mine
 
         data = dict(mine=self._mine,
@@ -323,13 +324,12 @@ class CharacterMine(Component):
         return data
 
     def reset_data(self):
-        data = dict(mine={'1': {}},
-                    reset_day='',
-                    reset_times=0,
-                    day_before='',
-                    lively=0,
-                    guard={})
-        self.init_data(data)
+        data = self.new_data()
+        self._reset_day = 0
+        self._reset_times = 0
+        self._tby = ''
+        self._lively = 0
+        self._mine = data['mine']
         self.save_data()
 
     def if_have_shop(self):
