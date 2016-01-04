@@ -307,7 +307,7 @@ class PlayerCharacter(object):
     def set_level_related(self, level=0):
         """docstring for set_level"""
         if level:
-            self.base_info._level = level
+            self.base_info.level = level
             self.base_info.save_data()
 
         # 更新卡槽位
