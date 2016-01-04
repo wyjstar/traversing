@@ -194,10 +194,10 @@ class CharacterStageComponent(Component):
             return False
 
         stage.update(result, star_num)
-        #open_stage_id = game_configs.base_config.get('warFogOpenStage')
-        #if stage.stage_id == open_stage_id and stage.state == 1:
-            #logger.debug('reset warfog')
-            #self.owner.mine.reset_data()
+        # open_stage_id = game_configs.base_config.get('warFogOpenStage')
+        # if stage.stage_id == open_stage_id and stage.state == 1:
+        #     logger.debug('reset warfog')
+        #     self.owner.mine.reset_data()
 
         if result:  # win
             stages_conf = game_configs.stage_config.get('stages')

@@ -33,16 +33,19 @@ FO_UNPARA = 36
 FO_PVP_RANK = 37
 FO_ACTIVITY = 38
 
+
 def is_not_open(player, feature_type):
     """
     是否开启
     """
-    logger.debug("feature_type %s player_level %s" % (feature_type, player.base_info.level))
+    logger.debug("feature_type %s player_level %s" % (feature_type,
+                                                      player.base_info.level))
     feature_item = game_configs.features_open_config.get(feature_type)
     if not feature_item:
         logger.error("there is no such feature_type %s!" % feature_type)
         return True
-    logger.debug("open_type %s open %s" % (feature_item.open_type, feature_item.open))
+    logger.debug("open_type %s open %s" % (feature_item.open_type,
+                                           feature_item.open))
 
     if feature_item.open_type == 1:
         # 玩家等级
@@ -59,6 +62,3 @@ def is_not_open(player, feature_type):
         else:
             return True
     return True
-
-
-
