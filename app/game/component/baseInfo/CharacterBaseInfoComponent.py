@@ -18,6 +18,7 @@ import uuid
 from app.game.core.task import hook_task, CONDITIONId
 from shared.utils.const import const
 from app.game.action.node.start_target import target_update
+from shared.common_logic import feature_open
 
 
 class CharacterBaseInfoComponent(Component):
@@ -273,6 +274,10 @@ class CharacterBaseInfoComponent(Component):
             target_update(self.owner, [43])
             self._level = value
             tb_character_level.zadd(self._level, self.id)
+
+            # feature open
+            if not feature_open.is_not_open(self.owner, feature_open.FO_MINE):
+                self.owner.mine.reset_data()
 
     @property
     def login_time(self):
