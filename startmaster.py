@@ -14,7 +14,6 @@ DEFAULT_JSON = dict(server_name='local',
                     front_ip='127.0.0.1',
                     server_no='1')
 
-
 if __name__ == "__main__":
 
     if not os.path.exists('app/logs'):
@@ -24,22 +23,24 @@ if __name__ == "__main__":
         f = urllib.urlopen("http://127.0.0.1:2600/GameInfo/GetConfigUrl")
         url = f.readlines()[0]
         res = urllib.urlretrieve(url, '/tmp/config.zip')
-        #print res
+        # print res
         print("update_excell=========")
         os.system("cd /tmp; unzip -o config.zip")
         os.system("cp /tmp/excel_cpickle config/excel_cpickle")
-        os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
+        os.system(
+            "cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
 
     except Exception, e:
         print("gm is not running! so copy lua/ from local.")
-        os.system("cp -r config/lua/* app/battle/src/app/datacenter/template/config/")
+        os.system(
+            "cp -r config/lua/* app/battle/src/app/datacenter/template/config/")
 
-    #if os.path.exists('/tmp/excel_cpickle'):
-        #os.system("cp /tmp/excel_cpickle config/excel_cpickle")
-        #os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
+    # if os.path.exists('/tmp/excel_cpickle'):
+    #     os.system("cp /tmp/excel_cpickle config/excel_cpickle")
+    #     os.system("cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
 
-    #import sys
-    #print(sys.exit())
+    # import sys
+    # print(sys.exit())
 
     if os.path.exists('/tmp/server_list.json'):
         os.system("cp /tmp/server_list.json server_list.json")
