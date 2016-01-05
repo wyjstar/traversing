@@ -509,14 +509,6 @@ def stage_sweep(stage_id, times, player, sweep_type):
         fight_cache_component.stage_id = stage_id
         red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
-        is_open = 0
-        act_confs = game_configs.activity_config.get(27, [])
-        part_multiple = []
-        for act_conf in act_confs:
-            if player.base_info.is_activiy_open(act_conf.id):
-                is_open = 1
-                part_multiple = [act_conf.parameterC, act_conf.parameterA]
-                break
         for _ in range(times):
             drop = []
 

@@ -443,18 +443,6 @@ def refresh_shop_items_507(pro_data, player):
         guild_items.item_id = k
         guild_items.item_num = v
 
-    if shop_type == 11:
-        # 11活动
-        act_confs = game_configs.activity_config.get(23, [])
-        is_open = 0
-        for act_conf in act_confs:
-            if player.base_info.is_activiy_open(act_conf.id):
-                is_open = 1
-                break
-        if is_open:
-            player.act.add_act23_times()
-            player.act.save_data()
-
     response.luck_num = int(shopdata['luck_num'])
     response.refresh_times = int(shopdata['refresh_times'])
     logger.debug("response %s", response)

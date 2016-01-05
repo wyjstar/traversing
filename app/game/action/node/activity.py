@@ -27,7 +27,7 @@ def get_act_gift_1832(data, player):
     response.res.result = False
 
     act_conf = game_configs.activity_config.get(act_id)
-    is_open = player.base_info.is_activiy_open(act_id)
+    is_open = player.act.is_activiy_open(act_id)
     if not act_conf or not is_open:
         response.res.result_no = 800
         return response.SerializeToString()
@@ -88,7 +88,7 @@ def get_act_info_1831(data, player):
     is_open = 0
     act_id = 0
     for act_conf in act_confs:
-        if player.base_info.is_activiy_open(act_conf.id):
+        if player.act.is_activiy_open(act_conf.id):
             is_open = 1
             act_id = act_conf.id
             break
@@ -119,7 +119,7 @@ def get_activity_28_gift_1834(data, player):
         logger.error('not found activity id:%s', activity_id)
         response.res.result_no = 183401
         return response.SerializeToString()
-    if not player.base_info.is_activiy_open(activity_id):
+    if not player.act.is_activiy_open(activity_id):
         logger.error('activity not open id:%s', activity_id)
         response.res.result_no = 183402
         return response.SerializeToString()
@@ -153,6 +153,7 @@ def get_activity_28_gift_1834(data, player):
 
 @remoteserviceHandle('gate')
 def get_fund_activity_1850(data, player):
+    # 成长基金活动
     request = activity_pb2.GetActGiftRequest()
     request.ParseFromString(data)
     activity_id = request.act_id
@@ -218,6 +219,7 @@ def get_fund_activity_1850(data, player):
 
 @remoteserviceHandle('gate')
 def activate_fund_activity_1851(data, player):
+    # 成长基金活动
     request = activity_pb2.GetActGiftRequest()
     request.ParseFromString(data)
     activity_id = request.act_id
@@ -264,6 +266,7 @@ def activate_fund_activity_1851(data, player):
 
 @remoteserviceHandle('gate')
 def get_fund_activity_info_1854(data, player):
+    # 成长基金活动
     response = activity_pb2.GetFundActivityResponse()
 
     info = player.fund_activity.fund_info

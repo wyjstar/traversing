@@ -33,6 +33,18 @@ class CharacterActComponent(Component):
                     received_time=self._received_time)
         return {'act_info': data}
 
+    def is_activiy_open(self, act_id):
+        return self.get_act_open_info(act_id).get('is_open')
+
+    def get_act_open_info(self, act_id):
+        act_conf = game_configs.activity_config.get(act_id)
+        register_time = self.owner.base_info.register_time
+        return do_get_act_open_info(
+            act_id,
+            already_open_act_ids=self.already_open_act_ids,
+            register_time=register_time,
+            server_open_time=0)
+
     @property
     def received_ids(self):
         return self._received_ids

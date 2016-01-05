@@ -47,7 +47,7 @@ class CharacterFundActivity(Component):
 
         for act_item in game_configs.activity_config[50]:
             if act_item.get('id') not in self._precondition and \
-                    self.owner.base_info.is_activiy_open(act_item.get('id')):
+                    self.owner.act.is_activiy_open(act_item.get('id')):
                 act_data = dict(state=0,
                                 recharge=0,
                                 max_single_recharge=0,
@@ -55,19 +55,19 @@ class CharacterFundActivity(Component):
                 self._precondition[act_item.get('id')] = act_data
 
         for aid in self._precondition.keys():
-            if not self.owner.base_info.is_activiy_open(aid):
+            if not self.owner.act.is_activiy_open(aid):
                 logger.info('pre activity id:%s is close', aid)
                 del self._precondition[aid]
 
         for act_item in game_configs.activity_config[51]:
             if act_item.get('id') not in self._data and \
-                    self.owner.base_info.is_activiy_open(act_item.get('id')):
+                    self.owner.act.is_activiy_open(act_item.get('id')):
                 act_data = dict(state=0,
                                 accumulate_days=[])
                 self._data[act_item.get('id')] = act_data
 
         for aid in self._data.keys():
-            if not self.owner.base_info.is_activiy_open(aid):
+            if not self.owner.act.is_activiy_open(aid):
                 logger.info('activity id:%s is close', aid)
                 del self._data[aid]
             elif self._data[aid]['state'] == 1:
