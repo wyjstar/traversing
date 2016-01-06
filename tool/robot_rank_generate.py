@@ -57,7 +57,6 @@ if __name__ == '__main__':
     mconfig = json.load(open('config.json', 'r'))
     GlobalObject().allconfig = mconfig
 
-    redis_config = ["127.0.0.1:6379"]
     redis_config = mconfig.get('redis').get('urls')
     redis_manager.connection_setup(redis_config)
     log_init_only_out()
@@ -205,26 +204,3 @@ def test_db():
     print 'end get db'
 
 
-if __name__ == '':
-    log_init_only_out()
-
-    hostname = "127.0.0.1"
-    user = "test"
-    password = "test"
-    port = 8066
-    dbname = "db_traversing"
-    charset = "utf8"
-    dbpool.initPool(host=hostname, user=user,
-                    passwd=password, port=port,
-                    db=dbname, charset=charset)
-    records = util.GetSomeRecordInfo(PVP_TABLE_NAME,
-                                     'id=10',
-                                     ['id', 'nickname', 'level', 'units'])
-    for r in records:
-        # u = cPickle.loads(u)
-        print r.get('nickname'), r.get('level'), r.get('id')  # r.get('units')
-
-    import gevent
-    thread1 = gevent.spawn(test_db)
-    thread2 = gevent.spawn(test_db)
-    gevent.joinall([thread1, thread2])
