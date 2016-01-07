@@ -261,9 +261,9 @@ def hook_task(player, cid, num, is_lively=False, proto_data=''):
 
 
 def check_condition1(player, condition_conf, task_type):
-    if player.stage_component. \
-            star_num[condition_conf[2]] >= condition_conf[3]:
-                return {'state': 1, 'value': 0}
+    # if player.stage_component. \
+    #         star_num[condition_conf[2]] >= condition_conf[3]:
+    #             return {'state': 1, 'value': 0}
     return {'state': 0, 'value': 0}
 
 
