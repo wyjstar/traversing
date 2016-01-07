@@ -11,6 +11,7 @@ from time import localtime
 
 
 def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
+    print act_id, "==============aab1234"
     day_xs = 60 * 60 * 24
     hour_xs = 60 * 60
     is_open = 0
@@ -18,7 +19,7 @@ def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
     time_end = 0
     now = int(time.time())
     register_time0 = 0
-    server_open_time0 = 0
+    server_open_time = 1452167135
 
     if register_time:
         register_time0 = get_time0(register_time)
@@ -27,10 +28,12 @@ def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
 
     act_conf = game_configs.activity_config.get(act_id)
     if not act_conf:
+        print '===================aa11'
         return {'is_open': 0, 'time_start': 0, 'time_end': 0}
     duration = act_conf.duration
 
-    if not act_conf.timeStart:
+    if not act_conf.timeEnd:
+        print '===================aa12'
         return {'is_open': 0, 'time_start': 0, 'time_end': 0}
 
     if duration == 1 or duration == 2:
@@ -40,18 +43,19 @@ def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
         time_start = server_open_time0 + (act_conf.timeStart-1) * day_xs
         time_end = server_open_time0 + (act_conf.timeEnd-1) * day_xs
     elif duration == 5:
-        time_start = server_open_time0 + (act_conf.timeStart-1) * hour_xs
-        time_end = server_open_time0 + (act_conf.timeEnd-1) * hour_xs
+        time_start = server_open_time0 + (act_conf.timeStart) * hour_xs
+        time_end = server_open_time0 + (act_conf.timeEnd) * hour_xs
 
     elif duration == 7 or duration == 6:
         time_start = register_time0 + (act_conf.timeStart-1) * day_xs
         time_end = register_time0 + (act_conf.timeEnd-1) * day_xs
     elif duration == 8:
-        time_start = register_time0 + (act_conf.timeStart-1) * hour_xs
-        time_end = register_time0 + (act_conf.timeEnd-1) * hour_xs
+        time_start = register_time0 + (act_conf.timeStart) * hour_xs
+        time_end = register_time0 + (act_conf.timeEnd) * hour_xs
 
     if time_start <= now <= time_end:
         is_open = 1
+    print {'is_open': is_open, 'time_start': time_start, 'time_end': time_end}, '==============11'
     return {'is_open': is_open, 'time_start': time_start, 'time_end': time_end}
 
 

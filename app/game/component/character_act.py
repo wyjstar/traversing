@@ -35,6 +35,7 @@ class CharacterActComponent(Component):
             return
         self._received_ids = data['received_ids']
         self._act_infos = data['act_infos']
+        self.update_51()
 
     def save_data(self):
         character_obj = tb_character_info.getObj(self.owner.base_info.id)
@@ -48,7 +49,10 @@ class CharacterActComponent(Component):
         return {'act_info': data}
 
     def is_activiy_open(self, act_id):
-        return self.get_act_open_info(act_id).get('is_open')
+        print act_id, '===============================1'
+        a = self.get_act_open_info(act_id).get('is_open')
+        print a, '======================15'
+        return a
 
     def get_act_open_info(self, act_id):
         player_act_type = [3, 6]
@@ -66,11 +70,14 @@ class CharacterActComponent(Component):
             if not premise_conf or premise_conf.premise == act_id:
                 # 防止循环递归
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
+            print act_id, '===============================12'
             premise_is_open = self.is_activiy_open(premise_id)
+            print act_id, '===============================13'
             if not premise_is_open:
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
             premise_info = get_act_info(self.owner, premise_id)
-            if premise_info.get('state') == 1:
+            print premise_info, '===========================14'
+            if not premise_info.get('state') or premise_info.get('state') == 1:
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
 
         return do_get_act_open_info(
@@ -334,9 +341,9 @@ class CharacterActComponent(Component):
         _date_now = int(time.mktime(time.strptime(str_time,
                                                   '%Y-%m-%d %H:%M:%S')))
 
-        act_ids = game_configs.activity_config.get(51)
-        for act_id in act_ids:
-            act_conf = game_configs.activity_config.get(act_id)
+        act_confs = game_configs.activity_config.get(51)
+        for act_conf in act_confs:
+            act_id = act_conf.id
             if not self.is_activiy_open(act_id):
                 continue
             act_info = self._act_infos.get(act_id)

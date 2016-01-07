@@ -11,6 +11,7 @@ from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 import time
 from shared.tlog import tlog_action
+from app.game.core.activity import get_act_info
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -47,6 +48,7 @@ def get_target_info_1826(data, player):
                 ids += b
             target_ids[x] = ids
 
+    print target_ids, '================================aaaaa1123'
     for _, ids in target_ids.items():
         for target_id in ids:
             if not player.act.is_activiy_open(target_id):
@@ -63,7 +65,7 @@ def get_target_info_1826(data, player):
 
     player.act.save_data()
 
-    logger.debug("response %s" % response)
+    logger.debug("response==========================start targe  %s" % response)
     response.res.result = True
     return response.SerializeToString()
 
@@ -173,7 +175,7 @@ def get_target_info_1827(data, player):
     target_info = player.act.act_infos.get(target_id)
     target_conf = game_configs.activity_config.get(target_id)
 
-    info = get_target_info(player, target_id)
+    info = get_act_info(player, target_id)
     if (target_conf.type != 30 and info.get('state') != 2) or (target_conf.type == 30 and info.get('state') == 3):
         response.res.result = False
         logger.error("this start target 条件不满足")
@@ -234,7 +236,7 @@ def target_update(player, conditions):
         if target_info and target_info[0] == 3:
             continue
         else:
-            info = get_target_info(player, target_id)
+            info = get_act_info(player, target_id)
             if info.get('state') == 2:
                 remote_gate.push_object_remote(1841,
                                                u'',

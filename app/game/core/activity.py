@@ -15,6 +15,7 @@ def get_act_info(player, act_id):
     act_info = player.act.act_infos.get(act_id)
     act_conf = game_configs.activity_config.get(act_id)
     jindu = 0
+    day = player.base_info.login_day
     if act_info and act_info[0] == 3:
         return {'state': 3, 'jindu': act_info[1]}
     elif act_info and act_info[0] == 2:
@@ -167,10 +168,18 @@ def get_act_info(player, act_id):
                 return {'state': 1, 'jindu': act_info[1]}
     elif act_conf.type == 38:
         #  黄巾起义 累积伤害
-        jindu = act_info[1]
+        if not act_info:
+            player.act.act_infos[act_id] = [1, 0]
+            jindu = 0
+        else:
+            jindu = act_info[1]
     elif act_conf.type == 39:
         #  黄巾起义 最高伤害
-        jindu = act_info[1]
+        if not act_info:
+            player.act.act_infos[act_id] = [1, 0]
+            jindu = 0
+        else:
+            jindu = act_info[1]
     elif act_conf.type == 40:
         # 镶嵌A个B级别宝石
         jindu = 0
@@ -199,17 +208,22 @@ def get_act_info(player, act_id):
                 return {'state': 1, 'jindu': act_info[1]}
     elif act_conf.type == 41:
         # 占领矿达到a个
-        jindu = act_info[1]
-    elif act_conf.type == 42:
-        # 夺宝合成数量达到a个
-        jindu = 1
+        if not act_info:
+            player.act.act_infos[act_id] = [1, 0]
+            jindu = 0
+        else:
+            jindu = act_info[1]
     elif act_conf.type == 45:
         if player.stage_component.get_stage(act_conf.parameterA).state != 1:
             return {'state': 1}
         else:
             return {'state': 2}
     elif act_conf.type == 44:
-        jindu = act_info[1]
+        if not act_info:
+            player.act.act_infos[act_id] = [1, 0]
+            jindu = 0
+        else:
+            jindu = act_info[1]
     elif act_conf.type == 43:
         # 战队等级 达到a
         jindu = player.base_info.level
@@ -229,7 +243,8 @@ def get_act_info(player, act_id):
         jindu = player.act.treasure_activity_jindu(act_conf)
     elif act_conf.type == 51:
         if not act_info:
-            return {'state': 0}
+            player.act.act_infos[act_id] = [0, []]
+            return {'state': 0, 'jindu': []}
         if len(act_info[1]) < int(act_conf.parameterA):
             return {'state': 1, 'jindu': act_info[1]}
 
@@ -248,7 +263,8 @@ def get_act_info(player, act_id):
         return {'state': 2, 'jindu': act_info[1]}
     elif act_conf.type == 50:
         if not act_info:
-            return {'state': 0}
+            player.act.act_infos[act_id] = [0, [0, 0, 0]]
+            return {'state': 0, 'jindu': [0, 0, 0]}
         return {'state': 1, 'jindu': act_info[1]}
 
     # 到到a的统一在这里返回
@@ -261,3 +277,76 @@ def get_act_info(player, act_id):
             return {'state': 1, 'jindu': jindu}
         else:
             return {'state': 1, 'jindu': act_info[1]}
+
+
+def line_up_activity_jindu(player, target_conf):
+    """docstring for line_up_activity"""
+
+    HERO_QUALITY = 1
+    HERO_BREAK_LEVEL = 2
+    HERO_AWAKE_LEVEL = 3
+    HERO_LEVEL = 4
+    HERO_REFINE = 5
+    EQU_QUALITY = 6
+    EQU_NUM = 7
+    EQU_LEVEL = 8
+    RUNT_QUALITY = 9
+    RUNT_NUM = 10
+    jindu = 0
+    line_up_slots = player.line_up_component.line_up_slots
+    parameterE = target_conf.parameterE
+    for slot in line_up_slots.values():
+        if not slot.activation:  # 如果卡牌位未激活
+            continue
+        hero_obj = slot.hero_slot.hero_obj  # 英雄实例
+        if not hero_obj:
+            continue
+        if hero_obj.hero_info.quality < parameterE.get(HERO_QUALITY, 0):
+            # 3 武将品质
+            continue
+        if hero_obj.break_level < parameterE.get(HERO_BREAK_LEVEL, 0):
+            # 4 武将突破等级
+            continue
+        if hero_obj.awake_level < parameterE.get(HERO_AWAKE_LEVEL, 0):
+            # 5 武将觉醒等级
+            continue
+        if hero_obj.level < parameterE.get(HERO_LEVEL, 0):
+            # 6 武将等级
+            continue
+        pulse = hero_obj.finished_pulse()
+        if pulse < parameterE.get(HERO_REFINE, 0):
+            # 7 武将练体
+            continue
+        print(hero_obj.hero_info.quality, hero_obj.break_level, hero_obj.awake_level, hero_obj.level, hero_obj.refine, pulse)
+
+        runt_num = 0
+        for (runt_type, item) in hero_obj.runt.items():
+            for (runt_po, runt_info) in item.items():
+                quality = game_configs.stone_config.get('stones'). \
+                    get(runt_info[1]).quality
+                if quality >= parameterE.get(RUNT_QUALITY, 0):
+                    runt_num += 1
+
+        logger.debug("runt_num %s" % runt_num)
+        if runt_num < parameterE.get(RUNT_NUM, 0):
+            # 11 符文数量
+            continue
+
+        equ_num = 0
+        for equ_slot_no in range(1, 5):
+            equ_slot = slot.equipment_slots.get(equ_slot_no)
+            if not equ_slot.equipment_id:
+                continue
+            equipment_obj = equ_slot.equipment_obj
+            if equipment_obj.equipment_config_info.quality < parameterE.get(EQU_QUALITY, 0):
+                continue
+            if equipment_obj.attribute.strengthen_lv < parameterE.get(EQU_LEVEL, 0):
+                continue
+            equ_num += 1
+        logger.debug("equ_num %s" % equ_num)
+
+        if equ_num < parameterE.get(EQU_NUM, 0):
+            # 9 装备数量
+            continue
+        jindu += 1
+    return jindu

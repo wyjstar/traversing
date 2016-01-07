@@ -8,6 +8,7 @@ from app.world.action.gateforwarding import limit_hero_obj
 from shared.utils.ranking import Ranking
 from gfirefly.server.globalobject import GlobalObject
 from shared.time_event_manager.te_manager import te_manager
+from shared.common_logic.activity import do_get_act_open_info
 
 
 childsmanager = GlobalObject().root.childsmanager
@@ -92,18 +93,10 @@ def get_activity_info():
     timeStart = 0
     now = time.time()
     for act_conf in act_confs:
-        if act_conf.timeEnd <= now:
-            continue
-        if act_conf.timeStart <= now < act_conf.timeEnd:
+        act_time_info = do_get_act_open_info(act_conf.id)
+        if act_time_info.get('is_open'):
             activity_id = act_conf.id
-            timeEnd = int(act_conf.timeEnd)
-            break
-        if act_conf.timeStart > now:
-            if not activity_id:
-                activity_id = act_conf.id
-                timeStart = act_conf.timeStart
-            elif timeStart > act_conf.timeStart:
-                activity_id = act_conf.id
-                timeStart = act_conf.timeStart
+            timeStart = act_time_info.get('time_start')
+            timeEnd = act_time_info.get('time_end')
 
     return {'id': activity_id, 'end_time': timeEnd, 'start_time': timeStart}

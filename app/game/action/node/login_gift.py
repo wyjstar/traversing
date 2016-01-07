@@ -58,6 +58,7 @@ def get_login_gift_826(pro_data, player):
     response.result = res
     if err_no:
             response.result_no = err_no
+    print response, '====================aaaabbbbbcc'
     return response.SerializeToString()
 
 
