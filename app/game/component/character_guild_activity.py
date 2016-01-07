@@ -115,7 +115,7 @@ class CharacterGuildActivityComponent(Component):
         for act_id, act_info in self._act_info.items():
             act_item = game_configs.activity_config.get(act_id)
             # if act_item.timeStart < get_current_timestamp() and act_item.timeEnd > get_current_timestamp():
-            if self.act.is_activiy_open(act_id):
+            if self.owner.act.is_activiy_open(act_id):
                 act_pb = response.acts.add()
                 act_pb.act_id = act_id
                 act_pb.act_times = act_info.get("act_times")

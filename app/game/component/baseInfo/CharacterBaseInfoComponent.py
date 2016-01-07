@@ -617,6 +617,7 @@ class CharacterBaseInfoComponent(Component):
         time0 = get_time0(now)
         time1 = get_time0(register_time)
         day = (time0 - time1)/(24*60*60) + 1
+        return day
 
 def get_time0(t):
     # 时间戳当天的零点时间戳

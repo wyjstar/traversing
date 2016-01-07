@@ -63,7 +63,7 @@ class CharacterActComponent(Component):
                 return {'is_open': 1, 'time_start': 1, 'time_end': 1}
             premise_id = act_conf.premise
             premise_conf = game_configs.activity_config.get(premise_id)
-            if not premise_conf or premise_conf.premise_conf == act_id:
+            if not premise_conf or premise_conf.premise == act_id:
                 # 防止循环递归
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
             premise_is_open = self.is_activiy_open(premise_id)
