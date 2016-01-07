@@ -49,7 +49,7 @@ def get_target_info_1826(data, player):
 
     for _, ids in target_ids.items():
         for target_id in ids:
-            if not player.act.is_activiy_open(target_id)
+            if not player.act.is_activiy_open(target_id):
             continue
 
             logger.debug("target_id %s" % target_id)
