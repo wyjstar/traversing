@@ -69,7 +69,7 @@ class CharacterActComponent(Component):
             premise_is_open = self.is_activiy_open(premise_id)
             if not premise_is_open:
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
-            premise_info = get_act_info(player, premise_id)
+            premise_info = get_act_info(self.owner, premise_id)
             if premise_info.get('state') == 1:
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
 

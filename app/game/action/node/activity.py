@@ -154,8 +154,6 @@ def get_fund_activity_1850(data, player):
 
     act_item = game_configs.activity_config.get(activity_id)
     if act_item is None:
-        logger.error('not found activity id:%s--%s', activity_id,
-                     player.fund_activity.fund_info.keys())
         response.res.result_no = 185000
         return response.SerializeToString()
 
