@@ -60,7 +60,6 @@ class PlayerCharacter(object):
         a['hjqy'] = component.CharacterHjqyComponent(self)
         a['start_target'] = component.CharacterStartTargetComponent(self)
         a['rob_treasure'] = component.CharacterRobTreasureComponent(self)
-        a['fund_activity'] = component.CharacterFundActivity(self)
         a['escort_component'] = component.CharacterEscortComponent(self)
         a['guild_activity'] = component.CharacterGuildActivityComponent(self)
         logger.debug("keys %s" % a.keys())
@@ -293,9 +292,6 @@ class PlayerCharacter(object):
     def start_target(self):
         return self._components['start_target']
 
-    @property
-    def fund_activity(self):
-        return self._components['fund_activity']
     @property
     def escort_component(self):
         return self._components['escort_component']
