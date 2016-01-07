@@ -20,3 +20,8 @@ message ChangeHeadRequest{
 message ChangeBattleSpeed{
 	required int32 speed = 1;
 }
+
+// 剧情
+message ChangeStageStory{
+	required int32 story_id = 1;
+}

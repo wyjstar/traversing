@@ -83,6 +83,7 @@ message GameLoginResponse{
     //
     optional int32 first_recharge_activity = 38; // 是否已获得首次充值 -1:没领过 1:领过 
     optional float hight_power = 39; // 最高战力
+	optional int32 story_id = 40; // 关卡剧情
 }
 
 message BuyStaminaTimes

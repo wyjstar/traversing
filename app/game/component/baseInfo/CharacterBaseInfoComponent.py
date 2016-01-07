@@ -51,6 +51,7 @@ class CharacterBaseInfoComponent(Component):
         self._plat_id = -1
         self._is_open_next_day_activity = False
         self._first_recharge_activity = -1 # -1 没领 1 领过
+        self._story_id = 0
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -77,6 +78,7 @@ class CharacterBaseInfoComponent(Component):
         self._gen_balance = character_info.get('gen_balance', 0)
         self._tomorrow_gift = character_info.get('tomorrow_gift', 0)
         self._battle_speed = character_info.get('battle_speed', 1)
+        self._story_id = character_info.get('story_id', 0)
         self._is_open_next_day_activity = character_info.get('is_open_next_day_activity', False)
         self._first_recharge_activity = character_info.get('first_recharge_activity', False)
 
@@ -110,6 +112,7 @@ class CharacterBaseInfoComponent(Component):
                     battle_speed=self._battle_speed,
                     is_open_next_day_activity=self._is_open_next_day_activity,
                     first_recharge_activity=self._first_recharge_activity,
+                    story_id=self._story_id,
                     )
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
@@ -137,6 +140,7 @@ class CharacterBaseInfoComponent(Component):
                     battle_speed=self._battle_speed,
                     is_open_next_day_activity=self._is_open_next_day_activity,
                     first_recharge_activity=self._first_recharge_activity,
+                    story_id=self._story_id,
                     )
         return data
 
@@ -477,6 +481,14 @@ class CharacterBaseInfoComponent(Component):
     @battle_speed.setter
     def battle_speed(self, value):
         self._battle_speed = value
+
+    @property
+    def story_id(self):
+        return self._story_id
+
+    @story_id.setter
+    def story_id(self, value):
+        self._story_id = value
 
     @property
     def closure(self):
