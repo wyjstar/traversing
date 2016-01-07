@@ -44,9 +44,6 @@ class CharacterRechargeGift(Component):
             if activity is None:
                 del self._recharge[activity_id]
                 continue
-            # if not activity.get('is_open'):
-            #     del self._recharge[activity_id]
-            #     continue
 
     def charge(self, recharge):
         # 保存首次充值id
@@ -63,14 +60,8 @@ class CharacterRechargeGift(Component):
         self.save_data()
         logger.debug(self._recharge)
 
-        self.owner.fund_activity.recharge(recharge)
-
     def type_process(self, activity, recharge):
         activity_id = activity.get('id')
-        # isopen = activity.get('is_open')
-        # if isopen != 1:
-        #     logger.debug('activity:%s is not open', activity_id)
-        #     return
 
         _time_now_struct = time.localtime()
         str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
@@ -79,19 +70,10 @@ class CharacterRechargeGift(Component):
         _date_now = int(time.mktime(time.strptime(str_time,
                                                   '%Y-%m-%d %H:%M:%S')))
         _time_now = int(time.time())
-        # _str_activity_period = activity.get('parameterT')
 
-        if _str_activity_period != '0':
-            begin, end = _str_activity_period.split(' - ')
-            # begin = time.mktime(time.strptime(begin, '%Y-%m-%d %H:%M:%S'))
-            # end = time.mktime(time.strptime(end, '%Y-%m-%d %H:%M:%S'))
-            begin = activity.get("timeStart")
-            end = activity.get("timeEnd")
-
-            if _time_now < begin or _time_now > end:
-                logger.debug('activity:%s not in time:now%s:begin:%s:end:%s',
-                             activity_id, _time_now, begin, end)
-                return
+        if self.act.is_activiy_open(act_id):
+            logger.debug('activity:not in time')
+            return
 
         gift_type = activity.get('type')
         if gift_type == 7:  # first time recharge
@@ -247,11 +229,9 @@ class CharacterRechargeGift(Component):
         self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
 
         # 七日活动 累积充值
-        if self._owner.start_target.is_open():
-            self._owner.start_target.condition_update(44, self._owner.base_info.recharge)
-            self._owner.start_target.save_data()
-            # 更新 七日奖励
-            target_update(self.owner, [44])
+        self._owner.act.condition_add(44, charge_num)
+        # 更新 七日奖励
+        target_update(self.owner, [44])
 
         # 活动
         self._owner.recharge.charge(charge_num)

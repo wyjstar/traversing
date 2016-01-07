@@ -524,11 +524,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
 
             fight_cache_component.get_stage_drop(stage_config, drop)
 
-            if is_open:
-                data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id, part_multiple=part_multiple)
-            else:
-                data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
-            # data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
+            data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
             get_return(player, data, drops)
 
             # 乱入武将按概率获取碎片

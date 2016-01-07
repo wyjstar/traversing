@@ -28,7 +28,7 @@ def get_act_gift_1832(data, player):
 
     act_conf = game_configs.activity_config.get(act_id)
     is_open = player.act.is_activiy_open(act_id)
-    if not act_conf or not is_open:
+    if not act_conf or not is_open or act_conf.showJudgment:
         response.res.result_no = 800
         return response.SerializeToString()
     act_type = act_conf.type
@@ -83,19 +83,6 @@ def get_act_info_1831(data, player):
     act_type = args.act_type
     response = activity_pb2.GetActInfoResponse()
     response.act_type = act_type
-
-    act_confs = game_configs.activity_config.get(act_type, [])
-    is_open = 0
-    act_id = 0
-    for act_conf in act_confs:
-        if player.act.is_activiy_open(act_conf.id):
-            is_open = 1
-            act_id = act_conf.id
-            break
-    if not is_open:
-        response.res.result = True
-        response.res.result_no = 800
-        return response.SerializeToString()
 
     received_ids = player.act.received_ids.get(act_type)
     if received_ids:
@@ -160,6 +147,11 @@ def get_fund_activity_1850(data, player):
     response = activity_pb2.GetActGiftResponse()
     response.res.result = False
 
+    if not player.act.is_activiy_open(activity_id):
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+
     act_item = game_configs.activity_config.get(activity_id)
     if act_item is None:
         logger.error('not found activity id:%s--%s', activity_id,
@@ -167,51 +159,20 @@ def get_fund_activity_1850(data, player):
         response.res.result_no = 185000
         return response.SerializeToString()
 
-    if activity_id not in player.fund_activity.fund_info:
-        logger.error('not found activity id:%s--%s', activity_id,
-                     player.fund_activity.fund_info.keys())
-        response.res.result_no = 185001
+    info = get_target_info(player, activity_id)
+
+    if info.get('state') != 2:
+        response.res.result = False
+        logger.error("条件不满足")
+        response.res.result_no = 800
         return response.SerializeToString()
 
-    fund = player.fund_activity.fund_info[activity_id]
-    if fund['state'] != 1:
-        logger.error('activity id:%s is draw', activity_id)
-        response.res.result_no = 185003
-        return response.SerializeToString()
-
-    if len(fund['accumulate_days']) < int(act_item.parameterA):
-        logger.error('activity accumulate days not enough:%s-%s',
-                     int(act_item.parameterA), fund['accumulate_days'])
-        response.res.result_no = 185004
-        return response.SerializeToString()
-
-    if act_item.parameterB > player.base_info.level:
-        logger.error('activity level error:%s-%s',
-                     act_item.parameterB, player.base_info.level)
-        response.res.result_no = 185005
-        return response.SerializeToString()
-
-    if len(act_item.parameterC) == 1 and \
-            act_item.parameterC[0] > player.line_up_component.hight_power:
-        logger.error('activity ap error:%s-%s',
-                     player.line_up_component.hight_power,
-                     act_item.parameterC[0])
-        response.res.result_no = 185005
-        return response.SerializeToString()
-
-    if len(act_item.parameterD) == 1 and \
-       player.stage_component.get_stage(act_item.parameterD[0]).state != 1:
-        logger.error('activity stage:%s is not open',
-                     act_item.parameterD[0])
-        response.res.result_no = 185005
-        return response.SerializeToString()
-
-    fund['state'] = 2
-    player.fund_activity.save_data()
     return_data = gain(player,
                        act_item.reward,
-                       const.act_28)
+                       const.FUND)
     get_return(player, return_data, response.gain)
+    player.act.act_infos[activity_id][0] = 3
+    player.act.save_data()
 
     response.res.result = True
     return response.SerializeToString()
@@ -226,22 +187,24 @@ def activate_fund_activity_1851(data, player):
     response = activity_pb2.GetActGiftResponse()
     response.res.result = False
 
-    act_item = game_configs.activity_config.get(activity_id)
-    if act_item is None:
-        logger.error('not found activity id:%s--%s', activity_id,
-                     player.fund_activity.fund_info.keys())
-        response.res.result_no = 185100
+    if not player.act.is_activiy_open(activity_id):
+        response.res.result = False
+        response.res.result_no = 800
         return response.SerializeToString()
+
+    act_item = game_configs.activity_config.get(activity_id)
 
     if act_item.parameterB == 0:
         logger.error('no need activate this activity:%s', activity_id)
         response.res.result_no = 185101
         return response.SerializeToString()
 
-    fund = player.fund_activity.precondition.get(activity_id)
-    if fund is None:
-        logger.error('activity:%s is not exist', activity_id)
-        response.res.result_no = 185102
+    info = get_target_info(player, activity_id)
+
+    if info.get('state') != 2:
+        response.res.result = False
+        logger.error("条件不满足")
+        response.res.result_no = 800
         return response.SerializeToString()
 
     need_gold = act_item.parameterB
@@ -257,9 +220,12 @@ def activate_fund_activity_1851(data, player):
                                      response.consume)
     player.pay.pay(need_gold, const.FUND, func)
 
-    fund['consume'] = need_gold
-    player.fund_activity.check_precondition()
-    player.fund_activity.check_time()
+    player.act.act_infos[activity_id][0] = 3
+    player.act.save_data()
+
+    # fund['consume'] = need_gold
+    # player.fund_activity.check_precondition()
+    # player.fund_activity.check_time()
     response.res.result = True
     return response.SerializeToString()
 
@@ -269,20 +235,30 @@ def get_fund_activity_info_1854(data, player):
     # 成长基金活动
     response = activity_pb2.GetFundActivityResponse()
 
-    info = player.fund_activity.fund_info
-    for k, v in info.items():
-        act = response.info.add()
-        act.act_id = k
-        act.state = v['state']
-        act.accumulate_days = len(v['accumulate_days'])
+    for act_conf in game_configs.activity_config[51]:
+        if not player.act.is_activiy_open(act_conf.id):
+            continue
+        act_info = get_act_info(player, act_conf.id)
 
-    info = player.fund_activity.precondition
-    for k, v in info.items():
         act = response.info.add()
-        act.act_id = k
-        act.state = v.get('state', 0)
-        act.recharge = v.get('recharge', 0)
-        act.max_single_recharge = v.get('max_single_recharge', 0)
+        act.act_id = act_conf.id
+        act.state = act_info.get('state')
+        act.accumulate_days = len(act_info.get('jindu'))
+
+    for act_conf in game_configs.activity_config[50]:
+        if not player.act.is_activiy_open(act_conf.id):
+            continue
+        act_info = get_act_info(player, act_conf.id)
+
+        act = response.info.add()
+        act.act_id = act_conf.id
+        act.state = act_info.get('state')
+        act.recharge = act_info.get('jindu')[0]
+        act.max_single_recharge = act_info.get('jindu')[1]
+
+        # act.state = v.get('state', 0)
+        # act.recharge = v.get('recharge', 0)
+        # act.max_single_recharge = v.get('max_single_recharge', 0)
 
     print 'get_fund_activity_info_1854:', response
     return response.SerializeToString()

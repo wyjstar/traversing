@@ -19,6 +19,7 @@ from app.game.core.task import hook_task, CONDITIONId
 from shared.utils.const import const
 from app.game.action.node.start_target import target_update
 from shared.common_logic import feature_open
+import shared.utils import xtime
 
 
 class CharacterBaseInfoComponent(Component):
@@ -607,3 +608,13 @@ class CharacterBaseInfoComponent(Component):
     def guild_escort_rob_times_max(self):
         """每日购买上限"""
         return 0
+
+    @property
+    def login_day(self):
+        now = int(time.time())
+        register_time = self.register_time
+        time.localtime(register_time)
+
+        time0 = xtime.get_time0(now)
+        time1 = xtime.get_time0(register_time)
+        day = (time0 - time1)/(24*60*60) + 1

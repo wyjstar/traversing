@@ -187,14 +187,12 @@ def battle_2103(pro_data, player):
     tlog_action.log('BattleHJQY', player, boss_id, is_kill)
 
     # start target
-    if player.start_target.is_open():
-        all_current_damage_hp = remote_gate['world'].\
-            hjqy_damage_hp_remote(player.base_info.id)
-        player.start_target.condition_update(38, current_damage_hp)
-        player.start_target.condition_update(39, all_current_damage_hp)
-        player.start_target.save_data()
-        # 更新 七日奖励
-        target_update(player, [38, 39])
+    all_current_damage_hp = remote_gate['world'].\
+        hjqy_damage_hp_remote(player.base_info.id)
+    player.act.condition_update(38, current_damage_hp)
+    player.act.condition_update(39, all_current_damage_hp)
+    # 更新 七日奖励
+    target_update(player, [38, 39])
 
     return response.SerializePartialToString()
 
