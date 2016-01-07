@@ -16,8 +16,8 @@ def init_2501(pro_data, player):
     """
     response = activity_pb2.GuildActivityInitResponse()
     remote_gate["world"].get_tasks_by_ids_remote(player.escort_component.protect_records)
-    player.guild_activiy.check_time()
-    player.guild_activiy.update_pb(response)
+    player.guild_activity.check_time()
+    player.guild_activity.update_pb(response)
     logger.debug("response %s" % response)
     return response.SerializeToString()
 
@@ -30,7 +30,7 @@ def get_reward_2502(pro_data, player):
     act_id = request.act_id
     logger.debug("request %s" % request)
     response = activity_pb2.GuildActivityGetRewardResponse()
-    res = player.guild_activiy.get_reward(act_id, response)
+    res = player.guild_activity.get_reward(act_id, response)
 
     response.res.result = res.get("result")
     if not res.get("result"):
@@ -43,7 +43,7 @@ def get_reward_2502(pro_data, player):
 def test_add_times_2503(pro_data, player):
     """获取get_reward初始化信息
     """
-    act_infos = player.guild_activiy.act_info
+    act_infos = player.guild_activity.act_info
     for act_info in act_infos.values():
         act_info["act_times"] = 10
 

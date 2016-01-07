@@ -121,7 +121,7 @@ def trigger_boss_2402(pro_data, player):
 
     remote_gate.push_object_character_remote(24021, construct_init_data(player), player.guild.get_guild_member_ids(res.get("p_list", {})))
     # add guild activity times
-    player.guild_activity.add_guild_boss_period_times(res.get("guild_boss").get("boss_type"))
+    player.guild_activity.add_guild_boss_times(res.get("guild_boss").get("boss_type"))
 
     return response.SerializeToString()
 
@@ -180,7 +180,7 @@ def battle_2403(pro_data, player):
         response.res.result_no = res.get("result_no")
         return response.SerializePartialToString()
     # add guild activity times
-    player.guild_activity.add_guild_boss_period_times(boss_info.get("boss_type"))
+    player.guild_activity.add_guild_boss_times(boss_info.get("boss_type"))
     logger.debug("response %s" % response)
     return response.SerializePartialToString()
 

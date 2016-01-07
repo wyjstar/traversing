@@ -10,12 +10,12 @@ from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 from shared.utils.date_util import get_current_timestamp, days_to_current
 
-PROTECT_ESCORT_ACT_PERIOD = 52001
-PROTECT_ESCORT_ACT_EVERY_DAY = 52002
-ROB_ESCORT_ACT_PERIOD = 53001
-ROB_ESCORT_ACT_EVERY_DAY = 53002
-GUILD_BOSS_ACT_PERIOD = 54001
-GUILD_BOSS_ACT_EVERY_DAY = 54002
+PROTECT_ESCORT_ACT_PERIOD = 52002
+PROTECT_ESCORT_ACT_EVERY_DAY = 52001
+ROB_ESCORT_ACT_PERIOD = 53002
+ROB_ESCORT_ACT_EVERY_DAY = 53001
+GUILD_BOSS_ACT_PERIOD = 54002
+GUILD_BOSS_ACT_EVERY_DAY = 54001
 
 class CharacterGuildActivityComponent(Component):
     """CharacterGuildActivity"""
@@ -90,10 +90,10 @@ class CharacterGuildActivityComponent(Component):
     def add_protect_escort_times(self, arg):
         self.add_times(PROTECT_ESCORT_ACT_PERIOD, arg)
         self.add_times(PROTECT_ESCORT_ACT_EVERY_DAY, arg)
-    def add_rob_escort_period_times(self, arg):
+    def add_rob_escort_times(self, arg):
         self.add_times(ROB_ESCORT_ACT_PERIOD, arg)
         self.add_times(ROB_ESCORT_ACT_EVERY_DAY, arg)
-    def add_guild_boss_period_times(self, arg):
+    def add_guild_boss_times(self, arg):
         self.add_times(GUILD_BOSS_ACT_PERIOD, arg)
         self.add_times(GUILD_BOSS_ACT_EVERY_DAY, arg)
 
