@@ -4,6 +4,7 @@
 from app.game.component.Component import Component
 from app.game.redis_mode import tb_character_info
 import time
+from shared.db_opear.configs_data import game_configs
 
 
 WIN_MINE_QUALITY = 1
