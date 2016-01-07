@@ -289,8 +289,8 @@ arena_fight_config={
 ,}
 ,  [60003] = {
   ["type"] = 6,  ["Description"] = 5900000003,  ["play_rank"] = {
-  [1] = 5,}
-,  ["id"] = 60003,  ["Gradient"] = 3,  ["choose"] = "[[k-k*0.1,k-k*0.05,1]]",  ["Reward"] = {
+  [1] = 5,  [2] = 6,}
+,  ["id"] = 60003,  ["Gradient"] = 3,  ["choose"] = "[[k-k*0.1,k-k*0.05,2]]",  ["Reward"] = {
 }
 ,}
 ,  [50002] = {

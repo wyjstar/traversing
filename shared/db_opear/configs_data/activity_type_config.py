@@ -13,6 +13,8 @@ class ActivityTypeConfig(object):
         self._items = {}
 
     def parser(self, config_value):
+        return {}
+
         for row in config_value:
             row["timeStart"] = time.mktime(time.strptime(row.get("timeStart"),
                                            '%Y-%m-%d %H:%M:%S'))

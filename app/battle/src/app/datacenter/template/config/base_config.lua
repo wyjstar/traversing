@@ -355,7 +355,7 @@ base_config={
 ,  ["2"] = {
   [1] = 1600005,}
 ,}
-,  ["CardImparirment"] = 1,  ["arena_day_points_time"] = "01:00:00",  ["hjqyRandomCheckpoint"] = {
+,  ["CardImparirment"] = 0.5,  ["arena_day_points_time"] = "01:00:00",  ["hjqyRandomCheckpoint"] = {
   ["43"] = {
   [1] = 930143,  [2] = 930243,  [3] = 930343,  [4] = 1,}
 ,  ["41"] = {
