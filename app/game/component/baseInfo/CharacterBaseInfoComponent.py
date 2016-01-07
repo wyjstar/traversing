@@ -19,7 +19,6 @@ from app.game.core.task import hook_task, CONDITIONId
 from shared.utils.const import const
 from app.game.action.node.start_target import target_update
 from shared.common_logic import feature_open
-import shared.utils import xtime
 
 
 class CharacterBaseInfoComponent(Component):
@@ -626,6 +625,13 @@ class CharacterBaseInfoComponent(Component):
         register_time = self.register_time
         time.localtime(register_time)
 
-        time0 = xtime.get_time0(now)
-        time1 = xtime.get_time0(register_time)
+        time0 = get_time0(now)
+        time1 = get_time0(register_time)
         day = (time0 - time1)/(24*60*60) + 1
+
+def get_time0(t):
+    # 时间戳当天的零点时间戳
+    t1 = time.localtime(t)
+    return int(time.mktime(time.strptime(
+               time.strftime('%Y-%m-%d 00:00:00', t1),
+               '%Y-%m-%d %H:%M:%S')))
