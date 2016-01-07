@@ -8,7 +8,6 @@ import random
 from shared.utils.random_pick import random_multi_pick_without_repeat
 import time
 from time import localtime
-import shared.utils import xtime
 
 
 def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
@@ -22,9 +21,9 @@ def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
     server_open_time0 = 0
 
     if register_time:
-        register_time0 = xtime.get_time0(register_time)
+        register_time0 = get_time0(register_time)
     if server_open_time:
-        server_open_time0 = xtime.get_time0(server_open_time)
+        server_open_time0 = get_time0(server_open_time)
 
     act_conf = game_configs.activity_config.get(act_id)
     if not act_conf:
@@ -54,3 +53,11 @@ def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
     if time_start <= now <= time_end:
         is_open = 1
     return {'is_open': is_open, 'time_start': time_start, 'time_end': time_end}
+
+
+def get_time0(t):
+    # 时间戳当天的零点时间戳
+    t1 = time.localtime(t)
+    return int(time.mktime(time.strptime(
+               time.strftime('%Y-%m-%d 00:00:00', t1),
+               '%Y-%m-%d %H:%M:%S')))
