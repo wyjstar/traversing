@@ -35,3 +35,23 @@ message FundActivityInfo{
 message GetFundActivityResponse{
 	repeated FundActivityInfo info = 1;
 }
+
+// 2501 公会活动初始化信息
+message GuildActivityInitResponse{
+	repeated GuildActivityInfo acts = 1;
+}
+
+message GuildActivityInfo{
+	required int32 act_id = 1; //活动id
+	optional int32 act_times = 2; //活动次数
+	optional bool finished = 3; //是否已经领取
+}
+
+// 2502 获取活动奖励
+message GuildActivityGetRewardRequest{
+	required int32 act_id = 1; //活动id
+}
+message GuildActivityGetRewardResponse{
+	required CommonResponse res = 1; 
+    optional GameResourcesResponse gain = 2; //活动奖励
+}

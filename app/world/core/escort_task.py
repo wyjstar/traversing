@@ -114,6 +114,7 @@ class EscortTask(object):
         if self.state == 1 and \
             self._receive_task_time + task_item.wait < get_current_timestamp() and \
             self._receive_task_time + task_item.wait + task_item.taskTime > get_current_timestamp():
+            self._start_protect_time = int(get_current_timestamp())
             return True
         return False
 
@@ -139,6 +140,11 @@ class EscortTask(object):
                                       prize=str(self._reward))
             if self.task_id in guild.escort_tasks_can_rob:
                 guild.escort_tasks_can_rob.remove(self._task_id)
+            # add guild activity times
+            for protecter in self.protecters:
+                get_remote_gate().push_message_to_transit_remote('add_guild_activity_times_remote',
+                                                   int(protecter.get("id")), self.task_no, 1)
+
         self.update_rob_state(task_item)
         self.save_data()
 

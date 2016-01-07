@@ -17,6 +17,26 @@ from app.proto_file import shop_pb2
 
 class RobotActivity(Robot):
     # online gift
+
+    def command_0_guild_activity(self):
+        self.send_message("", 2501)
+    def guild_activity_init_2501(self, msg):
+        self.on_command_finish()
+
+    def command_1_test_guild_activity(self):
+        self.send_message("", 2503)
+    def guild_activity_init_2503(self, msg):
+        self.on_command_finish()
+
+    def command_2_get_reward_guild_activity(self):
+        request = activity_pb2.GuildActivityGetRewardRequest()
+        request.act_id = 52001
+        self.send_message(request, 2502)
+    def guild_activity_get_reward_2502(self, msg):
+        self.on_command_finish()
+
+
+
     def command_get_online_gift(self, gift_id):
         request = online_gift_pb2.GetOnlineGift()
         request.gift_id = int(gift_id)
