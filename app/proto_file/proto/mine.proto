@@ -165,6 +165,7 @@ message MineGuardRequest
     required int32 pos = 1;                    // 矿在地图上的位置
     repeated MineLineUpSlot line_up_slots = 2; // 阵容
     optional int32 best_skill_id = 3;          // 无双id
+	repeated int32 lineup = 4;      // 队形
 }
 //秘境相关，卡牌位
 message MineLineUpSlot

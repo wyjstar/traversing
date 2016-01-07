@@ -239,6 +239,17 @@ def guard_1244(data, player):
     response = common_pb2.CommonResponse()
     __skill = request.best_skill_id
     __best_skill_no, __skill_level = player.line_up_component.get_skill_info_by_unpar(__skill)
+
+    # 阵容顺序
+    line_up_order = []  # {hero_id:pos}
+    for line in request.lineup:
+        line_up_order.append(line)
+    if len(line_up_order) != 6:
+        logger.error("line up order length error %s !" % len(line_up_order))
+        response.result = False
+        response.result_no = 124401
+        return response.SerializePartialToString()
+
     # 取消原来已经驻守的武将
     info = get_save_guard(player, request.pos)
     if info and info.get("line_up"):
@@ -302,6 +313,8 @@ def guard_1244(data, player):
             battle_units[no] = unit
 
     line_up_response = line_up_pb2.LineUpResponse()
+    for temp in line_up_order:
+        line_up_response.order.append(temp)
     line_up_info_detail(character_line_up.line_up_slots, {}, line_up_response)
     add_unpar = line_up_response.unpars.add()
     add_unpar.unpar_id = __skill
@@ -571,7 +584,7 @@ def process_mine_result(player, position, result, response, stype, hold=1):
 #         if v > 0:
 #             harvest_b[k] = int(v * warFogLootRatio)
 #             harvest_a[k] = v - harvest_b[k]
- 
+
     prize = []
     prize_num = 0
     for k, v in harvest_stone.items():
