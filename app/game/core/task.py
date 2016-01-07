@@ -105,6 +105,9 @@ class CONDITIONId:
     VIP_LEVEL = 31
     HERO_GET_LIANG = 32
     SHARE = 33
+    PROTECT_ESCORT = 34
+    ROB_ESCORT = 35
+    GUILD_BOSS = 36
 
 
 def update_condition_add(player, cid, num):
