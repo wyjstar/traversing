@@ -118,7 +118,7 @@ class CharacterShopComponent(Component):
                     # 9活动
                     act_confs = game_configs.activity_config.get(22, [])
                     for act_conf in act_confs:
-                        if self.owner.base_info.is_activiy_open(act_conf.id):
+                        if self.owner.act.is_activiy_open(act_conf.id):
                             xs = act_conf.parameterC[0]
                             price = int(price*xs)
                             break

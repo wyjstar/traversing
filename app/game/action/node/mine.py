@@ -228,7 +228,7 @@ def reset_1242(data, player):
                     response.res.result = True
                 player.pay.pay(need_gold, const.MINE_RESET, func)
     player.mine.save_data()
-    player.start_target.mine_refresh()
+    player.act.mine_refresh()
 
     reset_times, _, _ = player.mine.reset_times
     tlog_action.log('MineReset', player, reset_times,
@@ -623,12 +623,8 @@ def settle_1252(data, player):
     mine_id = player.mine._mine[pos].get("mine_id")
     mine_item = game_configs.mine_config.get(mine_id)
     logger.debug("mine_id %s mine_item %s" % (mine_id, mine_item))
-    if mine_item and player.start_target.is_open():
-        #player.start_target.condition_add(41, 1)
-        #player.start_target.save_data()
+    if mine_item:
         player.start_target.mine_win(mine_item.quality)
-        ## 更新 七日奖励
-        #target_update(player, [41])
 
     response.result = True
     return response.SerializePartialToString()

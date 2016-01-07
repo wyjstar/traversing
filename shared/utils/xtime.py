@@ -164,6 +164,13 @@ def dateToTime(d):
 def timestamp_to_date(timestamp):
     return datetime.datetime.fromtimestamp(timestamp)
 
+def get_time0(t):
+    # 时间戳当天的零点时间戳
+    t1 = time.localtime(t)
+    return int(time.mktime(time.strptime(
+               time.strftime('%Y-%m-%d 00:00:00', t1),
+               '%Y-%m-%d %H:%M:%S')))
+
 if __name__ == '__main__':
     xx = timestamp_to_date(time.time())
     print xx.year, xx.month, xx.day

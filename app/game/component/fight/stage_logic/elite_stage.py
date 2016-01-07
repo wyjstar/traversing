@@ -24,7 +24,7 @@ class EliteStageLogic(base_stage.BaseStageLogic):
         add_times = 0
         act_conf1 = None
         for act_conf in act_confs:
-            if player.base_info.is_activiy_open(act_conf.id):
+            if player.act.is_activiy_open(act_conf.id):
                 is_open = 1
                 act_conf1 = act_conf
                 break

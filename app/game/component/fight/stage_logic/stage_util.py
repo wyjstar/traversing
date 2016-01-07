@@ -58,15 +58,6 @@ def settle(player, result, response, conf, stage_type=1, star_num=0):
     # 构造掉落
     settlement_drops = player.fight_cache_component.fighting_settlement(result, star_num)
 
-    #is_open = 0
-    #if stage_type == 1:
-        #act_confs = game_configs.activity_config.get(67, [])
-        #part_multiple = []
-        #for act_conf in act_confs:
-            #if player.base_info.is_activiy_open(act_conf.id):
-                #is_open = 1
-                #part_multiple = [act_conf.parameterC, act_conf.parameterA]
-                #break
     logger.debug("stage_util.drops %s" % settlement_drops)
     multiple, part_multiple = get_drop_activity(player, player.fight_cache_component.stage_id, stage_type, star_num)
     data = gain(player, settlement_drops, const.STAGE, multiple=multiple, part_multiple=part_multiple)

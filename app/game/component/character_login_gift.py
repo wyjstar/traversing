@@ -186,7 +186,7 @@ class CharacterLoginGiftComponent(Component):
         if not activity_info:
             logger.error("can not find activity_config by id %s" % activity_id)
             return False
-        if not self._owner.base_info.is_activiy_open(activity_id):
+        if not self._owner.act.is_activiy_open(activity_id):
             return False
         if activity_info.type == 1:
             # 累积七天后关闭
@@ -196,4 +196,3 @@ class CharacterLoginGiftComponent(Component):
                     res = True
             return res
         return True
-
