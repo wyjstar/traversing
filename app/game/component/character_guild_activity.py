@@ -37,7 +37,7 @@ class CharacterGuildActivityComponent(Component):
         """docstring for check_time"""
         for act_id, act_info in self._act_info.items():
             act_item = game_configs.activity_config.get(act_id)
-            if self.act.is_activiy_open(act_id):
+            if self.owner.act.is_activiy_open(act_id):
             # if act_item.timeStart > get_current_timestamp() or act_item.timeEnd < get_current_timestamp():
                 # 如果不在活动期间内，则清空属性
                 act_info["act_times"] = 0
