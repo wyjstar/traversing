@@ -14,7 +14,6 @@ from shared.tlog import tlog_action
 def get_act_info(player, act_id):
     act_info = player.act.act_infos.get(act_id)
     act_conf = game_configs.activity_config.get(act_id)
-    conditions = player.act.conditions
     jindu = 0
     if act_info and act_info[0] == 3:
         return {'state': 3, 'jindu': act_info[1]}
@@ -168,10 +167,10 @@ def get_act_info(player, act_id):
                 return {'state': 1, 'jindu': act_info[1]}
     elif act_conf.type == 38:
         #  黄巾起义 累积伤害
-        jindu = get_condition(conditions, 38)
+        jindu = act_info[1]
     elif act_conf.type == 39:
         #  黄巾起义 最高伤害
-        jindu = get_condition(conditions, 39)
+        jindu = act_info[1]
     elif act_conf.type == 40:
         # 镶嵌A个B级别宝石
         jindu = 0
@@ -200,7 +199,7 @@ def get_act_info(player, act_id):
                 return {'state': 1, 'jindu': act_info[1]}
     elif act_conf.type == 41:
         # 占领矿达到a个
-        jindu = get_condition(conditions, 41)
+        jindu = act_info[1]
     elif act_conf.type == 42:
         # 夺宝合成数量达到a个
         jindu = 1
@@ -210,7 +209,7 @@ def get_act_info(player, act_id):
         else:
             return {'state': 2}
     elif act_conf.type == 44:
-        jindu = get_condition(conditions, 44)
+        jindu = act_info[1]
     elif act_conf.type == 43:
         # 战队等级 达到a
         jindu = player.base_info.level
