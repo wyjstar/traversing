@@ -18,8 +18,7 @@ def dump_stacks(signal, frame):
     codes = []
     for threadId, stack in sys._current_frames().items():
         for filename, lineno, name, line in traceback.extract_stack(stack):
-            codes.append('File: "%s", line %d, in %s' % (filename,
-                                                         lineno,
+            codes.append('File: "%s", line %d, in %s' % (filename, lineno,
                                                          name))
             if line:
                 codes.append("  %s" % (line.strip()))
@@ -42,7 +41,7 @@ if __name__ == "__main__":
     signal.signal(signal.SIGUSR1, print_stack)
     signal.signal(signal.SIGUSR2, dump_stacks)
     signal.signal(signal.SIGQUIT, gevent.kill)
-    #signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+    # signal.signal(signal.SIGPIPE, signal.SIG_DFL)
 
     args = sys.argv
     servername = None
@@ -74,6 +73,5 @@ if __name__ == "__main__":
                masterconf=masterconf,
                model_default_config=model_default_config,
                model_config=model_config,
-               msdk_config=msdkconf
-               )
+               msdk_config=msdkconf)
     ser.start()

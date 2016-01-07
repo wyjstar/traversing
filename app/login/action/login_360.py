@@ -9,7 +9,7 @@ from app.login.model.manager import account_cache
 from app.login.model import manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
-from sdk.api.kuaiyong import verify_login
+from sdk.api.q360 import verify_login
 
 
 @webserviceHandle('/login_360')
