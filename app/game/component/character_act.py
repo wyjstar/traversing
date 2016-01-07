@@ -75,7 +75,6 @@ class CharacterActComponent(Component):
 
         return do_get_act_open_info(
             act_id,
-            already_open_act_ids=self.already_open_act_ids,
             register_time=register_time,
             server_open_time=0)
 
