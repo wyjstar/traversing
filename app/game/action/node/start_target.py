@@ -61,7 +61,7 @@ def get_target_info_1826(data, player):
             if info.get('state'):
                 target_info_pro.state = info.get('state')
 
-    player.start_target.save_data()
+    player.act.save_data()
 
     logger.debug("response %s" % response)
     response.res.result = True
@@ -170,7 +170,7 @@ def get_target_info_1827(data, player):
         response.res.result_no = 800
         return response.SerializeToString()
 
-    target_info = player.start_target.target_info.get(target_id)
+    target_info = player.act.act_infos.get(target_id)
     target_conf = game_configs.activity_config.get(target_id)
 
     info = get_target_info(player, target_id)
@@ -189,16 +189,16 @@ def get_target_info_1827(data, player):
         get_return(player, return_data, response.gain)
         if target_conf.type == 30:
             if target_conf.count <= (info.get('jindu') + 1):
-                player.start_target.target_info[target_id] = [3, 0]
+                player.act.act_infos[target_id] = [3, 0]
             else:
-                player.start_target.target_info[target_id] = [1, info.get('jindu') + 1]
+                player.act.act_infos[target_id] = [1, info.get('jindu') + 1]
         else:
-            player.start_target.target_info[target_id] = [3, 0]
+            player.act.act_infos[target_id] = [3, 0]
 
         tlog_action.log('StartTargetGetGift', player, target_id)
 
     player.pay.pay(need_gold, const.START_TARGET, func)
-    player.start_target.save_data()
+    player.act.save_data()
 
     response.res.result = True
     return response.SerializeToString()
@@ -224,7 +224,7 @@ def target_update(player, conditions):
             target_ids += b
 
     for target_id in target_ids:
-        target_info = player.start_target.target_info.get(target_id)
+        target_info = player.act.act_infos.get(target_id)
         target_conf = game_configs.activity_config.get(target_id)
         if target_conf.type not in conditions:
             continue
