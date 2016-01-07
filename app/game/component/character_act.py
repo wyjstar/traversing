@@ -6,6 +6,7 @@ from app.game.redis_mode import tb_character_info
 import time
 from shared.db_opear.configs_data import game_configs
 from app.game.core.activity import get_act_info
+from shared.common_logic.activity import do_get_act_open_info
 
 
 WIN_MINE_QUALITY = 1
