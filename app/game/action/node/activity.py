@@ -16,6 +16,7 @@ from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
 from shared.tlog import tlog_action
+from app.game.core.activity import get_act_info
 
 
 @remoteserviceHandle('gate')
