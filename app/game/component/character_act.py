@@ -107,8 +107,11 @@ class CharacterActComponent(Component):
             logger.debug("condition %s" % condition)
             return condition
         elif act_type == 57:
-            condition = self._act_infos.get(act_conf.id, [])
             logger.debug("condition %s" % condition)
+
+            condition = []
+            if self._act_infos.get(act_conf.id):
+                condition = self._act_infos.get(act_conf.id)[1]
 
             mine_num = 0
             for temp in condition:
@@ -116,7 +119,9 @@ class CharacterActComponent(Component):
                     mine_num += 1
             return mine_num
         elif act_type == 59:
-            condition = self._act_infos.get(act_conf.id, [])
+            condition = []
+            if self._act_infos.get(act_conf.id):
+                condition = self._act_infos.get(act_conf.id)[1]
             logger.debug("condition %s" % condition)
             mix_runt_num = 0
             for temp in condition:
