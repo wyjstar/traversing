@@ -51,7 +51,7 @@ def __login(uid, session):
     """login """
     res = verify_login(uid, session)
     logger.debug(res)
-    if res == 0:
+    if res.get('errcode') == 200:
         return str({'result': True, 'uid': '\'%s\'' % uid})
     return str({'result': False})
 
