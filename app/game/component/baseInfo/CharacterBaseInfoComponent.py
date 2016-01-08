@@ -17,7 +17,7 @@ import time
 import uuid
 from app.game.core.task import hook_task, CONDITIONId
 from shared.utils.const import const
-from app.game.action.node.start_target import target_update
+from app.game.core.activity import target_update
 from shared.common_logic import feature_open
 
 

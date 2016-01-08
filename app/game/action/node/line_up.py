@@ -13,7 +13,7 @@ from gfirefly.server.logobj import logger
 from app.proto_file.common_pb2 import CommonResponse
 from app.game.action.node.equipment import enhance_equipment
 from shared.tlog import tlog_action
-from app.game.action.node.start_target import target_update
+from app.game.core.activity import target_update
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import consume, is_afford
 from shared.utils.const import const
@@ -414,7 +414,7 @@ def change_equipment(slot_no, no, equipment_id, player):
         return {"result": False, "result_no": 704}
     player.line_up_component.save_data()
     # 更新 七日奖励
-    target_update(player, [36])
+    target_update(player, [55])
     return {"result": True}
 
 

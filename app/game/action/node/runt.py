@@ -18,7 +18,7 @@ import time
 from shared.utils.pyuuid import get_uuid
 import copy
 from shared.utils.const import const
-from app.game.action.node.start_target import target_update
+from app.game.core.activity import target_update
 from shared.tlog import tlog_action
 from shared.common_logic.feature_open import is_not_open, FO_RUNT_ADD
 
@@ -72,7 +72,7 @@ def runt_set_841(data, player):
         tlog_action.log('HeroRuntSet', player, hero_no, now,
                         runt_no, runt_po, runt_info[0])
 
-    target_update(player, [40])
+    target_update(player, [55])
     hero.save_data()
     player.runt.save()
 

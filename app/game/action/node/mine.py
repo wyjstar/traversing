@@ -26,13 +26,13 @@ from app.battle.server_process import get_seeds
 from app.game.core.mail_helper import send_mail
 from app.game.core.task import hook_task, CONDITIONId
 from shared.utils import xtime
-from app.game.action.node.start_target import target_update
 from app.game.component.character_mine import MineType
 from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
 from app.game.action.node.pvp_rank import get_pvp_data
 import time
 from shared.common_logic.feature_open import is_not_open, FO_MINE
+from app.game.core.activity import target_update
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -229,6 +229,7 @@ def reset_1242(data, player):
                 player.pay.pay(need_gold, const.MINE_RESET, func)
     player.mine.save_data()
     player.act.mine_refresh()
+    target_update(player, [56])
 
     reset_times, _, _ = player.mine.reset_times
     tlog_action.log('MineReset', player, reset_times,
@@ -358,6 +359,7 @@ def harvest_1245(data, player):
     player.mine.save_data()
     player.runt.save()
     player.act.mine_get_runt()
+    target_update(player, [58])
     hook_task(player, CONDITIONId.GAIN_RUNT, 1)
     tlog_action.log('MineHarvest',
                     player,
@@ -625,6 +627,7 @@ def settle_1252(data, player):
     logger.debug("mine_id %s mine_item %s" % (mine_id, mine_item))
     if mine_item:
         player.act.mine_win(mine_item.quality)
+        target_update(player, [57])
 
     response.result = True
     return response.SerializePartialToString()

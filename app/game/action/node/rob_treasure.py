@@ -15,7 +15,7 @@ import time
 from shared.utils.pyuuid import get_uuid
 import copy
 from shared.utils.const import const
-from app.game.action.node.start_target import target_update
+from app.game.core.activity import target_update
 from app.game.redis_mode import tb_character_info
 from app.game.core.drop_bag import BigBag
 from app.proto_file.db_pb2 import Heads_DB
@@ -24,6 +24,7 @@ from app.game.core.item_group_helper import gain, get_return
 from app.game.core.equipment.equipment import init_equipment_attr
 import types
 from shared.tlog import tlog_action
+from app.game.core.activity import target_update
 
 
 @remoteserviceHandle('gate')
@@ -122,6 +123,7 @@ def compose_rob_treasure_860(data, player):
         chip.chip_num -= compose_num
     player.equipment_chip_component.save_data()
     player.act.add_treasure(equipment_obj.equipment_config_info.type, equipment_obj.equipment_config_info.quality)
+    target_update(player, [60, 61, 62, 63])
 
     equ = response.equ
     equipment_obj.update_pb(equ)

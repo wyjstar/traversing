@@ -370,3 +370,42 @@ def line_up_activity_jindu(player, target_conf):
             continue
         jindu += 1
     return jindu
+
+
+def target_update(player, conditions):
+    """
+    conditions: [], 要更新的活动类型ID
+    """
+    print 'target_update, conditions:', conditions
+    # 第几天登录
+    if player.base_info.id < 10000:
+        return
+
+    day = player.base_info.login_day
+
+    # 更新状态的，如果完成就同志客户端，首先判断了，有没有开启可以领取（七日）。
+    target_ids = []
+    for x in [1, 2, 3, 4, 5, 6, 7]:
+        if x > day:
+            continue
+        for a, b in game_configs.base_config.get('seven'+str(x)).items():
+            target_ids += b
+
+    for target_id in target_ids:
+        target_info = player.act.act_infos.get(target_id)
+        target_conf = game_configs.activity_config.get(target_id)
+        if target_conf.type not in conditions:
+            continue
+        if not player.act.is_activiy_open(target_id):
+            continue
+
+        if target_info and target_info[0] == 3:
+            continue
+        else:
+            info = get_act_info(player, target_id)
+            if info.get('state') == 2:
+                remote_gate.push_object_remote(1841,
+                                               u'',
+                                               [player.dynamic_id])
+                logger.debug("target_update, push message")
+                return
