@@ -60,6 +60,6 @@ def recharge360_response():
     result = child_node.q360_recharge_remote(oldvcharacter.dynamic_id,
                                              product_id, True)
     if result:
-        return 'success'
+        return 'ok'
 
     return 'failed'

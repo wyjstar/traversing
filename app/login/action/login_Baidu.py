@@ -9,20 +9,20 @@ from app.login.model.manager import account_cache
 from app.login.model import manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
-from sdk.api.q360 import verify_login
+from sdk.api.baidu import verify_login
 
 
-@webserviceHandle('/login_360')
-def server_360_login():
+@webserviceHandle('/login_baidu')
+def server_baidu_login():
     """ account login """
     token = request.args.get('access_token')
     result = __login(token)
-    logger.debug("360 login in token:%s result:%s" % (token, result))
-    if result is None:
+    logger.debug("baidu login in token:%s result:%s" % (token, result))
+    if 'error' in result:
         return json.dumps(dict(result=False))
 
-    openid = result.get('id')
-    user_name = result.get('name')
+    openid = result.get('UID')
+    user_name = ''
     game_passport = uuid.uuid1().get_hex()
     account_cache[game_passport] = openid
 
