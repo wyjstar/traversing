@@ -41,7 +41,7 @@ class CharacterAddActivityComponent(Component):
                 print(act_item.get("stages", {}))
                 for act_id, finished in act_item.get("stages", {}).items():
                     act_config_item = game_configs.activity_config.get(act_id)
-                    if act_config_item.timeStart > get_current_timestamp() or act_config_item.timeEnd < get_current_timestamp():
+                    if self._owner.act.is_activiy_open(act_id):
                         # 如果不在活动期间内，则清空属性
                         act_item["num"] = 0
                         act_item["finished"] = False

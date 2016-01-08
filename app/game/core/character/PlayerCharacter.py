@@ -58,7 +58,6 @@ class PlayerCharacter(object):
         a['buy_coin'] = component.CharacterBuyCoinActivity(self)
         a['pvp'] = component.CharacterPvpComponent(self)
         a['hjqy'] = component.CharacterHjqyComponent(self)
-        a['start_target'] = component.CharacterStartTargetComponent(self)
         a['rob_treasure'] = component.CharacterRobTreasureComponent(self)
         a['escort_component'] = component.CharacterEscortComponent(self)
         a['guild_activity'] = component.CharacterGuildActivityComponent(self)
@@ -288,10 +287,6 @@ class PlayerCharacter(object):
     @property
     def act(self):
         return self._components['act']
-
-    @property
-    def start_target(self):
-        return self._components['start_target']
 
     @property
     def escort_component(self):
