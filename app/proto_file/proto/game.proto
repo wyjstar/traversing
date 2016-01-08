@@ -13,7 +13,7 @@ message GameLoginRequest{
 	optional int32 screen_width = 8;  // 显示屏宽度
 	optional int32 screen_hight = 9;  // 显示屏高度
 	optional float density = 10;  // 像素密度
-	optional int32 login_channel = 11;  //登录渠道
+	optional string login_channel = 11;  //登录渠道
 	optional string mac = 12;  // MAC地址
 	optional string cpu_hardware = 13;  // cpu类型 频率 核数
 	optional int32 memory = 14;  // 内存信息单位M
@@ -86,6 +86,7 @@ message GameLoginResponse{
     optional float hight_power = 41; // 最高战力
 	optional int32 story_id = 42; // 关卡剧情
     repeated int32 button_one_time = 43; //  0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
+    repeated int32 server_open_time = 44; //  开服时间
 
 }
 

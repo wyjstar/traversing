@@ -229,5 +229,6 @@
         "channel": "taiwan",
         "remote_deployed": false
     },
+    "open_time": "<=open_time=>",
     "server_no": "<=server_no=>"
 }

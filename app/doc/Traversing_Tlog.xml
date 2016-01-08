@@ -21,7 +21,7 @@
     <entry name="ScreenWidth"       type="int"                        defaultvalue="0"    desc="显示屏宽度"/>
     <entry name="ScreenHight"       type="int"                        defaultvalue="0"    desc="显示屏高度"/>
     <entry name="Density"           type="float"                      defaultvalue="0"    desc="像素密度"/>
-    <entry name="RegChannel"        type="int"                        defaultvalue="0"    desc="注册渠道"/>
+    <entry name="RegChannel"              type="string"        size="64"    defaultvalue="NULL" desc="注册渠道"/>
     <entry name="UUID"              type="string"        size="64"    defaultvalue="NULL" desc="MAC地址"/>
     <entry name="CpuHardware"       type="string"        size="64"    defaultvalue="NULL" desc="cpu类型|频率|核数"/>
     <entry name="Memory"            type="int"                        defaultvalue="0"    desc="内存信息单位M"/>
@@ -49,7 +49,7 @@
     <entry name="ScreenWidth"       type="int"                        defaultvalue="0"        desc="显示屏宽度"/>
     <entry name="ScreenHight"       type="int"                        defaultvalue="0"        desc="显示屏高度"/>
     <entry name="Density"           type="float"                      defaultvalue="0"        desc="像素密度"/>
-    <entry name="LoginChannel"      type="int"                        defaultvalue="0"        desc="登录渠道"/>
+    <entry name="LoginChannel"              type="string"        size="64"    defaultvalue="NULL"     desc="登录渠道地址"/>
     <entry name="UUID"              type="string"        size="64"    defaultvalue="NULL"     desc="MAC地址"/>
     <entry name="CpuHardware"       type="string"        size="64"    defaultvalue="NULL"     desc="cpu类型|频率|核数"/>
     <entry name="Memory"            type="int"                        defaultvalue="0"        desc="内存信息单位M"/>
