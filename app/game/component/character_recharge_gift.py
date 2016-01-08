@@ -10,8 +10,6 @@ from app.game.component.Component import Component
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import get_return
 from app.game.core.item_group_helper import gain
-from app.game.action.root import netforwarding
-from app.proto_file import db_pb2
 from shared.tlog import tlog_action
 from app.game.core.rebate_fun import rebate_call
 from app.game.core.mail_helper import send_mail
@@ -101,7 +99,7 @@ class CharacterRechargeGift(Component):
                 self._recharge[activity_id] = {_time_now: 0}
 
         if gift_type == 8:  # single recharge
-            if recharge >= activity.get('parameterA'):
+            if recharge == activity.get('parameterA'):
                 if activity_id not in self._recharge:
                     self._recharge[activity_id] = {}
                 if len(self._recharge[activity_id]) < activity.get(
@@ -258,5 +256,5 @@ class CharacterRechargeGift(Component):
         # 活动
         self._owner.recharge.charge(charge_num)
         if not is_tencent:
-            self._owner.recharge.get_recharge_response(response.info
-                                                       )  # recharge
+            self._owner.recharge.get_recharge_response(
+                response.info)  # recharge
