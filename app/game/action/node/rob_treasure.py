@@ -121,7 +121,7 @@ def compose_rob_treasure_860(data, player):
         chip = player.equipment_chip_component.get_chip(chip_no)
         chip.chip_num -= compose_num
     player.equipment_chip_component.save_data()
-    player.start_target.add_treasure(equipment_obj.equipment_config_info.type, equipment_obj.equipment_config_info.quality)
+    player.act.add_treasure(equipment_obj.equipment_config_info.type, equipment_obj.equipment_config_info.quality)
 
     equ = response.equ
     equipment_obj.update_pb(equ)
