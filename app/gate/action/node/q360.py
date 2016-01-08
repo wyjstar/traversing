@@ -4,7 +4,6 @@ created by sphinx on 11/9/14.
 """
 from flask import request
 from gfirefly.server.logobj import logger
-from sdk.api.kuaiyong import recharge_verify
 
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.globalobject import webserviceHandle
