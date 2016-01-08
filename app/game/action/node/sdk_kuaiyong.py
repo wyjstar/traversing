@@ -47,7 +47,7 @@ def kuaiyong_recharge_remote(product_id, fee, is_online, player):
 def q360_recharge_remote(product_id, is_online, player):
     logger.debug('q360_recharge_remote:%s', product_id)
 
-    recharge_item = game_configs.recharge_config.get('ios').get(product_id)
+    recharge_item = game_configs.recharge_config.get('android').get(product_id)
     if recharge_item is None:
         logger.error('not in rechargeconfig:%s', product_id)
         return False
