@@ -25,14 +25,25 @@ class CharacterRobTreasureComponent(Component):
         self._can_receive = 0  # 可以领取翻牌子奖励
 
     def init_data(self, character_info):
-        self._truce = character_info.get('truce')
+        self._truce = character_info.get('truce', [0, 0])
+        self._truce_item = character_info.get('truce_item', [0, 1])
+        self._refresh_time = character_info.get('refresh_time', 1)
+        self._can_receive = character_info.get('can_receive', 0)
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)
-        data_obj.hmset({'truce': self._truce})
+        data_obj.hmset({'truce': self._truce,
+                        'ltruce_item': self._truce_item,
+                        'refresh_time': self._refresh_time,
+                        'can_receive': self._can_receive,
+                        })
 
     def new_data(self):
-        return {'truce': self._truce}
+        return {'truce': self._truce,
+                'ltruce_item': self._truce_item,
+                'refresh_time': self._refresh_time,
+                'can_receive': self._can_receive,
+                }
 
     @property
     def can_receive(self):

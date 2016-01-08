@@ -924,8 +924,13 @@ def deal_target_player(player, target_id, chip_id):
         logger.error('deal_target_player, player id error')
         return
 
-    target_data = target_data_obj.hmget(['equipment_chips'])
-
+    target_data = target_data_obj.hmget(['equipment_chips', 'truce'])
+    now = int(time.time())
+    truce = target_data.get('truce', [0, 0])
+    item_config_item = game_configs.item_config.get(130001)
+    end_time = truce[1] + truce[0] * item_config_item.funcArg1 * 60
+    if self._truce[1] and end_time > now:
+        return
     chips = target_data.get('equipment_chips')
     chips_obj = {}
     for chip_id_x, chip_num in chips.items():
