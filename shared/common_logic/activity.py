@@ -42,17 +42,17 @@ def do_get_act_open_info(act_id, register_time=0):
         time_end = act_conf.timeEnd
     elif duration == 4 or duration == 3:
         time_start = server_open_time0 + (act_conf.timeStart-1) * day_xs
-        time_end = server_open_time0 + (act_conf.timeEnd-1) * day_xs
+        time_end = server_open_time0 + (act_conf.timeEnd) * day_xs
     elif duration == 5:
         time_start = server_open_time0 + (act_conf.timeStart-1) * hour_xs
-        time_end = server_open_time0 + (act_conf.timeEnd-1) * hour_xs
+        time_end = server_open_time0 + (act_conf.timeEnd) * hour_xs
 
     elif duration == 7 or duration == 6:
         time_start = register_time0 + (act_conf.timeStart-1) * day_xs
-        time_end = register_time0 + (act_conf.timeEnd-1) * day_xs
+        time_end = register_time0 + (act_conf.timeEnd) * day_xs
     elif duration == 8:
         time_start = register_time0 + (act_conf.timeStart-1) * hour_xs
-        time_end = register_time0 + (act_conf.timeEnd-1) * hour_xs
+        time_end = register_time0 + (act_conf.timeEnd) * hour_xs
 
     if time_start <= now <= time_end:
         is_open = 1
