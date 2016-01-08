@@ -52,7 +52,7 @@ def buy_coin_activity_1406(data, player):
     act_confs = game_configs.activity_config.get(26, [])
     xs = 1
     for act_conf in act_confs:
-        if player.base_info.is_activiy_open(act_conf.id):
+        if player.act.is_activiy_open(act_conf.id):
             xs = act_conf.parameterB
             free_times += act_conf.parameterA
             if act_conf.parameterC[0] <= buy_times:

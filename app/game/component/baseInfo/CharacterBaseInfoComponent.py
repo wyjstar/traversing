@@ -597,20 +597,6 @@ class CharacterBaseInfoComponent(Component):
         vip_content = game_configs.vip_config.get(self._vip_level)
         return vip_content.buyShoeTimes
 
-    def is_activiy_open(self, activity_id):
-        activity_info = game_configs.activity_config.get(activity_id)
-        if not activity_info:
-            logger.error("can not find activity_config by id %s" % activity_id)
-            return False
-        # if not activity_info.is_open:
-        #     logger.debug("activity close by is_open.")
-        #     return False
-        current_time = get_current_timestamp()
-        if activity_info.timeStart > current_time or current_time > activity_info.timeEnd:
-            logger.debug("activity close by timeStart timeEnd.")
-            return False
-        return True
-
     @property
     def buy_energy_max(self):
         """每日购买精力上限"""
@@ -632,3 +618,21 @@ class CharacterBaseInfoComponent(Component):
     @flowid.setter
     def flowid(self, value):
         self._flowid = value
+
+    @property
+    def login_day(self):
+        now = int(time.time())
+        register_time = self.register_time
+        time.localtime(register_time)
+
+        time0 = get_time0(now)
+        time1 = get_time0(register_time)
+        day = (time0 - time1)/(24*60*60) + 1
+        return day
+
+def get_time0(t):
+    # 时间戳当天的零点时间戳
+    t1 = time.localtime(t)
+    return int(time.mktime(time.strptime(
+               time.strftime('%Y-%m-%d 00:00:00', t1),
+               '%Y-%m-%d %H:%M:%S')))
