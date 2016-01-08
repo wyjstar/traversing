@@ -229,7 +229,7 @@ def get_act_info(player, act_id):
         jindu = player.base_info.level
     elif act_conf.type == 46:
         # 战斗力达到a
-        jindu = player.line_up_component.hight_power
+        jindu = int(player.line_up_component.hight_power)
     elif act_conf.type == 55:
         # 阵容条件: 武将数量，品质，突破等级
         jindu = line_up_activity_jindu(player, act_conf)
