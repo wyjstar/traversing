@@ -15,7 +15,8 @@ from shared.utils.const import const
 from app.game.core import rank_helper
 
 remote_gate = GlobalObject().remote.get('gate')
-server_open_time = GlobalObject().allconfig['open_time']
+server_open_time = time.mktime(
+    time.strptime(GlobalObject().allconfig['open_time'], '%Y-%m-%d %H:%M:%S'))
 
 
 @remoteserviceHandle('gate')

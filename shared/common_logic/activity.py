@@ -8,9 +8,11 @@ import random
 from shared.utils.random_pick import random_multi_pick_without_repeat
 import time
 from time import localtime
+server_open_time = time.mktime(
+    time.strptime(GlobalObject().allconfig['open_time'], '%Y-%m-%d %H:%M:%S'))
 
 
-def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
+def do_get_act_open_info(act_id, register_time=0):
     day_xs = 60 * 60 * 24
     hour_xs = 60 * 60
     is_open = 0
@@ -18,7 +20,6 @@ def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
     time_end = 0
     now = int(time.time())
     register_time0 = 0
-    server_open_time = 1452167135
 
     if register_time:
         register_time0 = get_time0(register_time)
@@ -40,15 +41,15 @@ def do_get_act_open_info(act_id, register_time=0, server_open_time=0):
         time_start = server_open_time0 + (act_conf.timeStart-1) * day_xs
         time_end = server_open_time0 + (act_conf.timeEnd-1) * day_xs
     elif duration == 5:
-        time_start = server_open_time0 + (act_conf.timeStart) * hour_xs
-        time_end = server_open_time0 + (act_conf.timeEnd) * hour_xs
+        time_start = server_open_time0 + (act_conf.timeStart-1) * hour_xs
+        time_end = server_open_time0 + (act_conf.timeEnd-1) * hour_xs
 
     elif duration == 7 or duration == 6:
         time_start = register_time0 + (act_conf.timeStart-1) * day_xs
         time_end = register_time0 + (act_conf.timeEnd-1) * day_xs
     elif duration == 8:
-        time_start = register_time0 + (act_conf.timeStart) * hour_xs
-        time_end = register_time0 + (act_conf.timeEnd) * hour_xs
+        time_start = register_time0 + (act_conf.timeStart-1) * hour_xs
+        time_end = register_time0 + (act_conf.timeEnd-1) * hour_xs
 
     if time_start <= now <= time_end:
         is_open = 1

@@ -78,8 +78,7 @@ class CharacterActComponent(Component):
 
         return do_get_act_open_info(
             act_id,
-            register_time=register_time,
-            server_open_time=0)
+            register_time=register_time)
 
     @property
     def received_ids(self):
