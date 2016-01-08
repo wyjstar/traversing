@@ -36,7 +36,6 @@ class CharacterActComponent(Component):
             return
         self._received_ids = data['received_ids']
         self._act_infos = data['act_infos']
-        self._act_infos = {}
         self.update_51()
 
     def save_data(self):
