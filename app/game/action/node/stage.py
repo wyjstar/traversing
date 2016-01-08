@@ -717,7 +717,7 @@ def trigger_hjqy(player, result, times=1):
     logger.debug("trigger_hjqy")
     # 活动是否开启
     if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_HJQY):
-        logger.error("hjqy have not open.")
+        logger.debug("hjqy have not open.")
         return 0
 
     # 如果已经触发过hjqy，则不触发
@@ -788,6 +788,7 @@ def trigger_hjqy(player, result, times=1):
     send_mail(conf_id=hjqyOpenReward, receive_id=player.base_info.id)
 
     return stage_id
+
 
 
 

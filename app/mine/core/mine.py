@@ -180,7 +180,7 @@ def get_cur(mine_id, now_data, harvest, start, end, now, increase, stype):
     # 结算到当前的产出
     mine = ConfigData.mine(mine_id)
     if now_data >= mine.outputLimited:
-        logger.error('get_cur:%s > %s', now_data, mine.outputLimited)
+        logger.debug('get_cur:%s > %s', now_data, mine.outputLimited)
         now_data = mine.outputLimited
     if stype == 1:
         num, last = compute(mine_id,
@@ -330,7 +330,7 @@ class PlayerField(Mine):
 
 
 
-    
+
 """
 label = 'mine.%s' % uid
         rdobj = tb_rank.getObj(label)
@@ -350,14 +350,14 @@ class MineData(object):
         self.mines = {}
         self.users = {}
         self.lock = {}
-        
+
     def save_data(self, seq, lineup=None):
         label = 'mine'
         rdobj = mine_obj.getObj(label)
         if lineup != None:
             self.mines[seq]._lineup = lineup
         rdobj.hset(seq, self.mines[seq].save_info())
-        
+
     def get_data(self, seq):
         label = 'mine'
         rdobj = mine_obj.getObj(label)
@@ -366,7 +366,7 @@ class MineData(object):
         mine.update_info(info)
         mine.detail_info()
         self.mines[seq] = mine
-    
+
     def get_detail_info(self, seq):
         if seq in self.mines.keys():
             data = self.mines[seq].detail_info()
@@ -375,7 +375,7 @@ class MineData(object):
         else:
             self.get_data(seq)
             return self.get_detail_info(seq)
-        
+
     def get_info(self, seq):
         if seq in self.mines.keys():
             data = self.mines[seq].mine_info()
@@ -384,26 +384,26 @@ class MineData(object):
         else:
             self.get_data(seq)
             return self.get_info(seq)
-        
+
     def add_field(self, uid, seq, data):
         if uid in self.users:
             self.users[uid][seq] = 1
         else:
             self.users[uid]={seq:1}
-            
+
         label = 'mine.%s' % uid
         rdobj = mine_obj.getObj(label)
         rdobj.hset(seq, 1)
-        
+
         mine = PlayerField()
         mine.update_info(data)
         self.mines[seq] = mine
-        
+
         label = 'mine'
         rdobj = mine_obj.getObj(label)
         rdobj.hset(seq, data)
         return True
-    
+
     def get_lock(self, seq):
         label = 'mine.lock'
         mine_obj.getObj(label)
@@ -413,7 +413,7 @@ class MineData(object):
             val = 0
         self.lock[seq] = int(val)
         return int(val)
-    
+
     def lock_mine(self, uid, seq):
         if seq in self.lock:
             lock = self.lock.get(seq)
@@ -428,14 +428,14 @@ class MineData(object):
         else:
             self.get_lock(seq)
             return self.lock_mine(uid, seq)
-    
+
     def unlock_mine(self, uid, seq):
         self.lock[seq] = 0
         label = 'mine.lock'
         mine_obj.getObj(label)
         mine_obj.set(seq, 0)
         return True
-            
+
     def settle(self, seq, result, uid=None, nickname=None, hold=1):
         print 'settle', seq, result, uid, nickname, hold
         warFogLootRatio = game_configs.base_config['warFogLootRatio']
@@ -459,7 +459,7 @@ class MineData(object):
                 if hold:
                     self.mines[seq]._tid = uid
                     self.mines[seq]._nickname = nickname
-                
+
                 for k, v in self.mines[seq]._normal.items():
                     if v > 0:
                         harvest_a_nor[k] = int(v*warFogLootRatio)
@@ -467,7 +467,7 @@ class MineData(object):
                         ret._normal = harvest_a_nor
                         harvest_b[k] = int(v*warFogLootRatio)
                         harvest_a[k] = v - int(v*warFogLootRatio)
-                    
+
                 for k, v in self.mines[seq]._lucky.items():
                     if v > 0:
                         harvest_a_luc[k] = int(v*warFogLootRatio)
@@ -485,22 +485,22 @@ class MineData(object):
             self.unlock_mine(uid, seq)
         except Exception, e:
             self.unlock_mine(uid, seq)
-            
+
         return ret.save_info(), tid, srcname
-    
+
     def guard(self, uid, seq, nickname, data):
         self.get_info(seq)
         lock = self.lock_mine(uid, seq)
         if not lock:
             return 12440
-        
+
         if self.mines[seq]._nickname!= nickname:
             self.unlock_mine(uid, seq)
             return 12441
         self.unlock_mine(uid, seq)
         self.save_data(seq, data)
         return 0
-    
+
     def harvest(self, uid, seq):
         if not self.lock_mine(uid, seq):
             return False, {}
@@ -514,16 +514,16 @@ class MineData(object):
             for k, v in self.mines[seq]._lucky.items():
                 stones[k] = v
                 self.mines[seq]._lucky[k] = 0
-    
+
             self.mines[seq]._status = 3
             self.save_data(seq)
         except Exception, e:
             self.unlock_mine(uid, seq)
             return False, {}
         self.unlock_mine(uid, seq)
-        
+
         return True, stones
-    
+
     def get_toupdata(self, seq):
         self.get_detail_info(seq)
         data = self.mines[seq].save_info()

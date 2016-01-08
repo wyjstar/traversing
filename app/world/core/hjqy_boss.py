@@ -60,7 +60,7 @@ class HjqyBossManager(object):
         """docstring for get_boss"""
         boss = self._bosses.get(player_id)
         if not boss:
-            logger.error("boss %s not exists." % player_id)
+            logger.debug("boss %s not exists." % player_id)
         return boss
 
     def add_rank_item(self, player_info):
