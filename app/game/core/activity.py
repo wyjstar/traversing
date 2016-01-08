@@ -11,6 +11,9 @@ import time
 from shared.tlog import tlog_action
 
 
+remote_gate = GlobalObject().remote.get('gate')
+
+
 def get_act_info(player, act_id):
     act_info = player.act.act_infos.get(act_id)
     act_conf = game_configs.activity_config.get(act_id)
