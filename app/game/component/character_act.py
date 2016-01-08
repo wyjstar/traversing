@@ -301,7 +301,9 @@ class CharacterActComponent(Component):
         act_type = target_conf.type
         jindu = 0
         parameterE = target_conf.parameterE
-        condition = self._act_infos.get(target_conf.id, [])[1]
+        condition = []
+        if self._act_infos.get(target_conf.id):
+            condition = self._act_infos.get(target_conf.id)[1]
         logger.debug("condition %s" % condition)
         if not condition:
             return jindu
