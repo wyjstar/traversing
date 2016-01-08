@@ -255,8 +255,8 @@ def get_act_info(player, act_id):
                 act_conf.parameterC[0] > player.line_up_component.hight_power:
             return {'state': 1, 'jindu': act_info[1]}
 
-        if len(act_item.parameterD) == 1 and \
-           player.stage_component.get_stage(act_item.parameterD[0]).state != 1:
+        if len(act_conf.parameterD) == 1 and \
+           player.stage_component.get_stage(act_conf.parameterD[0]).state != 1:
             return {'state': 1, 'jindu': act_info[1]}
 
         player.act.act_infos[act_id][0] = 2
@@ -264,8 +264,20 @@ def get_act_info(player, act_id):
     elif act_conf.type == 50:
         if not act_info:
             player.act.act_infos[act_id] = [0, [0, 0, 0]]
-            return {'state': 0, 'jindu': [0, 0, 0]}
-        return {'state': 1, 'jindu': act_info[1]}
+            return {'state': 1, 'jindu': [0, 0, 0]}
+
+        base_info = player.base_info
+        if int(act_conf.parameterA) > base_info.vip_level:
+            return {'state': 1, 'jindu': act_info[1]}
+
+        if len(act_conf.parameterC) == 1 and \
+                not act_conf.parameterC[0] > v['recharge']:
+            return {'state': 1, 'jindu': act_info[1]}
+
+        if len(act_conf.parameterD) == 1 and \
+                not act_conf.parameterD[0] > act_info[0]:
+            return {'state': 1, 'jindu': act_info[1]}
+        return {'state': 2, 'jindu': act_info[1]}
 
     # 到到a的统一在这里返回
     if jindu >= act_conf.parameterA:

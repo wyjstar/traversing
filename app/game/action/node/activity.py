@@ -200,7 +200,6 @@ def activate_fund_activity_1851(data, player):
 
     info = get_act_info(player, activity_id)
 
-    print info, '====================1111'
     if info.get('state') != 2:
         response.res.result = False
         logger.error("条件不满足")
@@ -249,8 +248,6 @@ def get_fund_activity_info_1854(data, player):
         if not player.act.is_activiy_open(act_conf.id):
             continue
         act_info = get_act_info(player, act_conf.id)
-        print act_conf, '=======================================3'
-        print act_conf.id, act_info, '=======================================2'
 
         act = response.info.add()
         act.act_id = act_conf.id

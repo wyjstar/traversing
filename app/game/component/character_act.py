@@ -7,6 +7,7 @@ import time
 from shared.db_opear.configs_data import game_configs
 from app.game.core.activity import get_act_info
 from shared.common_logic.activity import do_get_act_open_info
+from gfirefly.server.logobj import logger
 
 
 WIN_MINE_QUALITY = 1
@@ -49,9 +50,7 @@ class CharacterActComponent(Component):
         return {'act_info': data}
 
     def is_activiy_open(self, act_id):
-        print act_id, '===============================1'
         a = self.get_act_open_info(act_id).get('is_open')
-        print a, '======================15'
         return a
 
     def get_act_open_info(self, act_id):
@@ -70,13 +69,10 @@ class CharacterActComponent(Component):
             if not premise_conf or premise_conf.premise == act_id:
                 # 防止循环递归
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
-            print act_id, '===============================12'
             premise_is_open = self.is_activiy_open(premise_id)
-            print act_id, '===============================13'
             if not premise_is_open:
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
             premise_info = get_act_info(self.owner, premise_id)
-            print premise_info, '===========================14'
             if not premise_info.get('state') or premise_info.get('state') == 1:
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
 
