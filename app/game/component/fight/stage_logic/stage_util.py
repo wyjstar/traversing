@@ -88,7 +88,7 @@ def get_drop_activity(player, stage_id, stage_type, star_num):
         act_confs = game_configs.activity_config.get(67, [])
         for act_conf in act_confs:
             logger.debug("act_conf parameterE %s" % act_conf.parameterE)
-            if player.base_info.is_activiy_open(act_conf.id):
+            if player.act.is_activiy_open(act_conf.id):
                 con_types = act_conf.parameterE.keys()
                 if 1 in con_types or (2 in con_types and stage_id in act_conf.parameterE.get(2, [])):
                     # 关卡条件
