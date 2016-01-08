@@ -16,7 +16,7 @@ APPSECRET = 'b6878fa9d309c9f13cc3add6d5858d95'
 
 
 @webserviceHandle('/q360pay', methods=['post', 'get'])
-def recharge_response():
+def recharge360_response():
     # order_id=1211090012345678901&
     # app_key=1234567890abcdefghijklmnopqrstuv&
     # product_id=p1&

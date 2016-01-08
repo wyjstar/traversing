@@ -21,7 +21,6 @@ RECHARGE_GIFT_TYPE = [7, 8, 9, 10]
 
 
 class CharacterRechargeGift(Component):
-
     def __init__(self, owner):
         super(CharacterRechargeGift, self).__init__(owner)
         self._recharge = {}
@@ -79,7 +78,7 @@ class CharacterRechargeGift(Component):
         _date_now = int(time.mktime(time.strptime(str_time,
                                                   '%Y-%m-%d %H:%M:%S')))
         _time_now = int(time.time())
-        # _str_activity_period = activity.get('parameterT')
+        _str_activity_period = activity.get('parameterT')
 
         if _str_activity_period != '0':
             begin, end = _str_activity_period.split(' - ')
@@ -96,8 +95,8 @@ class CharacterRechargeGift(Component):
         gift_type = activity.get('type')
         if gift_type == 7:  # first time recharge
             if activity_id in self._recharge:
-                logger.debug('recharge first is exist:%s:%s',
-                             activity_id, self._recharge[activity_id])
+                logger.debug('recharge first is exist:%s:%s', activity_id,
+                             self._recharge[activity_id])
             else:
                 self._recharge[activity_id] = {_time_now: 0}
 
@@ -105,7 +104,8 @@ class CharacterRechargeGift(Component):
             if recharge >= activity.get('parameterA'):
                 if activity_id not in self._recharge:
                     self._recharge[activity_id] = {}
-                if len(self._recharge[activity_id]) < activity.get('repeat') or activity.get('repeat') == -1:
+                if len(self._recharge[activity_id]) < activity.get(
+                        'repeat') or activity.get('repeat') == -1:
                     self._recharge[activity_id].update({_time_now: recharge})
                 else:
                     logger.debug('over activity repeat times:%s(%s)',
@@ -133,7 +133,8 @@ class CharacterRechargeGift(Component):
         str_time = '%s-%s-%s 00:00:00' % (_time_now_struct.tm_year,
                                           _time_now_struct.tm_mon,
                                           _time_now_struct.tm_mday)
-        _date_now = int(time.mktime(time.strptime(str_time, '%Y-%m-%d %H:%M:%S')))
+        _date_now = int(time.mktime(time.strptime(str_time,
+                                                  '%Y-%m-%d %H:%M:%S')))
         for recharge_id, recharge_data in self._recharge.items():
             activity = game_configs.activity_config.get(recharge_id)
             if activity is None:
@@ -168,8 +169,7 @@ class CharacterRechargeGift(Component):
         for recharge_item in recharge_items:
             if recharge_item.gift_id not in self._recharge:
                 logger.error('recharge id:%s is not exist:%s',
-                             recharge_item.gift_id,
-                             self._recharge)
+                             recharge_item.gift_id, self._recharge)
                 response.res.result = False
                 return
             recharge_data = self._recharge[recharge_item.gift_id]
@@ -243,12 +243,14 @@ class CharacterRechargeGift(Component):
         charge_num = recharge_item.get('activity')  # 充值元宝数量
         # vip
         self._owner.base_info.recharge += charge_num
-        self._owner.base_info.max_single_recharge = max(charge_num, self._owner.base_info.max_single_recharge)
+        self._owner.base_info.max_single_recharge = max(
+            charge_num, self._owner.base_info.max_single_recharge)
         self._owner.base_info.set_vip_level(self._owner.base_info.recharge)
 
         # 七日活动 累积充值
         if self._owner.start_target.is_open():
-            self._owner.start_target.condition_update(44, self._owner.base_info.recharge)
+            self._owner.start_target.condition_update(
+                44, self._owner.base_info.recharge)
             self._owner.start_target.save_data()
             # 更新 七日奖励
             target_update(self.owner, [44])
@@ -256,4 +258,5 @@ class CharacterRechargeGift(Component):
         # 活动
         self._owner.recharge.charge(charge_num)
         if not is_tencent:
-            self._owner.recharge.get_recharge_response(response.info)  # recharge
+            self._owner.recharge.get_recharge_response(response.info
+                                                       )  # recharge
