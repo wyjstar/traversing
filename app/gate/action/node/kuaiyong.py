@@ -9,6 +9,12 @@ from sdk.api.kuaiyong import recharge_verify
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.globalobject import webserviceHandle
 from app.gate.core.virtual_character_manager import VCharacterManager
+import json
+
+AppId = GlobalObject().allconfig["xmsdk"]["AppId"]
+AppKey = GlobalObject().allconfig["xmsdk"]["AppKey"]
+AppSecret = GlobalObject().allconfig["xmsdk"]["AppSecret"]
+VerifySession_URL = GlobalObject().allconfig["xmsdk"]["VerifySession_URL"]
 
 
 @webserviceHandle('/kypay', methods=['post', 'get'])
@@ -46,3 +52,43 @@ def recharge_response():
             return 'success'
 
     return 'failed'
+
+@webserviceHandle('/xmpay', methods=['post', 'get'])
+def xm_recharge_response():
+    logger.debug('xiaomi recharge:%s', request.args)
+    appId = request.args.get('appId')
+    cpOrderId = request.args.get('cpOrderId')
+    cpUserInfo = request.args.get('cpUserInfo')
+    uid = request.args.get('uid')
+    orderId = request.args.get('orderId')
+    orderStatus = request.args.get('orderStatus')
+    payFee = request.args.get('payFee')
+    productCode = request.args.get('productCode')
+    productName = request.args.get('productName')
+    productCount = request.args.get('productCount')
+    payTime = request.args.get('payTime')
+    orderConsumeType = request.args.get('orderConsumeType')
+    signature = request.args.get('signature')
+
+
+    if int(AppId) != int(appId):
+        logger.error('appId diff:%s get %s' % (AppId, appId))
+        return return_data(1515)
+
+    if orderStatus == "TRADE_SUCCESS":
+        player_id = int(cpOrderId.split('_')[0])
+
+        oldvcharacter = VCharacterManager().get_by_id(player_id)
+        if not oldvcharacter:
+            logger.error('fail get player node:%s', player_id)
+            return ''
+        child_node = GlobalObject().child(oldvcharacter.node)
+        result = child_node.xiaomi_recharge_remote(oldvcharacter.dynamic_id,
+                                                     productCode, payFee, cpOrderId,
+                                                     True)
+        return return_data(result)
+
+    return return_data(1525)
+
+def return_data(code):
+    return json.dumps({'errcode': code})

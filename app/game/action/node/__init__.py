@@ -114,3 +114,4 @@ import escort
 import guild_boss
 import guild_activity
 import add_activity
+import sdk_xiaomi
