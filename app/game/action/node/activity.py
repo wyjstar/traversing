@@ -233,7 +233,6 @@ def activate_fund_activity_1851(data, player):
 def get_fund_activity_info_1854(data, player):
     # 成长基金活动
     response = activity_pb2.GetFundActivityResponse()
-    return response.SerializeToString()
 
     for act_conf in game_configs.activity_config[51]:
         if not player.act.is_activiy_open(act_conf.id):
