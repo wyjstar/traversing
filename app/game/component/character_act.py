@@ -107,11 +107,10 @@ class CharacterActComponent(Component):
             logger.debug("condition %s" % condition)
             return condition
         elif act_type == 57:
-            logger.debug("condition %s" % condition)
-
             condition = []
             if self._act_infos.get(act_conf.id):
                 condition = self._act_infos.get(act_conf.id)[1]
+            logger.debug("condition %s" % condition)
 
             mine_num = 0
             for temp in condition:
