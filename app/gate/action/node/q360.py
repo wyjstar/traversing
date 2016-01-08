@@ -10,6 +10,10 @@ from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.globalobject import webserviceHandle
 from app.gate.core.virtual_character_manager import VCharacterManager
 
+APPID = '202882301'
+APPKEY = '7c4ad6edb7babaee8adf3e42b976fe97'
+APPSECRET = 'b6878fa9d309c9f13cc3add6d5858d95'
+
 
 @webserviceHandle('/q360pay', methods=['post', 'get'])
 def recharge_response():
@@ -26,24 +30,27 @@ def recharge_response():
     # sign=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&
     # sign_return=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-    product_id = request.form.get('product_id')
-    # order_id = request.form.get('order_id')
-    # app_key = request.form.get('app_key')
-    # amount = request.form.get('amount')
-    # app_uid = request.form.get('app_uid')
+    product_id = request.args.get('product_id')
+    # order_id = request.args.get('order_id')
+    app_key = request.args.get('app_key')
+    # amount = request.args.get('amount')
+    app_uid = request.args.get('app_uid')
     # app_ext1 = request.FORM.GET('app_ext1')
-    # app_order_id = request.form.get('app_order_id')
-    # user_id = request.form.get('user_id')
-    # sign_type = request.form.get('sign_type')
-    # gateway_flag = request.form.get('gateway_flag')
-    # sign = request.form.get('sign')
-    # sign_return = request.form.get('sign_return')
+    app_order_id = request.args.get('app_order_id')
+    # user_id = request.args.get('user_id')
+    # sign_type = request.args.get('sign_type')
+    # gateway_flag = request.args.get('gateway_flag')
+    # sign = request.args.get('sign')
+    # sign_return = request.args.get('sign_return')
+    if APPKEY != app_key:
+        logger.error('err appkey=%s-%s, appid=%s-%s', APPKEY, app_key, APPID,
+                     app_uid)
+        logger.error('360 recharge:%s', request.args)
+        return 'failed'
 
-    logger.debug('360 recharge:%s', request.form)
+    logger.debug('360 recharge:%s', request.args)
 
-    result, fee = recharge_verify()
-
-    player_id = int(product_id)
+    player_id = int(app_order_id.split('_')[0])
 
     oldvcharacter = VCharacterManager().get_by_id(player_id)
     if not oldvcharacter:
