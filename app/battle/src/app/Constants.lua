@@ -4,7 +4,6 @@ g_friendSubmodule = g_friendSubmodule or {}     -- 好友子模块名称定义
 G_PLATFORM = G_PLATFORM or {}       -- 平台定义
 
 G_BOTTOM_DEFINE = G_BOTTOM_DEFINE or {}       -- 按钮属性宏定义
-G_LOCK_DEFINE = G_LOCK_DEFINE or {}             -- 功能锁宏定义
 
 const = const or {}
 const.POS_ARMY = cc.p(320, 260)
@@ -267,6 +266,10 @@ TYPE_MINE_MONSTER   = 8          -- 攻占也怪
 TYPE_MINE_OTHERUSER = 9          -- 攻占其他玩家
 TYPE_HJQY_STAGE     = 10         -- 黄巾起义
 
+TYPE_PVP_NORMAL     = 0          --正常的PVP,擂台
+TYPE_PVP_CLEARANCE  = 1          --过关斩将
+TYPE_PVP_REVANGE    = 2          --坏蛋反击
+
 TYPE_STAGE_JIA = 3               -- 难度甲
 TYPE_STAGE_YI = 2                -- 难度乙
 TYPE_STAGE_BING = 1              -- 难度丙
@@ -392,6 +395,7 @@ g_notice.NOTICE_REWARD_NEXT_DAY = "NOTICE_REWARD_NEXT_DAY"                  --�
 g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --复仇成功之后更新坏蛋列表
 g_notice.NOTICE_TRAVEL_RELOAD_SHOES_2 = "NOTICE_TRAVEL_RELOAD_SHOES_2"      --游历界面,重新读取鞋子信息
 g_notice.NOTICE_PVP_CLEARANCE_UPDATA = "NOTICE_PVP_CLEARANCE_UPDATA"        --过关斩将界面,重新刷新当前的关卡信息
+g_notice.NOTICE_REFRESH_SYS_MAIL_LIST = "NOTICE_REFRESH_SYS_MAIL_LIST"      --刷新系统邮件列表
 
 g_other.USER_DEFAULT_FWZ_NEW_LIST = "USER_DEFAULT_FWZ_NEW_LIST"             --风物志新物品存储名称
 
@@ -411,8 +415,6 @@ G_BOTTOM_DEFINE.GET_COINS_JUMP = {
         getOtherModule():showUIView("activity.PVActivityPage", ACTIVITY_TYPE().GETWEALTH)
     end,
 }
-
-G_LOCK_DEFINE.SHARE_LOCK = false      -- 是否锁住分享有礼功能
 
 UPDATE_HEAD = "UPDATE_HEAD"  -- 更新头像
 UPDATE_TL = "UPDATE_TL"      -- 更新体力
@@ -461,6 +463,7 @@ EventName = {
     UPDATE_TASK = "update_task", --更新任务
     UNLOCK_NEW_FEATURE_STAGEID = "UNLOCK_NEW_FEATURE_STAGEID", --当前stageid通知，用于更新新功能开启
     UPDATE_ARENA_CHALLENGE_NUM = "UPDATE_ARENA_CHALLENGE_NUM",  --更新擂台挑战次数
+    UPDATE_STAGE_DATA = "UPDATE_STAGE_DATA", -- 跟新讨伐数据
     UPDATE_MAIL = "UPDATE_MAIL", -- 更新邮件通知
     FULL_MAIL = "FULL_MAIL", -- 邮箱已满消息
     UPDATE_SCRECT_PLACE = "UPDATE_SCRECT_PLACE", --更新秘境数据通知
@@ -480,6 +483,11 @@ EventName = {
     SUB_PVP_SCROE = "SUB_PVP_SCROE", --消耗军功
     UPDATE_MAX_COMBAT_POWER = "update_max_combat_power",--更新历史最高战斗力
     REFRESH_EQUIP_SHOP = "REFRESH_EQUIP_SHOP", --精华商店刷新次数
+    UPDATE_HUODONG_TIMES = "UPDATE_HUODONG_TIMES", --更新活动副本挑战次数
+    UPDATE_FB_TIMES = "UPDATE_FB_TIMES",  --更新精英副本挑战次数
+    UPDATE_SOLDIER_EXP = "UPDATE_SOLDIER_EXP", --更新英雄经验值
+    UPDATE_SOLDIER_BREAK = "UPDATE_SOLDIER_BREAK", --更新英雄突破等级
+    UPDATE_REFRESH_24 = "UPDATE_REFRESH_24",   --24点更新
 }
 
 NoticeColor = {

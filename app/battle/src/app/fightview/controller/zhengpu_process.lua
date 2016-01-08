@@ -629,6 +629,9 @@ function FightProcess:get_all_skill_nos()
     end
     table.insertTo(skill_nos, self.red_unpara_skill:get_skill_nos())
     table.insertTo(skill_nos, self.blue_unpara_skill:get_skill_nos())
+    if self.buddy_skill then
+        table.insertTo(skill_nos,self.buddy_skill:get_skill_nos())
+    end
     return skill_nos
 end
 
