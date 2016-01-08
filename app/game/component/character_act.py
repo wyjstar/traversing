@@ -111,6 +111,8 @@ class CharacterActComponent(Component):
             if self._act_infos.get(act_conf.id):
                 condition = self._act_infos.get(act_conf.id)[1]
             logger.debug("condition %s" % condition)
+            if condition == 0:
+                condition = []
 
             mine_num = 0
             for temp in condition:
