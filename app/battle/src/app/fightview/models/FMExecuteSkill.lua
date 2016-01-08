@@ -182,6 +182,7 @@ end
 
 -- 无双值
 function unpara(attacker, target, buff_info, playerLevel, extra_msgs)
+    playerLevel = playerLevel or 1
     local atkArray = process.redAtkArray
     if attacker.side == "blue" then
         atkArray = process.blueAtkArray
