@@ -310,6 +310,7 @@ class CharacterActComponent(Component):
         b_num = 0
         a_or_b_num = 0
         for temp in condition:
+            print temp, parameterE, '=============================================='
             if temp[TREASURE_QUALITY] >= parameterE.get(A_OR_B_TREASURE_QUALITY, 0):
                 a_or_b_num += 1
             if temp[TREASURE_TYPE] == 5 and temp[TREASURE_QUALITY] >= parameterE.get(A_TREASURE_QUALITY, 0):

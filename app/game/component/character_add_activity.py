@@ -143,7 +143,7 @@ class CharacterAddActivityComponent(Component):
             act_pb.act_type = act_type
             for res_type, act_item in act_info.items():
                 detail_info_pb = act_pb.detail_info.add()
-                detail_info_pb.res_type = res_type
+                detail_info_pb.res_type = int(res_type)
                 detail_info_pb.num = act_item.get("num")
                 for act_id, finished in act_item.get("stages", {}).items():
                     act_item_pb = detail_info_pb.item.add()
@@ -155,6 +155,3 @@ class CharacterAddActivityComponent(Component):
     #required int32 res_type = 2; // 资源类型
     #required int32 num = 3;      // 当前数量
     #repeated AddActivityItem item = 4; //
-
-
-

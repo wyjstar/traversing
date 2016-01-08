@@ -15,8 +15,8 @@ from shared.utils.const import const
 from app.game.core import rank_helper
 
 remote_gate = GlobalObject().remote.get('gate')
-server_open_time = time.mktime(
-    time.strptime(GlobalObject().allconfig['open_time'], '%Y-%m-%d %H:%M:%S'))
+server_open_time = int(time.mktime(
+    time.strptime(GlobalObject().allconfig['open_time'], '%Y-%m-%d %H:%M:%S')))
 
 
 @remoteserviceHandle('gate')
@@ -49,6 +49,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.res.result = True
     responsedata.id = player.base_info.id
     responsedata.nickname = player.base_info.base_name
+    print server_open_time, '======================'
     responsedata.server_open_time = server_open_time
 
     responsedata.level = player.base_info.level

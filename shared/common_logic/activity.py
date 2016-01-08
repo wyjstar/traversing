@@ -8,8 +8,11 @@ import random
 from shared.utils.random_pick import random_multi_pick_without_repeat
 import time
 from time import localtime
-server_open_time = time.mktime(
-    time.strptime(GlobalObject().allconfig['open_time'], '%Y-%m-%d %H:%M:%S'))
+from gfirefly.server.globalobject import GlobalObject
+
+
+server_open_time = int(time.mktime(
+    time.strptime(GlobalObject().allconfig['open_time'], '%Y-%m-%d %H:%M:%S')))
 
 
 def do_get_act_open_info(act_id, register_time=0):
