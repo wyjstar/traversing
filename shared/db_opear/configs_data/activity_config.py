@@ -30,6 +30,9 @@ class ActivityConfig(object):
                                              '%Y-%m-%d %H:%M:%S'))
             else:
                 row["timeEnd"] = int(row["timeEnd"])
+
+            convert_keystr2num(row.get("parameterE"))
+
             item = CommonItem(row)
             if item.type == 5:  # 等级推送特殊处理，等级和对应活动信息的映射
                 if not self._items.get(item.type):
