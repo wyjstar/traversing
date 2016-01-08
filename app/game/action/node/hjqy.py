@@ -16,7 +16,7 @@ from shared.utils.date_util import is_in_period, is_next_day, get_current_timest
 import cPickle
 from app.game.core.task import hook_task, CONDITIONId
 from app.game.core.mail_helper import send_mail
-from app.game.action.node.start_target import target_update
+from app.game.core.activity import target_update
 from shared.tlog import tlog_action
 
 remote_gate = GlobalObject().remote.get('gate')

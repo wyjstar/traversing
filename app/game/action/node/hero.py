@@ -15,7 +15,7 @@ from shared.db_opear.configs_data.data_helper import parse
 from shared.utils.const import const
 from app.game.core.notice import push_notice
 from shared.tlog import tlog_action
-from app.game.action.node.start_target import target_update
+from app.game.core.activity import target_update
 import random
 from shared.utils.date_util import days_to_current, get_current_timestamp
 from shared.common_logic.feature_open import is_not_open, FO_HERO_BREAK, FO_HERO_AWAKE, FO_HERO_SACRIFICE, FO_HERO_COMPOSE, FO_REFINE
@@ -64,7 +64,7 @@ def hero_upgrade_with_item_103(data, player):
     response.level = hero.level
     response.exp = hero.exp
     # 更新 七日奖励
-    target_update(player, [31])
+    target_update(player, [55])
     return response.SerializeToString()
 
 
@@ -112,7 +112,7 @@ def one_key_hero_upgrade_with_item_120(data, player):
     response.exp_item_num.append(res.get('middle_exp_num'))
     response.exp_item_num.append(res.get('big_exp_num'))
     # 更新 七日奖励
-    target_update(player, [31])
+    target_update(player, [55])
     # logger.debug(res)
     # logger.debug(response)
     return response.SerializeToString()
@@ -188,7 +188,7 @@ def hero_break_104(data, player):
         response.res.result_no = res.get('result_no')
         return response.SerializeToString()
     # 更新 七日奖励
-    target_update(player, [32])
+    target_update(player, [55])
     response.res.result = True
     response.break_level = res.get("break_level")
     response.break_item_num = res.get("break_item_num")

@@ -10,7 +10,7 @@ import uuid
 # REDIS_HOST = '127.0.0.1'
 # REDIS_POST = 6379
 # DB = 1
-MAINTAIN_TIME = 60 * 60 * 24
+MAINTAIN_TIME = 60 * 60 * 24 * 30
 
 _messages = RedisObject('messages')
 
@@ -21,7 +21,7 @@ class MessageCache:
     def __init__(self):
         pass
 
-    def cache(self, key, character_id, *args, **kw):
+    def cache1(self, key, character_id, *args, **kw):
         unique_id = uuid.uuid4()
         message_obj = _messages.getObj(character_id)
         message = cPickle.dumps(dict(topic_id=key,

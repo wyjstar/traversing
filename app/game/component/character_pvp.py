@@ -12,7 +12,7 @@ from shared.db_opear.configs_data import game_configs
 from app.game.redis_mode import tb_pvp_rank
 from app.game.core import rank_helper
 from gfirefly.dbentrust.redis_mode import RedisObject
-from app.game.action.node.start_target import target_update
+from app.game.core.activity import target_update
 tb_rank = RedisObject('tb_rank')
 from shared.db_opear.configs_data.common_item import CommonItem
 from shared.tlog import tlog_action

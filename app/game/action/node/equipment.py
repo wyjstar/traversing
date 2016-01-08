@@ -11,7 +11,7 @@ from shared.utils.const import const
 from shared.db_opear.configs_data import game_configs
 from app.game.core.notice import push_notice
 from shared.tlog import tlog_action
-from app.game.action.node.start_target import target_update
+from app.game.core.activity import target_update
 from shared.common_logic.feature_open import is_not_open, FO_EQUIP_ENHANCE, FO_EQUIP_COMPOSE, FO_EQUIP_SACRIFICE
 
 

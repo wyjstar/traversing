@@ -12,7 +12,7 @@ from shared.utils.const import const
 from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
 from app.game.core.task import hook_task, CONDITIONId
-from app.game.action.node.start_target import target_update
+from app.game.core.activity import target_update
 
 from gfirefly.server.globalobject import GlobalObject
 
@@ -289,7 +289,7 @@ class CharacterLineUpComponent(Component):
             target_hero.is_online = True
 
             # 更新 七日奖励
-            target_update(self.owner, [31, 32, 34])
+            target_update(self.owner, [55])
 
         tlog_action.log('LineUpChange', self.owner, slot_no, origin_hero_no,
                         hero_no, change_type)
