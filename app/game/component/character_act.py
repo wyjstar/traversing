@@ -36,6 +36,7 @@ class CharacterActComponent(Component):
             return
         self._received_ids = data['received_ids']
         self._act_infos = data['act_infos']
+        self._act_infos = {}
         self.update_51()
 
     def save_data(self):
@@ -66,14 +67,11 @@ class CharacterActComponent(Component):
                 return {'is_open': 1, 'time_start': 1, 'time_end': 1}
             premise_id = act_conf.premise
             premise_conf = game_configs.activity_config.get(premise_id)
-            if not premise_conf or premise_conf.premise == act_id:
-                # 防止循环递归
-                return {'is_open': 0, 'time_start': 0, 'time_end': 0}
             premise_is_open = self.is_activiy_open(premise_id)
             if not premise_is_open:
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
             premise_info = get_act_info(self.owner, premise_id)
-            if not premise_info.get('state') or premise_info.get('state') == 1:
+            if premise_info.get('state') != 3:
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
 
         return do_get_act_open_info(
