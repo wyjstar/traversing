@@ -860,12 +860,12 @@ def check_can_rob(player, uid, chip_id, times, response):
 
     if not flag:
         logger.error('pvp_rob_treasure_864, uid error')
-        return False, 800, None
+        return False, 8641, None
 
     chip_conf = game_configs.chip_config.get('chips', {}).get(chip_id, None)
     if not chip_conf:
         logger.error('pvp_rob_treasure_864, chip_id error')
-        return False, 800, None
+        return False, 8642, None
     treasure_id = chip_conf.combineResult
 
     chips = game_configs.chip_config.get('map').get(treasure_id)
@@ -880,14 +880,14 @@ def check_can_rob(player, uid, chip_id, times, response):
     default_chips = game_configs.base_config.get('indianaDefaultId')
     if not can_rob and treasure_id not in default_chips:
         logger.error('pvp_rob_treasure_864, dont have one chip')
-        return False, 800, None
+        return False, 8643, None
 
     price = game_configs.base_config.get('indianaConsume')
     is_afford_res = is_afford(player, price, multiple=times)  # 校验
 
     if not is_afford_res.get('result'):
         logger.error('rob_treasure_truce_841, item not enough')
-        return False, 800, None
+        return False, 8644, None
     print chip_conf, '=====================================chip config'
     return True, 0, chip_conf
 
