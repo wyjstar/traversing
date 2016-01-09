@@ -1,9 +1,9 @@
 # coding:utf8
-'''
+"""
 Created on 2013-8-14
 
 @author: lan (www.9miao.com)
-'''
+"""
 from gfirefly.server.globalobject import GlobalObject, remoteserviceHandle
 
 
@@ -17,6 +17,7 @@ def push_object_remote(topicID, msg, sendList):
     """
     GlobalObject().netfactory.pushObject(topicID, msg, sendList)
 
+
 @remoteserviceHandle('gate')
 def push_all_object_remote(topicID, msg):
     """
@@ -25,6 +26,7 @@ def push_all_object_remote(topicID, msg):
     msg: 发送的消息。
     """
     GlobalObject().netfactory.pushAllObject(topicID, msg)
+
 
 @remoteserviceHandle('gate')
 def disconnect_remote(connection_id):
@@ -42,3 +44,8 @@ def change_dynamic_id_remote(old_id, new_id):
 def kick_by_id_remote(msg, pid):
     GlobalObject().netfactory.kick(msg, pid)
     return True
+
+
+@remoteserviceHandle('gate')
+def get_ipaddress_remote(pid):
+    return GlobalObject().netfactory.get_ipaddress(pid)
