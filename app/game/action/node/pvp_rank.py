@@ -445,13 +445,13 @@ def reset_pvp_time_1506(data, player):
     need_gold = get_consume_gold_num(_consume) * request.times
 
     def func():
-        return_data = consume(player, _consume, multiple=request.times)  # 消耗
+        return_data = consume(player, _consume, const.RESET_PVP_TIME, multiple=request.times)  # 消耗
         get_return(player, return_data, response.consume)
         player.pvp.pvp_times += request.times
         player.pvp.pvp_refresh_time = time.time()
         player.pvp.pvp_refresh_count += request.times
         player.pvp.save_data()
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, const.RESET_PVP_TIME, func)
 
     return response.SerializePartialToString()
 

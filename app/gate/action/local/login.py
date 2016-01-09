@@ -22,6 +22,7 @@ groot = GlobalObject().root
 @local_service_handle
 def character_login_4(key, dynamic_id, request_proto):
     """角色登录 """
+    # print groot.child('net').get_ipaddress_remote(dynamic_id)
     logger.debug("==============character_login_4===========")
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
@@ -56,7 +57,6 @@ def character_login_4(key, dynamic_id, request_proto):
 
         response.res.result = False
         return response.SerializePartialToString()
-
 
     # argument.plat_id = 0
     # argument.client_version = '0.0.0.1'

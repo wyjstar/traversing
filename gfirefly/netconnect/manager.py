@@ -113,6 +113,14 @@ class ConnectionManager:
         del self._connections[pid]
         return True
 
+    def get_ipaddress(self, pid):
+        if pid not in self._connections:
+            logger.error("kick err>>>%s", pid)
+            return None
+
+        connection = self._connections[pid]
+        return connection.ipaddress
+
     def pop_queue(self):
         if len(self._queue_conns) <= 0:
             return

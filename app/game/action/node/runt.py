@@ -14,6 +14,7 @@ import random
 import time
 from shared.utils.pyuuid import get_uuid
 import copy
+from shared.utils.const import const
 
 
 @remoteserviceHandle('gate')
@@ -134,7 +135,7 @@ def runt_pick_842(data, player):
     hero.save_data()
     player.runt.save()
 
-    player.finance.consume_coin(need_coin)
+    player.finance.consume_coin(need_coin, const.RUNT_PICK)
     player.finance.save_data()
 
     response.res.result = True
@@ -196,9 +197,9 @@ def refresh_runt_844(data, player):
         return response.SerializeToString()
 
     if need_gold == 1:
-        consume(player, need_item)
+        consume(player, need_item, const.RUNT_REFRESH)
     if need_gold == 2:
-        player.finance.consume_gold(game_configs.base_config.get('totemRefreshPrice'))
+        player.finance.consume_gold(game_configs.base_config.get('totemRefreshPrice'), const.RUNT_REFRESH)
 
     player.runt.refresh_times = refresh_times
     while True:

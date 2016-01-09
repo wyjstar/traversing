@@ -122,7 +122,7 @@ def buy_stamina_6(request_proto, player):
         player.stamina.save_data()
         logger.debug("buy stamina++++++++++++++++++++")
 
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, const.BUY_STAMINA, func)
 
     response.result = True
     return response.SerializePartialToString()
@@ -290,7 +290,7 @@ def new_guide_step_1802(data, player):
 
     need_gold = get_consume_gold_num(consume_config)
     def func():
-        consume_data = consume(player, consume_config)
+        consume_data = consume(player, consume_config, const.NEW_GUIDE_STEP)
         get_return(player, consume_data, response.consume)
 
         # logger.debug("gain_data %s %s" % (gain_data, request.step_id))
@@ -301,7 +301,7 @@ def new_guide_step_1802(data, player):
         if my_newbee_sequence < new_guide_item.get('Sequence'):
             player.base_info.newbee_guide_id = request.step_id
             player.base_info.save_data()
-    player.pay.pay(need_gold, func)
+    player.pay.pay(need_gold, const.NEW_GUIDE_STEP, func)
     response.res.result = True
     response.step_id = request.step_id
 
@@ -405,13 +405,13 @@ def buy_stamina_2201(request_proto, player):
 
     def func():
         item.buy_stamina_times += num
-        player.finance.add(resource_type, info.get("one_buy_value")*num)
+        player.finance.add(resource_type, info.get("one_buy_value")*num, reason=const.BUY_STAMINA)
         item.last_buy_stamina_time = int(time.time())
         player.finance.save_data()
         player.stamina.save_data()
         logger.debug("buy stamina++++++++++++++++++++")
 
-    player.pay.pay(need_gold*num, func)
+    player.pay.pay(need_gold*num, const.BUY_STAMINA, func)
     response.buy_times = item.buy_stamina_times
     logger.debug("buy stamina times %s" % (response.buy_times))
 
@@ -451,7 +451,7 @@ def add_stamina_2202(request_proto, player):
         response.res.result = False
         return response.SerializePartialToString()
 
-    player.finance.add(resource_type, info.get("recover_unit"))
+    player.finance.add(resource_type, info.get("recover_unit"), reason=const.AUTO_ADD)
 
     item.last_gain_stamina_time = current_time
     player.stamina.save_data()

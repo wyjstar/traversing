@@ -115,7 +115,7 @@ def hero_break_logic(hero_no, player, response):
         return {"result": False, "result_no": result.get('result_no')}
 
     # 返回消耗
-    return_data = consume(player, item_group)
+    return_data = consume(player, item_group, const.HERO_BREAK)
     get_return(player, return_data, response.consume)
 
     hero.break_level += 1
@@ -266,7 +266,7 @@ def do_hero_refine(player, hero_no, refine, response):
 
     tlog_action.log('HeroRefine', player, hero_no, refine)
 
-    return_data = consume(player, _refine_item.expend)
+    return_data = consume(player, _refine_item.expend, const.HERO_REFINE)
     get_return(player, return_data, response.consume)
 
     hero.refine = refine

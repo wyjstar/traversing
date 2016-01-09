@@ -90,7 +90,7 @@ def travel_831(data, player):
         travel_cache.get(stage_id).append([res_travel_event_id, drops])
 
     # ====================消耗
-    return_data = consume(player, need_items)
+    return_data = consume(player, need_items, const.TRAVEL)
     get_return(player, return_data, response.consume)
     player.travel_component.save()
 
@@ -299,7 +299,7 @@ def no_wait_835(data, player):
         response.res.result_no = 102  # 充值币不足
         return response.SerializeToString()
 
-    player.finance.consume_gold(event_info.price)
+    player.finance.consume_gold(event_info.price, const.TRAVEL)
 
     gain(player, event_cache[1], const.TRAVEL)
     player.finance.save_data()
@@ -345,7 +345,7 @@ def auto_travel_837(data, player):
         return response.SerializeToString()
 
     # 扣元宝
-    player.finance.consume_gold(auto_travel_config[1])
+    player.finance.consume_gold(auto_travel_config[1], const.TRAVEL_AUTO)
 
     # 逻辑
     if auto_is_finish:
@@ -438,7 +438,7 @@ def settle_auto_838(data, player):
         return response.SerializeToString()
 
     if settle_type:
-        player.finance.consume_gold(game_configs.travel_event_config.get('events').get(event_id%xs).price)
+        player.finance.consume_gold(game_configs.travel_event_config.get('events').get(event_id%xs).price, const.TRAVEL_AUTO)
         player.finance.save_data()
 
     for event_info in event_infos:

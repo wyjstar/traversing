@@ -7,7 +7,7 @@ from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import buy_coin_activity_pb2
 from shared.db_opear.configs_data import game_configs
 #from app.game.core.item_group_helper import gain, get_return
-#from shared.utils.const import const
+from shared.utils.const import const
 from gfirefly.server.logobj import logger
 from shared.utils.date_util import days_to_current, get_current_timestamp
 
@@ -106,10 +106,10 @@ def buy_coin_activity_1406(data, player):
         else:
             add_coin_nums = coin_nums
 
-        player.finance.add_coin(int(add_coin_nums))
+        player.finance.add_coin(int(add_coin_nums), const.BUY_COIN_ACT)
         player.finance.save_data()
 
-    res = player.pay.pay(need_gold, func)
+    res = player.pay.pay(need_gold, const.BUY_COIN_ACT, func)
     response.res.result = res
     if not res:
         response.res.result_no = 100

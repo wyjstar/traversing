@@ -28,7 +28,6 @@ def init_guild(player):
 
     guild_obj.level = 7
     guild_obj.save_data()
-    player.finance.consume_gold(game_configs.base_config.get('create_money'))
     player.finance.save_data()
 
     remote_gate.add_guild_to_rank_remote(guild_obj.g_id, guild_obj.level)

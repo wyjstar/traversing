@@ -108,15 +108,16 @@ def get_consume_gold_num(item_group, multiple=1):
                 gold_num += num
     return gold_num
 
-def consume(player, item_group, shop=None, luck_config=None, multiple=1):
-# def consume(player, item_group, reason, shop=None, luck_config=None):
+
+def consume(player, item_group, reason,
+            shop=None, event_id=0,
+            luck_config=None, multiple=1):
     """消耗"""
     result = []
 
     after_num = 0
     itid = 0
-    reason = 0
-    event_id = ''
+    # reason = 0
 
     luckValue = None
     if luck_config:
@@ -130,13 +131,7 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
             if shop and luckValue:
                 shop['luck_num'] += num * luckValue.get(type_id)
             player.finance.save_data()
-
-        #elif type_id == const.GOLD:
-            #player.finance.consume_gold(num)
-            #if shop and luckValue:
-                #shop['luck_num'] += num * luckValue.get(type_id)
-            #player.finance.save_data()
-            #after_num = player.finance.gold
+            after_num = player.finance.coin
 
         elif type_id == const.HERO_SOUL:
             player.finance.hero_soul -= num
@@ -167,17 +162,25 @@ def consume(player, item_group, shop=None, luck_config=None, multiple=1):
             after_num = item.num
 
         elif type_id == const.RESOURCE:
-            player.finance.consume(item_no, num)
+            player.finance.consume(item_no, num, 0)
             player.finance.save_data()
             after_num = player.finance[item_no]
             if shop and luckValue and luckValue.get(item_no):
                 shop['luck_num'] += num * luckValue.get(item_no)
 
+            if item_no == 1 or item_no == 2:
+                tlog_action.log('MoneyFlow', player, after_num, num, reason,
+                                const.REDUCE, item_no)
+
+        if type_id == const.COIN or type_id == const.GOLD:
+            tlog_action.log('MoneyFlow', player, after_num, num, reason,
+                            const.REDUCE, item_no)
         result.append([type_id, num, item_no])
 
         # =====Tlog================
-        tlog_action.log('ItemFlow', player, const.REDUCE, type_id, num, item_no,
-                        itid, reason, after_num, event_id)
+        if type_id != const.RESOURCE:
+            tlog_action.log('ItemFlow', player, const.REDUCE, type_id, num,
+                            item_no, itid, reason, after_num, event_id)
 
     return result
 
@@ -194,7 +197,6 @@ def gain(player, item_group, reason,
     """
     if result is None:
         result = []
-
     after_num = 0
     itid = 0
 
@@ -233,7 +235,7 @@ def gain(player, item_group, reason,
                                 const.ADD, item_no)
 
         elif type_id == const.GOLD:
-            player.finance.add_gold(num)
+            player.finance.add_gold(num, 0)
             player.finance.save_data()
 
         elif type_id == const.HERO_SOUL:
