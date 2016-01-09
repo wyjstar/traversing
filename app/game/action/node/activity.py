@@ -220,6 +220,7 @@ def activate_fund_activity_1851(data, player):
     player.pay.pay(need_gold, const.FUND, func)
 
     player.act.act_infos[activity_id][0] = 3
+    player.act.update_51()
     player.act.save_data()
 
     # fund['consume'] = need_gold

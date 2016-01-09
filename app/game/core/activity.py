@@ -22,7 +22,7 @@ def get_act_info(player, act_id):
     if act_info and act_info[0] == 3:
         return {'state': 3, 'jindu': act_info[1]}
     elif act_info and act_info[0] == 2:
-        return {'state': 2}
+        return {'state': 2, 'jindu': act_info[1]}
 
     elif act_conf.type == 29:
         # jindu = get_condition(conditions, 29)
