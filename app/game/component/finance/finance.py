@@ -8,6 +8,7 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
 from gfirefly.server.globalobject import GlobalObject
+from shared.tlog import tlog_action
 
 
 # const.COIN = 1
@@ -116,8 +117,8 @@ class CharacterFinanceComponent(Component):
         if fType != const.GOLD:
             self._finances[fType] -= int(num)
             if reason:
-                tlog_action.log('ItemFlow', player, const.REDUCE, const.RESOURCE, num,
-                                fType, 0, reason, after_num, 0)
+                tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
+                                fType, 0, reason, self._finances[fType], 0)
         return True
 
     def add(self, fType, num, reason=0):
@@ -130,13 +131,13 @@ class CharacterFinanceComponent(Component):
         else:
             self._finances[fType] += int(num)
             if reason:
-                tlog_action.log('ItemFlow', player, const.ADD, const.RESOURCE, num,
-                                fType, 0, reason, after_num, 0)
+                tlog_action.log('ItemFlow', self.owner, const.ADD, const.RESOURCE, num,
+                                fType, 0, reason, self._finances[fType], 0)
         return True
 
     def add_coin(self, num, reason):
         self._finances[const.COIN] += num
-        tlog_action.log('ItemFlow', player, const.ADD, const.RESOURCE, num,
+        tlog_action.log('ItemFlow', self.owner, const.ADD, const.RESOURCE, num,
                         1, 0, reason, self._finances[const.COIN], 0)
         tlog_action.log('MoneyFlow', self.owner, self._finances[const.COIN],
                         num, reason, const.ADD, 1)
@@ -145,7 +146,7 @@ class CharacterFinanceComponent(Component):
         if num < self._finances[const.COIN]:
             return False
         self._finances[const.COIN] -= num
-        tlog_action.log('ItemFlow', player, const.REDUCE, const.RESOURCE, num,
+        tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
                         1, 0, reason, self._finances[const.COIN], 0)
         tlog_action.log('MoneyFlow', self.owner, self._finances[const.COIN],
                         num, reason, const.REDUCE, 1)
@@ -157,7 +158,7 @@ class CharacterFinanceComponent(Component):
         else:
             self._finances[const.GOLD] += num
         if reason:
-            tlog_action.log('ItemFlow', player, const.ADD, const.RESOURCE, num,
+            tlog_action.log('ItemFlow', self.owner, const.ADD, const.RESOURCE, num,
                             2, 0, reason, self._finances[const.CONSUME_GOLD], 0)
             tlog_action.log('MoneyFlow', self.owner, self._finances[const.CONSUME_GOLD],
                             num, reason, const.ADD, 2)
@@ -171,7 +172,7 @@ class CharacterFinanceComponent(Component):
         self._finances[const.CONSUME_GOLD] += num
         self._finances[const.GOLD] -= num
         if reason:
-            tlog_action.log('ItemFlow', player, const.REDUCE, const.RESOURCE, num,
+            tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
                             2, 0, reason, self._finances[const.CONSUME_GOLD], 0)
             tlog_action.log('MoneyFlow', self.owner, self._finances[const.COIN],
                             num, reason, const.REDUCE, 2)

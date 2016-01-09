@@ -11,6 +11,7 @@ from shared.tlog import tlog_action
 from gtwisted.core import reactor
 from app.proto_file.common_pb2 import GetGoldResponse
 import traceback
+from shared.utils.const import const
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -193,6 +194,8 @@ class CharacterPay(Component):
         self.get_balance()
         tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
                         2, 0, reason, self.owner.finance.gold, 0)
+        tlog_action.log('MoneyFlow', self.owner, self.owner.finance.gold,
+                        num, reason, const.REDUCE, 2)
         return True
 
     def _cancel_pay_m(self, num, billno):

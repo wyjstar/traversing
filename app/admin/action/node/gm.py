@@ -235,6 +235,26 @@ def modify_user_info(args):
         data = {'finances': finance}
         character_obj.hmset(data)
         return {'success': 1}
+    elif args['attr_name'] == 'stage1':
+        return {'success': 0}
+        stage_ids = args['attr_value'].split(';')
+        for stage_id in stage_ids:
+            stage_id = int(stage_id)
+
+            stages = character_obj.hget('stage_info')
+            stage_info = game_configs.stage_config.get('stages').get(stage_id)
+            if not stage_info:
+                return {'success': 0, 'message': 4}
+            if not next_stages.get(stage_id):
+                return {'success': 0, 'message': 4}
+            if game_configs.stage_config.get('stages').get(stage_id)['type'] != 1:
+                return {'success': 0, 'message': 4}
+            stage_objs = {}
+            for stage_id_a, stage in stages.items():
+                stage_objs[stage_id_a] = Stage.loads(stage)
+
+            stage_obj = get_stage(stage_objs, stage_id)
+            stage_obj.state = 1
     elif args['attr_name'] == 'stage':
         stage_id = int(args['attr_value'])
         attr_value = int(args['attr_value'])
