@@ -192,8 +192,8 @@ class CharacterShopComponent(Component):
         response.luck_num = int(shopdata['luck_num'])
         response.res.result = True
         response.refresh_times = shopdata['refresh_times']
-        response.last_auto_refresh_time = shopdata.get(
-            'last_auto_refresh_time', 0)
+        response.last_auto_refresh_time = int(shopdata.get(
+            'last_auto_refresh_time', 0))
         print response, shop_type, '====================shop item 508'
         return response.SerializePartialToString()
 
