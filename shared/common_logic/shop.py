@@ -81,6 +81,7 @@ def check_time(shop_data):
                 freeRefreshTime, v['last_refresh_time']):
             v['refresh_times'] = 0
             v['guild_items'] = {}
+            v['items'] = {}
             v['last_refresh_time'] = current_date_time
             v['luck_time'] = current_date_time
             v['luck_num'] = 0.0
