@@ -18,6 +18,8 @@ remote_gate = GlobalObject().remote.get('gate')
 server_open_time = int(time.mktime(
     time.strptime(GlobalObject().allconfig['open_time'], '%Y-%m-%d %H:%M:%S')))
 
+SDK360_RECHARGE_URL = GlobalObject().allconfig["360sdk"]["recharge_url"]
+
 
 @remoteserviceHandle('gate')
 def enter_scene_remote(dynamic_id, character_id, pay_arg):
@@ -33,10 +35,8 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
         logger.debug('player exsit! player.dynamic_id %s new dynamic_id %s' %
                      (player.dynamic_id, dynamic_id))
         if player.dynamic_id != dynamic_id:
-            logger.error('dynamic id is not same:%s,%s:%s',
-                         character_id,
-                         dynamic_id,
-                         player.dynamic_id)
+            logger.error('dynamic id is not same:%s,%s:%s', character_id,
+                         dynamic_id, player.dynamic_id)
         player.dynamic_id = dynamic_id
     player.pay.set_pay_arg(pay_arg)  # 设置支付参数
     player.base_info.plat_id = pay_arg.get("plat_id")  # ios 0 android 1
@@ -109,8 +109,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
         item_pb.buy_stamina_times = item.buy_stamina_times
         item_pb.last_gain_stamina_time = item.last_gain_stamina_time
         logger.debug("stami %s buy_stamina_times %s last_gain_stamina_time %s"
-                     % (item.resource_type,
-                        item.buy_stamina_times,
+                     % (item.resource_type, item.buy_stamina_times,
                         item.last_gain_stamina_time))
 
     logger.debug("stamina %s" % buy_times_pb)
@@ -138,13 +137,17 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
 
     responsedata.is_open_next_day_activity = player.base_info.is_open_next_day_activity
     responsedata.first_recharge_activity = player.base_info.first_recharge_activity
-    logger.debug("character info:----------------------id: %s" % player.base_info.id)
+
+    responsedata.q360_recharge_url = SDK360_RECHARGE_URL
+    logger.debug("character info:----------------------id: %s" %
+                 player.base_info.id)
     logger.debug("stage_id: %s" % player.fight_cache_component.stage_id)
     logger.debug("vip_level:%d", player.base_info.vip_level)
     logger.debug("recharge:%d", player.base_info.recharge)
     logger.debug("register_time:%d", player.base_info.register_time)
     logger.debug("buy_stamina_times:%d", player.stamina.buy_stamina_times)
-    logger.debug("first_recharge_activity:%d", player.base_info.first_recharge_activity)
+    logger.debug("first_recharge_activity:%d",
+                 player.base_info.first_recharge_activity)
     # logger.debug("coin:%d", player.finance.coin)
     # logger.debug("gold:%d", player.finance.gold)
     # logger.debug("hero_soul:%d", player.finance.hero_soul)
@@ -163,12 +166,8 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
             # awake_hero = player.fight_cache_component.change_hero(hero, hero.hero_info["awakeHeroID"])
 
             # combat_power_hero_lineup(player, awake_hero, slot_no, "awake")
-    logger.debug('login:<%s>%s:%s %s:%s',
-                 player,
-                 character_id,
-                 responsedata.level,
-                 dynamic_id,
-                 player.dynamic_id)
+    logger.debug('login:<%s>%s:%s %s:%s', player, character_id,
+                 responsedata.level, dynamic_id, player.dynamic_id)
 
     return {'player_data': responsedata.SerializeToString(),
             'is_new_character': is_new_character}
@@ -201,8 +200,7 @@ def enter_scene_9(data, player):
         item_pb.buy_stamina_times = item.buy_stamina_times
         item_pb.last_gain_stamina_time = item.last_gain_stamina_time
         logger.debug("stami %s buy_stamina_times %s last_gain_stamina_time %s"
-                     % (item.resource_type,
-                        item.buy_stamina_times,
+                     % (item.resource_type, item.buy_stamina_times,
                         item.last_gain_stamina_time))
 
     return responsedata.SerializeToString()
