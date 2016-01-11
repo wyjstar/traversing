@@ -52,7 +52,7 @@ def recharge_baidu_response():
 
     # print js["UID"]
     # print js["MerchandiseName"]
-    fee = float(js["OrderMoney"])
+    fee = js["OrderMoney"]
     # print js["StartDateTime"]
     # print js["BankDateTime"]
     # print js["OrderStatus"]
@@ -64,7 +64,6 @@ def recharge_baidu_response():
                ",\"ResultMsg\":\"" + resultMsg + "\",\"Sign\":\"" + \
                hashlib.md5(appid + resultCode + secretkey).hexdigest() + \
                "\",\"Content\":\"\"}"
-    print response
 
     player_id = int(cooperatorOrderSerial.split('_')[0])
 
@@ -75,7 +74,9 @@ def recharge_baidu_response():
     child_node = GlobalObject().child(oldvcharacter.node)
     result = child_node.baidu_recharge_remote(oldvcharacter.dynamic_id,
                                               product_id, fee, True)
-    if result:
+    if result is True:
+        logger.debug('response:%s', response)
         return response
 
+    logger.debug('response:failed')
     return 'failed'
