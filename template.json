@@ -222,6 +222,9 @@
         "AppSecret" : "1aF09NRZY/biZFgAdoRUZA==",
         "VerifySession_URL" : "http://mis.migc.xiaomi.com/api/biz/service/verifySession.do"
     },
+    "360sdk":{
+        "recharge_url" : "http://360zhugong.mobartsgame.com:30013/q360pay"
+    },
     "push":{
         "channel": "xinge"
     },
