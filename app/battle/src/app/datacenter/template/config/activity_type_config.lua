@@ -70,7 +70,7 @@ activity_type_config={
 ,  [53] = {
   ["index"] = 23,  ["id"] = 53,  ["duration"] = 3,  ["page"] = 1,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_ROB",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [55] = {
-  ["index"] = 996,  ["id"] = 55,  ["duration"] = 3,  ["page"] = 2,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
+  ["index"] = 996,  ["id"] = 55,  ["duration"] = 3,  ["page"] = 2,  ["is_open"] = 1,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "ONE_YUAN_RECHARGE",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [202] = {
   ["index"] = 995,  ["id"] = 202,  ["duration"] = 5,  ["page"] = 2,  ["is_open"] = 1,  ["parameterT"] = "240",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_SEVENDAY",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [104] = {

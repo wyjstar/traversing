@@ -10,7 +10,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200462,  ["magicDef"] = 407,  ["hp"] = 3395.151,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200462,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200462,  ["magicDef"] = 407,  ["hp"] = 3395.151,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200462,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -32,7 +32,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 2,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200482,  ["magicDef"] = 407,  ["hp"] = 3395.151,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200482,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 2,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200482,  ["magicDef"] = 407,  ["hp"] = 3395.151,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200482,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -54,7 +54,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 2,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200502,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200502,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 2,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200502,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200502,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -76,7 +76,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200522,  ["magicDef"] = 953,  ["hp"] = 1808.881,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200522,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200522,  ["magicDef"] = 953,  ["hp"] = 1808.881,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200522,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -98,7 +98,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200542,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200542,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200542,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200542,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -110,7 +110,7 @@ hero_config={
 }
 ,  ["growAtk"] = 234.14,  ["parameters7"] = 30.4,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020054,}
 ,  [20056] = {
-  ["resIcon"] = 1200561,  ["describeStr"] = 1100010056,  ["growHp"] = 407.1,  ["parameters5"] = 12,  ["physicalDef"] = 543,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2300,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200561,  ["describeStr"] = 1100010056,  ["growHp"] = 407.1,  ["parameters5"] = 12,  ["physicalDef"] = 543,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -120,7 +120,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200562,  ["magicDef"] = 817,  ["hp"] = 2713.988,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200562,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200562,  ["magicDef"] = 817,  ["hp"] = 2713.988,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200562,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -142,7 +142,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200582,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200582,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200582,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200582,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -164,7 +164,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2400,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200622,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200622,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200622,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200622,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -186,7 +186,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2400,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200642,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200642,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200642,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200642,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -198,7 +198,7 @@ hero_config={
 }
 ,  ["growAtk"] = 195.15,  ["parameters7"] = 30.4,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020064,}
 ,  [20066] = {
-  ["resIcon"] = 1200661,  ["describeStr"] = 1100010066,  ["growHp"] = 407.1,  ["parameters5"] = 12,  ["physicalDef"] = 543,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2300,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200661,  ["describeStr"] = 1100010066,  ["growHp"] = 407.1,  ["parameters5"] = 12,  ["physicalDef"] = 543,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -208,7 +208,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200662,  ["magicDef"] = 817,  ["hp"] = 2713.988,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200662,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200662,  ["magicDef"] = 817,  ["hp"] = 2713.988,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200662,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -242,11 +242,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100012,  ["magicDef"] = 84,  ["hp"] = 698,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100012,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100012,  ["magicDef"] = 84,  ["hp"] = 698,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100012,  ["consume7"] = {
 }
 ,  ["parameters4"] = 0,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -282,11 +282,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100022,  ["magicDef"] = 196,  ["hp"] = 372,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100022,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100022,  ["magicDef"] = 196,  ["hp"] = 372,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100022,  ["consume7"] = {
 }
 ,  ["parameters4"] = 0,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -328,11 +328,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100032,  ["magicDef"] = 214,  ["hp"] = 1779,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100032,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100032,  ["magicDef"] = 214,  ["hp"] = 1779,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100032,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -380,11 +380,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100042,  ["magicDef"] = 428,  ["hp"] = 1422,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100042,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100042,  ["magicDef"] = 428,  ["hp"] = 1422,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100042,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -432,11 +432,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100052,  ["magicDef"] = 214,  ["hp"] = 1779,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100052,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100052,  ["magicDef"] = 214,  ["hp"] = 1779,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100052,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -456,7 +456,7 @@ hero_config={
 ,}
 ,  ["growAtk"] = 58.8,  ["parameters7"] = 0,  ["quality"] = 4,  ["type"] = 0,  ["nameStr"] = 1000010005,}
 ,  [10006] = {
-  ["resIcon"] = 1100061,  ["describeStr"] = 1100010006,  ["growHp"] = 83.7,  ["parameters5"] = 0,  ["physicalDef"] = 112,  ["toGet"] = 20010006,  ["dodge"] = 0,  ["cri"] = 6000,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1100061,  ["describeStr"] = 1100010006,  ["growHp"] = 83.7,  ["parameters5"] = 0,  ["physicalDef"] = 112,  ["toGet"] = 20010006,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -478,11 +478,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100062,  ["magicDef"] = 168,  ["hp"] = 558,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100062,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100062,  ["magicDef"] = 168,  ["hp"] = 558,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100062,  ["consume7"] = {
 }
 ,  ["parameters4"] = 0,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -518,11 +518,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100072,  ["magicDef"] = 84,  ["hp"] = 698,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100072,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100072,  ["magicDef"] = 84,  ["hp"] = 698,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100072,  ["consume7"] = {
 }
 ,  ["parameters4"] = 0,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -558,11 +558,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100082,  ["magicDef"] = 168,  ["hp"] = 558,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100082,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100082,  ["magicDef"] = 168,  ["hp"] = 558,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100082,  ["consume7"] = {
 }
 ,  ["parameters4"] = 0,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -598,11 +598,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100092,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100092,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100092,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100092,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -638,11 +638,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100102,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100102,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100102,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100102,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -678,11 +678,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100112,  ["magicDef"] = 362,  ["hp"] = 688,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100112,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100112,  ["magicDef"] = 362,  ["hp"] = 688,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100112,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -718,11 +718,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100122,  ["magicDef"] = 168,  ["hp"] = 558,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100122,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100122,  ["magicDef"] = 168,  ["hp"] = 558,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100122,  ["consume7"] = {
 }
 ,  ["parameters4"] = 0,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -764,11 +764,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100132,  ["magicDef"] = 499,  ["hp"] = 948,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100132,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100132,  ["magicDef"] = 499,  ["hp"] = 948,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100132,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -810,11 +810,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 1700,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100142,  ["magicDef"] = 140,  ["hp"] = 466,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100142,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100142,  ["magicDef"] = 140,  ["hp"] = 466,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100142,  ["consume7"] = {
 }
 ,  ["parameters4"] = 0,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -856,11 +856,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100152,  ["magicDef"] = 499,  ["hp"] = 948,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100152,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100152,  ["magicDef"] = 499,  ["hp"] = 948,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100152,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -908,11 +908,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100162,  ["magicDef"] = 214,  ["hp"] = 1779,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100162,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100162,  ["magicDef"] = 214,  ["hp"] = 1779,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100162,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -954,11 +954,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100172,  ["magicDef"] = 84,  ["hp"] = 698,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100172,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100172,  ["magicDef"] = 84,  ["hp"] = 698,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100172,  ["consume7"] = {
 }
 ,  ["parameters4"] = 0,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1000,11 +1000,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 2100,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100182,  ["magicDef"] = 357,  ["hp"] = 1188,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100182,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100182,  ["magicDef"] = 357,  ["hp"] = 1188,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100182,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1046,11 +1046,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 1700,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100192,  ["magicDef"] = 140,  ["hp"] = 466,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100192,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100192,  ["magicDef"] = 140,  ["hp"] = 466,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100192,  ["consume7"] = {
 }
 ,  ["parameters4"] = 0,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1092,17 +1092,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20020,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100203,  ["magicDef"] = 529,  ["hp"] = 1757,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100205,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100203,  ["magicDef"] = 529,  ["hp"] = 1757,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100205,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010020,}
+  [1] = 350,  [2] = 350,  [3] = 1010020,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 1,  ["80000"] = 0.45,}
@@ -1156,11 +1156,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100212,  ["magicDef"] = 362,  ["hp"] = 688,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100212,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100212,  ["magicDef"] = 362,  ["hp"] = 688,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100212,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1208,11 +1208,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100222,  ["magicDef"] = 362,  ["hp"] = 688,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100222,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100222,  ["magicDef"] = 362,  ["hp"] = 688,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100222,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1260,17 +1260,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20023,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100233,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100235,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100233,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100235,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010023,}
+  [1] = 350,  [2] = 350,  [3] = 1010023,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 2,  ["80000"] = 0.45,}
@@ -1324,11 +1324,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100242,  ["magicDef"] = 428,  ["hp"] = 1422,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100242,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100242,  ["magicDef"] = 428,  ["hp"] = 1422,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100242,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1376,11 +1376,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 2100,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100252,  ["magicDef"] = 357,  ["hp"] = 1188,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100252,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100252,  ["magicDef"] = 357,  ["hp"] = 1188,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100252,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1428,11 +1428,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100262,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100262,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100262,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100262,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1480,11 +1480,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100272,  ["magicDef"] = 362,  ["hp"] = 688,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100272,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100272,  ["magicDef"] = 362,  ["hp"] = 688,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100272,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1532,11 +1532,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100282,  ["magicDef"] = 499,  ["hp"] = 948,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100282,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100282,  ["magicDef"] = 499,  ["hp"] = 948,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100282,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1584,11 +1584,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100292,  ["magicDef"] = 155,  ["hp"] = 1291,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100292,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100292,  ["magicDef"] = 155,  ["hp"] = 1291,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100292,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1636,17 +1636,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20030,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 2400,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100303,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100305,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100303,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100305,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010030,}
+  [1] = 350,  [2] = 350,  [3] = 1010030,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 3,  ["80000"] = 0.45,}
@@ -1700,17 +1700,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20031,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100313,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100315,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100313,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100315,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010031,}
+  [1] = 350,  [2] = 350,  [3] = 1010031,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 4,  ["80000"] = 0.45,}
@@ -1764,11 +1764,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100322,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100322,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100322,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100322,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1816,11 +1816,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100332,  ["magicDef"] = 499,  ["hp"] = 948,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100332,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100332,  ["magicDef"] = 499,  ["hp"] = 948,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100332,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1868,11 +1868,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100342,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100342,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100342,  ["magicDef"] = 310,  ["hp"] = 1032,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100342,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -1920,17 +1920,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20035,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100353,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100355,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100353,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100355,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010035,}
+  [1] = 350,  [2] = 350,  [3] = 1010035,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 5,  ["80000"] = 0.45,}
@@ -1984,17 +1984,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20036,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100363,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100365,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100363,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100365,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010036,}
+  [1] = 350,  [2] = 350,  [3] = 1010036,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 6,  ["80000"] = 0.45,}
@@ -2048,11 +2048,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100372,  ["magicDef"] = 428,  ["hp"] = 1422,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100372,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100372,  ["magicDef"] = 428,  ["hp"] = 1422,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100372,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -2100,11 +2100,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100382,  ["magicDef"] = 155,  ["hp"] = 1291,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100382,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100382,  ["magicDef"] = 155,  ["hp"] = 1291,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100382,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -2152,11 +2152,11 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100392,  ["magicDef"] = 214,  ["hp"] = 1779,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100392,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 0,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100392,  ["magicDef"] = 214,  ["hp"] = 1779,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100392,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 0,  ["awake"] = {
 }
@@ -2204,17 +2204,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20040,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100403,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100405,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100403,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100405,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010040,}
+  [1] = 350,  [2] = 350,  [3] = 1010040,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 7,  ["80000"] = 0.45,}
@@ -2268,17 +2268,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20041,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100413,  ["magicDef"] = 529,  ["hp"] = 1757,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100415,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100413,  ["magicDef"] = 529,  ["hp"] = 1757,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100415,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010041,}
+  [1] = 350,  [2] = 350,  [3] = 1010041,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 8,  ["80000"] = 0.45,}
@@ -2332,17 +2332,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20042,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 2400,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100423,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100425,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100423,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100425,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010042,}
+  [1] = 350,  [2] = 350,  [3] = 1010042,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 9,  ["80000"] = 0.45,}
@@ -2396,17 +2396,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20043,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 2400,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100433,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100435,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100433,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100435,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010043,}
+  [1] = 350,  [2] = 350,  [3] = 1010043,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 10,  ["80000"] = 0.45,}
@@ -2460,17 +2460,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20044,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100443,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100445,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100443,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100445,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010044,}
+  [1] = 350,  [2] = 350,  [3] = 1010044,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 11,  ["80000"] = 0.45,}
@@ -2524,17 +2524,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20045,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100453,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100455,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100453,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100455,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010045,}
+  [1] = 350,  [2] = 350,  [3] = 1010045,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
@@ -2588,17 +2588,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20046,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100463,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100465,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100463,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100465,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010046,}
+  [1] = 350,  [2] = 350,  [3] = 1010046,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
@@ -2652,17 +2652,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20047,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100473,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100475,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100473,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100475,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010047,}
+  [1] = 350,  [2] = 350,  [3] = 1010047,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 12,  ["80000"] = 0.45,}
@@ -2716,17 +2716,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20048,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 2,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100483,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100485,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 2,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100483,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100485,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010048,}
+  [1] = 350,  [2] = 350,  [3] = 1010048,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
@@ -2780,17 +2780,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20049,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100493,  ["magicDef"] = 529,  ["hp"] = 1757,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100495,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100493,  ["magicDef"] = 529,  ["hp"] = 1757,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100495,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010049,}
+  [1] = 350,  [2] = 350,  [3] = 1010049,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 13,  ["80000"] = 0.45,}
@@ -2844,17 +2844,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20050,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 2,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100503,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100505,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 2,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100503,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100505,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010050,}
+  [1] = 350,  [2] = 350,  [3] = 1010050,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 14,  ["80000"] = 0.45,}
@@ -2908,17 +2908,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20052,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100523,  ["magicDef"] = 715,  ["hp"] = 1357,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100525,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100523,  ["magicDef"] = 715,  ["hp"] = 1357,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100525,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010052,}
+  [1] = 350,  [2] = 350,  [3] = 1010052,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
@@ -2972,17 +2972,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20053,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100533,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100535,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100533,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100535,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010053,}
+  [1] = 350,  [2] = 350,  [3] = 1010053,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
@@ -3036,17 +3036,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20054,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100543,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100545,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100543,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100545,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010054,}
+  [1] = 350,  [2] = 350,  [3] = 1010054,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 15,  ["80000"] = 0.45,}
@@ -3100,17 +3100,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20055,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100553,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100555,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100553,  ["magicDef"] = 264,  ["hp"] = 2198,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100555,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010055,}
+  [1] = 350,  [2] = 350,  [3] = 1010055,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 16,  ["80000"] = 0.45,}
@@ -3164,17 +3164,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20056,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100563,  ["magicDef"] = 613,  ["hp"] = 2036,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100565,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100563,  ["magicDef"] = 613,  ["hp"] = 2036,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100565,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010056,}
+  [1] = 350,  [2] = 350,  [3] = 1010056,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
@@ -3228,17 +3228,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20058,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100583,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100585,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100583,  ["magicDef"] = 617,  ["hp"] = 1171,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100585,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010058,}
+  [1] = 350,  [2] = 350,  [3] = 1010058,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 17,  ["80000"] = 0.45,}
@@ -3274,7 +3274,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200652,  ["magicDef"] = 953,  ["hp"] = 1808.881,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200652,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200652,  ["magicDef"] = 953,  ["hp"] = 1808.881,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200652,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3314,17 +3314,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20061,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100613,  ["magicDef"] = 715,  ["hp"] = 1357,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100615,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100613,  ["magicDef"] = 715,  ["hp"] = 1357,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100615,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010061,}
+  [1] = 350,  [2] = 350,  [3] = 1010061,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
@@ -3378,17 +3378,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20062,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 2400,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100623,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100625,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100623,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100625,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010062,}
+  [1] = 350,  [2] = 350,  [3] = 1010062,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 18,  ["80000"] = 0.45,}
@@ -3424,7 +3424,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200612,  ["magicDef"] = 953,  ["hp"] = 1808.881,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200612,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200612,  ["magicDef"] = 953,  ["hp"] = 1808.881,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200612,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3464,17 +3464,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20064,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 2400,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100643,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100645,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 3000012,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000011,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000010,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100643,  ["magicDef"] = 441,  ["hp"] = 1467,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100645,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010064,}
+  [1] = 350,  [2] = 350,  [3] = 1010064,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 19,  ["80000"] = 0.45,}
@@ -3528,17 +3528,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20065,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100653,  ["magicDef"] = 715,  ["hp"] = 1357,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100655,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100653,  ["magicDef"] = 715,  ["hp"] = 1357,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100655,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010065,}
+  [1] = 350,  [2] = 350,  [3] = 1010065,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
@@ -3592,17 +3592,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 20066,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 613,  ["hp"] = 2036,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 613,  ["hp"] = 2036,  ["parameters1"] = 1.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1010066,}
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
@@ -3638,7 +3638,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200532,  ["magicDef"] = 407,  ["hp"] = 3395.151,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200532,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200532,  ["magicDef"] = 407,  ["hp"] = 3395.151,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200532,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3660,7 +3660,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200452,  ["magicDef"] = 407,  ["hp"] = 3395.151,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200452,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200452,  ["magicDef"] = 407,  ["hp"] = 3395.151,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200452,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3672,7 +3672,7 @@ hero_config={
 }
 ,  ["growAtk"] = 112.37,  ["parameters7"] = 30.4,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020045,}
 ,  [20055] = {
-  ["resIcon"] = 1200551,  ["describeStr"] = 1100010055,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 1700,  ["consume4"] = {
+  ["resIcon"] = 1200551,  ["describeStr"] = 1100010055,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -3682,7 +3682,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200552,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200552,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200552,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200552,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3694,7 +3694,7 @@ hero_config={
 }
 ,  ["growAtk"] = 96.98,  ["parameters7"] = 30.4,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020055,}
 ,  [20049] = {
-  ["resIcon"] = 1200491,  ["describeStr"] = 1100010049,  ["growHp"] = 351.31,  ["parameters5"] = 12,  ["physicalDef"] = 469,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2100,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200491,  ["describeStr"] = 1100010049,  ["growHp"] = 351.31,  ["parameters5"] = 12,  ["physicalDef"] = 469,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -3704,7 +3704,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200492,  ["magicDef"] = 705,  ["hp"] = 2342.081,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200492,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200492,  ["magicDef"] = 705,  ["hp"] = 2342.081,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200492,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3726,7 +3726,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200472,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200472,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200472,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200472,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3738,7 +3738,7 @@ hero_config={
 }
 ,  ["growAtk"] = 234.14,  ["parameters7"] = 30.4,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020047,}
 ,  [20023] = {
-  ["resIcon"] = 1200231,  ["describeStr"] = 1100010023,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 1700,  ["consume4"] = {
+  ["resIcon"] = 1200231,  ["describeStr"] = 1100010023,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -3748,7 +3748,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200232,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200232,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200232,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200232,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3788,17 +3788,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 3,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300513,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300515,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 3,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300513,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300515,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1030051,}
+  [1] = 350,  [2] = 350,  [3] = 1030051,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3824,7 +3824,7 @@ hero_config={
 ,}
 ,  ["growAtk"] = 84.3,  ["parameters7"] = 30.4,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030051,}
 ,  [20020] = {
-  ["resIcon"] = 1200201,  ["describeStr"] = 1100010020,  ["growHp"] = 351.31,  ["parameters5"] = 12,  ["physicalDef"] = 469,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2100,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200201,  ["describeStr"] = 1100010020,  ["growHp"] = 351.31,  ["parameters5"] = 12,  ["physicalDef"] = 469,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -3834,7 +3834,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200202,  ["magicDef"] = 705,  ["hp"] = 2342.081,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200202,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200202,  ["magicDef"] = 705,  ["hp"] = 2342.081,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200202,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3856,7 +3856,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2400,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200432,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200432,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200432,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200432,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3896,17 +3896,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 3,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300573,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300575,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 3,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300573,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300575,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1030057,}
+  [1] = 350,  [2] = 350,  [3] = 1030057,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -3960,17 +3960,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 3,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300593,  ["magicDef"] = 613,  ["hp"] = 2036,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300595,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 3,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300593,  ["magicDef"] = 613,  ["hp"] = 2036,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300595,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1030059,}
+  [1] = 350,  [2] = 350,  [3] = 1030059,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4006,7 +4006,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2400,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200302,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200302,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200302,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200302,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4046,17 +4046,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 3,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300633,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300635,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000003,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000002,  ["resColdandwarm"] = 3,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000001,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300633,  ["magicDef"] = 306,  ["hp"] = 2547,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300635,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1030063,}
+  [1] = 350,  [2] = 350,  [3] = 1030063,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4082,7 +4082,7 @@ hero_config={
 ,}
 ,  ["growAtk"] = 84.3,  ["parameters7"] = 30.4,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030063,}
 ,  [20041] = {
-  ["resIcon"] = 1200411,  ["describeStr"] = 1100010041,  ["growHp"] = 351.31,  ["parameters5"] = 12,  ["physicalDef"] = 469,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2100,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200411,  ["describeStr"] = 1100010041,  ["growHp"] = 351.31,  ["parameters5"] = 12,  ["physicalDef"] = 469,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -4092,7 +4092,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200412,  ["magicDef"] = 705,  ["hp"] = 2342.081,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200412,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200412,  ["magicDef"] = 705,  ["hp"] = 2342.081,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200412,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4114,7 +4114,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200312,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200312,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200312,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200312,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4126,7 +4126,7 @@ hero_config={
 }
 ,  ["growAtk"] = 234.14,  ["parameters7"] = 30.4,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020031,}
 ,  [20036] = {
-  ["resIcon"] = 1200361,  ["describeStr"] = 1100010036,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 1700,  ["consume4"] = {
+  ["resIcon"] = 1200361,  ["describeStr"] = 1100010036,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -4136,7 +4136,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200362,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200362,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200362,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200362,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4148,7 +4148,7 @@ hero_config={
 }
 ,  ["growAtk"] = 96.98,  ["parameters7"] = 30.4,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020036,}
 ,  [20035] = {
-  ["resIcon"] = 1200351,  ["describeStr"] = 1100010035,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 1700,  ["consume4"] = {
+  ["resIcon"] = 1200351,  ["describeStr"] = 1100010035,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -4158,7 +4158,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200352,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200352,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200352,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200352,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4170,7 +4170,7 @@ hero_config={
 }
 ,  ["growAtk"] = 96.98,  ["parameters7"] = 30.4,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020035,}
 ,  [20040] = {
-  ["resIcon"] = 1200401,  ["describeStr"] = 1100010040,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 1700,  ["consume4"] = {
+  ["resIcon"] = 1200401,  ["describeStr"] = 1100010040,  ["growHp"] = 439.49,  ["parameters5"] = 12,  ["physicalDef"] = 822,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
@@ -4180,7 +4180,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200402,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200402,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200402,  ["magicDef"] = 351,  ["hp"] = 2929.934,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200402,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4202,7 +4202,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2400,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200422,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200422,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200422,  ["magicDef"] = 587,  ["hp"] = 1955.511,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200422,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4224,7 +4224,7 @@ hero_config={
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 12000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200442,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200442,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 1.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200442,  ["magicDef"] = 822,  ["hp"] = 1560.943,  ["parameters1"] = 1.1,  ["resPicture4"] = 1200442,  ["consume7"] = {
 }
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }
@@ -4264,17 +4264,17 @@ hero_config={
 ,}
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
   ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 20006,}
+  [1] = 30,  [2] = 30,  [3] = 20006,}
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 3,  ["criCoeff"] = 12000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300603,  ["magicDef"] = 613,  ["hp"] = 2036,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300605,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 3,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 1.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1300603,  ["magicDef"] = 613,  ["hp"] = 2036,  ["parameters1"] = 1.1,  ["resPicture4"] = 1300605,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
   [1] = 1685,  [2] = 1685,  [3] = 20006,}
 ,  ["103"] = {
-  [1] = 300,  [2] = 300,  [3] = 1030060,}
+  [1] = 350,  [2] = 350,  [3] = 1030060,}
 ,}
 ,  ["parameters4"] = 6.7,  ["parameters3"] = 3.5,  ["parameters6"] = 19.7,  ["awake"] = {
 }

@@ -24,6 +24,7 @@ from app.game.core.mail_helper import send_mail
 from app.game.core import rank_helper
 import cPickle
 from app.game.core.task import hook_task, CONDITIONId
+from app.game.action.root.netforwarding import push_message
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -227,6 +228,7 @@ def exit_guild_803(data, player):
 
     player.guild.exit_guild()
     player.guild.save_data()
+    clear_related_data(player.base_info.id)
 
     response.res.result = True
     tlog_action.log('ExitGuild', player, g_id)
@@ -470,9 +472,22 @@ def kick_807(data, player):
         send_mail(conf_id=302, receive_id=be_kick_id,
                   guild_name=remote_res.get('name'))
 
+        clear_related_data(be_kick_id)
+
     response.res.result = True
     return response.SerializeToString()
 
+def clear_related_data(player_id):
+    """如果玩家退出军团，或者被踢, 删除此工会相关信息"""
+    push_message("clear_related_data_remote", player_id)
+
+@remoteserviceHandle('gate')
+def clear_related_data_remote(is_online, player):
+    """
+    解散工会清除相关数据
+    """
+    player.escort_component.reset()
+    player.escort_component.save_data()
 
 @remoteserviceHandle('gate')
 def bless_809(data, player):

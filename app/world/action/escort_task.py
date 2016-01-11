@@ -130,12 +130,12 @@ def add_player_remote(guild_id, task_id, player_info, protect_or_rob, rob_no, pr
         logger.error("劫运任务已经完成")
         return {"result": False, "result_no": 190807}
 
-    if protect_or_rob == 1 and len(task.protecters) == 3:
+    if protect_or_rob == 1 and len(task.protecters) >= 3:
         # 押运人数已达上限
         logger.error("押运人数已达上限")
         return {"result": False, "result_no": 190808}
 
-    if protect_or_rob == 2 and rob_task_info and len(rob_task_info.get("robbers", [])) == -1:
+    if protect_or_rob == 2 and rob_task_info and len(rob_task_info.get("robbers", [])) >= 3:
         # 押运人数已达上限
         logger.error("押运人数已达上限")
         return {"result": False, "result_no": 190809}
@@ -322,3 +322,4 @@ def update_task_state_remote(protect_records, rob_records):
         task = guild.get_task_by_id(task_id)
         if not task: continue
         task.update_task_state()
+

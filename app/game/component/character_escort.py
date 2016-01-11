@@ -166,3 +166,15 @@ class CharacterEscortComponent(Component):
             task["state"] = 0
             self._tasks[task_id] = task
 
+    def reset(self):
+        """docstring for reset"""
+        self._tasks = {}          # 押运任务列表
+        self._protect_records = {}     # 我的押运记录
+        self._rob_records = {}         # 我的劫运记录
+        self._can_rob_tasks = {}       # 可劫运的任务
+        self._start_protect_times = 0; # 开始押运次数
+        self._protect_times = 0;       # 保护押运次数
+        self._rob_times = 0;           # 参与劫运次数
+        self._refresh_times = 0;       # 刷新押运列表
+        self._refresh_task_time = 0;   # 刷新押运任务列表时间
+        self._last_reset_time = 0;     # 重置次数
