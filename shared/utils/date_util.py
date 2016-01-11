@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import time
-from xtime import timestamp_to_date
+# from xtime import timestamp_to_date
 import datetime
+
 
 def get_timestamp(year, month, day, hour=0, minute=0, sec=0):
     """
@@ -13,6 +14,7 @@ def get_timestamp(year, month, day, hour=0, minute=0, sec=0):
     d = datetime.datetime(year, month, day, hour, minute, sec)
     return time.mktime(d.timetuple())
 
+
 def get_current_day_timestamp(hour=0, minute=0, sec=0):
     """
     input: 0, 0, 0
@@ -21,8 +23,10 @@ def get_current_day_timestamp(hour=0, minute=0, sec=0):
     now = datetime.datetime.now()
     return get_timestamp(now.year, now.month, now.day, hour, minute, sec)
 
+
 def get_current_timestamp():
     return time.time()
+
 
 def string_to_timestamp(time_str, scheme="%Y/%m/%d %H:%M:%S"):
     """
@@ -32,6 +36,7 @@ def string_to_timestamp(time_str, scheme="%Y/%m/%d %H:%M:%S"):
     d = datetime.datetime.strptime(time_str, scheme)
     return time.mktime(d.timetuple())
 
+
 def string_to_timestamp_hms(time_str):
     """
     input: 23:59:00
@@ -39,6 +44,7 @@ def string_to_timestamp_hms(time_str):
     """
     times = time_str.split(':')
     return get_current_day_timestamp(hour=int(times[0]), minute=int(times[1]))
+
 
 def str_time_period_to_timestamp(str_time_period):
     """
@@ -51,16 +57,21 @@ def str_time_period_to_timestamp(str_time_period):
     time1s = time1.split(':')
     time2s = time2.split(':')
 
-    return (get_current_day_timestamp(hour=int(time1s[0]), minute=int(time1s[1])),
-    get_current_day_timestamp(hour=int(time2s[0]), minute=int(time2s[1])))
+    return (get_current_day_timestamp(hour=int(time1s[0]),
+                                      minute=int(time1s[1])),
+            get_current_day_timestamp(hour=int(time2s[0]),
+                                      minute=int(time2s[1])))
+
 
 def str_time_to_timestamp(str_time):
     _time = str_time.split(':')
     return get_current_day_timestamp(hour=int(_time[0]), minute=int(_time[1]))
 
+
 def is_next_day(current_time_stamp, last_time_stamp):
     """docstring for is_nextfname"""
     return days_to_current(last_time_stamp) > 0
+
 
 def days_to_current(timestamp):
     now = time.localtime(time.time())
@@ -72,7 +83,8 @@ def days_to_current(timestamp):
             diff = 366
         yday = yday + diff
 
-    return yday-some_date.tm_yday
+    return yday - some_date.tm_yday
+
 
 def is_past_time(next_time, last_time):
     """
@@ -84,15 +96,17 @@ def is_past_time(next_time, last_time):
     _next_time = next_time.split(':')
     some_date = time.localtime(last_time)
 
-    #get_timestamp(int(_next_time[0], int(_next_time[1]), int(_next_time[2]))
+    # get_timestamp(int(_next_time[0], int(_next_time[1]), int(_next_time[2]))
     hour = int(_next_time[0])
     minute = int(_next_time[1])
-    sec= int(_next_time[2])
+    sec = int(_next_time[2])
 
-    d = datetime.datetime(some_date.tm_year, some_date.tm_mon, some_date.tm_mday, hour, minute, sec)
+    d = datetime.datetime(some_date.tm_year, some_date.tm_mon,
+                          some_date.tm_mday, hour, minute, sec)
     if d < datetime.datetime.fromtimestamp(last_time):
         d = d + datetime.timedelta(days=1)
     return time.mktime(d.timetuple())
+
 
 def is_in_period(periods):
     """
@@ -108,13 +122,14 @@ def is_in_period(periods):
             return True
     return False
 
+
 def is_expired(last_time, expired_time):
     return last_time + expired_time < get_current_timestamp()
 
-if __name__ == '__main__':
-    print get_timestamp(2014,11,22)
-    print get_current_day_timestamp(0, 0, 0)
-    #print string_to_timestamp("2014-09-01 23:59:00")
-    #print str_time_period_to_timestamp("20:00-23:59")
-    print days_to_current(1429284715)
 
+if __name__ == '__main__':
+    print get_timestamp(2014, 11, 22)
+    print get_current_day_timestamp(0, 0, 0)
+    # print string_to_timestamp("2014-09-01 23:59:00")
+    # print str_time_period_to_timestamp("20:00-23:59")
+    print days_to_current(1429284715)

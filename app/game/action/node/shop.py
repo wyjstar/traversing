@@ -2,20 +2,19 @@
 """
 created by server on 14-7-9下午2:39.
 """
-from gfirefly.server.globalobject import remoteserviceHandle
-from app.proto_file.shop_pb2 import ShopRequest, ShopResponse
-from app.proto_file.shop_pb2 import RefreshShopItems, GetShopItems, GetShopItemsResponse
-from shared.db_opear.configs_data import game_configs
+from shared.tlog import tlog_action
+from app.proto_file import shop_pb2
 from app.game.core.item_group_helper import is_afford
+from shared.db_opear.configs_data import game_configs
 # from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import is_consume
 from app.game.core.item_group_helper import gain
 from app.game.core.item_group_helper import get_return
+from gfirefly.server.globalobject import remoteserviceHandle
 from app.game.core.item_group_helper import get_consume_gold_num
 from gfirefly.server.logobj import logger
 from shared.utils.const import const
-from shared.tlog import tlog_action
 from app.game.core.task import hook_task, CONDITIONId
 from shared.common_logic.shop import guild_shops, do_shop_buy
 from gfirefly.server.globalobject import GlobalObject
@@ -49,28 +48,28 @@ def buy_gift_pack_504(pro_data, player):
 
 def shop_oper(pro_data, player, reason):
     """商城所有操作"""
-    request = ShopRequest()
+    request = shop_pb2.ShopRequest()
     request.ParseFromString(pro_data)
-    response = ShopResponse()
+    response = shop_pb2.ShopResponse()
     shop_id = request.ids[0]
     shop_item = game_configs.shop_config.get(shop_id)
     # logger.debug(shop_id)
     # logger.debug("---------")
 
-    #if shop_id == 10001 and player.shop.first_coin_draw:
-        #is_consume(player, shop_item)
+    # if shop_id == 10001 and player.shop.first_coin_draw:
+    # is_consume(player, shop_item)
 
-        #card_draw = game_configs.base_config.get("CoinCardFirst")
-        #return_data = gain(player, card_draw, reason)  # 获取
-        #get_return(player, return_data, response.gain)
-        #player.shop.single_coin_draw_times += 1
-        #player.shop.first_coin_draw = False
-        #player.shop.save_data()
+    # card_draw = game_configs.base_config.get("CoinCardFirst")
+    # return_data = gain(player, card_draw, reason)  # 获取
+    # get_return(player, return_data, response.gain)
+    # player.shop.single_coin_draw_times += 1
+    # player.shop.first_coin_draw = False
+    # player.shop.save_data()
 
-        #hook_task(player, CONDITIONId.HERO_GET_LIANG, 1)
+    # hook_task(player, CONDITIONId.HERO_GET_LIANG, 1)
 
-        #response.res.result = True
-        #return response.SerializeToString()
+    # response.res.result = True
+    # return response.SerializeToString()
 
     if shop_id == 50001 and player.shop.first_gold_draw:
         is_consume(player, shop_item)
@@ -128,37 +127,43 @@ def shop_oper(pro_data, player, reason):
     def func():
         # consume_data = []
         if _is_consume_result:
-            return_data = consume(player, price,
-                                  player_type_shop, reason, shop_type_item)
+            return_data = consume(player, price, player_type_shop, reason,
+                                  shop_type_item)
             get_return(player, return_data, response.consume)
             # consume_data = return_data
-        # logger.debug("hero-draw2")
+            # logger.debug("hero-draw2")
         return_data = []
         extra_return_data = []
-        CoinCardCumulateTimes = game_configs.base_config.get("CoinCardCumulateTimes", 0)
-        CardCumulateTimes = game_configs.base_config.get("CardCumulateTimes", 0)
+        CoinCardCumulateTimes = game_configs.base_config.get(
+            "CoinCardCumulateTimes", 0)
+        CardCumulateTimes = game_configs.base_config.get("CardCumulateTimes",
+                                                         0)
         if shop_item.type == 5:
             # todo: 如何判断shop类型：单抽、十连抽
-            # logger.debug("hero_draw: shop_item_id %s, item_no %s" % (shop_item.id, shop_item.gain[0].item_no))
-            gain_items = player.shop.get_draw_drop_bag(shop_item.gain[0].item_no)
+            # logger.debug("hero_draw: shop_item_id %s, item_no %s" % \
+            #     (shop_item.id, shop_item.gain[0].item_no))
+            gain_items = player.shop.get_draw_drop_bag(shop_item.gain[
+                0].item_no)
             if shop_item.id == 50001:
                 # 单抽达到指定次数，获得指定武将
                 player.shop.single_gold_draw_times += 1
                 if player.shop.single_gold_draw_times == CardCumulateTimes:
-                    gain_items = game_configs.base_config.get("CardCumulate", [])
+                    gain_items = game_configs.base_config.get("CardCumulate",
+                                                              [])
                     player.shop.single_gold_draw_times = 0
-                    logger.debug("tenth gold draw %s %s" % (player.shop.single_gold_draw_times, gain_items))
+                    logger.debug("tenth gold draw %s %s" %
+                                 (player.shop.single_gold_draw_times,
+                                  gain_items))
 
             player.shop.save_data()
             return_data = gain(player, gain_items, reason)
-            extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
+            extra_return_data = gain(player, shop_item.extraGain,
+                                     reason)  # 额外获取
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
             if need_gold > 0 and shop_item.ExchangeValue:
-                lucky_data = gain(player,
-                                  shop_item.ExchangeValue,
-                                  reason)
+                lucky_data = gain(player, shop_item.ExchangeValue, reason)
                 get_return(player, lucky_data, response.gain)
             if shop_item.id == 50001:
                 player.add_activity.add_pick_card(2, 1)
@@ -172,20 +177,22 @@ def shop_oper(pro_data, player, reason):
                 # 单抽达到指定次数，获得指定武将
                 player.shop.single_coin_draw_times += 1
                 if player.shop.single_coin_draw_times == CoinCardCumulateTimes:
-                    gain_items = game_configs.base_config.get("CoinCardCumulate", [])
+                    gain_items = game_configs.base_config.get(
+                        "CoinCardCumulate", [])
                     player.shop.single_coin_draw_times = 0
-                    logger.debug("tenth coin draw %s %s" % (player.shop.single_coin_draw_times, gain_items))
+                    logger.debug("tenth coin draw %s %s" %
+                                 (player.shop.single_coin_draw_times,
+                                  gain_items))
 
             player.shop.save_data()
             return_data = gain(player, gain_items, reason)  # 获取
-            extra_return_data = gain(player, shop_item.extraGain, reason)  # 额外获取
+            extra_return_data = gain(player, shop_item.extraGain,
+                                     reason)  # 额外获取
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
             if need_gold > 0 and shop_item.ExchangeValue:
-                lucky_data = gain(player,
-                                  shop_item.ExchangeValue,
-                                  reason)
+                lucky_data = gain(player, shop_item.ExchangeValue, reason)
                 get_return(player, lucky_data, response.gain)
             if shop_item.id == 10001:
                 player.add_activity.add_pick_card(1, 1)
@@ -205,42 +212,42 @@ def shop_oper(pro_data, player, reason):
 
 
 def send_tlog(player, shop_item):
-        item_type = shop_item.gain[0].item_type
-        item_id = shop_item.gain[0].item_no
-        count = shop_item.gain[0].num
-        money = shop_item.consume[0].num
-        money_type = shop_item.consume[0].item_no
-        discount_money = 0
-        discount_money_type = 0
-        is_discount = 0
-        if shop_item.discountPrice:
-            is_discount = 1
-            discount_money = shop_item.discountPrice[0].num
-            discount_money_type = shop_item.discountPrice[0].item_no
-        limit_vip_everyday = []
-        if shop_item.limitVIPeveryday:
-            for i in range(30):
-                if shop_item.limitVIPeveryday.get(i):
-                    limit_vip_everyday.append(shop_item.limitVIPeveryday.get(i))
-        limit_vip = []
-        if shop_item.limitVIP:
-            for i in range(30):
-                if shop_item.limitVIP.get(i):
-                    limit_vip.append(shop_item.limitVIP.get(i))
+    item_type = shop_item.gain[0].item_type
+    item_id = shop_item.gain[0].item_no
+    count = shop_item.gain[0].num
+    money = shop_item.consume[0].num
+    money_type = shop_item.consume[0].item_no
+    discount_money = 0
+    discount_money_type = 0
+    is_discount = 0
+    if shop_item.discountPrice:
+        is_discount = 1
+        discount_money = shop_item.discountPrice[0].num
+        discount_money_type = shop_item.discountPrice[0].item_no
+    limit_vip_everyday = []
+    if shop_item.limitVIPeveryday:
+        for i in range(30):
+            if shop_item.limitVIPeveryday.get(i):
+                limit_vip_everyday.append(shop_item.limitVIPeveryday.get(i))
+    limit_vip = []
+    if shop_item.limitVIP:
+        for i in range(30):
+            if shop_item.limitVIP.get(i):
+                limit_vip.append(shop_item.limitVIP.get(i))
 
-        tlog_action.log('ItemMoneyFlow', player, item_type, item_id, count,
-                        money, money_type, discount_money, discount_money_type,
-                        '', '', is_discount)
-        # tlog_action.log('ItemMoneyFlow', player, item_type, item_id, count,
-        #                 money, money_type, discount_money, discount_money_type,
-        #                 str(limit_vip_everyday), str(limit_vip), is_discount)
+    tlog_action.log('ItemMoneyFlow', player, item_type, item_id, count, money,
+                    money_type, discount_money, discount_money_type, '', '',
+                    is_discount)
+    # tlog_action.log('ItemMoneyFlow', player, item_type, item_id, count,
+    #                 money, money_type, discount_money, discount_money_type,
+    #                 str(limit_vip_everyday), str(limit_vip), is_discount)
 
 
 def shop_equipment_oper(pro_data, player):
     """装备抽取"""
-    request = ShopRequest()
+    request = shop_pb2.ShopRequest()
     request.ParseFromString(pro_data)
-    response = ShopResponse()
+    response = shop_pb2.ShopResponse()
 
     shop_id = request.ids[0]
     shop_num = request.num
@@ -248,8 +255,10 @@ def shop_equipment_oper(pro_data, player):
 
     if shop_num == 1:  # and not is_consume(player, shop_item):
         # 免费抽取
-        return_data = gain(player, shop_item.gain, const.SHOP_DRAW_EQUIPMENT)  # 获取
-        extra_return_data = gain(player, shop_item.extraGain, const.SHOP_DRAW_EQUIPMENT)  # 额外获取
+        return_data = gain(player, shop_item.gain,
+                           const.SHOP_DRAW_EQUIPMENT)  # 获取
+        extra_return_data = gain(player, shop_item.extraGain,
+                                 const.SHOP_DRAW_EQUIPMENT)  # 额外获取
 
         get_return(player, return_data, response.gain)
         get_return(player, extra_return_data, response.gain)
@@ -263,12 +272,15 @@ def shop_equipment_oper(pro_data, player):
                 return response.SerializePartialToString()
 
         for i in range(shop_num):
-            return_data = consume(player, shop_item.consume, const.SHOP_DRAW_EQUIPMENT)  # 消耗
+            return_data = consume(player, shop_item.consume,
+                                  const.SHOP_DRAW_EQUIPMENT)  # 消耗
             get_return(player, return_data, response.consume)
 
         for i in range(shop_num):
-            return_data = gain(player, shop_item.gain, const.SHOP_DRAW_EQUIPMENT)  # 获取
-            extra_return_data = gain(player, shop_item.extraGain, const.SHOP_DRAW_EQUIPMENT)  # 额外获取
+            return_data = gain(player, shop_item.gain,
+                               const.SHOP_DRAW_EQUIPMENT)  # 获取
+            extra_return_data = gain(player, shop_item.extraGain,
+                                     const.SHOP_DRAW_EQUIPMENT)  # 额外获取
 
             get_return(player, return_data, response.gain)
             get_return(player, extra_return_data, response.gain)
@@ -280,13 +292,13 @@ def shop_equipment_oper(pro_data, player):
 @remoteserviceHandle('gate')
 def shop_buy_505(pro_data, player):
     """商店"""
-    request = ShopRequest()
+    request = shop_pb2.ShopRequest()
     request.ParseFromString(pro_data)
-    response = ShopResponse()
+    response = shop_pb2.ShopResponse()
     common_response = response.res
 
     if len(request.ids) != len(request.item_count):
-        shop_items = dict(zip(request.ids, [1]*len(request.ids)))
+        shop_items = dict(zip(request.ids, [1] * len(request.ids)))
     else:
         shop_items = dict(zip(request.ids, request.item_count))
     # shop_items = {}
@@ -302,8 +314,7 @@ def shop_buy_505(pro_data, player):
         if shop_item.get('limitLevel') > player.base_info.level:
             common_response.result = False
             common_response.result_no = 50501
-            logger.error('shop item level limit:%s-%s',
-                         player.base_info.level,
+            logger.error('shop item level limit:%s-%s', player.base_info.level,
                          shop_item.get('limitLevel'))
             return response.SerializeToString()
 
@@ -327,24 +338,28 @@ def shop_buy_505(pro_data, player):
                     common_response.message = u'消费不足2！'
                     return response.SerializeToString()
 
-        shop_type_item = game_configs.shop_type_config.get(shop_item.get('type'))
+        shop_type_item = game_configs.shop_type_config.get(shop_item.get(
+            'type'))
         need_gold = get_consume_gold_num(price, item_count)
 
         def func():
             vip_level = player.base_info.vip_level
             guild_id = player.guild.g_id
             if shop_type in guild_shops:
-                res = remote_gate['world'].guild_shop_buy_remote(guild_id, shop_id, item_count, shop_type, vip_level)
+                res = remote_gate['world'].guild_shop_buy_remote(
+                    guild_id, shop_id, item_count, shop_type, vip_level)
                 shop = res.get('shop')
             else:
                 shop = player.shop.get_shop_data(shop_type)
                 g_id = player.guild.g_id
                 build_level = 0
                 if g_id != 0:
-                    remote_res = remote_gate['world'].get_guild_info_remote(g_id, 'build', 0)
+                    remote_res = remote_gate['world'].get_guild_info_remote(
+                        g_id, 'build', 0)
                     if remote_res.get('result'):
                         build_level = remote_res.get('build').get(3)
-                res = do_shop_buy(shop_id, item_count, shop, vip_level, build_level)
+                res = do_shop_buy(shop_id, item_count, shop, vip_level,
+                                  build_level)
             common_response.result = res.get('res')
             if res.get('no'):
                 common_response.result_no = res.get('no')
@@ -354,7 +369,8 @@ def shop_buy_505(pro_data, player):
                 return
             _lucky_attr = res.get('lucky_attr')
 
-            consume_return_data = consume(player, price,
+            consume_return_data = consume(player,
+                                          price,
                                           get_reason(shop_item.get('type')),
                                           multiple=item_count,
                                           shop=shop,
@@ -367,8 +383,7 @@ def shop_buy_505(pro_data, player):
             get_return(player, consume_return_data, response.consume)
             get_return(player, return_data, response.gain)
             if shop_item.ExchangeValue:
-                lucky_data = gain(player,
-                                  shop_item.ExchangeValue,
+                lucky_data = gain(player, shop_item.ExchangeValue,
                                   get_reason(shop_item.get('type')))
                 get_return(player, lucky_data, response.gain)
 
@@ -389,8 +404,10 @@ def shop_buy_505(pro_data, player):
         player.pay.pay(need_gold, get_reason(shop_item.get('type')), func)
 
     player.shop.save_data()
-    tlog_action.log('ShopBuy', player, str(request.ids), str(request.item_count))
+    tlog_action.log('ShopBuy', player, str(request.ids),
+                    str(request.item_count))
     return response.SerializeToString()
+
 
 REASON_HASH = {3: const.COMMON_BUY_ITEM,
                4: const.COMMON_BUY_GIFT,
@@ -410,11 +427,11 @@ def get_reason(shop_type):
 @remoteserviceHandle('gate')
 def refresh_shop_items_507(pro_data, player):
     """刷新商品列表"""
-    request = RefreshShopItems()
+    request = shop_pb2.RefreshShopItems()
     request.ParseFromString(pro_data)
     shop_type = request.shop_type
 
-    response = GetShopItemsResponse()
+    response = shop_pb2.GetShopItemsResponse()
     if not player.shop.check_shop_refresh_times(shop_type):
         logger.debug("already reach refresh max!")
         response.res.result = False
@@ -451,14 +468,15 @@ def refresh_shop_items_507(pro_data, player):
     response.luck_num = int(shopdata['luck_num'])
     response.refresh_times = int(shopdata['refresh_times'])
     logger.debug("response %s", response)
-    tlog_action.log('RefreshShop', player, shop_type, int(shopdata['refresh_times']))
+    tlog_action.log('RefreshShop', player, shop_type,
+                    int(shopdata['refresh_times']))
     return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
 def get_shop_items_508(pro_data, player):
     """获取商品列表"""
-    request = GetShopItems()
+    request = shop_pb2.GetShopItems()
     request.ParseFromString(pro_data)
     shop_type = request.shop_type
 

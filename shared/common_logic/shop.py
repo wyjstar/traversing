@@ -4,22 +4,23 @@
 """
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
-import random
+# import random
 from shared.utils.random_pick import random_multi_pick_without_repeat
 import time
-from time import localtime
+# from time import localtime
 from shared.utils.date_util import is_past_time
 
 guild_shops = [22]
 
 
 def get_new_shop_info(shop_type):
+    _now = time.time()
     data = {}
     data['refresh_times'] = 0
-    data['last_refresh_time'] = time.time()  # 手动刷新
-    data['last_auto_refresh_time'] = time.time()  # 自动刷新
+    data['last_refresh_time'] = _now  # 手动刷新
+    data['last_auto_refresh_time'] = _now  # 自动刷新
     data['luck_num'] = 0.0
-    data['luck_time'] = time.time()
+    data['luck_time'] = _now
     data['item_ids'] = get_shop_item_ids(shop_type, 0)
     data['items'] = {}  # 每日限制 每日刷新的
     data['all_items'] = {}  # 永久限制 一个号只能买一定个数
@@ -33,7 +34,7 @@ def get_shop_item_ids(shop_type, luck_num):
     for item in game_configs.shop_config.get(shop_type, []):
         if item.weight == -1:
             items[item.id] = 1
-            #continue
+            # continue
         elif item.weight == -2:
             weights = sorted(item.get('weightGroup'), reverse=True)
             for w in weights:
@@ -73,29 +74,26 @@ def do_auto_refresh_items(type_shop, shop_data):
 
 def check_time(shop_data):
     # 1 个人 2 军团
-    current_date_time = time.time()
-    current_day = localtime(current_date_time).tm_yday
+    current_date_time = int(time.time())
+    # current_day = localtime(current_date_time).tm_yday
     for k, v in shop_data.items():
-        refresh_day = localtime(v['last_refresh_time']).tm_yday
-        if current_day != refresh_day:
+        shop_type_info = game_configs.shop_type_config.get(k)
+        freeRefreshTime = shop_type_info.freeRefreshTime
+        if current_date_time > is_past_time(freeRefreshTime,
+                                            v['last_refresh_time']):
             v['refresh_times'] = 0
-            v['items'] = {}
             v['guild_items'] = {}
             v['last_refresh_time'] = current_date_time
-
-        luck_day = localtime(v['luck_time']).tm_yday
-        if current_day != luck_day:
             v['luck_time'] = current_date_time
             v['luck_num'] = 0.0
 
         # 自动刷新列表
-        shop_type_info = game_configs.shop_type_config.get(k)
-        freeRefreshTime = shop_type_info.freeRefreshTime
-        if shop_type_info.freeRefreshTime == "-1":
+        refresh = shop_type_info.refresh
+        if refresh == "-1":
             continue
-        logger.debug("%s %s" % (freeRefreshTime, v['last_auto_refresh_time']))
-        if current_date_time > is_past_time(freeRefreshTime,
-                                            v['last_auto_refresh_time']):
+        logger.debug("auto refresh %s %s" %
+                     (refresh, v['last_auto_refresh_time']))
+        if current_date_time - v['last_auto_refresh_time'] > refresh:
             do_auto_refresh_items(k, shop_data)
 
 

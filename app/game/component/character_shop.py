@@ -135,7 +135,6 @@ class CharacterShopComponent(Component):
             __shop_data['refresh_times'] += 1
             __shop_data['last_refresh_time'] = time.time()
             __shop_data['items'] = {}
-            # data['last_refresh_time'] = time.time()
             if shop_item.itemNum > 0:
                 __shop_data['item_ids'] = get_shop_item_ids(
                     shop_type, self._shop_data[shop_type]['luck_num'])
@@ -193,6 +192,8 @@ class CharacterShopComponent(Component):
         response.luck_num = int(shopdata['luck_num'])
         response.res.result = True
         response.refresh_times = shopdata['refresh_times']
+        response.last_auto_refresh_time = shopdata.get(
+            'last_auto_refresh_time', 0)
         print response, shop_type, '====================shop item 508'
         return response.SerializePartialToString()
 

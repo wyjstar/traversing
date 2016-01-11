@@ -10,6 +10,7 @@ from shared.db_opear.configs_data.data_helper import parse
 class ShopConfig(object):
     """shop配置
     """
+
     def __init__(self):
         self._items = {}
 
