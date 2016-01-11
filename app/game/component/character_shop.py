@@ -17,7 +17,7 @@ from shared.utils.const import const
 from shared.common_logic.shop import guild_shops
 from shared.common_logic.shop import get_new_shop_info
 from shared.common_logic.shop import check_time
-from shared.common_logic.shop import refresh_shop_info
+# from shared.common_logic.shop import refresh_shop_info
 from shared.common_logic.shop import get_shop_item_ids
 from shared.common_logic.shop import do_auto_refresh_items
 from app.proto_file.shop_pb2 import GetShopItemsResponse
@@ -33,8 +33,8 @@ class CharacterShopComponent(Component):
 
     def init_data(self, character_info):
         self._shop_data = character_info.get('shop')
-        self._shop_extra_args = character_info.get('shop_extra_args',
-                                                   self.get_new_shop_extra_args())
+        self._shop_extra_args = character_info.get(
+            'shop_extra_args', self.get_new_shop_extra_args())
         check_time(self._shop_data)
         # refresh_shop_info(self._shop_data, 0)
         self.save_data()
@@ -78,8 +78,8 @@ class CharacterShopComponent(Component):
         shop_data = self._shop_data[shop_type]
         max_shop_refresh_times = self.owner.base_info.shop_refresh_times
         if shop_type not in max_shop_refresh_times:
-            logger.error('not found shop refresh times: %s--%s',
-                         shop_type, max_shop_refresh_times)
+            logger.error('not found shop refresh times: %s--%s', shop_type,
+                         max_shop_refresh_times)
             return False
         return shop_data['refresh_times'] < max_shop_refresh_times[shop_type]
 
@@ -114,13 +114,14 @@ class CharacterShopComponent(Component):
                 price = get_consume_gold_num(refreshprice)
 
                 xs = 1
-                if (not has_refresh_item or not refresh_items) and shop_type == 12:
+                if (not has_refresh_item or
+                        not refresh_items) and shop_type == 12:
                     # 9活动
                     act_confs = game_configs.activity_config.get(22, [])
                     for act_conf in act_confs:
                         if self.owner.base_info.is_activiy_open(act_conf.id):
                             xs = act_conf.parameterC[0]
-                            price = int(price*xs)
+                            price = int(price * xs)
                             break
                 return_data = consume(self._owner,
                                       refreshprice,
@@ -136,8 +137,8 @@ class CharacterShopComponent(Component):
             __shop_data['items'] = {}
             # data['last_refresh_time'] = time.time()
             if shop_item.itemNum > 0:
-                __shop_data['item_ids'] = get_shop_item_ids(shop_type,
-                                                            self._shop_data[shop_type]['luck_num'])
+                __shop_data['item_ids'] = get_shop_item_ids(
+                    shop_type, self._shop_data[shop_type]['luck_num'])
             self.save_data()
 
         result = self._owner.pay.pay(price, const.SHOP_REFRESH, func)
@@ -163,8 +164,8 @@ class CharacterShopComponent(Component):
         shop_is_open = self.owner.base_info.vip_shop_open
         _is_open = shop_is_open.get(shop_type, 0)
         if _is_open == 0:
-            logger.error('shop is not open with vip:%s--%s',
-                         shop_type, shop_is_open)
+            logger.error('shop is not open with vip:%s--%s', shop_type,
+                         shop_is_open)
             response.res.result_no = 50801
             response.res.result = False
             return response.SerializePartialToString()

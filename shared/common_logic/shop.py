@@ -10,15 +10,14 @@ import time
 from time import localtime
 from shared.utils.date_util import is_past_time
 
-
 guild_shops = [22]
 
 
 def get_new_shop_info(shop_type):
     data = {}
     data['refresh_times'] = 0
-    data['last_refresh_time'] = time.time() # 手动刷新
-    data['last_auto_refresh_time'] = time.time() # 自动刷新
+    data['last_refresh_time'] = time.time()  # 手动刷新
+    data['last_auto_refresh_time'] = time.time()  # 自动刷新
     data['luck_num'] = 0.0
     data['luck_time'] = time.time()
     data['item_ids'] = get_shop_item_ids(shop_type, 0)
@@ -42,8 +41,8 @@ def get_shop_item_ids(shop_type, luck_num):
                     items[item.id] = item.get('weightGroup')[w]
                     break
             else:
-                logger.error('error luck_num:%s:%s',
-                             luck_num, item.get('weightGroup'))
+                logger.error('error luck_num:%s:%s', luck_num,
+                             item.get('weightGroup'))
         else:
             items[item.id] = item.weight
 
@@ -61,8 +60,7 @@ def get_shop_item_ids(shop_type, luck_num):
 def do_auto_refresh_items(type_shop, shop_data):
     logger.debug("auto_refresh_items=========")
     if type_shop in shop_data:
-        ids = get_shop_item_ids(type_shop,
-                                shop_data[type_shop]['luck_num'])
+        ids = get_shop_item_ids(type_shop, shop_data[type_shop]['luck_num'])
         shop_data[type_shop]['item_ids'] = ids
         shop_data[type_shop]['last_auto_refresh_time'] = time.time()
         shop_data[type_shop]['items'] = {}
@@ -83,11 +81,11 @@ def check_time(shop_data):
             v['refresh_times'] = 0
             v['items'] = {}
             v['guild_items'] = {}
-            v['last_refresh_time'] = time.time()
+            v['last_refresh_time'] = current_date_time
 
         luck_day = localtime(v['luck_time']).tm_yday
         if current_day != luck_day:
-            v['luck_time'] = time.time()
+            v['luck_time'] = current_date_time
             v['luck_num'] = 0.0
 
         # 自动刷新列表
@@ -96,13 +94,15 @@ def check_time(shop_data):
         if shop_type_info.freeRefreshTime == "-1":
             continue
         logger.debug("%s %s" % (freeRefreshTime, v['last_auto_refresh_time']))
-        if time.time() > is_past_time(freeRefreshTime, v['last_auto_refresh_time']):
+        if current_date_time > is_past_time(freeRefreshTime,
+                                            v['last_auto_refresh_time']):
             do_auto_refresh_items(k, shop_data)
 
 
 def refresh_shop_info(shop_data, is_guild_shop):
     for t, item in game_configs.shop_type_config.items():
-        if (is_guild_shop and t in guild_shops) or (not is_guild_shop and t not in guild_shops):
+        if (is_guild_shop and t in guild_shops) or (not is_guild_shop and
+                                                    t not in guild_shops):
             shop_data[t] = get_new_shop_info(t)
 
 
@@ -124,8 +124,8 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
         shop_id_buyed_num = shop['all_items'].get(shop_id, 0)
 
         if shop_id_buyed_num + item_count > limit_num:
-            logger.error("vip limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num, limit_num)
+            logger.error("vip limit shop item:%s:%s limit:%s:%s", shop_id,
+                         item_count, shop_id_buyed_num, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_all
             # response.limit_item_max_num = limit_num
@@ -136,8 +136,8 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
         shop_id_buyed_num = shop['guild_items'].get(shop_id, 0)
 
         if shop_id_buyed_num + item_count > limit_num:
-            logger.error("limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num, limit_num)
+            logger.error("limit shop item:%s:%s limit:%s:%s", shop_id,
+                         item_count, shop_id_buyed_num, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
@@ -148,8 +148,8 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
         shop_id_buyed_num = shop['items'].get(shop_id, 0)
 
         if shop_id_buyed_num + item_count > limit_num:
-            logger.error("limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num, limit_num)
+            logger.error("limit shop item:%s:%s limit:%s:%s", shop_id,
+                         item_count, shop_id_buyed_num, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
@@ -160,8 +160,8 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
         shop_id_buyed_num = shop['items'].get(shop_id, 0)
 
         if shop_id_buyed_num + item_count > limit_num:
-            logger.error("limit shop item:%s:%s limit:%s:%s",
-                         shop_id, item_count, shop_id_buyed_num, limit_num)
+            logger.error("limit shop item:%s:%s limit:%s:%s", shop_id,
+                         item_count, shop_id_buyed_num, limit_num)
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
