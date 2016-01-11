@@ -67,17 +67,18 @@ def q360_recharge_remote(product_id, is_online, player):
 
 
 @remoteserviceHandle('gate')
-def baidu_recharge_remote(product_id, is_online, player):
-    logger.debug('baidu_recharge_remote:%s', product_id)
+def baidu_recharge_remote(product_id, fee, is_online, player):
+    logger.debug('baidu_recharge_remote:%s', product_id, fee)
 
     recharge_item = game_configs.recharge_config.get('android').get(product_id)
     if recharge_item is None:
         logger.error('not in rechargeconfig:%s', product_id)
         return False
-    # if float(fee) != recharge_item.get('currence'):
-    #     logger.error('recharge fee is wrong:%s-%s', fee,
-    #                  recharge_item.get('currence'))
-    #     return False
+
+    if float(fee) != recharge_item.get('currence'):
+        logger.error('recharge fee is wrong:%s-%s', fee,
+                     recharge_item.get('currence'))
+        return False
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
