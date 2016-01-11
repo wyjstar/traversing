@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='shop.proto',
   package='',
-  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"%\n\x10RefreshShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\"!\n\x0cGetShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\".\n\x0bShopRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x05\x12\x12\n\nitem_count\x18\x02 \x03(\x05\"\xcb\x01\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x16limit_item_current_num\x18\x04 \x01(\x05\x12\x1a\n\x12limit_item_max_num\x18\x05 \x01(\x05\x12\x12\n\nis_all_buy\x18\x06 \x01(\x08\"\xea\x01\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\x12\x10\n\x08luck_num\x18\x04 \x01(\x05\x12\x15\n\rrefresh_times\x18\x05 \x01(\x05\x12\x18\n\x05items\x18\x06 \x03(\x0b\x32\t.ItemInfo\x12\x1c\n\tall_items\x18\x07 \x03(\x0b\x32\t.ItemInfo\x12\x1e\n\x0bguild_items\x18\x08 \x03(\x0b\x32\t.ItemInfo\x12\'\n\x07\x63onsume\x18\t \x01(\x0b\x32\x16.GameResourcesResponse\"-\n\x08ItemInfo\x12\x0f\n\x07item_id\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05')
+  serialized_pb='\n\nshop.proto\x1a\x0c\x63ommon.proto\"%\n\x10RefreshShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\"!\n\x0cGetShopItems\x12\x11\n\tshop_type\x18\x01 \x02(\x05\".\n\x0bShopRequest\x12\x0b\n\x03ids\x18\x01 \x03(\x05\x12\x12\n\nitem_count\x18\x02 \x03(\x05\"\xcb\x01\n\x0cShopResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12$\n\x04gain\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x16limit_item_current_num\x18\x04 \x01(\x05\x12\x1a\n\x12limit_item_max_num\x18\x05 \x01(\x05\x12\x12\n\nis_all_buy\x18\x06 \x01(\x08\"\x8a\x02\n\x14GetShopItemsResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\n\n\x02id\x18\x02 \x03(\x05\x12\x10\n\x08luck_num\x18\x04 \x01(\x05\x12\x15\n\rrefresh_times\x18\x05 \x01(\x05\x12\x18\n\x05items\x18\x06 \x03(\x0b\x32\t.ItemInfo\x12\x1c\n\tall_items\x18\x07 \x03(\x0b\x32\t.ItemInfo\x12\x1e\n\x0bguild_items\x18\x08 \x03(\x0b\x32\t.ItemInfo\x12\'\n\x07\x63onsume\x18\t \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x16last_auto_refresh_time\x18\n \x01(\x05\"-\n\x08ItemInfo\x12\x0f\n\x07item_id\x18\x01 \x02(\x05\x12\x10\n\x08item_num\x18\x02 \x02(\x05')
 
 
 
@@ -236,6 +236,13 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='last_auto_refresh_time', full_name='GetShopItemsResponse.last_auto_refresh_time', index=8,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -246,7 +253,7 @@ _GETSHOPITEMSRESPONSE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=357,
-  serialized_end=591,
+  serialized_end=623,
 )
 
 
@@ -280,8 +287,8 @@ _ITEMINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=593,
-  serialized_end=638,
+  serialized_start=625,
+  serialized_end=670,
 )
 
 _SHOPRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
