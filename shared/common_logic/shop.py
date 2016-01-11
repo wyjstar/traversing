@@ -79,7 +79,7 @@ def check_time(shop_data):
     for k, v in shop_data.items():
         shop_type_info = game_configs.shop_type_config.get(k)
         freeRefreshTime = shop_type_info.freeRefreshTime
-        if freeRefreshTime != -1 and current_date_time > is_past_time(
+        if freeRefreshTime != '-1' and current_date_time > is_past_time(
                 freeRefreshTime, v['last_refresh_time']):
             v['refresh_times'] = 0
             v['guild_items'] = {}
