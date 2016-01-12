@@ -124,7 +124,7 @@ def get_activity_28_gift_1834(data, player):
         response.res.result_no = 183402
         return response.SerializeToString()
 
-    price = activity_conf.parameterA
+    price = activity_conf.parameterA * activity_conf.parameterC[0]
     activity_consume = parse({107: [price, price, 29]})
     for i in range(30):
         print player.finance[i]
