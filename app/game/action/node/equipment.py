@@ -358,6 +358,10 @@ def melting_equipment(equipment_id, response, player):
     player.finance.coin += strength_coin
     player.finance.save_data()
     response.cgr.finance.coin += strength_coin
+    change = response.cgr.finance.finance_changes.add()
+    change.item_type = 107
+    change.item_num = strength_coin
+    change.item_no = 1
 
 
 def awakening_equipment(equipment_id, player):
