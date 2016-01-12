@@ -73,9 +73,7 @@ def trigger_boss_2402(pro_data, player):
     request.ParseFromString(pro_data)
     logger.debug("request %s" % request)
     boss_type = request.boss_type
-    trigger_stone_num = 0
-    item = player.item_package.get_item(140001)
-    if item: trigger_stone_num = item.num
+    trigger_stone_num = player.finance[const.GUILD_BOSS_TRIGGER_STONE]
 
     data = remote_gate['world'].guild_boss_init_remote(player.guild.g_id)
     build = data.get("build")
@@ -109,9 +107,9 @@ def trigger_boss_2402(pro_data, player):
         response.res.result_no = res.get("result_no")
         return response.SerializeToString()
 
-    player.item_package.consume_item(140001, consume_num)
+    player.finance.consume(const.GUILD_BOSS_TRIGGER_STONE, consume_num, 0)
 
-    return_data = [[const.ITEM, consume_num, 140001]]
+    return_data = [[const.RESOURCE, consume_num, 15]]
     logger.debug(return_data)
     get_return(player, return_data, response.consume)
     player.guild.guild_boss_last_attack_time["boss_id"] = res.get("guild_boss").get("boss_id")
