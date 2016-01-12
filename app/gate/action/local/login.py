@@ -22,7 +22,7 @@ groot = GlobalObject().root
 @local_service_handle
 def character_login_4(key, dynamic_id, request_proto):
     """角色登录 """
-    # print groot.child('net').get_ipaddress_remote(dynamic_id)
+    ip =  groot.child('net').get_ipaddress_remote(dynamic_id)
     logger.debug("==============character_login_4===========")
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
@@ -75,9 +75,9 @@ def character_login_4(key, dynamic_id, request_proto):
     # argument.gl_version = 'abcd'
     # argument.device_id = '1x2y'
 
-    tlog_action.log('PlayerLogin', response, argument)
+    tlog_action.log('PlayerLogin', response, argument, ip)
     if data.get('is_new_character'):
-        tlog_action.log('PlayerRegister', response, argument)
+        tlog_action.log('PlayerRegister', response, argument, ip)
 
     nickname = response.nickname
     if nickname and response.gag < login_time and response.gag != -2:
@@ -101,6 +101,7 @@ def __character_login(dynamic_id, pay_arg):
     v_character = VCharacterManager().get_by_id(user.user_id)
     if v_character:
         v_character.dynamic_id = dynamic_id
+        v_character.state = 1 # 恢复掉线状态-> 正常状态
     else:
         v_character = VirtualCharacter(user.user_id, dynamic_id)
         VCharacterManager().add_character(v_character)

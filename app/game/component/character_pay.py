@@ -193,7 +193,7 @@ class CharacterPay(Component):
             return False
         self.get_balance()
         tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
-                        2, 0, reason, self.owner.finance.gold, 0)
+                        2, 0, reason, self.owner.finance.gold, '')
         tlog_action.log('MoneyFlow', self.owner, self.owner.finance.gold,
                         num, reason, const.REDUCE, 2)
         return True

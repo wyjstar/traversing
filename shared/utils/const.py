@@ -253,3 +253,5 @@ const.OPEN_FEATURE_HJQY = 1 # 黄巾起义
 const.OPEN_FEATURE_TASK = 2 # 任务系统
 const.OPEN_FEATURE_WORLD_BOSS = 3 # 世界boss
 const.OPEN_FEATURE_GGZJ = 4 # 过关斩将
+
+const.KEEP_USER_AFTER_DROP = 60*0.2 # 玩家掉线后保持玩家对象的时间

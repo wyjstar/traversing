@@ -12,6 +12,8 @@ from app.gate.core.sceneser_manger import SceneSerManager
 from app.gate.service.local.gateservice import local_service
 import cPickle
 from gfirefly.server.logobj import logger
+from gtwisted.core import reactor
+from shared.utils.const import const
 
 groot = GlobalObject().root
 
@@ -216,16 +218,21 @@ def net_conn_lost_remote_noresult(dynamic_id):
     print "net lost1++++++++++++++++", dynamic_id
     if vcharacter and vcharacter.node:
         vcharacter.locked = True  # 锁定角色
-
-        result = save_playerinfo_in_db(dynamic_id)
-        print "net lost2++++++++++++++++", result
-        if result:
-            drop_client(dynamic_id, vcharacter)
-            UsersManager().drop_by_dynamic_id(dynamic_id)
-            print "net lost3++++++++++++++++", dynamic_id, vcharacter
+        vcharacter.state = 0 # 设置掉线状态
+        reactor.callLater(const.KEEP_USER_AFTER_DROP, net_conn_lost, dynamic_id, vcharacter)
     else:
         UsersManager().drop_by_dynamic_id(dynamic_id)
 
+def net_conn_lost(dynamic_id, vcharacter):
+    """docstring for net_conn_lost"""
+    if vcharacter.state == 1:
+        return
+    result = save_playerinfo_in_db(dynamic_id)
+
+    if result:
+        drop_client(dynamic_id, vcharacter)
+        UsersManager().drop_by_dynamic_id(dynamic_id)
+        print "net lost3++++++++++++++++", dynamic_id, vcharacter
 
 @rootserviceHandle
 def get_act_id_from_world_remote():
