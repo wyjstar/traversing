@@ -103,8 +103,7 @@ class PlayerCharacter(object):
             newdict = c.new_data()
             character_info.update(newdict)
         char_obj = tb_character_info.getObj(self._pid)
-        logger.debug('new player db:%s:level:%s',
-                     character_info['id'],
+        logger.debug('new player db:%s:level:%s', character_info['id'],
                      character_info['level'])
         char_obj.new(character_info)
         tb_character_info.sadd('new', self._pid)
@@ -113,9 +112,11 @@ class PlayerCharacter(object):
         self.line_up_component.update_guild_attr()
         if self._pid != 999:
 
-            logger.debug('add hero %s', game_configs.base_config.get('initialHero'))
+            logger.debug('add hero %s',
+                         game_configs.base_config.get('initialHero'))
             self.line_up_component.update_guild_attr()
-            for pos, hero_id in game_configs.base_config.get('initialHero').items():
+            for pos, hero_id in game_configs.base_config.get(
+                    'initialHero').items():
                 hero = self.hero_component.add_hero(hero_id)
                 hero.hero_no = hero_id
                 hero.level = 1

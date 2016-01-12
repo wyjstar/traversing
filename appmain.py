@@ -1,8 +1,8 @@
 # coding:utf8
 
 from gevent import monkey
-import gevent
 monkey.patch_all()
+import gevent
 import sys
 import json
 import code

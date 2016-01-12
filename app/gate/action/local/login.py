@@ -13,8 +13,7 @@ from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
 import time
 from app.proto_file.account_pb2 import AccountKick
-from app.gate.action.node.net import kick_by_id_remote
-
+# from app.gate.action.node.net import kick_by_id_remote
 
 groot = GlobalObject().root
 
@@ -22,7 +21,7 @@ groot = GlobalObject().root
 @local_service_handle
 def character_login_4(key, dynamic_id, request_proto):
     """角色登录 """
-    ip =  groot.child('net').get_ipaddress_remote(dynamic_id)
+    ip = groot.child('net').get_ipaddress_remote(dynamic_id)
     logger.debug("==============character_login_4===========")
     argument = game_pb2.GameLoginRequest()
     argument.ParseFromString(request_proto)
@@ -54,7 +53,8 @@ def character_login_4(key, dynamic_id, request_proto):
         msg = AccountKick()
         msg.id = 2
         msg.time = response.closure
-        groot.child('net').kick_by_id_remote(msg.SerializeToString(), dynamic_id)
+        groot.child('net').kick_by_id_remote(msg.SerializeToString(),
+                                             dynamic_id)
 
         response.res.result = False
         response.res.result_no = 4004
@@ -85,11 +85,8 @@ def character_login_4(key, dynamic_id, request_proto):
     nickname = response.nickname
     if nickname and response.gag < login_time and response.gag != -2:
         # 聊天室登录
-        GlobalObject().child('chat').login_chat_remote(dynamic_id,
-                                                       response.id,
-                                                       nickname,
-                                                       response.guild_id,
-                                                       response.gag)
+        GlobalObject().child('chat').login_chat_remote(
+            dynamic_id, response.id, nickname, response.guild_id, response.gag)
     return response.SerializePartialToString()
 
 
@@ -108,8 +105,9 @@ def __character_login(dynamic_id, pay_arg):
         old_dynamic_id = v_character.dynamic_id
         v_character.dynamic_id = dynamic_id
         VCharacterManager().update_dynamic_id(old_dynamic_id, v_character)
-        print("old dynamic_id %s, new_dynamic_id %s" %(old_dynamic_id, dynamic_id))
-        v_character.state = 1 # 恢复掉线状态-> 正常状态
+        print("old dynamic_id %s, new_dynamic_id %s" %
+              (old_dynamic_id, dynamic_id))
+        v_character.state = 1  # 恢复掉线状态-> 正常状态
     else:
         v_character = VirtualCharacter(user.user_id, dynamic_id)
         VCharacterManager().add_character(v_character)

@@ -2,6 +2,7 @@
 *.pyc
 *.DS_Store
 *.swp
+*.lua
 *~
 server_list.json
 go/
