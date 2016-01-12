@@ -662,9 +662,7 @@ def get_condition_state8(player, info):
 
         hero_obj = slot.hero_slot.hero_obj  # 英雄实例
         if hero_obj:
-            if info[3] not in slot.hero_slot.link.keys():
-                continue
-            for link_no, link_info in slot.hero_slot.link.items():
+            for link_no, link_info in slot.hero_slot.link:
                 if link_no == info[3] and link_info:
                     return True
     return False

@@ -191,7 +191,7 @@ def gain(player, item_group, reason,
          result=None,
          multiple=1,
          event_id='',
-         part_multiple=[[], 1],
+         part_multiple=[],
          lucky_attr_id=0):
     """获取
     @param item_group: [obj,obj]
@@ -206,10 +206,20 @@ def gain(player, item_group, reason,
         type_id = group_item.item_type
 
         num = int(group_item.num * multiple)
-        if type_id in part_multiple[0]:
-            num = int(num * part_multiple[1])
-
         item_no = group_item.item_no
+
+        multiple2 = 0
+        for _part_multiple in part_multiple:
+            _times = _part_multiple["times"]
+            _item_type = _part_multiple["item_type"]
+            _item_ids = _part_multiple["item_ids"]
+            if type_id == _item_type:
+                if not _item_ids[0] or item_no in _item_ids:
+                    multiple2 += _times
+
+        logger.debug("multiple %s multiple2 %s" % (multiple, multiple2))
+        num += int(group_item.num * multiple2)
+
         front_type_id = type_id # 记录类型，用于武将已存在的情况。
         if type_id == const.COIN:
             player.finance.coin += num
