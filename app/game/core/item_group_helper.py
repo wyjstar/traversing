@@ -217,14 +217,6 @@ def gain(player, item_group, reason,
         elif type_id == const.RESOURCE:
             if item_no == 27:
                 hook_task(player, CONDITIONId.GGZJ, num)
-            if item_no == 14:
-                player.runt.stone2 += num
-                player.runt.save()
-                after_num = player.runt.stone2
-            elif item_no == 15:
-                player.runt.stone1 += num
-                player.runt.save()
-                after_num = player.runt.stone1
             elif item_no == const.TEAM_EXPERIENCE:
                 player.base_info.addexp(num, reason)
                 player.base_info.save_data()
