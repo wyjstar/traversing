@@ -40,7 +40,7 @@ message GetShopItemsResponse
     repeated ItemInfo all_items = 7;  // 历史总买个数
     repeated ItemInfo guild_items = 8;  //军团今日买个数
     optional GameResourcesResponse consume = 9; //统一消耗
-    optional int32 last_auto_refresh_time = 10; //last refresh time
+  //optional int32 last_auto_refresh_time = 10; //last refresh time
 }
 
 message ItemInfo

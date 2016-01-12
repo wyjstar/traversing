@@ -2,11 +2,11 @@
 """
 @author: cui
 """
+import time
 from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 # import random
 from shared.utils.random_pick import random_multi_pick_without_repeat
-import time
 # from time import localtime
 from shared.utils.date_util import is_past_time
 
@@ -59,17 +59,15 @@ def get_shop_item_ids(shop_type, luck_num):
 
 
 def do_auto_refresh_items(type_shop, shop_data):
-    logger.debug("auto_refresh_items=========")
-    if type_shop in shop_data:
-        ids = get_shop_item_ids(type_shop, shop_data[type_shop]['luck_num'])
-        shop_data[type_shop]['item_ids'] = ids
-        shop_data[type_shop]['last_auto_refresh_time'] = time.time()
-        shop_data[type_shop]['items'] = {}
-        logger.info('refresh_item_ids:%s', ids)
-        return True
-    else:
+    if type_shop not in shop_data:
         logger.error('err type shop:%s', type_shop)
         return False
+
+    ids = get_shop_item_ids(type_shop, shop_data[type_shop]['luck_num'])
+    shop_data[type_shop]['item_ids'] = ids
+    shop_data[type_shop]['last_auto_refresh_time'] = time.time()
+    shop_data[type_shop]['items'] = {}
+    logger.info('refresh_item_ids:%s', ids)
 
 
 def check_time(shop_data):
@@ -89,11 +87,14 @@ def check_time(shop_data):
 
         # 自动刷新列表
         refresh = shop_type_info.refresh
-        if refresh == "-1":
+        if refresh == -1:
             continue
         logger.debug("auto refresh %s %s" %
                      (refresh, v['last_auto_refresh_time']))
-        if current_date_time - v['last_auto_refresh_time'] > refresh:
+        tm_now = time.localtime(current_date_time)
+        tm_refresh = time.localtime(v['last_auto_refresh_time'])
+        if tm_now.tm_yday != tm_refresh.tm_yday or \
+           tm_now.tm_hour / refresh * refresh > tm_refresh.tm_hour:
             do_auto_refresh_items(k, shop_data)
 
 
