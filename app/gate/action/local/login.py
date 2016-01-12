@@ -101,6 +101,7 @@ def __character_login(dynamic_id, pay_arg):
     v_character = VCharacterManager().get_by_id(user.user_id)
     if v_character:
         v_character.dynamic_id = dynamic_id
+        v_character.state = 1 # 恢复掉线状态-> 正常状态
     else:
         v_character = VirtualCharacter(user.user_id, dynamic_id)
         VCharacterManager().add_character(v_character)

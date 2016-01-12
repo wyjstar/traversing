@@ -28,6 +28,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
         is_new_character = init_player(player)
         PlayersManager().add_player(player)
     else:
+        logger.debug('player exsit!========player.dynamic_id %s new dynamic_id %s' % (player.dynamic_id, dynamic_id))
         if player.dynamic_id != dynamic_id:
             logger.error('dynamic id is not same:%s,%s:%s',
                          character_id,
@@ -124,6 +125,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     responsedata.is_open_next_day_activity = player.base_info.is_open_next_day_activity
     responsedata.first_recharge_activity = player.base_info.first_recharge_activity
     logger.debug("character info:----------------------id: %s" % player.base_info.id)
+    logger.debug("stage_id: %s" % player.fight_cache_component.stage_id)
     logger.debug("vip_level:%d", player.base_info.vip_level)
     logger.debug("recharge:%d", player.base_info.recharge)
     logger.debug("register_time:%d", player.base_info.register_time)

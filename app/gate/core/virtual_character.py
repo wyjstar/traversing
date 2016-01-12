@@ -18,6 +18,7 @@ class VirtualCharacter:
         self._dynamic_id = dynamic_id
         self._node = node
         self._locked = False
+        self._state = 1 # 1 正常在线 0 已经掉线，但保持User
 
     @property
     def character_id(self):
@@ -50,3 +51,11 @@ class VirtualCharacter:
     @locked.setter
     def locked(self, locked):
         self._locked = locked
+
+    @property
+    def state(self):
+        return self._state
+
+    @state.setter
+    def state(self, state):
+        self._state = state
