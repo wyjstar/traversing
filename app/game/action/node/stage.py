@@ -29,6 +29,7 @@ import cPickle
 from app.game.core.task import hook_task, CONDITIONId
 import os
 from shared.common_logic.feature_open import is_not_open, FO_ACT_STAGE, FO_ELI_STAGE, FO_HJQY_STAGE
+from app.game.component.fight.stage_logic.stage_util import get_drop_activity
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -441,7 +442,7 @@ def fight_settlement(stage, result, player, star_num, response):
 def stage_sweep(stage_id, times, player, sweep_type):
     response = stage_response_pb2.StageSweepResponse()
     res = response.res
-
+    stage_obj = player.stage_component.get_stage(stage_id)
     # 关于关卡挑战次数
     if time.localtime(player.stage_component.stage_up_time).tm_yday != time.localtime().tm_yday:
         player.stage_component.stage_up_time = int(time.time())
@@ -473,7 +474,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
     stage_config = game_configs.stage_config.get('stages').get(stage_id)
 
     # 限制次数够不够
-    if player.stage_component.get_stage(stage_id).attacks + times > stage_config.limitTimes:
+    if stage_obj.attacks + times > stage_config.limitTimes:
         logger.error('result_no = 810')
         res.result = False
         res.result_no = 810
@@ -509,14 +510,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
         fight_cache_component.stage_id = stage_id
         red_units, blue_units, drop_num, monster_unpara = fight_cache_component.fighting_start()
 
-        is_open = 0
-        act_confs = game_configs.activity_config.get(27, [])
-        part_multiple = []
-        for act_conf in act_confs:
-            if player.base_info.is_activiy_open(act_conf.id):
-                is_open = 1
-                part_multiple = [act_conf.parameterC, act_conf.parameterA]
-                break
+        multiple, part_multiple = get_drop_activity(player, player.fight_cache_component.stage_id, 1, stage_obj.star_num)
         for _ in range(times):
             drop = []
 
@@ -532,11 +526,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
 
             fight_cache_component.get_stage_drop(stage_config, drop)
 
-            if is_open:
-                data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id, part_multiple=part_multiple)
-            else:
-                data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
-            # data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id)
+            data = gain(player, drop, const.STAGE_SWEEP, event_id=tlog_event_id,multiple=multiple, part_multiple=part_multiple)
             get_return(player, data, drops)
 
             # 乱入武将按概率获取碎片

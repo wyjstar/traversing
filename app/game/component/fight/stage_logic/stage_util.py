@@ -25,7 +25,7 @@ def get_stage_config(stage_config, stage_type, stage_id):
     return stage_info
 
 
-def settle(player, result, response, conf, stage_type=0, star_num=0):
+def settle(player, result, response, conf, stage_type=1, star_num=0):
     """docstring for settle"""
     # 保存关卡信息
     player.stage_component.save_data()
@@ -91,6 +91,7 @@ def get_drop_activity(player, stage_id, stage_type, star_num):
     """
     multiple=1
     part_multiple=[]
+    logger.debug("stage_type %s" % stage_type)
 
     if stage_type == 1:
         act_confs = game_configs.activity_config.get(67, [])
@@ -109,9 +110,9 @@ def get_drop_activity(player, stage_id, stage_type, star_num):
                             # 指定掉落加n倍
                             _part_multiple={}
                             _part_multiple["times"] = act_conf.parameterA
-                            _part_multiple["item_type"] = act_conf.parameterE[0]
-                            _part_multiple["item_ids"] = act_conf.parameterE[1:]
+                            _part_multiple["item_type"] = act_conf.parameterE[5][0]
+                            _part_multiple["item_ids"] = act_conf.parameterE[5][1:]
                             part_multiple.append(_part_multiple)
 
-    logger.debug("multiple, part_multiple % %" % (multiple, part_multiple))
+    logger.debug("multiple, part_multiple %s %s" % (multiple, part_multiple))
     return multiple, part_multiple
