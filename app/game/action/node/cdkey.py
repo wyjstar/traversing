@@ -10,7 +10,7 @@ from geventhttpclient import HTTPClient
 from geventhttpclient.url import URL
 
 
-SERVER_NO = GlobalObject().allconfig.get('server_no', 0)
+SERVER_NO = GlobalObject().allconfig.get('server_no')
 CDKEY_URL = GlobalObject().allconfig.get('msdk').get('cdkey_url')
 SERVER_TOKEN = '8284e374e15ae005b8300a0ebfdf803f'
 
