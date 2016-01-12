@@ -7,6 +7,7 @@ import time
 from shared.tlog import tlog_action
 from app.game.core.task import hook_task, CONDITIONId
 from app.game.action.node.start_target import target_update
+from shared.utils.const import const
 
 
 class StageLogic(base_stage.BaseStageLogic):
@@ -50,7 +51,9 @@ class StageLogic(base_stage.BaseStageLogic):
         # 体力
         if result:
 
-            player.stamina.stamina -= conf.vigor
+            #player.stamina.stamina -= conf.vigor
+            player.finance.consume(const.STAMINA, conf.vigor, const.STAGE)
+            player.finance.save_data()
             player.stamina.save_data()
 
             # 活跃度

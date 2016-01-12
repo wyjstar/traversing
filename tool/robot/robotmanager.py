@@ -95,12 +95,14 @@ class RobotManager:
             self._robot_count += 1
             self._robot_processing_num += 1
 
+            print 'add a client'
             gevent.spawn(add_robot_run, robot_type, self,
                          robot_name, pwd, robot_nickname)
             print 'add a client'
 
 
 def add_robot_run(robot_type, manager, robot_name, pwd, robot_nickname):
+    print("add_robot_run")
     register_url = 'http://localhost:30004/register?name=%s&pwd=%s' % \
                    (robot_name, pwd)
     register_response = json.loads((urllib.urlopen(register_url)).read())
