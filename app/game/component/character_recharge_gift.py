@@ -69,7 +69,7 @@ class CharacterRechargeGift(Component):
         _time_now = int(time.time())
 
         if self.owner.act.is_activiy_open(activity_id):
-            logger.debug('activity:not in time')
+            logger.debug('activity:not in time:%s', activity_id)
             return
 
         gift_type = activity.get('type')
