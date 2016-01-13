@@ -57,7 +57,7 @@ def recharge360_response():
         return 'failed'
     child_node = GlobalObject().child(oldvcharacter.node)
     result = child_node.q360_recharge_remote(oldvcharacter.dynamic_id,
-                                             product_id, True)
+                                             product_id, app_order_id, True)
     if result:
         return 'ok'
 

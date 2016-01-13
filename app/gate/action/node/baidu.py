@@ -72,8 +72,8 @@ def recharge_baidu_response():
         logger.error('fail get player node:%s', player_id)
         return 'failed'
     child_node = GlobalObject().child(oldvcharacter.node)
-    result = child_node.baidu_recharge_remote(oldvcharacter.dynamic_id,
-                                              product_id, fee, True)
+    result = child_node.baidu_recharge_remote(
+        oldvcharacter.dynamic_id, product_id, fee, cooperatorOrderSerial, True)
     if result is True:
         logger.debug('response:%s', response)
         return response

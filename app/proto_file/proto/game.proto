@@ -88,6 +88,7 @@ message GameLoginResponse{
     repeated int32 button_one_time = 43; //  0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
     optional int32 server_open_time = 44; //  开服时间
     optional string q360_recharge_url = 45;
+  optional string one_dollar_flowid = 46;
 
 }
 
