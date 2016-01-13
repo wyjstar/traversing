@@ -28,14 +28,6 @@ class HttpRequest(object):
             assert msg, "unimplemented method: log.msg"
             msg(content)
 
-    def _exception(self):
-        """
-        打印正常日志
-        """
-        if self.log:
-            exception = getattr(self.log, 'err', None)
-            assert exception, "unimplemented method: log.exception"
-            exception()
 
     def request(self, url, data=None, cookie=None, json_type=False, ext_header={}, get_json=True, method='post'):
         """
@@ -75,7 +67,7 @@ class HttpRequest(object):
             if get_json:
                 response = json.loads(response)
         except:
-            self._exception()
+            self.log.exception()
         finally:
             self._msg('%s, %s, %s' %
                            (url, data, log_response))
