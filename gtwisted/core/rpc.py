@@ -10,18 +10,19 @@ from gtwisted.core.protocols import ServerFactory
 from gtwisted.core.asyncresultfactory import AsyncResultFactory
 from gtwisted.core.error import RPCDataTooLongError
 from gevent.timeout import Timeout
+from gevent.pool import Pool
 from gfirefly.server.logobj import logger
-import gevent
 import struct
 import rpc_pb2
 import marshal
-
 
 ASK_SIGNAL = "ASK"  # 请求结果的信号
 NOTICE_SIGNAL = "NOTICE"  # 仅做通知的信号，不要求返回值
 ANSWER_SIGNAL = "ANSWER"  # 返回结果值的信号
 DEFAULT_TIMEOUT = 60  # 默认的结果放回超时时间
-RPC_DATA_MAX_LENGTH = 1024*1024  # rpc数据包允许的最大长度
+RPC_DATA_MAX_LENGTH = 1024 * 1024  # rpc数据包允许的最大长度
+
+GEVENT_POOL = Pool(500)
 
 
 def _write_parameter(proto, arg):
@@ -68,7 +69,7 @@ def _read_parameter(proto):
     elif desc.name == 'tuples':
         tt = ()
         for a in arg:
-            tt = tt + (_read_parameter(a),)
+            tt = tt + (_read_parameter(a), )
         return tt
     elif desc.name == 'list':
         ll = []
@@ -84,6 +85,7 @@ def _read_parameter(proto):
 class RemoteObject:
     """远程调用对象
     """
+
     def __init__(self, broker, timeout=DEFAULT_TIMEOUT):
         """
         """
@@ -153,7 +155,7 @@ class PBProtocl(BaseProtocol):
         if _length > RPC_DATA_MAX_LENGTH:
             logger.error('length error:%s', _length)
             raise RPCDataTooLongError
-        self.transport.sendall(struct.pack("!i", _length)+data)
+        self.transport.sendall(struct.pack("!i", _length) + data)
 
     def dataReceived(self, data):
         """数据到达时的处理
@@ -164,14 +166,16 @@ class PBProtocl(BaseProtocol):
             if len(self.buff[4:]) < data_length:
                 break
             else:
-                request = self.buff[4:4+data_length]
-                self.buff = self.buff[4+data_length:]
-                gevent.spawn(self.msgResolve, request)
-#                 self.msgResolve(request)
+                request = self.buff[4:4 + data_length]
+                self.buff = self.buff[4 + data_length:]
+                # gevent.spawn(self.msgResolve, request)
+                GEVENT_POOL.spawn(self.msgResolve, request)
+                # self.msgResolve(request)
 
     def msgResolve(self, data):
         """消息解析
         """
+        # logger.debug('process#message1')
         request = rpc_pb2.RPCProtocol()
         request.ParseFromString(data)
         _msgtype = request.msgType
@@ -179,6 +183,7 @@ class PBProtocl(BaseProtocol):
             self.askReceived(request)
         elif _msgtype == ANSWER_SIGNAL:
             self.answerReceived(request)
+        # logger.debug('process#message2')
 
     def askReceived(self, request):
         """远程调用请求到达时的处理

@@ -12,7 +12,8 @@ CONFIG_FILE = 'config.json'
 DEFAULT_JSON = dict(server_name='local',
                     login_ip='127.0.0.1',
                     front_ip='127.0.0.1',
-                    server_no='1')
+                    server_no='1',
+                    open_time='2016-01-01 12:00:00')
 
 if __name__ == "__main__":
 
