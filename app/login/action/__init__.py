@@ -10,3 +10,4 @@ import login_Tencent
 import login_MA
 import login_TBT
 import login_KY
+import login_XiaoMi

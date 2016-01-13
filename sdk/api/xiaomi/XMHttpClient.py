@@ -39,7 +39,7 @@ class XMHttpClient(object):
         elif method == 'GET':
             data = self.buildQueryString(params)
         httpUrl = '%s?%s' % (urljoin(self.url, path), data) if method == 'GET' else urljoin(self.url, path)
-        print "httpUrl::", httpUrl
+        print "httpUrl- ", httpUrl
         postData = data if method == 'POST' else None
         # req = urllib2.Request(httpUrl, headers=headers, data=postData)
         if method == 'GET':

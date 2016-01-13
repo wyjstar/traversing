@@ -58,8 +58,7 @@ def __login(uid, session):
 
 def verify_login(uid, session):
     xm_utils = XMUtils()
-    client = XMHttpClient()
-    client.url = VerifySession_URL
+    client = XMHttpClient(VerifySession_URL)
     params = dict(appId=AppId, session=session, uid=uid)
     sign = xm_utils.buildSignature(params, AppSecret)
     #headers = xm_utils.buildMacRequestHead(self.accessToken, nonce, sign)
