@@ -524,3 +524,10 @@ class Hero(object):
         if random.random() < target_percent:
             return True
         return False
+
+    @property
+    def awake_info(self):
+        """docstring for awake_info"""
+        v = game_configs.awake_config.get(self._awake_level)
+        return v
+
