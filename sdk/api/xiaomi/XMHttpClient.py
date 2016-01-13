@@ -17,14 +17,14 @@ from urlparse import urljoin
 class XMHttpClient(object):
     def __init__(self, url):
         self.url = url
-        
+
     def get(self, path, params, header={}):
         return self.request(path, 'GET', params, header)
- 
- 
+
+
     def post(self, path, params, header={}):
         return self.request(path, 'POST', params, header)
-    
+
 #     发送http请求
 #         path： url的path
 #         method： GET POST
@@ -42,7 +42,7 @@ class XMHttpClient(object):
         print "httpUrl::", httpUrl
         postData = data if method == 'POST' else None
         # req = urllib2.Request(httpUrl, headers=headers, data=postData)
-        if method == 'POST':
+        if method == 'GET':
             req = urllib2.Request(httpUrl, headers={'content-type':'text/plain'})
             req.add_data(data)
         else:
@@ -54,12 +54,12 @@ class XMHttpClient(object):
         except urllib2.HTTPError, err:
             raise err
         return res
-        
+
     def buildQueryString(self, params):
         if not params or type(params) is not types.DictType:
             return None
         return urllib.urlencode(params)
-    
+
 #     服务器返回的json可能有前缀
 #     jsonStr： server返回的字符串
     def safeJsonLoad(self, jsonStr):
