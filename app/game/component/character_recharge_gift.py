@@ -62,7 +62,7 @@ class CharacterRechargeGift(Component):
         self.save_data()
         logger.debug(self._recharge)
 
-        self.owner.fund.recharge(recharge)
+        self.owner.fund_activity.recharge(recharge)
 
     def type_process(self, activity, recharge):
         activity_id = activity.get('id')
