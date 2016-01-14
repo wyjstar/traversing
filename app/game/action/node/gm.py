@@ -68,7 +68,7 @@ def modify_user_info(data, player):
         player.set_level_related(int(args['attr_value']))
         return {'success': 1}
     elif args['attr_name'] == 'newbee_guide':
-        player.base_info.newbee_guide[0] = int(args['attr_value'])
+        player.base_info.current_newbee_guide = int(args['attr_value'])
         player.base_info.save_data()
         return {'success': 1}
     elif args['attr_name'] == 'vip_level':
