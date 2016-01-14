@@ -23,7 +23,7 @@ class XMUtils():
         r = random.randint(-sys.maxint, sys.maxint)
         m = (int)(time.time() / 60)
         return '%d:%d' % (r, m)
-    
+
     '''
     构造mac type签名串
     '''
@@ -39,9 +39,9 @@ class XMUtils():
             sign.append('&'.join(items))
         else:
             sign.append('')
-        
+
         return ''.join(sign) + ''
-     
+
     '''
      mac type签名算法
     '''
@@ -49,7 +49,7 @@ class XMUtils():
         signString = self.getSignString(params)
         #signString = "appId=2882303761517246109&session=gPWFI2HY2cj8lGcE&uid=27187826"
         #secret = "guOw3xGn73uzXw8yKO2xZg=="
-        h = hmac.new(secret, signString, hashlib.sha1)
+        h = hmac.new(str(secret), str(signString), hashlib.sha1)
         s = h.digest()
         signature = s.encode("hex")
         #pass#print "e452f939aefb32a8590999acf1cac297aaf9c001"
@@ -68,7 +68,7 @@ class XMUtils():
 
     '''
      获取mac type access token请求api的头部信息
-    '''    
+    '''
     def buildMacRequestHead(self, accessToken, nonce, sign):
         macHeader = 'MAC access_token="%s", nonce="%s",mac="%s"' % (quote(accessToken), nonce, quote(sign))
         header = {}
