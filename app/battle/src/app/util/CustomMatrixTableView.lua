@@ -147,6 +147,9 @@ function CustomMatrixTableView:cellSizeAtIndex(tbl, idx)
 		    	if not drag then
 		    		print("registerScriptTouchHandler====>",x,y,idx)
 		    		local node_pos = node:convertToNodeSpace(pos)
+		    		if self._offsetx ~= 0 then
+		    			node_pos.x = node_pos.x+self._offsetx
+		    		end
 		    		table.print(node:getBoundingBox())
 		    		if cc.rectContainsPoint(node:getBoundingBox(), node_pos) then
 		    			print("check Node===>")

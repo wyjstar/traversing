@@ -20,6 +20,7 @@ function FMUnParaSkill:ctor(unpar_type_id, unpar_other_id, base_info, process)
     self.process = process
     self.soldierTemplate = getTemplateManager():getSoldierTemplate()
     self.baseTemplate = getTemplateManager():getBaseTemplate()
+    self.formulaTemplate = getTemplateManager():getFormulaTemplate()
     self._main_skill_buff = nil -- 主技能
     self._skill_buffs = {}      -- 其他技能
     self:get_skill_buffs(unpar_type_id)
@@ -218,6 +219,11 @@ function FMUnParaSkill:construct_attacker()
     attacker.buff_manager = FMBuffManager.new(attacker)
     attacker.unpar_level = self.level
     attacker.unpar_job = self.job
+    attacker.get_atk = function()
+        local atk = self.formulaTemplate:getFunc("peerlessAdd")(self.level)
+        print("unpara_atk", atk, self.level)
+        return atk
+    end
     attacker.str_data = function()
         local info = "unpara skill:"
         info = info.."unpar_type_id:"..self.unpar_type_id.."---"

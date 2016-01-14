@@ -55,6 +55,8 @@ const.HOME_ENEMY = {
 const.BOSS_HOME = {point = const.POS_ENEMY, scale = BIG_SCALE}
 
 const.EVENT_MAKE_CARD_ITEM          = "MAKE_CARD_ITEM"
+const.EVENT_SHOW_TEMP_HERO_EFFECT   = "SHOW_TEMP_HERO_EFFECT"
+const.EVENT_SHOW_TEMP_HERO_EFFECT_2   = "SHOW_TEMP_HERO_EFFECT_2"
 --const.EVENT_MAKE_CARD_ENEMY         = "MAKE_CARD_ENEMY"
 const.EVENT_REST_CARD_ITEM          = "REST_CARD_ITEM"
 const.EVENT_ANEW_CARD_ITEM          = "ANEW_CARD_ITEM"
@@ -201,6 +203,7 @@ const.EVENT_INIT_UI_VIEW            = "INIT_UI_VIEW" --首次初始化UI
 const.EVENT_UPDATE_UI_SROUND        = "UPDATE_UI_SROUND"
 
 const.EVENT_START_AWAKE             = "START_AWAKE"
+const.EVENT_START_AWAKE_UNIT        = "START_AWAKE_UNIT"
 
 const.EVENT_MAKE_WORLD_BOSS         = "MAKE_WORLD_BOSS"
 
@@ -237,6 +240,7 @@ TYPE_UNPARAL = 2
 TYPE_BUDDY = 3
 TYPE_RED_UNPARAL= 4
 TYPE_BLUE_UNPARAL = 5
+TYPE_TEMP_HERO = 6 --假战斗
 
 TYPE_UNPARAL_F = 1
 TYPE_UNPARAL_S = 2
@@ -418,7 +422,6 @@ STEP_DO_BUFF = 3 -- 攻击
 STEP_AFTER_BUFF = 4 -- 攻击后清buff
 
 g_notice.NOTICE_REVENGE_REFRESH_FRIEND = "NOTICE_REVENGE_REFRESH_FRIEND"    --复仇成功之后更新坏蛋列表
-g_notice.NOTICE_TRAVEL_RELOAD_SHOES_2 = "NOTICE_TRAVEL_RELOAD_SHOES_2"      --游历界面,重新读取鞋子信息
 g_notice.NOTICE_PVP_CLEARANCE_UPDATA = "NOTICE_PVP_CLEARANCE_UPDATA"        --过关斩将界面,重新刷新当前的关卡信息
 g_notice.NOTICE_REFRESH_SYS_MAIL_LIST = "NOTICE_REFRESH_SYS_MAIL_LIST"      --刷新系统邮件列表
 g_notice.NOTICE_RESET_MERIDIANS = "NOTICE_RESET_MERIDIANS"                  --更新经脉信息
@@ -581,6 +584,8 @@ EventName = {
 
     LEGION_REMOVE_HUB = "LEGION_REMOVE_HUB", -- 移除军团中转UI
     UPDATE_LINEUP_GODDESS_ACTIVED = "UPDATE_LINEUP_GODDESS_ACTIVED", --激活女神
+    FULL_STAR_DRAW_GOT_REWARD_NOTICE = "FULL_STAR_DRAW_GOT_REWARD_NOTICE", --满星抽奖领取奖励
+    UPDATE_SOUL_SHOP = "UPDATE_SOUL_SHOP", --武魂商店刷新提示
 }
 
 NoticeColor = {
@@ -647,7 +652,8 @@ MAIL_TYPE = {
     SYS         = 2, -- 系统
     FIGHT       = 3, -- 战斗
     SOCIALLY    = 4, -- 社交
-    REMOVE      = 5, -- 准备删除
+    DEL_SYS     = 5, -- 系统邮件准备删除
+    DEL_FIGHT   = 6, -- 战斗邮件准备删除
 }
 
 --押劫类型

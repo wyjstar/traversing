@@ -1353,6 +1353,12 @@ end
 是否显示经脉红点,如果拥有的琼浆玉露能够完成至少一次点穴,那么显示红点
 ]]
 function CommonData:isJingMaiRedDotInHome()
+    -- 判断经脉是否开启
+    local isOpen, _ = FeaturesOPEN.checkFeatures(FeaturesType.MERIDIAN_OPEN)
+    if not isOpen then
+        return false
+    end
+
     if self.sealRedData ~= nil then
         return self.sealRedData
     end

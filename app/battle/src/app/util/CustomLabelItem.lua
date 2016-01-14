@@ -12,7 +12,7 @@ end
 
 function CustomLabelItem:selected(hasEffect)
 	if hasEffect == true then
-		getAudioManager():playEffectButton2()
+		getAudioManager():playEffectPage()
 	end
 	
 	self.normalSprite:setVisible(false)

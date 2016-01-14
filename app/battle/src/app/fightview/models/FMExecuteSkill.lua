@@ -153,7 +153,7 @@ function execute_pure_demage(attacker, target, buff_info, extra_msgs)
     end
     actual_demage = addDamageRate(attacker.side, actual_demage_3 + actual_demage_4)
     target:set_hp(target:get_hp() - actual_demage)
-    print("execute_pure_demage=========", actual_demage)
+    print("execute_pure_demage=========", actual_demage, attacker:get_atk(), buff_info.effectId)
     return actual_demage
 end
 

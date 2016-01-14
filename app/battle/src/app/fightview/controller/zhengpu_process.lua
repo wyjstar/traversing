@@ -52,10 +52,11 @@ function FightProcess:init(fight_type)
     self.fight_type = fight_type
     self.dropNum = 3
     self.red_groups, self.blue_groups, self.red_unpara_skill, self.blue_unpara_skill, self.buddy_skill = initData(self)
-    self.redAtkArray = self:get_atk_array(self.red_units, self.red_unpara_skill) -- 用来计算无双值
-    print("==========redAtkArray", self.redAtkArray)
+    -- self.redAtkArray = self:get_atk_array(self.red_units, self.red_unpara_skill) -- 用来计算无双值
+    -- print("==========redAtkArray", self.redAtkArray)
     self:init_round()
     self.red_units = self.red_groups[self.current_red_round]
+    print("FightProcess:init==>2",#self.red_units)
     self.blue_units = self.blue_groups[self.current_blue_round]
     --总回合数
     self.max_red_round = table.nums(self.red_groups)
@@ -72,6 +73,14 @@ function FightProcess:init(fight_type)
     self:logInfo()
     -- self.red_unpara_skill.mp_step = 50
     -- self.buddy_skill.mp_step = 50
+end
+
+--[[--
+    添加战斗单元
+]]
+function FightProcess:addRedUnit(pos,unit)
+    print("FightProcess:addRedUnit===>",pos)
+    self.red_units[pos] = unit
 end
 
 function FightProcess:get_atk_array(units, unpara_skill)
@@ -535,7 +544,9 @@ function FightProcess:perform_one_step()
         self:do_unpara_skill()
     elseif self.current_skill_type == TYPE_NORMAL then
         self:do_normal_skill()
-    end    
+    elseif  self.current_skill_type == TYPE_TEMP_HERO then
+        self:do_temp_hero_skill()
+    end   
     --如果可以执行小伙伴技能，则先执行小伙伴
     --if self:do_buddy_skill() then return end    
     --如果可以执行无双技能，则先执行无双
@@ -561,6 +572,37 @@ function FightProcess:do_normal_skill()
     end
     --获取攻击者
     local attacker = attack_units[who_step]
+    --如存在则执行技能，否则执行下一步
+    if attacker then
+        print("attacker is not nil")
+        self:perform_one_skill(attack_units, defend_units, attacker)
+    else
+        self:set_normal_step()
+        print("attacker is nil")
+        self:perform_one_step()
+        return
+    end
+    if self.small_step == STEP_AFTER_BUFF then
+        self:set_normal_step()
+    end
+end
+
+function FightProcess:do_temp_hero_skill()
+    print("do_normal_skill==================", self.red_step, self.blue_step, table.nums(self.blue_units), self.blue_units)
+    local attack_units = nil--攻击阵容
+    local defend_units = nil--防御阵容
+    local who_step = nil--攻击者位置
+    --我方回合
+    if self.red_step == self.blue_step then
+        attack_units = self.red_units
+        defend_units = self.blue_units
+    else
+    --敌方回合
+        attack_units = self.blue_units
+        defend_units = self.red_units  
+    end
+    --获取攻击者
+    local attacker = self.temp_hero
     --如存在则执行技能，否则执行下一步
     if attacker then
         print("attacker is not nil")
@@ -626,6 +668,11 @@ function FightProcess:is_current_skill_end()
         print("is_current_skill_end======buddy")
         return true
     end
+
+    if self.current_skill_type == TYPE_TEMP_HERO and self.small_step == 0 then
+        print("is_current_skill_end======TYPE_TEMP_HERO")
+        return true
+    end
     return false
 end
 
@@ -644,10 +691,12 @@ function FightProcess:set_normal_step()
             print("FightProcess:set_step=======>next round"..tostring(self.init_blue_units_num - table.nums(self.blue_groups[1])))
             self.round_to_kill_num[self.current_fight_times] = self.init_blue_units_num - table.nums(self.blue_groups[1])
         end
+
         self.current_fight_times = self.current_fight_times + 1
         appendFile2("current_fight_times:"..self.current_fight_times, 0)
         self.red_step = 1 
         self.blue_step = 1 
+        self.send_message(const.EVENT_UPDATE_UI_VIEW)
     end
 end
 
