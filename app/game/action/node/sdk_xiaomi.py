@@ -25,8 +25,8 @@ remote_gate = GlobalObject().remote.get('gate')
 def xiaomi_recharge_remote(subject, fee, cpOrderId, is_online, player):
     logger.debug('xiaomi_recharge_remote:%s', subject)
 
-    if cpOrderId != player.pay.flowid:
-        logger.debug("cpOrderId %s %s" % (cpOrderId, player.recharge.flowid))
+    if str(cpOrderId) != str(player.base_info.flowid):
+        logger.error("cpOrderId %s %s" % (cpOrderId, player.base_info.flowid))
         return 1506
 
     recharge_item = game_configs.recharge_config.get('ios').get(subject)

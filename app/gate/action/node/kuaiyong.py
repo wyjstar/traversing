@@ -91,4 +91,5 @@ def xm_recharge_response():
     return return_data(1525)
 
 def return_data(code):
+    logger.debug("xm return code %s" % code)
     return json.dumps({'errcode': code})
