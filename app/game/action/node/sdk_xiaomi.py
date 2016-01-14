@@ -7,16 +7,15 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import logger
 from app.proto_file import sdk_pb2
-from flask import request
-from gfirefly.server.globalobject import webserviceHandle
-from app.game.action.root import netforwarding
 import time
 
 @remoteserviceHandle('gate')
 def xiaomi_flowid_13000(data, player):
     response = sdk_pb2.KuaiyongFlowIdResponse()
     response.flow_id = str(player.character_id) + '_%s' % time.time()
-    player.recharge.flowid = response.flow_id
+    player.base_info.flowid = response.flow_id
+    logger.debug("flow_id %s" % player.base_info.flowid)
+    player.base_info.save_data()
     return response.SerializeToString()
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -27,6 +26,7 @@ def xiaomi_recharge_remote(subject, fee, cpOrderId, is_online, player):
     logger.debug('xiaomi_recharge_remote:%s', subject)
 
     if cpOrderId != player.pay.flowid:
+        logger.debug("cpOrderId %s %s" % (cpOrderId, player.recharge.flowid))
         return 1506
 
     recharge_item = game_configs.recharge_config.get('ios').get(subject)
@@ -36,7 +36,7 @@ def xiaomi_recharge_remote(subject, fee, cpOrderId, is_online, player):
     if float(fee) != recharge_item.get('currence'):
         logger.error('recharge fee is wrong:%s-%s',
                      fee, recharge_item.get('currence'))
-        return 1525
+        #return 1525
     response = sdk_pb2.XiaomiRechargeResponse()
     response.res.result = True
     player.recharge.recharge_gain(recharge_item, response)  # 发送奖励邮件

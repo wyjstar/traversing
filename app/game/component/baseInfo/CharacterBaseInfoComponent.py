@@ -59,6 +59,7 @@ class CharacterBaseInfoComponent(Component):
         self._story_id = 0
         self._button_one_time = [0] * 3  # 0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
         self._hero_awake_time = int(time.time())  # 武将觉醒时间，用于次日清除相关武将觉醒进度。
+        self._flowid = 0.0 # 流水号
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -126,6 +127,7 @@ class CharacterBaseInfoComponent(Component):
                     button_one_time=self._button_one_time,
                     hero_awake_time=self._hero_awake_time,
                     max_single_recharge=self._max_single_recharge,
+                    flowid=self._flowid,
                     )
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
@@ -156,6 +158,7 @@ class CharacterBaseInfoComponent(Component):
                     story_id=self._story_id,
                     button_one_time=self._button_one_time,
                     hero_awake_time=self._hero_awake_time,
+                    flowid=self._flowid,
                     )
         return data
 
@@ -621,3 +624,11 @@ class CharacterBaseInfoComponent(Component):
     def guild_escort_rob_times_max(self):
         """每日购买上限"""
         return 0
+
+    @property
+    def flowid(self):
+        return self._flowid
+
+    @flowid.setter
+    def flowid(self, value):
+        self._flowid = value
