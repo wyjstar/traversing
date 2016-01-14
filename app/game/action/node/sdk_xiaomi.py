@@ -29,7 +29,7 @@ def xiaomi_recharge_remote(subject, fee, cpOrderId, is_online, player):
         logger.error("cpOrderId %s %s" % (cpOrderId, player.base_info.flowid))
         return 1506
 
-    recharge_item = game_configs.recharge_config.get('ios').get(subject)
+    recharge_item = game_configs.recharge_config.get('android').get(subject)
     if recharge_item is None:
         logger.error('not in rechargeconfig:%s', subject)
         return 1525
