@@ -61,6 +61,7 @@ def runt_set_841(data, player):
     for runt_set_info in runt_set_infos:
         runt_po = runt_set_info.runt_po
         runt_no = runt_set_info.runt_no
+        runt_info = player.runt.m_runt.get(runt_no)
         hero.runt.get(runt_type)[runt_po] = [runt_no] + runt_info
         player.runt.reduce_runt(runt_no)
 
