@@ -24,7 +24,7 @@ def kuaiyong_flowid_12000(data, player):
 def kuaiyong_flowid_12100(data, player):
     response = kuaiyong_pb2.KuaiyongFlowIdResponse()
     if player.base_info.one_dollar_flowid == 'done':
-        response.flow_id = 'no'
+        response.flow_id = 'done'
     else:
         flowid = str(player.character_id) + '_%s' % int(time.time())
         player.base_info.one_dollar_flowid = flowid
