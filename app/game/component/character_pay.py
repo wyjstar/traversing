@@ -28,6 +28,7 @@ class CharacterPay(Component):
         self._pf = ""
         self._pfkey = ""
         self._zoneid = GlobalObject().allconfig.get('server_no')
+        self._flowid = ""
 
         self.loop_times = 0
         if 'deploy' not in GlobalObject().allconfig:
@@ -254,3 +255,13 @@ class CharacterPay(Component):
         """
         self._present_m(num)
         self.get_balance()
+
+    @property
+    def flowid(self):
+        return self._flowid
+
+    @flowid.setter
+    def flowid(self, v):
+        self._flowid = v
+
+

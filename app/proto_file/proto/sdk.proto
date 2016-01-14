@@ -1,0 +1,12 @@
+import "common.proto";
+// 小米订单号 command: 13000
+message XiaomiFlowIdResponse{
+	optional string flow_id = 1;
+}
+
+// 小米充值返回 command: 13001
+message XiaomiRechargeResponse{
+    required CommonResponse res = 1;
+    optional GameResourcesResponse gain = 2;
+    optional GetGoldResponse info = 3;
+}
