@@ -216,6 +216,12 @@
 
         "appid": 150651
     },
+    "xmsdk":{
+        "AppId" : 2882303761517425517,
+        "AppKey" : "5241742588517",
+        "AppSecret" : "Ma/qlw1ZELp0Wiu2FLKJQg==",
+        "VerifySession_URL" : "http://mis.migc.xiaomi.com/api/biz/service/verifySession.do"
+    },
     "push":{
         "channel": "xinge"
     },

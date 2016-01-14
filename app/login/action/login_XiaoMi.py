@@ -19,11 +19,12 @@ pay_host = ('10.142.22.11', 8080)
 buy_goods_host = ('10.142.22.11', 8080)
 valid_host = ('10.130.2.233', 80)
 
-AppId = 2882303761517425517
-AppKey = '5241742588517'
-AppSecret = "Ma/qlw1ZELp0Wiu2FLKJQg=="
-VerifySession_URL = 'http://mis.migc.xiaomi.com/api/biz/service/verifySession.do'
+AppId = GlobalObject().allconfig["xmsdk"]["AppId"]
+AppKey = GlobalObject().allconfig["xmsdk"]["AppKey"]
+AppSecret = GlobalObject().allconfig["xmsdk"]["AppSecret"]
+VerifySession_URL = GlobalObject().allconfig["xmsdk"]["VerifySession_URL"]
 
+print(AppId, AppKey, AppSecret, VerifySession_URL)
 
 @webserviceHandle('/login_xiaomi')
 def server_login():
