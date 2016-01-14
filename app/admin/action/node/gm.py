@@ -247,7 +247,7 @@ def modify_user_info(args):
         character_obj.hmset(data)
         return {'success': 1}
     elif args['attr_name'] == 'newbee_guide':
-        data = {'newbee_guide': {0: int(args['attr_value'])}}
+        data = {'current_newbee_guide': int(args['attr_value'])}
         character_obj.hmset(data)
         return {'success': 1}
     elif args['attr_name'] == 'vip_level':
