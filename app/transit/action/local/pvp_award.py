@@ -126,5 +126,5 @@ def pvp_daily_award():
                     logger.debug('pvp_daily_award_tick result:%s,%s,%s',
                                  result, k, mail_data)
         else:
-            message_cache.cache_time('receive_mail_remote', character_id, mail_data, 60*60*24*180)
+            message_cache.cache_time('receive_mail_remote', character_id, 60*60*24*180, mail_data)
         tlog_action.log('PvpDailyAward', character_id, mail_id, rank)
