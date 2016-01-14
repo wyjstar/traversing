@@ -43,6 +43,7 @@ def character_login_4(key, dynamic_id, request_proto):
 
     if not data.get('result', True):
         response.res.result = False
+        response.res.result_no = data.get('result_no', 0)
         return response.SerializePartialToString()
 
     player_data = data.get('player_data')
@@ -56,6 +57,8 @@ def character_login_4(key, dynamic_id, request_proto):
         groot.child('net').kick_by_id_remote(msg.SerializeToString(), dynamic_id)
 
         response.res.result = False
+        response.res.result_no = 4004
+        logger.error("player was banned!")
         return response.SerializePartialToString()
 
     # argument.plat_id = 0
@@ -96,7 +99,8 @@ def __character_login(dynamic_id, pay_arg):
 
     logger.info("user_id:%d", dynamic_id)
     if not user:
-        return {'result': False}
+        logger.error("user not exist!")
+        return {'result': False, 'result_no': 4001}
 
     v_character = VCharacterManager().get_by_id(user.user_id)
     if v_character:
@@ -110,14 +114,16 @@ def __character_login(dynamic_id, pay_arg):
     if not now_node:
         now_node = SceneSerManager().get_best_sceneid()
         if not now_node:
-            return {'result': False}
+            logger.error("can't find game server!")
+            return {'result': False, 'result_no': 4002}
         v_character.node = now_node
 
     # game服登录
     child_node = GlobalObject().child(now_node)
     res_data = child_node.enter_scene_remote(dynamic_id, user.user_id, pay_arg)
     if not res_data['player_data']:
-        return {'result': False}
+        logger.error("enter scene error!")
+        return {'result': False, 'result_no': 4003}
 
     # logger.debug("pull_message_remote")
     # # pull message from transit
