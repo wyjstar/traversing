@@ -14,7 +14,7 @@ import time
 
 @remoteserviceHandle('gate')
 def xiaomi_flowid_13000(data, player):
-    response = sdk_pb2.KuaiyongFlowIdResponse()
+    response = sdk_pb2.XiaomiFlowIdResponse()
     response.flow_id = str(player.character_id) + '_%s' % time.time()
     player.recharge.flowid = response.flow_id
     return response.SerializeToString()
