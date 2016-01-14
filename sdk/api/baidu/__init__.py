@@ -7,7 +7,7 @@ import base64
 import urllib
 import urllib2
 import hashlib
-# from gfirefly.server.logobj import logger
+from gfirefly.server.logobj import logger
 
 # 应用开发者appid
 appid = "7595234"
@@ -48,6 +48,7 @@ def verify_login(token):
         print item
         return item
 
+    logger.error(result)
     return None
 
 
