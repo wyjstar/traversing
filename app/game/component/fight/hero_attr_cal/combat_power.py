@@ -6,7 +6,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils import pprint
 
 LOG_NAME = ""
-LOG = False
+LOG = True
 
 
 
@@ -42,7 +42,7 @@ def hero_self_attr(player, hero, stage=None):
     runt_attr = hero.runt_attr()
     # awake_percent
     # print("hero.awake_level %s" % hero.awake_level)
-    addition = game_configs.awake_config.get(hero.awake_level).get("addition")
+    #addition = game_configs.awake_config.get(hero.awake_level).get("addition")
 
     all_vars = dict(
         hero_info=hero_info,
@@ -92,7 +92,7 @@ def hero_self_attr(player, hero, stage=None):
         ductilityB=break_attr.get("ductility", 0),
         ductilitySeal=refine_attr.get("ductility", 0),
         ductilityStone=runt_attr.get("ductility", 0),
-        awake_percent=addition,
+        #awake_percent=addition,
     )
 
     log(hero.hero_no, "计算武将自身属性所需的所有参数：", "", all_vars)
@@ -118,6 +118,7 @@ def hero_self_attr(player, hero, stage=None):
     atkHeroBase = eval(atkHero_formula, all_vars)
     atkHero_formula = game_configs.formula_config.get("atkHeroSelf").get("formula")
     atkHero = eval(atkHero_formula, dict(atkHeroBase=atkHeroBase, AwakePercent=hero.awake_info.addition))
+    print("hero awake_percent: ",hpHeroBase, hpHero, hero.awake_info.addition)
 
     # pdefHero
     # hero_info.physicalDef+hero_info.growPhysicalDef*heroLevel+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone
