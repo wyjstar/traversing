@@ -100,8 +100,8 @@ class CharacterPay(Component):
         self._owner.finance.gold += gen_balance_add
         self._owner.finance.save_data()
         isfirst = data['first_save']
-        if isfirst == 1:
-            tlog_action.log('Recharge', self.owner, isfirst, 1)
+        # if isfirst == 1:
+        # tlog_action.log('Recharge', self.owner, isfirst, 1)
         return balance, gen_balance
 
     def get_balance(self):
