@@ -71,7 +71,7 @@ def google_consume_verify_10002(data, player):
             logger.debug('google consume goodid not in rechargeconfig:%s',
                          data.get('productId'))
         else:
-            player.recharge.recharge_gain(recharge_item, response) #发送奖励邮件
+            player.recharge.recharge_gain(recharge_item, response, 3) #发送奖励邮件
             response.res.result = True
 
     logger.debug(response)

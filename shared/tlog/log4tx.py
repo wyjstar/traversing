@@ -607,7 +607,7 @@ def item_flow(PlatID=0, GameSvrId=0, dtEventTime=0, Sequence=0, GameAppID=0,
 
 
 def recharge(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
-             OpenID=0, Isfirst=0, RechargeId=0):
+             OpenID=0, Isfirst=0, RechargeId=0, Channel=0):
 
     message = ['Recharge']
 
@@ -618,6 +618,7 @@ def recharge(GameSvrId=0, dtEventTime=0, GameAppID=0, PlatID=0,
     message.append(OpenID)
     message.append(Isfirst)
     message.append(RechargeId)
+    message.append(Channel)
 
     sendmsg = _format(message)
     logclient.gethandler().send_msg(sendmsg + '\n')

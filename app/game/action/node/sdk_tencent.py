@@ -28,7 +28,7 @@ def get_gold_2001(data, player):
         logger.debug('not in rechargeconfig:%s',
                         data.get('productId'))
     else:
-        player.recharge.recharge_gain(recharge_item, response, True) #发送奖励邮件
+        player.recharge.recharge_gain(recharge_item, response, 5, True) #发送奖励邮件
         response.res.result = True
 
     player.pay.recharge()

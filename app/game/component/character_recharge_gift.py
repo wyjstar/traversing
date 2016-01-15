@@ -195,7 +195,7 @@ class CharacterRechargeGift(Component):
         mail_id = recharge_item.get('mailId')
         send_mail(conf_id=mail_id, receive_id=self._owner.base_info.id)
 
-    def recharge_gain(self, recharge_item, response, is_tencent=False):
+    def recharge_gain(self, recharge_item, response, channel, is_tencent=False):
         """
         充值掉落
         """
@@ -218,7 +218,7 @@ class CharacterRechargeGift(Component):
                 self._owner.recharge.send_mail(recharge_item)  # 发送奖励邮件
 
         tlog_action.log('Recharge', self._owner, isfirst,
-                        recharge_item.get('id'))
+                        recharge_item.get('id'), channel)
 
         charge_num = recharge_item.get('activity')  # 充值元宝数量
         # vip
