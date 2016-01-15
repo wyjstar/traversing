@@ -21,6 +21,18 @@ def kuaiyong_flowid_12000(data, player):
 
 
 @remoteserviceHandle('gate')
+def kuaiyong_flowid_12100(data, player):
+    response = kuaiyong_pb2.KuaiyongFlowIdResponse()
+    if player.base.one_dollar_flowid == 1:
+        response.flow_id = 0
+    else:
+        flowid = str(player.character_id) + '_%s' % int(time.time())
+        player.base.one_dollar_flowid = flowid
+        response.flow_id = flowid
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
 def kuaiyong_recharge_remote(product_id, fee, is_online, player):
     logger.debug('kuaiyong_recharge_remote:%s', product_id)
 
@@ -44,8 +56,10 @@ def kuaiyong_recharge_remote(product_id, fee, is_online, player):
 
 
 @remoteserviceHandle('gate')
-def q360_recharge_remote(product_id, is_online, player):
-    logger.debug('q360_recharge_remote:%s', product_id)
+def q360_recharge_remote(product_id, order_id, is_online, player):
+    logger.debug('q360_recharge_remote:%s-%s', product_id, order_id)
+    if player.base.one_dollar_flowid == order_id:
+        player.base.one_dollar_flowid == 'done'
 
     recharge_item = game_configs.recharge_config.get('android').get(product_id)
     if recharge_item is None:
@@ -67,8 +81,11 @@ def q360_recharge_remote(product_id, is_online, player):
 
 
 @remoteserviceHandle('gate')
-def baidu_recharge_remote(product_id, fee, is_online, player):
-    logger.debug('baidu_recharge_remote:%s-%s', product_id, fee)
+def baidu_recharge_remote(product_id, fee, order_id, is_online, player):
+    logger.debug('baidu_recharge_remote:%s-fee:%s-order:%s', product_id, fee,
+                 order_id)
+    if player.base.one_dollar_flowid == order_id:
+        player.base.one_dollar_flowid == 'done'
 
     recharge_item = game_configs.recharge_config.get('android').get(product_id)
     if recharge_item is None:

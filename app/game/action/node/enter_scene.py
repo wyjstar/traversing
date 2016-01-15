@@ -15,8 +15,8 @@ from shared.utils.const import const
 from app.game.core import rank_helper
 
 remote_gate = GlobalObject().remote.get('gate')
-server_open_time = int(time.mktime(
-    time.strptime(GlobalObject().allconfig['open_time'], '%Y-%m-%d %H:%M:%S')))
+server_open_time = int(time.mktime(time.strptime(GlobalObject().allconfig[
+    'open_time'], '%Y-%m-%d %H:%M:%S')))
 
 SDK360_RECHARGE_URL = GlobalObject().allconfig["360sdk"]["recharge_url"]
 
@@ -134,6 +134,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
 
     responsedata.is_open_next_day_activity = player.base_info.is_open_next_day_activity
     responsedata.first_recharge_activity = player.base_info.first_recharge_activity
+    responsedata.one_dollar_flowid = player.base_info.one_dollar_flowid
 
     responsedata.q360_recharge_url = SDK360_RECHARGE_URL
     logger.debug("character info:----------------------id: %s" %

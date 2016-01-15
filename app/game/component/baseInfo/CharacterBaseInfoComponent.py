@@ -24,19 +24,20 @@ from shared.common_logic import feature_open
 class CharacterBaseInfoComponent(Component):
     """玩家基础信息组件类
     """
+
     def __init__(self, owner):
         """
         Constructor
         """
         Component.__init__(self, owner)
-        self._base_name = u''       # 基本名字
+        self._base_name = u''  # 基本名字
         self._level = 1  # 当前等级
         self._exp = 0  # 当前等级获得的经验
 
         self._newbee_guide = {}
         self._current_newbee_guide = 0
-        self._gag = 1    # 禁言到这个时间戳
-        self._closure = 1    # 封停到这个时间戳
+        self._gag = 1  # 禁言到这个时间戳
+        self._closure = 1  # 封停到这个时间戳
 
         self._heads = Heads_DB()
         self._heads.now_head = game_configs.base_config.get('initialHead')
@@ -60,7 +61,8 @@ class CharacterBaseInfoComponent(Component):
         self._story_id = 0
         self._button_one_time = [0] * 3  # 0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
         self._hero_awake_time = int(time.time())  # 武将觉醒时间，用于次日清除相关武将觉醒进度。
-        self._flowid = 0.0 # 流水号
+        self._flowid = 0.0  # 流水号
+        self._one_dollar_flowid = 0
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -69,7 +71,8 @@ class CharacterBaseInfoComponent(Component):
         self._exp = character_info['exp']
 
         self._newbee_guide = character_info.get('newbee_guide', {})
-        self._current_newbee_guide = character_info.get('current_newbee_guide', 0)
+        self._current_newbee_guide = character_info.get('current_newbee_guide',
+                                                        0)
 
         self._gag = character_info['gag']
         self._closure = character_info['closure']
@@ -81,19 +84,27 @@ class CharacterBaseInfoComponent(Component):
         self._register_time = character_info.get('register_time',
                                                  self._register_time)
         self._google_consume_id = character_info.get('google_consume_id', '')
-        self._google_consume_data = character_info.get('google_consume_data', '')
-        self._apple_transaction_id = character_info.get('apple_transaction_id', '')
+        self._google_consume_data = character_info.get('google_consume_data',
+                                                       '')
+        self._apple_transaction_id = character_info.get('apple_transaction_id',
+                                                        '')
         self._first_recharge_ids = character_info.get('first_recharge_ids', [])
         self._recharge = character_info.get('recharge_accumulation')
         self._gen_balance = character_info.get('gen_balance', 0)
         self._tomorrow_gift = character_info.get('tomorrow_gift', 0)
         self._battle_speed = character_info.get('battle_speed', 1)
         self._story_id = character_info.get('story_id', 0)
-        self._is_open_next_day_activity = character_info.get('is_open_next_day_activity', False)
-        self._first_recharge_activity = character_info.get('first_recharge_activity', False)
-        self._button_one_time = character_info.get('button_one_time', [0,0,0])
-        self._hero_awake_time = character_info.get('hero_awake_time', int(time.time()))
-        self._max_single_recharge = character_info.get('max_single_recharge', 0)
+        self._is_open_next_day_activity = character_info.get(
+            'is_open_next_day_activity', False)
+        self._first_recharge_activity = character_info.get(
+            'first_recharge_activity', False)
+        self._button_one_time = character_info.get('button_one_time', [0, 0,
+                                                                       0])
+        self._hero_awake_time = character_info.get('hero_awake_time',
+                                                   int(time.time()))
+        self._max_single_recharge = character_info.get('max_single_recharge',
+                                                       0)
+        self._one_dollar_flowid = character_info.get('one_dollar_flowid', 0)
 
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
@@ -131,7 +142,7 @@ class CharacterBaseInfoComponent(Component):
                     hero_awake_time=self._hero_awake_time,
                     max_single_recharge=self._max_single_recharge,
                     flowid=self._flowid,
-                    )
+                    one_dollar_flowid=self._one_dollar_flowid)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
 
@@ -163,7 +174,7 @@ class CharacterBaseInfoComponent(Component):
                     button_one_time=self._button_one_time,
                     hero_awake_time=self._hero_awake_time,
                     flowid=self._flowid,
-                    )
+                    one_dollar_flowid=self._one_dollar_flowid)
         return data
 
     def check_time(self):
@@ -191,7 +202,8 @@ class CharacterBaseInfoComponent(Component):
             open_info = game_configs.base_config.get("ggzjOpenDay")
 
         if not open_info:
-            logger.error("open feature next day config error! feature_type %s" % feature_type)
+            logger.error("open feature next day config error! feature_type %s"
+                         % feature_type)
             return True
         if self.check_open_date(open_info):
             return False
@@ -203,11 +215,14 @@ class CharacterBaseInfoComponent(Component):
         ts = open_info.values()[0][0]
 
         register_time = self._owner.base_info.register_time
-        logger.debug("days %s tocurrent_days %s %s %s" % (days, days_to_current(register_time), string_to_timestamp_hms(ts), get_current_timestamp()))
-        if days_to_current(register_time) > days-1 or \
-            (days_to_current(register_time) == days-1 and string_to_timestamp_hms(ts) < get_current_timestamp()):
-                logger.debug("check open date True")
-                return True
+        logger.debug("days %s tocurrent_days %s %s %s" %
+                     (days, days_to_current(register_time),
+                      string_to_timestamp_hms(ts), get_current_timestamp()))
+        if days_to_current(register_time) > days - 1 or (
+                days_to_current(register_time) == days - 1 and
+                string_to_timestamp_hms(ts) < get_current_timestamp()):
+            logger.debug("check open date True")
+            return True
         return False
 
     def addexp(self, exp, reason):
@@ -274,8 +289,8 @@ class CharacterBaseInfoComponent(Component):
     @level.setter
     def level(self, value):
         if self._level != value:
-            logger.info('player id:%s level up ++ %s>>%s',
-                        self.id, self._level, value)
+            logger.info('player id:%s level up ++ %s>>%s', self.id,
+                        self._level, value)
             # hook task
             hook_task(self.owner, CONDITIONId.LEVEL, self._level)
             target_update(self.owner, [43])
@@ -632,6 +647,14 @@ class CharacterBaseInfoComponent(Component):
         self._flowid = value
 
     @property
+    def one_dollar_flowid(self):
+        return self._one_dollar_flowid
+
+    @one_dollar_flowid.setter
+    def one_dollar_flowid(self, value):
+        self._one_dollar_flowid = value
+
+    @property
     def login_day(self):
         now = int(time.time())
         register_time = self.register_time
@@ -639,12 +662,12 @@ class CharacterBaseInfoComponent(Component):
 
         time0 = get_time0(now)
         time1 = get_time0(register_time)
-        day = (time0 - time1)/(24*60*60) + 1
+        day = (time0 - time1) / (24 * 60 * 60) + 1
         return day
+
 
 def get_time0(t):
     # 时间戳当天的零点时间戳
     t1 = time.localtime(t)
     return int(time.mktime(time.strptime(
-               time.strftime('%Y-%m-%d 00:00:00', t1),
-               '%Y-%m-%d %H:%M:%S')))
+        time.strftime('%Y-%m-%d 00:00:00', t1), '%Y-%m-%d %H:%M:%S')))
