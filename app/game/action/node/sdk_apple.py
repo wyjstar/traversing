@@ -44,7 +44,7 @@ def apple_consume_verify_11002(data, player):
             logger.debug('apple consume goodid not in rechargeconfig:%s',
                          result.get('goodscode'))
         else:
-            player.recharge.recharge_gain(recharge_item, response) #发送奖励邮件
+            player.recharge.recharge_gain(recharge_item, response, 2) #发送奖励邮件
             response.res.message = RECHARGE_SUCCESS_CODE
             response.res.result = True
 

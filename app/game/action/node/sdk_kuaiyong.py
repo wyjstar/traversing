@@ -35,7 +35,7 @@ def kuaiyong_recharge_remote(product_id, fee, is_online, player):
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
-    player.recharge.recharge_gain(recharge_item, response)  # 发送奖励邮件
+    player.recharge.recharge_gain(recharge_item, response, 4)  # 发送奖励邮件
 
     remote_gate.push_object_remote(12001, response.SerializeToString(),
                                    [player.dynamic_id])
@@ -58,7 +58,7 @@ def q360_recharge_remote(product_id, is_online, player):
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
-    player.recharge.recharge_gain(recharge_item, response)  # 发送奖励邮件
+    player.recharge.recharge_gain(recharge_item, response, 1)  # 发送奖励邮件
 
     remote_gate.push_object_remote(12002, response.SerializeToString(),
                                    [player.dynamic_id])

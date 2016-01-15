@@ -39,7 +39,7 @@ def xiaomi_recharge_remote(subject, fee, cpOrderId, is_online, player):
         #return 1525
     response = sdk_pb2.XiaomiRechargeResponse()
     response.res.result = True
-    player.recharge.recharge_gain(recharge_item, response)  # 发送奖励邮件
+    player.recharge.recharge_gain(recharge_item, response, 6)  # 发送奖励邮件
 
     remote_gate.push_object_remote(13001,
                                    response.SerializeToString(),

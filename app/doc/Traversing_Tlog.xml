@@ -322,6 +322,7 @@
 
         <entry name="Isfirst" type="int" desc="是不是首充" />
         <entry name="RechargeId" type="int" desc="充值ID" />
+        <entry name="Channel" type="int" desc="充值渠道1:360 2:apple 3:google 4:kuaiyong 5:tencent 6:xiaomi" />
     </struct>
 
     <!--新手引导-->

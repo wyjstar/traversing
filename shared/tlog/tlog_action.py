@@ -322,7 +322,7 @@ def hero_upgrade(player_data, hero_id, change_level, level, type,
                         ExpItemNo=exp_item_no)
 
 
-def recharge(player_data, isfirst, recharege_id):
+def recharge(player_data, isfirst, recharege_id, channel):
 
     log4tx.recharge(GameSvrId=game_server_id,
                     dtEventTime=xtime.strdatetime(),
@@ -330,7 +330,8 @@ def recharge(player_data, isfirst, recharege_id):
                     OpenID=player_data.base_info.id,
                     PlatID=plat_id,
                     Isfirst=isfirst,
-                    RechargeId=recharege_id)
+                    RechargeId=recharege_id,
+                    Channel=channel)
 
 
 def round_flow(player_data, battle_id, battle_type, is_quick, result):
