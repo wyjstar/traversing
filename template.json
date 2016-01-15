@@ -217,9 +217,9 @@
         "appid": 150651
     },
     "xmsdk":{
-        "AppId" : 2882303761517427099,
-        "AppKey" : "5671742714099",
-        "AppSecret" : "1aF09NRZY/biZFgAdoRUZA==",
+        "AppId" : 2882303761517429891,
+        "AppKey" : "5861742956891",
+        "AppSecret" : "+EGenBSJ2iDUPaAIGfBX4g==",
         "VerifySession_URL" : "http://mis.migc.xiaomi.com/api/biz/service/verifySession.do"
     },
     "360sdk":{
