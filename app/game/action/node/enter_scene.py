@@ -134,7 +134,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
 
     responsedata.is_open_next_day_activity = player.base_info.is_open_next_day_activity
     responsedata.first_recharge_activity = player.base_info.first_recharge_activity
-    responsedata.one_dollar_flowid = player.base_info.one_dollar_flowid
+    responsedata.one_dollar_flowid = str(player.base_info.one_dollar_flowid)
 
     responsedata.q360_recharge_url = SDK360_RECHARGE_URL
     logger.debug("character info:----------------------id: %s" %
