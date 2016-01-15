@@ -18,7 +18,7 @@ def server_baidu_login():
     token = request.args.get('access_token')
     result = __login(token)
     logger.debug("baidu login in token:%s result:%s" % (token, result))
-    if 'error' in result or result is None:
+    if result is None or 'error' in result:
         return json.dumps(dict(result=False))
 
     openid = result.get('UID')
