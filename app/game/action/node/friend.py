@@ -528,6 +528,7 @@ def become_friends_remote(target_id, is_online, player):
     result = player.friends.add_friend(target_id, False)
     # assert(result)
     player.friends.save_data()
+    hook_task(player, CONDITIONId.ADD_FRIEND, 1)
     return True
 
 
