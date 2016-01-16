@@ -18,7 +18,7 @@ awake_config={
   ["105"] = {
   [1] = 12,  [2] = 12,  [3] = 90001,}
 ,}
-,  ["addition"] = 0.2,  ["awakeProbability"] = {
+,  ["addition"] = 0.1,  ["awakeProbability"] = {
   [1] = 0.25,  [2] = 0.25,}
 ,  ["id"] = 10005,  ["level"] = 5,  ["silver"] = {
   ["107"] = {
@@ -44,7 +44,7 @@ awake_config={
   ["105"] = {
   [1] = 16,  [2] = 16,  [3] = 90001,}
 ,}
-,  ["addition"] = 0.28,  ["awakeProbability"] = {
+,  ["addition"] = 0.14,  ["awakeProbability"] = {
   [1] = 0.5,  [2] = 0.5,}
 ,  ["id"] = 10007,  ["level"] = 7,  ["silver"] = {
   ["107"] = {
@@ -70,7 +70,7 @@ awake_config={
   ["105"] = {
   [1] = 20,  [2] = 20,  [3] = 90001,}
 ,}
-,  ["addition"] = 0.36,  ["awakeProbability"] = {
+,  ["addition"] = 0.18,  ["awakeProbability"] = {
   [1] = 0.8,  [2] = 0.8,}
 ,  ["id"] = 10009,  ["level"] = 9,  ["silver"] = {
   ["107"] = {
@@ -122,7 +122,7 @@ awake_config={
   ["105"] = {
   [1] = 6,  [2] = 6,  [3] = 90001,}
 ,}
-,  ["addition"] = 0.08,  ["awakeProbability"] = {
+,  ["addition"] = 0.04,  ["awakeProbability"] = {
   [1] = 0.07,  [2] = 0.07,}
 ,  ["id"] = 10002,  ["level"] = 2,  ["silver"] = {
   ["107"] = {
@@ -148,7 +148,7 @@ awake_config={
   ["105"] = {
   [1] = 10,  [2] = 10,  [3] = 90001,}
 ,}
-,  ["addition"] = 0.16,  ["awakeProbability"] = {
+,  ["addition"] = 0.08,  ["awakeProbability"] = {
   [1] = 0.18,  [2] = 0.18,}
 ,  ["id"] = 10004,  ["level"] = 4,  ["silver"] = {
   ["107"] = {
@@ -174,7 +174,7 @@ awake_config={
   ["105"] = {
   [1] = 14,  [2] = 14,  [3] = 90001,}
 ,}
-,  ["addition"] = 0.24,  ["awakeProbability"] = {
+,  ["addition"] = 0.12,  ["awakeProbability"] = {
   [1] = 0.35,  [2] = 0.35,}
 ,  ["id"] = 10006,  ["level"] = 6,  ["silver"] = {
   ["107"] = {
@@ -200,7 +200,7 @@ awake_config={
   ["105"] = {
   [1] = 18,  [2] = 18,  [3] = 90001,}
 ,}
-,  ["addition"] = 0.32,  ["awakeProbability"] = {
+,  ["addition"] = 0.16,  ["awakeProbability"] = {
   [1] = 0.65,  [2] = 0.65,}
 ,  ["id"] = 10008,  ["level"] = 8,  ["silver"] = {
   ["107"] = {
@@ -212,7 +212,7 @@ awake_config={
 }
 ,  ["singleConsumption"] = {
 }
-,  ["addition"] = 0.4,  ["awakeProbability"] = {
+,  ["addition"] = 0.2,  ["awakeProbability"] = {
   [1] = 1,  [2] = 1,}
 ,  ["id"] = 10010,  ["level"] = 10,  ["silver"] = {
 }
@@ -236,7 +236,7 @@ awake_config={
   ["105"] = {
   [1] = 4,  [2] = 4,  [3] = 90001,}
 ,}
-,  ["addition"] = 0.04,  ["awakeProbability"] = {
+,  ["addition"] = 0.02,  ["awakeProbability"] = {
   [1] = 0.03,  [2] = 0.03,}
 ,  ["id"] = 10001,  ["level"] = 1,  ["silver"] = {
   ["107"] = {
@@ -262,7 +262,7 @@ awake_config={
   ["105"] = {
   [1] = 8,  [2] = 8,  [3] = 90001,}
 ,}
-,  ["addition"] = 0.12,  ["awakeProbability"] = {
+,  ["addition"] = 0.06,  ["awakeProbability"] = {
   [1] = 0.12,  [2] = 0.12,}
 ,  ["id"] = 10003,  ["level"] = 3,  ["silver"] = {
   ["107"] = {

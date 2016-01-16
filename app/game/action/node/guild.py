@@ -1453,3 +1453,17 @@ def get_guild_dynamics_876(data, player):
     response.res.result = True
     print response, '====================22'
     return response.SerializeToString()
+
+@remoteserviceHandle('gate')
+def get_guild_contribution_880(data, player):
+    """
+    获取军团建设值
+    """
+    response = GetGuildContributionResponse()
+    res = remote_gate["world"].get_guild_info_remote(player.guild.g_id, "contribution", 0)
+    response.contribution = res.get("contribution", 0)
+    res = remote_gate["world"].get_guild_info_remote(player.guild.g_id, "all_contribution", 0)
+    response.all_contribution = res.get("all_contribution", 0)
+
+    return response.SerializeToString()
+

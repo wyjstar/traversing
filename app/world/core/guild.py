@@ -423,7 +423,7 @@ class Guild(object):
         if len(self._escort_tasks_ids) > 1000:
             task_id = self._escort_tasks_ids.remove(self._escort_tasks_ids[0])
             del self._escort_task_ids[task_id]
-        task.update_reward()
+        task.update_task_state()
         task.save_data()
 
     @property

@@ -1,6 +1,6 @@
 stage_config={
   [101404] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -22,7 +22,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 12,  ["stage_break_id"] = 11,}
 ,  [104601] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -44,7 +44,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 28,  ["stage_break_id"] = 14,}
 ,  [103706] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -66,7 +66,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [100701] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -88,7 +88,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 8,  ["stage_break_id"] = 13,}
 ,  [103003] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -112,7 +112,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
 ,  [102108] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -150,7 +150,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [102300] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2029,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -174,7 +174,7 @@ stage_config={
   [1] = 3065,  [2] = 3066,  [3] = 3067,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101405] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -198,7 +198,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 12,  ["stage_break_id"] = 11,}
 ,  [104602] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -220,7 +220,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 28,  ["stage_break_id"] = 14,}
 ,  [103707] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -244,7 +244,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [100702] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -266,7 +266,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 8,  ["stage_break_id"] = 13,}
 ,  [103004] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -288,7 +288,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
 ,  [102301] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -310,7 +310,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 11,}
 ,  [101406] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -332,7 +332,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 12,  ["stage_break_id"] = 11,}
 ,  [104603] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -356,7 +356,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 28,  ["stage_break_id"] = 14,}
 ,  [103708] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -394,7 +394,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [100703] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -418,7 +418,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 13,}
 ,  [103900] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2045,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -442,7 +442,7 @@ stage_config={
   [1] = 3113,  [2] = 3114,  [3] = 3115,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103005] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -466,7 +466,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
 ,  [102302] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -488,7 +488,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 11,}
 ,  [101407] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -512,7 +512,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 12,  ["stage_break_id"] = 11,}
 ,  [104604] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -534,7 +534,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 28,  ["stage_break_id"] = 14,}
 ,  [100704] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -556,7 +556,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 8,  ["stage_break_id"] = 13,}
 ,  [500001] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -578,7 +578,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103006] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -600,7 +600,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
 ,  [102303] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -624,7 +624,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 11,}
 ,  [101408] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -662,7 +662,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [104605] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -686,7 +686,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 14,}
 ,  [101600] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2022,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -710,7 +710,7 @@ stage_config={
   [1] = 3044,  [2] = 3045,  [3] = 3046,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100705] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -734,7 +734,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 8,  ["stage_break_id"] = 13,}
 ,  [103902] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -756,7 +756,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 24,  ["stage_break_id"] = 12,}
 ,  [103007] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -780,7 +780,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
 ,  [102304] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -802,7 +802,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 11,}
 ,  [104606] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -824,7 +824,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 28,  ["stage_break_id"] = 14,}
 ,  [101601] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -846,7 +846,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 12,  ["stage_break_id"] = 13,}
 ,  [100706] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -868,7 +868,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 8,  ["stage_break_id"] = 13,}
 ,  [103903] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -892,7 +892,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 12,}
 ,  [103008] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -930,7 +930,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [103200] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2038,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -954,7 +954,7 @@ stage_config={
   [1] = 3092,  [2] = 3093,  [3] = 3094,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102305] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -978,7 +978,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 11,}
 ,  [104607] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -1002,7 +1002,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 28,  ["stage_break_id"] = 14,}
 ,  [101602] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -1024,7 +1024,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 12,  ["stage_break_id"] = 13,}
 ,  [100707] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -1048,7 +1048,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 8,  ["stage_break_id"] = 13,}
 ,  [910001] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1070,7 +1070,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103904] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -1092,7 +1092,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 24,  ["stage_break_id"] = 12,}
 ,  [910002] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1114,7 +1114,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [910003] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1136,7 +1136,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103201] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -1158,7 +1158,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 20,  ["stage_break_id"] = 11,}
 ,  [102306] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -1180,7 +1180,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 11,}
 ,  [910006] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1202,7 +1202,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [910007] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1224,7 +1224,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101603] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -1248,7 +1248,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 13,}
 ,  [910008] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1270,7 +1270,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100708] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -1308,7 +1308,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [103905] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -1332,7 +1332,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 24,  ["stage_break_id"] = 12,}
 ,  [100900] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2015,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -1356,7 +1356,7 @@ stage_config={
   [1] = 3023,  [2] = 3024,  [3] = 3025,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103202] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -1378,7 +1378,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 20,  ["stage_break_id"] = 11,}
 ,  [102307] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -1402,7 +1402,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 11,}
 ,  [101604] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -1424,7 +1424,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 12,  ["stage_break_id"] = 13,}
 ,  [103906] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -1446,7 +1446,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 24,  ["stage_break_id"] = 12,}
 ,  [100901] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -1468,7 +1468,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 8,  ["stage_break_id"] = 15,}
 ,  [103203] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -1492,7 +1492,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 20,  ["stage_break_id"] = 11,}
 ,  [102308] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -1530,7 +1530,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [102500] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2031,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -1554,7 +1554,7 @@ stage_config={
   [1] = 3071,  [2] = 3072,  [3] = 3073,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101605] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -1578,7 +1578,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 12,  ["stage_break_id"] = 13,}
 ,  [103907] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -1602,7 +1602,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 24,  ["stage_break_id"] = 12,}
 ,  [100902] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -1624,7 +1624,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 8,  ["stage_break_id"] = 15,}
 ,  [103204] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -1646,7 +1646,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 20,  ["stage_break_id"] = 11,}
 ,  [102501] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -1668,7 +1668,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [101606] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -1690,7 +1690,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 12,  ["stage_break_id"] = 13,}
 ,  [103908] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -1728,7 +1728,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [100903] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -1752,7 +1752,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 15,}
 ,  [104100] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2047,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -1776,7 +1776,7 @@ stage_config={
   [1] = 3119,  [2] = 3120,  [3] = 3121,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103205] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -1800,7 +1800,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 20,  ["stage_break_id"] = 11,}
 ,  [100200] = {
-  ["sectionCount"] = 7,  ["dragonGift"] = {
+  ["sectionCount"] = 7,  ["chapterBg"] = 2008,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -1824,7 +1824,7 @@ stage_config={
   [1] = 3002,  [2] = 3003,  [3] = 3004,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102502] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -1846,7 +1846,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [101607] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -1870,7 +1870,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 12,  ["stage_break_id"] = 13,}
 ,  [100904] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -1892,7 +1892,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 10,  ["stage_break_id"] = 15,}
 ,  [104101] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -1914,7 +1914,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 24,  ["stage_break_id"] = 11,}
 ,  [103206] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -1936,7 +1936,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 20,  ["stage_break_id"] = 11,}
 ,  [100201] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -1958,7 +1958,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [102503] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -1982,7 +1982,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 13,}
 ,  [101608] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -2020,7 +2020,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [101800] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2024,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -2044,7 +2044,7 @@ stage_config={
   [1] = 3050,  [2] = 3051,  [3] = 3052,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100905] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -2068,7 +2068,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 10,  ["stage_break_id"] = 15,}
 ,  [104102] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -2090,7 +2090,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 24,  ["stage_break_id"] = 11,}
 ,  [103207] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -2114,7 +2114,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 20,  ["stage_break_id"] = 11,}
 ,  [100202] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -2136,7 +2136,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [102504] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -2158,7 +2158,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 13,}
 ,  [101801] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -2180,7 +2180,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 15,}
 ,  [100906] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -2202,7 +2202,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 10,  ["stage_break_id"] = 15,}
 ,  [104103] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -2226,7 +2226,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
 ,  [103208] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -2264,7 +2264,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [100203] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -2288,7 +2288,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103400] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2040,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -2312,7 +2312,7 @@ stage_config={
   [1] = 3098,  [2] = 3099,  [3] = 3100,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102505] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -2336,7 +2336,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 13,}
 ,  [101802] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -2358,7 +2358,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 15,}
 ,  [100907] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -2382,7 +2382,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 10,  ["stage_break_id"] = 15,}
 ,  [104104] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -2404,7 +2404,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
 ,  [100204] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -2426,7 +2426,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103401] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -2448,7 +2448,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
 ,  [102506] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -2470,7 +2470,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 13,}
 ,  [101803] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -2494,7 +2494,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 15,}
 ,  [100908] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -2532,7 +2532,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [104105] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -2556,7 +2556,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
 ,  [101100] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2017,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -2580,7 +2580,7 @@ stage_config={
   [1] = 3029,  [2] = 3030,  [3] = 3031,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100205] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -2604,7 +2604,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103402] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -2626,7 +2626,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
 ,  [102507] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -2650,7 +2650,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 13,}
 ,  [101804] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -2672,7 +2672,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 15,}
 ,  [104106] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -2694,7 +2694,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
 ,  [101101] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -2716,7 +2716,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 10,  ["stage_break_id"] = 14,}
 ,  [100206] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -2738,7 +2738,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103403] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -2762,7 +2762,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
 ,  [102508] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -2800,7 +2800,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [102700] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2033,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -2824,7 +2824,7 @@ stage_config={
   [1] = 3077,  [2] = 3078,  [3] = 3079,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101805] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -2848,7 +2848,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 15,}
 ,  [104107] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -2872,7 +2872,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
 ,  [101102] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -2894,7 +2894,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 10,  ["stage_break_id"] = 14,}
 ,  [100207] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -2918,7 +2918,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103404] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -2940,7 +2940,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
 ,  [102701] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -2962,7 +2962,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
 ,  [101806] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -2984,7 +2984,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 15,}
 ,  [104108] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -3022,7 +3022,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [101103] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -3046,7 +3046,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 10,  ["stage_break_id"] = 14,}
 ,  [104300] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2049,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -3070,7 +3070,7 @@ stage_config={
   [1] = 3125,  [2] = 3126,  [3] = 3127,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103405] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -3094,7 +3094,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
 ,  [100400] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2010,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -3118,7 +3118,7 @@ stage_config={
   [1] = 3008,  [2] = 3009,  [3] = 3010,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102702] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -3140,7 +3140,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
 ,  [101807] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -3164,7 +3164,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 15,}
 ,  [101104] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -3186,7 +3186,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 10,  ["stage_break_id"] = 14,}
 ,  [104301] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -3208,7 +3208,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 13,}
 ,  [103406] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -3230,7 +3230,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
 ,  [100401] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -3252,7 +3252,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [102703] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -3276,7 +3276,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
 ,  [101808] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -3314,7 +3314,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [102000] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2026,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -3338,7 +3338,7 @@ stage_config={
   [1] = 3056,  [2] = 3057,  [3] = 3058,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101105] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -3362,7 +3362,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 10,  ["stage_break_id"] = 14,}
 ,  [104302] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -3384,7 +3384,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 13,}
 ,  [103407] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -3408,7 +3408,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
 ,  [100402] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -3430,7 +3430,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [102704] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -3452,7 +3452,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
 ,  [102001] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -3474,7 +3474,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 14,}
 ,  [101106] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -3496,7 +3496,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 10,  ["stage_break_id"] = 14,}
 ,  [104303] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -3520,7 +3520,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 13,}
 ,  [103408] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -3558,7 +3558,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100403] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -3582,7 +3582,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103600] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2042,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -3606,7 +3606,7 @@ stage_config={
   [1] = 3104,  [2] = 3105,  [3] = 3106,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102705] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -3630,7 +3630,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
 ,  [102002] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -3652,7 +3652,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 14,}
 ,  [101107] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -3676,7 +3676,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 10,  ["stage_break_id"] = 14,}
 ,  [104304] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -3698,7 +3698,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 13,}
 ,  [100404] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -3720,7 +3720,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103601] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -3742,7 +3742,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 22,  ["stage_break_id"] = 15,}
 ,  [102706] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -3764,7 +3764,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
 ,  [102003] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -3788,7 +3788,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 14,}
 ,  [101108] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -3826,7 +3826,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [104305] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -3850,7 +3850,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 13,}
 ,  [101300] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2019,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -3874,7 +3874,7 @@ stage_config={
   [1] = 3035,  [2] = 3036,  [3] = 3037,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100405] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -3898,7 +3898,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103602] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -3920,7 +3920,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 22,  ["stage_break_id"] = 15,}
 ,  [102707] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -3944,7 +3944,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
 ,  [102004] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -3966,7 +3966,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 14,}
 ,  [104306] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -3988,7 +3988,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 13,}
 ,  [101301] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -4010,7 +4010,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [100406] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -4032,7 +4032,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103603] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -4056,7 +4056,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 22,  ["stage_break_id"] = 15,}
 ,  [102708] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -4094,7 +4094,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [930101] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4116,7 +4116,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930102] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4138,7 +4138,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930103] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4160,7 +4160,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930104] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4182,7 +4182,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930105] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4204,7 +4204,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101302] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -4226,7 +4226,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [930106] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4248,7 +4248,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100407] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -4272,7 +4272,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [930107] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4294,7 +4294,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103604] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -4316,7 +4316,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 22,  ["stage_break_id"] = 15,}
 ,  [930108] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4338,7 +4338,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930109] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4360,7 +4360,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930110] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4382,7 +4382,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930111] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4404,7 +4404,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930112] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4426,7 +4426,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930113] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4448,7 +4448,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101303] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -4472,7 +4472,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [930114] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4494,7 +4494,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104500] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2051,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -4518,7 +4518,7 @@ stage_config={
   [1] = 3131,  [2] = 3132,  [3] = 3133,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930115] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4540,7 +4540,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103605] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -4564,7 +4564,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 22,  ["stage_break_id"] = 15,}
 ,  [930116] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4586,7 +4586,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930117] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4608,7 +4608,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930118] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4630,7 +4630,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930119] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4652,7 +4652,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930120] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4674,7 +4674,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930121] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4696,7 +4696,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101304] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -4718,7 +4718,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [930122] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4740,7 +4740,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104501] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -4762,7 +4762,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [930123] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4784,7 +4784,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103606] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -4806,7 +4806,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 22,  ["stage_break_id"] = 15,}
 ,  [930124] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4828,7 +4828,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930125] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4850,7 +4850,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930126] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4872,7 +4872,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930127] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4894,7 +4894,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930128] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4916,7 +4916,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102200] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2028,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -4940,7 +4940,7 @@ stage_config={
   [1] = 3062,  [2] = 3063,  [3] = 3064,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930129] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -4962,7 +4962,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101305] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -4986,7 +4986,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [930130] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5008,7 +5008,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104502] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -5030,7 +5030,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [930131] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5052,7 +5052,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103607] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -5076,7 +5076,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 22,  ["stage_break_id"] = 15,}
 ,  [930132] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5098,7 +5098,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930133] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5120,7 +5120,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930134] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5142,7 +5142,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930135] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5164,7 +5164,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930136] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5186,7 +5186,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102201] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -5208,7 +5208,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [930137] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5230,7 +5230,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101306] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -5252,7 +5252,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [930138] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5274,7 +5274,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104503] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -5298,7 +5298,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 28,  ["stage_break_id"] = 15,}
 ,  [930139] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5320,7 +5320,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103608] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -5358,7 +5358,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [930140] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5380,7 +5380,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930141] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5402,7 +5402,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930142] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5424,7 +5424,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930143] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5446,7 +5446,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930144] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5468,7 +5468,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102202] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -5490,7 +5490,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [930145] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5512,7 +5512,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101307] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -5536,7 +5536,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [930146] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -5558,7 +5558,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104504] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -5580,7 +5580,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 28,  ["stage_break_id"] = 15,}
 ,  [100604] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -5602,7 +5602,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [103801] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -5624,7 +5624,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
 ,  [102906] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -5646,7 +5646,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 20,  ["stage_break_id"] = 14,}
 ,  [102203] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -5670,7 +5670,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [101308] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -5708,7 +5708,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [104505] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -5732,7 +5732,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 15,}
 ,  [101500] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2021,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -5756,7 +5756,7 @@ stage_config={
   [1] = 3041,  [2] = 3042,  [3] = 3043,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100605] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -5780,7 +5780,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [103802] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -5802,7 +5802,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
 ,  [102907] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -5826,7 +5826,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 20,  ["stage_break_id"] = 14,}
 ,  [102204] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -5848,7 +5848,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [104506] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -5870,7 +5870,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 28,  ["stage_break_id"] = 15,}
 ,  [101501] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -5892,7 +5892,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [100606] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -5914,7 +5914,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [103803] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -5938,7 +5938,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
 ,  [102908] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -5976,7 +5976,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [103100] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2037,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -6000,7 +6000,7 @@ stage_config={
   [1] = 3089,  [2] = 3090,  [3] = 3091,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102205] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -6024,7 +6024,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [104507] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -6048,7 +6048,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 28,  ["stage_break_id"] = 15,}
 ,  [101502] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -6070,7 +6070,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [100607] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -6094,7 +6094,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [103804] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -6116,7 +6116,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
 ,  [103101] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -6138,7 +6138,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [102206] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -6160,7 +6160,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [104508] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -6198,7 +6198,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
 ,  [101503] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -6222,7 +6222,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [900001] = {
-  ["sectionCount"] = 43,  ["dragonGift"] = {
+  ["sectionCount"] = 43,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6244,7 +6244,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100608] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -6282,7 +6282,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [900002] = {
-  ["sectionCount"] = 42,  ["dragonGift"] = {
+  ["sectionCount"] = 42,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6304,7 +6304,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103805] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -6328,7 +6328,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
 ,  [100800] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2014,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -6352,7 +6352,7 @@ stage_config={
   [1] = 3020,  [2] = 3021,  [3] = 3022,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [900004] = {
-  ["sectionCount"] = 40,  ["dragonGift"] = {
+  ["sectionCount"] = 40,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6374,7 +6374,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103102] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -6396,7 +6396,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [102207] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -6420,7 +6420,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [101504] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -6442,7 +6442,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [103806] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -6464,7 +6464,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
 ,  [100801] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -6486,7 +6486,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [103103] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -6510,7 +6510,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [102208] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -6548,7 +6548,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [102400] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2030,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -6572,7 +6572,7 @@ stage_config={
   [1] = 3068,  [2] = 3069,  [3] = 3070,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101505] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -6596,7 +6596,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [103807] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -6620,7 +6620,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
 ,  [100802] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -6642,7 +6642,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [103104] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -6664,7 +6664,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [930201] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6686,7 +6686,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930202] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6708,7 +6708,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930203] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6730,7 +6730,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930204] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6752,7 +6752,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103808] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -6790,7 +6790,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [100803] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -6814,7 +6814,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [930206] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6836,7 +6836,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104000] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2046,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -6860,7 +6860,7 @@ stage_config={
   [1] = 3116,  [2] = 3117,  [3] = 3118,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930207] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6882,7 +6882,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103105] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -6906,7 +6906,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [930208] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6928,7 +6928,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930209] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -6950,7 +6950,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102402] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -6972,7 +6972,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [101507] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -6996,7 +6996,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [930212] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7018,7 +7018,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930213] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7040,7 +7040,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100804] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -7062,7 +7062,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [930214] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7084,7 +7084,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104001] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -7106,7 +7106,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [930215] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7128,7 +7128,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103106] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -7150,7 +7150,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [930216] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7172,7 +7172,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930217] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7194,7 +7194,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102403] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -7218,7 +7218,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [101508] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -7256,7 +7256,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [930220] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7278,7 +7278,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101700] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2023,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -7302,7 +7302,7 @@ stage_config={
   [1] = 3047,  [2] = 3048,  [3] = 3049,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930221] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7324,7 +7324,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100805] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -7348,7 +7348,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [930222] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7370,7 +7370,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104002] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -7392,7 +7392,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [930223] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7414,7 +7414,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103107] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -7438,7 +7438,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [930224] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7460,7 +7460,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930225] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7482,7 +7482,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102404] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -7504,7 +7504,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [930227] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7526,7 +7526,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930228] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7548,7 +7548,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101701] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -7570,7 +7570,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [930229] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7592,7 +7592,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100806] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -7614,7 +7614,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [930230] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7636,7 +7636,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104003] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -7660,7 +7660,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [930231] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7682,7 +7682,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103108] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -7720,7 +7720,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [930232] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7742,7 +7742,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103300] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2039,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -7766,7 +7766,7 @@ stage_config={
   [1] = 3095,  [2] = 3096,  [3] = 3097,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102405] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -7790,7 +7790,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [930235] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7812,7 +7812,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930236] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7834,7 +7834,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101702] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -7856,7 +7856,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [930237] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7878,7 +7878,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100807] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -7902,7 +7902,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [930238] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7924,7 +7924,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104004] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -7946,7 +7946,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [930239] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7968,7 +7968,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930240] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -7990,7 +7990,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103301] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -8012,7 +8012,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [102406] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -8034,7 +8034,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [930243] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -8056,7 +8056,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930244] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -8078,7 +8078,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101703] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -8102,7 +8102,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [930245] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -8124,7 +8124,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100808] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -8162,7 +8162,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [930246] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -8184,7 +8184,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104005] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -8208,7 +8208,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [101000] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2016,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -8232,7 +8232,7 @@ stage_config={
   [1] = 3026,  [2] = 3027,  [3] = 3028,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103302] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -8254,7 +8254,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [102407] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -8278,7 +8278,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [101704] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -8300,7 +8300,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104006] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -8322,7 +8322,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [101001] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -8344,7 +8344,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [103303] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -8368,7 +8368,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [102408] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -8406,7 +8406,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [102600] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2032,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -8430,7 +8430,7 @@ stage_config={
   [1] = 3074,  [2] = 3075,  [3] = 3076,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101705] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -8454,7 +8454,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104007] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -8478,7 +8478,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [101002] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -8500,7 +8500,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [103304] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -8522,7 +8522,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [102601] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -8544,7 +8544,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101706] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -8566,7 +8566,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104008] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -8604,7 +8604,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [101003] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -8628,7 +8628,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [104200] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2048,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -8652,7 +8652,7 @@ stage_config={
   [1] = 3122,  [2] = 3123,  [3] = 3124,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103305] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -8676,7 +8676,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100300] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2009,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -8700,7 +8700,7 @@ stage_config={
   [1] = 3005,  [2] = 3006,  [3] = 3007,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102602] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -8722,7 +8722,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101707] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -8746,7 +8746,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [101004] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -8768,7 +8768,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [104201] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -8790,7 +8790,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [103306] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -8812,7 +8812,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100301] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -8834,7 +8834,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 6,  ["stage_break_id"] = 12,}
 ,  [102603] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -8858,7 +8858,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101708] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -8896,7 +8896,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [101900] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2025,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -8920,7 +8920,7 @@ stage_config={
   [1] = 3053,  [2] = 3054,  [3] = 3055,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101005] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -8944,7 +8944,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [104202] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -8966,7 +8966,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [103307] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -8990,7 +8990,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100302] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -9012,7 +9012,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 6,  ["stage_break_id"] = 12,}
 ,  [102604] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -9034,7 +9034,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101901] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -9056,7 +9056,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [101006] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -9078,7 +9078,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [104203] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -9102,7 +9102,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [103308] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -9140,7 +9140,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100303] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -9164,7 +9164,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 6,  ["stage_break_id"] = 12,}
 ,  [103500] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2041,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -9188,7 +9188,7 @@ stage_config={
   [1] = 3101,  [2] = 3102,  [3] = 3103,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102605] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -9212,7 +9212,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [930301] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9234,7 +9234,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101902] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -9256,7 +9256,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [101007] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -9280,7 +9280,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [104204] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -9302,7 +9302,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [930305] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9324,7 +9324,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100304] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -9346,7 +9346,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 6,  ["stage_break_id"] = 12,}
 ,  [930306] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9368,7 +9368,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103501] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -9390,7 +9390,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [930307] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9412,7 +9412,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102606] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -9434,7 +9434,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [930308] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9456,7 +9456,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930309] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9478,7 +9478,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101903] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -9502,7 +9502,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [101008] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -9540,7 +9540,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [104205] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -9564,7 +9564,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [101200] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2018,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -9588,7 +9588,7 @@ stage_config={
   [1] = 3032,  [2] = 3033,  [3] = 3034,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930313] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9610,7 +9610,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100305] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -9634,7 +9634,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 6,  ["stage_break_id"] = 12,}
 ,  [930314] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9656,7 +9656,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103502] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -9678,7 +9678,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [930315] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9700,7 +9700,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102607] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -9724,7 +9724,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [930316] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9746,7 +9746,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930317] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9768,7 +9768,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101904] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -9790,7 +9790,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [930319] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9812,7 +9812,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104206] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -9834,7 +9834,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [101201] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -9856,7 +9856,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 10,  ["stage_break_id"] = 12,}
 ,  [930321] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9878,7 +9878,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100306] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -9900,7 +9900,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 6,  ["stage_break_id"] = 12,}
 ,  [930322] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9922,7 +9922,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103503] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -9946,7 +9946,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [930323] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -9968,7 +9968,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102608] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -10006,7 +10006,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [930324] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10028,7 +10028,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102800] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2034,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -10052,7 +10052,7 @@ stage_config={
   [1] = 3080,  [2] = 3081,  [3] = 3082,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101905] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -10076,7 +10076,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [930327] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10098,7 +10098,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104207] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -10122,7 +10122,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [101202] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -10144,7 +10144,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 10,  ["stage_break_id"] = 12,}
 ,  [930329] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10166,7 +10166,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100307] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -10190,7 +10190,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 6,  ["stage_break_id"] = 12,}
 ,  [930330] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10212,7 +10212,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103504] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -10234,7 +10234,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [930331] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10256,7 +10256,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930332] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10278,7 +10278,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102801] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -10300,7 +10300,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101906] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -10322,7 +10322,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [930335] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10344,7 +10344,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104208] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -10382,7 +10382,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [101203] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -10406,7 +10406,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 10,  ["stage_break_id"] = 12,}
 ,  [930337] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10428,7 +10428,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100308] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -10466,7 +10466,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [930338] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10488,7 +10488,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103505] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -10512,7 +10512,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100500] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2011,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -10536,7 +10536,7 @@ stage_config={
   [1] = 3011,  [2] = 3012,  [3] = 3013,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930340] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10558,7 +10558,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102802] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -10580,7 +10580,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101907] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -10604,7 +10604,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [930343] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10626,7 +10626,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930344] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10648,7 +10648,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101204] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -10670,7 +10670,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 10,  ["stage_break_id"] = 12,}
 ,  [930345] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10692,7 +10692,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104401] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -10714,7 +10714,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [930346] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -10736,7 +10736,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103506] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -10758,7 +10758,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100501] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -10780,7 +10780,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 6,  ["stage_break_id"] = 11,}
 ,  [102803] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -10804,7 +10804,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101908] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -10842,7 +10842,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [102100] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2027,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -10866,7 +10866,7 @@ stage_config={
   [1] = 3059,  [2] = 3060,  [3] = 3061,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101205] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -10890,7 +10890,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 10,  ["stage_break_id"] = 12,}
 ,  [104402] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -10912,7 +10912,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [103507] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -10936,7 +10936,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100502] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -10958,7 +10958,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [102804] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -10980,7 +10980,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [102101] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -11002,7 +11002,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 12,}
 ,  [101206] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -11024,7 +11024,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 10,  ["stage_break_id"] = 12,}
 ,  [104403] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -11048,7 +11048,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [930342] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11070,7 +11070,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103508] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -11108,7 +11108,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100503] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -11132,7 +11132,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [930341] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11154,7 +11154,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103700] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2043,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -11178,7 +11178,7 @@ stage_config={
   [1] = 3107,  [2] = 3108,  [3] = 3109,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930339] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11200,7 +11200,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102805] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -11224,7 +11224,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [930336] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11246,7 +11246,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930334] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11268,7 +11268,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930333] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11290,7 +11290,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930328] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11312,7 +11312,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102102] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -11334,7 +11334,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 12,}
 ,  [930326] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11356,7 +11356,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101207] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -11380,7 +11380,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 10,  ["stage_break_id"] = 12,}
 ,  [930325] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11402,7 +11402,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104404] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -11424,7 +11424,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [930320] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11446,7 +11446,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930318] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11468,7 +11468,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100504] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -11490,7 +11490,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [930312] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11512,7 +11512,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103701] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -11534,7 +11534,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [930311] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11556,7 +11556,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102806] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -11578,7 +11578,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [930310] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11600,7 +11600,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930304] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11622,7 +11622,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930303] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11644,7 +11644,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930302] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11666,7 +11666,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102103] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -11690,7 +11690,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [104400] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2050,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -11714,7 +11714,7 @@ stage_config={
   [1] = 3128,  [2] = 3129,  [3] = 3130,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101208] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -11752,7 +11752,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [930241] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -11774,7 +11774,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104405] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -11798,7 +11798,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [101400] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2020,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -11822,7 +11822,7 @@ stage_config={
   [1] = 3038,  [2] = 3039,  [3] = 3040,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100408] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -11860,7 +11860,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [100505] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -11884,7 +11884,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [102005] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -11908,7 +11908,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 14,}
 ,  [103702] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -11930,7 +11930,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [100600] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2012,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -11954,7 +11954,7 @@ stage_config={
   [1] = 3014,  [2] = 3015,  [3] = 3016,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102807] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -11978,7 +11978,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [102900] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2035,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -12002,7 +12002,7 @@ stage_config={
   [1] = 3083,  [2] = 3084,  [3] = 3085,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930242] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -12024,7 +12024,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102006] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -12046,7 +12046,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 14,}
 ,  [100601] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -12068,7 +12068,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [102104] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -12090,7 +12090,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [102901] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -12112,7 +12112,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
 ,  [102007] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -12136,7 +12136,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 14,}
 ,  [104307] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -12160,7 +12160,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 13,}
 ,  [104406] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -12182,7 +12182,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [101401] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -12204,7 +12204,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 12,  ["stage_break_id"] = 11,}
 ,  [100602] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -12226,7 +12226,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [100506] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -12248,7 +12248,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [102902] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -12270,7 +12270,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
 ,  [103703] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -12294,7 +12294,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [930234] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -12316,7 +12316,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102808] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -12354,7 +12354,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [102008] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -12392,7 +12392,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [100508] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -12430,7 +12430,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [103000] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2036,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -12454,7 +12454,7 @@ stage_config={
   [1] = 3086,  [2] = 3087,  [3] = 3088,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100603] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -12478,7 +12478,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [102105] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -12502,7 +12502,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [930233] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -12524,7 +12524,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104308] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -12562,7 +12562,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102903] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -12586,7 +12586,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 20,  ["stage_break_id"] = 14,}
 ,  [104407] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -12610,7 +12610,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [101402] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -12632,7 +12632,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 12,  ["stage_break_id"] = 11,}
 ,  [900003] = {
-  ["sectionCount"] = 43,  ["dragonGift"] = {
+  ["sectionCount"] = 43,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -12654,7 +12654,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100507] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -12678,7 +12678,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [930211] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -12700,7 +12700,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103704] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -12722,7 +12722,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [102904] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 831,}
@@ -12744,7 +12744,7 @@ stage_config={
 }
 ,  ["section"] = 4,  ["HeroExp"] = 20,  ["stage_break_id"] = 14,}
 ,  [930218] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -12766,7 +12766,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102401] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -12788,7 +12788,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [930226] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -12810,7 +12810,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103001] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -12832,7 +12832,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
 ,  [102905] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -12856,7 +12856,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 20,  ["stage_break_id"] = 14,}
 ,  [102106] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -12878,7 +12878,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [103800] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2044,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -12902,7 +12902,7 @@ stage_config={
   [1] = 3110,  [2] = 3111,  [3] = 3112,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [910004] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -12924,7 +12924,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101506] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 97,  [2] = 1247,}
@@ -12946,7 +12946,7 @@ stage_config={
 }
 ,  ["section"] = 6,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [104408] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
@@ -12984,7 +12984,7 @@ stage_config={
 }
 ,  ["section"] = 8,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [101403] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
@@ -13008,7 +13008,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 11,}
 ,  [910005] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -13030,7 +13030,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104600] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2052,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -13054,7 +13054,7 @@ stage_config={
   [1] = 3134,  [2] = 3135,  [3] = 3136,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930219] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -13076,7 +13076,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103705] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
@@ -13100,7 +13100,7 @@ stage_config={
 }
 ,  ["section"] = 5,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [100700] = {
-  ["sectionCount"] = 8,  ["dragonGift"] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2013,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -13124,7 +13124,7 @@ stage_config={
   [1] = 3017,  [2] = 3018,  [3] = 3019,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930210] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -13146,7 +13146,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100100] = {
-  ["sectionCount"] = 3,  ["dragonGift"] = {
+  ["sectionCount"] = 3,  ["chapterBg"] = 2007,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -13168,7 +13168,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103901] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 349,  [2] = 177,}
@@ -13190,7 +13190,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 24,  ["stage_break_id"] = 12,}
 ,  [103002] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 124,  [2] = 389,}
@@ -13212,7 +13212,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
 ,  [100101] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 298,  [2] = 122,}
@@ -13234,7 +13234,7 @@ stage_config={
 }
 ,  ["section"] = 1,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [102107] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
@@ -13258,7 +13258,7 @@ stage_config={
 }
 ,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [930205] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -13280,7 +13280,7 @@ stage_config={
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100102] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 86,  [2] = 382,}
@@ -13302,7 +13302,7 @@ stage_config={
 }
 ,  ["section"] = 2,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [100103] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 298,  [2] = 606,}
@@ -13324,7 +13324,7 @@ stage_config={
 }
 ,  ["section"] = 3,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [104608] = {
-  ["sectionCount"] = 0,  ["dragonGift"] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
   [1] = 250,  [2] = 250,}
