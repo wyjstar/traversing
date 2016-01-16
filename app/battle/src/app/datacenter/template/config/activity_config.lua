@@ -1301,7 +1301,9 @@ activity_config={
 ,  ["parameterB"] = 0,  ["parameterE"] = {
   ["5"] = {
   [1] = 103,  [2] = 1010053,}
-,  ["2"] = 10708,}
+,  ["2"] = {
+  [1] = 10708,}
+,}
 ,  ["group"] = 0,  ["sort"] = 0,  ["perday"] = 0,  ["type"] = 67,  ["recharge"] = 0,  ["parameterD"] = {
 }
 ,  ["id"] = 69001,  ["page"] = 0,  ["isEmail"] = 0,  ["parameterT"] = "0",  ["nextActivity"] = 0,  ["actIcon"] = 0,  ["count"] = 0,  ["timeStart"] = "1",  ["everyday"] = 0,  ["repeat"] = -1,  ["timeEnd"] = "7",}

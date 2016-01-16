@@ -86,7 +86,7 @@ currency_config={
 ,  [10] = {
   ["toGet"] = 500000010,  ["buyPrice"] = {
 }
-,  ["quality"] = 0,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000010,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 10,  ["icon"] = 10,  ["des"] = 0,}
+,  ["quality"] = 0,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000010,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 10,  ["icon"] = 10,  ["des"] = 4600000010,}
 ,  [11] = {
   ["toGet"] = 500000011,  ["buyPrice"] = {
 }

@@ -216,7 +216,7 @@ hero_config={
 }
 ,  ["resPicture2"] = 1200662,  ["id"] = 20066,  ["consume6"] = {
 }
-,  ["playerIcon"] = 0,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 0,  ["job"] = 3,  ["deadAudio"] = 310066,  ["audio"] = 220066,  ["consume5"] = {
 }
 ,  ["growAtk"] = 134.901,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020066,}
 ,  [40007] = {
@@ -2420,7 +2420,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010020,}
 ,}
-,  ["playerIcon"] = 2100201,  ["job"] = 3,  ["deadAudio"] = 310020,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100201,  ["job"] = 3,  ["deadAudio"] = 310020,  ["audio"] = 210020,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -2588,7 +2588,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010023,}
 ,}
-,  ["playerIcon"] = 2100231,  ["job"] = 1,  ["deadAudio"] = 310023,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100231,  ["job"] = 1,  ["deadAudio"] = 310023,  ["audio"] = 210023,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -2964,7 +2964,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010030,}
 ,}
-,  ["playerIcon"] = 2100301,  ["job"] = 4,  ["deadAudio"] = 310030,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100301,  ["job"] = 4,  ["deadAudio"] = 310030,  ["audio"] = 210030,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -3028,7 +3028,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010031,}
 ,}
-,  ["playerIcon"] = 2100311,  ["job"] = 2,  ["deadAudio"] = 310031,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100311,  ["job"] = 2,  ["deadAudio"] = 310031,  ["audio"] = 210031,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -3248,7 +3248,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010035,}
 ,}
-,  ["playerIcon"] = 2100351,  ["job"] = 1,  ["deadAudio"] = 310035,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100351,  ["job"] = 1,  ["deadAudio"] = 310035,  ["audio"] = 210035,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -3312,7 +3312,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010036,}
 ,}
-,  ["playerIcon"] = 2100361,  ["job"] = 1,  ["deadAudio"] = 310036,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100361,  ["job"] = 1,  ["deadAudio"] = 310036,  ["audio"] = 210036,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -3532,7 +3532,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010040,}
 ,}
-,  ["playerIcon"] = 2100401,  ["job"] = 1,  ["deadAudio"] = 310040,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100401,  ["job"] = 1,  ["deadAudio"] = 310040,  ["audio"] = 210040,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -4776,7 +4776,7 @@ hero_config={
 }
 ,  ["resPicture2"] = 1200652,  ["id"] = 20065,  ["consume6"] = {
 }
-,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 310065,  ["audio"] = 220065,  ["consume5"] = {
 }
 ,  ["growAtk"] = 183.599,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020065,}
 ,  [10061] = {
@@ -4926,7 +4926,7 @@ hero_config={
 }
 ,  ["resPicture2"] = 1200612,  ["id"] = 20061,  ["consume6"] = {
 }
-,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 310061,  ["audio"] = 220061,  ["consume5"] = {
 }
 ,  ["growAtk"] = 187.395,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020061,}
 ,  [10064] = {
@@ -4984,7 +4984,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010064,}
 ,}
-,  ["playerIcon"] = 2100641,  ["job"] = 4,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100641,  ["job"] = 4,  ["deadAudio"] = 310064,  ["audio"] = 210064,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -5048,7 +5048,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010065,}
 ,}
-,  ["playerIcon"] = 2100651,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100651,  ["job"] = 2,  ["deadAudio"] = 310065,  ["audio"] = 210065,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -5112,7 +5112,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 310066,  ["audio"] = 210066,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {

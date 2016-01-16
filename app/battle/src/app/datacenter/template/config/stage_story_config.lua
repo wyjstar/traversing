@@ -62,13 +62,13 @@ stage_story_config={
 ,  [10060113] = {
   ["languageId"] = 2910060113,  ["monsterGroup"] = 1,  ["next"] = 10060114,  ["id"] = 10060113,  ["stageId"] = 0,  ["resId"] = 1100252,  ["title"] = 0,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500080,  ["resIdName"] = 3400110024,}
 ,  [20001] = {
-  ["languageId"] = 2900020001,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20001,  ["stageId"] = 0,  ["resId"] = 1100483,  ["title"] = 0,  ["position"] = 2,  ["trigger"] = 6,  ["type"] = 2,  ["sound"] = 500017,  ["resIdName"] = 3400110010,}
+  ["languageId"] = 2900020001,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20001,  ["stageId"] = 0,  ["resId"] = 1100483,  ["title"] = 0,  ["position"] = 2,  ["trigger"] = 6,  ["type"] = 2,  ["sound"] = 500017,  ["resIdName"] = 3400120001,}
 ,  [20003] = {
-  ["languageId"] = 2900020003,  ["monsterGroup"] = 1,  ["next"] = 20004,  ["id"] = 20003,  ["stageId"] = 0,  ["resId"] = 1100463,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500019,  ["resIdName"] = 3400110035,}
+  ["languageId"] = 2900020003,  ["monsterGroup"] = 1,  ["next"] = 20004,  ["id"] = 20003,  ["stageId"] = 0,  ["resId"] = 1100463,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500019,  ["resIdName"] = 3400120004,}
 ,  [10020513] = {
   ["languageId"] = 2910020513,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 10020513,  ["stageId"] = 0,  ["resId"] = 1100212,  ["title"] = 0,  ["position"] = 2,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500034,  ["resIdName"] = 3400110012,}
 ,  [20007] = {
-  ["languageId"] = 2900020007,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20007,  ["stageId"] = 0,  ["resId"] = 1100483,  ["title"] = 0,  ["position"] = 2,  ["trigger"] = 2,  ["type"] = 2,  ["sound"] = 500023,  ["resIdName"] = 3400110010,}
+  ["languageId"] = 2900020007,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20007,  ["stageId"] = 0,  ["resId"] = 1100483,  ["title"] = 0,  ["position"] = 2,  ["trigger"] = 2,  ["type"] = 2,  ["sound"] = 500023,  ["resIdName"] = 3400120001,}
 ,  [10050001] = {
   ["languageId"] = 2910050001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10050001,  ["stageId"] = 101100,  ["resId"] = 0,  ["title"] = 1400100005,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["sound"] = 500005,  ["resIdName"] = 0,}
 ,  [10140114] = {
@@ -188,7 +188,7 @@ stage_story_config={
 ,  [10020113] = {
   ["languageId"] = 2910020113,  ["monsterGroup"] = 1,  ["next"] = 10020114,  ["id"] = 10020113,  ["stageId"] = 0,  ["resId"] = 5,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500026,  ["resIdName"] = 3400110002,}
 ,  [20002] = {
-  ["languageId"] = 2900020002,  ["monsterGroup"] = 1,  ["next"] = 20003,  ["id"] = 20002,  ["stageId"] = 0,  ["resId"] = 1100443,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["sound"] = 500018,  ["resIdName"] = 3400110006,}
+  ["languageId"] = 2900020002,  ["monsterGroup"] = 1,  ["next"] = 20003,  ["id"] = 20002,  ["stageId"] = 0,  ["resId"] = 1100443,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 1,  ["type"] = 2,  ["sound"] = 500018,  ["resIdName"] = 3400120002,}
 ,  [10020001] = {
   ["languageId"] = 2910020001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10020001,  ["stageId"] = 100200,  ["resId"] = 0,  ["title"] = 1400100002,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["sound"] = 500002,  ["resIdName"] = 0,}
 ,  [10040314] = {
@@ -210,13 +210,13 @@ stage_story_config={
 ,  [10020111] = {
   ["languageId"] = 2910020111,  ["monsterGroup"] = 1,  ["next"] = 10020112,  ["id"] = 10020111,  ["stageId"] = 0,  ["resId"] = 1500112,  ["title"] = 0,  ["position"] = 2,  ["trigger"] = 7,  ["type"] = 2,  ["sound"] = 500024,  ["resIdName"] = 3400110007,}
 ,  [20004] = {
-  ["languageId"] = 2900020004,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20004,  ["stageId"] = 0,  ["resId"] = 1100453,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500020,  ["resIdName"] = 3400110036,}
+  ["languageId"] = 2900020004,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20004,  ["stageId"] = 0,  ["resId"] = 1100453,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500020,  ["resIdName"] = 3400120003,}
 ,  [20005] = {
-  ["languageId"] = 2900020005,  ["monsterGroup"] = 1,  ["next"] = 20006,  ["id"] = 20005,  ["stageId"] = 0,  ["resId"] = 1100443,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 5,  ["type"] = 2,  ["sound"] = 500021,  ["resIdName"] = 3400110006,}
+  ["languageId"] = 2900020005,  ["monsterGroup"] = 1,  ["next"] = 20006,  ["id"] = 20005,  ["stageId"] = 0,  ["resId"] = 1100443,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 5,  ["type"] = 2,  ["sound"] = 500021,  ["resIdName"] = 3400120002,}
 ,  [10020112] = {
   ["languageId"] = 2910020112,  ["monsterGroup"] = 1,  ["next"] = 10020113,  ["id"] = 10020112,  ["stageId"] = 0,  ["resId"] = 1100443,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500025,  ["resIdName"] = 3400110005,}
 ,  [20006] = {
-  ["languageId"] = 2900020006,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20006,  ["stageId"] = 0,  ["resId"] = 1100443,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500022,  ["resIdName"] = 3400110006,}
+  ["languageId"] = 2900020006,  ["monsterGroup"] = 1,  ["next"] = -1,  ["id"] = 20006,  ["stageId"] = 0,  ["resId"] = 1100443,  ["title"] = 0,  ["position"] = 1,  ["trigger"] = 0,  ["type"] = 2,  ["sound"] = 500022,  ["resIdName"] = 3400120002,}
 ,  [10140001] = {
   ["languageId"] = 2910140001,  ["monsterGroup"] = 0,  ["next"] = -1,  ["id"] = 10140001,  ["stageId"] = 103800,  ["resId"] = 0,  ["title"] = 1400100014,  ["position"] = 0,  ["trigger"] = 0,  ["type"] = 1,  ["sound"] = 0,  ["resIdName"] = 0,}
 ,  [10030711] = {

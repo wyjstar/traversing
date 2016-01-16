@@ -123,6 +123,8 @@ class CharacterActComponent(Component):
             condition = []
             if self._act_infos.get(act_conf.id):
                 condition = self._act_infos.get(act_conf.id)[1]
+            if condition == 0:
+                condition = []
             logger.debug("condition %s" % condition)
             mix_runt_num = 0
             for temp in condition:
@@ -166,7 +168,7 @@ class CharacterActComponent(Component):
                     act_info[1] += v
 
         if type == 44:
-            act_confs = game_configs.activity_config.get(type)
+            act_confs = game_configs.activity_config.get(51)
             for act_conf in act_confs:
                 act_id = act_conf.id
                 act_conf = game_configs.activity_config.get(act_id)

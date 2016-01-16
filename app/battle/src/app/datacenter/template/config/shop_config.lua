@@ -2446,9 +2446,9 @@ shop_config={
   ["107"] = {
   [1] = 1850,  [2] = 1850,  [3] = 3,}
 ,}
-,  ["weight"] = 10,  ["describe"] = 0,  ["res"] = 0,  ["restrictions"] = 0,  ["quality"] = 6,  ["gain"] = {
+,  ["weight"] = 20,  ["describe"] = 0,  ["res"] = 0,  ["restrictions"] = 0,  ["quality"] = 6,  ["gain"] = {
   ["103"] = {
-  [1] = 5,  [2] = 5,  [3] = 1010056,}
+  [1] = 5,  [2] = 5,  [3] = 1010066,}
 ,}
 ,  ["type"] = 9,  ["replaceGain"] = {
 }
@@ -2847,46 +2847,6 @@ shop_config={
 ,  ["limitVIP"] = {
 }
 ,  ["languageId"] = 0,}
-,  [90035] = {
-  ["freePeriod"] = -1,  ["dutyFree"] = {
-}
-,  ["weightGroup"] = {
-}
-,  ["alternativeConsume"] = {
-}
-,  ["relatedGain"] = {
-}
-,  ["discountPrice"] = {
-}
-,  ["discountRate"] = 1,  ["limitLevel"] = 0,  ["consume"] = {
-  ["107"] = {
-  [1] = 1850,  [2] = 1850,  [3] = 3,}
-,}
-,  ["weight"] = 20,  ["describe"] = 0,  ["res"] = 0,  ["restrictions"] = 0,  ["quality"] = 6,  ["gain"] = {
-  ["103"] = {
-  [1] = 5,  [2] = 5,  [3] = 1010066,}
-,}
-,  ["type"] = 9,  ["replaceGain"] = {
-}
-,  ["switch"] = 1,  ["id"] = 90035,  ["extraGain"] = {
-}
-,  ["attr"] = {
-}
-,  ["Integral"] = {
-}
-,  ["batch"] = 1,  ["ExchangeValue"] = {
-}
-,  ["limitVIPeveryday"] = {
-}
-,  ["luckyValue"] = {
-}
-,  ["steppedPrice"] = {
-}
-,  ["contribution"] = {
-}
-,  ["limitVIP"] = {
-}
-,  ["languageId"] = 0,}
 ,  [110028] = {
   ["freePeriod"] = -1,  ["dutyFree"] = {
 }
@@ -3037,7 +2997,9 @@ shop_config={
 ,  ["Integral"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
-}
+  ["107"] = {
+  [1] = 1,  [2] = 1,  [3] = 29,}
+,}
 ,  ["limitVIPeveryday"] = {
 }
 ,  ["luckyValue"] = {
@@ -8509,7 +8471,9 @@ shop_config={
 ,  ["Integral"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
-}
+  ["107"] = {
+  [1] = 10,  [2] = 10,  [3] = 29,}
+,}
 ,  ["limitVIPeveryday"] = {
 }
 ,  ["luckyValue"] = {
@@ -16005,7 +15969,7 @@ shop_config={
 ,  ["batch"] = 1000,  ["ExchangeValue"] = {
 }
 ,  ["limitVIPeveryday"] = {
-  ["1"] = 60,  ["0"] = 40,  ["3"] = 160,  ["2"] = 120,  ["5"] = 250,  ["4"] = 200,  ["7"] = 400,  ["6"] = 300,  ["9"] = 600,  ["8"] = 500,  ["15"] = 2000,  ["14"] = 1700,  ["13"] = 1400,  ["12"] = 1200,  ["11"] = 1000,  ["10"] = 800,}
+}
 ,  ["luckyValue"] = {
 }
 ,  ["steppedPrice"] = {

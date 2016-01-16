@@ -66,7 +66,7 @@ activity_type_config={
 ,  [105] = {
   ["index"] = 110,  ["id"] = 105,  ["duration"] = 1,  ["page"] = 1,  ["is_open"] = 1,  ["parameterT"] = "0",  ["special"] = 0,  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "CDKEY_GIFT",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [202] = {
-  ["index"] = 995,  ["id"] = 202,  ["duration"] = 8,  ["page"] = 2,  ["is_open"] = 1,  ["parameterT"] = "240",  ["special"] = 0,  ["timeStart"] = "0",  ["activity_key"] = "ACTIVITY_SEVENDAY",  ["timeEnd"] = "240",}
+  ["index"] = 995,  ["id"] = 202,  ["duration"] = 8,  ["page"] = 2,  ["is_open"] = 1,  ["parameterT"] = "240",  ["special"] = 0,  ["timeStart"] = "1",  ["activity_key"] = "ACTIVITY_SEVENDAY",  ["timeEnd"] = "240",}
 ,  [65] = {
   ["index"] = 130,  ["id"] = 65,  ["duration"] = 4,  ["page"] = 1,  ["is_open"] = 1,  ["parameterT"] = "0",  ["special"] = 0,  ["timeStart"] = "1",  ["activity_key"] = "ACTIVITY_PERCONSUMESTAMINA",  ["timeEnd"] = "7",}
 ,  [67] = {

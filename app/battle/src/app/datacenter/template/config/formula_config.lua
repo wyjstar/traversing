@@ -212,9 +212,9 @@ formula_config={
 ,  [106] = {
   ["precondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType == 2",  ["formula"] = "allDamage*skill_buff.valueEffect/100",  ["clientPrecondition"] = "skill_buff.effectId <= 2 and skill_buff.valueType == 2",  ["id"] = 106,  ["clientFormula"] = "result=allDamage*skill_buff.valueEffect/100",  ["key"] = "damage_2",}
 ,  [107] = {
-  ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 1",  ["formula"] = "skill_buff.valueEffect",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 1",  ["id"] = 107,  ["clientFormula"] = "result=skill_buff.valueEffect",  ["key"] = "damage_3",}
+  ["precondition"] = "skill_buff.valueType == 1",  ["formula"] = "skill_buff.valueEffect",  ["clientPrecondition"] = "skill_buff.valueType == 1",  ["id"] = 107,  ["clientFormula"] = "result=skill_buff.valueEffect",  ["key"] = "damage_3",}
 ,  [108] = {
-  ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["formula"] = "atkHeroLine*skill_buff.valueEffect/100",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["id"] = 108,  ["clientFormula"] = "result=atkHeroLine*skill_buff.valueEffect/100",  ["key"] = "damage_4",}
+  ["precondition"] = "skill_buff.valueType == 2",  ["formula"] = "atkHeroLine*skill_buff.valueEffect/100",  ["clientPrecondition"] = "skill_buff.valueType == 2",  ["id"] = 108,  ["clientFormula"] = "result=atkHeroLine*skill_buff.valueEffect/100",  ["key"] = "damage_4",}
 ,  [109] = {
   ["precondition"] = "1",  ["formula"] = "500",  ["clientPrecondition"] = "1",  ["id"] = 109,  ["clientFormula"] = "result=500",  ["key"] = "warriorsDamage",}
 ,  [110] = {
@@ -384,5 +384,5 @@ formula_config={
 ,  [192] = {
   ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 192,  ["clientFormula"] = "result=rand_name_config[math.random(1,496)].prefix_1 .. rand_name_config[math.random(1,116)].name_3 .. rand_name_config[math.random(1,116)].name_3",  ["key"] = "rand_name_8",}
 ,  [193] = {
-  ["precondition"] = "1",  ["formula"] = "(20*wslevel*wslevel+1000)*skill_buff.valueEffect/100*0.2",  ["clientPrecondition"] = "1",  ["id"] = 193,  ["clientFormula"] = "result=(20*wslevel*wslevel+1000)*skill_buff.valueEffect/100*0.2",  ["key"] = "peerlessAdd",}
+  ["precondition"] = "1",  ["formula"] = "(20*wslevel*wslevel+1000)*0.2",  ["clientPrecondition"] = "1",  ["id"] = 193,  ["clientFormula"] = "result=(20*wslevel*wslevel+1000)*0.2",  ["key"] = "peerlessAdd",}
 ,}

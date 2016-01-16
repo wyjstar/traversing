@@ -96,7 +96,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1030031,  ["commonDrop"] = 1100107,  ["name"] = 1400103003,  ["round3"] = 1030033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030032,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
+,  ["round1"] = 1030031,  ["commonDrop"] = 1100107,  ["name"] = 1400103003,  ["round3"] = 1030033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030032,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1148,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -176,7 +176,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 101404,  ["eliteDrop2"] = 2101405,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 101404,  ["eliteDrop2"] = 2101405,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -192,7 +192,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104602] = {
@@ -222,7 +222,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 103706,  ["eliteDrop2"] = 2103707,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103706,  ["eliteDrop2"] = 2103707,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -238,7 +238,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 30,  ["stage_break_id"] = 13,}
 ,  [100702] = {
@@ -334,7 +334,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 104602,  ["eliteDrop2"] = 2104603,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104602,  ["eliteDrop2"] = 2104603,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -350,7 +350,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [103708] = {
@@ -410,7 +410,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 10,  ["stage_break_id"] = 13,}
 ,  [103900] = {
@@ -442,7 +442,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 103004,  ["eliteDrop2"] = 2103005,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103004,  ["eliteDrop2"] = 2103005,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -458,7 +458,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102302] = {
@@ -600,7 +600,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 102302,  ["eliteDrop2"] = 2102303,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 102302,  ["eliteDrop2"] = 2102303,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -616,7 +616,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 20,  ["stage_break_id"] = 11,}
 ,  [101408] = {
@@ -660,7 +660,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 104604,  ["eliteDrop2"] = 2104605,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104604,  ["eliteDrop2"] = 2104605,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -676,7 +676,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [101600] = {
@@ -866,7 +866,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 103902,  ["eliteDrop2"] = 2103903,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103902,  ["eliteDrop2"] = 2103903,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -882,7 +882,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [103008] = {
@@ -908,7 +908,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30051,  [3] = 30,  [4] = 0,  [5] = 3300291030,}
 ,}
-,  ["round1"] = 1030081,  ["commonDrop"] = 1100107,  ["name"] = 1400103008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100651,  ["hero_Guide"] = {
+,  ["round1"] = 1030081,  ["commonDrop"] = 1100107,  ["name"] = 1400103008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100201,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2314,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1302,7 +1302,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 103904,  ["eliteDrop2"] = 2103905,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103904,  ["eliteDrop2"] = 2103905,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1318,7 +1318,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [100900] = {
@@ -1466,7 +1466,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1032031,  ["commonDrop"] = 1100107,  ["name"] = 1400103203,  ["round3"] = 1032033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032032,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
+,  ["round1"] = 1032031,  ["commonDrop"] = 1100107,  ["name"] = 1400103203,  ["round3"] = 1032033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032032,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1183,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1546,11 +1546,11 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 101604,  ["eliteDrop2"] = 2101605,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 101604,  ["eliteDrop2"] = 2101605,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1016051,  ["commonDrop"] = 1100105,  ["name"] = 1400101605,  ["round3"] = 1016053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
+,  ["round1"] = 1016051,  ["commonDrop"] = 1100105,  ["name"] = 1400101605,  ["round3"] = 1016053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016052,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 906,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1562,7 +1562,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [103907] = {
@@ -1570,7 +1570,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 103906,  ["eliteDrop2"] = 2103907,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103906,  ["eliteDrop2"] = 2103907,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1586,7 +1586,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [100902] = {
@@ -1734,7 +1734,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
 ,  [104100] = {
@@ -1766,7 +1766,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 103204,  ["eliteDrop2"] = 2103205,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103204,  ["eliteDrop2"] = 2103205,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1782,7 +1782,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [100200] = {
@@ -1948,7 +1948,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 102502,  ["eliteDrop2"] = 2102503,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 102502,  ["eliteDrop2"] = 2102503,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -1964,7 +1964,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 22,  ["stage_break_id"] = 12,}
 ,  [101608] = {
@@ -2036,7 +2036,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1009051,  ["commonDrop"] = 1100102,  ["name"] = 1400100905,  ["round3"] = 1009053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 9,  ["round2"] = 1009052,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
+,  ["round1"] = 1009051,  ["commonDrop"] = 1100102,  ["name"] = 1400100905,  ["round3"] = 1009053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 9,  ["round2"] = 1009052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 741,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2190,7 +2190,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 104102,  ["eliteDrop2"] = 2104103,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104102,  ["eliteDrop2"] = 2104103,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -2206,7 +2206,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [103208] = {
@@ -2250,7 +2250,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 3,  ["condition"] = 100202,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
+,  ["high"] = 3,  ["condition"] = 100202,  ["eliteDrop2"] = 2100203,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -2266,7 +2266,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103400] = {
@@ -2516,7 +2516,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 104104,  ["eliteDrop2"] = 2104105,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104104,  ["eliteDrop2"] = 2104105,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -2532,7 +2532,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [101100] = {
@@ -2564,7 +2564,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 3,  ["condition"] = 100204,  ["eliteDrop2"] = 2100205,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
+,  ["high"] = 3,  ["condition"] = 100204,  ["eliteDrop2"] = 2100205,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -2580,7 +2580,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103402] = {
@@ -2806,7 +2806,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 101804,  ["eliteDrop2"] = 2101805,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 101804,  ["eliteDrop2"] = 2101805,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -2822,7 +2822,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [104107] = {
@@ -2830,7 +2830,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 104106,  ["eliteDrop2"] = 2104107,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104106,  ["eliteDrop2"] = 2104107,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -2846,7 +2846,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [101102] = {
@@ -2876,7 +2876,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 3,  ["condition"] = 100206,  ["eliteDrop2"] = 2100207,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
+,  ["high"] = 3,  ["condition"] = 100206,  ["eliteDrop2"] = 2100207,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -2892,7 +2892,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
 ,  [103404] = {
@@ -3050,7 +3050,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 103404,  ["eliteDrop2"] = 2103405,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103404,  ["eliteDrop2"] = 2103405,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -3066,7 +3066,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
 ,  [100400] = {
@@ -3232,7 +3232,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 102702,  ["eliteDrop2"] = 2102703,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 102702,  ["eliteDrop2"] = 2102703,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -3248,7 +3248,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 13,}
 ,  [101808] = {
@@ -3366,7 +3366,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1034071,  ["commonDrop"] = 1100107,  ["name"] = 1400103407,  ["round3"] = 1034073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034072,  ["hideHero"] = 0,  ["iconHero"] = 1100481,  ["hero_Guide"] = {
+,  ["round1"] = 1034071,  ["commonDrop"] = 1100107,  ["name"] = 1400103407,  ["round3"] = 1034073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034072,  ["hideHero"] = 0,  ["iconHero"] = 1100311,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1226,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3474,7 +3474,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 104302,  ["eliteDrop2"] = 2104303,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104302,  ["eliteDrop2"] = 2104303,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -3490,7 +3490,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
 ,  [103408] = {
@@ -3516,7 +3516,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30057,  [3] = 30,  [4] = 0,  [5] = 3300291034,}
 ,}
-,  ["round1"] = 1034081,  ["commonDrop"] = 1100107,  ["name"] = 1400103408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100451,  ["hero_Guide"] = {
+,  ["round1"] = 1034081,  ["commonDrop"] = 1100107,  ["name"] = 1400103408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100571,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2452,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3550,7 +3550,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
 ,  [103600] = {
@@ -3800,7 +3800,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 104304,  ["eliteDrop2"] = 2104305,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104304,  ["eliteDrop2"] = 2104305,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -3816,7 +3816,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
 ,  [101300] = {
@@ -3852,7 +3852,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1004051,  ["commonDrop"] = 1100101,  ["name"] = 1400100405,  ["round3"] = 1004053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 4,  ["round2"] = 1004052,  ["hideHero"] = 0,  ["iconHero"] = 1500701,  ["hero_Guide"] = {
+,  ["round1"] = 1004051,  ["commonDrop"] = 1100101,  ["name"] = 1400100405,  ["round3"] = 1004053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 4,  ["round2"] = 1004052,  ["hideHero"] = 0,  ["iconHero"] = 1100111,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 663,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4512,11 +4512,11 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 103604,  ["eliteDrop2"] = 2103605,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103604,  ["eliteDrop2"] = 2103605,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1036051,  ["commonDrop"] = 1100107,  ["name"] = 1400103605,  ["round3"] = 1036053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036052,  ["hideHero"] = 0,  ["iconHero"] = 1500961,  ["hero_Guide"] = {
+,  ["round1"] = 1036051,  ["commonDrop"] = 1100107,  ["name"] = 1400103605,  ["round3"] = 1036053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036052,  ["hideHero"] = 0,  ["iconHero"] = 1100131,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1252,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4528,7 +4528,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [930116] = {
@@ -5024,11 +5024,11 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 103606,  ["eliteDrop2"] = 2103607,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103606,  ["eliteDrop2"] = 2103607,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1036071,  ["commonDrop"] = 1100107,  ["name"] = 1400103607,  ["round3"] = 1036073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036072,  ["hideHero"] = 0,  ["iconHero"] = 1500981,  ["hero_Guide"] = {
+,  ["round1"] = 1036071,  ["commonDrop"] = 1100107,  ["name"] = 1400103607,  ["round3"] = 1036073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036072,  ["hideHero"] = 0,  ["iconHero"] = 1100141,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1261,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5040,7 +5040,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [930132] = {
@@ -5246,7 +5246,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 104502,  ["eliteDrop2"] = 2104503,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104502,  ["eliteDrop2"] = 2104503,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5262,7 +5262,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930139] = {
@@ -5616,7 +5616,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 102202,  ["eliteDrop2"] = 2102203,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 102202,  ["eliteDrop2"] = 2102203,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5632,7 +5632,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 20,  ["stage_break_id"] = 0,}
 ,  [101308] = {
@@ -5676,7 +5676,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 104504,  ["eliteDrop2"] = 2104505,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104504,  ["eliteDrop2"] = 2104505,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5692,7 +5692,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101500] = {
@@ -5882,7 +5882,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 103802,  ["eliteDrop2"] = 2103803,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103802,  ["eliteDrop2"] = 2103803,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -5898,7 +5898,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [102908] = {
@@ -6496,7 +6496,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 101504,  ["eliteDrop2"] = 2101505,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 101504,  ["eliteDrop2"] = 2101505,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6512,7 +6512,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [103807] = {
@@ -6520,7 +6520,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 103806,  ["eliteDrop2"] = 2103807,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103806,  ["eliteDrop2"] = 2103807,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6536,7 +6536,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [100802] = {
@@ -6728,7 +6728,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [930206] = {
@@ -6804,7 +6804,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 103104,  ["eliteDrop2"] = 2103105,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103104,  ["eliteDrop2"] = 2103105,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -6820,7 +6820,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [930208] = {
@@ -7116,7 +7116,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 102402,  ["eliteDrop2"] = 2102403,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 102402,  ["eliteDrop2"] = 2102403,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7132,7 +7132,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [101508] = {
@@ -7556,7 +7556,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 104002,  ["eliteDrop2"] = 2104003,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104002,  ["eliteDrop2"] = 2104003,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -7572,7 +7572,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 32,  ["stage_break_id"] = 0,}
 ,  [930231] = {
@@ -8000,7 +8000,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1017031,  ["commonDrop"] = 1100106,  ["name"] = 1400101703,  ["round3"] = 1017033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017032,  ["hideHero"] = 0,  ["iconHero"] = 1500701,  ["hero_Guide"] = {
+,  ["round1"] = 1017031,  ["commonDrop"] = 1100106,  ["name"] = 1400101703,  ["round3"] = 1017033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017032,  ["hideHero"] = 0,  ["iconHero"] = 1100111,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 923,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8100,7 +8100,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 104004,  ["eliteDrop2"] = 2104005,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104004,  ["eliteDrop2"] = 2104005,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -8116,7 +8116,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 32,  ["stage_break_id"] = 0,}
 ,  [101000] = {
@@ -8344,7 +8344,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 101704,  ["eliteDrop2"] = 2101705,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 101704,  ["eliteDrop2"] = 2101705,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -8360,7 +8360,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [104007] = {
@@ -8368,7 +8368,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 104006,  ["eliteDrop2"] = 2104007,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104006,  ["eliteDrop2"] = 2104007,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -8384,7 +8384,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 32,  ["stage_break_id"] = 0,}
 ,  [101002] = {
@@ -8532,7 +8532,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 0,}
 ,  [104200] = {
@@ -8568,7 +8568,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1033051,  ["commonDrop"] = 1100107,  ["name"] = 1400103305,  ["round3"] = 1033053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
+,  ["round1"] = 1033051,  ["commonDrop"] = 1100107,  ["name"] = 1400103305,  ["round3"] = 1033053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033052,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1200,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8746,7 +8746,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 102602,  ["eliteDrop2"] = 2102603,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 102602,  ["eliteDrop2"] = 2102603,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -8762,7 +8762,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [101708] = {
@@ -8834,7 +8834,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1010051,  ["commonDrop"] = 1100102,  ["name"] = 1400101005,  ["round3"] = 1010053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 10,  ["round2"] = 1010052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
+,  ["round1"] = 1010051,  ["commonDrop"] = 1100102,  ["name"] = 1400101005,  ["round3"] = 1010053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 10,  ["round2"] = 1010052,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 767,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8988,7 +8988,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 104202,  ["eliteDrop2"] = 2104203,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104202,  ["eliteDrop2"] = 2104203,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9004,7 +9004,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 34,  ["stage_break_id"] = 0,}
 ,  [103308] = {
@@ -9064,7 +9064,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [103500] = {
@@ -9100,7 +9100,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1026051,  ["commonDrop"] = 1100107,  ["name"] = 1400102605,  ["round3"] = 1026053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 26,  ["round2"] = 1026052,  ["hideHero"] = 0,  ["iconHero"] = 1500911,  ["hero_Guide"] = {
+,  ["round1"] = 1026051,  ["commonDrop"] = 1100107,  ["name"] = 1400102605,  ["round3"] = 1026053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 26,  ["round2"] = 1026052,  ["hideHero"] = 0,  ["iconHero"] = 1100061,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1079,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9446,7 +9446,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 104204,  ["eliteDrop2"] = 2104205,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104204,  ["eliteDrop2"] = 2104205,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -9462,7 +9462,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 34,  ["stage_break_id"] = 0,}
 ,  [101200] = {
@@ -9832,7 +9832,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1035031,  ["commonDrop"] = 1100107,  ["name"] = 1400103503,  ["round3"] = 1035033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035032,  ["hideHero"] = 0,  ["iconHero"] = 1500961,  ["hero_Guide"] = {
+,  ["round1"] = 1035031,  ["commonDrop"] = 1100107,  ["name"] = 1400103503,  ["round3"] = 1035033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035032,  ["hideHero"] = 0,  ["iconHero"] = 1100131,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1235,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10002,7 +10002,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 104206,  ["eliteDrop2"] = 2104207,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104206,  ["eliteDrop2"] = 2104207,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10018,7 +10018,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 34,  ["stage_break_id"] = 0,}
 ,  [101202] = {
@@ -10376,7 +10376,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 103504,  ["eliteDrop2"] = 2103505,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103504,  ["eliteDrop2"] = 2103505,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10392,7 +10392,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 12,}
 ,  [100500] = {
@@ -10668,7 +10668,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 102802,  ["eliteDrop2"] = 2102803,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 102802,  ["eliteDrop2"] = 2102803,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10684,7 +10684,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
 ,  [101908] = {
@@ -10798,7 +10798,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 103506,  ["eliteDrop2"] = 2103507,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103506,  ["eliteDrop2"] = 2103507,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10814,7 +10814,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 28,  ["stage_break_id"] = 12,}
 ,  [100502] = {
@@ -10910,7 +10910,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 104402,  ["eliteDrop2"] = 2104403,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104402,  ["eliteDrop2"] = 2104403,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -10926,7 +10926,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 34,  ["stage_break_id"] = 0,}
 ,  [103508] = {
@@ -10986,7 +10986,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
 ,  [103700] = {
@@ -11588,7 +11588,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 104404,  ["eliteDrop2"] = 2104405,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104404,  ["eliteDrop2"] = 2104405,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -11604,7 +11604,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 34,  ["stage_break_id"] = 0,}
 ,  [101400] = {
@@ -11674,7 +11674,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
 ,  [930302] = {
@@ -12044,7 +12044,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 104306,  ["eliteDrop2"] = 2104307,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104306,  ["eliteDrop2"] = 2104307,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12060,7 +12060,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
 ,  [103703] = {
@@ -12248,7 +12248,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [102105] = {
@@ -12316,7 +12316,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 102902,  ["eliteDrop2"] = 2102903,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 8,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 102902,  ["eliteDrop2"] = 2102903,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12332,7 +12332,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
 ,  [930234] = {
@@ -12362,7 +12362,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 104406,  ["eliteDrop2"] = 2104407,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 104406,  ["eliteDrop2"] = 2104407,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12378,7 +12378,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 34,  ["stage_break_id"] = 0,}
 ,  [101402] = {
@@ -12566,7 +12566,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 102904,  ["eliteDrop2"] = 2102905,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 102904,  ["eliteDrop2"] = 2102905,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12582,7 +12582,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
 ,  [103001] = {
@@ -12850,7 +12850,7 @@ stage_config={
 }
 ,  ["coordinate"] = {
   [1] = 375,  [2] = 1043,}
-,  ["high"] = 2,  ["condition"] = 103704,  ["eliteDrop2"] = 2103705,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+,  ["high"] = 2,  ["condition"] = 103704,  ["eliteDrop2"] = 2103705,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 2,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
@@ -12866,7 +12866,7 @@ stage_config={
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 2,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 30,  ["stage_break_id"] = 13,}
 ,  [100700] = {
@@ -12990,7 +12990,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1001011,  ["commonDrop"] = 1100100,  ["name"] = 1400100101,  ["round3"] = 1001013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 1,  ["round2"] = 1001012,  ["hideHero"] = 0,  ["iconHero"] = 1500021,  ["hero_Guide"] = {
+,  ["round1"] = 1001011,  ["commonDrop"] = 1100100,  ["name"] = 1400100101,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 1,  ["round2"] = 1001013,  ["hideHero"] = 0,  ["iconHero"] = 1500021,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 585,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -13036,7 +13036,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1001021,  ["commonDrop"] = 1100100,  ["name"] = 1400100102,  ["round3"] = 1001023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 1,  ["round2"] = 1001022,  ["hideHero"] = 0,  ["iconHero"] = 1500031,  ["hero_Guide"] = {
+,  ["round1"] = 1001021,  ["commonDrop"] = 1100100,  ["name"] = 1400100102,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 1,  ["round2"] = 1001023,  ["hideHero"] = 0,  ["iconHero"] = 1500031,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 594,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -13080,7 +13080,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1001031,  ["commonDrop"] = 1100100,  ["name"] = 1400100103,  ["round3"] = 1001033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 1,  ["round2"] = 1001032,  ["hideHero"] = 0,  ["iconHero"] = 1500011,  ["hero_Guide"] = {
+,  ["round1"] = 1001031,  ["commonDrop"] = 1100100,  ["name"] = 1400100103,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 1,  ["round2"] = 1001033,  ["hideHero"] = 0,  ["iconHero"] = 1500011,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 603,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
