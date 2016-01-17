@@ -6,7 +6,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils import pprint
 
 LOG_NAME = ""
-LOG = False
+LOG = True
 
 
 
@@ -42,7 +42,7 @@ def hero_self_attr(player, hero, stage=None):
     runt_attr = hero.runt_attr()
     # awake_percent
     # print("hero.awake_level %s" % hero.awake_level)
-    addition = game_configs.awake_config.get(hero.awake_level).get("addition")
+    #addition = game_configs.awake_config.get(hero.awake_level).get("addition")
 
     all_vars = dict(
         hero_info=hero_info,
@@ -92,7 +92,7 @@ def hero_self_attr(player, hero, stage=None):
         ductilityB=break_attr.get("ductility", 0),
         ductilitySeal=refine_attr.get("ductility", 0),
         ductilityStone=runt_attr.get("ductility", 0),
-        awake_percent=addition,
+        #awake_percent=addition,
     )
 
     log(hero.hero_no, "计算武将自身属性所需的所有参数：", "", all_vars)
@@ -104,24 +104,35 @@ def hero_self_attr(player, hero, stage=None):
 
     # hpHero
     # hero_info.hp+hero_info.growHp*heroLevel+hpB+hero_info.hp*parameters+hpSeal+hpStone
-    hpHero_formula = game_configs.formula_config.get("hpHero").get("formula")
+    hpHero_formula = game_configs.formula_config.get("hpHeroBase").get("formula")
     assert hpHero_formula!=None, "hpHero formula can not be None!"
-    hpHero = eval(hpHero_formula, all_vars)
+    hpHeroBase = eval(hpHero_formula, all_vars)
+
+    hpHero_formula = game_configs.formula_config.get("hpHeroSelf").get("formula")
+    assert hpHero_formula!=None, "hpHero formula can not be None!"
+    hpHero = eval(hpHero_formula, dict(hpHeroBase=hpHeroBase, AwakePercent=hero.awake_info.addition))
 
     # atkHero
     # hero_info.atk+hero_info.growAtk*heroLevel+atkB+hero_info.atk*parameters+atkSeal+atkStone
-    atkHero_formula = game_configs.formula_config.get("atkHero").get("formula")
-    atkHero = eval(atkHero_formula, all_vars)
+    atkHero_formula = game_configs.formula_config.get("atkHeroBase").get("formula")
+    atkHeroBase = eval(atkHero_formula, all_vars)
+    atkHero_formula = game_configs.formula_config.get("atkHeroSelf").get("formula")
+    atkHero = eval(atkHero_formula, dict(atkHeroBase=atkHeroBase, AwakePercent=hero.awake_info.addition))
+    print("hero awake_percent: ",hpHeroBase, hpHero, hero.awake_info.addition)
 
     # pdefHero
     # hero_info.physicalDef+hero_info.growPhysicalDef*heroLevel+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone
-    physicalDefHero_formula = game_configs.formula_config.get("physicalDefHero").get("formula")
-    physicalDefHero = eval(physicalDefHero_formula, all_vars)
+    physicalDefHero_formula = game_configs.formula_config.get("physicalDefHeroBase").get("formula")
+    physicalDefHeroBase = eval(physicalDefHero_formula, all_vars)
+    physicalDefHero_formula = game_configs.formula_config.get("physicalDefHeroSelf").get("formula")
+    physicalDefHero = eval(physicalDefHero_formula, dict(physicalDefHeroBase=physicalDefHeroBase, AwakePercent=hero.awake_info.addition))
 
     # magicDefHero
     # hero_info.magicDef+hero_info.growMagicDef*heroLevel+mDefB+hero_info.magicDef*parameters+mDefSeal+mDefStone
-    magicDefHero_formula = game_configs.formula_config.get("magicDefHero").get("formula")
-    magicDefHero = eval(magicDefHero_formula, all_vars)
+    magicDefHero_formula = game_configs.formula_config.get("magicDefHeroBase").get("formula")
+    magicDefHeroBase = eval(magicDefHero_formula, all_vars)
+    magicDefHero_formula = game_configs.formula_config.get("magicDefHeroSelf").get("formula")
+    magicDefHero = eval(magicDefHero_formula, dict(magicDefHeroBase=magicDefHeroBase, AwakePercent=hero.awake_info.addition))
     # hitHero
     # hero_info.hit+hitB+hitSeal+hitStone
     hitHero_formula = game_configs.formula_config.get("hitHero").get("formula")
@@ -153,10 +164,14 @@ def hero_self_attr(player, hero, stage=None):
     ductilityHero_formula = game_configs.formula_config.get("ductilityHero").get("formula")
     ductilityHero = eval(ductilityHero_formula, all_vars)
 
-    self_attr = dict(hpHero=hpHero,
-                atkHero=atkHero,
-                physicalDefHero=physicalDefHero,
-                magicDefHero=magicDefHero,
+    self_attr = dict(hpHeroSelf=hpHero,
+                hpHeroBase=hpHeroBase,
+                atkHeroSelf=atkHero,
+                atkHeroBase=atkHeroBase,
+                physicalDefHeroSelf=physicalDefHero,
+                physicalDefHeroBase=physicalDefHeroBase,
+                magicDefHeroSelf=magicDefHero,
+                magicDefHeroBase=magicDefHeroBase,
                 hitHero=hitHero,
                 dodgeHero=dodgeHero,
                 criHero=criHero,
@@ -297,23 +312,35 @@ def hero_lineup_attr(player, hero, line_up_slot_no, stage=None):
     #if hero.hero_no == 10045: logger_cal.debug("武将阵容属性中的输入:%s" % pprint.pformat(all_vars, indent=1))
     # hpArray
     # hero_info.hp+hero_info.growHp*heroLevel+hpB+hero_info.hp*parameters+hpSeal+hpStone
-    hpArray_formula = game_configs.formula_config.get("hpArray").get("formula")
+    hpArray_formula = game_configs.formula_config.get("hpHeroLineBase").get("formula")
     assert hpArray_formula!=None, "hpArray formula can not be None!"
+    hpHeroLineBase = eval(hpArray_formula, dict(hpHeroBase=self_attr.get("hpHeroBase"), AwakePercent=hero.awake_info.addition, EquPercent=equ_attr.get("hpHeroPercent", 0)))
+    all_vars.update(dict(hpHeroLineBase=hpHeroLineBase))
+    hpArray_formula = game_configs.formula_config.get("hpHeroLine").get("formula")
     hpArray = eval(hpArray_formula, all_vars)
 
     # atkArray
     # hero_info.atk+hero_info.growAtk*heroLevel+atkB+hero_info.atk*parameters+atkSeal+atkStone
-    atkArray_formula = game_configs.formula_config.get("atkArray").get("formula")
+    atkArray_formula = game_configs.formula_config.get("atkHeroLineBase").get("formula")
+    atkHeroLineBase = eval(atkArray_formula, dict(atkHeroBase=self_attr.get("atkHeroBase"), AwakePercent=hero.awake_info.addition, EquPercent=equ_attr.get("atkHeroPercent", 0)))
+    all_vars.update(dict(atkHeroLineBase=atkHeroLineBase))
+    atkArray_formula = game_configs.formula_config.get("atkHeroLine").get("formula")
     atkArray = eval(atkArray_formula, all_vars)
 
     # pdefArray
     # hero_info.physicalDef+hero_info.growPhysicalDef*heroLevel+pDefB+hero_info.physicalDef*parameters+pDefSeal+pDefStone
-    physicalDefArray_formula = game_configs.formula_config.get("physicalDefArray").get("formula")
+    physicalDefArray_formula = game_configs.formula_config.get("physicalDefHeroLineBase").get("formula")
+    physicalDefHeroLineBase = eval(physicalDefArray_formula, dict(physicalDefHeroBase=self_attr.get("physicalDefHeroBase"), AwakePercent=hero.awake_info.addition, EquPercent=equ_attr.get("physicalDefHeroPercent", 0)))
+    all_vars.update(dict(physicalDefHeroLineBase=physicalDefHeroLineBase))
+    physicalDefArray_formula = game_configs.formula_config.get("physicalDefHeroLine").get("formula")
     physicalDefArray = eval(physicalDefArray_formula, all_vars)
 
     # magicDefArray
     # hero_info.magicDef+hero_info.growMagicDef*heroLevel+mDefB+hero_info.magicDef*parameters+mDefSeal+mDefStone
-    magicDefArray_formula = game_configs.formula_config.get("magicDefArray").get("formula")
+    magicDefArray_formula = game_configs.formula_config.get("magicDefHeroLineBase").get("formula")
+    magicDefHeroLineBase = eval(magicDefArray_formula, dict(magicDefHeroBase=self_attr.get("magicDefHeroBase"), AwakePercent=hero.awake_info.addition, EquPercent=equ_attr.get("magicDefHeroPercent", 0)))
+    all_vars.update(dict(magicDefHeroLineBase=magicDefHeroLineBase))
+    magicDefArray_formula = game_configs.formula_config.get("magicDefHeroLine").get("formula")
     magicDefArray = eval(magicDefArray_formula, all_vars)
 
     # hitArray
@@ -351,10 +378,10 @@ def hero_lineup_attr(player, hero, line_up_slot_no, stage=None):
     ductilityArray_formula = game_configs.formula_config.get("ductilityArray").get("formula")
     ductilityArray = eval(ductilityArray_formula, all_vars)
 
-    return dict(hpArray=hpArray,
-            atkArray=atkArray,
-            physicalDefArray=physicalDefArray,
-            magicDefArray=magicDefArray,
+    return dict(hpHeroLine=hpArray,
+            atkHeroLine=atkArray,
+            physicalDefHeroLine=physicalDefArray,
+            magicDefHeroLine=magicDefArray,
             hitArray=hitArray,
             dodgeArray=dodgeArray,
             criArray=criArray,
@@ -421,54 +448,54 @@ def _cheer_attr(player):
 
         if slot_no == 1:
             self_attr = hero_self_attr(player, hero)
-            all_vars["hpHero1"] = self_attr.get("hpHero", 0)
-            all_vars["atkHero1"] = self_attr.get("atkHero", 0)
-            all_vars["physicalDefHero1"] = self_attr.get("physicalDefHero", 0)
-            all_vars["magicDefHero1"] = self_attr.get("magicDefHero", 0)
+            all_vars["hpHeroSelf1"] = self_attr.get("hpHeroSelf", 0)
+            all_vars["atkHeroSelf1"] = self_attr.get("atkHeroSelf", 0)
+            all_vars["physicalDefHeroSelf1"] = self_attr.get("physicalDefHeroSelf", 0)
+            all_vars["magicDefHeroSelf1"] = self_attr.get("magicDefHeroSelf", 0)
         if slot_no == 2:
             self_attr = hero_self_attr(player, hero)
-            all_vars["hpHero2"] = self_attr.get("hpHero", 0)
-            all_vars["atkHero2"] = self_attr.get("atkHero", 0)
-            all_vars["physicalDefHero2"] = self_attr.get("physicalDefHero", 0)
-            all_vars["magicDefHero2"] = self_attr.get("magicDefHero", 0)
+            all_vars["hpHeroSelf2"] = self_attr.get("hpHeroSelf", 0)
+            all_vars["atkHeroSelf2"] = self_attr.get("atkHeroSelf", 0)
+            all_vars["physicalDefHeroSelf2"] = self_attr.get("physicalDefHeroSelf", 0)
+            all_vars["magicDefHeroSelf2"] = self_attr.get("magicDefHeroSelf", 0)
 
         if slot_no == 3:
             self_attr = hero_self_attr(player, hero)
-            all_vars["hpHero3"] = self_attr.get("hpHero", 0)
-            all_vars["atkHero3"] = self_attr.get("atkHero", 0)
-            all_vars["physicalDefHero3"] = self_attr.get("physicalDefHero", 0)
-            all_vars["magicDefHero3"] = self_attr.get("magicDefHero", 0)
+            all_vars["hpHeroSelf3"] = self_attr.get("hpHeroSelf", 0)
+            all_vars["atkHeroSelf3"] = self_attr.get("atkHeroSelf", 0)
+            all_vars["physicalDefHeroSelf3"] = self_attr.get("physicalDefHeroSelf", 0)
+            all_vars["magicDefHeroSelf3"] = self_attr.get("magicDefHeroSelf", 0)
 
         if slot_no == 4:
             self_attr = hero_self_attr(player, hero)
-            all_vars["hpHero4"] = self_attr.get("hpHero", 0)
-            all_vars["atkHero4"] = self_attr.get("atkHero", 0)
-            all_vars["physicalDefHero4"] = self_attr.get("physicalDefHero", 0)
-            all_vars["magicDefHero4"] = self_attr.get("magicDefHero", 0)
+            all_vars["hpHeroSelf4"] = self_attr.get("hpHeroSelf", 0)
+            all_vars["atkHeroSelf4"] = self_attr.get("atkHeroSelf", 0)
+            all_vars["physicalDefHeroSelf4"] = self_attr.get("physicalDefHeroSelf", 0)
+            all_vars["magicDefHeroSelf4"] = self_attr.get("magicDefHeroSelf", 0)
 
         if slot_no == 5:
             self_attr = hero_self_attr(player, hero)
-            all_vars["hpHero5"] = self_attr.get("hpHero", 0)
-            all_vars["atkHero5"] = self_attr.get("atkHero", 0)
-            all_vars["physicalDefHero5"] = self_attr.get("physicalDefHero", 0)
-            all_vars["magicDefHero5"] = self_attr.get("magicDefHero", 0)
+            all_vars["hpHeroSelf5"] = self_attr.get("hpHeroSelf", 0)
+            all_vars["atkHeroSelf5"] = self_attr.get("atkHeroSelf", 0)
+            all_vars["physicalDefHeroSelf5"] = self_attr.get("physicalDefHeroSelf", 0)
+            all_vars["magicDefHeroSelf5"] = self_attr.get("magicDefHeroSelf", 0)
 
         if slot_no == 6:
             self_attr = hero_self_attr(player, hero)
-            all_vars["hpHero6"] = self_attr.get("hpHero", 0)
-            all_vars["atkHero6"] = self_attr.get("atkHero", 0)
-            all_vars["physicalDefHero6"] = self_attr.get("physicalDefHero", 0)
-            all_vars["magicDefHero6"] = self_attr.get("magicDefHero", 0)
-    formula = game_configs.formula_config.get("hpCheer").get("formula")
+            all_vars["hpHeroSelf6"] = self_attr.get("hpHeroSelf", 0)
+            all_vars["atkHeroSelf6"] = self_attr.get("atkHeroSelf", 0)
+            all_vars["physicalDefHeroSelf6"] = self_attr.get("physicalDefHeroSelf", 0)
+            all_vars["magicDefHeroSelf6"] = self_attr.get("magicDefHeroSelf", 0)
+    formula = game_configs.formula_config.get("hpCheerLine").get("formula")
     hpCheer = eval(formula, all_vars)
 
-    formula = game_configs.formula_config.get("atkCheer").get("formula")
+    formula = game_configs.formula_config.get("atkCheerLine").get("formula")
     atkCheer = eval(formula, all_vars)
 
-    formula = game_configs.formula_config.get("physicalDefCheer").get("formula")
+    formula = game_configs.formula_config.get("physicalDefCheerLine").get("formula")
     physicalDefCheer = eval(formula, all_vars)
 
-    formula = game_configs.formula_config.get("magicDefCheer").get("formula")
+    formula = game_configs.formula_config.get("magicDefCheerLine").get("formula")
     magicDefCheer = eval(formula, all_vars)
     return dict(hp=hpCheer,
             atk=atkCheer,
@@ -483,7 +510,7 @@ def combat_power_hero_self(player, hero):
     """
     self_attr = hero_self_attr(player, hero)
     self_attr["job"] = hero.hero_info.job
-    formula = game_configs.formula_config.get("fightValueHero").get("formula")
+    formula = game_configs.formula_config.get("fightValueHeroSelf").get("formula")
     assert formula!=None, "formula can not be None"
     result = eval(formula, self_attr)
 
@@ -503,7 +530,7 @@ def combat_power_hero_lineup(player, hero, line_up_slot_no, log_name=""):
     line_up_attr["job"] = hero.hero_info.job
     line_up_attr["hero_info"] = hero.hero_info
     log(hero.hero_no, "武将阵容", "", line_up_attr)
-    formula = game_configs.formula_config.get("fightValueArray").get("formula")
+    formula = game_configs.formula_config.get("fightValueArrayLine").get("formula")
     assert formula!=None, "formula can not be None"
     result = eval(formula, line_up_attr)
     log(hero.hero_no, "武将阵容战力：", "", result)

@@ -181,6 +181,7 @@ def _with_battle_info(response, friend):
     friend_data = friend.hmget(column)
     if friend_data.get('lord_attr_info').get('info'):
         battle_unit = BattleUnit.loads(friend_data.get('lord_attr_info').get('info'))
+        logger.debug("battle_unit %s" % battle_unit)
         assemble(response.friend_info, battle_unit)
         logger.debug(response.friend_info)
 
