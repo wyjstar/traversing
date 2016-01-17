@@ -1464,6 +1464,7 @@ def get_guild_contribution_880(data, player):
     response.contribution = res.get("contribution", 0)
     res = remote_gate["world"].get_guild_info_remote(player.guild.g_id, "all_contribution", 0)
     response.all_contribution = res.get("all_contribution", 0)
+    logger.debug(response)
 
     return response.SerializeToString()
 
