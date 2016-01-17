@@ -58,8 +58,9 @@ class CharacterPay(Component):
             add_gold = self._owner.finance.gold - previous_gold
             if add_gold == 0:
                 return
+            logger.info('tencent add gold:%s', add_gold)
             recharge_config = game_configs.recharge_config.get('android')
-            for item in recharge_config.items():
+            for k, item in recharge_config.items():
                 if item.get('activity') == add_gold:
                     response = GetGoldResponse()
                     self._owner.recharge.recharge_gain(item, response, 5, True)
