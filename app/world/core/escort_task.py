@@ -23,17 +23,24 @@ def send_mail(conf_id, receive_id, prize):
                                                    int(receive_id), mail_data)
 
 
-def calculate_reward(peoplePercentage, robbedPercentage, formula_name, task_item):
+def calculate_reward(peoplePercentage, robbedPercentage, formula_name, task_item, guild):
     """docstring for calculate_reward"""
-    logger.debug("peoplePercentage robbedPercentage %s %s " % (peoplePercentage, robbedPercentage))
+    logger.debug("peoplePercentage robbedPercentage %s %s %s" % (peoplePercentage, robbedPercentage, guild.g_id))
+    logger.debug("reward %s %s %s" % (task_item.reward1, task_item.reward2, task_item.reward3))
     escort_formula = game_configs.formula_config.get(formula_name).get("formula")
     assert escort_formula!=None, "escort_formula can not be None!"
     percent = eval(escort_formula, {"peoplePercentage": peoplePercentage, "robbedPercentage": robbedPercentage})
 
+    # add contribution
+    reward2 = task_item.reward2
+    if reward2:
+        guild.contribution += task_item.reward2[0].num
+        guild.all_contribution += task_item.reward2[0].num
+        guild.save_data()
     # send reward mail
     mail_arg1 = []
     mail_arg1.extend(convert_common_resource2mail(task_item.get("reward1")))
-    mail_arg1.extend(convert_common_resource2mail(task_item.get("reward2")))
+    #mail_arg1.extend(convert_common_resource2mail(task_item.get("reward2")))
     mail_arg1.extend(convert_common_resource2mail(task_item.get("reward3")))
     logger.debug("mail_arg1 %s percent %s" % (mail_arg1, percent))
     for tmp in mail_arg1:
@@ -161,7 +168,7 @@ class EscortTask(object):
             robbedPercentage = robbedPercentage + task_item.robbedPercentage.get(t+1)
 
 
-        mail_arg1 = calculate_reward(peoplePercentage, robbedPercentage, "EscortReward", task_item)
+        mail_arg1 = calculate_reward(peoplePercentage, robbedPercentage, "EscortReward", task_item, self._owner)
         self._reward = mail_arg1
 
 

@@ -1,6 +1,6 @@
 activity_type_config={
   [1] = {
-  ["index"] = 20,  ["id"] = 1,  ["duration"] = 4,  ["page"] = 1,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "7",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "LOGIN_TOTAL",  ["timeEnd"] = "2019-12-31 23:59:59",}
+  ["index"] = 20,  ["id"] = 1,  ["duration"] = 4,  ["page"] = 1,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "7",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "LOGIN_TOTAL",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [2] = {
   ["index"] = 10,  ["id"] = 2,  ["duration"] = 3,  ["page"] = 1,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "7",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "LOGIN_CONTINUE",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [3] = {
@@ -16,21 +16,21 @@ activity_type_config={
 ,  [8] = {
   ["index"] = 62,  ["id"] = 8,  ["duration"] = 3,  ["page"] = 1,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "RECHARGE_S",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [9] = {
-  ["index"] = 64,  ["id"] = 9,  ["duration"] = 3,  ["page"] = 1,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "RECHARGE_A",  ["timeEnd"] = "2019-12-31 23:59:59",}
+  ["index"] = 64,  ["id"] = 9,  ["duration"] = 3,  ["page"] = 1,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "RECHARGE_A",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [10] = {
   ["index"] = 66,  ["id"] = 10,  ["duration"] = 3,  ["page"] = 1,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "RECHARGE_DFR",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [11] = {
-  ["index"] = 68,  ["id"] = 11,  ["duration"] = 4,  ["page"] = 1,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "2",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
+  ["index"] = 68,  ["id"] = 11,  ["duration"] = 4,  ["page"] = 1,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "2",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [12] = {
-  ["index"] = 0,  ["id"] = 12,  ["duration"] = 1,  ["page"] = 0,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
+  ["index"] = 0,  ["id"] = 12,  ["duration"] = 1,  ["page"] = 0,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [13] = {
-  ["index"] = 0,  ["id"] = 13,  ["duration"] = 1,  ["page"] = 0,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
+  ["index"] = 0,  ["id"] = 13,  ["duration"] = 1,  ["page"] = 0,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [14] = {
-  ["index"] = 0,  ["id"] = 14,  ["duration"] = 1,  ["page"] = 1,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
+  ["index"] = 0,  ["id"] = 14,  ["duration"] = 1,  ["page"] = 1,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "\"\"",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [15] = {
   ["index"] = 200,  ["id"] = 15,  ["duration"] = 4,  ["page"] = 2,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "2",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_LOGIN_CIRI",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [17] = {
-  ["index"] = 997,  ["id"] = 17,  ["duration"] = 3,  ["page"] = 2,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2019-12-13 02:10:01",  ["activity_key"] = "ACTIVITY_LIMIT_SOLDIER",  ["timeEnd"] = "2019-12-13 02:20:01",}
+  ["index"] = 997,  ["id"] = 17,  ["duration"] = 3,  ["page"] = 2,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2015-12-13 02:10:01",  ["activity_key"] = "ACTIVITY_LIMIT_SOLDIER",  ["timeEnd"] = "2015-12-13 02:20:01",}
 ,  [18] = {
   ["index"] = 11,  ["id"] = 18,  ["duration"] = 4,  ["page"] = 1,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "7",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "LOGIN_7DAYS_ENJOY",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [19] = {
@@ -38,7 +38,7 @@ activity_type_config={
 ,  [20] = {
   ["index"] = 72,  ["id"] = 20,  ["duration"] = 4,  ["page"] = 1,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "7",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_FIGHT_POWER",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [21] = {
-  ["index"] = 74,  ["id"] = 21,  ["duration"] = 4,  ["page"] = 1,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "7",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_RUN",  ["timeEnd"] = "2019-12-31 23:59:59",}
+  ["index"] = 74,  ["id"] = 21,  ["duration"] = 4,  ["page"] = 1,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "7",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_RUN",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [22] = {
   ["index"] = 0,  ["id"] = 22,  ["duration"] = 3,  ["page"] = 0,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_SHOP_DISCOUNT",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [23] = {

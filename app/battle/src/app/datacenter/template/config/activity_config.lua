@@ -320,7 +320,7 @@ activity_config={
 ,}
 ,}
 ,  [30005] = {
-  ["parameterB"] = 0,  ["description"] = 4910030005,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 1000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 1000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 30005,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
@@ -376,6 +376,16 @@ activity_config={
 }
 ,  ["name"] = 4900024001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
 }
+,}
+,  [21007] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100707,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
+}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 21007,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
+,  ["name"] = 4900021007,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 21006,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 60007,}
+,}
 ,}
 ,  [20001] = {
   ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 4,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 20000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 20,  ["idEmail"] = 0,  ["parameterD"] = {
@@ -438,7 +448,7 @@ activity_config={
 ,}
 ,}
 ,  [30006] = {
-  ["parameterB"] = 0,  ["description"] = 4910030006,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 1500,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 1500,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 30006,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
@@ -472,7 +482,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 12001,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900012001,  ["DegreeOfCompletion"] = 60,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900012001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["107"] = {
   [1] = 60,  [2] = 60,  [3] = 2,}
 ,}
@@ -482,7 +492,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 12005,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900012005,  ["DegreeOfCompletion"] = 3280,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900012005,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["107"] = {
   [1] = 3280,  [2] = 3280,  [3] = 2,}
 ,}
@@ -492,7 +502,7 @@ activity_config={
   [1] = 100301,}
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 51006,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
   [1] = 10000,}
-,  ["name"] = 4900051006,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 50002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900051006,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 50004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
@@ -548,9 +558,9 @@ activity_config={
 ,}
 ,}
 ,  [50001] = {
-  ["parameterB"] = 998,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 50,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 60,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 50,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 50001,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 50001,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 4900050001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
 }
@@ -576,7 +586,7 @@ activity_config={
 ,}
 ,}
 ,  [30007] = {
-  ["parameterB"] = 0,  ["description"] = 4910030007,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 2000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 2000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 30007,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
@@ -638,17 +648,17 @@ activity_config={
 ,  [50002] = {
   ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 50,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 50002,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 50002,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
   [1] = 100,}
 ,  ["name"] = 4900050002,  ["DegreeOfCompletion"] = 100,  ["repeat"] = 1,  ["premise"] = 49001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
 }
 ,}
 ,  [21001] = {
-  ["parameterB"] = 7,  ["description"] = 4910021001,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100607,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100103,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 21001,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 21001,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900021001,  ["DegreeOfCompletion"] = -2,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900021001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 60001,}
 ,}
@@ -692,11 +702,11 @@ activity_config={
 }
 ,}
 ,  [8001] = {
-  ["parameterB"] = 0,  ["description"] = 4910008001,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 8,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 30,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 8,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 8,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 30,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 8,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 8001,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900008001,  ["DegreeOfCompletion"] = 30,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900008001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 8001,}
 ,}
@@ -806,7 +816,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 12002,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900012002,  ["DegreeOfCompletion"] = 300,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900012002,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["107"] = {
   [1] = 300,  [2] = 300,  [3] = 2,}
 ,}
@@ -816,7 +826,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 12006,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900012006,  ["DegreeOfCompletion"] = 5480,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900012006,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["107"] = {
   [1] = 5480,  [2] = 5480,  [3] = 2,}
 ,}
@@ -879,14 +889,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 30004,}
 ,}
 ,}
-,  [6025] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 4,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 13,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [5003] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 31,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 6025,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-  [1] = 5,  [2] = 10,  [3] = 15,  [4] = 20,  [5] = 25,  [6] = 30,}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5003,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["105"] = {
-  [1] = 1,  [2] = 1,  [3] = 30004,}
+  ["107"] = {
+  [1] = 12,  [2] = 12,  [3] = 7,}
 ,}
 ,}
 ,  [5005] = {
@@ -969,14 +979,14 @@ activity_config={
   [1] = 18,  [2] = 18,  [3] = 7,}
 ,}
 ,}
-,  [5021] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 49,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [9004] = {
+  ["parameterB"] = 0,  ["description"] = 4910009004,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 20000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 9,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5021,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 9004,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5020,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 18,  [2] = 18,  [3] = 7,}
+,  ["name"] = 4900009004,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 9004,}
 ,}
 ,}
 ,  [5023] = {
@@ -1250,7 +1260,7 @@ activity_config={
 ,}
 ,}
 ,  [30001] = {
-  ["parameterB"] = 0,  ["description"] = 4910030001,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 30001,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
@@ -1297,16 +1307,6 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
 ,}
-,  [51012] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 51,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 51012,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900051012,  ["DegreeOfCompletion"] = 25,  ["repeat"] = 1,  ["premise"] = 50001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 998,  [2] = 998,  [3] = 2,}
-,}
-,}
 ,  [22001] = {
   ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 22,  ["idEmail"] = 0,  ["parameterD"] = {
 }
@@ -1316,11 +1316,11 @@ activity_config={
 }
 ,}
 ,  [21003] = {
-  ["parameterB"] = 7,  ["description"] = 4910021003,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 101707,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100307,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 21003,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 21003,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900021003,  ["DegreeOfCompletion"] = -2,  ["repeat"] = 1,  ["premise"] = 21002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900021003,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 21002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 60003,}
 ,}
@@ -1345,20 +1345,10 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 11800002,}
 ,}
 ,}
-,  [51013] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 51,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 51013,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900051013,  ["DegreeOfCompletion"] = 35,  ["repeat"] = 1,  ["premise"] = 50001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 1998,  [2] = 1998,  [3] = 2,}
-,}
-,}
 ,  [49001] = {
   ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 100,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 49,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 49001,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 49001,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 100,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
 }
@@ -1394,7 +1384,7 @@ activity_config={
 ,}
 ,}
 ,  [30002] = {
-  ["parameterB"] = 0,  ["description"] = 4910030002,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 200,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 200,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 30002,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
@@ -1448,7 +1438,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 12003,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900012003,  ["DegreeOfCompletion"] = 980,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900012003,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["107"] = {
   [1] = 980,  [2] = 980,  [3] = 2,}
 ,}
@@ -1458,25 +1448,15 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 12007,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900012007,  ["DegreeOfCompletion"] = 6480,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900012007,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["107"] = {
   [1] = 6480,  [2] = 6480,  [3] = 2,}
-,}
-,}
-,  [51014] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 51,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 51014,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900051014,  ["DegreeOfCompletion"] = 45,  ["repeat"] = 1,  ["premise"] = 50001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 2998,  [2] = 2998,  [3] = 2,}
 ,}
 ,}
 ,  [11001] = {
   ["parameterB"] = 0,  ["description"] = 4910011001,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 11,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-08-17 00:00:01",  ["id"] = 11001,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-08-17 00:00:01",  ["id"] = 11001,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 4900011001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["101"] = {
@@ -1504,11 +1484,11 @@ activity_config={
 ,}
 ,}
 ,  [21004] = {
-  ["parameterB"] = 7,  ["description"] = 4910021004,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 102107,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100407,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 21004,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 21004,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900021004,  ["DegreeOfCompletion"] = -2,  ["repeat"] = 1,  ["premise"] = 21003,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900021004,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 21003,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 60004,}
 ,}
@@ -1573,14 +1553,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
 ,}
-,  [1003] = {
-  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 4,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 1,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [47002] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 25,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 43,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 1003,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 47002,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900047002,  ["DegreeOfCompletion"] = 25,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 6010,}
+  [1] = 1,  [2] = 1,  [3] = 11500002,}
 ,}
 ,}
 ,  [53002] = {
@@ -1603,26 +1583,6 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
 ,}
-,  [51015] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 51,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 51015,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900051015,  ["DegreeOfCompletion"] = 55,  ["repeat"] = 1,  ["premise"] = 50001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 3998,  [2] = 3998,  [3] = 2,}
-,}
-,}
-,  [51011] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 51,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 51011,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900051011,  ["DegreeOfCompletion"] = 15,  ["repeat"] = 1,  ["premise"] = 50001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 98,  [2] = 98,  [3] = 2,}
-,}
-,}
 ,  [51004] = {
   ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 51,  ["idEmail"] = 0,  ["parameterD"] = {
 }
@@ -1633,14 +1593,24 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
 ,}
-,  [5009] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 37,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [2006] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 6,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 2,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5009,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2006,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5008,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 12,  [2] = 12,  [3] = 7,}
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2005,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 6036,}
+,}
+,}
+,  [35001] = {
+  ["parameterB"] = 6,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 1,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 32,  ["idEmail"] = 0,  ["parameterD"] = {
+}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 35001,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
+,  ["name"] = 4900035001,  ["DegreeOfCompletion"] = 6,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
 ,}
 ,  [51001] = {
@@ -1653,14 +1623,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
 ,}
-,  [47004] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 40,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 43,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [1004] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 4,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 4,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 1,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 47004,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 1004,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900047004,  ["DegreeOfCompletion"] = 30,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 13200001,}
+  [1] = 1,  [2] = 1,  [3] = 6011,}
 ,}
 ,}
 ,  [46001] = {
@@ -1673,34 +1643,34 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 13100001,}
 ,}
 ,}
-,  [1004] = {
-  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 4,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 4,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 1,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [6025] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 4,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 13,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 1004,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 6025,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+  [1] = 5,  [2] = 10,  [3] = 15,  [4] = 20,  [5] = 25,  [6] = 30,}
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 6011,}
+  ["105"] = {
+  [1] = 1,  [2] = 1,  [3] = 30004,}
 ,}
 ,}
 ,  [8010] = {
-  ["parameterB"] = 0,  ["description"] = 4910008010,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 8,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 1,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 8,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 8,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 1,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 8,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 8010,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900008010,  ["DegreeOfCompletion"] = 1,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900008010,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 8010,}
 ,}
 ,}
-,  [38003] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 9,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 35,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [47004] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 40,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 43,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 38003,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 47004,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900038003,  ["DegreeOfCompletion"] = -1,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900047004,  ["DegreeOfCompletion"] = 30,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 12100003,}
+  [1] = 1,  [2] = 1,  [3] = 13200001,}
 ,}
 ,}
 ,  [32007] = {
@@ -1713,14 +1683,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 80007,}
 ,}
 ,}
-,  [47003] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 35,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 43,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [38003] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 9,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 35,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 47003,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 38003,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900047003,  ["DegreeOfCompletion"] = 40,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900038003,  ["DegreeOfCompletion"] = -1,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 11500003,}
+  [1] = 1,  [2] = 1,  [3] = 12100003,}
 ,}
 ,}
 ,  [31001] = {
@@ -1743,18 +1713,18 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 12600003,}
 ,}
 ,}
-,  [46004] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 500000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 46,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [47003] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 35,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 43,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 46004,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 47003,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900046004,  ["DegreeOfCompletion"] = 500000,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900047003,  ["DegreeOfCompletion"] = 40,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 13100004,}
+  [1] = 1,  [2] = 1,  [3] = 11500003,}
 ,}
 ,}
 ,  [30003] = {
-  ["parameterB"] = 0,  ["description"] = 4910030003,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 300,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 300,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 30003,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
@@ -1763,14 +1733,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 11100003,}
 ,}
 ,}
-,  [35001] = {
-  ["parameterB"] = 6,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 1,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 32,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [38004] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 12,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 35,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 35001,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 38004,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900035001,  ["DegreeOfCompletion"] = 6,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900038004,  ["DegreeOfCompletion"] = -1,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 60007,}
+  [1] = 1,  [2] = 1,  [3] = 12100004,}
 ,}
 ,}
 ,  [38001] = {
@@ -1793,14 +1763,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 11000005,}
 ,}
 ,}
-,  [9005] = {
-  ["parameterB"] = 0,  ["description"] = 4910009005,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 30000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 9,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [3020] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 9005,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3020,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900009005,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 9005,}
+  [1] = 1,  [2] = 1,  [3] = 149,}
 ,}
 ,}
 ,  [36005] = {
@@ -1813,14 +1783,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 11800005,}
 ,}
 ,}
-,  [21002] = {
-  ["parameterB"] = 7,  ["description"] = 4910021002,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 101007,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [9005] = {
+  ["parameterB"] = 0,  ["description"] = 4910009005,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 30000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 9,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 21002,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 9005,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900021002,  ["DegreeOfCompletion"] = -2,  ["repeat"] = 1,  ["premise"] = 21001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900009005,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 60002,}
+  [1] = 1,  [2] = 1,  [3] = 9005,}
 ,}
 ,}
 ,  [4004] = {
@@ -1851,6 +1821,16 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 11400003,}
 ,}
 ,}
+,  [46004] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 500000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 46,  ["idEmail"] = 0,  ["parameterD"] = {
+}
+,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 46004,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
+,  ["name"] = 4900046004,  ["DegreeOfCompletion"] = 500000,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 13100004,}
+,}
+,}
 ,  [1002] = {
   ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 4,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 2,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 1,  ["idEmail"] = 0,  ["parameterD"] = {
 }
@@ -1859,16 +1839,6 @@ activity_config={
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6009,}
-,}
-,}
-,  [47002] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 25,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 43,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 47002,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900047002,  ["DegreeOfCompletion"] = 25,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 11500002,}
 ,}
 ,}
 ,  [54002] = {
@@ -1881,24 +1851,24 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
 ,}
-,  [51003] = {
-  ["parameterB"] = 10,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 51,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [3012] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 60,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 51003,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3012,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900051003,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 50001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 60007,}
+  [1] = 1,  [2] = 1,  [3] = 141,}
 ,}
 ,}
-,  [2003] = {
-  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 2,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [1003] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 4,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 1,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2003,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 1003,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 6033,}
+  [1] = 1,  [2] = 1,  [3] = 6010,}
 ,}
 ,}
 ,  [41004] = {
@@ -1911,14 +1881,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 12600004,}
 ,}
 ,}
-,  [2006] = {
-  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 6,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 2,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [2003] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 1,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 2,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2006,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2003,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2005,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 6036,}
+  [1] = 1,  [2] = 1,  [3] = 6033,}
 ,}
 ,}
 ,  [5028] = {
@@ -1931,14 +1901,14 @@ activity_config={
   [1] = 24,  [2] = 24,  [3] = 7,}
 ,}
 ,}
-,  [3005] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 25,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [3019] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 95,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3005,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3019,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 134,}
+  [1] = 1,  [2] = 1,  [3] = 148,}
 ,}
 ,}
 ,  [23001] = {
@@ -1951,34 +1921,34 @@ activity_config={
   [1] = 100,  [2] = 100,  [3] = 21,}
 ,}
 ,}
-,  [5044] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 72,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [5009] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 37,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5044,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5009,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5043,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5008,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["107"] = {
-  [1] = 36,  [2] = 36,  [3] = 7,}
+  [1] = 12,  [2] = 12,  [3] = 7,}
 ,}
 ,}
-,  [3012] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 60,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [5021] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 49,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3012,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5021,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5020,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["107"] = {
+  [1] = 18,  [2] = 18,  [3] = 7,}
+,}
+,}
+,  [3005] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 25,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3005,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 141,}
-,}
-,}
-,  [9004] = {
-  ["parameterB"] = 0,  ["description"] = 4910009004,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 20000,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 9,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 9004,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900009004,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 9004,}
+  [1] = 1,  [2] = 1,  [3] = 134,}
 ,}
 ,}
 ,  [46002] = {
@@ -1991,6 +1961,36 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 13100002,}
 ,}
 ,}
+,  [3011] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 55,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3011,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 140,}
+,}
+,}
+,  [21005] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100507,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
+}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 21005,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
+,  ["name"] = 4900021005,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 21004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 60005,}
+,}
+,}
+,  [21006] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100607,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
+}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 21006,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
+,  ["name"] = 4900021006,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 21005,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 60006,}
+,}
+,}
 ,  [4005] = {
   ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 3,  ["page"] = 2,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 1800,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 1,  ["type"] = 4,  ["idEmail"] = 0,  ["parameterD"] = {
 }
@@ -1999,16 +1999,6 @@ activity_config={
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 4004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6025,}
-,}
-,}
-,  [21005] = {
-  ["parameterB"] = 7,  ["description"] = 4910021005,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 102507,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 21005,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900021005,  ["DegreeOfCompletion"] = -2,  ["repeat"] = 1,  ["premise"] = 21004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 60005,}
 ,}
 ,}
 ,  [47001] = {
@@ -2021,34 +2011,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 11500001,}
 ,}
 ,}
-,  [3011] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 55,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [3010] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 50,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3011,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3010,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 140,}
-,}
-,}
-,  [5003] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 31,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5003,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 12,  [2] = 12,  [3] = 7,}
-,}
-,}
-,  [38004] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 12,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 35,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 38004,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900038004,  ["DegreeOfCompletion"] = -1,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 12100004,}
+  [1] = 1,  [2] = 1,  [3] = 139,}
 ,}
 ,}
 ,  [19001] = {
@@ -2061,24 +2031,24 @@ activity_config={
   [1] = 100,  [2] = 100,  [3] = 2,}
 ,}
 ,}
-,  [6011] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 4,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 12,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [5020] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 48,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 6011,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-  [1] = 1,  [2] = 2,  [3] = 3,  [4] = 4,  [5] = 5,}
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["105"] = {
-  [1] = 1,  [2] = 1,  [3] = 30004,}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5020,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5019,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["107"] = {
+  [1] = 18,  [2] = 18,  [3] = 7,}
 ,}
 ,}
-,  [3009] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 45,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [5044] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 72,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3009,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5044,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 138,}
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5043,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["107"] = {
+  [1] = 36,  [2] = 36,  [3] = 7,}
 ,}
 ,}
 ,  [18003] = {
@@ -2111,24 +2081,24 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 8004,}
 ,}
 ,}
-,  [3010] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 50,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [3009] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 45,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3010,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3009,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 139,}
+  [1] = 1,  [2] = 1,  [3] = 138,}
 ,}
 ,}
-,  [5017] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 45,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [33005] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 700203,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 45,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5017,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 33005,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5016,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 18,  [2] = 18,  [3] = 7,}
+,  ["name"] = 4900033005,  ["DegreeOfCompletion"] = -2,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 12400001,}
 ,}
 ,}
 ,  [1000] = {
@@ -2141,6 +2111,16 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 1000,}
 ,}
 ,}
+,  [21002] = {
+  ["parameterB"] = 7,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 2,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100207,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 21,  ["idEmail"] = 0,  ["parameterD"] = {
+}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 21002,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+}
+,  ["name"] = 4900021002,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 21001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 60002,}
+,}
+,}
 ,  [51002] = {
   ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 5,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 51,  ["idEmail"] = 0,  ["parameterD"] = {
 }
@@ -2149,16 +2129,6 @@ activity_config={
 ,  ["name"] = 4900051002,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 50001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 60007,}
-,}
-,}
-,  [3020] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 100,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
-}
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3020,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 149,}
 ,}
 ,}
 ,  [33004] = {
@@ -2181,14 +2151,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 6008,}
 ,}
 ,}
-,  [3018] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 90,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [3017] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 85,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3018,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3017,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 147,}
+  [1] = 1,  [2] = 1,  [3] = 146,}
 ,}
 ,}
 ,  [2001] = {
@@ -2201,14 +2171,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 6031,}
 ,}
 ,}
-,  [3019] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 95,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [3018] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 90,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3019,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3018,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 148,}
+  [1] = 1,  [2] = 1,  [3] = 147,}
 ,}
 ,}
 ,  [2002] = {
@@ -2351,20 +2321,20 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
 ,}
-,  [5020] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 48,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [51003] = {
+  ["parameterB"] = 10,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 51,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5020,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 51003,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5019,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["107"] = {
-  [1] = 18,  [2] = 18,  [3] = 7,}
+,  ["name"] = 4900051003,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 50001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 60007,}
 ,}
 ,}
 ,  [31002] = {
   ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 1,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 7,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 29,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 31002,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 31002,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
 ,  ["name"] = 4900031002,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
@@ -2381,18 +2351,18 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 6013,}
 ,}
 ,}
-,  [6024] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 4,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 13,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [6011] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 4,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 12,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 6024,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-  [1] = 4,  [2] = 9,  [3] = 14,  [4] = 19,  [5] = 24,  [6] = 29,}
+,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 6011,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+  [1] = 1,  [2] = 2,  [3] = 3,  [4] = 4,  [5] = 5,}
 ,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 30004,}
 ,}
 ,}
 ,  [30004] = {
-  ["parameterB"] = 0,  ["description"] = 4910030004,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 500,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 9,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 500,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 0,  ["type"] = 44,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 30004,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
@@ -2401,14 +2371,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 11100004,}
 ,}
 ,}
-,  [33005] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 700203,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 45,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [6024] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 4,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 13,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 33005,  ["parameterT"] = "2015-08-17 00:00:01 - 2016-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-}
-,  ["name"] = 4900033005,  ["DegreeOfCompletion"] = -2,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2016-08-23 23:59:59",  ["reward"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 12400001,}
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 6024,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+  [1] = 4,  [2] = 9,  [3] = 14,  [4] = 19,  [5] = 24,  [6] = 29,}
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["105"] = {
+  [1] = 1,  [2] = 1,  [3] = 30004,}
 ,}
 ,}
 ,  [1007] = {
@@ -2431,14 +2401,14 @@ activity_config={
   [1] = 1,  [2] = 1,  [3] = 11000006,}
 ,}
 ,}
-,  [3017] = {
-  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 2,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 85,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 3,  ["idEmail"] = 0,  ["parameterD"] = {
+,  [5017] = {
+  ["parameterB"] = 0,  ["description"] = 0,  ["actIcon"] = 0,  ["beforeAct"] = 0,  ["duration"] = 1,  ["group"] = 5,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 4,  ["count"] = 1,  ["parameterA"] = 45,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 5,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 3017,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 5017,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 146,}
+,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 5016,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+  ["107"] = {
+  [1] = 18,  [2] = 18,  [3] = 7,}
 ,}
 ,}
 ,  [3001] = {
@@ -2526,7 +2496,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-08-17 00:00:01",  ["id"] = 12004,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 4900012004,  ["DegreeOfCompletion"] = 1980,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
+,  ["name"] = 4900012004,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-08-23 23:59:59",  ["reward"] = {
   ["107"] = {
   [1] = 1980,  [2] = 1980,  [3] = 2,}
 ,}

@@ -55,6 +55,12 @@ message CreateGuildResponse{
     required CommonResponse res = 1;
 }
 
+// 获取军团建设值，command 880
+message GetGuildContributionResponse{
+    required int32 contribution = 1;     //军团的建设值
+    required int32 all_contribution = 2;     //军团的累积建设值
+}
+
 // 获取公会信息 command：812
 message GetGuildInfoResponse{
     required CommonResponse res = 1;
