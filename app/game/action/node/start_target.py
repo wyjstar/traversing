@@ -64,6 +64,7 @@ def get_target_info_1826(data, player):
 
     player.start_target.save_data()
 
+    logger.debug("response %s" % response)
     response.res.result = True
     return response.SerializeToString()
 
@@ -285,6 +286,16 @@ def get_target_info1(player, target_id, day):
     elif target_conf.type == 46:
         # 战斗力达到a
         jindu = player.line_up_component.hight_power
+    elif target_conf.type == 55:
+        # 阵容条件: 武将数量，品质，突破等级
+        jindu = line_up_activity_jindu(player, target_conf)
+
+    elif target_conf.type == 56:
+        # 秘境条件: 刷新秘境，占领矿点，宝石收取，宝石合成
+        jindu = player.start_target.mine_activity_jindu(target_conf)
+    elif target_conf.type == 57:
+        # 宝物：合成，品质，数量
+        jindu = player.start_target.treasure_activity_jindu(target_conf)
 
     # 到到a的统一在这里返回
     if jindu >= target_conf.parameterA:
@@ -297,6 +308,82 @@ def get_target_info1(player, target_id, day):
         else:
             return {'state': 1, 'jindu': target_info[1]}
 
+def line_up_activity_jindu(player, target_conf):
+    """docstring for line_up_activity"""
+
+    HERO_QUALITY = 3
+    HERO_BREAK_LEVEL = 4
+    HERO_AWAKE_LEVEL = 5
+    HERO_LEVEL = 6
+    HERO_REFINE = 7
+    EQU_QUALITY = 8
+    EQU_NUM = 9
+    EQU_LEVEL = 10
+    RUNT_QUALITY = 11
+    RUNT_NUM = 12
+    jindu = 0
+    line_up_slots = player.line_up_component.line_up_slots
+    parameterE = target_conf.parameterE
+    for slot in line_up_slots.values():
+        if not slot.activation:  # 如果卡牌位未激活
+            continue
+        hero_obj = slot.hero_slot.hero_obj  # 英雄实例
+        if hero_obj.hero_info.quality < parameterE.get(HERO_QUALITY):
+            # 3 武将品质
+            continue
+        if hero_obj.break_level < parameterE.get(HERO_BREAK_LEVEL):
+            # 4 武将突破等级
+            continue
+        if hero_obj.awake_level < parameterE.get(HERO_AWAKE_LEVEL):
+            # 5 武将觉醒等级
+            continue
+        if hero_obj.level < parameterE.get(HERO_LEVEL):
+            # 6 武将等级
+            continue
+        refine_item = game_configs.seal_config.get(hero_obj.refine)
+        if refine_item and refine_item.pulse < parameterE.get(HERO_REFINE):
+            # 7 武将练体
+            continue
+
+        runt_num = 0
+        for (runt_type, item) in hero_obj.runt.items():
+            for (runt_po, runt_info) in item.items():
+                quality = game_configs.stone_config.get('stones'). \
+                    get(runt_info[1]).quality
+                if quality >= parameterE.get(RUNT_QUALITY):
+                    runt_num += 1
+
+        if runt_num < parameterE.get(RUNT_NUM):
+            # 11 符文数量
+            continue
+
+        equ_num = 0
+        for equ_slot_no in range(1, 5):
+            equ_slot = slot.equipment_slots.get(equ_slot_no)
+            if not equ_slot.equipment_id:
+                continue
+            equipment_obj = equ_slot.equipment_obj
+            if equipment_obj.equipment_config_info.quality < parameterE.get(EQU_QUALITY):
+                continue
+            if equipment_obj.attribute.strengthen_lv < parameterE.get(EQU_LEVEL):
+                continue
+            equ_num += 1
+
+        if equ_num < parameterE.get(EQU_NUM):
+            # 9 装备数量
+            continue
+        jindu += 1
+    return jindu
+
+def mine_activity(player, target_conf):
+    """docstring for line_up_activity"""
+
+    RUNT_REFRESH_TIMES = 1
+    WIN_MINE_NUM = 2
+    WIN_MINE_QUALITY = 3
+    GET_RUNT_TIMES = 4
+    MIX_RUNT_TIMES = 5
+    MIX_RUNT_QUALITY = 6
 
 def get_condition(conditions, type):
     condition = conditions.get(type)
