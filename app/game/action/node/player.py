@@ -116,92 +116,12 @@ def new_guide_step_1802(data, player):
         return response.SerializePartialToString()
     new_guide_type = new_guide_item.get('SequenceType')
 
-    #if request.step_id == GUIDE_LINE_UP:
-        #hero_no = int(request.common_id)
-        #res = change_hero_logic(hero_no, new_guide_item.get("Special")[1], 0, player)
-        #if not res.get("result"):
-            #logger.debug("hero already in the line up+++++++")
-            #response.res.result = res.get("result")
-            #response.res.result_no = res.get("result_no")
-            #return response.SerializePartialToString()
-    #elif request.step_id in GUIDE_SET_RUNT:
-        #runt_po = new_guide_item.get("Special")[0]
-        #runt_type = new_guide_item.get("Special")[1]
-        #runt_no = request.sub_common_id
-        #hero_no = int(request.common_id)
-
-        #res = do_runt_set(hero_no, runt_type, runt_po, runt_no, player)
-        #if not res.get("result"):
-            #logger.debug("new guide ,runt set  error========= %s" % res.get("result_no"))
-            #response.res.result = res.get("result")
-            #if res.get('result_no'):
-                #response.res.result_no = res.get("result_no")
-            #return response.SerializePartialToString()
-    #elif request.step_id == GUIDE_REFINE:
-        #refine = request.sub_common_id
-        #hero_no = int(request.common_id)
-
-        #res = do_hero_refine(player, hero_no, refine)
-        #if not res.get("result"):
-            #logger.debug("new guide ,runt set  error========= %s" % res.get("result_no"))
-            #response.res.result = res.get("result")
-            #response.res.result_no = res.get("result_no")
-            #return response.SerializePartialToString()
-    #elif request.step_id in GUIDE_EQUIP_STRENGTH:
-        #res = enhance_equipment(request.common_id, 1, player)
-        #if not res.get("result"):
-            #logger.debug("equipment strength error========= %s" % res.get("result_no"))
-            #response.res.result = res.get("result")
-            #if res.get('result_no'):
-                #response.res.result_no = res.get("result_no")
-            #return response.SerializePartialToString()
-    #elif request.step_id == GUIDE_HERO_UPGRADE:
-        #logger.debug("step_id %s %s" % (request.common_id, request.step_id))
-        #hero_no = int(request.common_id)
-        #hero = player.hero_component.get_hero(hero_no)
-        #total_exp = 0
-        ## 计算装备升级需要的经验丹数量
-        #for level in range(player.base_info.level, hero.level):
-            #total_exp += game_configs.hero_exp_config.get(level)
-        #exp_item_no = 10001
-        #item_info = game_configs.item_config.get(exp_item_no)
-        #exp_item_num = (total_exp - hero.exp) / item_info.get("funcArg1") + 1
-
-        #res = hero_upgrade_with_item_logic(hero_no, exp_item_no, exp_item_num, player)
-        #if not res.get("result"):
-            #logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
-            #response.res.result = res.get("result")
-            #response.res.result_no = res.get("result_no")
-            #return response.SerializePartialToString()
-    #elif request.step_id == GUIDE_HERO_BREAK:
-        #logger.debug("step_id %s" % request.common_id)
-        #hero_no = int(request.common_id)
-        #res = hero_break_logic(hero_no, player, response)
-        #if not res.get("result"):
-            #logger.debug("hero_upgrade_with_item_logic error========= %s" % res.get("result_no"))
-            #response.res.result = res.get("result")
-            #response.res.result_no = res.get("result_no")
-            #return response.SerializePartialToString()
-    #elif request.step_id == GUIDE_EQUIP_SHOP:
-        #shop_info = game_configs.shop_config.get(new_guide_item.get('Special')[0])
-        #consume_config = shop_info.get('consume')
-        #result = is_afford(player, consume_config)  # 校验
-        #if not result.get('result'):
-            #logger.error('newbee guide comsume:%s', consume_config)
-            #response.res.result = res.get("result")
-            #response.res.result_no = res.get("result_no")
-            #return response.SerializePartialToString()
-        #else:
-            #consume_data = consume(player, consume_config)
-            #get_return(player, consume_data, response.consume)
-
-
     logger.info('newbee:%s step:%s=>%s',
                 player.base_info.id,
                 player.base_info.newbee_guide,
                 request.step_id)
     my_newbee_sequence = 0
-    if player.base_info.newbee_guide.get(new_guide_type) is not None:
+    if player.base_info.newbee_guide.get(new_guide_type):
         my_newbee_sequence = game_configs.newbee_guide_config.get(player.base_info.newbee_guide[new_guide_type]).get('Sequence')
     if my_newbee_sequence < new_guide_item.get('Sequence'):
         gain_data = new_guide_item.get('rewards')
@@ -238,6 +158,7 @@ def new_guide_step_1802(data, player):
 
         if my_newbee_sequence < new_guide_item.get('Sequence'):
             player.base_info.newbee_guide[new_guide_type] = request.step_id
+            player.base_info.newbee_guide.current_newbee_guide = request.step_id
             player.base_info.save_data()
     player.pay.pay(need_gold, const.NEW_GUIDE_STEP, func)
     response.res.result = True

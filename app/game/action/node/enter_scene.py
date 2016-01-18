@@ -86,10 +86,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
         player.line_up_component.save_data()
 
     responsedata.hight_power = player.line_up_component.hight_power
-    if player.base_info.newbee_guide.get(0):
-        responsedata.newbee_guide_id = player.base_info.newbee_guide[0]
-    else:
-        responsedata.newbee_guide_id = 0
+    responsedata.newbee_guide_id = player.base_info.current_newbee_guide
 
     if player.guild.g_id != 0:
         responsedata.guild_id = player.guild.g_id

@@ -34,6 +34,7 @@ class CharacterBaseInfoComponent(Component):
         self._exp = 0  # 当前等级获得的经验
 
         self._newbee_guide = {}
+        self.current_newbee_guide = {}
         self._gag = 1    # 禁言到这个时间戳
         self._closure = 1    # 封停到这个时间戳
 
@@ -68,6 +69,7 @@ class CharacterBaseInfoComponent(Component):
         self._exp = character_info['exp']
 
         self._newbee_guide = character_info.get('newbee_guide', {})
+        self._current_newbee_guide = character_info.get('current_newbee_guide', {})
 
         self._gag = character_info['gag']
         self._closure = character_info['closure']
@@ -110,6 +112,7 @@ class CharacterBaseInfoComponent(Component):
                     gag=self._gag,
                     closure=self._closure,
                     newbee_guide=self._newbee_guide,
+                    current_newbee_guide=self._current_newbee_guide,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString(),
@@ -141,6 +144,7 @@ class CharacterBaseInfoComponent(Component):
                     closure=self._closure,
                     nickname=u'',
                     newbee_guide=self._newbee_guide,
+                    current_newbee_guide=self.current_newbee_guide,
                     vip_level=self._vip_level,
                     upgrade_time=self._upgrade_time,
                     heads=self._heads.SerializeToString(),
@@ -447,6 +451,14 @@ class CharacterBaseInfoComponent(Component):
     @newbee_guide.setter
     def newbee_guide(self, value):
         self._newbee_guide = value
+
+    @property
+    def current_newbee_guide(self):
+        return self._current_newbee_guide
+
+    @current_newbee_guide.setter
+    def current_newbee_guide(self, value):
+        self._current_newbee_guide = value
 
     @property
     def upgrade_time(self):
