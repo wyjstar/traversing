@@ -142,6 +142,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     logger.debug("register_time:%d", player.base_info.register_time)
     logger.debug("buy_stamina_times:%d", player.stamina.buy_stamina_times)
     logger.debug("first_recharge_activity:%d", player.base_info.first_recharge_activity)
+    logger.debug("newbee_guide_id:%d", player.base_info.current_newbee_guide)
     # logger.debug("coin:%d", player.finance.coin)
     # logger.debug("gold:%d", player.finance.gold)
     # logger.debug("hero_soul:%d", player.finance.hero_soul)

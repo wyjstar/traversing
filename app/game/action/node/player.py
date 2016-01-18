@@ -158,7 +158,7 @@ def new_guide_step_1802(data, player):
 
         if my_newbee_sequence < new_guide_item.get('Sequence'):
             player.base_info.newbee_guide[new_guide_type] = request.step_id
-            player.base_info.newbee_guide.current_newbee_guide = request.step_id
+            player.base_info.current_newbee_guide = request.step_id
             player.base_info.save_data()
     player.pay.pay(need_gold, const.NEW_GUIDE_STEP, func)
     response.res.result = True

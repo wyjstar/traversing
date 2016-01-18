@@ -34,7 +34,7 @@ class CharacterBaseInfoComponent(Component):
         self._exp = 0  # 当前等级获得的经验
 
         self._newbee_guide = {}
-        self.current_newbee_guide = {}
+        self._current_newbee_guide = 0
         self._gag = 1    # 禁言到这个时间戳
         self._closure = 1    # 封停到这个时间戳
 
@@ -69,7 +69,7 @@ class CharacterBaseInfoComponent(Component):
         self._exp = character_info['exp']
 
         self._newbee_guide = character_info.get('newbee_guide', {})
-        self._current_newbee_guide = character_info.get('current_newbee_guide', {})
+        self._current_newbee_guide = character_info.get('current_newbee_guide', 0)
 
         self._gag = character_info['gag']
         self._closure = character_info['closure']
