@@ -31,6 +31,9 @@ message GetActGiftResponse{
     optional GameResourcesResponse consume = 3;
 }
 
+
+
+
 //1831
 message GetActInfoRequese{
     required int32 act_type = 1;

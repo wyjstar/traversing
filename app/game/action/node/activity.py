@@ -267,32 +267,33 @@ def get_fund_activity_info_1854(data, player):
 @remoteserviceHandle('gate')
 def get_activity_info_1855(data, player):
     # 通用 获取活动信息
-    response = activity_pb2.GetFundActivityResponse()
+    args = activity_pb2.GetActivityInfoRequese()
+    args.ParseFromString(data)
+    act_type = args.act_type
+    response = activity_pb2.GetActivityInfoResponse()
 
-    for act_conf in game_configs.activity_config[51]:
+    for act_conf in game_configs.activity_config[act_type]:
+        if act_conf.showJudgment:
+            continue
         if not player.act.is_activiy_open(act_conf.id):
             continue
         act_info = get_act_info(player, act_conf.id)
 
-        act = response.info.add()
-        act.act_id = act_conf.id
-        act.state = act_info.get('state')
-        act.accumulate_days = len(act_info.get('jindu'))
+        info_pro = response.info.add()
+        info_pro.act_id = act_conf.id
+        if act_conf.type == 51:
+            info_pro.state = act_info.get('state')
+            info_pro.accumulate_days = len(act_info.get('jindu'))
+        elif act_conf.type == 50:
+            info_pro.state = act_info.get('state')
+            info_pro.recharge = act_info.get('jindu')[0]
+            info_pro.max_single_recharge = act_info.get('jindu')[1]
+        else:
+            if info.get('jindu'):
+                target_info_pro.jindu = info.get('jindu')
+            if info.get('state'):
+                target_info_pro.state = info.get('state')
 
-    for act_conf in game_configs.activity_config[50]:
-        if not player.act.is_activiy_open(act_conf.id):
-            continue
-        act_info = get_act_info(player, act_conf.id)
-
-        act = response.info.add()
-        act.act_id = act_conf.id
-        act.state = act_info.get('state')
-        act.recharge = act_info.get('jindu')[0]
-        act.max_single_recharge = act_info.get('jindu')[1]
-
-        # act.state = v.get('state', 0)
-        # act.recharge = v.get('recharge', 0)
-        # act.max_single_recharge = v.get('max_single_recharge', 0)
-
-    print 'get_fund_activity_info_1854:', response
+    print 'get_activity_info_1855:', response
+    response.res.result = True
     return response.SerializeToString()
