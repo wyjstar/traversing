@@ -89,11 +89,11 @@ def update_server_list(args):
 
 
 def kick_player(args):
-    print("kick_player=========1")
     response = AccountKick()
     response.id = 3
     response.channel = args['channel']
     response.client_os = args['client_os']
+    print "kick_player=========response:", response
     remote_gate.push_notice_remote(11,
                                    response.SerializeToString())
 
@@ -123,8 +123,11 @@ def update_excel(args):
     if int(args['force_client_update']):
         response = AccountKick()
         response.id = 3
+        response.channel = 'all'
+        response.client_os = 'all'
         remote_gate.push_notice_remote(11,
                                        response.SerializeToString())
+        print 'update_excel,====response:', response
 
     return {"success": 1}
 
