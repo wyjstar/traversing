@@ -92,6 +92,8 @@ def kick_player(args):
     print("kick_player=========1")
     response = AccountKick()
     response.id = 3
+    response.channel = args['channel']
+    response.client_os = args['client_os']
     remote_gate.push_notice_remote(11,
                                    response.SerializeToString())
 

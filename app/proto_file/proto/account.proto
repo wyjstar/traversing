@@ -17,6 +17,8 @@ message AccountLoginRequest{
 message AccountKick{
 	required int32 id = 1; //1异地登录2封停账号3热更新
 	optional int32 time = 2;// 封停账号到期时间戳，－2表示永久
+	optional string channel = 3;  // 热更新分渠道，all为所有渠道
+	optional string client_os = 4;  // ios or andriod，all为所有渠道
 }
 
 //注册 request: command:1，data:AccountInfo
