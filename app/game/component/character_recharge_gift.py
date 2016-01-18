@@ -81,7 +81,7 @@ class CharacterRechargeGift(Component):
                 self._recharge[activity_id] = {_time_now: 0}
 
         if gift_type == 8:  # single recharge
-            if recharge == activity.get('parameterA'):
+            if recharge == activity.get('parameterA') or (activity.get('id') != 8010 and recharge > activity.get('parameterA')):
                 if activity_id not in self._recharge:
                     self._recharge[activity_id] = {}
                 if len(self._recharge[activity_id]) < activity.get(
