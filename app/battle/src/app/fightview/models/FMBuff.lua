@@ -86,7 +86,7 @@ function FMBuff:perform_buff(owner, result)
         if not attacker.is_monster then
             result.value = unpara(attacker, self.skill_buff_info, owner)
         else
-            result.value = unpara_monster(attacker.boss.atk, owner, extra_msgs)
+            result.value = unpara_monster(attacker.atk, owner, extra_msgs)
         end
     else
         self.value = self:get_buff_value_util(owner)

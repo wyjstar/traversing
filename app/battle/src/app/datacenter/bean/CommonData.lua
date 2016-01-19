@@ -12,7 +12,6 @@ function CommonData:ctor(item)
     self.AccountResponse = {} -- 注册成功返回数据
     self.isTourist = false
     self.totalRecharge = 0
-    self.isHasVipGift = false
     self.iscanZcjb = false
     self.netTip = nil
     self.oldLevel = 0 --战队升级前的等级
@@ -54,6 +53,7 @@ function CommonData:updateRefreshTime24(task,dt)
     getNetManager():getActivityNet():sendZcjbGetdata()              -- 招财进宝奖励
     getNetManager():getActivityNet():sendGetBrewInfoMsg()           -- 煮酒数据
     getNetManager():getActivityNet():sendGetLegionList()            -- 军团活动奖励
+    getNetManager():getActivityNet():sendGetConsumeResList()        -- 累计活动奖励
     getNetManager():getInstanceNet():sendGetAllStageInfoMsg()       -- 全部关卡信息
     getNetManager():getLoginNet():sendRefreshPlayer()               -- 刷新登陆信息
     getNetManager():getSignNet():sendGetSignListMsg()               -- 签到刷新
@@ -179,6 +179,7 @@ function CommonData:setData(data)
     self.battle_speed = data.battle_speed or 1 --战斗速度
 
     self.srv_time = data.server_time                --服务器时间，每秒进行更新
+    self.serverOpenTime = data.server_open_time            --开服时间
 
     self.buy_times = {} --data.buy_times                 --购买资源（体力，讨伐令，鞋子）次数
 
@@ -286,6 +287,14 @@ end
 
 function CommonData:setPowerRank(rank)
     self.rank = rank
+end
+function CommonData:setServerOpenTime(timeStr)
+    -- body
+    self.serverOpenTime = timeStr
+end
+function CommonData:getServerOpenTime()
+    -- body
+    return self.serverOpenTime
 end
 
 
@@ -431,15 +440,6 @@ end
 function CommonData:addYuanqi(num)
     self:addFinance(RES_TYPE.YUANQI, num)
     self:dispatchEvent(EventName.UPDATE_YUANQI)
-end
---是否有Vip礼包
-function CommonData:getVipGift()
-   return self.isHasVipGift
-    -- body
-end
-function CommonData:setVipGift(hasVipGift)
-    self.isHasVipGift = hasVipGift
-    -- body
 end
 
 

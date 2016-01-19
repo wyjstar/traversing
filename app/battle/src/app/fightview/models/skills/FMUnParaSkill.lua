@@ -34,6 +34,7 @@ function FMUnParaSkill:ctor(unpar_type_id, unpar_other_id, base_info, process)
     self.level = level
     self.job = job
     self.max_used_times = self.baseTemplate:getBaseInfoById("wushuangTimeMax")
+    self.atk = 0
 end
 
 function FMUnParaSkill:get_skill_buffs(skill_id)
@@ -203,13 +204,10 @@ function FMUnParaSkill:construct_attacker()
     -- 判断怪物无双
     print("===================blueunpara", fight_type, TYPE_STAGE_ELITE, side)
     if (fight_type == TYPE_STAGE_ELITE or fight_type == TYPE_STAGE_ACTIVITY or fight_type == TYPE_STAGE_NORMAL) and self.side == "blue" then
-        for k, v in pairs(self.process.blue_units) do
-                print("===================blueunpara1")
-            if v.is_boss then
-                print("===================blueunpara2")
-                attacker.is_monster = true -- 判断是否是怪物无双
-                attacker.boss = v
-            end
+        if self.atk > 0 then
+            attacker.is_monster = true
+            attacker.atk = self.atk
+            print("===================blueunpara2", attacker.atk, attacker.is_monster)
         end
     end
     attacker.skill = self

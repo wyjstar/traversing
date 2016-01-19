@@ -215,7 +215,7 @@ function initGuideData()
 
     local heroBaseInfo = {
         [1] = {
-            ["hp"]=20000,
+            ["hp"]=15000,
             ["atk"]=5000,
             ["physical_def"] = 0,
             ["magic_def"] =0,
@@ -239,7 +239,7 @@ function initGuideData()
             ["level"]=1
         },
         [5] ={
-            ["hp"]=12000,
+            ["hp"]=18000,
             ["atk"]=8000,
             ["physical_def"] = 0,
             ["magic_def"] =0,
@@ -292,6 +292,8 @@ function initGuideData()
         }
     }
 
+    local effectIdNoTrigger = {3,24,25,31,32,33,34,35,36}
+
     for i=1,6 do
         v = demoHero[tostring(i)]
         if v then
@@ -307,7 +309,7 @@ function initGuideData()
             unit.skill.mp = baseInfo.mp
 
             for k,v in pairs(unit.skill.attack_normal_skill_buffs) do
-                if v.effectId == 24 then
+                if table.inv(effectIdNoTrigger,v.effectId) then
                     v.triggerRate = 0
                 end
             end
@@ -344,7 +346,7 @@ function initGuideData()
             local isawake = true
             local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, isawake, false)
             for k,v in pairs(unit.skill.attack_normal_skill_buffs) do
-                if v.effectId == 24 then
+                if table.inv(effectIdNoTrigger,v.effectId) then
                     v.triggerRate = 0
                 end
             end
@@ -459,6 +461,7 @@ function initStageData(data)
     local blue_group = data.blue
     local redUnits = {}
     local blueGroup = {}
+    local blue_unpara_atk = 0
 
     for i=1,6 do
         if red_units[i] then
@@ -475,15 +478,18 @@ function initStageData(data)
             if blue_units.group[i] then
                 local unit = constructBattleUnit(blue_units.group[i], "blue", k==table.nums(blue_group))
                 blueUnits[unit.pos] = unit
+                if blue_units.group[i].is_boss then
+                    blue_unpara_atk = blue_units.group[i].atk
+                end
                 updateBlueUnitViewProperty(unit)
             end
         end
         table.insert(blueGroup, blueUnits)
     end
 
-    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7, data.unpar_level, data.unpar_job )
+    local redUnParaSkill = constructUnparaSkill(data.unpar_type_id, data.unpar_other_id, const.HOME_ARMY, "red", 7, data.unpar_level, data.unpar_job)
     --local redUnParaSkill = constructUnparaSkill(0, 0, const.HOME_ARMY, "red", 7 )
-    local blueUnParaSkill = constructUnparaSkill(data.monster_unpar, 0, const.HOME_ENEMY, "blue", 7+12, 1, 1)
+    local blueUnParaSkill = constructUnparaSkill(data.monster_unpar, 0, const.HOME_ENEMY, "blue", 7+12, 1, 1, blue_unpara_atk)
     --local buddySkill = constructBuddySkillWithTemplate(10001, 30)
     local buddySkill = constructBuddySkill(data.friend)
     --print(buddySkill.unit.no, "buddySkill=================")
@@ -824,7 +830,7 @@ function updateBossUnitViewProperty(unit)
 end
 
 -- 构造无双技能
-function constructUnparaSkill(unpar_type_id, unpar_other_id, HOMES, side, viewPos, unpar_level, unpar_job)
+function constructUnparaSkill(unpar_type_id, unpar_other_id, HOMES, side, viewPos, unpar_level, unpar_job, blue_unpara_atk)
     if unpar_type_id == 0 then
         unpar_type_id = nil
     end
@@ -837,6 +843,7 @@ function constructUnparaSkill(unpar_type_id, unpar_other_id, HOMES, side, viewPo
     unpara_skill.viewPos = viewPos
     unpara_skill.level = unpar_level
     unpara_skill.job = unpar_job
+    unpara_skill.atk = blue_unpara_atk
     return unpara_skill
 end
 

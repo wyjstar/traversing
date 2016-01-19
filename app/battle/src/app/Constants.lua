@@ -18,8 +18,6 @@ const.FIGHT_POS_UNPARA_ICON = cc.p(130,355)
 BIG_SCALE = 0.58
 TYPE_ACTIVITY_LIMIT_SHOP = "limitShop"  --限时商店类型
 
-NEWGUIDE_HIDESTAGE_GID = 3501 --新手引导，隐藏关卡的id
-
 const.HOME_ARMY = {
     [1] = {point = cc.pAdd(const.POS_ARMY, cc.p(-190, 90)), scale = BIG_SCALE},
     [2] = {point = cc.pAdd(const.POS_ARMY, cc.p(0, 90)), scale = BIG_SCALE},
@@ -675,9 +673,10 @@ TRAVEL_EVENT_TYPE = {
 "成长基金"任务状态
 ]]
 GROW_ACTIVITY_STATE = {
-    UNOPEN  = 0, -- 未激活
-    OPEN    = 1, -- 已激活
-    GOT     = 2, -- 已获得
+    UNOPEN  = 0, -- 未开启
+    UNABLE  = 1, -- 不可领取 
+    OPEN    = 2, -- 已激活
+    GOT     = 3, -- 已获得
 }
 
 --[[--
@@ -729,6 +728,21 @@ REWARD_STATE = {
     STATE_CANNOT = 0,--不能领取
     STATE_CAN = 1,--可领取
     STATE_ISGOT = 2,--已领取
+}
+ACTIVITY_DURATION_TYPE = {
+    TIME_FOREVER = 1,--永久活动
+    TIME_INTERVAL = 2,--时间区间
+    TIME_SERVEROPENBYDAY = 3,--开服后 达到要求一直存在
+    TIME_SERVEROPENDAYTODAY = 4,--开服后 第几天到第几天显示
+    TIME_SERVEROPENBYTIME = 5,--开服后 多少小时内显示
+    TIME_LOGINOVER = 6,--首次登录 达到要求一直存在
+    TIME_LOGINOVER2= 7,--首次登录 第几天到第几天一直存在
+    TIME_LOGINOVER3= 8,--首次登录 第几小时到第几小时一直存在
+}
+ACTIVITY_POSITION_TYPE = {
+    POSITION_JINGCAI = 0,--精彩活动
+    POSITION_SEVENDAY = 1,--精彩活动
+    POSITION_ONEBUY = 2,--精彩活动
 }
 
 
