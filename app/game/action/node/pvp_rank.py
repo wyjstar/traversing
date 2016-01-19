@@ -800,6 +800,7 @@ def pvp_rob_treasure_864(data, player):
     fight_result = deal_pvp_rob_fight(player, uid, chip_id, response, chip_conf)
     player.rob_treasure.truce = [0, 1]
     if fight_result:
+        indiana_conf = get_indiana_conf(player, uid, chip_conf)
         player.rob_treasure.can_receive = indiana_conf.id
         player.rob_treasure.save_data()
 
