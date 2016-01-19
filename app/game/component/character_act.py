@@ -272,7 +272,6 @@ class CharacterActComponent(Component):
                     continue
                 else:
                     act_info[1].append(info)
-        logger.debug("mine_mix_runt %s" % infos)
         self.save_data()
 
     def add_treasure(self, treasure_type, treasure_quality):
