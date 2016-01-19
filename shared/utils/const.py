@@ -293,4 +293,3 @@ const.ATTR_TYPE = {1:"hpHeroSelf",
              11:"ductilityHero"}
 
 const.ESCORT_TASK_MAXNUM = 100
-const.CHAT_RECORD_NUM = 10

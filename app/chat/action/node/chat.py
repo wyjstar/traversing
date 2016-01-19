@@ -97,7 +97,7 @@ def send_message_1002(character_id, dynamic_id, room_id, content,
 def set_record(key, response):
     tb_base_info.rpush(key, response.SerializeToString())
     res = tb_base_info.lrange(key, 0, -1)
-    if len(res) > const.CHAT_RECORD_NUM:
+    if len(res) > game_configs.base_config.get('chat_show_max'):
         tb_base_info.lpop(key)
 
 
