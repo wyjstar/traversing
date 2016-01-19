@@ -34,9 +34,8 @@ class CharacterPay(Component):
         self.REMOTE_DEPLOYED = False
         if 'deploy' in GlobalObject().allconfig:
             deplayed = GlobalObject().allconfig["deploy"]["remote_deployed"]
-            channel = GlobalObject().allconfig["deploy"]["channel"]
-            if channel == "tencent":
-                self.REMOTE_DEPLOYED = deplayed
+            #channel = GlobalObject().allconfig["deploy"]["channel"]
+            self.REMOTE_DEPLOYED = deplayed
 
     def set_pay_arg(self, value):
         self._platform = value.get("platform")
@@ -47,6 +46,10 @@ class CharacterPay(Component):
         self._appkey = str(value.get("appkey"))
         self._pf = str(value.get("pf"))
         self._pfkey = str(value.get("pfkey"))
+        login_channel = str(value.get("login_channel"))
+        logger.debug("login_channel %s" % login_channel)
+        if login_channel != "tencent":
+            self.REMOTE_DEPLOYED = False
         #self._zoneid = str(value.get("zoneid"))
         if self.REMOTE_DEPLOYED:
             self.get_balance() # 登录时从tx拉取gold
