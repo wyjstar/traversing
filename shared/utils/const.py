@@ -206,9 +206,9 @@ const.ROB_TREASURE_TRUCE = 71  # 夺宝休战
 const.BUY_TRUCE_ITEM = 72  # 夺宝购买休战符
 const.ROB_TREASURE = 73  # 夺宝
 const.ROB_TREASURE_REWARD = 74  # 夺宝
-const.FUND = 47
 const.GUILD_MOBAI = 75  # 膜拜
 const.Bless = 76
+const.FUND = 77
 
 const.ESCORT_ROB = 1909  # 劫运公会
 const.REFRESH_ESCORT_TASKS = 1904 # 刷新押运任务
