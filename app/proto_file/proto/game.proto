@@ -13,7 +13,7 @@ message GameLoginRequest{
     optional int32 screen_width = 8;  // 显示屏宽度
     optional int32 screen_hight = 9;  // 显示屏高度
     optional float density = 10;  // 像素密度
-    optional int32 login_channel = 11;  //登录渠道
+    optional string login_channel = 11;  //登录渠道
     optional string mac = 12;  // MAC地址
     optional string cpu_hardware = 13;  // cpu类型 频率 核数
     optional int32 memory = 14;  // 内存信息单位M
