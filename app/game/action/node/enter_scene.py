@@ -86,10 +86,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
         player.line_up_component.save_data()
 
     responsedata.hight_power = player.line_up_component.hight_power
-    if player.base_info.newbee_guide.get(0):
-        responsedata.newbee_guide_id = player.base_info.newbee_guide[0]
-    else:
-        responsedata.newbee_guide_id = 0
+    responsedata.newbee_guide_id = player.base_info.current_newbee_guide
 
     if player.guild.g_id != 0:
         responsedata.guild_id = player.guild.g_id
@@ -148,6 +145,7 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     logger.debug("buy_stamina_times:%d", player.stamina.buy_stamina_times)
     logger.debug("first_recharge_activity:%d",
                  player.base_info.first_recharge_activity)
+    logger.debug("newbee_guide_id:%d", player.base_info.current_newbee_guide)
     # logger.debug("coin:%d", player.finance.coin)
     # logger.debug("gold:%d", player.finance.gold)
     # logger.debug("hero_soul:%d", player.finance.hero_soul)
