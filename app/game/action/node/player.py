@@ -472,7 +472,6 @@ def change_stage_story_2205(data, player):
 def chat_record_1004(data, player):
     # 获取聊天记录
     response = chat_pb2.GetChatHistoryResponse()
-    response.result = True
     guild_id = player.guild.g_id
     guild_res = tb_base_info_chat_record.lrange(guild_id, 0, -1)
     for record in guild_res:
