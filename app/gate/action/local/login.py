@@ -35,7 +35,8 @@ def character_login_4(key, dynamic_id, request_proto):
                    appkey=argument.appkey,
                    pf=argument.pf,
                    pfkey=argument.pfkey,
-                   zoneid=argument.zoneid)
+                   zoneid=argument.zoneid,
+                   login_channel=argument.login_channel)
 
     data = __character_login(dynamic_id, pay_arg)
 
