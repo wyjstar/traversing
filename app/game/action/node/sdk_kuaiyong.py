@@ -103,7 +103,7 @@ def baidu_recharge_remote(product_id, fee, order_id, is_online, player):
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
-    player.recharge.recharge_gain(recharge_item, response)  # 发送奖励邮件
+    player.recharge.recharge_gain(recharge_item, response, 7)  # 发送奖励邮件
 
     remote_gate.push_object_remote(12003, response.SerializeToString(),
                                    [player.dynamic_id])
