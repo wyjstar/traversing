@@ -31,11 +31,12 @@ class CharacterPay(Component):
         self._flowid = ""
 
         self.loop_times = 0
-        if 'deploy' not in GlobalObject().allconfig:
-            self.REMOTE_DEPLOYED = False
-            print 'deploy not in GlobalObject().allconfig'
-        else:
-            self.REMOTE_DEPLOYED = GlobalObject().allconfig["deploy"]["remote_deployed"]
+        self.REMOTE_DEPLOYED = False
+        if 'deploy' in GlobalObject().allconfig:
+            deplayed = GlobalObject().allconfig["deploy"]["remote_deployed"]
+            channel = GlobalObject().allconfig["deploy"]["channel"]
+            if channel == "tencent":
+                self.REMOTE_DEPLOYED = deplayed
 
     def set_pay_arg(self, value):
         self._platform = value.get("platform")
