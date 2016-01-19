@@ -3,6 +3,7 @@ message ChatObjectInfo{
     optional string nickname=2;//角色昵称
     optional int32 vip_level = 3;
     optional int32 guild_position = 4;
+    optional int32 head = 5; //玩家头像
 }
 
 //登录 command:1001
@@ -43,12 +44,7 @@ message GetChatHistoryRequest{
 
 // 获取聊天记录 1004
 message GetChatHistoryResponse{
-    required int32 channel = 1;//消息的频道  1.世界 2.公会 3.私聊 4.GM 5.系统通告 6.军团通告
-    repeated ChatHistory chat_history=2;
+    repeated chatMessageResponse world_chat_history=1;
+    repeated chatMessageResponse guild_chat_history=2;
 }
 
-message ChatHistory{
-    required ChatObjectInfo owner = 1;
-    required string content = 2;//消息内容
-    optional int32 time = 3;
-}

@@ -11,7 +11,7 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from app.proto_file import player_request_pb2
 from app.proto_file import recharge_pb2
-from app.proto_file import player_pb2
+from app.proto_file import player_pb2, chat_pb2
 from app.proto_file.player_request_pb2 import CreatePlayerRequest
 from app.proto_file.player_request_pb2 import NewbeeGuideStepRequest, \
     ChangeHeadRequest, UpGuideRequest
@@ -27,9 +27,11 @@ from shared.utils.const import const
 from app.game.component.character_stamina import max_of_stamina
 from shared.tlog import tlog_action
 from app.proto_file.game_pb2 import HeartBeatResponse, StaminaOperRequest, StaminaOperResponse
+from gfirefly.dbentrust.redis_mode import RedisObject
 
 
 remote_gate = GlobalObject().remote.get('gate')
+tb_base_info_chat_record = RedisObject('tb_base_info:chat_record')
 
 
 @remoteserviceHandle('gate')
@@ -464,4 +466,23 @@ def change_stage_story_2205(data, player):
     player.base_info.save_data()
     response = CommonResponse()
     response.result = True
+    return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def chat_record_1004(data, player):
+    # 获取聊天记录
+    response = chat_pb2.GetChatHistoryResponse()
+    response.result = True
+    guild_id = player.guild.g_id
+    guild_res = tb_base_info_chat_record.lrange(guild_id, 0, -1)
+    for record in guild_res:
+        record_pb = response.guild_chat_history.add()
+        record_pb.ParseFromString(record)
+
+    world_res = tb_base_info_chat_record.lrange(1, 0, -1)
+    for record in world_res:
+        record_pb = response.world_chat_history.add()
+        record_pb.ParseFromString(record)
+
+    logger.debug(response)
     return response.SerializePartialToString()

@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='chat.proto',
   package='',
-  serialized_pb='\n\nchat.proto\"Y\n\x0e\x43hatObjectInfo\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x11\n\tvip_level\x18\x03 \x01(\x05\x12\x16\n\x0eguild_position\x18\x04 \x01(\x05\"4\n\x12LoginToChatRequest\x12\x1e\n\x05owner\x18\x01 \x02(\x0b\x32\x0f.ChatObjectInfo\"\xb5\x01\n\x14\x43hatConectingRequest\x12\x1e\n\x05owner\x18\x01 \x02(\x0b\x32\x0f.ChatObjectInfo\x12\x0f\n\x07\x63hannel\x18\x02 \x02(\x05\x12\x0f\n\x07\x63ontent\x18\x03 \x02(\t\x12\x1e\n\x05other\x18\x04 \x01(\x0b\x32\x0f.ChatObjectInfo\x12\x10\n\x08guild_id\x18\x05 \x01(\x05\x12\x11\n\tvip_level\x18\x06 \x01(\x05\x12\x16\n\x0eguild_position\x18\x07 \x01(\x05\"C\n\x0c\x43hatResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x10\n\x08gag_time\x18\x03 \x01(\x05\"e\n\x13\x63hatMessageResponse\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\x05\x12\x1e\n\x05owner\x18\x02 \x02(\x0b\x32\x0f.ChatObjectInfo\x12\x0f\n\x07\x63ontent\x18\x03 \x02(\t\x12\x0c\n\x04time\x18\x04 \x01(\x05\"(\n\x15GetChatHistoryRequest\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\x05\"M\n\x16GetChatHistoryResponse\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\x05\x12\"\n\x0c\x63hat_history\x18\x02 \x03(\x0b\x32\x0c.ChatHistory\"L\n\x0b\x43hatHistory\x12\x1e\n\x05owner\x18\x01 \x02(\x0b\x32\x0f.ChatObjectInfo\x12\x0f\n\x07\x63ontent\x18\x02 \x02(\t\x12\x0c\n\x04time\x18\x03 \x01(\x05')
+  serialized_pb='\n\nchat.proto\"g\n\x0e\x43hatObjectInfo\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x10\n\x08nickname\x18\x02 \x01(\t\x12\x11\n\tvip_level\x18\x03 \x01(\x05\x12\x16\n\x0eguild_position\x18\x04 \x01(\x05\x12\x0c\n\x04head\x18\x05 \x01(\x05\"4\n\x12LoginToChatRequest\x12\x1e\n\x05owner\x18\x01 \x02(\x0b\x32\x0f.ChatObjectInfo\"\xb5\x01\n\x14\x43hatConectingRequest\x12\x1e\n\x05owner\x18\x01 \x02(\x0b\x32\x0f.ChatObjectInfo\x12\x0f\n\x07\x63hannel\x18\x02 \x02(\x05\x12\x0f\n\x07\x63ontent\x18\x03 \x02(\t\x12\x1e\n\x05other\x18\x04 \x01(\x0b\x32\x0f.ChatObjectInfo\x12\x10\n\x08guild_id\x18\x05 \x01(\x05\x12\x11\n\tvip_level\x18\x06 \x01(\x05\x12\x16\n\x0eguild_position\x18\x07 \x01(\x05\"C\n\x0c\x43hatResponse\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x11\n\tresult_no\x18\x02 \x01(\x05\x12\x10\n\x08gag_time\x18\x03 \x01(\x05\"e\n\x13\x63hatMessageResponse\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\x05\x12\x1e\n\x05owner\x18\x02 \x02(\x0b\x32\x0f.ChatObjectInfo\x12\x0f\n\x07\x63ontent\x18\x03 \x02(\t\x12\x0c\n\x04time\x18\x04 \x01(\x05\"(\n\x15GetChatHistoryRequest\x12\x0f\n\x07\x63hannel\x18\x01 \x02(\x05\"|\n\x16GetChatHistoryResponse\x12\x30\n\x12world_chat_history\x18\x01 \x03(\x0b\x32\x14.chatMessageResponse\x12\x30\n\x12guild_chat_history\x18\x02 \x03(\x0b\x32\x14.chatMessageResponse')
 
 
 
@@ -53,6 +53,13 @@ _CHATOBJECTINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='head', full_name='ChatObjectInfo.head', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -63,7 +70,7 @@ _CHATOBJECTINFO = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=14,
-  serialized_end=103,
+  serialized_end=117,
 )
 
 
@@ -90,8 +97,8 @@ _LOGINTOCHATREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=105,
-  serialized_end=157,
+  serialized_start=119,
+  serialized_end=171,
 )
 
 
@@ -160,8 +167,8 @@ _CHATCONECTINGREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=160,
-  serialized_end=341,
+  serialized_start=174,
+  serialized_end=355,
 )
 
 
@@ -202,8 +209,8 @@ _CHATRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=343,
-  serialized_end=410,
+  serialized_start=357,
+  serialized_end=424,
 )
 
 
@@ -251,8 +258,8 @@ _CHATMESSAGERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=412,
-  serialized_end=513,
+  serialized_start=426,
+  serialized_end=527,
 )
 
 
@@ -279,8 +286,8 @@ _GETCHATHISTORYREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=515,
-  serialized_end=555,
+  serialized_start=529,
+  serialized_end=569,
 )
 
 
@@ -292,14 +299,14 @@ _GETCHATHISTORYRESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='channel', full_name='GetChatHistoryResponse.channel', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
+      name='world_chat_history', full_name='GetChatHistoryResponse.world_chat_history', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='chat_history', full_name='GetChatHistoryResponse.chat_history', index=1,
+      name='guild_chat_history', full_name='GetChatHistoryResponse.guild_chat_history', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -314,58 +321,16 @@ _GETCHATHISTORYRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=557,
-  serialized_end=634,
-)
-
-
-_CHATHISTORY = _descriptor.Descriptor(
-  name='ChatHistory',
-  full_name='ChatHistory',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='owner', full_name='ChatHistory.owner', index=0,
-      number=1, type=11, cpp_type=10, label=2,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='content', full_name='ChatHistory.content', index=1,
-      number=2, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='time', full_name='ChatHistory.time', index=2,
-      number=3, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  serialized_start=636,
-  serialized_end=712,
+  serialized_start=571,
+  serialized_end=695,
 )
 
 _LOGINTOCHATREQUEST.fields_by_name['owner'].message_type = _CHATOBJECTINFO
 _CHATCONECTINGREQUEST.fields_by_name['owner'].message_type = _CHATOBJECTINFO
 _CHATCONECTINGREQUEST.fields_by_name['other'].message_type = _CHATOBJECTINFO
 _CHATMESSAGERESPONSE.fields_by_name['owner'].message_type = _CHATOBJECTINFO
-_GETCHATHISTORYRESPONSE.fields_by_name['chat_history'].message_type = _CHATHISTORY
-_CHATHISTORY.fields_by_name['owner'].message_type = _CHATOBJECTINFO
+_GETCHATHISTORYRESPONSE.fields_by_name['world_chat_history'].message_type = _CHATMESSAGERESPONSE
+_GETCHATHISTORYRESPONSE.fields_by_name['guild_chat_history'].message_type = _CHATMESSAGERESPONSE
 DESCRIPTOR.message_types_by_name['ChatObjectInfo'] = _CHATOBJECTINFO
 DESCRIPTOR.message_types_by_name['LoginToChatRequest'] = _LOGINTOCHATREQUEST
 DESCRIPTOR.message_types_by_name['ChatConectingRequest'] = _CHATCONECTINGREQUEST
@@ -373,7 +338,6 @@ DESCRIPTOR.message_types_by_name['ChatResponse'] = _CHATRESPONSE
 DESCRIPTOR.message_types_by_name['chatMessageResponse'] = _CHATMESSAGERESPONSE
 DESCRIPTOR.message_types_by_name['GetChatHistoryRequest'] = _GETCHATHISTORYREQUEST
 DESCRIPTOR.message_types_by_name['GetChatHistoryResponse'] = _GETCHATHISTORYRESPONSE
-DESCRIPTOR.message_types_by_name['ChatHistory'] = _CHATHISTORY
 
 class ChatObjectInfo(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -416,12 +380,6 @@ class GetChatHistoryResponse(_message.Message):
   DESCRIPTOR = _GETCHATHISTORYRESPONSE
 
   # @@protoc_insertion_point(class_scope:GetChatHistoryResponse)
-
-class ChatHistory(_message.Message):
-  __metaclass__ = _reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _CHATHISTORY
-
-  # @@protoc_insertion_point(class_scope:ChatHistory)
 
 
 # @@protoc_insertion_point(module_scope)

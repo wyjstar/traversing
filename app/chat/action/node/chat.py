@@ -10,17 +10,19 @@ from app.chat.service.node.chatgateservice import noderemote
 from shared.utils import trie_tree
 from shared.db_opear.configs_data import game_configs
 from gfirefly.dbentrust.redis_mode import RedisObject
+from shared.utils.const import const
 #from shared.common_logic.feature_open import is_open, CHAT
 
 
 tb_character_info = RedisObject('tb_character_info')
+tb_base_info = RedisObject('tb_base_info:chat_record')
 
 
 @nodeservice_handle
 def send_message_1002(character_id, dynamic_id, room_id, content,
                       character_nickname, to_character_id,
                       to_character_nickname, guild_id, vip_level,
-                      guild_position):
+                      guild_position, head):
     """发送信息
     @param character_nickname: 角色昵称
     @param to_character_id: 私聊对象角色id
@@ -63,14 +65,10 @@ def send_message_1002(character_id, dynamic_id, room_id, content,
 
         ids = ChaterManager().getall_dynamicid()
         response = chat_pb2.chatMessageResponse()
-        response.time = int(time.time())
-        response.channel = room_id
-        owner = response.owner
-        owner.id = character_id
-        owner.nickname = character_nickname
-        owner.vip_level = vip_level
-        response.content = content
+        update_chat_pb(room_id, character_id, character_nickname, vip_level, content, guild_position, head, response)
         chater.last_time = int(time.time())
+        set_record(1, response)
+
         noderemote.push_object_remote(1000, response.SerializeToString(), ids)
 
     elif room_id == 3:  # 私聊频道
@@ -78,13 +76,7 @@ def send_message_1002(character_id, dynamic_id, room_id, content,
         if not other_chater:
             return {'result': False}
         response = chat_pb2.chatMessageResponse()
-        response.time = int(time.time())
-        response.channel = room_id
-        owner = response.owner
-        owner.id = character_id
-        owner.nickname = character_nickname
-        owner.vip_level = vip_level
-        response.content = content
+        update_chat_pb(room_id, character_id, character_nickname, vip_level, content, guild_position, head, response)
         noderemote.push_object_remote(1000, response.SerializeToString(),
                                       [other_chater.dynamic_id])
 
@@ -93,15 +85,31 @@ def send_message_1002(character_id, dynamic_id, room_id, content,
         if ids.count(dynamic_id) != 1:
             return {'result': False}
         response = chat_pb2.chatMessageResponse()
-        response.time = int(time.time())
-        response.channel = room_id
-        owner = response.owner
-        owner.id = character_id
-        owner.nickname = character_nickname
-        owner.vip_level = vip_level
-        owner.guild_position = guild_position
-        response.content = content
+        update_chat_pb(room_id, character_id, character_nickname, vip_level, content, guild_position, head, response)
+
+
         noderemote.push_object_remote(1000, response.SerializeToString(), ids)
+        set_record(guild_id, response)
 
     print 'chat response ========================'
     return {'result': True}
+
+def set_record(key, response):
+    tb_base_info.rpush(key, response.SerializeToString())
+    res = tb_base_info.lrange(key, 0, -1)
+    if len(res) > const.CHAT_RECORD_NUM:
+        tb_base_info.lpop(key)
+
+
+def update_chat_pb(room_id, character_id, character_nickname, vip_level, content, guild_position, head, response):
+    """docstring for update_chat_pb"""
+    response.time = int(time.time())
+    response.channel = room_id
+    owner = response.owner
+    owner.id = character_id
+    owner.nickname = character_nickname
+    owner.vip_level = vip_level
+    owner.guild_position = guild_position
+    owner.head = head
+    response.content = content
+

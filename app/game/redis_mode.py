@@ -15,7 +15,8 @@ tb_guild_info = RedisObject('tb_guild_info')
 tb_pvp_rank = RedisObject('tb_pvp_rank')
 # mine data
 tb_mine = RedisObject('tb_mine')
-
+# 全局基础信息，目前只有世界聊天记录
+tb_base_info = RedisObject('tb_base_info')
 
 if __name__ == '__main__':
     from gfirefly.dbentrust.redis_manager import redis_manager

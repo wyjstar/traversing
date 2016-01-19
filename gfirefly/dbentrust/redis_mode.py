@@ -252,3 +252,22 @@ class RedisObject(object):
     def zrevrangebyscore(self, m, n, withscores=False):
         client = redis_manager.get_connection(self._name)
         return client.zrevrangebyscore(self._name, m, n, withscores=withscores)
+
+    def lpop(self, k):
+        produce_key = self.produceKey(unicode(k))
+        client = redis_manager.get_connection(self._name)
+        return client.lpop(produce_key)
+
+    def rpush(self, k, v):
+        produce_key = self.produceKey(unicode(k))
+        client = redis_manager.get_connection(self._name)
+        return client.rpush(produce_key, cPickle.dumps(v))
+
+    def lrange(self, k, start, end):
+        produce_key = self.produceKey(unicode(k))
+        client = redis_manager.get_connection(self._name)
+        lst = client.lrange(produce_key, start, end)
+        res = []
+        for item in lst:
+            res.append(cPickle.loads(item))
+        return res
