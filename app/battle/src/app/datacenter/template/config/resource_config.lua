@@ -223,14 +223,6 @@ resource_config={
   ["id"] = 1100151,  ["pathWithName"] = "hero_10015_4",}
 ,  [1100152] = {
   ["id"] = 1100152,  ["pathWithName"] = "hero_10015_all",}
-,  [660016] = {
-  ["id"] = 660016,  ["pathWithName"] = "xiaolingxian_90.mp3",}
-,  [660013] = {
-  ["id"] = 660013,  ["pathWithName"] = "xiaolingxian_89.mp3",}
-,  [600229] = {
-  ["id"] = 600229,  ["pathWithName"] = "xiaolingxian_88.mp3",}
-,  [660026] = {
-  ["id"] = 660026,  ["pathWithName"] = "liubei_17.mp3",}
 ,  [1200461] = {
   ["id"] = 1200461,  ["pathWithName"] = "hero_20046_4",}
 ,  [1200462] = {
@@ -241,16 +233,10 @@ resource_config={
   ["id"] = 1200464,  ["pathWithName"] = "hero2_20046_all",}
 ,  [1100162] = {
   ["id"] = 1100162,  ["pathWithName"] = "hero_10016_all",}
-,  [660025] = {
-  ["id"] = 660025,  ["pathWithName"] = "wanjia_21.mp3",}
 ,  [2300631] = {
   ["id"] = 2300631,  ["pathWithName"] = "playerhero_10063",}
-,  [660024] = {
-  ["id"] = 660024,  ["pathWithName"] = "xiaolingxian_22.mp3",}
-,  [650043] = {
-  ["id"] = 650043,  ["pathWithName"] = "xiaolingxian_87.mp3",}
-,  [220030] = {
-  ["id"] = 220030,  ["pathWithName"] = "voice_10030.mp3",}
+,  [2100711] = {
+  ["id"] = 2100711,  ["pathWithName"] = "playerhero_10071",}
 ,  [1200471] = {
   ["id"] = 1200471,  ["pathWithName"] = "hero_20047_4",}
 ,  [1200472] = {
@@ -261,16 +247,16 @@ resource_config={
   ["id"] = 1100171,  ["pathWithName"] = "hero_10017_4",}
 ,  [1100172] = {
   ["id"] = 1100172,  ["pathWithName"] = "hero_10017_all",}
-,  [650069] = {
-  ["id"] = 650069,  ["pathWithName"] = "xiaolingxian_85.mp3",}
-,  [650068] = {
-  ["id"] = 650068,  ["pathWithName"] = "xiaolingxian_84.mp3",}
+,  [5064107] = {
+  ["id"] = 5064107,  ["pathWithName"] = "item_60001",}
+,  [600122] = {
+  ["id"] = 600122,  ["pathWithName"] = "liubei_3.mp3",}
 ,  [330057] = {
   ["id"] = 330057,  ["pathWithName"] = "deathvoice_10057.mp3",}
-,  [650041] = {
-  ["id"] = 650041,  ["pathWithName"] = "xiaolingxian_83.mp3",}
-,  [650067] = {
-  ["id"] = 650067,  ["pathWithName"] = "xiaolingxian_82.mp3",}
+,  [600121] = {
+  ["id"] = 600121,  ["pathWithName"] = "liubei_2.mp3",}
+,  [5050005] = {
+  ["id"] = 5050005,  ["pathWithName"] = "item_50005",}
 ,  [1200481] = {
   ["id"] = 1200481,  ["pathWithName"] = "hero_20048_4",}
 ,  [1200482] = {
@@ -287,8 +273,8 @@ resource_config={
   ["id"] = 9007,  ["pathWithName"] = "ui_navi2_lvu1",}
 ,  [9023] = {
   ["id"] = 9023,  ["pathWithName"] = "ui_navi1_bf1",}
-,  [650037] = {
-  ["id"] = 650037,  ["pathWithName"] = "xiaolingxian_21.mp3",}
+,  [1100242] = {
+  ["id"] = 1100242,  ["pathWithName"] = "hero_10024_all",}
 ,  [11102] = {
   ["id"] = 11102,  ["pathWithName"] = "ui_navi1_bf1",}
 ,  [1200491] = {
@@ -301,16 +287,16 @@ resource_config={
   ["id"] = 1200494,  ["pathWithName"] = "hero2_10049_all",}
 ,  [1000692] = {
   ["id"] = 1000692,  ["pathWithName"] = "equ_100069_1",}
-,  [1600009] = {
-  ["id"] = 1600009,  ["pathWithName"] = "ui_sevenday_word_baoshi",}
-,  [310011] = {
-  ["id"] = 310011,  ["pathWithName"] = "deathvoice_90005.mp3",}
-,  [1000671] = {
-  ["id"] = 1000671,  ["pathWithName"] = "equ_100067_1",}
+,  [5070001] = {
+  ["id"] = 5070001,  ["pathWithName"] = "item_70001",}
+,  [600117] = {
+  ["id"] = 600117,  ["pathWithName"] = "zhangyan_2.mp3",}
+,  [600116] = {
+  ["id"] = 600116,  ["pathWithName"] = "zhangyan_1.mp3",}
 ,  [5020003] = {
   ["id"] = 5020003,  ["pathWithName"] = "item_20003",}
-,  [1100633] = {
-  ["id"] = 1100633,  ["pathWithName"] = "hero1_10063_all",}
+,  [5070005] = {
+  ["id"] = 5070005,  ["pathWithName"] = "item_70005",}
 ,  [1200501] = {
   ["id"] = 1200501,  ["pathWithName"] = "hero_20050_4",}
 ,  [1200502] = {
@@ -327,30 +313,30 @@ resource_config={
   ["id"] = 1100204,  ["pathWithName"] = "hero2_10020_all",}
 ,  [1100205] = {
   ["id"] = 1100205,  ["pathWithName"] = "hero3_10020_all",}
-,  [650025] = {
-  ["id"] = 650025,  ["pathWithName"] = "xiaolingxian_78.mp3",}
-,  [650065] = {
-  ["id"] = 650065,  ["pathWithName"] = "liubei_15.mp3",}
-,  [650064] = {
-  ["id"] = 650064,  ["pathWithName"] = "xiaolingxian_20.mp3",}
-,  [650063] = {
-  ["id"] = 650063,  ["pathWithName"] = "liubei_14.mp3",}
+,  [5080001] = {
+  ["id"] = 5080001,  ["pathWithName"] = "item_80001",}
+,  [600113] = {
+  ["id"] = 600113,  ["pathWithName"] = "lidamu_7.mp3",}
+,  [600112] = {
+  ["id"] = 600112,  ["pathWithName"] = "lidamu_6.mp3",}
+,  [5080006] = {
+  ["id"] = 5080006,  ["pathWithName"] = "item_80006",}
 ,  [1000701] = {
   ["id"] = 1000701,  ["pathWithName"] = "equ_100070_1",}
 ,  [1100211] = {
   ["id"] = 1100211,  ["pathWithName"] = "hero_10021_4",}
 ,  [1100212] = {
   ["id"] = 1100212,  ["pathWithName"] = "hero_10021_all",}
-,  [650062] = {
-  ["id"] = 650062,  ["pathWithName"] = "xiaolingxian_19.mp3",}
-,  [670004] = {
-  ["id"] = 670004,  ["pathWithName"] = "xiaolingxian_77.mp3",}
-,  [650018] = {
-  ["id"] = 650018,  ["pathWithName"] = "xiaolingxian_76.mp3",}
-,  [230051] = {
-  ["id"] = 230051,  ["pathWithName"] = "voice_10051.mp3",}
-,  [650059] = {
-  ["id"] = 650059,  ["pathWithName"] = "xiaolingxian_74.mp3",}
+,  [5080012] = {
+  ["id"] = 5080012,  ["pathWithName"] = "item_80012",}
+,  [600109] = {
+  ["id"] = 600109,  ["pathWithName"] = "lidamu_3.mp3",}
+,  [1500062] = {
+  ["id"] = 1500062,  ["pathWithName"] = "stage_monster_6_all",}
+,  [600107] = {
+  ["id"] = 600107,  ["pathWithName"] = "lidamu_1.mp3",}
+,  [5080029] = {
+  ["id"] = 5080029,  ["pathWithName"] = "item_80029",}
 ,  [1200521] = {
   ["id"] = 1200521,  ["pathWithName"] = "hero_20052_4",}
 ,  [1200522] = {
@@ -361,16 +347,16 @@ resource_config={
   ["id"] = 1100221,  ["pathWithName"] = "hero_10022_4",}
 ,  [1100222] = {
   ["id"] = 1100222,  ["pathWithName"] = "hero_10022_all",}
-,  [660006] = {
-  ["id"] = 660006,  ["pathWithName"] = "xiaolingxian_73.mp3",}
-,  [650054] = {
-  ["id"] = 650054,  ["pathWithName"] = "xiaolingxian_18.mp3",}
-,  [4025] = {
-  ["id"] = 4025,  ["pathWithName"] = "stage_line_5",}
-,  [4009] = {
-  ["id"] = 4009,  ["pathWithName"] = "stage_line_2",}
-,  [220064] = {
-  ["id"] = 220064,  ["pathWithName"] = "voice_10064.mp3",}
+,  [5080033] = {
+  ["id"] = 5080033,  ["pathWithName"] = "item_80033",}
+,  [5080037] = {
+  ["id"] = 5080037,  ["pathWithName"] = "item_80037",}
+,  [11105] = {
+  ["id"] = 11105,  ["pathWithName"] = "ui_navi1_bf1",}
+,  [600102] = {
+  ["id"] = 600102,  ["pathWithName"] = "guai_9.mp3",}
+,  [5080041] = {
+  ["id"] = 5080041,  ["pathWithName"] = "item_80041",}
 ,  [1200531] = {
   ["id"] = 1200531,  ["pathWithName"] = "hero_20053_4",}
 ,  [1200532] = {
@@ -441,36 +427,36 @@ resource_config={
   ["id"] = 1100261,  ["pathWithName"] = "hero_10026_4",}
 ,  [1100262] = {
   ["id"] = 1100262,  ["pathWithName"] = "hero_10026_all",}
-,  [310020] = {
-  ["id"] = 310020,  ["pathWithName"] = "deathvoice_10020.mp3",}
-,  [650010] = {
-  ["id"] = 650010,  ["pathWithName"] = "xiaolingxian_71.mp3",}
-,  [660004] = {
-  ["id"] = 660004,  ["pathWithName"] = "xiaolingxian_70.mp3",}
-,  [1500582] = {
-  ["id"] = 1500582,  ["pathWithName"] = "stage_monster_58_all",}
+,  [5080043] = {
+  ["id"] = 5080043,  ["pathWithName"] = "item_80043",}
+,  [5080050] = {
+  ["id"] = 5080050,  ["pathWithName"] = "item_80050",}
+,  [600098] = {
+  ["id"] = 600098,  ["pathWithName"] = "guai_5.mp3",}
+,  [600097] = {
+  ["id"] = 600097,  ["pathWithName"] = "guai_4.mp3",}
 ,  [2100231] = {
   ["id"] = 2100231,  ["pathWithName"] = "playerhero_10023",}
-,  [1500622] = {
-  ["id"] = 1500622,  ["pathWithName"] = "stage_monster_50_all",}
-,  [640100] = {
-  ["id"] = 640100,  ["pathWithName"] = "liubei_12.mp3",}
+,  [5080052] = {
+  ["id"] = 5080052,  ["pathWithName"] = "item_80052",}
+,  [5080054] = {
+  ["id"] = 5080054,  ["pathWithName"] = "item_80054",}
 ,  [1000731] = {
   ["id"] = 1000731,  ["pathWithName"] = "equ_100073_1",}
 ,  [1100271] = {
   ["id"] = 1100271,  ["pathWithName"] = "hero_10027_4",}
 ,  [1100272] = {
   ["id"] = 1100272,  ["pathWithName"] = "hero_10027_all",}
-,  [640080] = {
-  ["id"] = 640080,  ["pathWithName"] = "xiaolingxian_69.mp3",}
-,  [640097] = {
-  ["id"] = 640097,  ["pathWithName"] = "xiaolingxian_68.mp3",}
-,  [640096] = {
-  ["id"] = 640096,  ["pathWithName"] = "xiaolingxian_16.mp3",}
+,  [600094] = {
+  ["id"] = 600094,  ["pathWithName"] = "guai_1.mp3",}
+,  [600093] = {
+  ["id"] = 600093,  ["pathWithName"] = "wanjia_11.mp3",}
+,  [600092] = {
+  ["id"] = 600092,  ["pathWithName"] = "wanjia_10.mp3",}
 ,  [5050002] = {
   ["id"] = 5050002,  ["pathWithName"] = "item_50002",}
-,  [640095] = {
-  ["id"] = 640095,  ["pathWithName"] = "wanjia_17.mp3",}
+,  [600091] = {
+  ["id"] = 600091,  ["pathWithName"] = "wanjia_9.mp3",}
 ,  [1200581] = {
   ["id"] = 1200581,  ["pathWithName"] = "hero_20058_4",}
 ,  [1200582] = {
@@ -481,42 +467,42 @@ resource_config={
   ["id"] = 1100281,  ["pathWithName"] = "hero_10028_4",}
 ,  [1100282] = {
   ["id"] = 1100282,  ["pathWithName"] = "hero_10028_all",}
-,  [1500982] = {
-  ["id"] = 1500982,  ["pathWithName"] = "stage_monster_98_all",}
-,  [640076] = {
-  ["id"] = 640076,  ["pathWithName"] = "xiaolingxian_66.mp3",}
-,  [310041] = {
-  ["id"] = 310041,  ["pathWithName"] = "deathvoice_10041.mp3",}
-,  [2038] = {
-  ["id"] = 2038,  ["pathWithName"] = "ui_instanceBg_chapter_12",}
-,  [650049] = {
-  ["id"] = 650049,  ["pathWithName"] = "xiaolingxian_15.mp3",}
-,  [11103] = {
-  ["id"] = 11103,  ["pathWithName"] = "ui_navi1_bf1",}
-,  [1200625] = {
-  ["id"] = 1200625,  ["pathWithName"] = "hero3_20062_all",}
+,  [600090] = {
+  ["id"] = 600090,  ["pathWithName"] = "wanjia_8.mp3",}
+,  [600089] = {
+  ["id"] = 600089,  ["pathWithName"] = "wanjia_7.mp3",}
+,  [600088] = {
+  ["id"] = 600088,  ["pathWithName"] = "wanjia_6.mp3",}
+,  [600087] = {
+  ["id"] = 600087,  ["pathWithName"] = "wanjia_5.mp3",}
+,  [600086] = {
+  ["id"] = 600086,  ["pathWithName"] = "wanjia_4.mp3",}
+,  [600085] = {
+  ["id"] = 600085,  ["pathWithName"] = "wanjia_3.mp3",}
+,  [600084] = {
+  ["id"] = 600084,  ["pathWithName"] = "wanjia_2.mp3",}
 ,  [1000741] = {
   ["id"] = 1000741,  ["pathWithName"] = "equ_100074_1",}
 ,  [1100291] = {
   ["id"] = 1100291,  ["pathWithName"] = "hero_10029_4",}
 ,  [1100292] = {
   ["id"] = 1100292,  ["pathWithName"] = "hero_10029_all",}
-,  [680006] = {
-  ["id"] = 680006,  ["pathWithName"] = "xiaolingxian_13.mp3",}
-,  [1500802] = {
-  ["id"] = 1500802,  ["pathWithName"] = "stage_monster_80_all",}
-,  [1501111] = {
-  ["id"] = 1501111,  ["pathWithName"] = "stage_monster_111_4",}
-,  [8005] = {
-  ["id"] = 8005,  ["pathWithName"] = "ui_navi2_gen1",}
-,  [680002] = {
-  ["id"] = 680002,  ["pathWithName"] = "xiaolingxian_09.mp3",}
-,  [1500522] = {
-  ["id"] = 1500522,  ["pathWithName"] = "stage_monster_52_all",}
-,  [640090] = {
-  ["id"] = 640090,  ["pathWithName"] = "liubei_11.mp3",}
-,  [640089] = {
-  ["id"] = 640089,  ["pathWithName"] = "weixu_01.mp3",}
+,  [600083] = {
+  ["id"] = 600083,  ["pathWithName"] = "wanjia_1.mp3",}
+,  [600082] = {
+  ["id"] = 600082,  ["pathWithName"] = "xiaolingxian_79.mp3",}
+,  [600081] = {
+  ["id"] = 600081,  ["pathWithName"] = "xiaolingxian_78.mp3",}
+,  [600080] = {
+  ["id"] = 600080,  ["pathWithName"] = "xiaolingxian_77.mp3",}
+,  [600079] = {
+  ["id"] = 600079,  ["pathWithName"] = "xiaolingxian_76.mp3",}
+,  [600078] = {
+  ["id"] = 600078,  ["pathWithName"] = "xiaolingxian_75.mp3",}
+,  [600075] = {
+  ["id"] = 600075,  ["pathWithName"] = "xiaolingxian_74.mp3",}
+,  [600074] = {
+  ["id"] = 600074,  ["pathWithName"] = "xiaolingxian_73.mp3",}
 ,  [1100301] = {
   ["id"] = 1100301,  ["pathWithName"] = "hero_10030_4",}
 ,  [1100302] = {
@@ -527,8 +513,8 @@ resource_config={
   ["id"] = 1100304,  ["pathWithName"] = "hero2_10030_all",}
 ,  [1100305] = {
   ["id"] = 1100305,  ["pathWithName"] = "hero3_10030_all",}
-,  [640067] = {
-  ["id"] = 640067,  ["pathWithName"] = "xiaolingxian_63.mp3",}
+,  [600073] = {
+  ["id"] = 600073,  ["pathWithName"] = "xiaolingxian_72.mp3",}
 ,  [2100311] = {
   ["id"] = 2100311,  ["pathWithName"] = "playerhero_10031",}
 ,  [1200611] = {
@@ -547,10 +533,10 @@ resource_config={
   ["id"] = 1100314,  ["pathWithName"] = "hero2_10031_all",}
 ,  [1100315] = {
   ["id"] = 1100315,  ["pathWithName"] = "hero3_10031_all",}
-,  [640066] = {
-  ["id"] = 640066,  ["pathWithName"] = "xiaolingxian_62.mp3",}
-,  [640054] = {
-  ["id"] = 640054,  ["pathWithName"] = "xiaolingxian_61.mp3",}
+,  [600072] = {
+  ["id"] = 600072,  ["pathWithName"] = "xiaolingxian_71.mp3",}
+,  [5080077] = {
+  ["id"] = 5080077,  ["pathWithName"] = "item_80077",}
 ,  [1200621] = {
   ["id"] = 1200621,  ["pathWithName"] = "hero_20062_4",}
 ,  [1200622] = {
@@ -561,54 +547,54 @@ resource_config={
   ["id"] = 1100321,  ["pathWithName"] = "hero_10032_4",}
 ,  [1100322] = {
   ["id"] = 1100322,  ["pathWithName"] = "hero_10032_all",}
-,  [1500722] = {
-  ["id"] = 1500722,  ["pathWithName"] = "stage_monster_72_all",}
-,  [640088] = {
-  ["id"] = 640088,  ["pathWithName"] = "wanjia_15.mp3",}
-,  [1500822] = {
-  ["id"] = 1500822,  ["pathWithName"] = "stage_monster_82_all",}
-,  [620017] = {
-  ["id"] = 620017,  ["pathWithName"] = "xiaolingxian_35.mp3",}
+,  [5080079] = {
+  ["id"] = 5080079,  ["pathWithName"] = "item_80079",}
+,  [600069] = {
+  ["id"] = 600069,  ["pathWithName"] = "xiaolingxian_68.mp3",}
+,  [5080083] = {
+  ["id"] = 5080083,  ["pathWithName"] = "item_80083",}
+,  [600067] = {
+  ["id"] = 600067,  ["pathWithName"] = "xiaolingxian_66.mp3",}
 ,  [2100351] = {
   ["id"] = 2100351,  ["pathWithName"] = "playerhero_10035",}
-,  [1500842] = {
-  ["id"] = 1500842,  ["pathWithName"] = "stage_monster_84_all",}
-,  [1500862] = {
-  ["id"] = 1500862,  ["pathWithName"] = "stage_monster_86_all",}
+,  [5080085] = {
+  ["id"] = 5080085,  ["pathWithName"] = "item_80085",}
+,  [5080087] = {
+  ["id"] = 5080087,  ["pathWithName"] = "item_80087",}
 ,  [1000761] = {
   ["id"] = 1000761,  ["pathWithName"] = "equ_100076_1",}
 ,  [1100331] = {
   ["id"] = 1100331,  ["pathWithName"] = "hero_10033_4",}
 ,  [1000762] = {
   ["id"] = 1000762,  ["pathWithName"] = "equ_100076_1",}
-,  [220035] = {
-  ["id"] = 220035,  ["pathWithName"] = "voice_10035.mp3",}
-,  [620021] = {
-  ["id"] = 620021,  ["pathWithName"] = "xiaolingxian_37.mp3",}
-,  [220040] = {
-  ["id"] = 220040,  ["pathWithName"] = "voice_10040.mp3",}
-,  [220045] = {
-  ["id"] = 220045,  ["pathWithName"] = "voice_10045.mp3",}
-,  [3045] = {
-  ["id"] = 3045,  ["pathWithName"] = "ui_instance_stage_map_8",}
+,  [600063] = {
+  ["id"] = 600063,  ["pathWithName"] = "xiaolingxian_63.mp3",}
+,  [600062] = {
+  ["id"] = 600062,  ["pathWithName"] = "xiaolingxian_62.mp3",}
+,  [5080091] = {
+  ["id"] = 5080091,  ["pathWithName"] = "item_80091",}
+,  [4045] = {
+  ["id"] = 4045,  ["pathWithName"] = "stage_line_5",}
+,  [5080096] = {
+  ["id"] = 5080096,  ["pathWithName"] = "item_80096",}
 ,  [1200641] = {
   ["id"] = 1200641,  ["pathWithName"] = "hero_20064_4",}
 ,  [1200642] = {
   ["id"] = 1200642,  ["pathWithName"] = "hero_20064_all",}
-,  [620024] = {
-  ["id"] = 620024,  ["pathWithName"] = "xiaolingxian_39.mp3",}
+,  [5080098] = {
+  ["id"] = 5080098,  ["pathWithName"] = "hero_10048_2",}
 ,  [1100341] = {
   ["id"] = 1100341,  ["pathWithName"] = "hero_10034_4",}
 ,  [1100342] = {
   ["id"] = 1100342,  ["pathWithName"] = "hero_10034_all",}
-,  [1000802] = {
-  ["id"] = 1000802,  ["pathWithName"] = "equ_100080_1",}
-,  [630027] = {
-  ["id"] = 630027,  ["pathWithName"] = "xiaolingxian_57.mp3",}
-,  [630041] = {
-  ["id"] = 630041,  ["pathWithName"] = "xiaolingxian_56.mp3",}
-,  [620027] = {
-  ["id"] = 620027,  ["pathWithName"] = "xiaolingxian_40.mp3",}
+,  [600057] = {
+  ["id"] = 600057,  ["pathWithName"] = "xiaolingxian_57.mp3",}
+,  [8004] = {
+  ["id"] = 8004,  ["pathWithName"] = "ui_navi_zhb1",}
+,  [1200445] = {
+  ["id"] = 1200445,  ["pathWithName"] = "hero3_20044_all",}
+,  [5080109] = {
+  ["id"] = 5080109,  ["pathWithName"] = "item_80109",}
 ,  [500001] = {
   ["id"] = 500001,  ["pathWithName"] = "pangbai_1.mp3",}
 ,  [1200651] = {
@@ -627,16 +613,16 @@ resource_config={
   ["id"] = 1100354,  ["pathWithName"] = "hero2_10035_all",}
 ,  [1100355] = {
   ["id"] = 1100355,  ["pathWithName"] = "hero3_10035_all",}
-,  [630024] = {
-  ["id"] = 630024,  ["pathWithName"] = "xiaolingxian_55.mp3",}
+,  [1200555] = {
+  ["id"] = 1200555,  ["pathWithName"] = "hero3_20055_all",}
 ,  [2100411] = {
   ["id"] = 2100411,  ["pathWithName"] = "playerhero_10041",}
 ,  [1200661] = {
   ["id"] = 1200661,  ["pathWithName"] = "hero_20066_4",}
 ,  [1200662] = {
   ["id"] = 1200662,  ["pathWithName"] = "hero_20066_all",}
-,  [620034] = {
-  ["id"] = 620034,  ["pathWithName"] = "xiaoqiao.mp3",}
+,  [600052] = {
+  ["id"] = 600052,  ["pathWithName"] = "xiaolingxian_51.mp3",}
 ,  [1100361] = {
   ["id"] = 1100361,  ["pathWithName"] = "hero_10036_4",}
 ,  [1100362] = {
@@ -647,8 +633,8 @@ resource_config={
   ["id"] = 1100364,  ["pathWithName"] = "hero2_10036_all",}
 ,  [1100365] = {
   ["id"] = 1100365,  ["pathWithName"] = "hero3_10036_all",}
-,  [2002] = {
-  ["id"] = 2002,  ["pathWithName"] = "ui_common_stage_icon_2",}
+,  [1200615] = {
+  ["id"] = 1200615,  ["pathWithName"] = "hero3_20061_all",}
 ,  [2100431] = {
   ["id"] = 2100431,  ["pathWithName"] = "playerhero_10043",}
 ,  [7001] = {
@@ -661,8 +647,8 @@ resource_config={
   ["id"] = 1100371,  ["pathWithName"] = "hero_10037_4",}
 ,  [1100372] = {
   ["id"] = 1100372,  ["pathWithName"] = "hero_10037_all",}
-,  [600113] = {
-  ["id"] = 600113,  ["pathWithName"] = "wanjia_12.mp3",}
+,  [5080117] = {
+  ["id"] = 5080117,  ["pathWithName"] = "item_80117",}
 ,  [5002] = {
   ["id"] = 5002,  ["pathWithName"] = "warriors_2",}
 ,  [5010] = {
@@ -671,52 +657,52 @@ resource_config={
   ["id"] = 5018,  ["pathWithName"] = "ws_09",}
 ,  [5026] = {
   ["id"] = 5026,  ["pathWithName"] = "ws_17",}
-,  [600112] = {
-  ["id"] = 600112,  ["pathWithName"] = "liubei_08.mp3",}
+,  [5080119] = {
+  ["id"] = 5080119,  ["pathWithName"] = "item_80119",}
 ,  [500009] = {
   ["id"] = 500009,  ["pathWithName"] = "pangbai_9.mp3",}
-,  [5080006] = {
-  ["id"] = 5080006,  ["pathWithName"] = "item_80006",}
+,  [6003] = {
+  ["id"] = 6003,  ["pathWithName"] = "stage_hd_bg_3",}
 ,  [1100381] = {
   ["id"] = 1100381,  ["pathWithName"] = "hero_10038_4",}
 ,  [1100382] = {
   ["id"] = 1100382,  ["pathWithName"] = "hero_10038_all",}
 ,  [500010] = {
   ["id"] = 500010,  ["pathWithName"] = "pangbai_10.mp3",}
-,  [5080012] = {
-  ["id"] = 5080012,  ["pathWithName"] = "item_80012",}
-,  [600109] = {
-  ["id"] = 600109,  ["pathWithName"] = "wanjia_10.mp3",}
-,  [1500062] = {
-  ["id"] = 1500062,  ["pathWithName"] = "stage_monster_6_all",}
+,  [5080069] = {
+  ["id"] = 5080069,  ["pathWithName"] = "item_80069",}
+,  [5080068] = {
+  ["id"] = 5080068,  ["pathWithName"] = "stage_monster_6_2",}
+,  [5080131] = {
+  ["id"] = 5080131,  ["pathWithName"] = "item_80131",}
 ,  [2100471] = {
   ["id"] = 2100471,  ["pathWithName"] = "playerhero_10047",}
-,  [600107] = {
-  ["id"] = 600107,  ["pathWithName"] = "xiaolingxian_53.mp3",}
-,  [11018] = {
-  ["id"] = 11018,  ["pathWithName"] = "ui_navi1_bf1",}
+,  [5080132] = {
+  ["id"] = 5080132,  ["pathWithName"] = "item_80132",}
+,  [600042] = {
+  ["id"] = 600042,  ["pathWithName"] = "xiaolingxian_42.mp3",}
 ,  [1000791] = {
   ["id"] = 1000791,  ["pathWithName"] = "equ_100079_1",}
 ,  [1100391] = {
   ["id"] = 1100391,  ["pathWithName"] = "hero_10039_4",}
 ,  [1100392] = {
   ["id"] = 1100392,  ["pathWithName"] = "hero_10039_all",}
-,  [640030] = {
-  ["id"] = 640030,  ["pathWithName"] = "xiaolingxian_51.mp3",}
-,  [5064013] = {
-  ["id"] = 5064013,  ["pathWithName"] = "item_64011",}
+,  [1200543] = {
+  ["id"] = 1200543,  ["pathWithName"] = "hero1_20054_all",}
+,  [5080064] = {
+  ["id"] = 5080064,  ["pathWithName"] = "item_80064",}
 ,  [500013] = {
   ["id"] = 500013,  ["pathWithName"] = "pangbai_13.mp3",}
-,  [640029] = {
-  ["id"] = 640029,  ["pathWithName"] = "xiaolingxian_49.mp3",}
+,  [1100111] = {
+  ["id"] = 1100111,  ["pathWithName"] = "hero_10011_4",}
 ,  [2100491] = {
   ["id"] = 2100491,  ["pathWithName"] = "playerhero_10049",}
-,  [5080010] = {
-  ["id"] = 5080010,  ["pathWithName"] = "item_80010",}
+,  [5080144] = {
+  ["id"] = 5080144,  ["pathWithName"] = "stage_monster_4_2",}
 ,  [500014] = {
   ["id"] = 500014,  ["pathWithName"] = "pangbai_14.mp3",}
-,  [5080033] = {
-  ["id"] = 5080033,  ["pathWithName"] = "item_80033",}
+,  [600037] = {
+  ["id"] = 600037,  ["pathWithName"] = "xiaolingxian_37.mp3",}
 ,  [1100401] = {
   ["id"] = 1100401,  ["pathWithName"] = "hero_10040_4",}
 ,  [1100402] = {
@@ -727,14 +713,14 @@ resource_config={
   ["id"] = 1100404,  ["pathWithName"] = "hero2_10040_all",}
 ,  [1100405] = {
   ["id"] = 1100405,  ["pathWithName"] = "hero3_10040_all",}
-,  [5080037] = {
-  ["id"] = 5080037,  ["pathWithName"] = "item_80037",}
+,  [2003] = {
+  ["id"] = 2003,  ["pathWithName"] = "stage_icon_3",}
 ,  [500016] = {
   ["id"] = 500016,  ["pathWithName"] = "pangbai_16.mp3",}
-,  [11105] = {
-  ["id"] = 11105,  ["pathWithName"] = "ui_navi1_bf1",}
-,  [600102] = {
-  ["id"] = 600102,  ["pathWithName"] = "wanjia_08.mp3",}
+,  [1000561] = {
+  ["id"] = 1000561,  ["pathWithName"] = "equ_100056_1",}
+,  [5080153] = {
+  ["id"] = 5080153,  ["pathWithName"] = "item_80153",}
 ,  [1000801] = {
   ["id"] = 1000801,  ["pathWithName"] = "equ_100080_1",}
 ,  [1100411] = {
@@ -747,16 +733,16 @@ resource_config={
   ["id"] = 1100414,  ["pathWithName"] = "hero2_10041_all",}
 ,  [1100415] = {
   ["id"] = 1100415,  ["pathWithName"] = "hero3_10041_all",}
-,  [5080041] = {
-  ["id"] = 5080041,  ["pathWithName"] = "item_80041",}
+,  [1500051] = {
+  ["id"] = 1500051,  ["pathWithName"] = "stage_monster_5_4",}
 ,  [2100531] = {
   ["id"] = 2100531,  ["pathWithName"] = "playerhero_10053",}
-,  [630013] = {
-  ["id"] = 630013,  ["pathWithName"] = "xiaolingxian_47.mp3",}
+,  [600032] = {
+  ["id"] = 600032,  ["pathWithName"] = "xiaolingxian_32.mp3",}
 ,  [500019] = {
   ["id"] = 500019,  ["pathWithName"] = "zhangfei_01.mp3",}
-,  [630031] = {
-  ["id"] = 630031,  ["pathWithName"] = "xiaolingxian_46.mp3",}
+,  [1000712] = {
+  ["id"] = 1000712,  ["pathWithName"] = "equ_100071_1",}
 ,  [1100421] = {
   ["id"] = 1100421,  ["pathWithName"] = "hero_10042_4",}
 ,  [1100422] = {
@@ -767,14 +753,14 @@ resource_config={
   ["id"] = 1100424,  ["pathWithName"] = "hero2_10042_all",}
 ,  [1100425] = {
   ["id"] = 1100425,  ["pathWithName"] = "hero3_10042_all",}
-,  [600222] = {
-  ["id"] = 600222,  ["pathWithName"] = "xiaolingxian_45.mp3",}
+,  [5080161] = {
+  ["id"] = 5080161,  ["pathWithName"] = "item_80161",}
 ,  [2100551] = {
   ["id"] = 2100551,  ["pathWithName"] = "playerhero_10055",}
-,  [620116] = {
-  ["id"] = 620116,  ["pathWithName"] = "xiaolingxian_05.mp3",}
-,  [620115] = {
-  ["id"] = 620115,  ["pathWithName"] = "wanjia_07.mp3",}
+,  [5080163] = {
+  ["id"] = 5080163,  ["pathWithName"] = "item_80163",}
+,  [5080056] = {
+  ["id"] = 5080056,  ["pathWithName"] = "stage_monster_5_2",}
 ,  [1000811] = {
   ["id"] = 1000811,  ["pathWithName"] = "equ_100081_1",}
 ,  [1100431] = {
@@ -787,12 +773,12 @@ resource_config={
   ["id"] = 1100434,  ["pathWithName"] = "hero2_10043_all",}
 ,  [1100435] = {
   ["id"] = 1100435,  ["pathWithName"] = "hero3_10043_all",}
-,  [620108] = {
-  ["id"] = 620108,  ["pathWithName"] = "wanjia_05.mp3",}
+,  [600027] = {
+  ["id"] = 600027,  ["pathWithName"] = "xiaolingxian_27.mp3",}
 ,  [11008] = {
   ["id"] = 11008,  ["pathWithName"] = "ui_navi1_bf1",}
-,  [620042] = {
-  ["id"] = 620042,  ["pathWithName"] = "xiaolingxian_43.mp3",}
+,  [600026] = {
+  ["id"] = 600026,  ["pathWithName"] = "xiaolingxian_26.mp3",}
 ,  [500024] = {
   ["id"] = 500024,  ["pathWithName"] = "huangjinzhongjiabing_01.mp3",}
 ,  [9009] = {
@@ -807,16 +793,16 @@ resource_config={
   ["id"] = 1100444,  ["pathWithName"] = "hero2_10044_all",}
 ,  [1100445] = {
   ["id"] = 1100445,  ["pathWithName"] = "hero3_10044_all",}
-,  [620040] = {
-  ["id"] = 620040,  ["pathWithName"] = "xiaolingxian_42.mp3",}
+,  [600025] = {
+  ["id"] = 600025,  ["pathWithName"] = "xiaolingxian_25.mp3",}
 ,  [500026] = {
   ["id"] = 500026,  ["pathWithName"] = "wanjia_22.mp3",}
-,  [620039] = {
-  ["id"] = 620039,  ["pathWithName"] = "xiaolingxian_41.mp3",}
-,  [620101] = {
-  ["id"] = 620101,  ["pathWithName"] = "liubei_02.mp3",}
-,  [620104] = {
-  ["id"] = 620104,  ["pathWithName"] = "caiwenji_02.mp3",}
+,  [600024] = {
+  ["id"] = 600024,  ["pathWithName"] = "xiaolingxian_24.mp3",}
+,  [600023] = {
+  ["id"] = 600023,  ["pathWithName"] = "xiaolingxian_23.mp3",}
+,  [600022] = {
+  ["id"] = 600022,  ["pathWithName"] = "xiaolingxian_22.mp3",}
 ,  [1100451] = {
   ["id"] = 1100451,  ["pathWithName"] = "hero_10045_4",}
 ,  [1100452] = {
@@ -831,12 +817,12 @@ resource_config={
   ["id"] = 5150001,  ["pathWithName"] = "item_150001",}
 ,  [2100611] = {
   ["id"] = 2100611,  ["pathWithName"] = "playerhero_10061",}
-,  [620095] = {
-  ["id"] = 620095,  ["pathWithName"] = "xiaolingxian_03.mp3",}
+,  [600021] = {
+  ["id"] = 600021,  ["pathWithName"] = "xiaolingxian_21.mp3",}
 ,  [500029] = {
   ["id"] = 500029,  ["pathWithName"] = "huangjinduandaobing.mp3",}
-,  [620023] = {
-  ["id"] = 620023,  ["pathWithName"] = "xiaolingxian_38.mp3",}
+,  [600020] = {
+  ["id"] = 600020,  ["pathWithName"] = "xiaolingxian_20.mp3",}
 ,  [1100461] = {
   ["id"] = 1100461,  ["pathWithName"] = "hero_10046_4",}
 ,  [1100462] = {
@@ -847,16 +833,16 @@ resource_config={
   ["id"] = 1100464,  ["pathWithName"] = "hero2_10046_all",}
 ,  [1100465] = {
   ["id"] = 1100465,  ["pathWithName"] = "hero3_10046_all",}
-,  [620019] = {
-  ["id"] = 620019,  ["pathWithName"] = "xiaolingxian_36.mp3",}
+,  [600019] = {
+  ["id"] = 600019,  ["pathWithName"] = "xiaolingxian_19.mp3",}
 ,  [2100631] = {
   ["id"] = 2100631,  ["pathWithName"] = "playerhero_10064",}
-,  [620109] = {
-  ["id"] = 620109,  ["pathWithName"] = "xiaolingxian_34.mp3",}
-,  [620011] = {
-  ["id"] = 620011,  ["pathWithName"] = "xiaolingxian_33.mp3",}
-,  [620089] = {
-  ["id"] = 620089,  ["pathWithName"] = "xiaolingxian_44.mp3",}
+,  [600018] = {
+  ["id"] = 600018,  ["pathWithName"] = "xiaolingxian_18.mp3",}
+,  [600017] = {
+  ["id"] = 600017,  ["pathWithName"] = "xiaolingxian_17.mp3",}
+,  [600016] = {
+  ["id"] = 600016,  ["pathWithName"] = "xiaolingxian_16.mp3",}
 ,  [1100471] = {
   ["id"] = 1100471,  ["pathWithName"] = "hero_10047_4",}
 ,  [1100472] = {
@@ -867,16 +853,16 @@ resource_config={
   ["id"] = 1100474,  ["pathWithName"] = "hero2_10047_all",}
 ,  [1100475] = {
   ["id"] = 1100475,  ["pathWithName"] = "hero3_10047_all",}
-,  [620092] = {
-  ["id"] = 620092,  ["pathWithName"] = "wanjia_01.mp3",}
+,  [600015] = {
+  ["id"] = 600015,  ["pathWithName"] = "xiaolingxian_15.mp3",}
 ,  [2100651] = {
   ["id"] = 2100651,  ["pathWithName"] = "playerhero_10065",}
-,  [620093] = {
-  ["id"] = 620093,  ["pathWithName"] = "xiaolingxian_02.mp3",}
+,  [5080166] = {
+  ["id"] = 5080166,  ["pathWithName"] = "item_80166",}
 ,  [500034] = {
   ["id"] = 500034,  ["pathWithName"] = "zhangbao_02.mp3",}
-,  [620094] = {
-  ["id"] = 620094,  ["pathWithName"] = "wanjia_02.mp3",}
+,  [5080167] = {
+  ["id"] = 5080167,  ["pathWithName"] = "item_80167",}
 ,  [1100481] = {
   ["id"] = 1100481,  ["pathWithName"] = "hero_10048_4",}
 ,  [1100482] = {
@@ -887,16 +873,16 @@ resource_config={
   ["id"] = 1100484,  ["pathWithName"] = "hero2_10048_all",}
 ,  [1100485] = {
   ["id"] = 1100485,  ["pathWithName"] = "hero3_10048_all",}
-,  [620097] = {
-  ["id"] = 620097,  ["pathWithName"] = "huangjinyaodaoshi_03.mp3",}
+,  [600012] = {
+  ["id"] = 600012,  ["pathWithName"] = "xiaolingxian_12.mp3",}
 ,  [2100671] = {
   ["id"] = 2100671,  ["pathWithName"] = "playerhero_10067",}
-,  [620098] = {
-  ["id"] = 620098,  ["pathWithName"] = "caiwenji_01.mp3",}
-,  [620107] = {
-  ["id"] = 620107,  ["pathWithName"] = "xiaolingxian_04.mp3",}
-,  [620099] = {
-  ["id"] = 620099,  ["pathWithName"] = "liubei_01.mp3",}
+,  [5100001] = {
+  ["id"] = 5100001,  ["pathWithName"] = "item_100001",}
+,  [5110003] = {
+  ["id"] = 5110003,  ["pathWithName"] = "item_60001",}
+,  [5150003] = {
+  ["id"] = 5150003,  ["pathWithName"] = "item_150003",}
 ,  [1100491] = {
   ["id"] = 1100491,  ["pathWithName"] = "hero_10049_4",}
 ,  [1100492] = {
@@ -907,12 +893,12 @@ resource_config={
   ["id"] = 1100494,  ["pathWithName"] = "hero2_10049_all",}
 ,  [1100495] = {
   ["id"] = 1100495,  ["pathWithName"] = "hero3_10049_all",}
-,  [620006] = {
-  ["id"] = 620006,  ["pathWithName"] = "xiaolingxian_32.mp3",}
+,  [110002] = {
+  ["id"] = 110002,  ["pathWithName"] = "Attack2.mp3",}
 ,  [2100691] = {
   ["id"] = 2100691,  ["pathWithName"] = "playerhero_10069",}
-,  [620103] = {
-  ["id"] = 620103,  ["pathWithName"] = "huangjinyaodaoshi_04.mp3",}
+,  [600007] = {
+  ["id"] = 600007,  ["pathWithName"] = "xiaolingxian_7.mp3",}
 ,  [6002] = {
   ["id"] = 6002,  ["pathWithName"] = "stage_hd_bg_2",}
 ,  [3006] = {
@@ -947,16 +933,16 @@ resource_config={
   ["id"] = 1100514,  ["pathWithName"] = "hero2_10051_all",}
 ,  [1100515] = {
   ["id"] = 1100515,  ["pathWithName"] = "hero3_10051_all",}
-,  [620112] = {
-  ["id"] = 620112,  ["pathWithName"] = "huangjinchangqiangbing.mp3",}
+,  [600006] = {
+  ["id"] = 600006,  ["pathWithName"] = "xiaolingxian_6.mp3",}
 ,  [2100731] = {
   ["id"] = 2100731,  ["pathWithName"] = "playerhero_10073",}
-,  [620113] = {
-  ["id"] = 620113,  ["pathWithName"] = "liubei_03.mp3",}
+,  [600005] = {
+  ["id"] = 600005,  ["pathWithName"] = "xiaolingxian_5.mp3",}
 ,  [500044] = {
   ["id"] = 500044,  ["pathWithName"] = "zhangliang_01.mp3",}
-,  [620100] = {
-  ["id"] = 620100,  ["pathWithName"] = "wanjia_04.mp3",}
+,  [5080157] = {
+  ["id"] = 5080157,  ["pathWithName"] = "item_80157",}
 ,  [1100521] = {
   ["id"] = 1100521,  ["pathWithName"] = "hero_10052_4",}
 ,  [1100522] = {
@@ -967,14 +953,14 @@ resource_config={
   ["id"] = 1100524,  ["pathWithName"] = "hero2_10052_all",}
 ,  [1100525] = {
   ["id"] = 1100525,  ["pathWithName"] = "hero3_10052_all",}
-,  [620096] = {
-  ["id"] = 620096,  ["pathWithName"] = "wanjia_03.mp3",}
+,  [120003] = {
+  ["id"] = 120003,  ["pathWithName"] = "Skill5.mp3",}
 ,  [2100751] = {
   ["id"] = 2100751,  ["pathWithName"] = "playerhero_10066",}
-,  [620118] = {
-  ["id"] = 620118,  ["pathWithName"] = "wanjia_06.mp3",}
-,  [620091] = {
-  ["id"] = 620091,  ["pathWithName"] = "xiaolingxian_01.mp3",}
+,  [600002] = {
+  ["id"] = 600002,  ["pathWithName"] = "xiaolingxian_2.mp3",}
+,  [120004] = {
+  ["id"] = 120004,  ["pathWithName"] = "Skill7.mp3",}
 ,  [4017] = {
   ["id"] = 4017,  ["pathWithName"] = "stage_line_5",}
 ,  [1100531] = {
@@ -1801,8 +1787,8 @@ resource_config={
   ["id"] = 310043,  ["pathWithName"] = "deathvoice_10043.mp3",}
 ,  [310042] = {
   ["id"] = 310042,  ["pathWithName"] = "deathvoice_10042.mp3",}
-,  [650007] = {
-  ["id"] = 650007,  ["pathWithName"] = "xiaolingxian_65.mp3",}
+,  [310041] = {
+  ["id"] = 310041,  ["pathWithName"] = "deathvoice_10041.mp3",}
 ,  [300056] = {
   ["id"] = 300056,  ["pathWithName"] = "deathvoice_90008.mp3",}
 ,  [4001] = {
@@ -1817,8 +1803,8 @@ resource_config={
   ["id"] = 11012,  ["pathWithName"] = "ui_navi1_bf1",}
 ,  [310023] = {
   ["id"] = 310023,  ["pathWithName"] = "deathvoice_10023.mp3",}
-,  [650011] = {
-  ["id"] = 650011,  ["pathWithName"] = "xiaolingxian_72.mp3",}
+,  [310020] = {
+  ["id"] = 310020,  ["pathWithName"] = "deathvoice_10020.mp3",}
 ,  [9013] = {
   ["id"] = 9013,  ["pathWithName"] = "ui_navi2_sa1",}
 ,  [9029] = {
@@ -1881,12 +1867,12 @@ resource_config={
   ["id"] = 310025,  ["pathWithName"] = "deathvoice_90010.mp3",}
 ,  [1200362] = {
   ["id"] = 1200362,  ["pathWithName"] = "hero_20036_all",}
-,  [650027] = {
-  ["id"] = 650027,  ["pathWithName"] = "xiaolingxian_79.mp3",}
+,  [1100633] = {
+  ["id"] = 1100633,  ["pathWithName"] = "hero1_10063_all",}
 ,  [300066] = {
   ["id"] = 300066,  ["pathWithName"] = "deathvoice_90013.mp3",}
-,  [650028] = {
-  ["id"] = 650028,  ["pathWithName"] = "xiaolingxian_80.mp3",}
+,  [1000671] = {
+  ["id"] = 1000671,  ["pathWithName"] = "equ_100067_1",}
 ,  [1500151] = {
   ["id"] = 1500151,  ["pathWithName"] = "stage_monster_15_4",}
 ,  [1500152] = {
@@ -1917,8 +1903,8 @@ resource_config={
   ["id"] = 1000072,  ["pathWithName"] = "equ_100007_1",}
 ,  [300070] = {
   ["id"] = 300070,  ["pathWithName"] = "deathvoice_90007.mp3",}
-,  [650036] = {
-  ["id"] = 650036,  ["pathWithName"] = "xiaolingxian_81.mp3",}
+,  [310011] = {
+  ["id"] = 310011,  ["pathWithName"] = "deathvoice_90005.mp3",}
 ,  [310010] = {
   ["id"] = 310010,  ["pathWithName"] = "deathvoice_90011.mp3",}
 ,  [93] = {
@@ -1961,12 +1947,12 @@ resource_config={
   ["id"] = 3043,  ["pathWithName"] = "ui_instance_stage_map_8",}
 ,  [310005] = {
   ["id"] = 310005,  ["pathWithName"] = "deathvoice_90012.mp3",}
-,  [650047] = {
-  ["id"] = 650047,  ["pathWithName"] = "xiaolingxian_14.mp3",}
+,  [1200625] = {
+  ["id"] = 1200625,  ["pathWithName"] = "hero3_20062_all",}
 ,  [300076] = {
   ["id"] = 300076,  ["pathWithName"] = "deathvoice_90010.mp3",}
-,  [650048] = {
-  ["id"] = 650048,  ["pathWithName"] = "wanjia_16.mp3",}
+,  [11103] = {
+  ["id"] = 11103,  ["pathWithName"] = "ui_navi1_bf1",}
 ,  [1500191] = {
   ["id"] = 1500191,  ["pathWithName"] = "stage_monster_19_4",}
 ,  [96] = {
@@ -1977,16 +1963,16 @@ resource_config={
   ["id"] = 1000672,  ["pathWithName"] = "equ_100067_1",}
 ,  [220065] = {
   ["id"] = 220065,  ["pathWithName"] = "voice_10065.mp3",}
-,  [650051] = {
-  ["id"] = 650051,  ["pathWithName"] = "wanjia_19.mp3",}
+,  [220064] = {
+  ["id"] = 220064,  ["pathWithName"] = "voice_10064.mp3",}
 ,  [300078] = {
   ["id"] = 300078,  ["pathWithName"] = "deathvoice_90013.mp3",}
-,  [650052] = {
-  ["id"] = 650052,  ["pathWithName"] = "xiaolingxian_17.mp3",}
+,  [4009] = {
+  ["id"] = 4009,  ["pathWithName"] = "stage_line_2",}
 ,  [1200455] = {
   ["id"] = 1200455,  ["pathWithName"] = "hero3_20045_all",}
-,  [650053] = {
-  ["id"] = 650053,  ["pathWithName"] = "wanjia_20.mp3",}
+,  [4025] = {
+  ["id"] = 4025,  ["pathWithName"] = "stage_line_5",}
 ,  [1500201] = {
   ["id"] = 1500201,  ["pathWithName"] = "stage_monster_20_4",}
 ,  [1000091] = {
@@ -2013,20 +1999,20 @@ resource_config={
   ["id"] = 1500212,  ["pathWithName"] = "stage_monster_21_all",}
 ,  [300082] = {
   ["id"] = 300082,  ["pathWithName"] = "deathvoice_90011.mp3",}
-,  [650060] = {
-  ["id"] = 650060,  ["pathWithName"] = "xiaolingxian_75.mp3",}
+,  [230051] = {
+  ["id"] = 230051,  ["pathWithName"] = "voice_10051.mp3",}
 ,  [220050] = {
   ["id"] = 220050,  ["pathWithName"] = "voice_10050.mp3",}
-,  [691001] = {
-  ["id"] = 691001,  ["pathWithName"] = "liubei_09.mp3",}
+,  [1000802] = {
+  ["id"] = 1000802,  ["pathWithName"] = "equ_100080_1",}
 ,  [300083] = {
   ["id"] = 300083,  ["pathWithName"] = "deathvoice_90012.mp3",}
-,  [691002] = {
-  ["id"] = 691002,  ["pathWithName"] = "wanjia_13.mp3",}
+,  [3045] = {
+  ["id"] = 3045,  ["pathWithName"] = "ui_instance_stage_map_8",}
 ,  [1200614] = {
   ["id"] = 1200614,  ["pathWithName"] = "hero2_20061_all",}
-,  [691003] = {
-  ["id"] = 691003,  ["pathWithName"] = "liubei_10.mp3",}
+,  [220045] = {
+  ["id"] = 220045,  ["pathWithName"] = "voice_10045.mp3",}
 ,  [1500221] = {
   ["id"] = 1500221,  ["pathWithName"] = "stage_monster_22_4",}
 ,  [1000101] = {
@@ -2037,24 +2023,24 @@ resource_config={
   ["id"] = 1000102,  ["pathWithName"] = "equ_100010_1",}
 ,  [300085] = {
   ["id"] = 300085,  ["pathWithName"] = "deathvoice_90003.mp3",}
-,  [650066] = {
-  ["id"] = 650066,  ["pathWithName"] = "liubei_16.mp3",}
+,  [1600009] = {
+  ["id"] = 1600009,  ["pathWithName"] = "ui_sevenday_word_baoshi",}
 ,  [3041] = {
   ["id"] = 3041,  ["pathWithName"] = "ui_instance_stage_map_8",}
-,  [691007] = {
-  ["id"] = 691007,  ["pathWithName"] = "xiaolingxian_58.mp3",}
+,  [220040] = {
+  ["id"] = 220040,  ["pathWithName"] = "voice_10040.mp3",}
 ,  [300086] = {
   ["id"] = 300086,  ["pathWithName"] = "deathvoice_90012.mp3",}
-,  [691008] = {
-  ["id"] = 691008,  ["pathWithName"] = "xiaolingxian_59.mp3",}
+,  [220035] = {
+  ["id"] = 220035,  ["pathWithName"] = "voice_10035.mp3",}
 ,  [1500231] = {
   ["id"] = 1500231,  ["pathWithName"] = "stage_monster_23_4",}
 ,  [101] = {
   ["id"] = 101,  ["pathWithName"] = "lv1",}
 ,  [300087] = {
   ["id"] = 300087,  ["pathWithName"] = "deathvoice_90009.mp3",}
-,  [650070] = {
-  ["id"] = 650070,  ["pathWithName"] = "xiaolingxian_86.mp3",}
+,  [220030] = {
+  ["id"] = 220030,  ["pathWithName"] = "voice_10030.mp3",}
 ,  [1500922] = {
   ["id"] = 1500922,  ["pathWithName"] = "stage_monster_92_all",}
 ,  [220020] = {
@@ -2383,20 +2369,20 @@ resource_config={
   ["id"] = 120005,  ["pathWithName"] = "Skill9.mp3",}
 ,  [5011] = {
   ["id"] = 5011,  ["pathWithName"] = "ws_02",}
-,  [120004] = {
-  ["id"] = 120004,  ["pathWithName"] = "Skill7.mp3",}
+,  [600001] = {
+  ["id"] = 600001,  ["pathWithName"] = "xiaolingxian_1.mp3",}
 ,  [120008] = {
   ["id"] = 120008,  ["pathWithName"] = "Skill6.mp3",}
 ,  [1500401] = {
   ["id"] = 1500401,  ["pathWithName"] = "stage_monster_40_4",}
 ,  [1000191] = {
   ["id"] = 1000191,  ["pathWithName"] = "equ_100019_1",}
-,  [120003] = {
-  ["id"] = 120003,  ["pathWithName"] = "Skill5.mp3",}
+,  [600003] = {
+  ["id"] = 600003,  ["pathWithName"] = "xiaolingxian_3.mp3",}
 ,  [1000192] = {
   ["id"] = 1000192,  ["pathWithName"] = "equ_100019_1",}
-,  [5080157] = {
-  ["id"] = 5080157,  ["pathWithName"] = "item_80157",}
+,  [600004] = {
+  ["id"] = 600004,  ["pathWithName"] = "xiaolingxian_4.mp3",}
 ,  [1500961] = {
   ["id"] = 1500961,  ["pathWithName"] = "stage_monster_96_4",}
 ,  [5064100] = {
@@ -2411,32 +2397,32 @@ resource_config={
   ["id"] = 1500411,  ["pathWithName"] = "stage_monster_41_4",}
 ,  [1500412] = {
   ["id"] = 1500412,  ["pathWithName"] = "stage_monster_41_all",}
-,  [110002] = {
-  ["id"] = 110002,  ["pathWithName"] = "Attack2.mp3",}
+,  [600008] = {
+  ["id"] = 600008,  ["pathWithName"] = "xiaolingxian_8.mp3",}
 ,  [110001] = {
   ["id"] = 110001,  ["pathWithName"] = "Attack1.mp3",}
-,  [5150003] = {
-  ["id"] = 5150003,  ["pathWithName"] = "item_150003",}
+,  [600009] = {
+  ["id"] = 600009,  ["pathWithName"] = "xiaolingxian_9.mp3",}
 ,  [5130001] = {
   ["id"] = 5130001,  ["pathWithName"] = "item_130001",}
-,  [5110003] = {
-  ["id"] = 5110003,  ["pathWithName"] = "item_60001",}
+,  [600010] = {
+  ["id"] = 600010,  ["pathWithName"] = "xiaolingxian_10.mp3",}
 ,  [5110002] = {
   ["id"] = 5110002,  ["pathWithName"] = "item_60001",}
-,  [5100001] = {
-  ["id"] = 5100001,  ["pathWithName"] = "item_100001",}
+,  [600011] = {
+  ["id"] = 600011,  ["pathWithName"] = "xiaolingxian_11.mp3",}
 ,  [9025] = {
   ["id"] = 9025,  ["pathWithName"] = "ui_navi1_bf1",}
 ,  [1500421] = {
   ["id"] = 1500421,  ["pathWithName"] = "stage_monster_42_4",}
 ,  [1000201] = {
   ["id"] = 1000201,  ["pathWithName"] = "equ_100020_1",}
-,  [5080167] = {
-  ["id"] = 5080167,  ["pathWithName"] = "item_80167",}
+,  [600013] = {
+  ["id"] = 600013,  ["pathWithName"] = "xiaolingxian_13.mp3",}
 ,  [1000202] = {
   ["id"] = 1000202,  ["pathWithName"] = "equ_100020_1",}
-,  [5080166] = {
-  ["id"] = 5080166,  ["pathWithName"] = "item_80166",}
+,  [600014] = {
+  ["id"] = 600014,  ["pathWithName"] = "xiaolingxian_14.mp3",}
 ,  [4003] = {
   ["id"] = 4003,  ["pathWithName"] = "stage_line_7",}
 ,  [4007] = {
@@ -2491,140 +2477,140 @@ resource_config={
   ["id"] = 1500451,  ["pathWithName"] = "stage_monster_45_4",}
 ,  [1500452] = {
   ["id"] = 1500452,  ["pathWithName"] = "stage_monster_45_all",}
-,  [5080056] = {
-  ["id"] = 5080056,  ["pathWithName"] = "stage_monster_5_2",}
+,  [600028] = {
+  ["id"] = 600028,  ["pathWithName"] = "xiaolingxian_28.mp3",}
 ,  [5080164] = {
   ["id"] = 5080164,  ["pathWithName"] = "item_80164",}
-,  [5080163] = {
-  ["id"] = 5080163,  ["pathWithName"] = "item_80163",}
+,  [600029] = {
+  ["id"] = 600029,  ["pathWithName"] = "xiaolingxian_29.mp3",}
 ,  [5006] = {
   ["id"] = 5006,  ["pathWithName"] = "warriors_6",}
-,  [5080161] = {
-  ["id"] = 5080161,  ["pathWithName"] = "item_80161",}
+,  [600030] = {
+  ["id"] = 600030,  ["pathWithName"] = "xiaolingxian_30.mp3",}
 ,  [5080159] = {
   ["id"] = 5080159,  ["pathWithName"] = "item_80159",}
-,  [1000712] = {
-  ["id"] = 1000712,  ["pathWithName"] = "equ_100071_1",}
+,  [600031] = {
+  ["id"] = 600031,  ["pathWithName"] = "xiaolingxian_31.mp3",}
 ,  [120006] = {
-  ["id"] = 120006,  ["pathWithName"] = "Skill4.wav",}
+  ["id"] = 120006,  ["pathWithName"] = "Skill4.mp3",}
 ,  [1500461] = {
   ["id"] = 1500461,  ["pathWithName"] = "stage_monster_46_4",}
 ,  [1000221] = {
   ["id"] = 1000221,  ["pathWithName"] = "equ_100022_1",}
-,  [1500051] = {
-  ["id"] = 1500051,  ["pathWithName"] = "stage_monster_5_4",}
+,  [600033] = {
+  ["id"] = 600033,  ["pathWithName"] = "xiaolingxian_33.mp3",}
 ,  [1000222] = {
   ["id"] = 1000222,  ["pathWithName"] = "equ_100022_1",}
-,  [5080153] = {
-  ["id"] = 5080153,  ["pathWithName"] = "item_80153",}
+,  [600034] = {
+  ["id"] = 600034,  ["pathWithName"] = "xiaolingxian_34.mp3",}
 ,  [5080152] = {
   ["id"] = 5080152,  ["pathWithName"] = "item_80152",}
-,  [1000561] = {
-  ["id"] = 1000561,  ["pathWithName"] = "equ_100056_1",}
+,  [600035] = {
+  ["id"] = 600035,  ["pathWithName"] = "xiaolingxian_35.mp3",}
 ,  [5080149] = {
   ["id"] = 5080149,  ["pathWithName"] = "item_80149",}
-,  [2003] = {
-  ["id"] = 2003,  ["pathWithName"] = "stage_icon_3",}
+,  [600036] = {
+  ["id"] = 600036,  ["pathWithName"] = "xiaolingxian_36.mp3",}
 ,  [3026] = {
   ["id"] = 3026,  ["pathWithName"] = "ui_instance_stage_map_8",}
 ,  [1500471] = {
   ["id"] = 1500471,  ["pathWithName"] = "stage_monster_47_4",}
 ,  [1500472] = {
   ["id"] = 1500472,  ["pathWithName"] = "stage_monster_47_all",}
-,  [5080144] = {
-  ["id"] = 5080144,  ["pathWithName"] = "stage_monster_4_2",}
+,  [600038] = {
+  ["id"] = 600038,  ["pathWithName"] = "xiaolingxian_38.mp3",}
 ,  [1500941] = {
   ["id"] = 1500941,  ["pathWithName"] = "stage_monster_94_4",}
-,  [1100111] = {
-  ["id"] = 1100111,  ["pathWithName"] = "hero_10011_4",}
+,  [600039] = {
+  ["id"] = 600039,  ["pathWithName"] = "xiaolingxian_39.mp3",}
 ,  [120007] = {
   ["id"] = 120007,  ["pathWithName"] = "Skill2.mp3",}
-,  [5080064] = {
-  ["id"] = 5080064,  ["pathWithName"] = "item_80064",}
+,  [600040] = {
+  ["id"] = 600040,  ["pathWithName"] = "xiaolingxian_40.mp3",}
 ,  [5080136] = {
   ["id"] = 5080136,  ["pathWithName"] = "item_80136",}
-,  [1200543] = {
-  ["id"] = 1200543,  ["pathWithName"] = "hero1_20054_all",}
+,  [600041] = {
+  ["id"] = 600041,  ["pathWithName"] = "xiaolingxian_41.mp3",}
 ,  [1004] = {
   ["id"] = 1004,  ["pathWithName"] = "stage_scene_4",}
 ,  [1500481] = {
   ["id"] = 1500481,  ["pathWithName"] = "stage_monster_48_4",}
 ,  [1000231] = {
   ["id"] = 1000231,  ["pathWithName"] = "equ_100023_1",}
-,  [5080132] = {
-  ["id"] = 5080132,  ["pathWithName"] = "item_80132",}
+,  [600043] = {
+  ["id"] = 600043,  ["pathWithName"] = "xiaolingxian_43.mp3",}
 ,  [1000232] = {
   ["id"] = 1000232,  ["pathWithName"] = "equ_100023_1",}
-,  [5080131] = {
-  ["id"] = 5080131,  ["pathWithName"] = "item_80131",}
+,  [600044] = {
+  ["id"] = 600044,  ["pathWithName"] = "xiaolingxian_44.mp3",}
 ,  [5080130] = {
   ["id"] = 5080130,  ["pathWithName"] = "item_80130",}
-,  [5080068] = {
-  ["id"] = 5080068,  ["pathWithName"] = "stage_monster_6_2",}
+,  [600045] = {
+  ["id"] = 600045,  ["pathWithName"] = "xiaolingxian_45.mp3",}
 ,  [5080126] = {
   ["id"] = 5080126,  ["pathWithName"] = "item_80126",}
-,  [5080069] = {
-  ["id"] = 5080069,  ["pathWithName"] = "item_80069",}
+,  [600046] = {
+  ["id"] = 600046,  ["pathWithName"] = "xiaolingxian_46.mp3",}
 ,  [5080123] = {
   ["id"] = 5080123,  ["pathWithName"] = "item_80123",}
 ,  [1500491] = {
   ["id"] = 1500491,  ["pathWithName"] = "stage_monster_49_4",}
 ,  [1500492] = {
   ["id"] = 1500492,  ["pathWithName"] = "stage_monster_49_all",}
-,  [6003] = {
-  ["id"] = 6003,  ["pathWithName"] = "stage_hd_bg_3",}
+,  [600048] = {
+  ["id"] = 600048,  ["pathWithName"] = "xiaolingxian_47.mp3",}
 ,  [5080121] = {
   ["id"] = 5080121,  ["pathWithName"] = "item_80121",}
-,  [5080119] = {
-  ["id"] = 5080119,  ["pathWithName"] = "item_80119",}
+,  [600049] = {
+  ["id"] = 600049,  ["pathWithName"] = "xiaolingxian_48.mp3",}
 ,  [1200424] = {
   ["id"] = 1200424,  ["pathWithName"] = "hero2_20042_all",}
-,  [5080117] = {
-  ["id"] = 5080117,  ["pathWithName"] = "item_80117",}
+,  [600050] = {
+  ["id"] = 600050,  ["pathWithName"] = "xiaolingxian_49.mp3",}
 ,  [11015] = {
   ["id"] = 11015,  ["pathWithName"] = "ui_navi1_bf1",}
-,  [1200615] = {
-  ["id"] = 1200615,  ["pathWithName"] = "hero3_20061_all",}
+,  [600051] = {
+  ["id"] = 600051,  ["pathWithName"] = "xiaolingxian_50.mp3",}
 ,  [5080113] = {
   ["id"] = 5080113,  ["pathWithName"] = "item_80113",}
 ,  [1500501] = {
   ["id"] = 1500501,  ["pathWithName"] = "stage_monster_50_4",}
 ,  [1000241] = {
   ["id"] = 1000241,  ["pathWithName"] = "equ_100024_1",}
-,  [1200555] = {
-  ["id"] = 1200555,  ["pathWithName"] = "hero3_20055_all",}
+,  [600053] = {
+  ["id"] = 600053,  ["pathWithName"] = "xiaolingxian_52.mp3",}
 ,  [1000242] = {
   ["id"] = 1000242,  ["pathWithName"] = "equ_100024_1",}
-,  [5080109] = {
-  ["id"] = 5080109,  ["pathWithName"] = "item_80109",}
+,  [600054] = {
+  ["id"] = 600054,  ["pathWithName"] = "xiaolingxian_53.mp3",}
 ,  [5080108] = {
   ["id"] = 5080108,  ["pathWithName"] = "item_80108",}
-,  [1200445] = {
-  ["id"] = 1200445,  ["pathWithName"] = "hero3_20044_all",}
+,  [600055] = {
+  ["id"] = 600055,  ["pathWithName"] = "xiaolingxian_55.mp3",}
 ,  [120009] = {
   ["id"] = 120009,  ["pathWithName"] = "Skill8.mp3",}
-,  [8004] = {
-  ["id"] = 8004,  ["pathWithName"] = "ui_navi_zhb1",}
+,  [600056] = {
+  ["id"] = 600056,  ["pathWithName"] = "xiaolingxian_56.mp3",}
 ,  [5080072] = {
   ["id"] = 5080072,  ["pathWithName"] = "item_80072",}
 ,  [1500511] = {
   ["id"] = 1500511,  ["pathWithName"] = "stage_monster_51_4",}
 ,  [1500512] = {
   ["id"] = 1500512,  ["pathWithName"] = "stage_monster_51_all",}
-,  [5080098] = {
-  ["id"] = 5080098,  ["pathWithName"] = "hero_10048_2",}
+,  [600058] = {
+  ["id"] = 600058,  ["pathWithName"] = "xiaolingxian_58.mp3",}
 ,  [5080073] = {
   ["id"] = 5080073,  ["pathWithName"] = "item_80073",}
-,  [5080096] = {
-  ["id"] = 5080096,  ["pathWithName"] = "item_80096",}
+,  [600059] = {
+  ["id"] = 600059,  ["pathWithName"] = "xiaolingxian_59.mp3",}
 ,  [1000651] = {
   ["id"] = 1000651,  ["pathWithName"] = "equ_100065_1",}
-,  [4045] = {
-  ["id"] = 4045,  ["pathWithName"] = "stage_line_5",}
+,  [600060] = {
+  ["id"] = 600060,  ["pathWithName"] = "xiaolingxian_60.mp3",}
 ,  [5080092] = {
   ["id"] = 5080092,  ["pathWithName"] = "item_80092",}
-,  [5080091] = {
-  ["id"] = 5080091,  ["pathWithName"] = "item_80091",}
+,  [600061] = {
+  ["id"] = 600061,  ["pathWithName"] = "xiaolingxian_61.mp3",}
 ,  [5080090] = {
   ["id"] = 5080090,  ["pathWithName"] = "item_80090",}
 ,  [1500521] = {
@@ -2639,32 +2625,32 @@ resource_config={
   ["id"] = 5080089,  ["pathWithName"] = "item_80089",}
 ,  [5080088] = {
   ["id"] = 5080088,  ["pathWithName"] = "item_80088",}
-,  [5080087] = {
-  ["id"] = 5080087,  ["pathWithName"] = "item_80087",}
+,  [600065] = {
+  ["id"] = 600065,  ["pathWithName"] = "xiaolingxian_64.mp3",}
 ,  [5080086] = {
   ["id"] = 5080086,  ["pathWithName"] = "item_80086",}
-,  [5080085] = {
-  ["id"] = 5080085,  ["pathWithName"] = "item_80085",}
+,  [600066] = {
+  ["id"] = 600066,  ["pathWithName"] = "xiaolingxian_65.mp3",}
 ,  [5080084] = {
   ["id"] = 5080084,  ["pathWithName"] = "item_80084",}
 ,  [1500531] = {
   ["id"] = 1500531,  ["pathWithName"] = "stage_monster_53_4",}
 ,  [1500532] = {
   ["id"] = 1500532,  ["pathWithName"] = "stage_monster_53_all",}
-,  [5080083] = {
-  ["id"] = 5080083,  ["pathWithName"] = "item_80083",}
+,  [600068] = {
+  ["id"] = 600068,  ["pathWithName"] = "xiaolingxian_67.mp3",}
 ,  [5080082] = {
   ["id"] = 5080082,  ["pathWithName"] = "item_80082",}
 ,  [210020] = {
   ["id"] = 210020,  ["pathWithName"] = "voice_10020.mp3",}
 ,  [5080080] = {
   ["id"] = 5080080,  ["pathWithName"] = "item_80080",}
-,  [5080079] = {
-  ["id"] = 5080079,  ["pathWithName"] = "item_80079",}
+,  [600070] = {
+  ["id"] = 600070,  ["pathWithName"] = "xiaolingxian_69.mp3",}
 ,  [5080078] = {
   ["id"] = 5080078,  ["pathWithName"] = "item_80078",}
-,  [5080077] = {
-  ["id"] = 5080077,  ["pathWithName"] = "item_80077",}
+,  [600071] = {
+  ["id"] = 600071,  ["pathWithName"] = "xiaolingxian_70.mp3",}
 ,  [120011] = {
   ["id"] = 120011,  ["pathWithName"] = "Skill10.mp3",}
 ,  [1500541] = {
@@ -2759,12 +2745,12 @@ resource_config={
   ["id"] = 5080165,  ["pathWithName"] = "item_80165",}
 ,  [5080055] = {
   ["id"] = 5080055,  ["pathWithName"] = "item_80055",}
-,  [5080054] = {
-  ["id"] = 5080054,  ["pathWithName"] = "item_80054",}
+,  [600095] = {
+  ["id"] = 600095,  ["pathWithName"] = "guai_2.mp3",}
 ,  [120014] = {
   ["id"] = 120014,  ["pathWithName"] = "Skill13.mp3",}
-,  [5080052] = {
-  ["id"] = 5080052,  ["pathWithName"] = "item_80052",}
+,  [600096] = {
+  ["id"] = 600096,  ["pathWithName"] = "guai_3.mp3",}
 ,  [5080051] = {
   ["id"] = 5080051,  ["pathWithName"] = "item_80051",}
 ,  [1500591] = {
@@ -2775,16 +2761,16 @@ resource_config={
   ["id"] = 2000061,  ["pathWithName"] = "equ_200006_1",}
 ,  [2000062] = {
   ["id"] = 2000062,  ["pathWithName"] = "equ_200006_1",}
-,  [5080050] = {
-  ["id"] = 5080050,  ["pathWithName"] = "item_80050",}
+,  [600099] = {
+  ["id"] = 600099,  ["pathWithName"] = "guai_6.mp3",}
 ,  [5080046] = {
   ["id"] = 5080046,  ["pathWithName"] = "item_80046",}
-,  [5080043] = {
-  ["id"] = 5080043,  ["pathWithName"] = "item_80043",}
+,  [600100] = {
+  ["id"] = 600100,  ["pathWithName"] = "guai_7.mp3",}
 ,  [1501121] = {
   ["id"] = 1501121,  ["pathWithName"] = "stage_monster_112_4",}
 ,  [600101] = {
-  ["id"] = 600101,  ["pathWithName"] = "liubei_04.mp3",}
+  ["id"] = 600101,  ["pathWithName"] = "guai_8.mp3",}
 ,  [5080039] = {
   ["id"] = 5080039,  ["pathWithName"] = "item_80039",}
 ,  [1500601] = {
@@ -2792,19 +2778,19 @@ resource_config={
 ,  [1000291] = {
   ["id"] = 1000291,  ["pathWithName"] = "equ_100029_1",}
 ,  [600103] = {
-  ["id"] = 600103,  ["pathWithName"] = "liubei_05.mp3",}
+  ["id"] = 600103,  ["pathWithName"] = "lishi_1.mp3",}
 ,  [1000292] = {
   ["id"] = 1000292,  ["pathWithName"] = "equ_100029_1",}
 ,  [600104] = {
-  ["id"] = 600104,  ["pathWithName"] = "wanjia_09.mp3",}
+  ["id"] = 600104,  ["pathWithName"] = "lishi_2.mp3",}
 ,  [1501141] = {
   ["id"] = 1501141,  ["pathWithName"] = "stage_monster_114_4",}
 ,  [600105] = {
-  ["id"] = 600105,  ["pathWithName"] = "xiaolingxian_06.mp3",}
+  ["id"] = 600105,  ["pathWithName"] = "zhouyu_1.mp3",}
 ,  [1500042] = {
   ["id"] = 1500042,  ["pathWithName"] = "stage_monster_4_all",}
-,  [5080029] = {
-  ["id"] = 5080029,  ["pathWithName"] = "item_80029",}
+,  [600106] = {
+  ["id"] = 600106,  ["pathWithName"] = "zhouyu_2.mp3",}
 ,  [1500052] = {
   ["id"] = 1500052,  ["pathWithName"] = "stage_monster_5_all",}
 ,  [1500611] = {
@@ -2812,7 +2798,7 @@ resource_config={
 ,  [1500612] = {
   ["id"] = 1500612,  ["pathWithName"] = "stage_monster_49_all",}
 ,  [600108] = {
-  ["id"] = 600108,  ["pathWithName"] = "liubei_06.mp3",}
+  ["id"] = 600108,  ["pathWithName"] = "lidamu_2.mp3",}
 ,  [5080018] = {
   ["id"] = 5080018,  ["pathWithName"] = "item_80018",}
 ,  [210030] = {
@@ -2820,11 +2806,11 @@ resource_config={
 ,  [1500082] = {
   ["id"] = 1500082,  ["pathWithName"] = "stage_monster_8_all",}
 ,  [600110] = {
-  ["id"] = 600110,  ["pathWithName"] = "liubei_07.mp3",}
-,  [640027] = {
-  ["id"] = 640027,  ["pathWithName"] = "xiaolingxian_48.mp3",}
+  ["id"] = 600110,  ["pathWithName"] = "lidamu_4.mp3",}
+,  [5080010] = {
+  ["id"] = 5080010,  ["pathWithName"] = "item_80010",}
 ,  [600111] = {
-  ["id"] = 600111,  ["pathWithName"] = "wanjia_11.mp3",}
+  ["id"] = 600111,  ["pathWithName"] = "lidamu_5.mp3",}
 ,  [120016] = {
   ["id"] = 120016,  ["pathWithName"] = "Skill15.mp3",}
 ,  [1500621] = {
@@ -2835,12 +2821,12 @@ resource_config={
   ["id"] = 210031,  ["pathWithName"] = "voice_10031.mp3",}
 ,  [1000302] = {
   ["id"] = 1000302,  ["pathWithName"] = "equ_100030_1",}
-,  [5080001] = {
-  ["id"] = 5080001,  ["pathWithName"] = "item_80001",}
+,  [600114] = {
+  ["id"] = 600114,  ["pathWithName"] = "lidamu_8.mp3",}
 ,  [5070007] = {
   ["id"] = 5070007,  ["pathWithName"] = "item_70007",}
-,  [5070005] = {
-  ["id"] = 5070005,  ["pathWithName"] = "item_70005",}
+,  [600115] = {
+  ["id"] = 600115,  ["pathWithName"] = "daqiao_1.mp3",}
 ,  [5070003] = {
   ["id"] = 5070003,  ["pathWithName"] = "item_70003",}
 ,  [9017] = {
@@ -2851,16 +2837,16 @@ resource_config={
   ["id"] = 1500631,  ["pathWithName"] = "stage_monster_51_4",}
 ,  [1500632] = {
   ["id"] = 1500632,  ["pathWithName"] = "stage_monster_51_all",}
-,  [5070001] = {
-  ["id"] = 5070001,  ["pathWithName"] = "item_70001",}
+,  [600118] = {
+  ["id"] = 600118,  ["pathWithName"] = "zhangyan_3.mp3",}
 ,  [5064114] = {
   ["id"] = 5064114,  ["pathWithName"] = "item_60001",}
-,  [1100242] = {
-  ["id"] = 1100242,  ["pathWithName"] = "hero_10024_all",}
+,  [600119] = {
+  ["id"] = 600119,  ["pathWithName"] = "zhangyan_4.mp3",}
 ,  [120017] = {
   ["id"] = 120017,  ["pathWithName"] = "Skill16.mp3",}
-,  [5050005] = {
-  ["id"] = 5050005,  ["pathWithName"] = "item_50005",}
+,  [600120] = {
+  ["id"] = 600120,  ["pathWithName"] = "liubei_1.mp3",}
 ,  [5064001] = {
   ["id"] = 5064001,  ["pathWithName"] = "item_64000",}
 ,  [5064005] = {
@@ -2871,12 +2857,12 @@ resource_config={
   ["id"] = 1500641,  ["pathWithName"] = "stage_monster_52_4",}
 ,  [1000311] = {
   ["id"] = 1000311,  ["pathWithName"] = "equ_100031_1",}
-,  [5064107] = {
-  ["id"] = 5064107,  ["pathWithName"] = "item_60001",}
+,  [600123] = {
+  ["id"] = 600123,  ["pathWithName"] = "gaosheng_1.mp3",}
 ,  [1000312] = {
   ["id"] = 1000312,  ["pathWithName"] = "equ_100031_1",}
-,  [2100711] = {
-  ["id"] = 2100711,  ["pathWithName"] = "playerhero_10071",}
+,  [600124] = {
+  ["id"] = 600124,  ["pathWithName"] = "gaosheng_2.mp3",}
 ,  [5064105] = {
   ["id"] = 5064105,  ["pathWithName"] = "item_60001",}
 ,  [5064103] = {
@@ -2893,8 +2879,8 @@ resource_config={
   ["id"] = 1500652,  ["pathWithName"] = "stage_monster_65_all",}
 ,  [2000052] = {
   ["id"] = 2000052,  ["pathWithName"] = "equ_200005_1",}
-,  [640045] = {
-  ["id"] = 640045,  ["pathWithName"] = "xiaolingxian_50.mp3",}
+,  [5064013] = {
+  ["id"] = 5064013,  ["pathWithName"] = "item_64011",}
 ,  [210035] = {
   ["id"] = 210035,  ["pathWithName"] = "voice_10035.mp3",}
 ,  [5064008] = {
@@ -2945,8 +2931,8 @@ resource_config={
   ["id"] = 5010005,  ["pathWithName"] = "item_10004",}
 ,  [4043] = {
   ["id"] = 4043,  ["pathWithName"] = "stage_line_5",}
-,  [640058] = {
-  ["id"] = 640058,  ["pathWithName"] = "xiaolingxian_52.mp3",}
+,  [11018] = {
+  ["id"] = 11018,  ["pathWithName"] = "ui_navi1_bf1",}
 ,  [1500681] = {
   ["id"] = 1500681,  ["pathWithName"] = "stage_monster_68_4",}
 ,  [1000331] = {
@@ -3021,8 +3007,8 @@ resource_config={
   ["id"] = 120022,  ["pathWithName"] = "Skill21.mp3",}
 ,  [1000602] = {
   ["id"] = 1000602,  ["pathWithName"] = "equ_100060_1",}
-,  [640077] = {
-  ["id"] = 640077,  ["pathWithName"] = "xiaolingxian_67.mp3",}
+,  [1500982] = {
+  ["id"] = 1500982,  ["pathWithName"] = "stage_monster_98_all",}
 ,  [210043] = {
   ["id"] = 210043,  ["pathWithName"] = "voice_10043.mp3",}
 ,  [5050003] = {
@@ -3053,22 +3039,22 @@ resource_config={
   ["id"] = 1500732,  ["pathWithName"] = "stage_monster_73_all",}
 ,  [94] = {
   ["id"] = 94,  ["pathWithName"] = "yuanbao_4",}
-,  [640085] = {
-  ["id"] = 640085,  ["pathWithName"] = "xiaolingxian_07.mp3",}
+,  [1500862] = {
+  ["id"] = 1500862,  ["pathWithName"] = "stage_monster_86_all",}
 ,  [210045] = {
   ["id"] = 210045,  ["pathWithName"] = "voice_10045.mp3",}
-,  [640086] = {
-  ["id"] = 640086,  ["pathWithName"] = "wanjia_14.mp3",}
-,  [680003] = {
-  ["id"] = 680003,  ["pathWithName"] = "xiaolingxian_10.mp3",}
-,  [640087] = {
-  ["id"] = 640087,  ["pathWithName"] = "xiaolingxian_08.mp3",}
-,  [680004] = {
-  ["id"] = 680004,  ["pathWithName"] = "xiaolingxian_11.mp3",}
+,  [1500842] = {
+  ["id"] = 1500842,  ["pathWithName"] = "stage_monster_84_all",}
+,  [8005] = {
+  ["id"] = 8005,  ["pathWithName"] = "ui_navi2_gen1",}
+,  [1500822] = {
+  ["id"] = 1500822,  ["pathWithName"] = "stage_monster_82_all",}
+,  [1501111] = {
+  ["id"] = 1501111,  ["pathWithName"] = "stage_monster_111_4",}
 ,  [201] = {
   ["id"] = 201,  ["pathWithName"] = "hong1",}
-,  [680005] = {
-  ["id"] = 680005,  ["pathWithName"] = "xiaolingxian_12.mp3",}
+,  [1500802] = {
+  ["id"] = 1500802,  ["pathWithName"] = "stage_monster_80_all",}
 ,  [1000361] = {
   ["id"] = 1000361,  ["pathWithName"] = "equ_100036_1",}
 ,  [210046] = {
@@ -3077,16 +3063,16 @@ resource_config={
   ["id"] = 1000362,  ["pathWithName"] = "equ_100036_1",}
 ,  [1500782] = {
   ["id"] = 1500782,  ["pathWithName"] = "stage_monster_78_all",}
-,  [640091] = {
-  ["id"] = 640091,  ["pathWithName"] = "weixu_02.mp3",}
+,  [1500522] = {
+  ["id"] = 1500522,  ["pathWithName"] = "stage_monster_52_all",}
 ,  [1500762] = {
   ["id"] = 1500762,  ["pathWithName"] = "stage_monster_76_all",}
 ,  [203] = {
   ["id"] = 203,  ["pathWithName"] = "hong3",}
 ,  [1500752] = {
   ["id"] = 1500752,  ["pathWithName"] = "stage_monster_75_all",}
-,  [640093] = {
-  ["id"] = 640093,  ["pathWithName"] = "xiaolingxian_60.mp3",}
+,  [1500722] = {
+  ["id"] = 1500722,  ["pathWithName"] = "stage_monster_72_all",}
 ,  [1500751] = {
   ["id"] = 1500751,  ["pathWithName"] = "stage_monster_75_4",}
 ,  [204] = {
@@ -3117,12 +3103,12 @@ resource_config={
   ["id"] = 1000372,  ["pathWithName"] = "equ_100037_1",}
 ,  [1500642] = {
   ["id"] = 1500642,  ["pathWithName"] = "stage_monster_52_all",}
-,  [640101] = {
-  ["id"] = 640101,  ["pathWithName"] = "wanjia_18.mp3",}
+,  [1500622] = {
+  ["id"] = 1500622,  ["pathWithName"] = "stage_monster_50_all",}
 ,  [210049] = {
   ["id"] = 210049,  ["pathWithName"] = "voice_10049.mp3",}
-,  [640102] = {
-  ["id"] = 640102,  ["pathWithName"] = "liubei_13.mp3",}
+,  [1500582] = {
+  ["id"] = 1500582,  ["pathWithName"] = "stage_monster_58_all",}
 ,  [1500562] = {
   ["id"] = 1500562,  ["pathWithName"] = "stage_monster_56_all",}
 ,  [1500542] = {
@@ -3283,8 +3269,8 @@ resource_config={
   ["id"] = 210059,  ["pathWithName"] = "voice_10059.mp3",}
 ,  [1500821] = {
   ["id"] = 1500821,  ["pathWithName"] = "stage_monster_82_4",}
-,  [600226] = {
-  ["id"] = 600226,  ["pathWithName"] = "xiaolingxian_64.mp3",}
+,  [2038] = {
+  ["id"] = 2038,  ["pathWithName"] = "ui_instanceBg_chapter_12",}
 ,  [2043] = {
   ["id"] = 2043,  ["pathWithName"] = "ui_instanceBg_chapter_13",}
 ,  [1500851] = {
@@ -3781,8 +3767,8 @@ resource_config={
   ["id"] = 310026,  ["pathWithName"] = "deathvoice_90008.mp3",}
 ,  [5005] = {
   ["id"] = 5005,  ["pathWithName"] = "warriors_5",}
-,  [630032] = {
-  ["id"] = 630032,  ["pathWithName"] = "xiaolingxian_54.mp3",}
+,  [2002] = {
+  ["id"] = 2002,  ["pathWithName"] = "ui_common_stage_icon_2",}
 ,  [1000702] = {
   ["id"] = 1000702,  ["pathWithName"] = "equ_100070_1",}
 ,  [310027] = {
