@@ -33,7 +33,7 @@ def get_act_info(player, act_id):
             return {'state': 1}
     elif act_conf.type == 30:
         if not act_info:
-            player.act.act_infos[act_id] = [1, 0]
+            player.act.act_infos[act_id] = [2, 0]
             return {'state': 2}
         else:
             return {'state': act_info[0], 'jindu': act_info[1]}
