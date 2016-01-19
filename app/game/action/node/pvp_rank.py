@@ -797,7 +797,11 @@ def pvp_rob_treasure_864(data, player):
         response.res.result = False
         response.res.result_no = res_no
         return response.SerializePartialToString()
-    deal_pvp_rob_fight(player, uid, chip_id, response, chip_conf)
+    fight_result = deal_pvp_rob_fight(player, uid, chip_id, response, chip_conf)
+    player.rob_treasure.truce = [0, 1]
+    if fight_result:
+        player.rob_treasure.can_receive = indiana_conf.id
+        player.rob_treasure.save_data()
 
     player.pvp.reset_rob_treasure()
     player.pvp.save_data()
@@ -819,6 +823,7 @@ def pvp_rob_treasure_more_times_1504(data, player):
         response.res.result = False
         response.res.result_no = res_no
         return response.SerializePartialToString()
+    player.rob_treasure.truce = [0, 1]
     for _ in range(times):
         one_times_response = response.one_time_info.add()
         fight_response = one_times_response.fight_info
@@ -835,6 +840,7 @@ def pvp_rob_treasure_more_times_1504(data, player):
 
     player.pvp.reset_rob_treasure()
     player.pvp.save_data()
+    player.rob_treasure.save_data()
     response.res.result = True
     logger.debug("response ==================== : %s" % response)
     return response.SerializeToString()
@@ -898,9 +904,6 @@ def deal_pvp_rob_fight(player, uid, chip_id, one_times_response, chip_conf):
     indiana_conf = get_indiana_conf(player, uid, chip_conf)
     if fight_result:
 
-        player.rob_treasure.can_receive = indiana_conf.id
-        player.rob_treasure.truce = [0, 1]
-        player.rob_treasure.save_data()
         if indiana_conf.probability >= random.random():
 
             gain_items = parse({104: [1, 1, chip_id]})

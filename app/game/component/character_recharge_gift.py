@@ -68,7 +68,7 @@ class CharacterRechargeGift(Component):
                                                   '%Y-%m-%d %H:%M:%S')))
         _time_now = int(time.time())
 
-        if self.act.is_activiy_open(act_id):
+        if self.owner.act.is_activiy_open(act_id):
             logger.debug('activity:not in time')
             return
 
