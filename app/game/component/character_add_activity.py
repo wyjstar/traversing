@@ -68,6 +68,9 @@ class CharacterAddActivityComponent(Component):
                     act_item["stages"] = {}
                     act_item["stages"][act.id] = False
                     act_info[res_type] = act_item
+                else:
+                    act_item = act_info[res_type]
+                    act_item["stages"][act.id] = False
 
         self.save_data()
 
