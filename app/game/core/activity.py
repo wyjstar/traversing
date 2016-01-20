@@ -9,6 +9,7 @@ from gfirefly.server.logobj import logger
 from shared.utils.const import const
 import time
 from shared.tlog import tlog_action
+from shared.utils.date_util import days_to_current, get_current_timestamp
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -24,6 +25,35 @@ def get_act_info(player, act_id):
     elif act_info and act_info[0] == 2:
         return {'state': 2, 'jindu': act_info[1]}
 
+    elif act_conf.type == 1:
+        # 累计登录
+        if not act_info:
+            player.act.act_infos[act_id] = [1, [1, int(time.time())]]
+            jindu = 1
+        else:
+            if days_to_current(act_info[1][1]) > 0:
+                act_info[1][0] += 1
+                act_info[1][1] = int(time.time())
+            jindu = act_info[1][0]
+        if jindu >= act_conf.parameterA:
+            act_info[0] = 2
+        return {'state': act_info[0], 'jindu': act_info[1][0]}
+    elif act_conf.type == 2:
+        # 连续登录
+        if not act_info:
+            player.act.act_infos[act_id] = [1, [1, int(time.time())]]
+            jindu = 1
+        else:
+            if days_to_current(act_info[1][1]) == 1:
+                act_info[1][0] += 1
+                act_info[1][1] = int(time.time())
+            elif days_to_current(act_info[1][1]) > 1:
+                act_info[1][0] = 1
+                act_info[1][1] = int(time.time())
+            jindu = act_info[1][0]
+        if jindu >= act_conf.parameterA:
+            act_info[0] = 2
+        return {'state': act_info[0], 'jindu': act_info[1][0]}
     elif act_conf.type == 29:
         # jindu = get_condition(conditions, 29)
         # if jindu and jindu[int(act_conf.parameterA)-1]:

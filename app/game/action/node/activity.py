@@ -294,6 +294,7 @@ def get_activity_info_1855(data, player):
             if act_info.get('state'):
                 info_pro.state = act_info.get('state')
 
+    player.act.save_data()
     response.res.result = True
     print 'get_activity_info_1855:', response
     return response.SerializeToString()
@@ -338,11 +339,11 @@ def get_activity_gift_1856(data, player):
         get_return(player, return_data, response.gain)
         if act_conf.type == 30:
             if act_conf.count <= (info.get('jindu') + 1):
-                player.act.act_infos[activity_id] = [3, 0]
+                player.act.act_infos[activity_id][0] = 3
             else:
                 player.act.act_infos[activity_id] = [1, info.get('jindu') + 1]
         else:
-            player.act.act_infos[activity_id] = [3, 0]
+            player.act.act_infos[activity_id][0] = 3
 
     player.pay.pay(need_gold, const.ACTIVITY, func)
     player.act.save_data()
