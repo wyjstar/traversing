@@ -148,7 +148,9 @@ class CharacterStartTargetComponent(Component):
         """
         秘境刷新次数
         """
-        times = self._conditions[56].get(MINE_REFRESH_TIMES, 0)
+        if not self.is_open():
+            return
+        times = self.get_condition(56).get(MINE_REFRESH_TIMES, 0)
         self._conditions[56][MINE_REFRESH_TIMES] = times + 1
         logger.debug("mine_refresh %s" % (times+1))
         self.save_data()
@@ -157,7 +159,9 @@ class CharacterStartTargetComponent(Component):
         """
         秘境占领矿点
         """
-        infos = self._conditions[56].get(WIN_MINE_INFO, [])
+        if not self.is_open():
+            return
+        infos = self.get_condition(56).get(WIN_MINE_INFO, [])
         info = {}
         info[WIN_MINE_QUALITY] = quality
         infos.append(info)
@@ -167,7 +171,9 @@ class CharacterStartTargetComponent(Component):
 
     def mine_get_runt(self):
         """秘境宝石收取"""
-        times = self._conditions[56].get(GET_RUNT_TIMES, 0)
+        if not self.is_open():
+            return
+        times = self.get_condition(56).get(GET_RUNT_TIMES, 0)
         self._conditions[56][GET_RUNT_TIMES] = times + 1
         logger.debug("mine_get_runt %s" % (times+1))
         self.save_data()
@@ -176,7 +182,9 @@ class CharacterStartTargetComponent(Component):
         """
         秘境宝石合成
         """
-        infos = self._conditions[56].get(MIX_RUNT_INFO, [])
+        if not self.is_open():
+            return
+        infos = self.get_condition(56).get(MIX_RUNT_INFO, [])
         info = {}
         info[WIN_MINE_QUALITY] = runt_quality
         infos.append(info)
@@ -184,7 +192,7 @@ class CharacterStartTargetComponent(Component):
         logger.debug("mine_mix_runt %s" % infos)
         self.save_data()
 
-    def mine_activity_jindu(self, target_conf):
+    def mine_activity_jindu(self, target_conf, act_type):
         """
         获取秘境活动进度
         """
@@ -222,20 +230,29 @@ class CharacterStartTargetComponent(Component):
 
         return 1
 
+    def get_condition(self, act_type):
+        """docstring for get_condition"""
+        if not self._conditions.get(act_type):
+            self._conditions[act_type] = {}
+        return self._conditions[act_type]
+
+
     def add_treasure(self, treasure_type, treasure_quality):
         """
         添加宝物或者饰品
         """
-        infos = self._conditions[56].get(TREASURE_INFO, [])
+        if not self.is_open():
+            return
+        infos = self.get_condition(57).get(TREASURE_INFO, [])
         info = {}
         info[TREASURE_TYPE] = treasure_type
         info[TREASURE_QUALITY] = treasure_quality
         infos.append(info)
-        self._conditions[56][TREASURE_INFO] = infos
+        self._conditions[57][TREASURE_INFO] = infos
         logger.debug("add_treasure %s" % infos)
         self.save_data()
 
-    def treasure_activity_jindu(self, target_conf):
+    def treasure_activity_jindu(self, target_conf, act_type):
         """
         获取宝物活动进度
         """
@@ -243,22 +260,22 @@ class CharacterStartTargetComponent(Component):
         parameterE = target_conf.parameterE
         condition = self._conditions.get(target_conf.type)
         logger.debug("condition %s" % condition)
-        if condition:
+        if not condition:
             return jindu
 
         a_num = 0
         b_num = 0
         a_or_b_num = 0
         for temp in condition.get(TREASURE_INFO, []):
-            if temp[TREASURE_QUALITY] > parameterE.get(A_OR_B_TREASURE_QUALITY):
+            if temp[TREASURE_QUALITY] >= parameterE.get(A_OR_B_TREASURE_QUALITY, 0):
                 a_or_b_num += 1
-            if temp[TREASURE_TYPE] == 5 and temp[TREASURE_QUALITY] > parameterE.get(A_TREASURE_QUALITY):
+            if temp[TREASURE_TYPE] == 5 and temp[TREASURE_QUALITY] >= parameterE.get(A_TREASURE_QUALITY, 0):
                 a_num += 1
-            if temp[TREASURE_TYPE] == 6 and temp[TREASURE_QUALITY] > parameterE.get(B_TREASURE_QUALITY):
+            if temp[TREASURE_TYPE] == 6 and temp[TREASURE_QUALITY] >= parameterE.get(B_TREASURE_QUALITY, 0):
                 b_num += 1
-        if a_or_b_num < parameterE.get(A_OR_B_TREASURE_NUM) or \
-            a_num < parameterE.get(A_TREASURE_NUM) or\
-            b_num < parameterE.get(B_TREASURE_NUM):
+        if a_or_b_num < parameterE.get(A_OR_B_TREASURE_NUM, 0) or \
+            a_num < parameterE.get(A_TREASURE_NUM, 0) or\
+            b_num < parameterE.get(B_TREASURE_NUM, 0):
             return jindu
 
         return 1
