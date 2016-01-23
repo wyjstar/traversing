@@ -86,6 +86,7 @@ def get_target_info1(player, target_id, day):
     target_info = player.start_target.target_info.get(target_id)
     target_conf = game_configs.activity_config.get(target_id)
     conditions = player.start_target.conditions
+    jindu = 0
     if target_info and target_info[0] == 3:
         return {'state': 3}
     elif target_info and target_info[0] == 2:
