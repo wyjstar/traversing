@@ -127,6 +127,10 @@ skill_config={
   ["name"] = 1201100012,  ["slowaction"] = 0,  ["describe"] = 1301100072,  ["action"] = 0,  ["id"] = 1100072,  ["group"] = {
   [1] = 82000002,  [2] = 11000722,}
 ,}
+,  [8220004] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8220004,  ["group"] = {
+  [1] = 24000009,}
+,}
 ,  [1100081] = {
   ["name"] = 1201100011,  ["slowaction"] = 0,  ["describe"] = 1301100081,  ["action"] = 0,  ["id"] = 1100081,  ["group"] = {
   [1] = 11000811,}
@@ -226,6 +230,10 @@ skill_config={
 ,  [1100132] = {
   ["name"] = 1201100012,  ["slowaction"] = 0,  ["describe"] = 1301100132,  ["action"] = 0,  ["id"] = 1100132,  ["group"] = {
   [1] = 82000005,  [2] = 82000006,  [3] = 11001321,}
+,}
+,  [8210002] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8210002,  ["group"] = {
+  [1] = 24000002,}
 ,}
 ,  [1200441] = {
   ["name"] = 1201100011,  ["slowaction"] = 0,  ["describe"] = 1301200441,  ["action"] = 0,  ["id"] = 1200441,  ["group"] = {
@@ -1239,6 +1247,10 @@ skill_config={
   ["name"] = 1201100012,  ["slowaction"] = 60005,  ["describe"] = 1301100582,  ["action"] = 0,  ["id"] = 1100582,  ["group"] = {
   [1] = 82000003,  [2] = 11005821,}
 ,}
+,  [8220002] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8220002,  ["group"] = {
+  [1] = 24000007,}
+,}
 ,  [1100591] = {
   ["name"] = 1201100011,  ["slowaction"] = 0,  ["describe"] = 1301100591,  ["action"] = 0,  ["id"] = 1100591,  ["group"] = {
   [1] = 11005911,}
@@ -1927,6 +1939,10 @@ skill_config={
   ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 1000062,  ["group"] = {
   [1] = 10000621,}
 ,}
+,  [8240004] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8240004,  ["group"] = {
+  [1] = 24000017,}
+,}
 ,  [1000071] = {
   ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 1000071,  ["group"] = {
   [1] = 10000711,}
@@ -2359,6 +2375,10 @@ skill_config={
   ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 7202007,  ["group"] = {
   [1] = 72020071,}
 ,}
+,  [9220003] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 9220003,  ["group"] = {
+  [1] = 24000008,}
+,}
 ,  [7201004] = {
   ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 7201004,  ["group"] = {
   [1] = 72010041,}
@@ -2719,6 +2739,10 @@ skill_config={
   ["name"] = 6000000232,  ["slowaction"] = 0,  ["describe"] = 7000000232,  ["action"] = 0,  ["id"] = 2300032,  ["group"] = {
   [1] = 24000013,}
 ,}
+,  [8210003] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8210003,  ["group"] = {
+  [1] = 24000003,}
+,}
 ,  [7203003] = {
   ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 7203003,  ["group"] = {
   [1] = 72030031,}
@@ -2746,6 +2770,10 @@ skill_config={
 ,  [7201009] = {
   ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 7201009,  ["group"] = {
   [1] = 72010091,}
+,}
+,  [8240002] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8240002,  ["group"] = {
+  [1] = 24000015,}
 ,}
 ,  [1470001] = {
   ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 1470001,  ["group"] = {
@@ -3039,6 +3067,14 @@ skill_config={
   ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 7301008,  ["group"] = {
   [1] = 73010081,}
 ,}
+,  [9240003] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 9240003,  ["group"] = {
+  [1] = 24000016,}
+,}
+,  [8210004] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8210004,  ["group"] = {
+  [1] = 24000004,}
+,}
 ,  [2100002] = {
   ["name"] = 6000000002,  ["slowaction"] = 0,  ["describe"] = 7000000002,  ["action"] = 0,  ["id"] = 2100002,  ["group"] = {
   [1] = 24000001,}
@@ -3170,6 +3206,78 @@ skill_config={
 ,  [2100066] = {
   ["name"] = 6000000066,  ["slowaction"] = 0,  ["describe"] = 7000000066,  ["action"] = 0,  ["id"] = 2100066,  ["group"] = {
   [1] = 24000005,}
+,}
+,  [9240004] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 9240004,  ["group"] = {
+  [1] = 24000017,}
+,}
+,  [9230004] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 9230004,  ["group"] = {
+  [1] = 24000013,}
+,}
+,  [9230003] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 9230003,  ["group"] = {
+  [1] = 24000012,}
+,}
+,  [9220004] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 9220004,  ["group"] = {
+  [1] = 24000009,}
+,}
+,  [9210005] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 9210005,  ["group"] = {
+  [1] = 24000005,}
+,}
+,  [8250003] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8250003,  ["group"] = {
+  [1] = 24000043,}
+,}
+,  [8250002] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8250002,  ["group"] = {
+  [1] = 24000042,}
+,}
+,  [8250001] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8250001,  ["group"] = {
+  [1] = 24000041,}
+,}
+,  [8240003] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8240003,  ["group"] = {
+  [1] = 24000016,}
+,}
+,  [8240001] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8240001,  ["group"] = {
+  [1] = 24000014,}
+,}
+,  [8230004] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8230004,  ["group"] = {
+  [1] = 24000013,}
+,}
+,  [8230003] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8230003,  ["group"] = {
+  [1] = 24000012,}
+,}
+,  [8230002] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8230002,  ["group"] = {
+  [1] = 24000011,}
+,}
+,  [8230001] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8230001,  ["group"] = {
+  [1] = 24000010,}
+,}
+,  [8220003] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8220003,  ["group"] = {
+  [1] = 24000008,}
+,}
+,  [8220001] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8220001,  ["group"] = {
+  [1] = 24000006,}
+,}
+,  [1000122] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 1000122,  ["group"] = {
+  [1] = 10001221,}
+,}
+,  [1200481] = {
+  ["name"] = 1201100011,  ["slowaction"] = 0,  ["describe"] = 1301200481,  ["action"] = 0,  ["id"] = 1200481,  ["group"] = {
+  [1] = 12004812,}
 ,}
 ,  [8100067] = {
   ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8100067,  ["group"] = {
@@ -3915,13 +4023,13 @@ skill_config={
   ["name"] = 1201100012,  ["slowaction"] = 0,  ["describe"] = 1301200482,  ["action"] = 0,  ["id"] = 1200482,  ["group"] = {
   [1] = 82000001,  [2] = 12004821,}
 ,}
-,  [1200481] = {
-  ["name"] = 1201100011,  ["slowaction"] = 0,  ["describe"] = 1301200481,  ["action"] = 0,  ["id"] = 1200481,  ["group"] = {
-  [1] = 12004812,}
+,  [8210001] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8210001,  ["group"] = {
+  [1] = 24000001,}
 ,}
-,  [1000122] = {
-  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 1000122,  ["group"] = {
-  [1] = 10001221,}
+,  [8210005] = {
+  ["name"] = 0,  ["slowaction"] = 0,  ["describe"] = 0,  ["action"] = 0,  ["id"] = 8210005,  ["group"] = {
+  [1] = 24000005,}
 ,}
 ,  [1200472] = {
   ["name"] = 1201100012,  ["slowaction"] = 0,  ["describe"] = 1301200472,  ["action"] = 0,  ["id"] = 1200472,  ["group"] = {

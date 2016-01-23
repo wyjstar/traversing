@@ -17,20 +17,23 @@ class SealConfig(object):
             row["expend"] = parse(row.get("expend"))
             item = CommonItem(row)
             self._items[item.id] = item
+            if item.pulse not in self._items:
+                self._items[item.pulse] = []
+            self._items[item.pulse].append(item)
 
-        start_id = min(self._items.keys())
+        #start_id = min(self._items.keys())
 
-        def accumulate_next(cur_id):
-            cur_item = self._items.get(cur_id)
-            if not cur_item:
-                return
-            next_id = cur_item.get('next')
-            next_item = self._items.get(next_id)
-            if next_id and next_item:
-                for k, v in next_item.items():
-                    if isinstance(v, float):
-                        next_item[k] += cur_item[k]
-            accumulate_next(next_id)
+        #def accumulate_next(cur_id):
+            #cur_item = self._items.get(cur_id)
+            #if not cur_item:
+                #return
+            #next_id = cur_item.get('next')
+            #next_item = self._items.get(next_id)
+            #if next_id and next_item:
+                #for k, v in next_item.items():
+                    #if isinstance(v, float):
+                        #next_item[k] += cur_item[k]
+            #accumulate_next(next_id)
 
-        accumulate_next(start_id)
+        #accumulate_next(start_id)
         return self._items
