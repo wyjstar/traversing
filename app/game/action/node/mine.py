@@ -357,7 +357,7 @@ def harvest_1245(data, player):
 
     player.mine.save_data()
     player.runt.save()
-    player.start_target.mine_get_runt()
+    player.act.mine_get_runt()
     hook_task(player, CONDITIONId.GAIN_RUNT, 1)
     tlog_action.log('MineHarvest',
                     player,
@@ -624,7 +624,7 @@ def settle_1252(data, player):
     mine_item = game_configs.mine_config.get(mine_id)
     logger.debug("mine_id %s mine_item %s" % (mine_id, mine_item))
     if mine_item:
-        player.start_target.mine_win(mine_item.quality)
+        player.act.mine_win(mine_item.quality)
 
     response.result = True
     return response.SerializePartialToString()

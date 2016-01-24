@@ -414,6 +414,6 @@ def make_runt_857(data, player):
     player.runt.save()
     # 7日活动
     new_runt_conf = game_configs.stone_config.get('stones').get(get_runt_id)
-    player.start_target.mine_mix_runt(new_runt_conf.quality)
+    player.act.mine_mix_runt(new_runt_conf.quality)
     response.res.result = True
     return response.SerializeToString()

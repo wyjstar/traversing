@@ -111,8 +111,6 @@ class CharacterActComponent(Component):
             if self._act_infos.get(act_conf.id):
                 condition = self._act_infos.get(act_conf.id)[1]
             logger.debug("condition %s" % condition)
-            if condition == 0:
-                condition = []
 
             mine_num = 0
             for temp in condition:
@@ -123,8 +121,6 @@ class CharacterActComponent(Component):
             condition = []
             if self._act_infos.get(act_conf.id):
                 condition = self._act_infos.get(act_conf.id)[1]
-            if condition == 0:
-                condition = []
             logger.debug("condition %s" % condition)
             mix_runt_num = 0
             for temp in condition:
@@ -303,7 +299,6 @@ class CharacterActComponent(Component):
                     else:
                         act_info[1].append(info)
 
-        logger.debug("add_treasure %s" % infos)
         self.save_data()
 
     def treasure_activity_jindu(self, target_conf):

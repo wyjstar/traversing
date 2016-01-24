@@ -238,9 +238,17 @@ def get_act_info(player, act_id):
     elif act_conf.type in [56, 57, 58, 59]:
         # 秘境条件: 刷新秘境，占领矿点，宝石收取，宝石合成
         jindu = player.act.mine_activity_jindu(act_conf)
+        if jindu >= act_conf.parameterA:
+            return {'state': 2, 'jindu': jindu}
+        else:
+            return {'state': 1, 'jindu': jindu}
     elif act_conf.type in [60, 61, 62, 63]:
         # 宝物：合成，品质，数量
         jindu = player.act.treasure_activity_jindu(act_conf)
+        if jindu >= act_conf.parameterA:
+            return {'state': 2, 'jindu': jindu}
+        else:
+            return {'state': 1, 'jindu': jindu}
     elif act_conf.type == 51:
         if not act_info:
             player.act.act_infos[act_id] = [0, []]
