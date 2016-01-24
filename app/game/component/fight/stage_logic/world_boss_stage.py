@@ -9,10 +9,10 @@ import cPickle
 remote_gate = GlobalObject().remote.get('gate')
 
 
-attr_type = {1:"hpHero",
-             2:"atkHero",
-             3:"physicalDefHero",
-             4:"magicDefHero",
+attr_type = {1:"hpHeroSelf",
+             2:"atkHeroSelf",
+             3:"physicalDefHeroSelf",
+             4:"magicDefHeroSelf",
              5:"hitHero",
              6:"dodgeHero",
              7:"criHero",
