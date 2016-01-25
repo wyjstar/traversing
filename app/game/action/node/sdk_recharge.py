@@ -109,3 +109,31 @@ def baidu_recharge_remote(product_id, fee, order_id, is_online, player):
                                    [player.dynamic_id])
     logger.debug('baidu response:%s', response)
     return True
+
+
+@remoteserviceHandle('gate')
+def huawei_recharge_remote(product_id, fee, order_id, is_online, player):
+    logger.debug('huawei_recharge_remote:%s-fee:%s-order:%s', product_id, fee,
+                 order_id)
+    if player.base_info.one_dollar_flowid == order_id:
+        player.base_info.one_dollar_flowid = 'done'
+        logger.debug('one dollar is ok! %s', product_id)
+
+    recharge_item = game_configs.recharge_config.get('android').get(product_id)
+    if recharge_item is None:
+        logger.error('not in rechargeconfig:%s', product_id)
+        return False
+
+    if float(fee) != recharge_item.get('currence'):
+        logger.error('recharge fee is wrong:%s-%s', fee,
+                     recharge_item.get('currence'))
+        return False
+
+    response = apple_pb2.AppleConsumeVerifyResponse()
+    response.res.result = True
+    player.recharge.recharge_gain(recharge_item, response)  # 发送奖励邮件
+
+    remote_gate.push_object_remote(12004, response.SerializeToString(),
+                                   [player.dynamic_id])
+    logger.debug('hauwei response:%s', response)
+    return True

@@ -10,7 +10,6 @@ import traceback
 import time
 from shared.utils.exception import AuthError
 
-
 remote_gate = GlobalObject().remote.get('gate')
 
 
@@ -38,8 +37,9 @@ class GameCommandService(CommandService):
                     logger.error('cantfind player dynamic id:%s', dynamic_id)
                     raise Exception("cantfind player dynamic id")
                     #return {'result': False, 'result_no': 1, 'message': u''}
-                logger.info("call method begin %s on service[%s], player id %s",
-                            target.__name__, self._name, _player.base_info.id)
+                logger.info(
+                    "call method begin %s on service[%s], player id %s",
+                    target.__name__, self._name, _player.base_info.id)
                 args = args[1:]
                 kw['player'] = _player
                 response = target(*args, **kw)
@@ -58,15 +58,14 @@ class GameCommandService(CommandService):
             logger.error(traceback.format_exc())
             remote_gate.push_object_remote(9999, "", _player.base_info.id)
             return None
-        logger.info("call method %s on service[%s]:%f",
-                    target.__name__, self._name, time.time() - t)
+        logger.info("call method %s on service[%s]:%f", target.__name__,
+                    self._name, time.time() - t)
         return response
 
 
 if 'gate' in GlobalObject().remote:
     reference = remote_gate._reference
     reference.addService(GameCommandService("gateremote"))
-
 
 import enter_scene
 import logout
@@ -107,7 +106,7 @@ import limit_hero
 import task
 import hjqy
 import activity
-import sdk_kuaiyong
+import sdk_recharge
 import start_target
 import rob_treasure
 import escort

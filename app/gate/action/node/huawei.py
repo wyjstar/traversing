@@ -29,54 +29,57 @@ def recharge_huawei_response():
     cooperatorOrderSerial = request.form['CooperatorOrderSerial']
     content = request.form['Content']
     sign = request.form['Sign']
-    # content = u'eyJVSUQiOjIxMDY0MTQ5MDEsIk1lcmNoYW5kaXNlTmFtZSI6IjYwIiwiT3JkZXJNb25leSI6IjAuMDEiLCJTdGFydERhdGVUaW1lIjoiMjAxNi0wMS0xMSAxOTowMjo0MCIsIkJhbmtEYXRlVGltZSI6IjIwMTYtMDEtMTEgMTk6MDI6NTMiLCJPcmRlclN0YXR1cyI6MSwiU3RhdHVzTXNnIjoi5oiQ5YqfIiwiRXh0SW5mbyI6IiIsIlZvdWNoZXJNb25leSI6MH0='
-    # cooperatorOrderSerial = u'10000_1452510158'
-    # orderSerial = u'5ee0f373af4b5c03_01001_2016011119_000000'
-    # sign = u'962831d61d2879f54583799c5a0009e1'
+    # ('userName', u'890086000001005734')
+    # ('orderId', u'HWceshizhifu20160125')
+    # ('orderTime', u'2016-01-25 07:46:41')
+    # ('spending', u'0.01')
+    # ('accessMode', u'0')
+    # ('payType', u'4')
+    # ('productName', u'1\u5143\u5b9d')
+    # ('amount', u'0.01')
+    # ('tradeTime', u'2016-01-25 07:46:41')
+    # ('result', u'0')
+    # ('notifyTime', u'1453708001271')
+    # ('sign', u'ZCe1TO4TvYuHFPSv5VcTPy3VxaT77ET8xm8ZdARLPgqrLLC1LfHO25UgcKm/gFuTGpoGKmj1NV6SIKpnFiTF5A==')
+    # ('requestId', u'HWceshizhifu20160125')
+    # userName = request.form['userName']
+    # orderId = request.form['orderId']
+    # orderTime = request.form['orderTime']
+    # spending = request.form['spending']
+    # accessMode = request.form['accessMode']
+    # payType = request.form['payType']
+    # productName = request.form['productName']
+    amount = request.form['amount']
+    # tradeTime = request.form['tradeTime']
+    # result = request.form['result']
+    # notifyTime = request.form['notifyTime']
+    # sign = request.form['sign']
+    requestId = request.form['requestId']
+    extReserved = request.form['extReserved']
 
     # 验证签名
-    if sign != hashlib.md5(appid + orderSerial + cooperatorOrderSerial +
-                           content + secretkey).hexdigest():
-        resultCode = "10001"
-        resultMsg = "Sign无效"
-        print 'error:', sign, 'md5:', hashlib.md5(
-            appid + orderSerial + cooperatorOrderSerial + content +
-            secretkey).hexdigest()
-        return resultMsg
+    # if sign != hashlib.md5(appid + orderSerial + cooperatorOrderSerial +
+    #                        content + secretkey).hexdigest():
+    #     resultCode = "10001"
+    #     resultMsg = "Sign无效"
+    #     print 'error:', sign, 'md5:', hashlib.md5(
+    #         appid + orderSerial + cooperatorOrderSerial + content +
+    #         secretkey).hexdigest()
+    #     return resultMsg
 
-    # base64解码
-    content = base64.b64decode(content)
-    # json解析
-    js = json.loads(content)
-    logger.debug('content:', js)
-
-    # print js["UID"]
-    # print js["MerchandiseName"]
-    fee = js["OrderMoney"]
-    # print js["StartDateTime"]
-    # print js["BankDateTime"]
-    # print js["OrderStatus"]
-    # print js["StatusMsg"]
-    product_id = js["ExtInfo"]
-    # print js["VoucherMoney"]
-    # print resultMsg
-    response = "{\"AppID\":" + appid + ",\"ResultCode\":" + resultCode + \
-               ",\"ResultMsg\":\"" + resultMsg + "\",\"Sign\":\"" + \
-               hashlib.md5(appid + resultCode + secretkey).hexdigest() + \
-               "\",\"Content\":\"\"}"
-
-    player_id = int(cooperatorOrderSerial.split('_')[0])
+    player_id = int(requestId.split('_')[0])
 
     oldvcharacter = VCharacterManager().get_by_id(player_id)
     if not oldvcharacter:
         logger.error('fail get player node:%s', player_id)
         return 'failed'
     child_node = GlobalObject().child(oldvcharacter.node)
-    result = child_node.huawei_recharge_remote(
-        oldvcharacter.dynamic_id, product_id, fee, cooperatorOrderSerial, True)
+    result = child_node.huawei_recharge_remote(oldvcharacter.dynamic_id,
+                                               extReserved, amount,
+                                               cooperatorOrderSerial, True)
     if result is True:
-        logger.debug('response:%s', response)
-        return response
+        logger.debug('response:success')
+        return json.dumps(dict(result=0))
 
     logger.debug('response:failed')
-    return 'failed'
+    return json.dumps(dict(result=3))
