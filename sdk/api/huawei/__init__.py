@@ -34,26 +34,7 @@ def verify_login(token):
     logger.debug('postdata:%s', postdata)
     result = postUrl(queryUrl, postdata)
     logger.debug('result:%s', result)
-    js = json.loads(result)
-
-    if js["ResultCode"] == 1 and js["Sign"] == hashlib.md5(appid + str(js[
-            "ResultCode"]) + urllib.unquote(js[
-                "Content"]) + secretkey).hexdigest() and js["Content"] != "":
-        # Content参数Urldecode
-        Content = urllib.unquote(js["Content"])
-        # Base64解码
-        content = base64.b64decode(Content)
-        print content
-        # 根据获取的信息，执行业务处理
-
-        # json解析
-        item = json.loads(content)
-        print item["UID"]
-        print item
-        return item
-
-    logger.error(result)
-    return None
+    return json.loads(result)
 
 
 def recharge_verify():

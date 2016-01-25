@@ -6,3 +6,4 @@ import transit
 import kuaiyong
 import q360
 import baidu
+import huawei

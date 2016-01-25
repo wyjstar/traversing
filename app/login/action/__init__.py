@@ -13,3 +13,4 @@ import login_KY
 import login_360
 import login_XiaoMi
 import login_Baidu
+import login_huawei
