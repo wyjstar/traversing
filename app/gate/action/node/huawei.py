@@ -2,8 +2,6 @@
 """
 created by sphinx on 11/9/14.
 """
-import base64
-import hashlib
 import json
 from flask import request
 from gfirefly.server.logobj import logger
@@ -16,32 +14,25 @@ appid = "7595234"
 # 应用开发者secretkey
 secretkey = "pcSugeUWbdripDyzLSGGhZjuG2VX26BO"
 
+# ('userName', u'890086000001005734')
+# ('orderId', u'HWceshizhifu20160125')
+# ('orderTime', u'2016-01-25 07:46:41')
+# ('spending', u'0.01')
+# ('accessMode', u'0')
+# ('payType', u'4')
+# ('productName', u'1\u5143\u5b9d')
+# ('amount', u'0.01')
+# ('tradeTime', u'2016-01-25 07:46:41')
+# ('result', u'0')
+# ('notifyTime', u'1453708001271')
+# ('sign', u'ZCe1TO4TvYuHFPSv5VcTPy3VxaT77ET8xm8ZdARLPgqrLLC1LfHO25UgcKm/gFuTGpoGKmj1NV6SIKpnFiTF5A==')
+# ('requestId', u'HWceshizhifu20160125')
+
 
 @webserviceHandle('/huaweipay', methods=['post', 'get'])
 def recharge_huawei_response():
-    resultCode = "1"
-    resultMsg = "成功"
-
     logger.debug('huawei recharge:%s', request.form)
 
-    appid = request.form['AppID']
-    orderSerial = request.form['OrderSerial']
-    cooperatorOrderSerial = request.form['CooperatorOrderSerial']
-    content = request.form['Content']
-    sign = request.form['Sign']
-    # ('userName', u'890086000001005734')
-    # ('orderId', u'HWceshizhifu20160125')
-    # ('orderTime', u'2016-01-25 07:46:41')
-    # ('spending', u'0.01')
-    # ('accessMode', u'0')
-    # ('payType', u'4')
-    # ('productName', u'1\u5143\u5b9d')
-    # ('amount', u'0.01')
-    # ('tradeTime', u'2016-01-25 07:46:41')
-    # ('result', u'0')
-    # ('notifyTime', u'1453708001271')
-    # ('sign', u'ZCe1TO4TvYuHFPSv5VcTPy3VxaT77ET8xm8ZdARLPgqrLLC1LfHO25UgcKm/gFuTGpoGKmj1NV6SIKpnFiTF5A==')
-    # ('requestId', u'HWceshizhifu20160125')
     # userName = request.form['userName']
     # orderId = request.form['orderId']
     # orderTime = request.form['orderTime']
@@ -72,11 +63,11 @@ def recharge_huawei_response():
     oldvcharacter = VCharacterManager().get_by_id(player_id)
     if not oldvcharacter:
         logger.error('fail get player node:%s', player_id)
-        return 'failed'
+        return json.dumps(dict(result=3))
+
     child_node = GlobalObject().child(oldvcharacter.node)
-    result = child_node.huawei_recharge_remote(oldvcharacter.dynamic_id,
-                                               extReserved, amount,
-                                               cooperatorOrderSerial, True)
+    result = child_node.huawei_recharge_remote(
+        oldvcharacter.dynamic_id, extReserved, amount, requestId, True)
     if result is True:
         logger.debug('response:success')
         return json.dumps(dict(result=0))
