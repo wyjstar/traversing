@@ -4,10 +4,8 @@ created by sphinx on
 """
 import time
 import json
-import base64
 import urllib
 import urllib2
-import hashlib
 from gfirefly.server.logobj import logger
 
 # 应用开发者appid
