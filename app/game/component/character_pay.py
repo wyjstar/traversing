@@ -38,13 +38,19 @@ class CharacterPay(Component):
             # channel = GlobalObject().allconfig["deploy"]["channel"]
             self.REMOTE_DEPLOYED = deplayed
 
+        if 'test' not in GlobalObject().allconfig["msdk"]["host"]:
+            self._appkey = GlobalObject().allconfig["msdk"]["formal_recharge_appkey"]
+        else:
+            self._appkey = GlobalObject().allconfig["msdk"]["test_recharge_appkey"]
+
+
     def set_pay_arg(self, value):
         self._platform = value.get("platform")
         self._openid = str(value.get("openid"))
         self._openkey = str(value.get("openkey"))
         self._pay_token = str(value.get("pay_token"))
         self._appid = str(value.get("appid"))
-        self._appkey = str(value.get("appkey"))
+        #self._appkey = str(value.get("appkey"))
         self._pf = str(value.get("pf"))
         self._pfkey = str(value.get("pfkey"))
         login_channel = str(value.get("login_channel"))
