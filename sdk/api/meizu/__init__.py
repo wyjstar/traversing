@@ -2,6 +2,7 @@
 """
 created by sphinx on
 """
+import json
 import time
 import urllib2
 import hashlib
@@ -12,6 +13,10 @@ queryUrl = "https://api.game.meizu.com/game/security/checksession"
 
 appid = '2912223'
 AppSecret = 'JjGHJ59jhh89OAwX77aUalz3Fqe5Ovcn'
+
+
+def generate_sign(data):
+    return hashlib.md5(data + ':' + AppSecret).hexdigest()
 
 
 def postUrl(url, data):
@@ -27,10 +32,10 @@ def verify_login(uid, token):
     timestamp = int(time.time() * 1000)
     postdata = 'app_id=%s&session_id=%s&ts=%s&uid=%s' % (appid, token,
                                                          timestamp, uid)
-    sign = hashlib.md5(postdata + ':' + AppSecret).hexdigest()
+    sign = generate_sign(postdata)
     postdata += '&sign_type=md5&sign=' + sign
 
     logger.debug('meizu postdata:%s', postdata)
-    result = eval(postUrl(queryUrl, postdata))
+    result = json.loads((postUrl(queryUrl, postdata)))
 
     return result['code'] == 200
