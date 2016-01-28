@@ -36,7 +36,7 @@ def recharge_flowid_12100(data, player):
 
 
 @remoteserviceHandle('gate')
-def meizu_flowid_13000(data, player):
+def meizu_flowid_12200(data, player):
     request = kuaiyong_pb2.MeizuFlowIdRequest()
     request.ParseFromString(data)
 
@@ -50,7 +50,7 @@ def meizu_flowid_13000(data, player):
 
 
 @remoteserviceHandle('gate')
-def meizu_flowid_13100(data, player):
+def meizu_flowid_12201(data, player):
     request = kuaiyong_pb2.MeizuFlowIdRequest()
     request.ParseFromString(data)
 
