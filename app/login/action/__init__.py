@@ -15,3 +15,4 @@ import login_XiaoMi
 import login_Baidu
 import login_huawei
 import login_meizu
+import login_lenovo
