@@ -8,20 +8,21 @@ from gfirefly.server.globalobject import GlobalObject
 from gfirefly.server.logobj import logger
 from app.proto_file import kuaiyong_pb2
 from app.proto_file import apple_pb2
+from sdk.api import meizu
 import time
 
 remote_gate = GlobalObject().remote.get('gate')
 
 
 @remoteserviceHandle('gate')
-def kuaiyong_flowid_12000(data, player):
+def recharge_flowid_12000(data, player):
     response = kuaiyong_pb2.KuaiyongFlowIdResponse()
     response.flow_id = str(player.character_id) + '_%s' % int(time.time())
     return response.SerializeToString()
 
 
 @remoteserviceHandle('gate')
-def kuaiyong_flowid_12100(data, player):
+def recharge_flowid_12100(data, player):
     response = kuaiyong_pb2.KuaiyongFlowIdResponse()
     if player.base_info.one_dollar_flowid == 'done':
         response.flow_id = 'done'
@@ -30,6 +31,40 @@ def kuaiyong_flowid_12100(data, player):
         player.base_info.one_dollar_flowid = flowid
         player.base_info.save_data()
         response.flow_id = flowid
+    logger.debug('one flowid:%s', response.flow_id)
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def meizu_flowid_13000(data, player):
+    request = kuaiyong_pb2.MeizuFlowIdRequest()
+    request.ParseFromString(data)
+
+    response = kuaiyong_pb2.MeizuFlowIdResponse()
+    response.flow_id = str(player.character_id) + '_%s' % int(time.time())
+    recharge_info = request.recharge_info.replace(
+        'cp_order_id=', 'cp_order_id=' + str(response.flow_id))
+    response.sign = meizu.generate_sign(recharge_info)
+    logger.debug('meizu flowid:%s', response)
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def meizu_flowid_13100(data, player):
+    request = kuaiyong_pb2.MeizuFlowIdRequest()
+    request.ParseFromString(data)
+
+    response = kuaiyong_pb2.KuaiyongFlowIdResponse()
+    if player.base_info.one_dollar_flowid == 'done':
+        response.flow_id = 'done'
+    else:
+        flowid = str(player.character_id) + '_%s' % int(time.time())
+        player.base_info.one_dollar_flowid = flowid
+        player.base_info.save_data()
+        response.flow_id = flowid
+        recharge_info = request.recharge_info.replace(
+            'cp_order_id=', 'cp_order_id=' + str(flowid))
+        response.sign = meizu.generate_sign(recharge_info)
     logger.debug('one flowid:%s', response.flow_id)
     return response.SerializeToString()
 

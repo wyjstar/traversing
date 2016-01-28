@@ -4,6 +4,15 @@ message KuaiyongFlowIdResponse{
 	optional string flow_id = 1;
 }
 
+message MeizuFlowIdRequest{
+	optional string recharge_info = 1;
+}
+
+message MeizuFlowIdResponse{
+	optional string flow_id = 1;
+	optional string sign = 2;
+}
+
 message KuaiyongRechargeResponse{
     required CommonResponse res = 1;
     optional GameResourcesResponse gain = 2;
