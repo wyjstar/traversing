@@ -16,7 +16,7 @@ lenovo_realm = 'com.mobartsgame.transfer.lenovo'
 def verify_login(token):
     url = '%slpsust=%s&realm=%s' % (lenovo_URL, token, lenovo_realm)
     logger.debug('360 url:%s', url)
-    response = eval(urllib2.urlopen(url).read())
+    response = urllib2.urlopen(url).read()
     return response
 
 # def recharge_verify():

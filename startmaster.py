@@ -27,6 +27,7 @@ if __name__ == "__main__":
         # print res
         print("update_excell=========")
         os.system("cd /tmp; unzip -o config.zip")
+        os.system("rm config/excel_cpickle")
         os.system("cp /tmp/excel_cpickle config/excel_cpickle")
         os.system(
             "cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
