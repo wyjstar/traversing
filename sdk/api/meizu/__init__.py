@@ -9,7 +9,7 @@ import hashlib
 
 from gfirefly.server.logobj import logger
 
-queryUrl = "https://api.game.meizu.com/game/security/checksession"
+queryUrl = "https://api.game.meizu.com/game/security/checksession?"
 
 appid = '2912223'
 AppSecret = 'JjGHJ59jhh89OAwX77aUalz3Fqe5Ovcn'
