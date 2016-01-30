@@ -247,7 +247,7 @@ def enhance_equipment(equipment_id, enhance_type, player):
     if not enhance_cost or curr_coin < enhance_cost:
         return {'result': False, 'result_no': 101, 'message': u''}
 
-    strength_max = player.base_info.level + equipment_obj.strength_max
+    strength_max = equipment_obj.strength_max(player)
     current_strength_lv = equipment_obj.attribute.strengthen_lv
 
     if strength_max <= current_strength_lv:
