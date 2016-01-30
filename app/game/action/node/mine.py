@@ -220,6 +220,7 @@ def reset_1242(data, player):
                     response.res.result = True
                 player.pay.pay(need_gold, const.MINE_RESET, func)
     player.mine.save_data()
+    player.start_target.mine_refresh()
 
     reset_times, _, _ = player.mine.reset_times
     tlog_action.log('MineReset', player, reset_times,
@@ -348,6 +349,7 @@ def harvest_1245(data, player):
 
     player.mine.save_data()
     player.runt.save()
+    player.start_target.mine_get_runt()
     hook_task(player, CONDITIONId.GAIN_RUNT, 1)
     tlog_action.log('MineHarvest', player, request.position, str(normal), str(lucky))
     response.res.result = True
@@ -606,11 +608,15 @@ def settle_1252(data, player):
     # todo: set settle time to calculate acc_mine
     process_mine_result(player, pos, result, None, 0, 1)
     # 7日奖励 占领矿点
-    if player.start_target.is_open():
-        player.start_target.condition_add(41, 1)
-        player.start_target.save_data()
-        # 更新 七日奖励
-        target_update(player, [41])
+    mine_id = player.mine._mine[pos].get("mine_id")
+    mine_item = game_configs.mine_config.get(mine_id)
+    logger.debug("mine_id %s mine_item %s" % (mine_id, mine_item))
+    if mine_item and player.start_target.is_open():
+        #player.start_target.condition_add(41, 1)
+        #player.start_target.save_data()
+        player.start_target.mine_win(mine_item.quality)
+        ## 更新 七日奖励
+        #target_update(player, [41])
 
     response.result = True
     return response.SerializePartialToString()

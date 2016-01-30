@@ -192,6 +192,7 @@ for config_name in all_config_name.keys():
     exec(config_name + '=objs')
 
 if __name__ == '__main__':
+    print(activity_config.get(55002).get("parameterE"))
     print special_stage_config.get("guild_boss_stages").get(920004)
     #print ggzj_config
     #print base_config.get("EscortFresh")
