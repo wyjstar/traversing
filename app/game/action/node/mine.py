@@ -608,8 +608,9 @@ def settle_1252(data, player):
     # todo: set settle time to calculate acc_mine
     process_mine_result(player, pos, result, None, 0, 1)
     # 7日奖励 占领矿点
-    mine_id = player.mine.get_info(pos).get("mine_id")
+    mine_id = player.mine._mine[pos].get("mine_id")
     mine_item = game_configs.mine_config.get(mine_id)
+    logger.debug("mine_id %s mine_item %s" % (mine_id, mine_item))
     if mine_item and player.start_target.is_open():
         #player.start_target.condition_add(41, 1)
         #player.start_target.save_data()

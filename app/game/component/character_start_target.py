@@ -9,28 +9,14 @@ from app.game.redis_mode import tb_character_info
 from gfirefly.server.logobj import logger
 
 
-MINE_REFRESH_TIMES = 1
-WIN_MINE_NUM = 2
-WIN_MINE_QUALITY = 3
-GET_RUNT_TIMES = 4
-MIX_RUNT_TIMES = 5
-MIX_RUNT_QUALITY = 6
-WIN_MINE_INFO = 7
-MIX_RUNT_INFO = 8
+WIN_MINE_QUALITY = 1
+MIX_RUNT_QUALITY = 1
 
-A_OR_B_TREASURE_NUM = 1
-A_OR_B_TREASURE_QUALITY = 2
-A_TREASURE_NUM = 3
-A_TREASURE_QUALITY = 4
-B_TREASURE_NUM = 5
-B_TREASURE_QUALITY = 6
-TREASURE_TYPE = 7
-TREASURE_QUALITY = 8
-TREASURE_INFO = 9
-        #info[TREASURE_TYPE] = treasure_type
-        #info[TREASURE_QUALITY] = treasure_quality
-        #infos.append(info)
-        #self._conditions[56][TREASURE_INFO] = infos
+A_OR_B_TREASURE_QUALITY = 1
+A_TREASURE_QUALITY = 1
+B_TREASURE_QUALITY = 1
+TREASURE_QUALITY = 1
+TREASURE_TYPE = 2
 
 class CharacterStartTargetComponent(Component):
     def __init__(self, owner):
@@ -150,8 +136,8 @@ class CharacterStartTargetComponent(Component):
         """
         if not self.is_open():
             return
-        times = self.get_condition(56).get(MINE_REFRESH_TIMES, 0)
-        self._conditions[56][MINE_REFRESH_TIMES] = times + 1
+        times = self._conditions.get(56, 0)
+        self._conditions[56] = times + 1
         logger.debug("mine_refresh %s" % (times+1))
         self.save_data()
 
@@ -161,11 +147,11 @@ class CharacterStartTargetComponent(Component):
         """
         if not self.is_open():
             return
-        infos = self.get_condition(56).get(WIN_MINE_INFO, [])
+        infos = self._conditions.get(57, [])
         info = {}
         info[WIN_MINE_QUALITY] = quality
         infos.append(info)
-        self._conditions[56][WIN_MINE_INFO] = infos
+        self._conditions[57] = infos
         logger.debug("mine_win %s" % infos)
         self.save_data()
 
@@ -173,8 +159,8 @@ class CharacterStartTargetComponent(Component):
         """秘境宝石收取"""
         if not self.is_open():
             return
-        times = self.get_condition(56).get(GET_RUNT_TIMES, 0)
-        self._conditions[56][GET_RUNT_TIMES] = times + 1
+        times = self._conditions.get(58, 0)
+        self._conditions[58] = times + 1
         logger.debug("mine_get_runt %s" % (times+1))
         self.save_data()
 
@@ -184,51 +170,44 @@ class CharacterStartTargetComponent(Component):
         """
         if not self.is_open():
             return
-        infos = self.get_condition(56).get(MIX_RUNT_INFO, [])
+        infos = self._conditions.get(59, [])
         info = {}
         info[WIN_MINE_QUALITY] = runt_quality
         infos.append(info)
-        self._conditions[56][MIX_RUNT_INFO] = infos
+        self._conditions[59] = infos
         logger.debug("mine_mix_runt %s" % infos)
         self.save_data()
 
-    def mine_activity_jindu(self, target_conf, act_type):
+    def mine_activity_jindu(self, target_conf):
         """
         获取秘境活动进度
         """
-        jindu = 0
         parameterE = target_conf.parameterE
-        condition = self._conditions.get(target_conf.type)
-        logger.debug("condition %s" % condition)
-        if condition:
-            return jindu
-        mine_refresh_times = condition.get(MINE_REFRESH_TIMES, 0)
-        if mine_refresh_times < parameterE.get(MINE_REFRESH_TIMES):
-            # 1 秘境刷新次数
-            return jindu
+        act_type = target_conf.type
+        if act_type in [56, 58]:
+            condition = self._conditions.get(act_type, 0)
+            logger.debug("condition %s" % condition)
+            return condition
+        elif act_type == 57:
+            condition = self._conditions.get(57, [])
+            logger.debug("condition %s" % condition)
 
-        mine_num = 0
-        for temp in condition.get(WIN_MINE_INFO, []):
-            if temp[WIN_MINE_QUALITY] >= parameterE.get(WIN_MINE_QUALITY):
-                mine_num += 1
-        if mine_num < parameterE.get(WIN_MINE_NUM):
-            # 2 占领矿点数量
-            return jindu
+            mine_num = 0
+            for temp in condition:
+                if temp[WIN_MINE_QUALITY] >= parameterE.get(WIN_MINE_QUALITY, 0):
+                    mine_num += 1
+            return mine_num
+        elif act_type == 59:
+            condition = self._conditions.get(59, [])
+            logger.debug("condition %s" % condition)
+            mix_runt_num = 0
+            for temp in condition:
+                if temp[MIX_RUNT_QUALITY] >= parameterE.get(MIX_RUNT_QUALITY, 0):
+                    mix_runt_num += 1
+            return mix_runt_num
 
-        get_runt_times = condition.get(MINE_REFRESH_TIMES)
-        if get_runt_times < parameterE.get(GET_RUNT_TIMES):
-            # 4 宝石收取次数
-            return jindu
-
-        mix_runt_num = 0
-        for temp in condition.get(WIN_MINE_INFO, []):
-            if temp[WIN_MINE_QUALITY] >= parameterE.get(WIN_MINE_QUALITY):
-                mine_num += 1
-        if mix_runt_num < parameterE.get(WIN_MINE_NUM):
-            # 6 宝石合成品质
-            return jindu
-
-        return 1
+        logger.debug("mine_activity_jindu act_type %s haven't process!" % act_type)
+        return -1
 
     def get_condition(self, act_type):
         """docstring for get_condition"""
@@ -236,29 +215,29 @@ class CharacterStartTargetComponent(Component):
             self._conditions[act_type] = {}
         return self._conditions[act_type]
 
-
     def add_treasure(self, treasure_type, treasure_quality):
         """
         添加宝物或者饰品
         """
         if not self.is_open():
             return
-        infos = self.get_condition(57).get(TREASURE_INFO, [])
+        infos = self._conditions.get(60, [])
         info = {}
         info[TREASURE_TYPE] = treasure_type
         info[TREASURE_QUALITY] = treasure_quality
         infos.append(info)
-        self._conditions[57][TREASURE_INFO] = infos
+        self._conditions[60] = infos
         logger.debug("add_treasure %s" % infos)
         self.save_data()
 
-    def treasure_activity_jindu(self, target_conf, act_type):
+    def treasure_activity_jindu(self, target_conf):
         """
         获取宝物活动进度
         """
+        act_type = target_conf.type
         jindu = 0
         parameterE = target_conf.parameterE
-        condition = self._conditions.get(target_conf.type)
+        condition = self._conditions.get(60, [])
         logger.debug("condition %s" % condition)
         if not condition:
             return jindu
@@ -266,16 +245,21 @@ class CharacterStartTargetComponent(Component):
         a_num = 0
         b_num = 0
         a_or_b_num = 0
-        for temp in condition.get(TREASURE_INFO, []):
+        for temp in condition:
             if temp[TREASURE_QUALITY] >= parameterE.get(A_OR_B_TREASURE_QUALITY, 0):
                 a_or_b_num += 1
             if temp[TREASURE_TYPE] == 5 and temp[TREASURE_QUALITY] >= parameterE.get(A_TREASURE_QUALITY, 0):
                 a_num += 1
             if temp[TREASURE_TYPE] == 6 and temp[TREASURE_QUALITY] >= parameterE.get(B_TREASURE_QUALITY, 0):
                 b_num += 1
-        if a_or_b_num < parameterE.get(A_OR_B_TREASURE_NUM, 0) or \
-            a_num < parameterE.get(A_TREASURE_NUM, 0) or\
-            b_num < parameterE.get(B_TREASURE_NUM, 0):
-            return jindu
 
-        return 1
+        if act_type == 60:
+            return a_or_b_num
+        elif act_type == 61:
+            return a_num
+        elif act_type == 62:
+            return b_num
+        elif act_type == 63:
+            return min(a_num, b_num)
+        logger.debug("treasure act_type %s haven't process!" % act_type)
+        return -1

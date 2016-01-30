@@ -292,10 +292,10 @@ def get_target_info1(player, target_id, day):
         jindu = line_up_activity_jindu(player, target_conf)
         logger.debug("jindu %s " % jindu)
 
-    elif target_conf.type == 56:
+    elif target_conf.type in [56, 57, 58, 59]:
         # 秘境条件: 刷新秘境，占领矿点，宝石收取，宝石合成
         jindu = player.start_target.mine_activity_jindu(target_conf)
-    elif target_conf.type == 57:
+    elif target_conf.type in [60, 61, 62, 63]:
         # 宝物：合成，品质，数量
         jindu = player.start_target.treasure_activity_jindu(target_conf)
 
