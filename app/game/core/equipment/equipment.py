@@ -486,7 +486,6 @@ class Equipment(object):
 
         return CommonItem(result)
 
-    @property
     def strength_max(self, player):
         """获取装备上限为玩家等级+strength_max"""
         max_equipment_lv = game_configs.base_config.get("max_equipment_strength") + player.base_info.level
