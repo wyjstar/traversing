@@ -439,6 +439,8 @@ def line_up_info(player, response=None):
     response.unpar_other_id = _line_up.unpar_other_id
     for hero_no in _line_up._ever_have_heros:
         response.ever_have_heros.append(hero_no)
+    for name in _line_up.unpar_names:
+        response.unpar_names.append(str(name))
 
     response.caption_pos = _line_up.caption_pos
     logger.debug("line_up_info caption_pos %s" % response.caption_pos)
@@ -547,4 +549,20 @@ def set_captain_709(pro_data, player):
     player.line_up_component.save_data(["caption_pos"])
     response.result = True
     logger.debug(response)
+    return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def active_unpar_710(pro_data, player):
+    """
+    激活无双
+    """
+    request = line_up_pb2.ActiveUnparaRequest()
+    request.ParseFromString(pro_data)
+    logger.debug("request %s" % request)
+    unpar_names = player.line_up_component.unpar_names
+    if request.name not in unpar_names:
+        unpar_names.append(request.name)
+    player.line_up_component.save_data()
+    response = CommonResponse()
+    response.result = True
     return response.SerializePartialToString()
