@@ -135,7 +135,7 @@ class CharacterActComponent(Component):
         return None
 
     def condition_update(self, type, v):
-        act_confs = game_configs.activity_config.get(type)
+        act_confs = game_configs.activity_config.get(type, [])
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -152,7 +152,7 @@ class CharacterActComponent(Component):
         self.save_data()
 
     def condition_add(self, type, v):
-        act_confs = game_configs.activity_config.get(type)
+        act_confs = game_configs.activity_config.get(type, [])
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -167,7 +167,7 @@ class CharacterActComponent(Component):
                     act_info[1] += v
 
         if type == 44:
-            act_confs = game_configs.activity_config.get(51)
+            act_confs = game_configs.activity_config.get(51, [])
             for act_conf in act_confs:
                 act_id = act_conf.id
                 act_conf = game_configs.activity_config.get(act_id)
@@ -195,7 +195,7 @@ class CharacterActComponent(Component):
         self.update_daily_70_72_74(74, v)
 
     def update_71_73_75(self, type, v):
-        act_confs = game_configs.activity_config.get(type)
+        act_confs = game_configs.activity_config.get(type, [])
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -213,7 +213,7 @@ class CharacterActComponent(Component):
         self.save_data()
 
     def update_daily_70_72_74(self, type, v):
-        act_confs = game_configs.activity_config.get(type)
+        act_confs = game_configs.activity_config.get(type, [])
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -246,7 +246,7 @@ class CharacterActComponent(Component):
         """
         秘境刷新次数
         """
-        act_confs = game_configs.activity_config.get(56)
+        act_confs = game_configs.activity_config.get(56, [])
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -316,7 +316,7 @@ class CharacterActComponent(Component):
         """
         秘境占领矿点
         """
-        act_confs = game_configs.activity_config.get(57)
+        act_confs = game_configs.activity_config.get(57, [])
         print act_confs, '=====================act confs, mine_win'
         info = {}
         info[WIN_MINE_QUALITY] = quality
@@ -337,7 +337,7 @@ class CharacterActComponent(Component):
 
     def mine_get_runt(self):
         """秘境宝石收取"""
-        act_confs = game_configs.activity_config.get(58)
+        act_confs = game_configs.activity_config.get(58, [])
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -356,7 +356,7 @@ class CharacterActComponent(Component):
         """
         秘境宝石合成
         """
-        act_confs = game_configs.activity_config.get(59)
+        act_confs = game_configs.activity_config.get(59, [])
         info = {}
         info[WIN_MINE_QUALITY] = runt_quality
 
@@ -384,7 +384,7 @@ class CharacterActComponent(Component):
         info[TREASURE_QUALITY] = treasure_quality
 
         for x in [60, 61, 62, 63]:
-            act_confs = game_configs.activity_config.get(x)
+            act_confs = game_configs.activity_config.get(x, [])
             for act_conf in act_confs:
                 act_id = act_conf.id
                 act_conf = game_configs.activity_config.get(act_id)
@@ -446,7 +446,7 @@ class CharacterActComponent(Component):
         _date_now = int(time.mktime(time.strptime(str_time,
                                                   '%Y-%m-%d %H:%M:%S')))
 
-        act_confs = game_configs.activity_config.get(51)
+        act_confs = game_configs.activity_config.get(51, [])
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):

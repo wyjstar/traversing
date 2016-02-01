@@ -98,10 +98,12 @@ def get_tomorrow_gift_1122(data, player):
     response = online_gift_pb2.GetActivityResponse()
     response.result = False
 
-    tomorrow_gift = game_configs.activity_config.get(15)[0]
+    tomorrow_gift = game_configs.activity_config.get(15, [])
     if not tomorrow_gift:
         logger.error('tomorrow gift is not exist')
         return response.SerializeToString()
+    else:
+        tomorrow_gift = game_configs.activity_config.get(15)[0]
     # if not tomorrow_gift.get('is_open'):
     #     logger.error('tomorrow gift is not open')
     #     return response.SerializeToString()
