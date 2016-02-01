@@ -397,9 +397,9 @@ def shop_buy_505(pro_data, player):
             logger.debug("allBuyRefresh %s" % shop_type_item.allBuyRefresh)
             need_refresh = 1
             if shop_item.batch != -1:
-                shop_items = game_configs.shop_config.get(shop_item.get('type'))
                 # for item_id in shop['item_ids']:
-                for shop_item_conf in shop_items:
+                for shop_item_id in shop['item_ids']:
+                    shop_item_conf = game_configs.shop_config.get(shop_item_id)
                     buyed_num = shop['items'].get(shop_item_conf.id, 0)
                     if shop_item_conf.batch == -1 or not buyed_num or buyed_num < shop_item_conf.batch:
                         need_refresh = 0
