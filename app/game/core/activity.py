@@ -55,6 +55,12 @@ def get_act_info(player, act_id):
             elif days_to_current(act_info[1][1]) > 1:
                 act_info[1][0] = 1
                 act_info[1][1] = int(time.time())
+                # 重置前面的天数里的活动
+                for up_act_id in act_conf.parameterC:
+                    up_act_info = player.act.act_infos.get(up_act_id)
+                    if not up_act_info:
+                        continue
+                    up_act_info = [1, [1, int(time.time())]]
             jindu = act_info[1][0]
         if jindu >= act_conf.parameterA:
             act_info[0] = 2
@@ -325,16 +331,7 @@ def get_act_info(player, act_id):
                 not act_conf.parameterD[0] > act_info[0]:
             return {'state': 1, 'jindu': act_info[1]}
         return {'state': 2, 'jindu': act_info[1]}
-    elif act_conf.type == 164:
-        if not act_info:
-            player.act.act_infos[act_id] = [1, 0]
-            return {'state': 1, 'jindu': 0}
-        if act_info[1] < int(act_conf.parameterA):
-            return {'state': 1, 'jindu': act_info[1]}
-
-        player.act.act_infos[act_id][0] = 2
-        return {'state': 2, 'jindu': act_info[1]}
-    elif act_conf.type == 65:
+    elif act_conf.type in [70, 72, 74, 65]:
         if not act_info:
             player.act.act_infos[act_id] = [1, 0, int(time.time())]
             return {'state': 1, 'jindu': 0}
@@ -352,7 +349,7 @@ def get_act_info(player, act_id):
 
         player.act.act_infos[act_id][0] = 2
         return {'state': 2, 'jindu': act_info[1]}
-    elif act_conf.type == 66:
+    elif act_conf.type in [71, 73, 75, 76, 77]:
         if not act_info:
             player.act.act_infos[act_id] = [1, 0]
             return {'state': 1, 'jindu': 0}

@@ -122,6 +122,7 @@ def trigger_boss_2402(pro_data, player):
     remote_gate.push_object_character_remote(24021, construct_init_data(player), player.guild.get_guild_member_ids(res.get("p_list", {})))
     # add guild activity times
     player.guild_activity.add_guild_boss_times(res.get("guild_boss").get("boss_type"))
+    player.act.add_guild_boss_times(res.get("guild_boss").get("boss_type"))
     hook_task(player, CONDITIONId.GUILD_BOSS, 1)
     tlog_action.log('TriggerBoss', player, player.guild.g_id, boss_type)
 
@@ -183,6 +184,7 @@ def battle_2403(pro_data, player):
         return response.SerializePartialToString()
     # add guild activity times
     player.guild_activity.add_guild_boss_times(boss_info.get("boss_type"))
+    player.act.add_guild_boss_times(boss_info.get("boss_type"))
     hook_task(player, CONDITIONId.GUILD_BOSS, 1)
     result = 0
     if fight_result:

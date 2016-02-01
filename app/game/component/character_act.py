@@ -132,7 +132,7 @@ class CharacterActComponent(Component):
             return mix_runt_num
 
         logger.debug("mine_activity_jindu act_type %s haven't process!" % act_type)
-        return -1
+        return None
 
     def condition_update(self, type, v):
         act_confs = game_configs.activity_config.get(type)
@@ -184,6 +184,53 @@ class CharacterActComponent(Component):
                         act_info[1][1] = max(act_info[1][1], v)
         self.save_data()
 
+    def add_protect_escort_times(self, v):
+        self.update_71_73_75(71, v)
+        self.update_daily_70_72_74(70, v)
+    def add_rob_escort_times(self, v):
+        self.update_71_73_75(73, v)
+        self.update_daily_70_72_74(72, v)
+    def add_guild_boss_times(self, v):
+        self.update_71_73_75(75, v)
+        self.update_daily_70_72_74(74, v)
+
+    def update_71_73_75(self, type, v):
+        act_confs = game_configs.activity_config.get(type)
+        for act_conf in act_confs:
+            act_id = act_conf.id
+            if not self.is_activiy_open(act_id):
+                continue
+            if v not in act_conf.parameterC:
+                continue
+            act_info = self._act_infos.get(act_id)
+            if not act_info:
+                self._act_infos[act_id] = [1, 1]
+            else:
+                if act_info[0] != 1:
+                    continue
+                else:
+                    act_info[1] += 1
+        self.save_data()
+
+    def update_daily_70_72_74(self, type, v):
+        act_confs = game_configs.activity_config.get(type)
+        for act_conf in act_confs:
+            act_id = act_conf.id
+            if not self.is_activiy_open(act_id):
+                continue
+            if v not in act_conf.parameterC:
+                continue
+            act_info = self._act_infos.get(act_id)
+
+            if not act_info:
+                self._act_infos[act_id] = [1, 1, int(time.time())]
+            else:
+                if days_to_current(act_info[2]) != 0:
+                    self._act_infos[act_id] = [1, 1, int(time.time())]
+                else:
+                    act_info[1] += 1
+        self.save_data()
+
     def update_29(self):
         # TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         start_target_is_open, start_target_day = self.is_open()
@@ -218,16 +265,16 @@ class CharacterActComponent(Component):
         """
         累积消耗货币:元宝，银两，等
         """
-        self.update_164_166(164, res_type, num)
+        self.update_76_77(76, res_type, num)
         self.update_65(res_type, num)
 
     def add_pick_card(self, res_type, num):
         """
         抽取武将，神将，良将等
         """
-        self.update_164_166(166, res_type, num)
+        self.update_76_77(77, res_type, num)
 
-    def update_164_166(self, act_type, res_type, num):
+    def update_76_77(self, act_type, res_type, num):
         """docstring for add_times"""
         act_confs = game_configs.activity_config.get(act_type, [])
         for act_conf in act_confs:
@@ -248,7 +295,7 @@ class CharacterActComponent(Component):
 
     def update_65(self, res_type, num):
         """docstring for add_times"""
-        act_confs = game_configs.activity_config.get(65)
+        act_confs = game_configs.activity_config.get(65, [])
         for act_conf in act_confs:
             act_id = act_conf.id
             if act_conf.parameterE.items()[0][0] != res_type:

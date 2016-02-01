@@ -540,9 +540,11 @@ def add_guild_activity_times_remote(task_no, protect_or_rob, is_online, player):
     logger.debug("add_guild_activity_times_remote============%s %s" % (task_no, protect_or_rob))
     if protect_or_rob == 1:
         player.guild_activity.add_protect_escort_times(task_no)
+        player.act.add_protect_escort_times(task_no)
         hook_task(player, CONDITIONId.PROTECT_ESCORT, 1)
     elif protect_or_rob == 2:
         player.guild_activity.add_rob_escort_times(task_no)
+        player.act.add_rob_escort_times(task_no)
         hook_task(player, CONDITIONId.ROB_ESCORT, 1)
 
 
