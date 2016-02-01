@@ -337,7 +337,7 @@ def get_act_info(player, act_id):
             return {'state': 1, 'jindu': 0}
         if days_to_current(act_info[2]) != 0:
             player.act.act_infos[act_id] = [1, 0, int(time.time())]
-            return {'state': 1, 'jindu': act_info[1]}
+            return {'state': 1, 'jindu': 0}
 
         if act_info and act_info[0] == 3:
             return {'state': 3, 'jindu': act_info[1]}
