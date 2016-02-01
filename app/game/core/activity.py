@@ -21,7 +21,7 @@ def get_act_info(player, act_id):
     jindu = 0
     day = player.base_info.login_day
     print act_conf, '==========get act info , act config'
-    if act_conf.type not in [65]:  # 每日的
+    if act_conf.type not in [65, 70, 72, 74]:  # 每日的
         if act_info and act_info[0] == 3:
             return {'state': 3, 'jindu': act_info[1]}
         elif act_info and act_info[0] == 2:
