@@ -36,8 +36,9 @@ class CharacterGuildActivityComponent(Component):
     def check_time(self):
         """docstring for check_time"""
         for act_id, act_info in self._act_info.items():
-            act_item = game_configs.activity_config.get(act_id)
-            if self.owner.act.is_activiy_open(act_id):
+            #act_item = game_configs.activity_config.get(act_id)
+            if not self.owner.act.is_activiy_open(act_id):
+                logger.debug("act %s not in the open time")
             # if act_item.timeStart > get_current_timestamp() or act_item.timeEnd < get_current_timestamp():
                 # 如果不在活动期间内，则清空属性
                 act_info["act_times"] = 0
@@ -112,8 +113,9 @@ class CharacterGuildActivityComponent(Component):
 
     def update_pb(self, response):
         """docstring for update_pb"""
+        logger.debug("act_info %s" % self._act_info)
         for act_id, act_info in self._act_info.items():
-            act_item = game_configs.activity_config.get(act_id)
+            #act_item = game_configs.activity_config.get(act_id)
             # if act_item.timeStart < get_current_timestamp() and act_item.timeEnd > get_current_timestamp():
             if self.owner.act.is_activiy_open(act_id):
                 act_pb = response.acts.add()
