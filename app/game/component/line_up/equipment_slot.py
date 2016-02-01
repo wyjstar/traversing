@@ -35,9 +35,6 @@ class EquipmentSlotComponent(SlotBaseInfoComponent):
             equipment_id = None
 
         self._equipment_id = equipment_id
-        # 更新第一个格子的属性
-        if self.owner.slot_no == 1:
-            self.owner.first_slot.update_lord_info()
 
     @property
     def equipment_obj(self):

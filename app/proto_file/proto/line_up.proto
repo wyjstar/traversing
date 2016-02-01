@@ -41,6 +41,7 @@ message LineUpResponse{
     repeated int32 ever_have_heros = 10; // 点亮的武将列表
     optional int32 unpar_type = 11;  // 当前激活的无双类型：战，刺，法，牧
     optional int32 unpar_other_id = 12;  // 当前激活的无双附加技能
+    repeated string unpar_names = 13; // 无双形象名称
 }
 
 /*message LineUpUnparUpgrade{*/
@@ -105,4 +106,9 @@ message SaveLineUpOrderRequest
 message SetCaptainRequest
 {
 	required int32 caption_pos = 1; // 武将槽位置 1-6
+}
+
+// 激活无双 710 返回：CommonResponse
+message ActiveUnparaRequest{
+    required string name = 1;// 女生名称
 }

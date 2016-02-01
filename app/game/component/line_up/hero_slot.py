@@ -25,7 +25,7 @@ class HeroSlotComponent(SlotBaseInfoComponent):
     def hero_no(self, hero_no):
         self._hero_no = hero_no
         # 更新第一个格子的属性
-        self.owner.first_slot.update_lord_info()
+        #self.owner.first_slot.update_lord_info()
 
     @property
     def hero_obj(self):

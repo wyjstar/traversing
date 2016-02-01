@@ -46,6 +46,7 @@ class CharacterLineUpComponent(Component):
         self._unpar_other_id = 0      # 当前无双附加属性
         self._unpar_level = 1         # 无双等级
         self._ever_have_heros = []    # 点亮的武将列表
+        self._unpar_names = []        # 女生名称，用来显示红点
 
         self._friend_fight_times = {} # 小伙伴战斗次数
         self._friend_fight_last_time = 0
@@ -70,6 +71,7 @@ class CharacterLineUpComponent(Component):
         self._unpar_type = character_info.get('unpar_type', 0)
         self._unpar_other_id = character_info.get('unpar_other_id', 0)
         self._ever_have_heros = character_info.get('ever_have_heros', [])
+        self._unpar_names = character_info.get('unpar_names', [])
 
         self._friend_fight_times = character_info.get('friend_fight_times', {})
         self._friend_fight_last_time = character_info.get('friend_fight_last_time', 0)
@@ -79,8 +81,6 @@ class CharacterLineUpComponent(Component):
         self.owner.set_level_related()
 
     def save_data(self, prop_names=[]):
-        power = self.combat_power
-        hook_task(self.owner, CONDITIONId.FIGHT_POWER, power)
         props = {
             'line_up_slots': dict([(slot_no, slot.dumps()) for
                                    slot_no, slot in
@@ -93,12 +93,16 @@ class CharacterLineUpComponent(Component):
             'unpar_type': self._unpar_type,
             'unpar_other_id': self._unpar_other_id,
             'ever_have_heros': self._ever_have_heros,
+            'unpar_names': self._unpar_names,
 
             'friend_fight_times': self._friend_fight_times,
-            'attackPoint': power,
             'hight_power': self._hight_power,
             'caption_pos': self._caption_pos,
         }
+        if not prop_names or 'line_up_slots' in prop_names or 'sub_slots' in prop_names:
+            power = self.combat_power
+            props['attackPoint'] = power
+            hook_task(self.owner, CONDITIONId.FIGHT_POWER, power)
         if ('copy_units' in prop_names) or (not prop_names):
             props['copy_units'] = self.owner.fight_cache_component.red_unit
             props['copy_slots'] = line_up_info(self.owner).SerializeToString()
@@ -362,6 +366,8 @@ class CharacterLineUpComponent(Component):
     def combat_power(self):
         """总战斗力
         """
+        #import traceback
+        #traceback.print_stack()
         print("combat_power===================")
         self.update_guild_attr()
         _power = 0
@@ -443,6 +449,14 @@ class CharacterLineUpComponent(Component):
     @ever_have_heros.setter
     def ever_have_heros(self, v):
         self._ever_have_heros = v
+
+    @property
+    def unpar_names(self):
+        return self._unpar_names
+
+    @unpar_names.setter
+    def unpar_names(self, v):
+        self._unpar_names = v
 
     def remove_caption_hero(self):
         """移除队长"""
