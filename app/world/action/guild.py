@@ -308,7 +308,7 @@ def exit_guild_remote(guild_id, p_id, name):
     if p_num == 1:
         # 删名字
         guild_name_data = tb_guild_info.getObj('names')
-        if guild_name_data.hget(guild_name_data):
+        if guild_name_data.hget(guild_obj.name):
             guild_name_data.hdel(guild_obj.name)
         # 删军团
         guild_manager_obj.delete_guild(guild_obj.g_id)
