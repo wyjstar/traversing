@@ -81,8 +81,6 @@ class CharacterLineUpComponent(Component):
         self.owner.set_level_related()
 
     def save_data(self, prop_names=[]):
-        power = self.combat_power
-        hook_task(self.owner, CONDITIONId.FIGHT_POWER, power)
         props = {
             'line_up_slots': dict([(slot_no, slot.dumps()) for
                                    slot_no, slot in
@@ -98,10 +96,13 @@ class CharacterLineUpComponent(Component):
             'unpar_names': self._unpar_names,
 
             'friend_fight_times': self._friend_fight_times,
-            'attackPoint': power,
             'hight_power': self._hight_power,
             'caption_pos': self._caption_pos,
         }
+        if not prop_names or 'line_up_slots' in prop_names or 'sub_slots' in prop_names:
+            power = self.combat_power
+            props['attackPoint'] = power
+            hook_task(self.owner, CONDITIONId.FIGHT_POWER, power)
         if ('copy_units' in prop_names) or (not prop_names):
             props['copy_units'] = self.owner.fight_cache_component.red_unit
             props['copy_slots'] = line_up_info(self.owner).SerializeToString()
@@ -365,6 +366,8 @@ class CharacterLineUpComponent(Component):
     def combat_power(self):
         """总战斗力
         """
+        #import traceback
+        #traceback.print_stack()
         print("combat_power===================")
         self.update_guild_attr()
         _power = 0

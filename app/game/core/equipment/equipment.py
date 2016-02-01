@@ -429,8 +429,8 @@ class Equipment(object):
                        growDuctility=0,
                        equLevel=self._attribute.strengthen_lv)
 
-        print("self._attribute.main_attr====", self.base_info.equipment_no)
-        print(self._attribute.main_attr)
+        #print("self._attribute.main_attr====", self.base_info.equipment_no)
+        #print(self._attribute.main_attr)
         for k, v in self._attribute.main_attr.items():
             assert varNames[k] in allVars
             avt, av, ai = v
