@@ -219,7 +219,7 @@
     "xmsdk":{
         "AppId" : 2882303761517429892,
         "AppKey" : "5531742994892",
-        "AppSecret" : "w93sZ+FaBA53QUlMgZJFEQ== ",
+        "AppSecret" : "w93sZ+FaBA53QUlMgZJFEQ==",
         "VerifySession_URL" : "http://mis.migc.xiaomi.com/api/biz/service/verifySession.do"
     },
     "360sdk":{
