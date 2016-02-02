@@ -42,6 +42,7 @@ class CharacterPay(Component):
             self._appkey = GlobalObject().allconfig["msdk"]["formal_recharge_appkey"]
         else:
             self._appkey = GlobalObject().allconfig["msdk"]["test_recharge_appkey"]
+        self._appkey = str(self._appkey)
 
 
     def set_pay_arg(self, value):
