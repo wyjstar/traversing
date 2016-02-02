@@ -5,6 +5,7 @@ import json
 
 from gevent import monkey
 import urllib
+import traceback
 
 monkey.patch_all()
 
@@ -27,13 +28,13 @@ if __name__ == "__main__":
         # print res
         print("update_excell=========")
         os.system("cd /tmp; unzip -o config.zip")
-        os.system("rm config/excel_cpickle")
         os.system("cp /tmp/excel_cpickle config/excel_cpickle")
         os.system(
             "cp -r /tmp/lua/. app/battle/src/app/datacenter/template/config/")
 
     except Exception, e:
         print("gm is not running! so copy lua/ from local.")
+        print traceback.format_exc()
         os.system(
             "cp -r config/lua/* app/battle/src/app/datacenter/template/config/")
 
