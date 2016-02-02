@@ -12,12 +12,14 @@ from sdk.api import meizu
 import time
 
 remote_gate = GlobalObject().remote.get('gate')
+SERVER_NO = GlobalObject().allconfig.get('server_no')
 
 
 @remoteserviceHandle('gate')
 def recharge_flowid_12000(data, player):
     response = kuaiyong_pb2.KuaiyongFlowIdResponse()
-    response.flow_id = str(player.character_id) + '_%s' % int(time.time())
+    response.flow_id = str(player.character_id) + '_%s_%s' % (SERVER_NO,
+                                                              int(time.time()))
     return response.SerializeToString()
 
 
@@ -27,7 +29,8 @@ def recharge_flowid_12100(data, player):
     if player.base_info.one_dollar_flowid == 'done':
         response.flow_id = 'done'
     else:
-        flowid = str(player.character_id) + '_%s' % int(time.time())
+        flowid = str(player.character_id) + '_%s_%s' % (SERVER_NO,
+                                                        int(time.time()))
         player.base_info.one_dollar_flowid = flowid
         player.base_info.save_data()
         response.flow_id = flowid
@@ -41,7 +44,8 @@ def meizu_flowid_13000(data, player):
     request.ParseFromString(data)
 
     response = kuaiyong_pb2.MeizuFlowIdResponse()
-    response.flow_id = str(player.character_id) + '_%s' % int(time.time())
+    response.flow_id = str(player.character_id) + '_%s_%s' % (SERVER_NO,
+                                                              int(time.time()))
     recharge_info = request.recharge_info.replace(
         'cp_order_id=', 'cp_order_id=' + str(response.flow_id))
     response.sign = meizu.generate_sign(recharge_info)
@@ -58,7 +62,8 @@ def meizu_flowid_13100(data, player):
     if player.base_info.one_dollar_flowid == 'done':
         response.flow_id = 'done'
     else:
-        flowid = str(player.character_id) + '_%s' % int(time.time())
+        flowid = str(player.character_id) + '_%s_%s' % (SERVER_NO,
+                                                        int(time.time()))
         player.base_info.one_dollar_flowid = flowid
         player.base_info.save_data()
         response.flow_id = flowid
@@ -224,7 +229,7 @@ def vivo_recharge_remote(product_id, fee, order_id, is_online, player):
     response.res.result = True
     player.recharge.recharge_gain(recharge_item, response, 9)  # 发送奖励邮件
 
-    remote_gate.push_object_remote(12004, response.SerializeToString(),
+    remote_gate.push_object_remote(12005, response.SerializeToString(),
                                    [player.dynamic_id])
     logger.debug('hauwei response:%s', response)
     return True
