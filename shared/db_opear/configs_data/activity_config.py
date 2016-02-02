@@ -50,6 +50,12 @@ class ActivityConfig(object):
                     self._items['premise'][item.premise] = []
                 self._items['premise'][item.premise].append(item.id)
 
+            if not self._items.get('icon'):
+                self._items['icon'] = {}
+            if not self._items.get('icon').get(item.icon):
+                self._items['icon'][item.icon] = []
+            self._items['icon'][item.icon].append(item)
+
             self._items[item.id] = item
 
         return self._items
