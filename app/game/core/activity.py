@@ -342,6 +342,11 @@ def get_act_info(player, act_id):
             player.act.act_infos[act_id] = [1, 0, int(time.time())]
             return {'state': 1, 'jindu': act_info[1]}
 
+        if act_info and act_info[0] == 3:
+            return {'state': 3, 'jindu': act_info[1]}
+        elif act_info and act_info[0] == 2:
+            return {'state': 2, 'jindu': act_info[1]}
+
         if act_info[1] < int(act_conf.parameterA):
             return {'state': 1, 'jindu': act_info[1]}
 
