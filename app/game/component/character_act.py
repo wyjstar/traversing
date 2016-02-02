@@ -72,9 +72,6 @@ class CharacterActComponent(Component):
                 return {'is_open': 1, 'time_start': 1, 'time_end': 1}
             premise_id = act_conf.premise
             premise_conf = game_configs.activity_config.get(premise_id)
-            premise_is_open = self.is_activiy_open(premise_id)
-            if not premise_is_open:
-                return {'is_open': 0, 'time_start': 0, 'time_end': 0}
             premise_info = get_act_info(self.owner, premise_id)
             if premise_info.get('state') != 3:
                 return {'is_open': 0, 'time_start': 0, 'time_end': 0}
