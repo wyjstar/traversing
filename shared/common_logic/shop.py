@@ -113,10 +113,6 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
     # shop_id_buyed_num_all = shop['all_items'].get(shop_id, 0)
     # guild_shop_id_buyed_num_day = shop['guild_items'].get(shop_id, 0)
     limit_type = ''
-    if shop_item.batch != -1:
-        limit_type = 'items'
-        if shop_id_buyed_num >= shop_item.batch:
-            return {'res': False, 'no': 502}
 
     if shop_item.limitVIP:
         limit_num = shop_item.limitVIP.get(vip_level, 0)
@@ -130,7 +126,7 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
             # response.limit_item_current_num = shop_id_buyed_num_all
             # response.limit_item_max_num = limit_num
 
-    if shop_item.dutyFree:
+    elif shop_item.dutyFree:
         limit_num = shop_item.dutyFree.get(build_level, 0)
         limit_type = 'guild_items'
         shop_id_buyed_num = shop['guild_items'].get(shop_id, 0)
@@ -142,7 +138,7 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
 
-    if shop_item.contribution:
+    elif shop_item.contribution:
         limit_num = shop_item.contribution.get(build_level, 0)
         limit_type = 'items'
         shop_id_buyed_num = shop['items'].get(shop_id, 0)
@@ -154,7 +150,7 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
 
-    if shop_item.limitVIPeveryday:
+    elif shop_item.limitVIPeveryday:
         limit_num = shop_item.limitVIPeveryday.get(vip_level, 0)
         limit_type = 'items'
         shop_id_buyed_num = shop['items'].get(shop_id, 0)
@@ -165,8 +161,16 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
             return {'res': False, 'no': 502}
             # response.limit_item_current_num = shop_id_buyed_num_day
             # response.limit_item_max_num = limit_num
+
+    elif shop_item.batch != -1:
+        limit_type = 'items'
+        if shop_id_buyed_num >= shop_item.batch:
+            return {'res': False, 'no': 502}
+
     if limit_type:
         shop[limit_type][shop_id] = shop_id_buyed_num + item_count
+    else:
+        return {'res': False, 'no': 800}
 
     _lucky_attr = 0
     shop_item_attr = shop_item.get('attr')
