@@ -269,10 +269,10 @@ def get_activity_info_1855(data, player):
     # 通用 获取活动信息
     args = activity_pb2.GetActivityInfoRequese()
     args.ParseFromString(data)
-    select_type = args.select_types
+    select_type = args.select_type
     select_values = args.value
     response = activity_pb2.GetActivityInfoResponse()
-    print select_types, select_values, '========================act type 1855'
+    print select_type, select_values, '========================act type 1855'
 
     configs = []
     for select_value in select_values:
