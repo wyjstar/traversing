@@ -169,8 +169,6 @@ def do_shop_buy(shop_id, item_count, shop, vip_level, build_level):
 
     if limit_type:
         shop[limit_type][shop_id] = shop_id_buyed_num + item_count
-    else:
-        return {'res': False, 'no': 800}
 
     _lucky_attr = 0
     shop_item_attr = shop_item.get('attr')

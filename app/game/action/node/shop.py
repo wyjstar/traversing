@@ -370,7 +370,7 @@ def shop_buy_505(pro_data, player):
                 common_response.result_no = res.get('no')
 
             if not res.get('res'):
-                raise ValueError("shop bug error!")
+                raise ValueError("shop buy error!")
                 return
             _lucky_attr = res.get('lucky_attr')
 
