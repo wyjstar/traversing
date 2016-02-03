@@ -111,3 +111,8 @@ message AddActivityGetRewardResponse{
 	required CommonResponse res = 1; 
     optional GameResourcesResponse gain = 2; //活动奖励
 }
+
+message FulfilActivity
+{
+    repeated int32 act_id = 1; //任务ID
+}

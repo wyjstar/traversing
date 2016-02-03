@@ -9,6 +9,11 @@ from app.game.core.activity import get_act_info
 from shared.common_logic.activity import do_get_act_open_info
 from gfirefly.server.logobj import logger
 from shared.utils.date_util import get_current_timestamp, days_to_current
+from app.proto_file import activity_pb2
+from gfirefly.server.globalobject import GlobalObject
+
+
+remote_gate = GlobalObject().remote.get('gate')
 
 
 WIN_MINE_QUALITY = 1
@@ -133,6 +138,7 @@ class CharacterActComponent(Component):
 
     def condition_update(self, type, v):
         act_confs = game_configs.activity_config.get(type, [])
+        state2_acts = []
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -146,10 +152,16 @@ class CharacterActComponent(Component):
                 else:
                     if act_info[1] < v:
                         act_info[1] = v
+
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def condition_add(self, type, v):
         act_confs = game_configs.activity_config.get(type, [])
+        state2_acts = []
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -162,6 +174,9 @@ class CharacterActComponent(Component):
                     continue
                 else:
                     act_info[1] += v
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
 
         if type == 44:
             act_confs = game_configs.activity_config.get(50, [])
@@ -179,6 +194,10 @@ class CharacterActComponent(Component):
                     else:
                         act_info[1][0] += v
                         act_info[1][1] = max(act_info[1][1], v)
+                act_info = get_act_info(self.owner, act_conf.id)
+                if act_info.get('state') == 2:
+                    state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def add_protect_escort_times(self, v):
@@ -192,6 +211,7 @@ class CharacterActComponent(Component):
         self.update_daily_70_72_74(74, v)
 
     def update_71_73_75(self, type, v):
+        state2_acts = []
         act_confs = game_configs.activity_config.get(type, [])
         for act_conf in act_confs:
             act_id = act_conf.id
@@ -207,10 +227,15 @@ class CharacterActComponent(Component):
                     continue
                 else:
                     act_info[1] += 1
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def update_daily_70_72_74(self, type, v):
         act_confs = game_configs.activity_config.get(type, [])
+        state2_acts = []
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -226,6 +251,10 @@ class CharacterActComponent(Component):
                     self._act_infos[act_id] = [1, 1, int(time.time())]
                 else:
                     act_info[1] += 1
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def update_29(self):
@@ -243,6 +272,7 @@ class CharacterActComponent(Component):
         """
         秘境刷新次数
         """
+        state2_acts = []
         act_confs = game_configs.activity_config.get(56, [])
         for act_conf in act_confs:
             act_id = act_conf.id
@@ -256,6 +286,10 @@ class CharacterActComponent(Component):
                     continue
                 else:
                     act_info[1] += 1
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def add_currency(self, res_type, num):
@@ -273,6 +307,7 @@ class CharacterActComponent(Component):
 
     def update_76_77(self, act_type, res_type, num):
         """docstring for add_times"""
+        state2_acts = []
         act_confs = game_configs.activity_config.get(act_type, [])
         for act_conf in act_confs:
             act_id = act_conf.id
@@ -288,11 +323,16 @@ class CharacterActComponent(Component):
                     continue
                 else:
                     act_info[1] += num
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def update_65(self, res_type, num):
         """docstring for add_times"""
         act_confs = game_configs.activity_config.get(65, [])
+        state2_acts = []
         for act_conf in act_confs:
             act_id = act_conf.id
             if act_conf.parameterE.items()[0][0] != res_type:
@@ -307,6 +347,10 @@ class CharacterActComponent(Component):
                     self._act_infos[act_id] = [1, num, int(time.time())]
                 else:
                     act_info[1] += num
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def mine_win(self, quality):
@@ -317,6 +361,7 @@ class CharacterActComponent(Component):
         print act_confs, '=====================act confs, mine_win'
         info = {}
         info[WIN_MINE_QUALITY] = quality
+        state2_acts = []
 
         for act_conf in act_confs:
             act_id = act_conf.id
@@ -330,11 +375,16 @@ class CharacterActComponent(Component):
                     continue
                 else:
                     act_info[1].append(info)
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def mine_get_runt(self):
         """秘境宝石收取"""
         act_confs = game_configs.activity_config.get(58, [])
+        state2_acts = []
         for act_conf in act_confs:
             act_id = act_conf.id
             if not self.is_activiy_open(act_id):
@@ -347,6 +397,10 @@ class CharacterActComponent(Component):
                     continue
                 else:
                     act_info[1] += 1
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def mine_mix_runt(self, runt_quality):
@@ -356,6 +410,7 @@ class CharacterActComponent(Component):
         act_confs = game_configs.activity_config.get(59, [])
         info = {}
         info[WIN_MINE_QUALITY] = runt_quality
+        state2_acts = []
 
         for act_conf in act_confs:
             act_id = act_conf.id
@@ -370,6 +425,10 @@ class CharacterActComponent(Component):
                     continue
                 else:
                     act_info[1].append(info)
+            act_info = get_act_info(self.owner, act_conf.id)
+            if act_info.get('state') == 2:
+                state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
         self.save_data()
 
     def add_treasure(self, treasure_type, treasure_quality):
@@ -379,6 +438,7 @@ class CharacterActComponent(Component):
         info = {}
         info[TREASURE_TYPE] = treasure_type
         info[TREASURE_QUALITY] = treasure_quality
+        state2_acts = []
 
         for x in [60, 61, 62, 63]:
             act_confs = game_configs.activity_config.get(x, [])
@@ -395,6 +455,10 @@ class CharacterActComponent(Component):
                         continue
                     else:
                         act_info[1].append(info)
+                act_info = get_act_info(self.owner, act_conf.id)
+                if act_info.get('state') == 2:
+                    state2_acts.append(act_conf.id)
+        self.fulfil_activity(state2_acts)
 
         self.save_data()
 
@@ -468,3 +532,12 @@ class CharacterActComponent(Component):
             if not self.is_activiy_open(act_conf.id):
                 continue
             get_act_info(self.owner, act_conf.id)
+
+    def fulfil_activity(self, acts):
+        proto_data = activity_pb2.FulfilActivity()
+        for act_id in acts:
+            proto_data.act_id.append(act_id)
+        elif remote_gate and remote_gate.is_connected():
+            remote_gate.push_object_remote(1857,
+                                           proto_data.SerializeToString(),
+                                           [self.owner.dynamic_id])

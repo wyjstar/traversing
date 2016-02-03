@@ -29,7 +29,6 @@ def get_act_gift_1832(data, player):
 
     act_conf = game_configs.activity_config.get(act_id)
     is_open = player.act.is_activiy_open(act_id)
-    # if not act_conf or not is_open or act_conf.showJudgment:
     if not act_conf or not is_open:
         response.res.result_no = 800
         return response.SerializeToString()
@@ -290,6 +289,8 @@ def get_activity_info_1855(data, player):
             # 连续登录
             player.act.update_act_with_get()
         for act_conf in configs:
+            if act_conf.icon == 10179:  # 七日活动
+                continue
             if not player.act.is_activiy_open(act_conf.id):
                 continue
             act_info = get_act_info(player, act_conf.id)
