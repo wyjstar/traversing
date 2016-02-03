@@ -328,7 +328,7 @@ def get_act_info(player, act_id):
             return {'state': 1, 'jindu': act_info[1]}
 
         if len(act_conf.parameterD) == 1 and \
-                not act_conf.parameterD[0] > act_info[0][1]:
+                not act_conf.parameterD[0] > act_info[1][1]:
             return {'state': 1, 'jindu': act_info[1]}
         return {'state': 2, 'jindu': act_info[1]}
     elif act_conf.type in [70, 72, 74, 65]:
