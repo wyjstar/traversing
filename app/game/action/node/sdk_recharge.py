@@ -75,6 +75,35 @@ def meizu_flowid_12201(data, player):
 
 
 @remoteserviceHandle('gate')
+def xiaomi_recharge_remote(subject, fee, cpOrderId, is_online, player):
+    logger.debug('xiaomi_recharge_remote:%s', subject)
+
+    # if str(cpOrderId) != str(player.base_info.flowid):
+    # logger.error("cpOrderId %s %s" % (cpOrderId, player.base_info.flowid))
+    # return 1506
+    # else:
+    player.base_info.flowid = 0
+    player.base_info.save_data()
+
+    recharge_item = game_configs.recharge_config.get('android').get(subject)
+    if recharge_item is None:
+        logger.error('not in rechargeconfig:%s', subject)
+        return 1525
+    if float(fee) != recharge_item.get('currence'):
+        logger.error('recharge fee is wrong:%s-%s', fee,
+                     recharge_item.get('currence'))
+        # return 1525
+    response = apple_pb2.AppleConsumeVerifyResponse()
+    response.res.result = True
+    player.recharge.recharge_gain(recharge_item, response, 6)  # 发送奖励邮件
+
+    remote_gate.push_object_remote(13001, response.SerializeToString(),
+                                   [player.dynamic_id])
+    logger.debug('xiaomi response:%s', response)
+    return 200
+
+
+@remoteserviceHandle('gate')
 def kuaiyong_recharge_remote(product_id, fee, is_online, player):
     logger.debug('kuaiyong_recharge_remote:%s', product_id)
 
