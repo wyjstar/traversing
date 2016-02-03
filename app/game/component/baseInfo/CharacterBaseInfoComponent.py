@@ -63,6 +63,7 @@ class CharacterBaseInfoComponent(Component):
         self._hero_awake_time = int(time.time())  # 武将觉醒时间，用于次日清除相关武将觉醒进度。
         self._flowid = 0  # 流水号
         self._one_dollar_flowid = 0
+        self._flow_orders = []
 
     def init_data(self, character_info):
         self._base_name = character_info['nickname']
@@ -106,6 +107,8 @@ class CharacterBaseInfoComponent(Component):
                                                        0)
         self._one_dollar_flowid = character_info.get('one_dollar_flowid', 0)
 
+        self._flow_orders = character_info.get('flow_orders', [])
+
         vip_content = game_configs.vip_config.get(self._vip_level)
         if vip_content is None:
             logger.error('cant find vip item%d', self._vip_level)
@@ -142,6 +145,7 @@ class CharacterBaseInfoComponent(Component):
                     hero_awake_time=self._hero_awake_time,
                     max_single_recharge=self._max_single_recharge,
                     flowid=self._flowid,
+                    flow_orders=self._flow_orders,
                     one_dollar_flowid=self._one_dollar_flowid)
         character_info.hmset(data)
         # logger.debug("save level:%s,%s", str(self.id), str(data))
@@ -645,6 +649,10 @@ class CharacterBaseInfoComponent(Component):
     @flowid.setter
     def flowid(self, value):
         self._flowid = value
+
+    @property
+    def flow_orders(self):
+        return self._flow_orders
 
     @property
     def one_dollar_flowid(self):

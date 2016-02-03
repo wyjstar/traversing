@@ -16,7 +16,10 @@ remote_gate = GlobalObject().remote.get('gate')
 @remoteserviceHandle('gate')
 def kuaiyong_flowid_12000(data, player):
     response = kuaiyong_pb2.KuaiyongFlowIdResponse()
-    response.flow_id = str(player.character_id) + '_%s' % int(time.time())
+    flow_id = str(player.character_id) + '_%s' % int(time.time())
+    player.base_info.flow_orders.append(flow_id)
+    player.base_info.save_data()
+    response.flow_id = flow_id
     return response.SerializeToString()
 
 
@@ -63,6 +66,13 @@ def q360_recharge_remote(product_id, order_id, is_online, player):
     if player.base_info.one_dollar_flowid == order_id:
         player.base_info.one_dollar_flowid = 'done'
         logger.debug('one dollar is ok! %s', product_id)
+
+    if order_id not in player.base_info.flow_orders:
+        logger.error('error flow id:%s-%s', order_id,
+                     player.base_info.flow_orders)
+        return False
+    player.base_info.flow_orders.remove(order_id)
+    player.base_info.save_data()
 
     recharge_item = game_configs.recharge_config.get('android').get(product_id)
     if recharge_item is None:
@@ -118,6 +128,13 @@ def huawei_recharge_remote(product_id, fee, order_id, is_online, player):
     if player.base_info.one_dollar_flowid == order_id:
         player.base_info.one_dollar_flowid = 'done'
         logger.debug('one dollar is ok! %s', product_id)
+
+    if order_id not in player.base_info.flow_orders:
+        logger.error('error flow id:%s-%s', order_id,
+                     player.base_info.flow_orders)
+        return False
+    player.base_info.flow_orders.remove(order_id)
+    player.base_info.save_data()
 
     recharge_item = game_configs.recharge_config.get('android').get(product_id)
     if recharge_item is None:
