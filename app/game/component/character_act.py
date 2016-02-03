@@ -537,7 +537,7 @@ class CharacterActComponent(Component):
         proto_data = activity_pb2.FulfilActivity()
         for act_id in acts:
             proto_data.act_id.append(act_id)
-            if remote_gate and remote_gate.is_connected():
-                remote_gate.push_object_remote(1857,
-                                               proto_data.SerializeToString(),
-                                               [self.owner.dynamic_id])
+        if remote_gate and remote_gate.is_connected():
+            remote_gate.push_object_remote(1857,
+                                           proto_data.SerializeToString(),
+                                           [self.owner.dynamic_id])
