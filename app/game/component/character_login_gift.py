@@ -56,14 +56,18 @@ class CharacterLoginGiftComponent(Component):
 
     def check_time(self):
         """docstring for check_time"""
+
         logger.debug("login_time================== %s" % days_to_current(self._last_login))
-        if days_to_current(self._last_login) > 1:
+
+        if days_to_current(self._last_login) > 1 and self.is_open(2001):
             activity_infos = game_configs.activity_config.get(2, [])
             for info in activity_infos:
-                self._continuous_day[info.id] = -1
+                if not self.is_open(info.id):
+                    self._continuous_day[info.id] = -1
             self._continuous_day[2001] = 0
             self._continuous_day_num = 1
 
+        if days_to_current(self._last_login) > 1 and self.is_open(18001):
             # 7天乐
             activity_infos = game_configs.activity_config.get(18, [])
             for info in activity_infos:
@@ -72,7 +76,7 @@ class CharacterLoginGiftComponent(Component):
             self._continuous_7day_num = 1
 
 
-        elif days_to_current(self._last_login) == 1:
+        elif days_to_current(self._last_login) == 1 and self.is_open(2001):
             self._continuous_day_num += 1
             for k in sorted(self._continuous_day.keys()):
                 v = self._continuous_day[k]
@@ -81,6 +85,7 @@ class CharacterLoginGiftComponent(Component):
                     self._continuous_day[k] = 0
                     break
 
+        if days_to_current(self._last_login) > 1 and self.is_open(18001):
             # 7天乐
             self._continuous_7day_num += 1
             for k in sorted(self._continuous_7day.keys()):
@@ -90,7 +95,7 @@ class CharacterLoginGiftComponent(Component):
                     self._continuous_7day[k] = 0
                     break
 
-        if days_to_current(self._last_login) > 0:
+        if days_to_current(self._last_login) > 0 and self.is_open(1001):
             self._cumulative_day_num+= 1
             for k in sorted(self._cumulative_day.keys()):
                 v = self._cumulative_day[k]
@@ -98,14 +103,14 @@ class CharacterLoginGiftComponent(Component):
                     self._cumulative_day[k] = 0
                     break
 
-        activity_infos = game_configs.activity_config.get(2, [])
-        days_to_register = days_to_current(self._owner.base_info.register_time)
-        # if activity_infos and days_to_register >= activity_infos[0].parameterB:
-        #     self._cumulative_day_num = -1
+        #activity_infos = game_configs.activity_config.get(2, [])
+        #days_to_register = days_to_current(self._owner.base_info.register_time)
+        #if activity_infos and days_to_register >= activity_infos[0].parameterB:
+            #self._cumulative_day_num = -1
 
-        activity_infos = game_configs.activity_config.get(18, [])
-        # if activity_infos and days_to_register >= activity_infos[0].parameterB:
-        #     self._continuous_7day_num = -1
+        #activity_infos = game_configs.activity_config.get(18, [])
+        #if activity_infos and days_to_register >= activity_infos[0].parameterB:
+            #self._continuous_7day_num = -1
 
         self._last_login = get_current_timestamp()
         self.save_data()
