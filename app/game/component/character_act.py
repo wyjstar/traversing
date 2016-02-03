@@ -534,6 +534,8 @@ class CharacterActComponent(Component):
             get_act_info(self.owner, act_conf.id)
 
     def fulfil_activity(self, acts):
+        if not acts:
+            return
         proto_data = activity_pb2.FulfilActivity()
         for act_id in acts:
             proto_data.act_id.append(act_id)
