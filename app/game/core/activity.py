@@ -21,7 +21,7 @@ def get_act_info(player, act_id):
     jindu = 0
     day = player.base_info.login_day
     print act_conf, '==========get act info , act config'
-    if act_conf.type not in [65, 70, 72, 74]:  # 每日的
+    if act_conf.type not in [65, 70, 72, 74, 18]:  # 每日的
         if act_info and act_info[0] == 3:
             return {'state': 3, 'jindu': act_info[1]}
         elif act_info and act_info[0] == 2:
@@ -324,11 +324,11 @@ def get_act_info(player, act_id):
             return {'state': 1, 'jindu': act_info[1]}
 
         if len(act_conf.parameterC) == 1 and \
-                not act_conf.parameterC[0] > v['recharge']:
+                not act_conf.parameterC[0] > act_info[1][0]:
             return {'state': 1, 'jindu': act_info[1]}
 
         if len(act_conf.parameterD) == 1 and \
-                not act_conf.parameterD[0] > act_info[0]:
+                not act_conf.parameterD[0] > act_info[0][1]:
             return {'state': 1, 'jindu': act_info[1]}
         return {'state': 2, 'jindu': act_info[1]}
     elif act_conf.type in [70, 72, 74, 65]:

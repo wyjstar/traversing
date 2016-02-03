@@ -164,7 +164,7 @@ class CharacterActComponent(Component):
                     act_info[1] += v
 
         if type == 44:
-            act_confs = game_configs.activity_config.get(51, [])
+            act_confs = game_configs.activity_config.get(50, [])
             for act_conf in act_confs:
                 act_id = act_conf.id
                 act_conf = game_configs.activity_config.get(act_id)
