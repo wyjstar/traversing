@@ -61,7 +61,7 @@ class CharacterBaseInfoComponent(Component):
         self._story_id = 0
         self._button_one_time = [0] * 3  # 0. 第二天活动开启后的按钮 1. 首次充值奖励 2. 关卡点我有惊喜
         self._hero_awake_time = int(time.time())  # 武将觉醒时间，用于次日清除相关武将觉醒进度。
-        self._flowid = 0.0  # 流水号
+        self._flowid = 0  # 流水号
         self._one_dollar_flowid = 0
 
     def init_data(self, character_info):
