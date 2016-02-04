@@ -12,14 +12,16 @@ import time
 @remoteserviceHandle('gate')
 def xiaomi_flowid_13000(data, player):
     response = sdk_pb2.XiaomiFlowIdResponse()
-    response.flow_id = str(player.character_id) + '_%s' % time.time()
-    player.base_info.flowid = response.flow_id
-    logger.debug("flow_id %s" % player.base_info.flowid)
-    player.base_info.save_data()
+    if not player.base_info.flowid:
+        response.flow_id = str(player.character_id) + '_%s' % time.time()
+        player.base_info.flowid = response.flow_id
+        player.base_info.save_data()
+    else:
+        response.flow_id = player.base_info.flowid
+    logger.debug("flow_id %s" % response.flow_id)
     return response.SerializeToString()
 
 remote_gate = GlobalObject().remote.get('gate')
-
 
 @remoteserviceHandle('gate')
 def xiaomi_recharge_remote(subject, fee, cpOrderId, is_online, player):
@@ -28,6 +30,9 @@ def xiaomi_recharge_remote(subject, fee, cpOrderId, is_online, player):
     if str(cpOrderId) != str(player.base_info.flowid):
         logger.error("cpOrderId %s %s" % (cpOrderId, player.base_info.flowid))
         return 1506
+    else:
+        player.base_info.flowid = 0
+        player.base_info.save_data()
 
     recharge_item = game_configs.recharge_config.get('android').get(subject)
     if recharge_item is None:
