@@ -218,7 +218,7 @@ def gain(player, item_group, reason,
                     multiple2 = _times
 
         logger.debug("multiple %s multiple2 %s" % (multiple, multiple2))
-        num = int(group_item.num * multiple2)
+        num = int(multiple2 * num)
 
         front_type_id = type_id # 记录类型，用于武将已存在的情况。
         if type_id == const.COIN:
