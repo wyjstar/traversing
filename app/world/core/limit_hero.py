@@ -94,9 +94,19 @@ def get_activity_info():
     now = time.time()
     for act_conf in act_confs:
         act_time_info = do_get_act_open_info(act_conf.id)
+        if act_time_info.get('time_end') <= now:
+            continue
         if act_time_info.get('is_open'):
             activity_id = act_conf.id
             timeStart = act_time_info.get('time_start')
             timeEnd = act_time_info.get('time_end')
+            break
+        if act_time_info.get('time_start') > now:
+            if not activity_id:
+                activity_id = act_conf.id
+                timeStart = act_time_info.get('time_start')
+            elif timeStart > act_time_info.get('time_start'):
+                activity_id = act_conf.id
+                timeStart = act_time_info.get('time_start')
 
     return {'id': activity_id, 'end_time': timeEnd, 'start_time': timeStart}
