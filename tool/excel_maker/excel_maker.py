@@ -328,6 +328,12 @@ def save_insert_all_sqls(root_path, content):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        ROOT_PATH = sys.argv[1]
+        print("root_path:", ROOT_PATH)
+        target_file_names = sys.argv[2:]
+        print("target_file_names:", target_file_names)
+
     root_path = ROOT_PATH + "/excel/"
     conn = sqlite3.connect(ROOT_PATH + "/config.db")
     cur = conn.cursor()
@@ -339,15 +345,17 @@ if __name__ == "__main__":
             continue
         file_path = root_path + file_name
         file_with_out_extension = os.path.splitext(file_name)[0]
-        print file_path, file_with_out_extension
-        try:
-            #ExcelToJson(file_path, file_with_out_extension)
-            ExcelToJson(file_path, file_with_out_extension, cur)
-        except Exception, e:
-            print 'table format error! table name:', file_name
-            print traceback.print_exc()
-            print 'message:', e
-            exit(0)
+        if not target_file_names or file_name in target_file_names:
+
+            print file_path, file_with_out_extension
+            try:
+                #ExcelToJson(file_path, file_with_out_extension)
+                ExcelToJson(file_path, file_with_out_extension, cur)
+            except Exception, e:
+                print 'table format error! table name:', file_name
+                print traceback.print_exc()
+                print 'message:', e
+                exit(0)
         with open(ROOT_PATH + '/json/%s.json' % (file_with_out_extension), 'r') as f:
             json_data = json.load(f)
 
