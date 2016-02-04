@@ -12,12 +12,12 @@ import time
 @remoteserviceHandle('gate')
 def xiaomi_flowid_13000(data, player):
     response = sdk_pb2.XiaomiFlowIdResponse()
-    if not player.base_info.flowid:
-        response.flow_id = str(player.character_id) + '_%s' % time.time()
-        player.base_info.flowid = response.flow_id
-        player.base_info.save_data()
-    else:
-        response.flow_id = player.base_info.flowid
+    #if not player.base_info.flowid:
+    response.flow_id = str(player.character_id) + '_%s' % time.time()
+    player.base_info.flowid = response.flow_id
+    player.base_info.save_data()
+    #else:
+        #response.flow_id = player.base_info.flowid
     logger.debug("flow_id %s" % response.flow_id)
     return response.SerializeToString()
 
