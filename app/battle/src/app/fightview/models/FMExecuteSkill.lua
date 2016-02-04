@@ -187,7 +187,7 @@ function execute_treat(attacker, target, buff_info, is_cri, extra_msgs)
 end
 
 -- 无双值
-function unpara(attacker, target, buff_info, playerLevel, extra_msgs)
+function unpara(attacker, buff_info)
     local baseTemplate = getTemplateManager():getBaseTemplate()
     local job_value = baseTemplate:getBaseInfoById("ws_job")[tostring(attacker.unpar_job)]
     local warriorsDamage = getFormulaTemplate():getFunc("peerlessDamage")(attacker.unpar_level, buff_info, job_value)

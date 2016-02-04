@@ -100,7 +100,7 @@ function vertical_attack(value, attacker, target_units)
 end
 
 function random_attack(value, attacker, target_units)
-    local target_nos = get_random_lst(table.keys(), value)
+    local target_nos = get_random_lst(target_units, value)
     local random_units = {}
     for _,no in pairs(target_nos) do
         table.insert(random_units, target_units[no])

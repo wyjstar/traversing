@@ -30,10 +30,19 @@ end
 
 function FMHeroSkill:get_before_skill_buffs()
     --主技能释放前，执行的buff(triggerType==10)--
+    res_buffs = {}
     if self._break_skill_buffs[10] then
-        return self._break_skill_buffs[10]
+        for _, buff in pairs(self._break_skill_buffs[10]) do
+            table.insert(res_buffs, buff)
+        end
     end
-    return {}
+    if self._break_skill_buffs[11] then
+        table.print(self._break_skill_buffs[11])
+        for _, buff in pairs(self._break_skill_buffs[11]) do
+            table.insert(res_buffs, buff)
+        end
+    end
+    return res_buffs
 end
 
 function FMHeroSkill:get_open_skill_buffs()

@@ -674,9 +674,9 @@ function constructBattleUnit(data, side, is_last_round)
         unit.unit_info = unit_info                       -- 配置信息
         unit.unit_type = UNIT_TYPE_HERO
         if not SERVER_CODE then
-            local pictureName, res = soldierTemplate:getHeroImageName(unit.no,unit.break_level,true)
+            local pictureName, res = soldierTemplate:getHeroImageName(unit.no,unit.break_level,false,true)
             if unit.is_break or unit.is_awake then --乱入前武将图片
-                local originPictureName,orires = soldierTemplate:getHeroImageName(unit.origin_no,unit.break_level,true)
+                local originPictureName,orires = soldierTemplate:getHeroImageName(unit.origin_no,unit.break_level,false,true)
                 unit.originPictureName = originPictureName
             end
 

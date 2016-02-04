@@ -17,16 +17,21 @@ function get_random_int(_begin, _end)
 end
 
 function get_random_lst(lst, n)
+    print("get_random_lst=================")
     -- 获取随机数列表，从begin到end
     local len = table.nums(lst)
     if len <= n then
         return lst
     end
+    local array = {}
+    for _, v in pairs(lst) do
+        table.insert(array, v)
+    end
     local keys = {}
     while table.nums(keys) ~= n do 
-        x = get_random_int(1, table.nums(lst))
-        if not table.inv(keys, x) then
-            table.insert(keys, x)
+        x = get_random_int(1, table.nums(array))
+        if not table.inv(keys, array[x].pos) then
+            table.insert(keys, array[x].pos)
         end
     end
     return keys

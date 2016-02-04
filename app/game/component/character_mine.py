@@ -511,6 +511,7 @@ class CharacterMine(Component):
         mine_infos = []
 
         for pos in self._mine.keys():
+            logger.debug("mine pos %s" % pos)
             info = self.mine_info(pos)
             mine_infos.append(info)
         return mine_infos

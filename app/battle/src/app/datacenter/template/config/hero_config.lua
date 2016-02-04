@@ -1,224 +1,224 @@
 hero_config={
   [20046] = {
-  ["resIcon"] = 1200461,  ["describeStr"] = 1100010046,  ["growHp"] = 318.6,  ["parameters5"] = 10.8,  ["physicalDef"] = 768,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
+  ["resIcon"] = 1200461,  ["describeStr"] = 1100010046,  ["growHp"] = 414.18,  ["parameters5"] = 10.8,  ["physicalDef"] = 503,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200462,  ["atk"] = 607,  ["rageSkill"] = 1200462,  ["growMagicDef"] = 37.2,  ["consume2"] = {
+,  ["resPicture3"] = 1200462,  ["atk"] = 657,  ["rageSkill"] = 1200462,  ["growMagicDef"] = 48.36,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200462,  ["magicDef"] = 322,  ["hp"] = 2761.2,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200462,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200462,  ["magicDef"] = 248,  ["hp"] = 2124,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200462,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 88.65,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200461,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 98.085,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200461,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200462,  ["id"] = 20046,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310046,  ["audio"] = 220046,  ["consume5"] = {
 }
-,  ["growAtk"] = 70.05,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020046,}
+,  ["growAtk"] = 128.115,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020046,}
 ,  [20048] = {
-  ["resIcon"] = 1200481,  ["describeStr"] = 1100010048,  ["growHp"] = 318.6,  ["parameters5"] = 10.8,  ["physicalDef"] = 768,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
+  ["resIcon"] = 1200481,  ["describeStr"] = 1100010048,  ["growHp"] = 414.18,  ["parameters5"] = 10.8,  ["physicalDef"] = 503,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200482,  ["atk"] = 607,  ["rageSkill"] = 1200482,  ["growMagicDef"] = 37.2,  ["consume2"] = {
+,  ["resPicture3"] = 1200482,  ["atk"] = 657,  ["rageSkill"] = 1200482,  ["growMagicDef"] = 48.36,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 2,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200482,  ["magicDef"] = 322,  ["hp"] = 2761.2,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200482,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 2,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200482,  ["magicDef"] = 248,  ["hp"] = 2124,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200482,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 88.65,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200481,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 98.085,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200481,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200482,  ["id"] = 20048,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310048,  ["audio"] = 220048,  ["consume5"] = {
 }
-,  ["growAtk"] = 70.05,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020048,}
+,  ["growAtk"] = 128.115,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020048,}
 ,  [20050] = {
-  ["resIcon"] = 1200501,  ["describeStr"] = 1100010050,  ["growHp"] = 146.4,  ["parameters5"] = 10.8,  ["physicalDef"] = 278,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200501,  ["describeStr"] = 1100010050,  ["growHp"] = 190.32,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200502,  ["atk"] = 1261,  ["rageSkill"] = 1200502,  ["growMagicDef"] = 76.5,  ["consume2"] = {
+,  ["resPicture3"] = 1200502,  ["atk"] = 970,  ["rageSkill"] = 1200502,  ["growMagicDef"] = 99.45,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 2,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200502,  ["magicDef"] = 663,  ["hp"] = 1268.8,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200502,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 2,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200502,  ["magicDef"] = 510,  ["hp"] = 976,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200502,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200501,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 41.73,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200501,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200502,  ["id"] = 20050,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 310050,  ["audio"] = 220050,  ["consume5"] = {
 }
-,  ["growAtk"] = 145.5,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020050,}
+,  ["growAtk"] = 189.15,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020050,}
 ,  [20052] = {
-  ["resIcon"] = 1200521,  ["describeStr"] = 1100010052,  ["growHp"] = 169.65,  ["parameters5"] = 10.8,  ["physicalDef"] = 322,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200521,  ["describeStr"] = 1100010052,  ["growHp"] = 220.545,  ["parameters5"] = 10.8,  ["physicalDef"] = 248,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200522,  ["atk"] = 1461,  ["rageSkill"] = 1200522,  ["growMagicDef"] = 88.65,  ["consume2"] = {
+,  ["resPicture3"] = 1200522,  ["atk"] = 1124,  ["rageSkill"] = 1200522,  ["growMagicDef"] = 115.245,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200522,  ["magicDef"] = 768,  ["hp"] = 1470.3,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200522,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200522,  ["magicDef"] = 591,  ["hp"] = 1131,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200522,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 37.2,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200521,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 48.36,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200521,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200522,  ["id"] = 20052,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 310052,  ["audio"] = 220052,  ["consume5"] = {
 }
-,  ["growAtk"] = 168.6,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020052,}
+,  ["growAtk"] = 219.18,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020052,}
 ,  [20054] = {
-  ["resIcon"] = 1200541,  ["describeStr"] = 1100010054,  ["growHp"] = 146.4,  ["parameters5"] = 10.8,  ["physicalDef"] = 278,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200541,  ["describeStr"] = 1100010054,  ["growHp"] = 190.32,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200542,  ["atk"] = 1261,  ["rageSkill"] = 1200542,  ["growMagicDef"] = 76.5,  ["consume2"] = {
+,  ["resPicture3"] = 1200542,  ["atk"] = 970,  ["rageSkill"] = 1200542,  ["growMagicDef"] = 99.45,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200542,  ["magicDef"] = 663,  ["hp"] = 1268.8,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200542,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200542,  ["magicDef"] = 510,  ["hp"] = 976,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200542,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200541,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 41.73,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200541,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200542,  ["id"] = 20054,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 310054,  ["audio"] = 220054,  ["consume5"] = {
 }
-,  ["growAtk"] = 145.5,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020054,}
+,  ["growAtk"] = 189.15,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020054,}
 ,  [20056] = {
-  ["resIcon"] = 1200561,  ["describeStr"] = 1100010056,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 435,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200561,  ["describeStr"] = 1100010056,  ["growHp"] = 330.135,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200562,  ["atk"] = 976,  ["rageSkill"] = 1200562,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+,  ["resPicture3"] = 1200562,  ["atk"] = 751,  ["rageSkill"] = 1200562,  ["growMagicDef"] = 98.085,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200562,  ["magicDef"] = 653,  ["hp"] = 2200.9,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200562,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200562,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200562,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200561,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 65.325,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200561,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200562,  ["id"] = 20056,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 3,  ["deadAudio"] = 310056,  ["audio"] = 220056,  ["consume5"] = {
 }
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020056,}
+,  ["growAtk"] = 146.445,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020056,}
 ,  [20058] = {
-  ["resIcon"] = 1200581,  ["describeStr"] = 1100010058,  ["growHp"] = 183.3,  ["parameters5"] = 10.8,  ["physicalDef"] = 474,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200581,  ["describeStr"] = 1100010058,  ["growHp"] = 190.32,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200582,  ["atk"] = 1055,  ["rageSkill"] = 1200582,  ["growMagicDef"] = 54.75,  ["consume2"] = {
+,  ["resPicture3"] = 1200582,  ["atk"] = 970,  ["rageSkill"] = 1200582,  ["growMagicDef"] = 99.45,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200582,  ["magicDef"] = 474,  ["hp"] = 1588.6,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200582,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200582,  ["magicDef"] = 510,  ["hp"] = 976,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200582,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200581,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 41.73,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200581,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200582,  ["id"] = 20058,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 4,  ["deadAudio"] = 310058,  ["audio"] = 220058,  ["consume5"] = {
 }
-,  ["growAtk"] = 121.8,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020058,}
+,  ["growAtk"] = 189.15,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020058,}
 ,  [20062] = {
-  ["resIcon"] = 1200621,  ["describeStr"] = 1100010062,  ["growHp"] = 183.3,  ["parameters5"] = 10.8,  ["physicalDef"] = 474,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200621,  ["describeStr"] = 1100010062,  ["growHp"] = 238.29,  ["parameters5"] = 10.8,  ["physicalDef"] = 365,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200622,  ["atk"] = 1055,  ["rageSkill"] = 1200622,  ["growMagicDef"] = 54.75,  ["consume2"] = {
+,  ["resPicture3"] = 1200622,  ["atk"] = 812,  ["rageSkill"] = 1200622,  ["growMagicDef"] = 71.175,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200622,  ["magicDef"] = 474,  ["hp"] = 1588.6,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200622,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200622,  ["magicDef"] = 365,  ["hp"] = 1222,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200622,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200621,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 71.175,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200621,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200622,  ["id"] = 20062,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 4,  ["deadAudio"] = 310062,  ["audio"] = 220062,  ["consume5"] = {
 }
-,  ["growAtk"] = 121.8,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020062,}
+,  ["growAtk"] = 158.34,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020062,}
 ,  [20064] = {
-  ["resIcon"] = 1200641,  ["describeStr"] = 1100010064,  ["growHp"] = 183.3,  ["parameters5"] = 10.8,  ["physicalDef"] = 474,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200641,  ["describeStr"] = 1100010064,  ["growHp"] = 238.29,  ["parameters5"] = 10.8,  ["physicalDef"] = 365,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200642,  ["atk"] = 1055,  ["rageSkill"] = 1200642,  ["growMagicDef"] = 54.75,  ["consume2"] = {
+,  ["resPicture3"] = 1200642,  ["atk"] = 812,  ["rageSkill"] = 1200642,  ["growMagicDef"] = 71.175,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200642,  ["magicDef"] = 474,  ["hp"] = 1588.6,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200642,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200642,  ["magicDef"] = 365,  ["hp"] = 1222,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200642,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200641,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 71.175,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200641,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200642,  ["id"] = 20064,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 4,  ["deadAudio"] = 310064,  ["audio"] = 220064,  ["consume5"] = {
 }
-,  ["growAtk"] = 121.8,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020064,}
+,  ["growAtk"] = 158.34,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020064,}
 ,  [20066] = {
-  ["resIcon"] = 1200661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 435,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200661,  ["describeStr"] = 1100010066,  ["growHp"] = 330.135,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200662,  ["atk"] = 976,  ["rageSkill"] = 1200662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+,  ["resPicture3"] = 1200662,  ["atk"] = 751,  ["rageSkill"] = 1200662,  ["growMagicDef"] = 98.085,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200662,  ["magicDef"] = 653,  ["hp"] = 2200.9,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200662,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200662,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200662,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200661,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 65.325,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200661,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200662,  ["id"] = 20066,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
 }
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020066,}
+,  ["growAtk"] = 146.445,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020066,}
 ,  [40007] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -264,7 +264,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 40007,  ["consume6"] = {
   ["107"] = {
@@ -328,7 +328,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 40011,  ["consume6"] = {
   ["107"] = {
@@ -347,156 +347,6 @@ hero_config={
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
 ,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010077,}
-,  [40013] = {
-  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
-  ["107"] = {
-  [1] = 150000,  [2] = 150000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 450,  [2] = 450,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 50,  [2] = 50,  [3] = 1010066,}
-,}
-,  ["sellGain"] = {
-}
-,  ["consume3"] = {
-  ["107"] = {
-  [1] = 100000,  [2] = 100000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 280,  [2] = 280,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 30,  [2] = 30,  [3] = 1010066,}
-,}
-,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
-  ["107"] = {
-  [1] = 50000,  [2] = 50000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 140,  [2] = 140,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 20,  [2] = 20,  [3] = 1010066,}
-,}
-,  ["awakeHeroID"] = 20066,  ["consume1"] = {
-  ["105"] = {
-  [1] = 30,  [2] = 30,  [3] = 20006,}
-,  ["107"] = {
-  [1] = 20000,  [2] = 20000,  [3] = 1,}
-,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
-  ["107"] = {
-  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 1685,  [2] = 1685,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 350,  [2] = 350,  [3] = 1010066,}
-,}
-,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
-  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
-,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
-  ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
-,}
-,  ["resPicture2"] = 1100664,  ["id"] = 40013,  ["consume6"] = {
-  ["107"] = {
-  [1] = 500000,  [2] = 500000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 1125,  [2] = 1125,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 200,  [2] = 200,  [3] = 1010066,}
-,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
-  ["107"] = {
-  [1] = 300000,  [2] = 300000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 730,  [2] = 730,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 100,  [2] = 100,  [3] = 1010066,}
-,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010079,}
-,  [40012] = {
-  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
-  ["107"] = {
-  [1] = 150000,  [2] = 150000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 450,  [2] = 450,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 50,  [2] = 50,  [3] = 1010066,}
-,}
-,  ["sellGain"] = {
-}
-,  ["consume3"] = {
-  ["107"] = {
-  [1] = 100000,  [2] = 100000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 280,  [2] = 280,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 30,  [2] = 30,  [3] = 1010066,}
-,}
-,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
-  ["107"] = {
-  [1] = 50000,  [2] = 50000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 140,  [2] = 140,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 20,  [2] = 20,  [3] = 1010066,}
-,}
-,  ["awakeHeroID"] = 20066,  ["consume1"] = {
-  ["105"] = {
-  [1] = 30,  [2] = 30,  [3] = 20006,}
-,  ["107"] = {
-  [1] = 20000,  [2] = 20000,  [3] = 1,}
-,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
-  ["107"] = {
-  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 1685,  [2] = 1685,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 350,  [2] = 350,  [3] = 1010066,}
-,}
-,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
-  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
-,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
-  ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
-,}
-,  ["resPicture2"] = 1100664,  ["id"] = 40012,  ["consume6"] = {
-  ["107"] = {
-  [1] = 500000,  [2] = 500000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 1125,  [2] = 1125,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 200,  [2] = 200,  [3] = 1010066,}
-,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
-  ["107"] = {
-  [1] = 300000,  [2] = 300000,  [3] = 1,}
-,  ["105"] = {
-  [1] = 730,  [2] = 730,  [3] = 20006,}
-,  ["103"] = {
-  [1] = 100,  [2] = 100,  [3] = 1010066,}
-,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010078,}
-,  [20053] = {
-  ["resIcon"] = 1200531,  ["describeStr"] = 1100010053,  ["growHp"] = 318.6,  ["parameters5"] = 10.8,  ["physicalDef"] = 768,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
-}
-,  ["sellGain"] = {
-}
-,  ["consume3"] = {
-}
-,  ["resPicture3"] = 1200532,  ["atk"] = 607,  ["rageSkill"] = 1200532,  ["growMagicDef"] = 37.2,  ["consume2"] = {
-}
-,  ["awakeHeroID"] = 0,  ["consume1"] = {
-}
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200532,  ["magicDef"] = 322,  ["hp"] = 2761.2,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200532,  ["consume7"] = {
-}
-,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
-}
-,  ["growPhysicalDef"] = 88.65,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200531,  ["sacrificeGain"] = {
-}
-,  ["resPicture2"] = 1200532,  ["id"] = 20053,  ["consume6"] = {
-}
-,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310053,  ["audio"] = 220053,  ["consume5"] = {
-}
-,  ["growAtk"] = 70.05,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020053,}
 ,  [40009] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -542,7 +392,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 40009,  ["consume6"] = {
   ["107"] = {
@@ -561,6 +411,988 @@ hero_config={
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
 ,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010075,}
+,  [50012] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50012,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010091,}
+,  [40001] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 40001,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010067,}
+,  [50010] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50010,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010089,}
+,  [20053] = {
+  ["resIcon"] = 1200531,  ["describeStr"] = 1100010053,  ["growHp"] = 414.18,  ["parameters5"] = 10.8,  ["physicalDef"] = 503,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
+}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+}
+,  ["resPicture3"] = 1200532,  ["atk"] = 657,  ["rageSkill"] = 1200532,  ["growMagicDef"] = 48.36,  ["consume2"] = {
+}
+,  ["awakeHeroID"] = 0,  ["consume1"] = {
+}
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200532,  ["magicDef"] = 248,  ["hp"] = 2124,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200532,  ["consume7"] = {
+}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+}
+,  ["growPhysicalDef"] = 98.085,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200531,  ["sacrificeGain"] = {
+}
+,  ["resPicture2"] = 1200532,  ["id"] = 20053,  ["consume6"] = {
+}
+,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310053,  ["audio"] = 220053,  ["consume5"] = {
+}
+,  ["growAtk"] = 128.115,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020053,}
+,  [50008] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50008,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010087,}
+,  [50007] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50007,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010086,}
+,  [50006] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50006,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010085,}
+,  [40012] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 40012,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010078,}
+,  [50004] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50004,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010083,}
+,  [40002] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 40002,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010068,}
+,  [50002] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50002,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010081,}
+,  [40013] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 40013,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010079,}
+,  [50001] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50001,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010080,}
+,  [50005] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50005,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010084,}
+,  [50009] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50009,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010088,}
+,  [50013] = {
+  ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["107"] = {
+  [1] = 150000,  [2] = 150000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 450,  [2] = 450,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 50,  [2] = 50,  [3] = 1010066,}
+,}
+,  ["sellGain"] = {
+}
+,  ["consume3"] = {
+  ["107"] = {
+  [1] = 100000,  [2] = 100000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 280,  [2] = 280,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 30,  [2] = 30,  [3] = 1010066,}
+,}
+,  ["resPicture3"] = 1100665,  ["atk"] = 751,  ["rageSkill"] = 1100662,  ["growMagicDef"] = 75.45,  ["consume2"] = {
+  ["107"] = {
+  [1] = 50000,  [2] = 50000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 140,  [2] = 140,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 20,  [2] = 20,  [3] = 1010066,}
+,}
+,  ["awakeHeroID"] = 20066,  ["consume1"] = {
+  ["105"] = {
+  [1] = 30,  [2] = 30,  [3] = 20006,}
+,  ["107"] = {
+  [1] = 20000,  [2] = 20000,  [3] = 1,}
+,}
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100663,  ["magicDef"] = 503,  ["hp"] = 1693,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100665,  ["consume7"] = {
+  ["107"] = {
+  [1] = 1000000,  [2] = 1000000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1685,  [2] = 1685,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 350,  [2] = 350,  [3] = 1010066,}
+,}
+,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
+  ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
+,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
+  ["107"] = {
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
+,}
+,  ["resPicture2"] = 1100664,  ["id"] = 50013,  ["consume6"] = {
+  ["107"] = {
+  [1] = 500000,  [2] = 500000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 1125,  [2] = 1125,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 200,  [2] = 200,  [3] = 1010066,}
+,}
+,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+  ["107"] = {
+  [1] = 300000,  [2] = 300000,  [3] = 1,}
+,  ["105"] = {
+  [1] = 730,  [2] = 730,  [3] = 20006,}
+,  ["103"] = {
+  [1] = 100,  [2] = 100,  [3] = 1010066,}
+,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010092,}
 ,  [40008] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -606,7 +1438,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 40008,  ["consume6"] = {
   ["107"] = {
@@ -670,7 +1502,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 40006,  ["consume6"] = {
   ["107"] = {
@@ -734,7 +1566,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 40005,  ["consume6"] = {
   ["107"] = {
@@ -798,7 +1630,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 40004,  ["consume6"] = {
   ["107"] = {
@@ -850,7 +1682,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 20.7,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100011,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100012,  ["id"] = 10001,  ["consume6"] = {
 }
@@ -890,7 +1722,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 10.2,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100021,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100022,  ["id"] = 10002,  ["consume6"] = {
 }
@@ -936,7 +1768,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 52.65,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100031,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100032,  ["id"] = 10003,  ["consume6"] = {
 }
@@ -988,7 +1820,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 35.1,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100041,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100042,  ["id"] = 10004,  ["consume6"] = {
 }
@@ -1040,7 +1872,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 52.65,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100051,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100052,  ["id"] = 10005,  ["consume6"] = {
 }
@@ -1086,7 +1918,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 13.8,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100061,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100062,  ["id"] = 10006,  ["consume6"] = {
 }
@@ -1126,7 +1958,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 20.7,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100071,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100072,  ["id"] = 10007,  ["consume6"] = {
 }
@@ -1166,7 +1998,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 13.8,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100081,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100082,  ["id"] = 10008,  ["consume6"] = {
 }
@@ -1206,7 +2038,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 25.5,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100091,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100092,  ["id"] = 10009,  ["consume6"] = {
 }
@@ -1246,7 +2078,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 25.5,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100101,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100102,  ["id"] = 10010,  ["consume6"] = {
 }
@@ -1286,7 +2118,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 18.75,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100111,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100112,  ["id"] = 10011,  ["consume6"] = {
 }
@@ -1326,7 +2158,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 13.8,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100121,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100122,  ["id"] = 10012,  ["consume6"] = {
 }
@@ -1372,7 +2204,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 25.95,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100131,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100132,  ["id"] = 10013,  ["consume6"] = {
 }
@@ -1418,7 +2250,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 17.4,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100141,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100142,  ["id"] = 10014,  ["consume6"] = {
 }
@@ -1464,7 +2296,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 25.95,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100151,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100152,  ["id"] = 10015,  ["consume6"] = {
 }
@@ -1516,7 +2348,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 52.65,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100161,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100162,  ["id"] = 10016,  ["consume6"] = {
 }
@@ -1562,7 +2394,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 20.7,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100171,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100172,  ["id"] = 10017,  ["consume6"] = {
 }
@@ -1608,7 +2440,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 44.25,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100181,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100182,  ["id"] = 10018,  ["consume6"] = {
 }
@@ -1654,7 +2486,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 17.4,  ["breakLimit"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100191,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 5,  [2] = 5,  [3] = 3,}
+  [1] = 10,  [2] = 10,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100192,  ["id"] = 10019,  ["consume6"] = {
 }
@@ -1706,7 +2538,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 1,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 43.35,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100201,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100204,  ["id"] = 10020,  ["consume6"] = {
   ["107"] = {
@@ -1764,7 +2596,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 18.75,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100211,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 60,  [2] = 60,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100212,  ["id"] = 10021,  ["consume6"] = {
 }
@@ -1816,7 +2648,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 18.75,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100221,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 60,  [2] = 60,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100222,  ["id"] = 10022,  ["consume6"] = {
 }
@@ -1874,7 +2706,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 2,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 65.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100231,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100234,  ["id"] = 10023,  ["consume6"] = {
   ["107"] = {
@@ -1932,7 +2764,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 35.1,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100241,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100242,  ["id"] = 10024,  ["consume6"] = {
 }
@@ -1984,7 +2816,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 44.25,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100251,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100252,  ["id"] = 10025,  ["consume6"] = {
 }
@@ -2036,7 +2868,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 25.5,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100261,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 60,  [2] = 60,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100262,  ["id"] = 10026,  ["consume6"] = {
 }
@@ -2088,7 +2920,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 18.75,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100271,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 60,  [2] = 60,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100272,  ["id"] = 10027,  ["consume6"] = {
 }
@@ -2140,7 +2972,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 25.95,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100281,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100282,  ["id"] = 10028,  ["consume6"] = {
 }
@@ -2192,7 +3024,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 38.25,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100291,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 60,  [2] = 60,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100292,  ["id"] = 10029,  ["consume6"] = {
 }
@@ -2250,7 +3082,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 3,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100301,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100304,  ["id"] = 10030,  ["consume6"] = {
   ["107"] = {
@@ -2314,7 +3146,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 4,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100311,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100314,  ["id"] = 10031,  ["consume6"] = {
   ["107"] = {
@@ -2372,7 +3204,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 25.5,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100321,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 60,  [2] = 60,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100322,  ["id"] = 10032,  ["consume6"] = {
 }
@@ -2424,7 +3256,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 25.95,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100331,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 60,  [2] = 60,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100332,  ["id"] = 10033,  ["consume6"] = {
 }
@@ -2476,7 +3308,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 25.5,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100341,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 60,  [2] = 60,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100342,  ["id"] = 10034,  ["consume6"] = {
 }
@@ -2534,7 +3366,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 5,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 65.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100351,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100354,  ["id"] = 10035,  ["consume6"] = {
   ["107"] = {
@@ -2598,7 +3430,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 6,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 65.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100361,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100364,  ["id"] = 10036,  ["consume6"] = {
   ["107"] = {
@@ -2656,7 +3488,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 35.1,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100371,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100372,  ["id"] = 10037,  ["consume6"] = {
 }
@@ -2708,7 +3540,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 38.25,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100381,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 60,  [2] = 60,  [3] = 3,}
+  [1] = 200,  [2] = 200,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100382,  ["id"] = 10038,  ["consume6"] = {
 }
@@ -2760,7 +3592,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 52.65,  ["breakLimit"] = 5,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100391,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 160,  [2] = 160,  [3] = 3,}
+  [1] = 400,  [2] = 400,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100392,  ["id"] = 10039,  ["consume6"] = {
 }
@@ -2818,7 +3650,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 7,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 65.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100401,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100404,  ["id"] = 10040,  ["consume6"] = {
   ["107"] = {
@@ -2882,7 +3714,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 8,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 43.35,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100411,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100414,  ["id"] = 10041,  ["consume6"] = {
   ["107"] = {
@@ -2946,7 +3778,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 9,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100421,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100424,  ["id"] = 10042,  ["consume6"] = {
   ["107"] = {
@@ -3010,7 +3842,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 10,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100431,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100434,  ["id"] = 10043,  ["consume6"] = {
   ["107"] = {
@@ -3074,7 +3906,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 11,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100441,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100444,  ["id"] = 10044,  ["consume6"] = {
   ["107"] = {
@@ -3138,7 +3970,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 75.45,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100451,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100454,  ["id"] = 10045,  ["consume6"] = {
   ["107"] = {
@@ -3202,7 +4034,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 75.45,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100461,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100464,  ["id"] = 10046,  ["consume6"] = {
   ["107"] = {
@@ -3266,7 +4098,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 12,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100471,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100474,  ["id"] = 10047,  ["consume6"] = {
   ["107"] = {
@@ -3330,7 +4162,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 75.45,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100481,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100484,  ["id"] = 10048,  ["consume6"] = {
   ["107"] = {
@@ -3394,7 +4226,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 13,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 43.35,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100491,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100494,  ["id"] = 10049,  ["consume6"] = {
   ["107"] = {
@@ -3458,7 +4290,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 14,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100501,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100504,  ["id"] = 10050,  ["consume6"] = {
   ["107"] = {
@@ -3522,7 +4354,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 40003,  ["consume6"] = {
   ["107"] = {
@@ -3586,7 +4418,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 37.2,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100521,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100524,  ["id"] = 10052,  ["consume6"] = {
   ["107"] = {
@@ -3650,7 +4482,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 75.45,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100531,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100534,  ["id"] = 10053,  ["consume6"] = {
   ["107"] = {
@@ -3714,7 +4546,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 15,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100541,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100544,  ["id"] = 10054,  ["consume6"] = {
   ["107"] = {
@@ -3778,7 +4610,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 16,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 65.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100551,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100554,  ["id"] = 10055,  ["consume6"] = {
   ["107"] = {
@@ -3842,7 +4674,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100561,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100564,  ["id"] = 10056,  ["consume6"] = {
   ["107"] = {
@@ -3861,7 +4693,7 @@ hero_config={
   [1] = 100,  [2] = 100,  [3] = 1010056,}
 ,}
 ,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010056,}
-,  [40002] = {
+,  [50003] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
   [1] = 150000,  [2] = 150000,  [3] = 1,}
@@ -3906,9 +4738,9 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
-,  ["resPicture2"] = 1100664,  ["id"] = 40002,  ["consume6"] = {
+,  ["resPicture2"] = 1100664,  ["id"] = 50003,  ["consume6"] = {
   ["107"] = {
   [1] = 500000,  [2] = 500000,  [3] = 1,}
 ,  ["105"] = {
@@ -3924,7 +4756,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010068,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010082,}
 ,  [10058] = {
   ["resIcon"] = 1100581,  ["describeStr"] = 1100010058,  ["growHp"] = 146.4,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 200010058,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -3970,7 +4802,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 17,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100581,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100584,  ["id"] = 10058,  ["consume6"] = {
   ["107"] = {
@@ -3989,7 +4821,7 @@ hero_config={
   [1] = 100,  [2] = 100,  [3] = 1010058,}
 ,}
 ,  ["growAtk"] = 145.5,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010058,}
-,  [40001] = {
+,  [50011] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
   [1] = 150000,  [2] = 150000,  [3] = 1,}
@@ -4034,9 +4866,9 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
-,  ["resPicture2"] = 1100664,  ["id"] = 40001,  ["consume6"] = {
+,  ["resPicture2"] = 1100664,  ["id"] = 50011,  ["consume6"] = {
   ["107"] = {
   [1] = 500000,  [2] = 500000,  [3] = 1,}
 ,  ["105"] = {
@@ -4052,29 +4884,29 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010067,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010090,}
 ,  [20065] = {
-  ["resIcon"] = 1200651,  ["describeStr"] = 1100010065,  ["growHp"] = 169.65,  ["parameters5"] = 10.8,  ["physicalDef"] = 322,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200651,  ["describeStr"] = 1100010065,  ["growHp"] = 220.545,  ["parameters5"] = 10.8,  ["physicalDef"] = 248,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200652,  ["atk"] = 1461,  ["rageSkill"] = 1200652,  ["growMagicDef"] = 88.65,  ["consume2"] = {
+,  ["resPicture3"] = 1200652,  ["atk"] = 1124,  ["rageSkill"] = 1200652,  ["growMagicDef"] = 115.245,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200652,  ["magicDef"] = 768,  ["hp"] = 1470.3,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200652,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200652,  ["magicDef"] = 591,  ["hp"] = 1131,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200652,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 37.2,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200651,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 48.36,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200651,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200652,  ["id"] = 20065,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
 }
-,  ["growAtk"] = 168.6,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020065,}
+,  ["growAtk"] = 219.18,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020065,}
 ,  [10061] = {
   ["resIcon"] = 1100611,  ["describeStr"] = 1100010061,  ["growHp"] = 169.65,  ["parameters5"] = 10.8,  ["physicalDef"] = 248,  ["toGet"] = 200010061,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -4120,7 +4952,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 37.2,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100611,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100614,  ["id"] = 10061,  ["consume6"] = {
   ["107"] = {
@@ -4184,7 +5016,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 18,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100621,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100624,  ["id"] = 10062,  ["consume6"] = {
   ["107"] = {
@@ -4204,27 +5036,27 @@ hero_config={
 ,}
 ,  ["growAtk"] = 121.8,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010062,}
 ,  [20061] = {
-  ["resIcon"] = 1200611,  ["describeStr"] = 1100010061,  ["growHp"] = 169.65,  ["parameters5"] = 10.8,  ["physicalDef"] = 322,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200611,  ["describeStr"] = 1100010061,  ["growHp"] = 220.545,  ["parameters5"] = 10.8,  ["physicalDef"] = 248,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200612,  ["atk"] = 1461,  ["rageSkill"] = 1200612,  ["growMagicDef"] = 88.65,  ["consume2"] = {
+,  ["resPicture3"] = 1200612,  ["atk"] = 1124,  ["rageSkill"] = 1200612,  ["growMagicDef"] = 115.245,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200612,  ["magicDef"] = 768,  ["hp"] = 1470.3,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200612,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200612,  ["magicDef"] = 591,  ["hp"] = 1131,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200612,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 37.2,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200611,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 48.36,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200611,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200612,  ["id"] = 20061,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
 }
-,  ["growAtk"] = 168.6,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020061,}
+,  ["growAtk"] = 219.18,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020061,}
 ,  [10064] = {
   ["resIcon"] = 1100641,  ["describeStr"] = 1100010064,  ["growHp"] = 183.3,  ["parameters5"] = 10.8,  ["physicalDef"] = 365,  ["toGet"] = 200010064,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -4270,7 +5102,7 @@ hero_config={
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 19,  ["80000"] = 0.45,}
 ,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100641,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 600,  [2] = 600,  [3] = 3,}
+  [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100644,  ["id"] = 10064,  ["consume6"] = {
   ["107"] = {
@@ -4334,7 +5166,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 37.2,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100651,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100654,  ["id"] = 10065,  ["consume6"] = {
   ["107"] = {
@@ -4398,7 +5230,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 10066,  ["consume6"] = {
   ["107"] = {
@@ -4462,7 +5294,7 @@ hero_config={
   ["24000"] = 0.1,  ["60000"] = 0.3,  ["6000"] = 0.03,  ["42000"] = 0.2,  ["96000"] = 0.5,  ["12000"] = 0.06,  ["120000"] = 1,}
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100661,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1100664,  ["id"] = 40010,  ["consume6"] = {
   ["107"] = {
@@ -4482,115 +5314,115 @@ hero_config={
 ,}
 ,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010076,}
 ,  [20045] = {
-  ["resIcon"] = 1200451,  ["describeStr"] = 1100010045,  ["growHp"] = 318.6,  ["parameters5"] = 10.8,  ["physicalDef"] = 768,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
+  ["resIcon"] = 1200451,  ["describeStr"] = 1100010045,  ["growHp"] = 414.18,  ["parameters5"] = 10.8,  ["physicalDef"] = 503,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200452,  ["atk"] = 607,  ["rageSkill"] = 1200452,  ["growMagicDef"] = 37.2,  ["consume2"] = {
+,  ["resPicture3"] = 1200452,  ["atk"] = 657,  ["rageSkill"] = 1200452,  ["growMagicDef"] = 48.36,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200452,  ["magicDef"] = 322,  ["hp"] = 2761.2,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200452,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200452,  ["magicDef"] = 248,  ["hp"] = 2124,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200452,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 88.65,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200451,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 98.085,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200451,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200452,  ["id"] = 20045,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310045,  ["audio"] = 220045,  ["consume5"] = {
 }
-,  ["growAtk"] = 70.05,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020045,}
+,  ["growAtk"] = 128.115,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 2,  ["nameStr"] = 1000020045,}
 ,  [20055] = {
-  ["resIcon"] = 1200551,  ["describeStr"] = 1100010055,  ["growHp"] = 274.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 663,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
+  ["resIcon"] = 1200551,  ["describeStr"] = 1100010055,  ["growHp"] = 357.435,  ["parameters5"] = 10.8,  ["physicalDef"] = 434,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200552,  ["atk"] = 523,  ["rageSkill"] = 1200552,  ["growMagicDef"] = 32.1,  ["consume2"] = {
+,  ["resPicture3"] = 1200552,  ["atk"] = 567,  ["rageSkill"] = 1200552,  ["growMagicDef"] = 41.73,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200552,  ["magicDef"] = 278,  ["hp"] = 2382.9,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200552,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200552,  ["magicDef"] = 214,  ["hp"] = 1833,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200552,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 76.5,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200551,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 84.63,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200551,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200552,  ["id"] = 20055,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310055,  ["audio"] = 220055,  ["consume5"] = {
 }
-,  ["growAtk"] = 60.45,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020055,}
+,  ["growAtk"] = 110.565,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020055,}
 ,  [20049] = {
-  ["resIcon"] = 1200491,  ["describeStr"] = 1100010049,  ["growHp"] = 219.15,  ["parameters5"] = 10.8,  ["physicalDef"] = 375,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200491,  ["describeStr"] = 1100010049,  ["growHp"] = 284.895,  ["parameters5"] = 10.8,  ["physicalDef"] = 289,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200492,  ["atk"] = 842,  ["rageSkill"] = 1200492,  ["growMagicDef"] = 65.1,  ["consume2"] = {
+,  ["resPicture3"] = 1200492,  ["atk"] = 648,  ["rageSkill"] = 1200492,  ["growMagicDef"] = 84.63,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200492,  ["magicDef"] = 564,  ["hp"] = 1899.3,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200492,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200492,  ["magicDef"] = 434,  ["hp"] = 1461,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200492,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 43.35,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200491,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 56.355,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200491,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200492,  ["id"] = 20049,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 3,  ["deadAudio"] = 310049,  ["audio"] = 220049,  ["consume5"] = {
 }
-,  ["growAtk"] = 97.2,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020049,}
+,  ["growAtk"] = 126.36,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020049,}
 ,  [20047] = {
-  ["resIcon"] = 1200471,  ["describeStr"] = 1100010047,  ["growHp"] = 146.4,  ["parameters5"] = 10.8,  ["physicalDef"] = 278,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200471,  ["describeStr"] = 1100010047,  ["growHp"] = 190.32,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200472,  ["atk"] = 1261,  ["rageSkill"] = 1200472,  ["growMagicDef"] = 76.5,  ["consume2"] = {
+,  ["resPicture3"] = 1200472,  ["atk"] = 970,  ["rageSkill"] = 1200472,  ["growMagicDef"] = 99.45,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200472,  ["magicDef"] = 663,  ["hp"] = 1268.8,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200472,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200472,  ["magicDef"] = 510,  ["hp"] = 976,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200472,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200471,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 41.73,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200471,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200472,  ["id"] = 20047,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 310047,  ["audio"] = 220047,  ["consume5"] = {
 }
-,  ["growAtk"] = 145.5,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020047,}
+,  ["growAtk"] = 189.15,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020047,}
 ,  [20023] = {
-  ["resIcon"] = 1200231,  ["describeStr"] = 1100010023,  ["growHp"] = 274.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 663,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
+  ["resIcon"] = 1200231,  ["describeStr"] = 1100010023,  ["growHp"] = 357.435,  ["parameters5"] = 10.8,  ["physicalDef"] = 434,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200232,  ["atk"] = 523,  ["rageSkill"] = 1200232,  ["growMagicDef"] = 32.1,  ["consume2"] = {
+,  ["resPicture3"] = 1200232,  ["atk"] = 567,  ["rageSkill"] = 1200232,  ["growMagicDef"] = 41.73,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200232,  ["magicDef"] = 278,  ["hp"] = 2382.9,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200232,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200232,  ["magicDef"] = 214,  ["hp"] = 1833,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200232,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 76.5,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200231,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 84.63,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200231,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200232,  ["id"] = 20023,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310023,  ["audio"] = 220023,  ["consume5"] = {
 }
-,  ["growAtk"] = 60.45,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020023,}
+,  ["growAtk"] = 110.565,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020023,}
 ,  [30051] = {
   ["resIcon"] = 1300511,  ["describeStr"] = 1100010051,  ["growHp"] = 318.6,  ["parameters5"] = 10.8,  ["physicalDef"] = 503,  ["toGet"] = 200030051,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
   ["107"] = {
@@ -4636,7 +5468,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 75.45,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1300511,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300514,  ["id"] = 30051,  ["consume6"] = {
   ["107"] = {
@@ -4656,49 +5488,49 @@ hero_config={
 ,}
 ,  ["growAtk"] = 98.55,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030051,}
 ,  [20020] = {
-  ["resIcon"] = 1200201,  ["describeStr"] = 1100010020,  ["growHp"] = 219.15,  ["parameters5"] = 10.8,  ["physicalDef"] = 375,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200201,  ["describeStr"] = 1100010020,  ["growHp"] = 284.895,  ["parameters5"] = 10.8,  ["physicalDef"] = 289,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200202,  ["atk"] = 842,  ["rageSkill"] = 1200202,  ["growMagicDef"] = 65.1,  ["consume2"] = {
+,  ["resPicture3"] = 1200202,  ["atk"] = 648,  ["rageSkill"] = 1200202,  ["growMagicDef"] = 84.63,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200202,  ["magicDef"] = 564,  ["hp"] = 1899.3,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200202,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200202,  ["magicDef"] = 434,  ["hp"] = 1461,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200202,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 43.35,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200201,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 56.355,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200201,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200202,  ["id"] = 20020,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 3,  ["deadAudio"] = 310020,  ["audio"] = 220020,  ["consume5"] = {
 }
-,  ["growAtk"] = 97.2,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020020,}
+,  ["growAtk"] = 126.36,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020020,}
 ,  [20043] = {
-  ["resIcon"] = 1200431,  ["describeStr"] = 1100010043,  ["growHp"] = 183.3,  ["parameters5"] = 10.8,  ["physicalDef"] = 474,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200431,  ["describeStr"] = 1100010043,  ["growHp"] = 238.29,  ["parameters5"] = 10.8,  ["physicalDef"] = 365,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200432,  ["atk"] = 1055,  ["rageSkill"] = 1200432,  ["growMagicDef"] = 54.75,  ["consume2"] = {
+,  ["resPicture3"] = 1200432,  ["atk"] = 812,  ["rageSkill"] = 1200432,  ["growMagicDef"] = 71.175,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200432,  ["magicDef"] = 474,  ["hp"] = 1588.6,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200432,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200432,  ["magicDef"] = 365,  ["hp"] = 1222,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200432,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200431,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 71.175,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200431,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200432,  ["id"] = 20043,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 4,  ["deadAudio"] = 310043,  ["audio"] = 220043,  ["consume5"] = {
 }
-,  ["growAtk"] = 121.8,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020043,}
+,  ["growAtk"] = 158.34,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020043,}
 ,  [30057] = {
   ["resIcon"] = 1300571,  ["describeStr"] = 1100010057,  ["growHp"] = 318.6,  ["parameters5"] = 10.8,  ["physicalDef"] = 503,  ["toGet"] = 200030057,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
   ["107"] = {
@@ -4744,7 +5576,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 75.45,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1300571,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300574,  ["id"] = 30057,  ["consume6"] = {
   ["107"] = {
@@ -4808,7 +5640,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1300591,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300594,  ["id"] = 30059,  ["consume6"] = {
   ["107"] = {
@@ -4828,27 +5660,27 @@ hero_config={
 ,}
 ,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030059,}
 ,  [20030] = {
-  ["resIcon"] = 1200301,  ["describeStr"] = 1100010030,  ["growHp"] = 183.3,  ["parameters5"] = 10.8,  ["physicalDef"] = 474,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200301,  ["describeStr"] = 1100010030,  ["growHp"] = 238.29,  ["parameters5"] = 10.8,  ["physicalDef"] = 365,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200302,  ["atk"] = 1055,  ["rageSkill"] = 1200302,  ["growMagicDef"] = 54.75,  ["consume2"] = {
+,  ["resPicture3"] = 1200302,  ["atk"] = 812,  ["rageSkill"] = 1200302,  ["growMagicDef"] = 71.175,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200302,  ["magicDef"] = 474,  ["hp"] = 1588.6,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200302,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200302,  ["magicDef"] = 365,  ["hp"] = 1222,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200302,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200301,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 71.175,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200301,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200302,  ["id"] = 20030,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 4,  ["deadAudio"] = 310030,  ["audio"] = 220030,  ["consume5"] = {
 }
-,  ["growAtk"] = 121.8,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020030,}
+,  ["growAtk"] = 158.34,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020030,}
 ,  [30063] = {
   ["resIcon"] = 1300631,  ["describeStr"] = 1100010063,  ["growHp"] = 318.6,  ["parameters5"] = 10.8,  ["physicalDef"] = 503,  ["toGet"] = 200030063,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
   ["107"] = {
@@ -4894,7 +5726,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 75.45,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1300631,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300634,  ["id"] = 30063,  ["consume6"] = {
   ["107"] = {
@@ -4914,159 +5746,159 @@ hero_config={
 ,}
 ,  ["growAtk"] = 98.55,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000030063,}
 ,  [20041] = {
-  ["resIcon"] = 1200411,  ["describeStr"] = 1100010041,  ["growHp"] = 219.15,  ["parameters5"] = 10.8,  ["physicalDef"] = 375,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200411,  ["describeStr"] = 1100010041,  ["growHp"] = 284.895,  ["parameters5"] = 10.8,  ["physicalDef"] = 289,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200412,  ["atk"] = 842,  ["rageSkill"] = 1200412,  ["growMagicDef"] = 65.1,  ["consume2"] = {
+,  ["resPicture3"] = 1200412,  ["atk"] = 648,  ["rageSkill"] = 1200412,  ["growMagicDef"] = 84.63,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200412,  ["magicDef"] = 564,  ["hp"] = 1899.3,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200412,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200412,  ["magicDef"] = 434,  ["hp"] = 1461,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200412,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 43.35,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200411,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 56.355,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200411,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200412,  ["id"] = 20041,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 3,  ["deadAudio"] = 310041,  ["audio"] = 220041,  ["consume5"] = {
 }
-,  ["growAtk"] = 97.2,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020041,}
+,  ["growAtk"] = 126.36,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020041,}
 ,  [20031] = {
-  ["resIcon"] = 1200311,  ["describeStr"] = 1100010031,  ["growHp"] = 146.4,  ["parameters5"] = 10.8,  ["physicalDef"] = 278,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200311,  ["describeStr"] = 1100010031,  ["growHp"] = 190.32,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200312,  ["atk"] = 1261,  ["rageSkill"] = 1200312,  ["growMagicDef"] = 76.5,  ["consume2"] = {
+,  ["resPicture3"] = 1200312,  ["atk"] = 970,  ["rageSkill"] = 1200312,  ["growMagicDef"] = 99.45,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200312,  ["magicDef"] = 663,  ["hp"] = 1268.8,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200312,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200312,  ["magicDef"] = 510,  ["hp"] = 976,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200312,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200311,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 41.73,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200311,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200312,  ["id"] = 20031,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 310031,  ["audio"] = 220031,  ["consume5"] = {
 }
-,  ["growAtk"] = 145.5,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020031,}
+,  ["growAtk"] = 189.15,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020031,}
 ,  [20036] = {
-  ["resIcon"] = 1200361,  ["describeStr"] = 1100010036,  ["growHp"] = 274.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 663,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
+  ["resIcon"] = 1200361,  ["describeStr"] = 1100010036,  ["growHp"] = 357.435,  ["parameters5"] = 10.8,  ["physicalDef"] = 434,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200362,  ["atk"] = 523,  ["rageSkill"] = 1200362,  ["growMagicDef"] = 32.1,  ["consume2"] = {
+,  ["resPicture3"] = 1200362,  ["atk"] = 567,  ["rageSkill"] = 1200362,  ["growMagicDef"] = 41.73,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200362,  ["magicDef"] = 278,  ["hp"] = 2382.9,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200362,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200362,  ["magicDef"] = 214,  ["hp"] = 1833,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200362,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 76.5,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200361,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 84.63,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200361,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200362,  ["id"] = 20036,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310036,  ["audio"] = 220036,  ["consume5"] = {
 }
-,  ["growAtk"] = 60.45,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020036,}
+,  ["growAtk"] = 110.565,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020036,}
 ,  [20035] = {
-  ["resIcon"] = 1200351,  ["describeStr"] = 1100010035,  ["growHp"] = 274.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 663,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
+  ["resIcon"] = 1200351,  ["describeStr"] = 1100010035,  ["growHp"] = 357.435,  ["parameters5"] = 10.8,  ["physicalDef"] = 434,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200352,  ["atk"] = 523,  ["rageSkill"] = 1200352,  ["growMagicDef"] = 32.1,  ["consume2"] = {
+,  ["resPicture3"] = 1200352,  ["atk"] = 567,  ["rageSkill"] = 1200352,  ["growMagicDef"] = 41.73,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200352,  ["magicDef"] = 278,  ["hp"] = 2382.9,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200352,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200352,  ["magicDef"] = 214,  ["hp"] = 1833,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200352,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 76.5,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200351,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 84.63,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200351,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200352,  ["id"] = 20035,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310035,  ["audio"] = 220035,  ["consume5"] = {
 }
-,  ["growAtk"] = 60.45,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020035,}
+,  ["growAtk"] = 110.565,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020035,}
 ,  [20040] = {
-  ["resIcon"] = 1200401,  ["describeStr"] = 1100010040,  ["growHp"] = 274.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 663,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
+  ["resIcon"] = 1200401,  ["describeStr"] = 1100010040,  ["growHp"] = 357.435,  ["parameters5"] = 10.8,  ["physicalDef"] = 434,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200402,  ["atk"] = 523,  ["rageSkill"] = 1200402,  ["growMagicDef"] = 32.1,  ["consume2"] = {
+,  ["resPicture3"] = 1200402,  ["atk"] = 567,  ["rageSkill"] = 1200402,  ["growMagicDef"] = 41.73,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200402,  ["magicDef"] = 278,  ["hp"] = 2382.9,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200402,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200402,  ["magicDef"] = 214,  ["hp"] = 1833,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200402,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 76.5,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200401,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 84.63,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200401,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200402,  ["id"] = 20040,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 1,  ["deadAudio"] = 310040,  ["audio"] = 220040,  ["consume5"] = {
 }
-,  ["growAtk"] = 60.45,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020040,}
+,  ["growAtk"] = 110.565,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020040,}
 ,  [20042] = {
-  ["resIcon"] = 1200421,  ["describeStr"] = 1100010042,  ["growHp"] = 183.3,  ["parameters5"] = 10.8,  ["physicalDef"] = 474,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200421,  ["describeStr"] = 1100010042,  ["growHp"] = 238.29,  ["parameters5"] = 10.8,  ["physicalDef"] = 365,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200422,  ["atk"] = 1055,  ["rageSkill"] = 1200422,  ["growMagicDef"] = 54.75,  ["consume2"] = {
+,  ["resPicture3"] = 1200422,  ["atk"] = 812,  ["rageSkill"] = 1200422,  ["growMagicDef"] = 71.175,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200422,  ["magicDef"] = 474,  ["hp"] = 1588.6,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200422,  ["consume7"] = {
+,  ["ductility"] = 2000,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200422,  ["magicDef"] = 365,  ["hp"] = 1222,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200422,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 54.75,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200421,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 71.175,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200421,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200422,  ["id"] = 20042,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 4,  ["deadAudio"] = 310042,  ["audio"] = 220042,  ["consume5"] = {
 }
-,  ["growAtk"] = 121.8,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020042,}
+,  ["growAtk"] = 158.34,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020042,}
 ,  [20044] = {
-  ["resIcon"] = 1200441,  ["describeStr"] = 1100010044,  ["growHp"] = 146.4,  ["parameters5"] = 10.8,  ["physicalDef"] = 278,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1200441,  ["describeStr"] = 1100010044,  ["growHp"] = 190.32,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }
 ,  ["sellGain"] = {
 }
 ,  ["consume3"] = {
 }
-,  ["resPicture3"] = 1200442,  ["atk"] = 1261,  ["rageSkill"] = 1200442,  ["growMagicDef"] = 76.5,  ["consume2"] = {
+,  ["resPicture3"] = 1200442,  ["atk"] = 970,  ["rageSkill"] = 1200442,  ["growMagicDef"] = 99.45,  ["consume2"] = {
 }
 ,  ["awakeHeroID"] = 0,  ["consume1"] = {
 }
-,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200442,  ["magicDef"] = 663,  ["hp"] = 1268.8,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200442,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 0,  ["break6"] = 0,  ["hit"] = 9600,  ["break5"] = 0,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 0,  ["parameters2"] = 0.8,  ["break3"] = 0,  ["break2"] = 0,  ["break1"] = 0,  ["resPicture"] = 1200442,  ["magicDef"] = 510,  ["hp"] = 976,  ["parameters1"] = 0.1,  ["resPicture4"] = 1200442,  ["consume7"] = {
 }
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
 }
-,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200441,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 41.73,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1200441,  ["sacrificeGain"] = {
 }
 ,  ["resPicture2"] = 1200442,  ["id"] = 20044,  ["consume6"] = {
 }
 ,  ["playerIcon"] = 0,  ["job"] = 2,  ["deadAudio"] = 310044,  ["audio"] = 220044,  ["consume5"] = {
 }
-,  ["growAtk"] = 145.5,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020044,}
+,  ["growAtk"] = 189.15,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 2,  ["nameStr"] = 1000020044,}
 ,  [30060] = {
   ["resIcon"] = 1300601,  ["describeStr"] = 1100010060,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200030060,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -5112,7 +5944,7 @@ hero_config={
 }
 ,  ["growPhysicalDef"] = 50.25,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1300601,  ["sacrificeGain"] = {
   ["107"] = {
-  [1] = 2000,  [2] = 2000,  [3] = 3,}
+  [1] = 8000,  [2] = 8000,  [3] = 3,}
 ,}
 ,  ["resPicture2"] = 1300604,  ["id"] = 30060,  ["consume6"] = {
   ["107"] = {
