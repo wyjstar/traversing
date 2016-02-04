@@ -34,7 +34,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000622,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 95,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 118,}
 ,  [14600281] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 120,}
@@ -209,12 +209,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006241,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
-,  [12000006] = {
-  ["overlay"] = 0,  ["triggerType"] = 8,  ["skill_key"] = 0,  ["triggerRate"] = 8,  ["hitTimes"] = {
+,  [10001111] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 2,  ["id"] = 12000006,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 25,  ["effectPos"] = {
-  ["12"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 0,}
+,  ["continue"] = 2,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10001111,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
+  ["7"] = 1,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 50,}
 ,  [14400141] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 14,}
@@ -418,7 +418,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90006,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11001622,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120006,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 117,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 86,}
 ,  [41002511] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -862,7 +862,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90004,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002822,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120004,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 62,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 68,}
 ,  [14500141] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 60,}
@@ -905,12 +905,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003831,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
-,  [10000921] = {
+,  [11001911] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 90009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000921,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120009,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 65,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11001911,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 110,}
 ,  [41001621] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -929,6 +929,12 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500301,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 504,}
+,  [11003022] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003022,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["7"] = 1,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 16,}
 ,  [14500341] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 80,}
@@ -988,7 +994,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120002,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 162,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 119,}
 ,  [41000631] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -1042,7 +1048,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000321,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 117,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 86,}
 ,  [41001431] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -1199,12 +1205,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002011,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
-,  [21006151] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+,  [12003022] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006151,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 9,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003022,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["7"] = 1,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 32,}
 ,  [21004121] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -1239,8 +1245,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90006,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11001121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120006,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 83,}
+  ["5"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 92,}
 ,  [21002331] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -1336,7 +1342,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11001321,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120009,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 62,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 68,}
 ,  [14000191] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 19,}
@@ -1449,8 +1455,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11001521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120009,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 93,}
+  ["5"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 103,}
 ,  [21004122] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -1600,7 +1606,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000922,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120002,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 64,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 58,}
 ,  [71005012] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 35,  ["hitTimes"] = {
   [1] = 1,}
@@ -1643,12 +1649,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23005112,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
-,  [12000002] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+,  [24000012] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 12000002,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 18,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000012,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 1900,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 28,}
 ,  [24000028] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -1660,7 +1666,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120009,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 56,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 62,}
 ,  [21004331] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -1742,7 +1748,7 @@ skill_buff_config={
 ,  [11002521] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90023,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002521,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90023,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002521,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 19,}
 ,  [21006122] = {
@@ -1756,7 +1762,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90016,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005622,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120016,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 180,}
 ,  [81000371] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 5,  ["hitTimes"] = {
   [1] = 1,}
@@ -1810,13 +1816,13 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002721,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120009,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 56,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 62,}
 ,  [11001722] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90007,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11001722,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120007,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 162,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 119,}
 ,  [21005611] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -1858,7 +1864,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90006,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002921,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120006,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 106,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 77,}
 ,  [14100071] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 53,}
@@ -1918,13 +1924,19 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90071,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 69,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
 ,  [14700021] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 140,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 116,}
+,  [11006222] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 2,  ["replace"] = 2,  ["actEffect"] = 90005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006222,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 16,  ["effectPos"] = {
+  ["6"] = 2,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
 ,  [14100271] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 73,}
@@ -2098,7 +2110,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90073,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 195,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
 ,  [14700421] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 180,}
@@ -2128,7 +2140,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90026,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005622,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120016,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 180,}
 ,  [81000571] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 5,  ["hitTimes"] = {
   [1] = 1,}
@@ -2183,12 +2195,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 51000731,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 14,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 100,}
-,  [81000381] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 10,  ["hitTimes"] = {
+,  [10000821] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 3,  ["id"] = 81000381,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 33,  ["effectPos"] = {
-  ["12"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000821,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["4"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 95,}
 ,  [11001811] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2211,8 +2223,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90018,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006023,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120018,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+  ["4"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [23005931] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2278,7 +2290,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90072,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 69,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
 ,  [23006331] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2308,13 +2320,13 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120009,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 75,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 83,}
 ,  [11004321] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90049,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120024,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
-  ["7"] = 1,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 32,}
+  ["2"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
 ,  [81000321] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 30,  ["hitTimes"] = {
   [1] = 1,}
@@ -2332,7 +2344,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90068,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12002322,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 130,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 96,}
 ,  [51001021] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2350,7 +2362,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 117,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 145,}
 ,  [12005511] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2368,7 +2380,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90074,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 195,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
 ,  [81000131] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 5,  ["hitTimes"] = {
   [1] = 1,}
@@ -2476,7 +2488,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000821,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 58,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 52,}
 ,  [14200311] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 123,}
@@ -2488,7 +2500,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90006,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003922,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120006,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 175,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 129,}
 ,  [12004912] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2536,7 +2548,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 5,  ["actEffect"] = 90003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11001021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 106,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 131,}
 ,  [12006111] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2553,8 +2565,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90045,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004122,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120022,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 130,}
+  ["4"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 72,}
 ,  [12000005] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2598,9 +2610,9 @@ skill_buff_config={
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 150,}
 ,  [30000012] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
+  ["overlay"] = 1,  ["triggerType"] = 11,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000012,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000012,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 20,}
 ,  [14000051] = {
@@ -2620,13 +2632,13 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11001221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 95,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 118,}
 ,  [11005321] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90059,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005321,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120029,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 106,}
 ,  [14000091] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 9,}
@@ -2655,8 +2667,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90050,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120024,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
-  ["7"] = 1,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 32,}
+  ["2"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
 ,  [81000521] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 30,  ["hitTimes"] = {
   [1] = 1,}
@@ -2716,7 +2728,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90011,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004522,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120011,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 160,}
 ,  [14000331] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 33,}
@@ -2776,7 +2788,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90014,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005721,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120014,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 106,}
 ,  [51000131] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2788,11 +2800,11 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90017,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004722,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120017,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 69,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
 ,  [30000013] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
+  ["overlay"] = 1,  ["triggerType"] = 11,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000013,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000013,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 20,}
 ,  [51000611] = {
@@ -2823,8 +2835,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90051,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004922,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120026,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 162,}
 ,  [13005911] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2841,14 +2853,14 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90018,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13006023,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120018,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+  ["4"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [11002021] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90065,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90065,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120033,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 72,}
 ,  [12003011] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2883,8 +2895,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90046,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004122,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120022,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 130,}
+  ["4"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 72,}
 ,  [13005112] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2904,17 +2916,17 @@ skill_buff_config={
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [30000014] = {
-  ["overlay"] = 0,  ["triggerType"] = 8,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  ["overlay"] = 0,  ["triggerType"] = 11,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000014,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 13,  ["effectPos"] = {
+,  ["continue"] = 1,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000014,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 13,  ["effectPos"] = {
   ["12"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 21,}
 ,  [11002221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120009,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 83,}
+  ["5"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 92,}
 ,  [51000421] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2968,7 +2980,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90007,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120007,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 117,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 145,}
 ,  [51001221] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -2986,7 +2998,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90062,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120031,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 130,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 96,}
 ,  [14300231] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 161,}
@@ -2998,7 +3010,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90028,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004522,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120011,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 160,}
 ,  [14300271] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 165,}
@@ -3040,7 +3052,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002621,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 64,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 58,}
 ,  [14200041] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 96,}
@@ -3070,7 +3082,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90031,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004722,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120017,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 69,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
 ,  [30000015] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -3129,8 +3141,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90052,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004922,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120026,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 162,}
 ,  [14100051] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 51,}
@@ -3172,7 +3184,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003021,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
   ["7"] = 1,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 32,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 16,}
 ,  [12004011] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -3188,9 +3200,9 @@ skill_buff_config={
 ,  [12002021] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90066,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12002021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90066,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12002021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120033,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 72,}
 ,  [81000471] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
   [1] = 1,}
@@ -3232,7 +3244,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90027,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13005121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120015,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 160,}
 ,  [11005211] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -3334,7 +3346,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90007,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120007,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 64,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 58,}
 ,  [12004411] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -3358,7 +3370,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90082,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 84,}
 ,  [14000341] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 34,}
@@ -3400,7 +3412,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90075,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003621,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 130,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 96,}
 ,  [24000007] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -3460,7 +3472,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90006,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003821,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120006,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 171,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 125,}
 ,  [81000221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 10,  ["hitTimes"] = {
   [1] = 1,}
@@ -3490,7 +3502,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90077,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 195,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
 ,  [12005011] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -3519,8 +3531,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90020,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006123,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120020,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 115,}
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 84,}
 ,  [12003021] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -3566,9 +3578,9 @@ skill_buff_config={
 ,  [11006211] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 110,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 8,  ["effectPos"] = {
+  ["6"] = 2,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 50,}
 ,  [14400151] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 15,}
@@ -3584,7 +3596,7 @@ skill_buff_config={
 ,  [11004221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 90053,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120023,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
+,  ["continue"] = 2,  ["replace"] = 1,  ["actEffect"] = 90005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120023,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["7"] = 1,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
 ,  [12005211] = {
@@ -3638,9 +3650,9 @@ skill_buff_config={
 ,  [13006321] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90030,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13006321,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120012,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90030,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13006321,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 160,}
 ,  [11006411] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -3669,8 +3681,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90040,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120021,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 103,}
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 114,}
 ,  [12005411] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -3813,10 +3825,10 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90013,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004821,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120013,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 150,}
 ,  [12005811] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 60,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005811,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["1"] = 0,}
@@ -3885,8 +3897,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90047,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120027,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 103,}
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
 ,  [14100101] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 56,}
@@ -3921,8 +3933,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90025,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006123,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120020,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 115,}
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 84,}
 ,  [81000551] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
   [1] = 1,}
@@ -3970,13 +3982,13 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90055,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120028,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 84,}
 ,  [12006211] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 110,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 8,  ["effectPos"] = {
+  ["6"] = 2,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 50,}
 ,  [14100301] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 76,}
@@ -4042,7 +4054,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90057,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120030,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 69,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
 ,  [12006411] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4059,8 +4071,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90041,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004421,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120021,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 103,}
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 114,}
 ,  [51001521] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4137,8 +4149,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90063,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005821,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120032,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 103,}
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 114,}
 ,  [51000531] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4161,8 +4173,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90029,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004821,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120013,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 150,}
 ,  [81000301] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 10,  ["hitTimes"] = {
   [1] = 1,}
@@ -4204,7 +4216,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90019,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13005923,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120019,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 89,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [51001331] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4227,8 +4239,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90048,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120027,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 103,}
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
 ,  [51000532] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4277,66 +4289,42 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 8,}
-,  [11006221] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
-,  [41000511] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000511,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [41002621] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40026,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002621,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [14700461] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 184,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700461,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 918,}
-,  [14400201] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 20,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400201,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 300,}
-,  [12005221] = {
+,  [11006221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90056,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120028,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
+,  ["continue"] = 2,  ["replace"] = 2,  ["actEffect"] = 90005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 14,  ["effectPos"] = {
+  ["6"] = 2,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
 ,  [14700451] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 183,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700451,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 900,}
+,  [41000511] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000511,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
 ,  [14700441] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 182,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 882,}
-,  [30000006] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000006,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 13,  ["effectPos"] = {
-  ["12"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 15,}
-,  [41000831] = {
+,  [41002621] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40013,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000831,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40026,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002621,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [14700431] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 181,}
@@ -4349,6 +4337,18 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 792,}
+,  [14400201] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 20,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400201,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 300,}
+,  [12005221] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90056,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120028,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 84,}
 ,  [14700351] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 173,}
@@ -4361,6 +4361,42 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700341,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 702,}
+,  [30000006] = {
+  ["overlay"] = 0,  ["triggerType"] = 11,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000006,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 13,  ["effectPos"] = {
+  ["12"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 15,}
+,  [41000831] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40013,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000831,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
+,  [14700311] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 169,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 648,}
+,  [14700291] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 167,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700291,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 612,}
+,  [11000112] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000112,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [14700251] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 163,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700251,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 540,}
 ,  [14400281] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 28,}
@@ -4379,12 +4415,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21000511,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 4,}
-,  [14700311] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 169,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 648,}
+,  [24000017] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000017,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 16,}
 ,  [14300011] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 139,}
@@ -4403,12 +4439,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002621,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [14700291] = {
+,  [41002231] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 167,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700291,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 612,}
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002231,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140009,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 72,}
 ,  [51000821] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4427,24 +4463,24 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40017,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001311,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [24000002] = {
+,  [14700151] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 153,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700151,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 360,}
+,  [14700141] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 152,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700141,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 342,}
+,  [21005441] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000002,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005441,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
-,  [14700251] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 163,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700251,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 540,}
-,  [13005721] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90014,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13005721,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120014,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 14,}
 ,  [14300091] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 147,}
@@ -4462,19 +4498,19 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90058,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120030,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 69,}
-,  [60000012] = {
-  ["overlay"] = 0,  ["triggerType"] = 2,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 2,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 60000012,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 13,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 10,}
-,  [14700151] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
+,  [14700081] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 153,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700151,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 146,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700081,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 360,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 234,}
+,  [24000009] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000009,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 33,}
 ,  [14300131] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 151,}
@@ -4487,84 +4523,84 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40020,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001631,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
-,  [14700141] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 152,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700141,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 342,}
-,  [21005041] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005041,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
-,  [14700081] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 146,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700081,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 234,}
-,  [14300171] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 155,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300171,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 330,}
-,  [21004641] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004641,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 20,}
 ,  [14700061] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 144,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700061,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 180,}
-,  [21000911] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21000911,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
 ,  [14700051] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 143,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700051,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 170,}
-,  [14300211] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 159,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 390,}
-,  [81000651] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 5,  ["hitTimes"] = {
+,  [81000421] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 10,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 81000651,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 36,  ["effectPos"] = {
+,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 81000421,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 13,  ["effectPos"] = {
   ["12"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [21003021] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003021,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  [14300171] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 155,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300171,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 330,}
 ,  [14600431] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 135,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600431,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 748,}
-,  [51001621] = {
+,  [14600421] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 134,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 733,}
+,  [21000911] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 51001621,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21000911,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 8000,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
+,  [14600391] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 131,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 686,}
+,  [14300211] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 159,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 390,}
+,  [14600351] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 127,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 624,}
+,  [21003021] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003021,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  [14600331] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 125,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600331,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 592,}
+,  [11006621] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90079,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006621,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["4"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [14300251] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 163,}
@@ -4577,48 +4613,48 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40008,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002111,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140008,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 30,}
-,  [14600421] = {
+,  [82000010] = {
+  ["overlay"] = 1,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 60,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 82000010,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 20,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 1500,}
+,  [21004852] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004852,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  [12002311] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 134,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12002311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 733,}
-,  [14600391] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 131,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 686,}
-,  [14600351] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 127,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 624,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [14300291] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 167,}
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300291,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 510,}
-,  [14600331] = {
+,  [14600221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 125,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600331,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 114,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 592,}
-,  [14000181] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 421,}
+,  [14400101] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 18,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000181,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 10,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400101,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 230,}
-,  [12004221] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 180,}
+,  [14600181] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 90054,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120023,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
+  [1] = 110,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600181,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 358,}
 ,  [14200021] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 94,}
@@ -4637,18 +4673,18 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002222,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 4,}
-,  [14400251] = {
+,  [21002311] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002311,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
+,  [14400241] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 25,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400251,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 24,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400241,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 360,}
-,  [14600221] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 114,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 421,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 348,}
 ,  [14200061] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 98,}
@@ -4661,18 +4697,18 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300371,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 630,}
-,  [21005031] = {
+,  [14600131] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 105,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600131,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 280,}
+,  [51001111] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005031,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 51001111,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 18,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
-,  [14600181] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 110,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600181,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 358,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 100,}
 ,  [21001311] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4691,24 +4727,24 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004412,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 4,}
-,  [21002211] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002211,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  [14500021] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 48,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 93,}
 ,  [51000311] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 51000311,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 800,}
-,  [23005922] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23005922,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  [14600101] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 102,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600101,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 234,}
 ,  [30000007] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4721,54 +4757,54 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300451,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 750,}
-,  [14600131] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 105,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600131,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 280,}
-,  [41000131] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000131,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140001,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
-,  [14200241] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 116,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200241,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 377,}
-,  [14200181] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 110,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200181,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 299,}
-,  [14600101] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 102,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600101,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 234,}
 ,  [14600081] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 100,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600081,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 202,}
-,  [12005821] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90064,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005821,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120032,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 103,}
 ,  [12002011] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12002011,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [23006041] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23006041,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 11,}
+,  [14200181] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 110,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200181,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 299,}
+,  [21004431] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004431,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  [14600021] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 94,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [12005821] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90064,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005821,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120032,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 114,}
+,  [14600011] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 93,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600011,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 69,}
 ,  [14200221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 114,}
@@ -4781,36 +4817,6 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001121,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140005,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
-,  [24000017] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000017,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 16,}
-,  [23006011] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23006011,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
-,  [14600021] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 94,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [14200261] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 118,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200261,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 403,}
-,  [14600011] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 93,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600011,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 69,}
 ,  [14500461] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 92,}
@@ -4823,6 +4829,36 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500451,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 720,}
+,  [14000181] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 18,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000181,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 230,}
+,  [14200261] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 118,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200261,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 403,}
+,  [14500431] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 89,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500431,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 691,}
+,  [14500421] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 88,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 676,}
+,  [14500411] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 87,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500411,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 662,}
 ,  [21001711] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4841,66 +4877,66 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004812,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 4,}
-,  [14000141] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 14,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000141,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 190,}
-,  [51001111] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 51001111,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 18,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 100,}
-,  [14500431] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 89,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500431,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 691,}
-,  [14200341] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 126,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200341,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 507,}
-,  [14500421] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 88,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 676,}
-,  [14500411] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 87,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500411,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 662,}
 ,  [14500401] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 86,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500401,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 648,}
+,  [21003821] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003821,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
 ,  [14500391] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 85,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 633,}
-,  [14200381] = {
+,  [14200341] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 130,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200381,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 126,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200341,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 559,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 507,}
 ,  [14500371] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 83,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500371,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 604,}
+,  [14300151] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 153,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300151,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 300,}
+,  [14500351] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 81,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 576,}
+,  [14500331] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 79,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500331,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 547,}
+,  [14200381] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 130,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200381,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 559,}
+,  [11000522] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90006,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000522,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120006,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 129,}
 ,  [60000031] = {
   ["overlay"] = 0,  ["triggerType"] = 2,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4913,12 +4949,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 51001431,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 14,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 200,}
-,  [12004021] = {
+,  [14500291] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90078,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  [1] = 75,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500291,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 195,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 489,}
 ,  [14200421] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 134,}
@@ -4937,12 +4973,12 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13006012,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [14500351] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 81,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 576,}
+,  [21006551] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006551,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
 ,  [21002031] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4955,18 +4991,18 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200461,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 663,}
-,  [14500331] = {
+,  [14500271] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 79,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500331,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 73,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500271,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 547,}
-,  [11004623] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 460,}
+,  [14500261] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90043,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004623,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120025,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+  [1] = 72,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500261,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 446,}
 ,  [21004141] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -4979,42 +5015,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002111,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 9,}
-,  [14500291] = {
+,  [10000911] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 75,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500291,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 489,}
-,  [14300281] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 166,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300281,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 495,}
-,  [14500271] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 73,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500271,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 460,}
-,  [21004221] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
-,  [14500261] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 72,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500261,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000911,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 446,}
-,  [14300351] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 173,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 600,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [14500221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 68,}
@@ -5027,12 +5033,18 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 374,}
-,  [21006211] = {
+,  [21004221] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006211,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 17,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
+,  [81000591] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 3,  ["id"] = 81000591,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 34,  ["effectPos"] = {
+  ["12"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
 ,  [14500191] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 65,}
@@ -5045,23 +5057,47 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500171,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 316,}
-,  [21003421] = {
+,  [10000521] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90004,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120004,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 220,}
+,  [14300381] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 176,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300381,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 645,}
+,  [14100351] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 81,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 480,}
+,  [14500071] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 53,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500071,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 172,}
+,  [14500061] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 52,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500061,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+,  [21005551] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003421,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005551,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [14100391] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 85,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 528,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 16,}
 ,  [12006221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
-  ["2"] = 0,}
+,  ["continue"] = 2,  ["replace"] = 2,  ["actEffect"] = 90010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006221,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 14,  ["effectPos"] = {
+  ["6"] = 2,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
 ,  [41000611] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
@@ -5081,18 +5117,18 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002721,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
+,  [14500031] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 49,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500031,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 109,}
 ,  [14200171] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 109,}
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200171,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 286,}
-,  [14300441] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 182,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 735,}
 ,  [30000008] = {
   ["overlay"] = 0,  ["triggerType"] = 2,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
   [1] = 1,}
@@ -5104,19 +5140,19 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 106,}
-,  [14500071] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 131,}
+,  [14500011] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 53,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500071,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 47,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500011,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 172,}
-,  [14200201] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 112,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200201,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 325,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 64,}
+,  [21001821] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21001821,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 6,}
 ,  [21004541] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5129,89 +5165,89 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002511,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
-,  [21004031] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+,  [12005822] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 60,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004031,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 90010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005822,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
 ,  [21005612] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005612,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [21005531] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005531,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 22,}
-,  [21004621] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004621,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
-,  [11003321] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 93,}
-,  [81000461] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 10,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 1,  ["id"] = 81000461,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 32,  ["effectPos"] = {
-  ["12"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [14500031] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 49,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500031,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 109,}
-,  [21004131] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004131,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [14500011] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 47,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500011,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 64,}
-,  [21004211] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004211,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
 ,  [14400451] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 45,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400451,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 600,}
-,  [21004231] = {
+,  [21004621] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004231,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004621,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
+,  [21004031] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004031,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
+,  [11004623] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90043,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004623,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120025,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 160,}
+,  [11003321] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
+  ["3"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 103,}
+,  [81000461] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 10,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 1,  ["id"] = 81000461,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 32,  ["effectPos"] = {
+  ["12"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
 ,  [14400431] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 43,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400431,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 576,}
+,  [21004131] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004131,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  [14400411] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 41,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400411,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 552,}
+,  [21004211] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004211,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
+,  [14400391] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 39,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 528,}
 ,  [12006421] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 90010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
-  ["7"] = 1,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 90010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["6"] = 3,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 32,}
 ,  [41001411] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
@@ -5219,42 +5255,18 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40018,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001411,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [14400411] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 41,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400411,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 552,}
-,  [21004431] = {
+,  [21004231] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004431,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004231,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [11003511] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003511,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [14400391] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 39,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 528,}
-,  [21002831] = {
+,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
+,  [23005131] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002831,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23005131,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 9,}
-,  [14600031] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 95,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600031,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 117,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 20,}
 ,  [14400361] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 36,}
@@ -5267,6 +5279,30 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 480,}
+,  [21002831] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002831,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 9,}
+,  [14600031] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 95,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600031,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 117,}
+,  [11003511] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003511,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [11005311] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [21004941] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5285,36 +5321,42 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600071,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 187,}
-,  [14400161] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 16,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400161,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 252,}
-,  [14200391] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 131,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 572,}
-,  [21005021] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005021,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
 ,  [24000015] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000015,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 0,}
+,  [14000301] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 30,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000301,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 350,}
+,  [21005021] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005021,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
+,  [12006222] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 2,  ["replace"] = 2,  ["actEffect"] = 90010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006222,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 16,  ["effectPos"] = {
+  ["6"] = 2,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
 ,  [14600111] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 103,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600111,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 249,}
+,  [14400251] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 25,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400251,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 360,}
 ,  [21004851] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5326,13 +5368,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003721,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 72,}
-,  [13005712] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13005712,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 65,}
 ,  [21002032] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5345,24 +5381,24 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600151,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 312,}
-,  [14400101] = {
+,  [13005712] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 10,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400101,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13005712,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 180,}
-,  [14300151] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 153,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300151,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 300,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [23005922] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23005922,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
 ,  [12006621] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90080,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12006621,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 89,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [41002211] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5375,28 +5411,28 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600191,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 374,}
-,  [11003811] = {
+,  [11000722] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003811,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90007,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000722,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120007,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["3"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 69,}
 ,  [21004222] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004222,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [12002311] = {
+,  [21005031] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005031,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
+,  [11003811] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12002311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [12003511] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003511,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11003811,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [14600231] = {
@@ -5405,12 +5441,12 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600231,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 436,}
-,  [14100201] = {
+,  [14200431] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 66,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100201,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 135,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200431,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 300,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 624,}
 ,  [41000421] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5435,30 +5471,30 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600271,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 499,}
-,  [14400241] = {
+,  [23005911] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23005911,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
+,  [14400161] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 24,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400241,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 16,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400161,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 348,}
-,  [14200441] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 136,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 637,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 252,}
 ,  [21005421] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005421,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
-,  [82000010] = {
-  ["overlay"] = 1,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 60,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 82000010,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 20,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 1500,}
+,  [14200371] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 129,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200371,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 546,}
 ,  [14600311] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 123,}
@@ -5478,71 +5514,71 @@ skill_buff_config={
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [30000009] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
+  ["overlay"] = 0,  ["triggerType"] = 11,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000009,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 11,  ["effectPos"] = {
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000009,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 11,  ["effectPos"] = {
   ["12"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 15,}
-,  [21005551] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005551,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 16,}
-,  [14500041] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 50,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500041,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 123,}
-,  [14400441] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 44,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 588,}
 ,  [14400051] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 5,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400051,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 114,}
-,  [11005611] = {
+,  [14500041] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 50,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500041,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 123,}
+,  [21005531] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005611,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [14100351] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005531,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 22,}
+,  [14400441] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 81,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 44,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 480,}
-,  [14500081] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 588,}
+,  [14300441] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 54,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500081,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 182,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 187,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 735,}
 ,  [14300431] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 181,}
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300431,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 720,}
+,  [14500081] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 54,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500081,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 187,}
+,  [14300411] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 179,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300411,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 690,}
 ,  [21004622] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004622,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [11004311] = {
+,  [14300391] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
+  [1] = 177,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 110,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 660,}
 ,  [21003631] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5555,12 +5591,12 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 244,}
-,  [14300411] = {
+,  [11004311] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 179,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300411,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 690,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 110,}
 ,  [41001221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5591,48 +5627,48 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006131,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
-,  [81000591] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 3,  ["id"] = 81000591,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 34,  ["effectPos"] = {
-  ["12"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
+,  [14300351] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 173,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 600,}
 ,  [21005821] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005821,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [14300391] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 177,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 660,}
+,  [21006151] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006151,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 9,}
 ,  [14500201] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 66,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500201,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 360,}
-,  [14300381] = {
+,  [21006211] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006211,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 17,}
+,  [14300331] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 176,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300381,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 171,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300331,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 645,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 570,}
 ,  [21006251] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006251,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 18,}
-,  [21003821] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003821,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
 ,  [21002832] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5645,30 +5681,30 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500241,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 417,}
-,  [14300331] = {
+,  [14300281] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 171,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300331,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 166,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300281,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 570,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 495,}
 ,  [12003111] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003111,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [10001111] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 2,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10001111,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
-  ["7"] = 1,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 50,}
-,  [21005441] = {
+,  [21000521] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005441,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21000521,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 14,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 3,}
+,  [81000051] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 5,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 81000051,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 15,  ["effectPos"] = {
+  ["12"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
 ,  [14500281] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 74,}
@@ -5687,12 +5723,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005022,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
-,  [21006551] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+,  [11005611] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006551,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005611,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [14400011] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5705,12 +5741,12 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500321,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 532,}
-,  [11000522] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+,  [60000012] = {
+  ["overlay"] = 0,  ["triggerType"] = 2,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90006,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000522,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120006,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 175,}
+,  ["continue"] = -1,  ["replace"] = 2,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 60000012,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 13,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 10,}
 ,  [41002021] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5735,18 +5771,18 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500361,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 590,}
-,  [11001911] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11001911,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 110,}
 ,  [11004711] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11004711,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [14200141] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 106,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200141,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 247,}
 ,  [21006221] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5765,12 +5801,6 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000231,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140002,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
-,  [11005521] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90061,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120031,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 130,}
 ,  [14000121] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 12,}
@@ -5783,6 +5813,12 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000131,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 180,}
+,  [14000141] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 14,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000141,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 190,}
 ,  [14400131] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 13,}
@@ -5795,54 +5831,54 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 705,}
-,  [11000722] = {
+,  [14200211] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90007,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000722,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120007,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 95,}
+  [1] = 113,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 338,}
 ,  [21000211] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21000211,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 4,}
-,  [21004332] = {
+,  [23006011] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004332,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23006011,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
 ,  [14400171] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 17,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400171,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 264,}
-,  [14000301] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 30,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000301,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 350,}
-,  [21002321] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
-,  [11005311] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [82000012] = {
   ["overlay"] = 1,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 60,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 82000012,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
+,  [21002321] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
+,  [12003511] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003511,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [14200441] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 136,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 637,}
 ,  [14400211] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 21,}
@@ -5855,16 +5891,16 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40024,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000711,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [12003621] = {
+,  [14000441] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90076,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003621,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 130,}
+  [1] = 44,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 490,}
 ,  [30000010] = {
-  ["overlay"] = 0,  ["triggerType"] = 8,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  ["overlay"] = 0,  ["triggerType"] = 11,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000010,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 11,  ["effectPos"] = {
+,  ["continue"] = 1,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 30000010,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 11,  ["effectPos"] = {
   ["12"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 18,}
 ,  [21006541] = {
@@ -5879,12 +5915,6 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004511,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
-,  [14000441] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 44,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000441,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 490,}
 ,  [14000451] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 45,}
@@ -5896,13 +5926,19 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90015,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120015,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
-,  [24000012] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 160,}
+,  [14200391] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 131,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 572,}
+,  [12003611] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000012,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 28,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003611,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [14400291] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 29,}
@@ -5915,18 +5951,18 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40015,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001031,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
-,  [14200431] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 135,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200431,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 624,}
-,  [12003611] = {
+,  [12003621] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003611,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90076,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12003621,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["3"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 96,}
+,  [14200351] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 127,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 520,}
 ,  [14300021] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 140,}
@@ -5939,18 +5975,18 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400331,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 456,}
-,  [14200371] = {
+,  [14200241] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 129,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200371,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 116,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200241,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 546,}
-,  [14200351] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 377,}
+,  [14200231] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 127,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200351,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 115,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200231,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 520,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 364,}
 ,  [21000611] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -5969,12 +6005,12 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14400371,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 504,}
-,  [23005131] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23005131,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 20,}
+,  [14200201] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 112,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200201,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 325,}
 ,  [21002721] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6005,18 +6041,18 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40019,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001511,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [14200231] = {
+,  [21004332] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004332,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  [11005511] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 115,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200231,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005511,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 364,}
-,  [14500021] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 48,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 93,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [14300141] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 152,}
@@ -6029,24 +6065,24 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004911,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 20,}
-,  [14200211] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 113,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 338,}
-,  [11005511] = {
+,  [11005521] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005511,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90061,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120031,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["3"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 96,}
+,  [51001621] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 51001621,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 8000,}
+,  [11006111] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006111,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [14500061] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 52,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14500061,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
 ,  [14300181] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 156,}
@@ -6065,18 +6101,18 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40022,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001831,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
-,  [11006111] = {
+,  [14100121] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 58,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 204,}
+,  [12004021] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006111,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90078,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004021,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [21001821] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21001821,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 6,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
 ,  [14300221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 160,}
@@ -6089,12 +6125,12 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23006012,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
-,  [14200141] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 106,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200141,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 247,}
+,  [12000006] = {
+  ["overlay"] = 0,  ["triggerType"] = 8,  ["skill_key"] = 0,  ["triggerRate"] = 8,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 2,  ["id"] = 12000006,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130002,  ["slowactTime"] = -1,  ["effectId"] = 25,  ["effectPos"] = {
+  ["12"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 0,}
 ,  [21003041] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6113,18 +6149,18 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14300261,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 465,}
-,  [41001711] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+,  [12000002] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40021,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001711,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [21000521] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21000521,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+,  ["continue"] = 1,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 12000002,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 18,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 3,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 1900,}
+,  [14100221] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 68,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 324,}
 ,  [21003121] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6155,18 +6191,18 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40023,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002311,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [21004852] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004852,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [10000821] = {
+,  [14200031] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 95,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200031,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 98,}
+,  [12004221] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000821,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 95,}
+,  ["continue"] = 2,  ["replace"] = 1,  ["actEffect"] = 90010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120023,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+  ["7"] = 1,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 21,}
 ,  [14300341] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 172,}
@@ -6179,48 +6215,48 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005311,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 20,}
-,  [23005911] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23005911,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
 ,  [23006051] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23006051,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [14200031] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 95,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14200031,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 98,}
-,  [41000521] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000521,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [11005911] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005911,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [14000391] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 39,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 440,}
+,  [41000521] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000521,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
+,  [11005923] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90019,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005923,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120019,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["4"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [21002322] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002322,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [11005923] = {
+,  [14100391] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90019,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005923,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120019,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 89,}
+  [1] = 85,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 528,}
 ,  [82000014] = {
   ["overlay"] = 1,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 60,  ["hitTimes"] = {
   [1] = 1,}
@@ -6243,8 +6279,8 @@ skill_buff_config={
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90044,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004623,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 120025,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 160,}
 ,  [30000011] = {
   ["overlay"] = 0,  ["triggerType"] = 2,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
   [1] = 1,}
@@ -6286,13 +6322,25 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006321,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 160,}
 ,  [14100161] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 62,}
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100161,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 252,}
+,  [14100231] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 69,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100231,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 336,}
+,  [14100171] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 63,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100171,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 264,}
 ,  [21006152] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6304,7 +6352,7 @@ skill_buff_config={
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90067,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11002322,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 130,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 96,}
 ,  [81000611] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 5,  ["hitTimes"] = {
   [1] = 1,}
@@ -6314,55 +6362,43 @@ skill_buff_config={
 ,  [11006421] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 90010,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
-  ["7"] = 1,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 90005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006421,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["6"] = 3,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 32,}
-,  [14100181] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 64,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100181,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 276,}
-,  [11006521] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90081,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 76,}
 ,  [14100211] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 67,}
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100211,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 312,}
-,  [41002431] = {
+,  [11006521] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40012,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002431,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90081,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
   ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
-,  [11006621] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 84,}
+,  [14100201] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90079,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006621,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["4"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 89,}
+  [1] = 66,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100201,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 300,}
 ,  [41001321] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40017,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
-,  [14100231] = {
+,  [14100191] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 69,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100231,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 65,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100191,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 336,}
-,  [41002631] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 288,}
+,  [41002431] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40026,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002631,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40012,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002431,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
 ,  [23005741] = {
@@ -6371,36 +6407,36 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23005741,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
-,  [14100221] = {
+,  [14100181] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 68,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100221,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 64,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100181,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 324,}
-,  [14100241] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 276,}
+,  [41002631] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 70,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100241,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 348,}
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40026,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002631,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
 ,  [21004832] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004832,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
-,  [14100191] = {
+,  [14100241] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 65,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100191,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 70,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100241,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 288,}
-,  [14100171] = {
+,  ["effectRole"] = 1,  ["valueEffect"] = 348,}
+,  [14100131] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 63,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100171,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 59,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100131,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 264,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
 ,  [21001811] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6413,24 +6449,6 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120002,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 220,}
-,  [14100131] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 59,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100131,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
-,  [14100121] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 58,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14100121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 204,}
-,  [21003921] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003921,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 9,}
 ,  [11002712] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6443,30 +6461,48 @@ skill_buff_config={
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [21003921] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003921,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 9,}
 ,  [12005321] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90060,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12005321,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120029,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 144,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 106,}
 ,  [10000321] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000321,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 220,}
-,  [14000391] = {
+,  [14000171] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 39,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000391,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 17,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000171,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 440,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 220,}
 ,  [51000932] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 51000932,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 450,}
+,  [21003421] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003421,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
+,  [14000041] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 4,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000041,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 86,}
 ,  [23006013] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6485,30 +6521,6 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003042,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [14000171] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 17,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000171,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 220,}
-,  [10000521] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90004,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000521,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120004,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 220,}
-,  [41002121] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40008,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002121,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140008,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 48,}
-,  [14000041] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 4,}
-,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14000041,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 86,}
 ,  [82000013] = {
   ["overlay"] = 1,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 60,  ["hitTimes"] = {
   [1] = 1,}
@@ -6521,12 +6533,12 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 82000007,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 18,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 1500,}
-,  [10000721] = {
+,  [41002121] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 90007,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000721,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120007,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["3"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 105,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40008,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002121,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140008,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 48,}
 ,  [81000681] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 30,  ["hitTimes"] = {
   [1] = 1,}
@@ -6545,6 +6557,30 @@ skill_buff_config={
 ,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 81000661,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 36,  ["effectPos"] = {
   ["12"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
+,  [81000651] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 5,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 81000651,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 36,  ["effectPos"] = {
+  ["12"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
+,  [10000721] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 90007,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000721,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120007,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["3"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 105,}
+,  [81000631] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 81000631,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 7,  ["effectPos"] = {
+  ["12"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
+,  [21004241] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004241,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 8,}
 ,  [41000331] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6563,42 +6599,36 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700031,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 136,}
-,  [81000631] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 20,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 81000631,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 7,  ["effectPos"] = {
-  ["12"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [21004241] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004241,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 8,}
-,  [21004321] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
 ,  [21004341] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004341,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
+,  [10000921] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 90009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000921,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120009,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 65,}
+,  [21004321] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
+,  [21004641] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004641,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 20,}
 ,  [14700071] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 145,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700071,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 216,}
-,  [24000009] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000009,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 33,}
 ,  [21004741] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6611,12 +6641,18 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10001121,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 26,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 50,}
-,  [81000421] = {
+,  [81000381] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 10,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 81000421,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 13,  ["effectPos"] = {
+,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 3,  ["id"] = 81000381,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 33,  ["effectPos"] = {
   ["12"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
+,  [21005041] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005041,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
 ,  [14700111] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 149,}
@@ -6629,48 +6665,48 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21006511,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 15,}
-,  [10000911] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000911,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [41000811] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40013,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000811,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [81000051] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 5,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 4,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 81000051,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 15,  ["effectPos"] = {
-  ["12"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
-,  [21004513] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004513,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 6,}
 ,  [21005833] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21005833,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 6,}
+,  [41000811] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40013,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000811,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
+,  [21002911] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002911,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 6,}
+,  [21004513] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004513,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 6,}
+,  [13005721] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 90014,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 13005721,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120014,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["3"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 106,}
 ,  [21003522] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003522,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [10000511] = {
+,  [41002321] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000511,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 150,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40023,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
 ,  [21002531] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6683,96 +6719,78 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700191,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 432,}
-,  [41002321] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40023,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002321,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 80,}
-,  [21002911] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002911,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 6,}
-,  [41001131] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001131,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140005,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
-,  [21002611] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002611,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
-,  [14700231] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 161,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700231,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 504,}
-,  [41002231] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40009,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002231,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140009,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
-  ["2"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 72,}
 ,  [41002031] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40007,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41002031,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140007,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 72,}
-,  [21004721] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004721,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [12000003] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 1,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 12000003,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 18,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 2100,}
-,  [14700271] = {
+,  [41001711] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 165,}
-,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700271,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40021,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001711,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
+,  [41001131] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001131,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140005,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
+,  [10000311] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 576,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [14700231] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 161,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700231,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 504,}
 ,  [41001211] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40016,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001211,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 50,}
+,  [12004111] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004111,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [21004721] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004721,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
 ,  [41000931] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40014,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000931,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
-,  [21001011] = {
+,  [14700271] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 165,}
+,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14700271,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 576,}
+,  [24000002] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21001011,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000002,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 4,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
 ,  [23005121] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23005121,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
-,  [21004833] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004833,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
 ,  [24000037] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6785,6 +6803,24 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 24000030,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 40,}
+,  [21004833] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21004833,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
+,  [12000003] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 1,  ["replace"] = 6,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 12000003,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 18,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 2100,}
+,  [11005822] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 1,  ["replace"] = 1,  ["actEffect"] = 90005,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11005822,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120005,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
 ,  [41001611] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6803,72 +6839,66 @@ skill_buff_config={
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600041,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 133,}
-,  [23006041] = {
+,  [21001011] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23006041,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 12,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21001011,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 11,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 4,}
 ,  [21003922] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003922,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
-,  [11000112] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11000112,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [51000631] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 51000631,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 2000,}
-,  [60000041] = {
-  ["overlay"] = 0,  ["triggerType"] = 2,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 3,  ["replace"] = 2,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 60000041,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 27,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 800,}
 ,  [23006341] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 23006341,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 10,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 20,}
+,  [60000041] = {
+  ["overlay"] = 0,  ["triggerType"] = 2,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 3,  ["replace"] = 2,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 60000041,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 130001,  ["slowactTime"] = -1,  ["effectId"] = 27,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 800,}
 ,  [11006012] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 11006012,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
+,  [41000131] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41000131,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 140001,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
+  ["2"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
 ,  [41001931] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 2,  ["actEffect"] = 40006,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 41001931,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 30,  ["effectPos"] = {
   ["2"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 120,}
-,  [21003011] = {
-  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+,  [10000511] = {
+  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003011,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
-  ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 8,}
+,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10002,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000511,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110002,  ["slowactTime"] = -1,  ["effectId"] = 2,  ["effectPos"] = {
+  ["1"] = 0,}
+,  ["effectRole"] = 1,  ["valueEffect"] = 150,}
 ,  [14600121] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 104,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600121,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 265,}
-,  [10000311] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000311,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,  [21003311] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
@@ -6887,28 +6917,34 @@ skill_buff_config={
 ,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21001911,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
   ["11"] = 0,}
 ,  ["effectRole"] = 2,  ["valueEffect"] = 5,}
+,  [21002211] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002211,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 12,}
 ,  [14600161] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 108,}
 ,  ["continue"] = 1,  ["replace"] = 2,  ["actEffect"] = 90008,  ["levelEffectValue"] = 0,  ["valueType"] = 1,  ["performanceWeight"] = 0,  ["id"] = 14600161,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 120008,  ["slowactTime"] = -1,  ["effectId"] = 3,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 327,}
-,  [21002311] = {
+,  [21002611] = {
   ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
-,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002311,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21002611,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 6,  ["effectPos"] = {
   ["11"] = 0,}
-,  ["effectRole"] = 2,  ["valueEffect"] = 10,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 13,}
+,  [21003011] = {
+  ["overlay"] = 1,  ["triggerType"] = 1,  ["skill_key"] = 0,  ["triggerRate"] = 100,  ["hitTimes"] = {
+  [1] = 1,}
+,  ["continue"] = -1,  ["replace"] = 1,  ["actEffect"] = 0,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 21003011,  ["isDamage"] = 0,  ["slowactEffect"] = 0,  ["audioId"] = 0,  ["slowactTime"] = -1,  ["effectId"] = 4,  ["effectPos"] = {
+  ["11"] = 0,}
+,  ["effectRole"] = 2,  ["valueEffect"] = 8,}
 ,  [10000711] = {
   ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
   [1] = 1,}
 ,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10003,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 10000711,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110003,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
-  ["1"] = 0,}
-,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
-,  [12004111] = {
-  ["overlay"] = 0,  ["triggerType"] = 3,  ["skill_key"] = 1,  ["triggerRate"] = 100,  ["hitTimes"] = {
-  [1] = 1,}
-,  ["continue"] = 0,  ["replace"] = 1,  ["actEffect"] = 10001,  ["levelEffectValue"] = 0,  ["valueType"] = 2,  ["performanceWeight"] = 0,  ["id"] = 12004111,  ["isDamage"] = 1,  ["slowactEffect"] = 0,  ["audioId"] = 110001,  ["slowactTime"] = -1,  ["effectId"] = 1,  ["effectPos"] = {
   ["1"] = 0,}
 ,  ["effectRole"] = 1,  ["valueEffect"] = 100,}
 ,}

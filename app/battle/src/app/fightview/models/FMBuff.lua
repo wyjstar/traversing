@@ -84,7 +84,7 @@ function FMBuff:perform_buff(owner, result)
         print("attacker_side============")
         print(self.process.army)
         if not attacker.is_monster then
-            result.value = unpara(attacker, owner, self.skill_buff_info, self.process.playerLevel, extra_msgs)
+            result.value = unpara(attacker, self.skill_buff_info)
         else
             result.value = unpara_monster(attacker.boss.atk, owner, extra_msgs)
         end
@@ -122,6 +122,7 @@ function FMBuff:perform_buff(owner, result)
 end
 
 function FMBuff:get_buff_value_util(owner)
+    local effect_id = self.skill_buff_info.effectId
     if effect_id == 6 then
         return get_buff_value(owner.atk, self)
     elseif effect_id == 7 then
@@ -176,6 +177,7 @@ function FMBuff:str_data()
     temp = temp.."--是否叠加:"..tostring(buff_info.overlay)
     temp = temp.."--替换权重:"..tostring(buff_info.replace)
     temp = temp.."--触发率:"..tostring(buff_info.triggerRate)
+    temp = temp.."--值:"..tostring(self.value)
     return temp
 end
 -- 数值处理小数点的数值, 返回string

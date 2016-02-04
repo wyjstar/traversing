@@ -53,6 +53,7 @@ function CommonData:updateRefreshTime24(task,dt)
     getNetManager():getActivityNet():sendGetLoginGiftListMsg()      -- 累计登陆奖励
     getNetManager():getActivityNet():sendZcjbGetdata()              -- 招财进宝奖励
     getNetManager():getActivityNet():sendGetBrewInfoMsg()           -- 煮酒数据
+    getNetManager():getActivityNet():sendGetLegionList()            -- 军团活动奖励
     getNetManager():getInstanceNet():sendGetAllStageInfoMsg()       -- 全部关卡信息
     getNetManager():getLoginNet():sendRefreshPlayer()               -- 刷新登陆信息
     getNetManager():getSignNet():sendGetSignListMsg()               -- 签到刷新
@@ -266,7 +267,7 @@ end
 
 --次日开启功能是否已开启过
 function CommonData:getIsCiriOpend()
-    return self.isCiriOpened
+    return self.isCiriOpened ~= 0 
 end
 
 function CommonData:setPowerRank(rank)
@@ -405,14 +406,17 @@ end
 -- 元气
 function CommonData:setYuanqi(num)
     self:setFinance(RES_TYPE.YUANQI, num)
+    self:dispatchEvent(EventName.UPDATE_YUANQI)
 end
 -- 元气
 function CommonData:subYuanqi(num)
     self:subFinance(RES_TYPE.YUANQI, num)
+    self:dispatchEvent(EventName.UPDATE_YUANQI)
 end
 -- 元气
 function CommonData:addYuanqi(num)
     self:addFinance(RES_TYPE.YUANQI, num)
+    self:dispatchEvent(EventName.UPDATE_YUANQI)
 end
 --是否有Vip礼包
 function CommonData:getVipGift()
@@ -589,6 +593,10 @@ function CommonData:setUserName(cur_name)
 end
 
 function CommonData:getUserName() return self.nickname end
+--判定是否创建昵称
+function CommonData:isCreateUserName()
+    return self.nickname ~= nil and self.nickname ~= "" 
+end
 
 --vip
 function CommonData:setVip(cur_vip)
@@ -638,6 +646,13 @@ function CommonData:setLevel(level)
         self:dispatchEvent(EventName.UPDATE_ACTIVE)
         self:dispatchEvent(EventName.UPDATE_LEVEL)
 
+        if self.oldLevel and self.oldLevel >0 then
+            local newFeatures = FeaturesOPEN.checkNewFeatures(1,self.level)
+            if newFeatures and #newFeatures > 0 then
+                self:dispatchEvent(EventName.UPDATE_NEW_FEATURE)
+            end
+        end
+
         -- 将等级写入到userdefault中
         saveTeamLevel(self.level)
     end 
@@ -681,10 +696,22 @@ end
 --[[--
     增加精力
 ]]
-function CommonData:addEnergy()
+function CommonData:addEnergy(num)
       self:addFinance(RES_TYPE.ENERGY, num)
 end
 
+--[[--
+    获取召唤石数量
+]]
+function CommonData:getCallStone()
+       return self:getFinance(RES_TYPE.CALL_STONE)
+end
+--[[--
+    增加召唤石
+]]
+function CommonData:addCallStone(num)
+      self:addFinance(RES_TYPE.CALL_STONE, num)
+end
 --元宝
 function CommonData:setGold(cur_gold)
     -- self.gold = cur_gold

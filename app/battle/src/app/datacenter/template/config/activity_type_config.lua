@@ -4,7 +4,7 @@ activity_type_config={
 ,  [2] = {
   ["index"] = 10,  ["id"] = 2,  ["duration"] = 3,  ["page"] = 1,  ["is_open"] = 0,  ["special"] = 0,  ["parameterT"] = "7",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "LOGIN_CONTINUE",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [3] = {
-  ["index"] = 80,  ["id"] = 3,  ["duration"] = 1,  ["page"] = 1,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2019-01-01 00:00:01",  ["activity_key"] = "REWARD_LEVELUP",  ["timeEnd"] = "2019-12-31 23:59:59",}
+  ["index"] = 80,  ["id"] = 3,  ["duration"] = 1,  ["page"] = 1,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "REWARD_LEVELUP",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [4] = {
   ["index"] = 220,  ["id"] = 4,  ["duration"] = 1,  ["page"] = 2,  ["is_open"] = 1,  ["special"] = 0,  ["parameterT"] = "0",  ["timeStart"] = "2015-01-01 00:00:01",  ["activity_key"] = "ACTIVITY_ONLINE",  ["timeEnd"] = "2019-12-31 23:59:59",}
 ,  [5] = {

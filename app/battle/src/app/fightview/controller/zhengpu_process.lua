@@ -281,6 +281,14 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
     for _, skill_buff_info in pairs(skill:get_after_skill_buffs()) do
         self:before_or_after_skill(skill_buff_info, main_target_units, viewMainTargetPos)
     end
+
+    -- 移除triggerType==11的buff
+    for i=1,6 do
+        local target_unit = main_target_units[i]
+        if target_unit then
+            target_unit.buff_manager:remove(11)
+        end
+    end
     skill:clear()
     -- 在攻击技能触发完成后，处理mp
     skill:add_mp(is_mp_skill)
@@ -293,6 +301,9 @@ function FightProcess:perform_buff_skill(army, enemy, attacker)
         self.buddy_skill:add_mp()
         print("buddy_skills1===="..self.buddy_skill.mp)
     end
+
+
+
     -- 构造播放攻击所需的所有信息
     local skillType = skill:get_skill_type()
     print("skillType========"..skillType)

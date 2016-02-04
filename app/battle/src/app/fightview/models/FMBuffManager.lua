@@ -132,6 +132,7 @@ function FMBuffManager:_add_buff(buff, effect_id, replace, result)
         appendFile2("buff前："..self.owner:str_data(), 1)
     end
     if buff.continue_num > 0 then
+        buff.value = buff:get_buff_value_util(self.owner)
         if replace then
             self.buffs[effect_id] = {buff}
         else
@@ -146,12 +147,14 @@ function FMBuffManager:_add_buff(buff, effect_id, replace, result)
 
 end
 
-function FMBuffManager:remove(buff)
+function FMBuffManager:remove(triggerType)
+    print("FMBuffManager:remove======")
     for k,v in pairs(self.buffs) do
         temp = {}
         for _, buff in pairs(v) do
-            buff.continue_num = buff.continue_num - 1
-            if buff.continue_num > 0 then
+            --buff.continue_num = buff.continue_num - 1
+            print("triggerType======", buff.skill_buff_info.triggerType)
+            if buff.skill_buff_info.triggerType ~= triggerType then
                 table.insert(temp, buff)
             end
         end
