@@ -229,8 +229,7 @@
         "channel": "xinge"
     },
     "deploy":{
-        "channel": "taiwan",
-        "remote_deployed": false
+        "remote_deployed": true
     },
     "open_time": "<=open_time=>",
     "server_no": "<=server_no=>"
