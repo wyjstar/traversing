@@ -151,8 +151,8 @@ class ConnectionManager:
             # if dynamic_id != 0:
             #     remote_gate = GlobalObject().remote['gate']
             #     remote_gate.net_conn_lost_remote_noresult(connection_id)
-        except IOError as e:
-            logger.error(e)
+            #except IOError as e:
+                #logger.error(e)
             # if e.errno == errno.EPIPE:
             #     pass
         except:
