@@ -279,3 +279,15 @@ const.DYNAMIC_DOWN = 6
 const.DYNAMIC_CHANGE = 7
 const.DYNAMIC_KICK = 8
 const.DYNAMIC_MOBAI = 9
+
+const.ATTR_TYPE = {1:"hpHeroSelf",
+             2:"atkHeroSelf",
+             3:"physicalDefHeroSelf",
+             4:"magicDefHeroSelf",
+             5:"hitHero",
+             6:"dodgeHero",
+             7:"criHero",
+             8:"criCoeffHero",
+             9:"criDedCoeffHero",
+             10:"blockHero",
+             11:"ductilityHero"}
