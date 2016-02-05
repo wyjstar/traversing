@@ -17,7 +17,11 @@ class ActivityConfig(object):
 
     def parser(self, config_value):
         for row in config_value:
-            game_server_id = int(GlobalObject().allconfig['server_no'])
+            game_server_id = 0
+            try:
+                game_server_id = int(GlobalObject().allconfig['server_no'])
+            except:
+                pass
             if row.get('open_zone')[0] != 0 and game_server_id not in row.get('open_zone'):
                 continue
             row["reward"] = parse(row.get("reward"))
