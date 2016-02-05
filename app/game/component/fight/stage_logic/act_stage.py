@@ -6,18 +6,8 @@ from gfirefly.server.logobj import logger
 import time
 from shared.tlog import tlog_action
 from app.game.core.task import hook_task, CONDITIONId
+from shared.utils.const import const
 
-attr_type = {1:"hpHero",
-             2:"atkHero",
-             3:"physicalDefHero",
-             4:"magicDefHero",
-             5:"hitHero",
-             6:"dodgeHero",
-             7:"criHero",
-             8:"criCoeffHero",
-             9:"criDedCoeffHero",
-             10:"blockHero",
-             11:"ductilityHero"}
 
 class ActStageLogic(base_stage.BaseStageLogic):
     """docstring for 活动关卡"""
@@ -86,7 +76,7 @@ class ActStageLogic(base_stage.BaseStageLogic):
                 logger.debug("lucky_hero_id %s %s" % (lucky_hero_id, hero_no))
                 lucky_hero_info = game_configs.lucky_hero_config.get(lucky_hero_id)
                 for attr_no, attr_info in lucky_hero_info.attr.items():
-                    attr_name = attr_type.get(int(attr_no))
+                    attr_name = const.ATTR_TYPE.get(int(attr_no))
                     if attr_info[0] == 2:
                         lucky_add = hero_self_attr[attr_name] * attr_info[1]
                     elif attr_info[0] == 1:
