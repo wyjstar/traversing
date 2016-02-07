@@ -2,7 +2,7 @@ import "common.proto";
 
 //1855
 message GetActivityInfoRequese{
-    required int32 act_type = 1;
+    repeated int32 act_type = 1;
 }
 
 message GetActivityInfoResponse{

@@ -20,6 +20,7 @@ def get_act_info(player, act_id):
     act_conf = game_configs.activity_config.get(act_id)
     jindu = 0
     day = player.base_info.login_day
+    print act_conf, '==========get act info , act config'
     if act_info and act_info[0] == 3:
         return {'state': 3, 'jindu': act_info[1]}
     elif act_info and act_info[0] == 2:
@@ -29,6 +30,7 @@ def get_act_info(player, act_id):
         # 累计登录
         if not act_info:
             player.act.act_infos[act_id] = [1, [1, int(time.time())]]
+            act_info = player.act.act_infos.get(act_id)
             jindu = 1
         else:
             if days_to_current(act_info[1][1]) > 0:
@@ -37,11 +39,13 @@ def get_act_info(player, act_id):
             jindu = act_info[1][0]
         if jindu >= act_conf.parameterA:
             act_info[0] = 2
+        print act_info, '==========get act info 1'
         return {'state': act_info[0], 'jindu': act_info[1][0]}
-    elif act_conf.type == 2:
+    elif act_conf.type == 18:
         # 连续登录
         if not act_info:
             player.act.act_infos[act_id] = [1, [1, int(time.time())]]
+            act_info = player.act.act_infos.get(act_id)
             jindu = 1
         else:
             if days_to_current(act_info[1][1]) == 1:
@@ -53,6 +57,7 @@ def get_act_info(player, act_id):
             jindu = act_info[1][0]
         if jindu >= act_conf.parameterA:
             act_info[0] = 2
+        print act_info, '==========get act info 18'
         return {'state': act_info[0], 'jindu': act_info[1][0]}
     elif act_conf.type == 29:
         # jindu = get_condition(conditions, 29)
@@ -319,6 +324,9 @@ def get_act_info(player, act_id):
                 not act_conf.parameterD[0] > act_info[0]:
             return {'state': 1, 'jindu': act_info[1]}
         return {'state': 2, 'jindu': act_info[1]}
+    else:
+        logger.error('get act info type error')
+        return {'state': 0, 'jindu': 0}
 
     # 到到a的统一在这里返回
     if jindu >= act_conf.parameterA:

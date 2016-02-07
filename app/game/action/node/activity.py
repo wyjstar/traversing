@@ -269,30 +269,33 @@ def get_activity_info_1855(data, player):
     # 通用 获取活动信息
     args = activity_pb2.GetActivityInfoRequese()
     args.ParseFromString(data)
-    act_type = args.act_type
+    act_types = args.act_type
     response = activity_pb2.GetActivityInfoResponse()
+    print act_types, '========================act type 1855'
 
-    for act_conf in game_configs.activity_config[act_type]:
-        if act_conf.showJudgment:
-            continue
-        if not player.act.is_activiy_open(act_conf.id):
-            continue
-        act_info = get_act_info(player, act_conf.id)
+    for act_type in act_types:
+        for act_conf in game_configs.activity_config[act_type]:
+            if act_conf.showJudgment:
+                continue
+            if not player.act.is_activiy_open(act_conf.id):
+                continue
+            act_info = get_act_info(player, act_conf.id)
+            print act_info, '========================act info 1855'
 
-        info_pro = response.info.add()
-        info_pro.act_id = act_conf.id
-        if act_conf.type == 51:
-            info_pro.state = act_info.get('state')
-            info_pro.accumulate_days = len(act_info.get('jindu'))
-        elif act_conf.type == 50:
-            info_pro.state = act_info.get('state')
-            info_pro.recharge = act_info.get('jindu')[0]
-            info_pro.max_single_recharge = act_info.get('jindu')[1]
-        else:
-            if act_info.get('jindu'):
-                info_pro.jindu = act_info.get('jindu')
-            if act_info.get('state'):
+            info_pro = response.info.add()
+            info_pro.act_id = act_conf.id
+            if act_conf.type == 51:
                 info_pro.state = act_info.get('state')
+                info_pro.accumulate_days = len(act_info.get('jindu'))
+            elif act_conf.type == 50:
+                info_pro.state = act_info.get('state')
+                info_pro.recharge = act_info.get('jindu')[0]
+                info_pro.max_single_recharge = act_info.get('jindu')[1]
+            else:
+                if act_info.get('state'):
+                    info_pro.state = act_info.get('state')
+                if act_info.get('state') == 1 and act_info.get('jindu'):
+                    info_pro.jindu = act_info.get('jindu')
 
     player.act.save_data()
     response.res.result = True
