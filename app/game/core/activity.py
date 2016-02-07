@@ -21,7 +21,7 @@ def get_act_info(player, act_id):
     jindu = 0
     day = player.base_info.login_day
     print act_conf, '==========get act info , act config'
-    if act_conf.type not in [65, 70, 72, 74, 18]:  # 每日的
+    if act_conf.type not in [65, 70, 72, 74]:  # 每日的
         if act_info and act_info[0] == 3:
             return {'state': 3, 'jindu': act_info[1]}
         elif act_info and act_info[0] == 2:
@@ -58,9 +58,13 @@ def get_act_info(player, act_id):
                 # 重置前面的天数里的活动
                 for up_act_id in act_conf.parameterC:
                     up_act_info = player.act.act_infos.get(up_act_id)
-                    if not up_act_info:
+                    up_act_conf = game_configs.activity_config.get(up_act_id)
+                    if not up_act_info or not up_act_conf:
                         continue
-                    up_act_info = [1, [1, int(time.time())]]
+                    up_act_state = 1
+                    if up_act_conf.parameterA == 1:
+                        up_act_state = 2
+                    player.act.act_infos[up_act_id] = [up_act_state, [1, int(time.time())]]
             jindu = act_info[1][0]
         if jindu >= act_conf.parameterA:
             act_info[0] = 2
