@@ -1,5 +1,24 @@
 import "common.proto";
 
+//1855
+message GetActivityInfoRequese{
+    repeated int32 act_type = 1;
+}
+
+message GetActivityInfoResponse{
+    required CommonResponse res = 1;
+    repeated ActivityInfo info = 2;
+}
+
+message ActivityInfo{
+	optional int32 act_id = 1;
+	optional int32 state = 2;  // 状态  1不可领取  2已达成未领取 3已领取 0 未开启
+    optional int32 jindu = 3;
+	optional int32 accumulate_days = 4;
+	optional int32 recharge = 5;
+	optional int32 max_single_recharge = 6;
+}
+
 //1832
 message GetActGiftRequest{
     required int32 act_id = 1;
@@ -11,6 +30,9 @@ message GetActGiftResponse{
     optional GameResourcesResponse gain = 2;
     optional GameResourcesResponse consume = 3;
 }
+
+
+
 
 //1831
 message GetActInfoRequese{

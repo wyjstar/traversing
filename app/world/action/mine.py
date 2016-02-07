@@ -144,7 +144,6 @@ def guild_seek_help(seq, uid):
         logger.error('acc mine time uid changed:%s-%s',
                      uid, _mine['uid'])
         return False
-    print _mine, '===============================111111111===1111'
     if _mine['seek_help']:
         return False
 

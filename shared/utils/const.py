@@ -209,6 +209,7 @@ const.ROB_TREASURE_REWARD = 74  # 夺宝
 const.GUILD_MOBAI = 75  # 膜拜
 const.Bless = 76
 const.FUND = 77
+const.ACTIVITY = 78
 
 const.ESCORT_ROB = 1909  # 劫运公会
 const.REFRESH_ESCORT_TASKS = 1904 # 刷新押运任务

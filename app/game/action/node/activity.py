@@ -208,7 +208,7 @@ def activate_fund_activity_1851(data, player):
 
     need_gold = act_item.parameterB
     price = []
-    price.append(CommonGroupItem(const.COIN, need_gold, need_gold, const.GOLD))
+    price.append(CommonGroupItem(const.RESOURCE, need_gold, need_gold, const.GOLD))
 
     def func():
         consume_return_data = item_group_helper.consume(player,
@@ -261,4 +261,95 @@ def get_fund_activity_info_1854(data, player):
         # act.max_single_recharge = v.get('max_single_recharge', 0)
 
     print 'get_fund_activity_info_1854:', response
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_activity_info_1855(data, player):
+    # 通用 获取活动信息
+    args = activity_pb2.GetActivityInfoRequese()
+    args.ParseFromString(data)
+    act_types = args.act_type
+    response = activity_pb2.GetActivityInfoResponse()
+    print act_types, '========================act type 1855'
+
+    for act_type in act_types:
+        for act_conf in game_configs.activity_config[act_type]:
+            if act_conf.showJudgment:
+                continue
+            if not player.act.is_activiy_open(act_conf.id):
+                continue
+            act_info = get_act_info(player, act_conf.id)
+            print act_info, '========================act info 1855'
+
+            info_pro = response.info.add()
+            info_pro.act_id = act_conf.id
+            if act_conf.type == 51:
+                info_pro.state = act_info.get('state')
+                info_pro.accumulate_days = len(act_info.get('jindu'))
+            elif act_conf.type == 50:
+                info_pro.state = act_info.get('state')
+                info_pro.recharge = act_info.get('jindu')[0]
+                info_pro.max_single_recharge = act_info.get('jindu')[1]
+            else:
+                if act_info.get('state'):
+                    info_pro.state = act_info.get('state')
+                if act_info.get('state') == 1 and act_info.get('jindu'):
+                    info_pro.jindu = act_info.get('jindu')
+
+    player.act.save_data()
+    response.res.result = True
+    print 'get_activity_info_1855:', response
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def get_activity_gift_1856(data, player):
+    request = activity_pb2.GetActGiftRequest()
+    request.ParseFromString(data)
+    activity_id = request.act_id
+    response = activity_pb2.GetActGiftResponse()
+    response.res.result = False
+
+    if not player.act.is_activiy_open(activity_id):
+        response.res.result = False
+        response.res.result_no = 800
+        return response.SerializeToString()
+
+    act_conf = game_configs.activity_config.get(activity_id)
+    info = get_act_info(player, activity_id)
+
+    if info.get('state') != 2:
+        response.res.result = False
+        logger.error("this start target 条件不满足")
+        response.res.result_no = 800
+        return response.SerializeToString()
+
+    need_gold = 0
+    need_gold_acts = [30, 50]
+
+    if act_conf.type in need_gold_acts:
+        need_gold = act_conf.parameterB
+        if need_gold:
+            price = parse({107: [need_gold, need_gold, 2]})
+            if not is_afford(player, price):
+                response.res.result = False
+                response.res.result_no = 102
+                return response.SerializeToString()
+
+    def func():
+        return_data = gain(player, act_conf.reward, const.ACTIVITY)  # 获取
+        get_return(player, return_data, response.gain)
+        if act_conf.type == 30:
+            if act_conf.count <= (info.get('jindu') + 1):
+                player.act.act_infos[activity_id][0] = 3
+            else:
+                player.act.act_infos[activity_id] = [1, info.get('jindu') + 1]
+        else:
+            player.act.act_infos[activity_id][0] = 3
+
+    player.pay.pay(need_gold, const.ACTIVITY, func)
+    player.act.save_data()
+
+    response.res.result = True
     return response.SerializeToString()

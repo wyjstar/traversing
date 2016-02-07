@@ -8,6 +8,7 @@ from shared.db_opear.configs_data import game_configs
 from app.game.core.activity import get_act_info
 from shared.common_logic.activity import do_get_act_open_info
 from gfirefly.server.logobj import logger
+from app.game.core.activity import get_act_info
 
 
 WIN_MINE_QUALITY = 1
@@ -36,13 +37,17 @@ class CharacterActComponent(Component):
             return
         self._received_ids = data['received_ids']
         self._act_infos = data['act_infos']
-        self.update_51()
+        self.update_act()
 
     def save_data(self):
         character_obj = tb_character_info.getObj(self.owner.base_info.id)
         data = dict(received_ids=self._received_ids,
                     act_infos=self._act_infos)
         character_obj.hset('act_info', data)
+
+    def update_act(self):
+        self.update_51()
+        self.update_act_with_get()
 
     def new_data(self):
         data = dict(received_ids={},
@@ -357,3 +362,13 @@ class CharacterActComponent(Component):
                     if _date_now not in act_info[1]:
                         act_info[1].append(_date_now)
         self.save_data()
+
+    def update_act_with_get(self):
+        for act_conf in game_configs.activity_config[1]:
+            if not self.is_activiy_open(act_conf.id):
+                continue
+            get_act_info(self.owner, act_conf.id)
+        for act_conf in game_configs.activity_config[18]:
+            if not self.is_activiy_open(act_conf.id):
+                continue
+            get_act_info(self.owner, act_conf.id)
