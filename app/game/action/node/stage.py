@@ -23,9 +23,6 @@ from shared.utils.pyuuid import get_uuid
 from app.game.core.item_group_helper import consume
 from app.game.core.item_group_helper import is_afford
 from app.game.core.item_group_helper import get_consume_gold_num
-from shared.db_opear.configs_data.data_helper import parse
-from app.game.core.item_group_helper import gain, get_return
-import copy
 from shared.utils.random_pick import random_pick_with_weight
 from app.game.core.mail_helper import send_mail
 import cPickle
@@ -198,32 +195,10 @@ def stage_start_903(pro_data, player):
     response.seed1 = seed1
     response.seed2 = seed2
 
-    # 小伙伴支援消耗
     if f_unit:
-        player.friends.check_time()
-        friend_fight_times = player.friends.fight_times
-        if fid not in friend_fight_times:
-            friend_fight_times[fid] = []
-
-        supportPrice = game_configs.base_config.get('supportPrice')
-        f_times = len(friend_fight_times[fid])
-        price = None
-        for _ in sorted(supportPrice.keys()):
-            if f_times >= _:
-                price = supportPrice[_]
-        # todo calculate real price
-        result = is_afford(player, price)  # 校验
-        if not is_afford(player, price).get('result'):
-            logger.error('stage 903 not enough money!:%s', price)
-            response.res.result = False
-            response.res.result_no = 101
-            return response.SerializePartialToString()
-
-        return_data = consume(player, price, const.STAGE)
-        get_return(player, return_data, response.consume)
-
-        friend_fight_times[fid].append(int(time.time()))
-        player.friends.save_data()
+        player.fight_cache_component.fid = fid
+    else:
+        player.fight_cache_component.fid = 0
 
     player.fight_cache_component.red_best_skill_id = 0
     logger.debug(response)
@@ -242,29 +217,26 @@ def fight_settlement_904(pro_data, player):
 
     # logger.debug("steps:%s", request.steps)
     # player.fight_cache_component.red_units
+
     stage = player.stage_component.get_stage(stage_id)
     stage_config = player.fight_cache_component._get_stage_config()
+    response = stage_response_pb2.StageSettlementResponse()
+    res = response.res
 
     if (stage_config.type not in [1, 2, 3] or stage.star_num != 3) and request.is_skip:
         logger.error("can not be skip error!================= common stage")
-        response = stage_response_pb2.StageSettlementResponse()
-        res = response.res
         res.result = False
         res.result_no = 9041
         return response.SerializePartialToString()
 
     if (stage_config.type == 4 or stage.state != 1) and request.is_skip:
         logger.error("can not be skip error!=================hide stage")
-        response = stage_response_pb2.StageSettlementResponse()
-        res = response.res
         res.result = False
         res.result_no = 9041
         return response.SerializePartialToString()
 
     if request.is_skip and stage.state != 1:
         logger.error("can not be skip error!=================2")
-        response = stage_response_pb2.StageSettlementResponse()
-        res = response.res
         res.result = False
         res.result_no = 9041
         return response.SerializePartialToString()
@@ -276,11 +248,36 @@ def fight_settlement_904(pro_data, player):
     if not request.is_skip and not res[0]:
         logger.error("pve_process_check error!=================")
         os.system("cp output ..")
-        response = stage_response_pb2.StageSettlementResponse()
-        res = response.res
         res.result = False
         res.result_no = 9041
         return response.SerializePartialToString()
+
+    # 小伙伴支援消耗
+    fid = player.fight_cache_component.fid
+    if fid:
+        player.friends.check_time()
+        friend_fight_times = player.friends.fight_times
+        if fid not in friend_fight_times:
+            friend_fight_times[fid] = []
+
+        supportPrice = game_configs.base_config.get('supportPrice')
+        f_times = len(friend_fight_times[fid])
+        price = None
+        for _ in sorted(supportPrice.keys()):
+            if f_times >= _:
+                price = supportPrice[_]
+        # todo calculate real price
+        if not is_afford(player, price).get('result'):
+            logger.error('stage 903 not enough money!:%s', price)
+            response.res.result = False
+            response.res.result_no = 101
+            return response.SerializePartialToString()
+
+        return_data = consume(player, price, const.STAGE)
+        get_return(player, return_data, response.consume)
+
+        friend_fight_times[fid].append(int(time.time()))
+        player.friends.save_data()
 
     logger.debug("damage percent: %s" % res[1])
     logger.debug("red units: %s" % res[2])
@@ -322,7 +319,7 @@ def fight_settlement_904(pro_data, player):
                 result = False
                 break
 
-    res = fight_settlement(stage, result, player, star)
+    res = fight_settlement(stage, result, player, star, response)
     logger.debug("steps:%s", request.steps)
     logger.debug("fight_settlement_904 end: %s" % time.time())
 
@@ -409,8 +406,7 @@ def get_chapter_info(chapter_id, player):
     return response
 
 
-def fight_settlement(stage, result, player, star_num):
-    response = stage_response_pb2.StageSettlementResponse()
+def fight_settlement(stage, result, player, star_num, response):
     res = response.res
     res.result = True
     stage_id = stage.stage_id
@@ -432,6 +428,7 @@ def fight_settlement(stage, result, player, star_num):
     response.star_num = star_num
     logger.debug("drops %s" % response.drops)
     logger.debug("star_num %s" % response.star_num)
+    logger.debug("consume %s" % response.consume)
     return response.SerializePartialToString()
 
 

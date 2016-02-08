@@ -284,7 +284,7 @@ formula_config={
 ,  [142] = {
   ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/1000",  ["clientPrecondition"] = "1",  ["id"] = 142,  ["clientFormula"] = "result=ActivityExpDrop/1000",  ["key"] = "ActivityExpDropConvert_3",}
 ,  [143] = {
-  ["precondition"] = "skill_buff.effectId == 30",  ["formula"] = "(1.5*wslevel*wslevel+20)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 143,  ["clientFormula"] = "result=(1.5*wslevel*wslevel+20)*skill_buff.valueEffect/job",  ["key"] = "peerlessDamage",}
+  ["precondition"] = "skill_buff.effectId == 30",  ["formula"] = "(6*wslevel*wslevel+300)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 143,  ["clientFormula"] = "result=(6*wslevel*wslevel+300)*skill_buff.valueEffect/job",  ["key"] = "peerlessDamage",}
 ,  [144] = {
   ["precondition"] = "1",  ["formula"] = "hero_info.hp*parameters",  ["clientPrecondition"] = "1",  ["id"] = 144,  ["clientFormula"] = "result=hero_info.hp*parameters",  ["key"] = "hero_Breakthrough.hp",}
 ,  [145] = {

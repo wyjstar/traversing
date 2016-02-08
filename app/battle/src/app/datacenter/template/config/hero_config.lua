@@ -274,7 +274,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 1,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -282,7 +282,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010073,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010073,}
 ,  [40011] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -338,7 +338,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 1,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -402,7 +402,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 4,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -410,7 +410,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010075,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010075,}
 ,  [50012] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -466,7 +466,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -474,7 +474,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010091,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010091,}
 ,  [40001] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -530,7 +530,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 1,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -538,7 +538,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010067,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010067,}
 ,  [50010] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -602,7 +602,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010089,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010089,}
 ,  [20053] = {
   ["resIcon"] = 1200531,  ["describeStr"] = 1100010053,  ["growHp"] = 414.18,  ["parameters5"] = 10.8,  ["physicalDef"] = 503,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
 }
@@ -688,7 +688,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010087,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010087,}
 ,  [50007] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -744,7 +744,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 1,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -752,7 +752,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010086,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010086,}
 ,  [50006] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -808,7 +808,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -816,7 +816,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010085,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010085,}
 ,  [40012] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -872,7 +872,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -944,7 +944,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010083,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010083,}
 ,  [40002] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -1072,7 +1072,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010081,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010081,}
 ,  [40013] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -1192,7 +1192,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 1,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -1200,7 +1200,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010080,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010080,}
 ,  [50005] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -1256,7 +1256,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 1,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -1264,7 +1264,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010084,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010084,}
 ,  [50009] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -1320,7 +1320,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 4,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -1328,7 +1328,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010088,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010088,}
 ,  [50013] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -1392,7 +1392,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010092,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010092,}
 ,  [40008] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -1456,7 +1456,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010074,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010074,}
 ,  [40006] = {
   ["resIcon"] = 1100661,  ["describeStr"] = 1100010066,  ["growHp"] = 253.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 335,  ["toGet"] = 200010066,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -1512,7 +1512,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -1576,7 +1576,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 1,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -2494,7 +2494,7 @@ hero_config={
 }
 ,  ["growAtk"] = 38.7,  ["parameters7"] = 0,  ["quality"] = 2,  ["type"] = 0,  ["nameStr"] = 1000010019,}
 ,  [10020] = {
-  ["resIcon"] = 1100201,  ["describeStr"] = 1100010020,  ["growHp"] = 219.15,  ["parameters5"] = 10.8,  ["physicalDef"] = 289,  ["toGet"] = 200010020,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1100201,  ["describeStr"] = 1100010020,  ["growHp"] = 189.15,  ["parameters5"] = 10.8,  ["physicalDef"] = 289,  ["toGet"] = 200010020,  ["dodge"] = 0,  ["cri"] = 2000,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
   [1] = 150000,  [2] = 150000,  [3] = 1,}
 ,  ["105"] = {
@@ -2512,7 +2512,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 30,  [2] = 30,  [3] = 1010020,}
 ,}
-,  ["resPicture3"] = 1100205,  ["atk"] = 648,  ["rageSkill"] = 1100202,  ["growMagicDef"] = 65.1,  ["consume2"] = {
+,  ["resPicture3"] = 1100205,  ["atk"] = 648,  ["rageSkill"] = 1100202,  ["growMagicDef"] = 56.1,  ["consume2"] = {
   ["107"] = {
   [1] = 50000,  [2] = 50000,  [3] = 1,}
 ,  ["105"] = {
@@ -2526,7 +2526,7 @@ hero_config={
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100203,  ["magicDef"] = 434,  ["hp"] = 1461,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100205,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000009,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000008,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000007,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100203,  ["magicDef"] = 434,  ["hp"] = 1261,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100205,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
@@ -2536,7 +2536,7 @@ hero_config={
 ,}
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 1,  ["80000"] = 0.45,}
-,  ["growPhysicalDef"] = 43.35,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100201,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 38.35,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100201,  ["sacrificeGain"] = {
   ["107"] = {
   [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
@@ -2556,7 +2556,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010020,}
 ,}
-,  ["growAtk"] = 97.2,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010020,}
+,  ["growAtk"] = 82.2,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010020,}
 ,  [10021] = {
   ["resIcon"] = 1100211,  ["describeStr"] = 1100010021,  ["growHp"] = 85.95,  ["parameters5"] = 10.8,  ["physicalDef"] = 125,  ["toGet"] = 200010021,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -3862,7 +3862,7 @@ hero_config={
 ,}
 ,  ["growAtk"] = 121.8,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010043,}
 ,  [10044] = {
-  ["resIcon"] = 1100441,  ["describeStr"] = 1100010044,  ["growHp"] = 146.4,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 200010044,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
+  ["resIcon"] = 1100441,  ["describeStr"] = 1100010044,  ["growHp"] = 122.5,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 200010044,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
   [1] = 150000,  [2] = 150000,  [3] = 1,}
 ,  ["105"] = {
@@ -3880,7 +3880,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 30,  [2] = 30,  [3] = 1010044,}
 ,}
-,  ["resPicture3"] = 1100445,  ["atk"] = 970,  ["rageSkill"] = 1100442,  ["growMagicDef"] = 76.5,  ["consume2"] = {
+,  ["resPicture3"] = 1100445,  ["atk"] = 810,  ["rageSkill"] = 1100442,  ["growMagicDef"] = 65.5,  ["consume2"] = {
   ["107"] = {
   [1] = 50000,  [2] = 50000,  [3] = 1,}
 ,  ["105"] = {
@@ -3894,7 +3894,7 @@ hero_config={
 ,  ["107"] = {
   [1] = 20000,  [2] = 20000,  [3] = 1,}
 ,}
-,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100443,  ["magicDef"] = 510,  ["hp"] = 976,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100445,  ["consume7"] = {
+,  ["ductility"] = 0,  ["break7"] = 3000006,  ["break6"] = 3000016,  ["hit"] = 9600,  ["break5"] = 3000005,  ["resColdandwarm"] = 1,  ["criCoeff"] = 11000,  ["break4"] = 3000015,  ["parameters2"] = 0.8,  ["break3"] = 3000004,  ["break2"] = 3000014,  ["break1"] = 3000013,  ["resPicture"] = 1100443,  ["magicDef"] = 430,  ["hp"] = 808,  ["parameters1"] = 0.1,  ["resPicture4"] = 1100445,  ["consume7"] = {
   ["107"] = {
   [1] = 1000000,  [2] = 1000000,  [3] = 1,}
 ,  ["105"] = {
@@ -3904,7 +3904,7 @@ hero_config={
 ,}
 ,  ["parameters4"] = 5.6,  ["parameters3"] = 2.4,  ["parameters6"] = 18.4,  ["awake"] = {
   ["50000"] = 0.25,  ["35000"] = 0.18,  ["20000"] = 0.1,  ["10000"] = 0.05,  ["5000"] = 0.02,  ["105000"] = 11,  ["80000"] = 0.45,}
-,  ["growPhysicalDef"] = 32.1,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100441,  ["sacrificeGain"] = {
+,  ["growPhysicalDef"] = 27.2,  ["breakLimit"] = 7,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1100441,  ["sacrificeGain"] = {
   ["107"] = {
   [1] = 1250,  [2] = 1250,  [3] = 3,}
 ,}
@@ -3924,7 +3924,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010044,}
 ,}
-,  ["growAtk"] = 145.5,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010044,}
+,  ["growAtk"] = 123.5,  ["parameters7"] = 28.8,  ["quality"] = 5,  ["type"] = 0,  ["nameStr"] = 1000010044,}
 ,  [10045] = {
   ["resIcon"] = 1100451,  ["describeStr"] = 1100010045,  ["growHp"] = 318.6,  ["parameters5"] = 10.8,  ["physicalDef"] = 503,  ["toGet"] = 200010045,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 2000,  ["consume4"] = {
   ["107"] = {
@@ -4364,7 +4364,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -4748,7 +4748,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 2,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -4756,7 +4756,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010082,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010082,}
 ,  [10058] = {
   ["resIcon"] = 1100581,  ["describeStr"] = 1100010058,  ["growHp"] = 146.4,  ["parameters5"] = 10.8,  ["physicalDef"] = 214,  ["toGet"] = 200010058,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
   ["107"] = {
@@ -4876,7 +4876,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 200,  [2] = 200,  [3] = 1010066,}
 ,}
-,  ["playerIcon"] = 2100661,  ["job"] = 3,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
+,  ["playerIcon"] = 2100661,  ["job"] = 1,  ["deadAudio"] = 0,  ["audio"] = 0,  ["consume5"] = {
   ["107"] = {
   [1] = 300000,  [2] = 300000,  [3] = 1,}
 ,  ["105"] = {
@@ -4884,7 +4884,7 @@ hero_config={
 ,  ["103"] = {
   [1] = 100,  [2] = 100,  [3] = 1010066,}
 ,}
-,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 0,  ["nameStr"] = 1000010090,}
+,  ["growAtk"] = 112.65,  ["parameters7"] = 28.8,  ["quality"] = 6,  ["type"] = 1,  ["nameStr"] = 1000010090,}
 ,  [20065] = {
   ["resIcon"] = 1200651,  ["describeStr"] = 1100010065,  ["growHp"] = 220.545,  ["parameters5"] = 10.8,  ["physicalDef"] = 248,  ["toGet"] = 0,  ["dodge"] = 0,  ["cri"] = 0,  ["block"] = 0,  ["consume4"] = {
 }

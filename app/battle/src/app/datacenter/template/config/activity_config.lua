@@ -574,7 +574,7 @@ activity_config={
 ,}
 ,}
 ,  [28002] = {
-  ["parameterB"] = 10046,  ["actIcon"] = 0,  ["description"] = 0,  ["parameterE"] = {
+  ["parameterB"] = 10043,  ["actIcon"] = 0,  ["description"] = 0,  ["parameterE"] = {
 }
 ,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 100,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 28,  ["idEmail"] = 0,  ["parameterD"] = {
 }
@@ -788,7 +788,7 @@ activity_config={
 ,}
 ,}
 ,  [28003] = {
-  ["parameterB"] = 10048,  ["actIcon"] = 0,  ["description"] = 0,  ["parameterE"] = {
+  ["parameterB"] = 10050,  ["actIcon"] = 0,  ["description"] = 0,  ["parameterE"] = {
 }
 ,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 100,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 28,  ["idEmail"] = 0,  ["parameterD"] = {
 }
@@ -2193,7 +2193,7 @@ activity_config={
 ,}
 ,  [55025] = {
   ["parameterB"] = 0,  ["actIcon"] = 0,  ["description"] = 0,  ["parameterE"] = {
-  ["9"] = 4,  ["10"] = 40,}
+  ["9"] = 3,  ["10"] = 40,}
 ,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 6,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 55,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 55025,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
@@ -2205,7 +2205,7 @@ activity_config={
 ,}
 ,  [55024] = {
   ["parameterB"] = 0,  ["actIcon"] = 0,  ["description"] = 0,  ["parameterE"] = {
-  ["9"] = 3,  ["10"] = 40,}
+  ["9"] = 2,  ["10"] = 40,}
 ,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 6,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 55,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 55024,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
@@ -2229,7 +2229,7 @@ activity_config={
 ,}
 ,  [55023] = {
   ["parameterB"] = 0,  ["actIcon"] = 0,  ["description"] = 0,  ["parameterE"] = {
-  ["9"] = 3,  ["10"] = 40,}
+  ["9"] = 2,  ["10"] = 40,}
 ,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 1,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 1,  ["parameterA"] = 3,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 0,  ["everyday"] = 0,  ["type"] = 55,  ["idEmail"] = 0,  ["parameterD"] = {
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 55023,  ["parameterT"] = "2015-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {

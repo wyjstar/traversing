@@ -2860,7 +2860,7 @@ shop_config={
   ["107"] = {
   [1] = 1850,  [2] = 1850,  [3] = 3,}
 ,}
-,  ["weight"] = 10,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 0,  ["quality"] = 6,  ["gain"] = {
+,  ["weight"] = 5,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 0,  ["quality"] = 6,  ["gain"] = {
   ["103"] = {
   [1] = 5,  [2] = 5,  [3] = 1010065,}
 ,}
@@ -2980,7 +2980,7 @@ shop_config={
   ["107"] = {
   [1] = 90,  [2] = 90,  [3] = 2,}
 ,}
-,  ["weight"] = 80,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 0,  ["quality"] = 5,  ["gain"] = {
+,  ["weight"] = 40,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 0,  ["quality"] = 5,  ["gain"] = {
   ["103"] = {
   [1] = 3,  [2] = 3,  [3] = 1010036,}
 ,}
@@ -3011,9 +3011,7 @@ shop_config={
 ,  ["steppedPrice"] = {
 }
 ,  ["relatedGain"] = {
-  ["105"] = {
-  [1] = 1,  [2] = 1,  [3] = 10001,}
-,}
+}
 ,  ["discountPrice"] = {
 }
 ,  ["dutyFree"] = {
@@ -3033,7 +3031,9 @@ shop_config={
 ,  ["type"] = 1,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 10001,  ["switch"] = 1,  ["extraGain"] = {
-}
+  ["105"] = {
+  [1] = 1,  [2] = 1,  [3] = 10001,}
+,}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
@@ -3723,9 +3723,7 @@ shop_config={
 ,  ["steppedPrice"] = {
 }
 ,  ["relatedGain"] = {
-  ["105"] = {
-  [1] = 1,  [2] = 1,  [3] = 10002,}
-,}
+}
 ,  ["discountPrice"] = {
 }
 ,  ["dutyFree"] = {
@@ -3745,7 +3743,9 @@ shop_config={
 ,  ["type"] = 5,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 50001,  ["switch"] = 1,  ["extraGain"] = {
-}
+  ["105"] = {
+  [1] = 1,  [2] = 1,  [3] = 10002,}
+,}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
@@ -4987,9 +4987,7 @@ shop_config={
 ,  ["steppedPrice"] = {
 }
 ,  ["relatedGain"] = {
-  ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 10002,}
-,}
+}
 ,  ["discountPrice"] = {
 }
 ,  ["dutyFree"] = {
@@ -5007,7 +5005,9 @@ shop_config={
 ,  ["type"] = 5,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 50002,  ["switch"] = 1,  ["extraGain"] = {
-}
+  ["105"] = {
+  [1] = 10,  [2] = 10,  [3] = 10002,}
+,}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
@@ -7917,9 +7917,7 @@ shop_config={
 ,  ["steppedPrice"] = {
 }
 ,  ["relatedGain"] = {
-  ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 10001,}
-,}
+}
 ,  ["discountPrice"] = {
 }
 ,  ["dutyFree"] = {
@@ -7939,7 +7937,9 @@ shop_config={
 ,  ["type"] = 1,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 10002,  ["switch"] = 1,  ["extraGain"] = {
-}
+  ["105"] = {
+  [1] = 10,  [2] = 10,  [3] = 10001,}
+,}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
@@ -9092,7 +9092,7 @@ shop_config={
   ["107"] = {
   [1] = 300,  [2] = 300,  [3] = 2,}
 ,}
-,  ["weight"] = 20,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 0,  ["quality"] = 6,  ["gain"] = {
+,  ["weight"] = 5,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 0,  ["quality"] = 6,  ["gain"] = {
   ["103"] = {
   [1] = 3,  [2] = 3,  [3] = 1010065,}
 ,}
@@ -12264,10 +12264,10 @@ shop_config={
 }
 ,  ["attr"] = {
 }
-,  ["batch"] = 99,  ["ExchangeValue"] = {
+,  ["batch"] = 1000,  ["ExchangeValue"] = {
 }
 ,  ["limitVIPeveryday"] = {
-}
+  ["1"] = 40,  ["0"] = 20,  ["3"] = 80,  ["2"] = 60,  ["5"] = 125,  ["4"] = 100,  ["7"] = 200,  ["6"] = 150,  ["9"] = 300,  ["8"] = 250,  ["15"] = 1000,  ["14"] = 850,  ["13"] = 700,  ["12"] = 600,  ["11"] = 500,  ["10"] = 400,}
 ,  ["Integral"] = {
 }
 ,  ["luckyValue"] = {
@@ -12323,9 +12323,7 @@ shop_config={
 ,  ["steppedPrice"] = {
 }
 ,  ["relatedGain"] = {
-  ["105"] = {
-  [1] = 1,  [2] = 1,  [3] = 10002,}
-,}
+}
 ,  ["discountPrice"] = {
 }
 ,  ["dutyFree"] = {
@@ -12343,7 +12341,9 @@ shop_config={
 ,  ["type"] = 17,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 170001,  ["switch"] = 1,  ["extraGain"] = {
-}
+  ["105"] = {
+  [1] = 1,  [2] = 1,  [3] = 10002,}
+,}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
@@ -12796,7 +12796,7 @@ shop_config={
   ["107"] = {
   [1] = 525,  [2] = 525,  [3] = 3,}
 ,}
-,  ["weight"] = 50,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 0,  ["quality"] = 5,  ["gain"] = {
+,  ["weight"] = 20,  ["describe"] = 0,  ["res"] = 0,  ["limitLevel"] = 0,  ["quality"] = 5,  ["gain"] = {
   ["103"] = {
   [1] = 5,  [2] = 5,  [3] = 1010036,}
 ,}
@@ -14960,10 +14960,10 @@ shop_config={
 }
 ,  ["attr"] = {
 }
-,  ["batch"] = 99,  ["ExchangeValue"] = {
+,  ["batch"] = 1000,  ["ExchangeValue"] = {
 }
 ,  ["limitVIPeveryday"] = {
-}
+  ["1"] = 40,  ["0"] = 20,  ["3"] = 80,  ["2"] = 60,  ["5"] = 125,  ["4"] = 100,  ["7"] = 200,  ["6"] = 150,  ["9"] = 300,  ["8"] = 250,  ["15"] = 1000,  ["14"] = 850,  ["13"] = 700,  ["12"] = 600,  ["11"] = 500,  ["10"] = 400,}
 ,  ["Integral"] = {
 }
 ,  ["luckyValue"] = {
@@ -17824,10 +17824,10 @@ shop_config={
 }
 ,  ["attr"] = {
 }
-,  ["batch"] = 99,  ["ExchangeValue"] = {
+,  ["batch"] = 1000,  ["ExchangeValue"] = {
 }
 ,  ["limitVIPeveryday"] = {
-}
+  ["1"] = 40,  ["0"] = 20,  ["3"] = 80,  ["2"] = 60,  ["5"] = 125,  ["4"] = 100,  ["7"] = 200,  ["6"] = 150,  ["9"] = 300,  ["8"] = 250,  ["15"] = 1000,  ["14"] = 850,  ["13"] = 700,  ["12"] = 600,  ["11"] = 500,  ["10"] = 400,}
 ,  ["Integral"] = {
 }
 ,  ["luckyValue"] = {
