@@ -8,7 +8,6 @@ from shared.db_opear.configs_data import game_configs
 from app.game.core.activity import get_act_info
 from shared.common_logic.activity import do_get_act_open_info
 from gfirefly.server.logobj import logger
-from app.game.core.activity import get_act_info
 from shared.utils.date_util import get_current_timestamp, days_to_current
 
 
@@ -49,6 +48,7 @@ class CharacterActComponent(Component):
     def update_act(self):
         self.update_51()
         self.update_act_with_get()
+        self.save_data()
 
     def new_data(self):
         data = dict(received_ids={},
@@ -416,11 +416,11 @@ class CharacterActComponent(Component):
         self.save_data()
 
     def update_act_with_get(self):
-        for act_conf in game_configs.activity_config[1]:
+        for act_conf in game_configs.activity_config.get(1, []):
             if not self.is_activiy_open(act_conf.id):
                 continue
             get_act_info(self.owner, act_conf.id)
-        for act_conf in game_configs.activity_config[18]:
+        for act_conf in game_configs.activity_config.get(18, []):
             if not self.is_activiy_open(act_conf.id):
                 continue
             get_act_info(self.owner, act_conf.id)
