@@ -329,6 +329,17 @@ class Hero(object):
 
         return attr
 
+    def finished_pulse(self):
+        pulse = 0
+        if self.refine != 0:
+            _refine_attr = game_configs.seal_config.get(self.refine)
+            pulse = _refine_attr.pulse - 1
+            lst = game_configs.seal_config.get(_refine_attr.pulse)
+            if _refine_attr.id == lst[-1].id:
+                pulse += 1
+        pulse += 1
+        return pulse
+
     def runt_attr(self):
         all_attr = {1: "hp",
                     2: "atk",
