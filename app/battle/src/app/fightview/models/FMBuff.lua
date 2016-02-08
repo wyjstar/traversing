@@ -84,7 +84,7 @@ function FMBuff:perform_buff(owner, result)
         print("attacker_side============")
         print(self.process.army)
         if not attacker.is_monster then
-            result.value = unpara(attacker, self.skill_buff_info)
+            result.value = unpara(attacker, self.skill_buff_info, owner)
         else
             result.value = unpara_monster(attacker.boss.atk, owner, extra_msgs)
         end
