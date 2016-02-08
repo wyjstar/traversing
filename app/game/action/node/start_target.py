@@ -345,10 +345,7 @@ def line_up_activity_jindu(player, target_conf):
         if hero_obj.level < parameterE.get(HERO_LEVEL, 0):
             # 6 武将等级
             continue
-        refine_item = game_configs.seal_config.get(hero_obj.refine)
-        pulse = 0
-        if refine_item:
-            pulse = refine_item.pulse
+        pulse = hero_obj.finished_pulse()
         if pulse < parameterE.get(HERO_REFINE, 0):
             # 7 武将练体
             continue
