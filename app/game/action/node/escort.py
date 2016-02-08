@@ -434,7 +434,7 @@ def in_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
     escort_component = player.escort_component
     if protect_or_rob == 1 and escort_component.protect_times >= guild_item.protectionEscortTimeMax:
         logger.error("protect_times not enough!")
-        return {'result': False, 'result_no': 190802}
+        return {'result': False, 'result_no': 190812}
     if protect_or_rob == 2 and escort_component.rob_times >= guild_item.snatchTimeMax:
         logger.error("rob_times not enough!")
         return {'result': False, 'result_no': 190803}
