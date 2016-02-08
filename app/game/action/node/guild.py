@@ -4,7 +4,6 @@ created by cui
 """
 import re
 import time
-from app.game.core.PlayersManager import PlayersManager
 from app.proto_file.guild_pb2 import *
 from app.game.redis_mode import tb_guild_info
 from app.game.redis_mode import tb_character_info
@@ -15,16 +14,16 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils import trie_tree
 from shared.tlog import tlog_action
 from app.game.action.root import netforwarding
-from app.game.core.stage.stage import Stage
+#from app.game.core.stage.stage import Stage
 from app.proto_file.db_pb2 import Heads_DB
 from app.game.core.item_group_helper import gain, get_return
 from shared.utils.const import const
 from shared.db_opear.configs_data.data_helper import parse
 from app.game.core.mail_helper import send_mail
 from app.game.core import rank_helper
-import cPickle
 from app.game.core.task import hook_task, CONDITIONId
 from app.game.action.root.netforwarding import push_message
+from shared.common_logic.feature_open import is_not_open, FO_GUILD
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -41,11 +40,17 @@ def create_guild_801(data, player):
     p_id = player.base_info.id
     g_id = player.guild.g_id
 
-    if game_configs.base_config.get('create_level') > player.base_info.level:
+    if is_not_open(player, FO_GUILD):
         response.res.result = False
         # response.res.message = "等级不够"
-        response.res.result_no = 811
+        response.res.result_no = 837
         return response.SerializeToString()
+
+    #if game_configs.base_config.get('create_level') > player.base_info.level:
+        #response.res.result = False
+        ## response.res.message = "等级不够"
+        #response.res.result_no = 811
+        #return response.SerializeToString()
 
     if game_configs.base_config.get('create_money') > player.finance.gold:
         response.res.result = False
@@ -289,8 +294,7 @@ def modify_user_guild_info_remote(data, player):
                                        u'',
                                        [player.dynamic_id])
     elif data['cmd'] == 'canjoinguild':
-        open_stage_id = game_configs.base_config.get('guildOpenStage')
-        if player.stage_component.get_stage(open_stage_id).state != 1:
+        if is_not_open(player, FO_GUILD):
             return 0
         else:
             return 1
@@ -904,7 +908,6 @@ def invite_join_1803(data, player):
         response.res.result_no = remote_res.get('no')
         return response.SerializeToString()
 
-    open_stage_id = game_configs.base_config.get('guildOpenStage')
     is_online = remote_gate.is_online_remote('modify_user_guild_info_remote',
                                              target_id,
                                              {'cmd': 'canjoinguild'})
@@ -915,16 +918,9 @@ def invite_join_1803(data, player):
             response.res.result_no = 800
             logger.error('invite join ,target id error')
             return response.SerializeToString()
-        stages = character_obj.hget('stage_info')
-        stage_objs = {}
-        flog = 1
-        for stage_id_a, stage in stages.items():
-            if stage_id_a == open_stage_id:
-                flog = 0
-                stage_obj = Stage.loads(stage)
-                if stage_obj.state != 1:
-                    flog = 1
-        if flog:
+        level = character_obj.hget('level')
+        feature_item = game_configs.features_open_config.get(FO_GUILD)
+        if feature_item.open > level:
             response.res.result = False
             # "对方未开启军团功能"
             response.res.result_no = 866

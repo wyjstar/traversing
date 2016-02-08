@@ -31,6 +31,7 @@ from app.game.core.mail_helper import send_mail
 import cPickle
 from app.game.core.task import hook_task, CONDITIONId
 import os
+from shared.common_logic.feature_open import is_not_open, FO_ACT_STAGE, FO_ELI_STAGE, FO_HJQY_STAGE
 
 
 remote_gate = GlobalObject().remote.get('gate')
@@ -153,18 +154,15 @@ def stage_start_903(pro_data, player):
     response = stage_response_pb2.StageStartResponse()
     player.fight_cache_component.stage_id = stage_id
     stage_config = player.fight_cache_component._get_stage_config()
-    open_stage_id = 0
+    not_open = False
     if stage_config.type == 6: # 精英
-        open_stage_id = game_configs.base_config.get('specialStageStageOpenStage')
+        not_open = is_not_open(player, FO_ELI_STAGE)
     if stage_config.type in [4, 5]: # 活动
-        open_stage_id = game_configs.base_config.get('activityStageOpenStage')
-    if stage_config.type == 8: # 秘境
-        open_stage_id = game_configs.base_config.get('warFogOpenStage')
-    if open_stage_id:
-        if player.stage_component.get_stage(open_stage_id).state != 1:
-            response.res.result = False
-            response.res.result_no = 837
-            return response.SerializeToString()
+        not_open = is_not_open(player, FO_ACT_STAGE)
+    if not_open:
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializeToString()
 
     stage_info = pve_process(stage_id, stage_config.type, line_up, fid, player)
     result = stage_info.get('result')
@@ -891,6 +889,8 @@ def trigger_hjqy(player, result, times=1):
     """docstring for trigger_hjqy 触发黄巾起义
     return: stage id
     """
+    if is_not_open(player, FO_HJQY_STAGE):
+        return 0
     # 如果战败则不触发
     if not result:
         return 0

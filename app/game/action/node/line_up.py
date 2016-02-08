@@ -17,6 +17,7 @@ from app.game.action.node.start_target import target_update
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import consume, is_afford
 from shared.utils.const import const
+from shared.common_logic.feature_open import is_not_open, FO_CHANGE_EQUIPMENT
 
 
 @remoteserviceHandle('gate')
@@ -392,6 +393,8 @@ def change_equipment(slot_no, no, equipment_id, player):
     @return:
     """
     # logger.debug("change equipment id %s %s %s", slot_no, no, equipment_id)
+    if is_not_open(player, FO_CHANGE_EQUIPMENT):
+        return {"result": False, "result_no": 837}
 
     # 检验装备是否存在
     if equipment_id != '0' and not check_have_equipment(player, equipment_id):

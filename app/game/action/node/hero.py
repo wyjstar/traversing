@@ -6,7 +6,6 @@ created by wzp on 14-6-27下午2:05.
 from gfirefly.server.globalobject import remoteserviceHandle
 from app.proto_file import hero_request_pb2
 from app.proto_file import hero_response_pb2
-from app.proto_file.common_pb2 import CommonResponse
 from gfirefly.server.logobj import logger
 from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import is_afford, consume, gain, get_return
@@ -19,6 +18,7 @@ from shared.tlog import tlog_action
 from app.game.action.node.start_target import target_update
 import random
 from shared.utils.date_util import days_to_current, get_current_timestamp
+from shared.common_logic.feature_open import is_not_open, FO_HERO_BREAK, FO_HERO_AWAKE, FO_HERO_SACRIFICE, FO_HERO_COMPOSE, FO_REFINE
 
 
 @remoteserviceHandle('gate')
@@ -196,6 +196,8 @@ def hero_break_104(data, player):
 
 
 def hero_break_logic(hero_no, player, response):
+    if is_not_open(player, FO_HERO_BREAK):
+        return {'result': False, 'result_no': 837}
     hero = player.hero_component.get_hero(hero_no)
     hero_info = game_configs.hero_config.get(hero_no)
     break_through = game_configs.base_config.get('breakthrough')
@@ -278,6 +280,10 @@ def hero_compose_106(data, player):
     args.ParseFromString(data)
     hero_chip_no = args.hero_chip_no
     response = hero_response_pb2.HeroComposeResponse()
+    if is_not_open(player, FO_HERO_COMPOSE):
+        response.res.result = False
+        response.res.result_no = 837
+        return response
     hero_no = game_configs.chip_config.get("chips").get(hero_chip_no).combineResult
     need_num = game_configs.chip_config.get("chips").get(hero_chip_no).needNum
     if not hero_no or not need_num:
@@ -349,6 +355,8 @@ def hero_refine_118(data, player):
 
 
 def do_hero_refine(player, hero_no, refine, response):
+    if is_not_open(player, FO_REFINE):
+        return {"result": False, "result_no": 837}
     hero = player.hero_component.get_hero(hero_no)
     _refine_item = game_configs.seal_config.get(refine)
     if not hero:
@@ -403,6 +411,10 @@ def hero_sacrifice_oper(heros, player):
     break_item_num = 0
 
     response = hero_response_pb2.HeroSacrificeResponse()
+    if is_not_open(player, FO_HERO_SACRIFICE):
+        response.res.result = False
+        response.res.result_no = 837
+        return response
     gain_response = response.gain
     for hero in heros:
         sacrifice_gain = game_configs.hero_config.get(hero.hero_no).sacrificeGain
@@ -481,6 +493,9 @@ def hero_awake_121(data, player):
 
 def do_hero_awake(player, hero_no, awake_item_num, response):
     """docstring for do_hero_awake"""
+    if is_not_open(player, FO_HERO_AWAKE):
+        return {'result': False, 'result_no': 837}
+
     hero = player.hero_component.get_hero(hero_no)
     if not hero:
         logger.error("hero not exist! hero_no %s" % hero_no)

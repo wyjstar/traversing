@@ -32,6 +32,7 @@ from shared.tlog import tlog_action
 from app.game.action.node.line_up import line_up_info
 from app.game.action.node.pvp_rank import get_pvp_data
 import time
+from shared.common_logic.feature_open import is_not_open, FO_MINE
 
 remote_gate = GlobalObject().remote.get('gate')
 
@@ -643,11 +644,15 @@ def battle_1253(data, player):
     red_best_skill_id = request.unparalleled  # 无双编号
     red_units = {}
     blue_units = {}
+    response = mine_pb2.MineBattleResponse()
 
     logger.debug("%s pos" % pos)
+    if is_not_open(player, FO_MINE):
+        response.res.result = True
+        response.res.result_no = 837
+        return response.SerializePartialToString()
 
     mine_info = player.mine.get_info(pos)
-    response = mine_pb2.MineBattleResponse()
 
     is_pvp = player.mine.is_pvp(pos)  # 根据矿所在位置判断pve or pvp
     # print mine_info, "*"*80

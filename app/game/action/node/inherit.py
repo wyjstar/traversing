@@ -9,6 +9,7 @@ from shared.db_opear.configs_data import game_configs
 from gfirefly.server.logobj import logger
 from shared.tlog import tlog_action
 from shared.utils.const import const
+from shared.common_logic.feature_open import is_not_open, FO_INHERIT
 
 
 @remoteserviceHandle('gate')
@@ -25,6 +26,11 @@ def inherit_refine_151(pro_data, player):
 
     origin = player.hero_component.get_hero(origin_id)
     target = player.hero_component.get_hero(target_id)
+
+    if is_not_open(player, FO_INHERIT):
+        response.result = False
+        response.result_no = 837
+        return response.SerializeToString()
 
     print "origin:", origin.refine, "target:", target.refine
     if not origin or (not target):
@@ -68,6 +74,10 @@ def inherit_equipment_152(pro_data, player):
 
     response = common_pb2.CommonResponse()
 
+    if is_not_open(player, FO_INHERIT):
+        response.result = False
+        response.result_no = 837
+        return response.SerializeToString()
     origin = player.equipment_component.get_equipment(origin_id)
     target = player.equipment_component.get_equipment(target_id)
     # print origin.attribute.strengthen_lv, target.attribute.strengthen_lv, "+"*10
@@ -121,6 +131,11 @@ def inherit_upara_153(pro_data, player):
     target_id = request.target
 
     response = common_pb2.CommonResponse()
+
+    if is_not_open(player, FO_INHERIT):
+        response.result = False
+        response.result_no = 837
+        return response.SerializeToString()
 
     origin_level = player.line_up_component.unpars.get(origin_id)
     target_level = player.line_up_component.unpars.get(target_id)
