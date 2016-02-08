@@ -277,9 +277,9 @@ def get_activity_info_1855(data, player):
     configs = []
     for select_value in select_values:
         if select_type == 1:
-            configs = game_configs.activity_config.get(select_value)
+            configs = game_configs.activity_config.get(select_value, [])
         elif select_type == 2:
-            configs = game_configs.activity_config.get('icon').get(select_value)
+            configs = game_configs.activity_config.get('icon').get(select_value, [])
         else:
             response.res.result = False
             print 'select type error ========================act info 1855'
