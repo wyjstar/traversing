@@ -33,6 +33,7 @@ from app.game.core.equipment.equipment_chip import EquipmentChip
 from shared.db_opear.configs_data.data_helper import parse
 import types
 from shared.tlog import tlog_action
+from shared.common_logic.feature_open import is_not_open, FO_PVP_RANK, FO_ROB_TREASURE
 
 remote_gate = GlobalObject().remote.get('gate')
 PVP_TABLE_NAME = 'tb_pvp_rank'
@@ -279,6 +280,10 @@ def pvp_fight_request_1505(data, player):
     response = pvp_rank_pb2.PvpFightResponse()
     request.ParseFromString(data)
     # player.pvp.check_time()
+    if is_not_open(player, FO_PVP_RANK):
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializePartialToString()
 
     arena_consume = game_configs.base_config.get('arenaConsume')
     result = is_afford(player, arena_consume)  # 校验
@@ -779,6 +784,12 @@ def GetPvpOvercomeInfo_1513(data, player):
 def pvp_rob_treasure_864(data, player):
     request = pvp_rank_pb2.PvpRobTreasureRequest()
     response = pvp_rank_pb2.PvpFightResponse()
+    if is_not_open(player, FO_ROB_TREASURE):
+        response.res.result = False
+        response.res.result_no = 837
+        return response.SerializePartialToString()
+
+
     request.ParseFromString(data)
     uid = request.uid
     chip_id = request.chip_id

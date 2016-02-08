@@ -62,6 +62,7 @@ from skill_peerless_grade_config import PeerlessGradeConfig
 from skill_peerless_effect_config import PeerlessEffectConfig
 from guild_task_config import GuildTaskConfig
 from guild_skill_config import GuildSkillConfig
+from features_open_config import FeaturesOpenConfig
 
 indiana_config = {}
 activity_type_config = {}
@@ -122,6 +123,7 @@ skill_peerless_effect_config = {}
 skill_peerless_grade_config = {}
 guild_task_config = {}
 guild_skill_config = {}
+features_open_config = {}
 
 all_config_name = {
     'activity_type_config': ActivityTypeConfig(),
@@ -182,6 +184,7 @@ all_config_name = {
     'skill_peerless_effect_config': PeerlessEffectConfig(),
     'guild_task_config': GuildTaskConfig(),
     'guild_skill_config': GuildSkillConfig(),
+    'features_open_config': FeaturesOpenConfig(),
 }
 
 logger.info("=============load game_configs=============")

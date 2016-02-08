@@ -138,14 +138,17 @@ class CharacterLineUpComponent(Component):
 
     def update_slot_activation(self):
         # 根据base_config获取卡牌位激活状态
+
         for i in range(1, 7):
             slot = self._line_up_slots[i]
-            __level = game_configs.base_config.get("hero_position_open_level").get(i)
+            feature_item = game_configs.features_open_config.get(i+5)
+            __level = feature_item.open
             if self.owner.base_info.level >= __level:
                 slot.activation = True
         for i in range(1, 7):
             slot = self._sub_slots[i]
-            __level = game_configs.base_config.get("friend_position_open_level").get(i)
+            feature_item = game_configs.features_open_config.get(i+11)
+            __level = feature_item.open
             if self.owner.base_info.level >= __level:
                 slot.activation = True
 

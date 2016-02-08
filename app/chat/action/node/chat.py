@@ -10,6 +10,7 @@ from app.chat.service.node.chatgateservice import noderemote
 from shared.utils import trie_tree
 from shared.db_opear.configs_data import game_configs
 from gfirefly.dbentrust.redis_mode import RedisObject
+#from shared.common_logic.feature_open import is_open, CHAT
 
 
 tb_character_info = RedisObject('tb_character_info')
@@ -29,7 +30,10 @@ def send_message_1002(character_id, dynamic_id, room_id, content,
     @param room_id: int 聊天频道
     @param content: str 聊天内容
     """
+
     chater = ChaterManager().getchater_by_id(character_id)
+    #if is_open(CHAT, chater):
+        #return {'result': False, 'result_no': 837}
     ids = []
     if not chater:
         # TODO message 信息要补充

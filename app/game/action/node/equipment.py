@@ -12,6 +12,7 @@ from shared.db_opear.configs_data import game_configs
 from app.game.core.notice import push_notice
 from shared.tlog import tlog_action
 from app.game.action.node.start_target import target_update
+from shared.common_logic.feature_open import is_not_open, FO_EQUIP_ENHANCE, FO_EQUIP_COMPOSE, FO_EQUIP_SACRIFICE
 
 
 @remoteserviceHandle('gate')
@@ -226,6 +227,8 @@ def enhance_equipment(equipment_id, enhance_type, player):
     @param kwargs:
     @return:
     """
+    if is_not_open(player, FO_EQUIP_ENHANCE):
+        return {"result": False, "result_no": 837}
 
     equipment_obj = player.equipment_component.get_equipment(equipment_id)
     # print equipment_obj, "equipment_obj"
@@ -305,6 +308,8 @@ def __do_enhance(player, equipment_obj):
 def compose_equipment(chip_no, player):
     """合成装备
     """
+    if is_not_open(player, FO_EQUIP_COMPOSE):
+        return {"result": False, "result_no": 837}
     chip = player.equipment_chip_component.get_chip(chip_no)
     # 没有碎片
     if not chip:
@@ -333,6 +338,8 @@ def melting_equipment(equipment_id, response, player):
     @param kwargs:
     @return:
     """
+    if is_not_open(player, FO_EQUIP_SACRIFICE):
+        return {"result": False, "result_no": 837}
     equipment_obj = player.equipment_component.get_equipment(equipment_id)
     if not equipment_obj:
         return {'result': False, 'result_no': 401, 'message': u''}
