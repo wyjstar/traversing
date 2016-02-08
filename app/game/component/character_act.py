@@ -9,6 +9,7 @@ from app.game.core.activity import get_act_info
 from shared.common_logic.activity import do_get_act_open_info
 from gfirefly.server.logobj import logger
 from app.game.core.activity import get_act_info
+from shared.utils.date_util import get_current_timestamp, days_to_current
 
 
 WIN_MINE_QUALITY = 1
@@ -211,6 +212,57 @@ class CharacterActComponent(Component):
                     continue
                 else:
                     act_info[1] += 1
+        self.save_data()
+
+    def add_currency(self, res_type, num):
+        """
+        累积消耗货币:元宝，银两，等
+        """
+        self.update_164_166(164, res_type, num)
+        self.update_65(res_type, num)
+
+    def add_pick_card(self, res_type, num):
+        """
+        抽取武将，神将，良将等
+        """
+        self.update_164_166(166, res_type, num)
+
+    def update_164_166(self, act_type, res_type, num):
+        """docstring for add_times"""
+        act_confs = game_configs.activity_config.get(act_type, [])
+        for act_conf in act_confs:
+            act_id = act_conf.id
+            if act_conf.parameterE.items()[0][0] != res_type:
+                continue
+            if not self.is_activiy_open(act_id):
+                continue
+            act_info = self._act_infos.get(act_id)
+            if not act_info:
+                self._act_infos[act_id] = [1, num]
+            else:
+                if act_info[0] != 1:
+                    continue
+                else:
+                    act_info[1] += num
+        self.save_data()
+
+    def update_65(self, res_type, num):
+        """docstring for add_times"""
+        act_confs = game_configs.activity_config.get(65)
+        for act_conf in act_confs:
+            act_id = act_conf.id
+            if act_conf.parameterE.items()[0][0] != res_type:
+                continue
+            if not self.is_activiy_open(act_id):
+                continue
+            act_info = self._act_infos.get(act_id)
+            if not act_info:
+                self._act_infos[act_id] = [1, num, int(time.time())]
+            else:
+                if days_to_current(act_info[2]) != 0:
+                    self._act_infos[act_id] = [1, num, int(time.time())]
+                else:
+                    act_info[1] += num
         self.save_data()
 
     def mine_win(self, quality):

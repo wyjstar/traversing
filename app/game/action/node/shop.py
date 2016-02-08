@@ -87,6 +87,7 @@ def shop_oper(pro_data, player, reason):
 
         hook_task(player, CONDITIONId.HERO_GET, 1)
         player.add_activity.add_pick_card(2, 1)
+        player.act.add_pick_card(2, 1)
 
         response.res.result = True
         return response.SerializeToString()
@@ -167,9 +168,11 @@ def shop_oper(pro_data, player, reason):
                 get_return(player, lucky_data, response.gain)
             if shop_item.id == 50001:
                 player.add_activity.add_pick_card(2, 1)
+                player.act.add_pick_card(2, 1)
                 hook_task(player, CONDITIONId.HERO_GET, 1)
             else:
                 player.add_activity.add_pick_card(2, 10)
+                player.act.add_pick_card(2, 10)
                 hook_task(player, CONDITIONId.HERO_GET, 10)
         else:
             gain_items = shop_item.gain
@@ -196,9 +199,11 @@ def shop_oper(pro_data, player, reason):
                 get_return(player, lucky_data, response.gain)
             if shop_item.id == 10001:
                 player.add_activity.add_pick_card(1, 1)
+                player.act.add_pick_card(1, 1)
                 hook_task(player, CONDITIONId.HERO_GET_LIANG, 1)
             else:
                 player.add_activity.add_pick_card(1, 10)
+                player.act.add_pick_card(1, 10)
                 hook_task(player, CONDITIONId.HERO_GET_LIANG, 10)
 
         send_tlog(player, shop_item)
