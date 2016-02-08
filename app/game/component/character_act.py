@@ -9,6 +9,7 @@ from app.game.core.activity import get_act_info
 from shared.common_logic.activity import do_get_act_open_info
 from gfirefly.server.logobj import logger
 from app.game.core.activity import get_act_info
+from shared.utils.date_util import get_current_timestamp, days_to_current
 
 
 WIN_MINE_QUALITY = 1
@@ -228,7 +229,7 @@ class CharacterActComponent(Component):
 
     def update_164_166(self, act_type, res_type, num):
         """docstring for add_times"""
-        act_confs = game_configs.activity_config.get(act_type)
+        act_confs = game_configs.activity_config.get(act_type, [])
         for act_conf in act_confs:
             act_id = act_conf.id
             if act_conf.parameterE.items()[0][0] != res_type:
