@@ -127,8 +127,8 @@ def shop_oper(pro_data, player, reason):
     def func():
         # consume_data = []
         if _is_consume_result:
-            return_data = consume(player, price, player_type_shop, reason,
-                                  shop_type_item)
+            return_data = consume(player, price, reason, shop=player_type_shop,
+                                  luck_config=shop_type_item)
             get_return(player, return_data, response.consume)
             # consume_data = return_data
             # logger.debug("hero-draw2")
