@@ -78,82 +78,8 @@ def nickname_create_5(request_proto, player):
     return response.SerializeToString()
 
 
-@remoteserviceHandle('gate')
-def buy_stamina_6(request_proto, player):
-    """购买体力"""
-    response = CommonResponse()
-
-    current_vip_level = player.base_info.vip_level
-    current_buy_stamina_times = player.stamina.buy_stamina_times
-    # current_stamina = player.stamina.stamina
-    current_gold = player.finance.gold
-
-    available_buy_stamina_times = game_configs.vip_config.get(current_vip_level).get("buyStaminaMax")
-
-    logger.debug("available_buy_stamina_times:%s,%s", available_buy_stamina_times,
-                 current_buy_stamina_times)
-    # 校验购买次数上限
-    if current_buy_stamina_times >= available_buy_stamina_times:
-        response.result = False
-        response.result_no = 11
-        return response.SerializePartialToString()
-
-    need_gold = game_configs.base_config.get("price_buy_manual").get(current_buy_stamina_times+1)[1]
-    logger.debug("need_gold++++++++++++++++%s", need_gold)
-    # 校验金币是否不足
-    if need_gold > current_gold:
-        logger.debug("gold not enough++++++++++++")
-        response.result = False
-        response.result_no = 102
-        return response.SerializePartialToString()
-
-    max_stamina = max_of_stamina()
-    if player.stamina.stamina >= max_stamina:
-        logger.debug("stamina is full++++++++++++")
-        response.result = False
-        response.result_no = 105
-        return response.SerializePartialToString()
-
-    def func():
-        player.stamina.buy_stamina_times += 1
-        player.stamina.stamina += 120
-        player.stamina.last_buy_stamina_time = int(time.time())
-        player.stamina.save_data()
-        logger.debug("buy stamina++++++++++++++++++++")
-
-    player.pay.pay(need_gold, const.BUY_STAMINA, func)
-
-    response.result = True
-    return response.SerializePartialToString()
 
 
-@remoteserviceHandle('gate')
-def add_stamina_7(request_proto, player):
-    """按时自动增长资源"""
-    response = CommonResponse()
-
-    # 校验时间是否足够
-    current_time = int(time.time())
-    last_gain_stamina_time = player.stamina.stamina
-
-    if current_time - last_gain_stamina_time < 270:
-        logger.debug("add stamina time not enough +++++++++++++++++++++")
-        response.result_no = 12
-        response.result = False
-        return response.SerializePartialToString()
-
-    max_stamina = max_of_stamina()
-    if player.stamina.stamina >= max_stamina:
-        logger.debug("has reach max stamina ++++++++++++++++++++++")
-        response.result_no = 13
-        response.result = False
-        return response.SerializePartialToString()
-    player.stamina.stamina += 1
-
-    player.stamina.last_gain_stamina_time = current_time
-    player.stamina.save_data()
-    response.result = True
-    return response.SerializePartialToString()
 
 
 GUIDE_SET_RUNT = [50029, 50032, 50035]
@@ -399,7 +325,7 @@ def buy_stamina_2201(request_proto, player):
     if current_value >= info.get("max_value"):
         logger.debug("stamina is full++++++++++++")
         response.res.result = False
-        response.res.result_no = 105
+        response.res.result_no = 220101
         return response.SerializePartialToString()
 
     def func():
