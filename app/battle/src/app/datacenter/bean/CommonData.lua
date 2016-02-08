@@ -106,6 +106,7 @@ function CommonData:setData(data)
     self.GameLoginResponse = data                       --commonData全部数据
 
     self.accountId = data.id                            --玩家id
+    print("accountId:",self.accountId)
     self.nickname = data.nickname                       --玩家昵称
     self.register_time = data.register_time
     --cclog("----π－－－－"..self.register_time.."等级:"..data.level)
@@ -124,13 +125,12 @@ function CommonData:setData(data)
     self.normalHeroTimes = data.fine_hero_times           --良将累计抽取次数
     self.godHeroTimes = data.excellent_hero_times         --神将累计抽取次数
 
-    --data.newbee_guide_id = 20030
     if (data.newbee_guide_id == 0) then
         getNewGManager():updateBaseInfo(GuideId.G_GUIDE_START)  --新手引导记录编号
     else
         getNewGManager():updateBaseInfo(data.newbee_guide_id)
     end
-    print("---------------------------------------------------")
+    print("---------------------------------------------------data.newbee_guide_id",data.newbee_guide_id)
 
     -- self.gold = data.gold                               --元宝
     -- self.coin = data.coin                               --金币
@@ -222,6 +222,20 @@ end
 ]]
 function CommonData:getStoryId()
     return self.storyId_
+end
+
+--[[--
+    设置是否显示战队提升
+]]
+function CommonData:setShowUpgrad(_value)
+    self.showUpgrad = _value
+end
+
+--[[--
+    获取是否显示战队提升
+]]
+function CommonData:getShowUpgrad()
+    return self.showUpgrad
 end
 
 --[[--
@@ -646,12 +660,12 @@ function CommonData:setLevel(level)
         self:dispatchEvent(EventName.UPDATE_ACTIVE)
         self:dispatchEvent(EventName.UPDATE_LEVEL)
 
-        if self.oldLevel and self.oldLevel >0 then
-            local newFeatures = FeaturesOPEN.checkNewFeatures(1,self.level)
-            if newFeatures and #newFeatures > 0 then
+        -- if self.oldLevel and self.oldLevel >0 then
+        --     local newFeatures = FeaturesOPEN.checkNewFeatures(1,self.level)
+        --     if newFeatures and #newFeatures > 0 then
                 self:dispatchEvent(EventName.UPDATE_NEW_FEATURE)
-            end
-        end
+        --     end
+        -- end
 
         -- 将等级写入到userdefault中
         saveTeamLevel(self.level)
@@ -806,7 +820,7 @@ end
 function CommonData:updateCombatPower() 
     local power = roundNumber(getCalculationManager():getCalculation():CombatPowerAllSoldierLineUp())
     self:setCombatPower(power)
-
+    print("CommonData:updateCombatPower",power)
     self:dispatchEvent(EventName.UPDATE_COMBAT_POWER) 
 end
 

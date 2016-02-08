@@ -238,7 +238,7 @@ function initGuideData()
             unit.ductility = 0         -- 韧性
             unit.hp = v[4] or unit.hp
             unit.hp_max = v[4] or unit.hp_max
-            unit.hit = 1000                     -- 命中率
+            unit.hit = 100000                     -- 命中率
             unit.dodge = 0                 -- 闪避率
             redUnits[pos] = unit
             updateRedUnitViewProperty(unit)
@@ -260,7 +260,7 @@ function initGuideData()
                 end
             end
             blueUnits[pos] = unit
-            unit.skill.mp = v[3]
+            unit.skill.mp = v[3] 
             unit._skill.mp = v[3]
             unit.cri_coeff = 1000
             unit.cri_ded_coeff = 0
@@ -268,12 +268,21 @@ function initGuideData()
             unit.ductility = 0         -- 韧性
             unit.hp = v[4] or unit.hp   
             unit.hp_max = v[4] or unit.hp_max
-            unit.hit = 1000                     -- 命中率
+            unit.hit = 100000                     -- 命中率
             unit.dodge = 0                 -- 闪避率
             updateBlueUnitViewProperty(unit)
         end
     end
-    local redUnParaSkill = constructUnparaSkill(10020, 1, const.HOME_ARMY, "red", 7, 1, 1)
+
+    local demoUnpara = baseTemplate:getBaseInfoById("demoUnpara") or {}
+    local unpar_type_id = demoUnpara[1] or 0
+    local unpar_other_id = demoUnpara[2] or 0
+    local unpar_level = demoUnpara[3] or 0
+    local unpar_job = demoUnpara[4] or 0
+
+    local redUnParaSkill = constructUnparaSkill(unpar_type_id, unpar_other_id, const.HOME_ARMY, "red", 7, unpar_level, unpar_job)
+
+    -- local redUnParaSkill = constructUnparaSkill(10020, 1, const.HOME_ARMY, "red", 7, 1, 1)
 
     redUnParaSkill.mp_step = 8
 

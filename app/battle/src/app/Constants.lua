@@ -18,6 +18,8 @@ const.FIGHT_POS_UNPARA_ICON = cc.p(130,355)
 BIG_SCALE = 0.58
 TYPE_ACTIVITY_LIMIT_SHOP = "limitShop"  --限时商店类型
 
+NEWGUIDE_HIDESTAGE_GID = 3501 --新手引导，隐藏关卡的id
+
 const.HOME_ARMY = {
     [1] = {point = cc.pAdd(const.POS_ARMY, cc.p(-190, 90)), scale = BIG_SCALE},
     [2] = {point = cc.pAdd(const.POS_ARMY, cc.p(0, 90)), scale = BIG_SCALE},
@@ -579,7 +581,6 @@ EventName = {
 
     LEGION_REMOVE_HUB = "LEGION_REMOVE_HUB", -- 移除军团中转UI
     UPDATE_LINEUP_GODDESS_ACTIVED = "UPDATE_LINEUP_GODDESS_ACTIVED", --激活女神
-    LOADING_FOR_ENTERGAME = "LOADING_FOR_ENTERGAME", --激活女神
 }
 
 NoticeColor = {
@@ -601,6 +602,7 @@ G_PLATFORM.QQ = 2           -- QQ平台
 G_PLATFORM.QHALL = 3        -- 游戏大厅平台
 
 const.C_WS_MAX_LEVEL = 3
+LOADING_FOR_ENTERGAME = 999999 --进入游戏
 
 --定义网络错误代码
 const.NET_ERR_CODE = {
@@ -722,3 +724,5 @@ REWARD_STATE = {
     STATE_CAN = 1,--可领取
     STATE_ISGOT = 2,--已领取
 }
+
+
