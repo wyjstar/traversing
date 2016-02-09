@@ -1,10 +1,10 @@
 newbee_guide_config={
   [2701] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 149,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 149,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 270,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2702,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 270,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2702,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2701,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 295,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2701,  ["rewards"] = {
 }
 ,  ["backID"] = 2701,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -24,7 +24,7 @@ newbee_guide_config={
   [1] = 6100000807,}
 ,  ["touch_y"] = 882,  ["trigger"] = 1,  ["hand_start_point_x"] = 53,  ["hand_end_point_y"] = 0,  ["skip_to"] = 808,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 914,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 807,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 914,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 807,  ["rewards"] = {
 }
 ,  ["backID"] = 804,  ["touch_x"] = 20,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -34,7 +34,7 @@ newbee_guide_config={
   [1] = 6100002703,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2704,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2703,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2703,  ["rewards"] = {
 }
 ,  ["backID"] = 2702,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -44,7 +44,7 @@ newbee_guide_config={
   [1] = 6100000903,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 904,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 9,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 903,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10003,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 9,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 903,  ["rewards"] = {
 }
 ,  ["backID"] = 903,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -74,7 +74,7 @@ newbee_guide_config={
 }
 ,  ["touch_y"] = 741,  ["trigger"] = 1,  ["hand_start_point_x"] = 455,  ["hand_end_point_y"] = 0,  ["skip_to"] = 204,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 741,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 203,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 800,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 203,  ["rewards"] = {
 }
 ,  ["backID"] = 203,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -84,7 +84,7 @@ newbee_guide_config={
   [1] = 6100000211,}
 ,  ["touch_y"] = 0,  ["trigger"] = 3,  ["hand_start_point_x"] = 588,  ["hand_end_point_y"] = 0,  ["skip_to"] = 301,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 50,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 211,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 50,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 211,  ["rewards"] = {
 }
 ,  ["backID"] = 207,  ["touch_x"] = 531,  ["npc_y"] = 302,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -94,9 +94,9 @@ newbee_guide_config={
 }
 ,  ["touch_y"] = 401,  ["trigger"] = 1,  ["hand_start_point_x"] = 528,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2708,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 441,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2707,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 4,  ["hand_start_point_y"] = 441,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2707,  ["rewards"] = {
 }
-,  ["backID"] = 2706,  ["touch_x"] = 485,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 2707,  ["touch_x"] = 485,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 80,  ["hand_end_point_x"] = 0,}
 ,  [904] = {
@@ -180,13 +180,13 @@ newbee_guide_config={
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
 ,  [406] = {
-  ["touch_w"] = 111,  ["area_x"] = 267,  ["Sequence"] = 25,  ["DialogueTriangleCoordinate"] = 1,  ["touch_move_enable"] = 0,  ["area_w"] = 111,  ["touch_h"] = 47,  ["hand_direction"] = 4,  ["area_y"] = 543,  ["guideWord"] = {
+  ["touch_w"] = 111,  ["area_x"] = 265,  ["Sequence"] = 25,  ["DialogueTriangleCoordinate"] = 1,  ["touch_move_enable"] = 0,  ["area_w"] = 111,  ["touch_h"] = 47,  ["hand_direction"] = 4,  ["area_y"] = 543,  ["guideWord"] = {
   [1] = 6100000406,}
-,  ["touch_y"] = 543,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 407,  ["TriangleCoordinate"] = 320,  ["hero"] = -1,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 543,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 407,  ["TriangleCoordinate"] = 320,  ["hero"] = -1,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 567,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 406,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 567,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 406,  ["rewards"] = {
 }
-,  ["backID"] = 403,  ["touch_x"] = 267,  ["npc_y"] = 516,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 403,  ["touch_x"] = 265,  ["npc_y"] = 280,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 47,  ["hand_end_point_x"] = 0,}
 ,  [106] = {
@@ -240,11 +240,11 @@ newbee_guide_config={
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 47,  ["hand_end_point_x"] = 0,}
 ,  [3101] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 183,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 183,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 270,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3102,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 270,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3102,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3101,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 295,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3101,  ["rewards"] = {
 }
 ,  ["backID"] = 3101,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -284,21 +284,21 @@ newbee_guide_config={
   [1] = 6100001301,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1302,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1301,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1301,  ["rewards"] = {
 }
 ,  ["backID"] = 1301,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [407] = {
-  ["touch_w"] = 640,  ["area_x"] = 174,  ["Sequence"] = 26,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 140,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 225,  ["guideWord"] = {
-  [1] = 6100000407,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 408,  ["TriangleCoordinate"] = 246,  ["hero"] = -1,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+,  [812] = {
+  ["touch_w"] = 86,  ["area_x"] = 555,  ["Sequence"] = 52,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 86,  ["touch_h"] = 69,  ["hand_direction"] = 1,  ["area_y"] = 891,  ["guideWord"] = {
+  [1] = 6100000812,}
+,  ["touch_y"] = 891,  ["trigger"] = 1,  ["hand_start_point_x"] = 600,  ["hand_end_point_y"] = 0,  ["skip_to"] = 901,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 407,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 927,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 640,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 812,  ["rewards"] = {
 }
-,  ["backID"] = 403,  ["touch_x"] = 0,  ["npc_y"] = 426,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 808,  ["touch_x"] = 555,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 147,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 69,  ["hand_end_point_x"] = 0,}
 ,  [3105] = {
   ["touch_w"] = 167,  ["area_x"] = 239,  ["Sequence"] = 187,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 167,  ["touch_h"] = 146,  ["hand_direction"] = 1,  ["area_y"] = 404,  ["guideWord"] = {
 }
@@ -314,7 +314,7 @@ newbee_guide_config={
   [1] = 6100001302,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1304,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1302,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1302,  ["rewards"] = {
 }
 ,  ["backID"] = 1301,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -342,11 +342,11 @@ newbee_guide_config={
 ,  [3109] = {
   ["touch_w"] = 65,  ["area_x"] = 20,  ["Sequence"] = 191,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 65,  ["touch_h"] = 63,  ["hand_direction"] = 1,  ["area_y"] = 879,  ["guideWord"] = {
 }
-,  ["touch_y"] = 879,  ["trigger"] = 1,  ["hand_start_point_x"] = 51,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3110,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 879,  ["trigger"] = 1,  ["hand_start_point_x"] = 51,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3110,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 911,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3109,  ["rewards"] = {
 }
-,  ["backID"] = 3105,  ["touch_x"] = 20,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 3109,  ["touch_x"] = 20,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 63,  ["hand_end_point_x"] = 0,}
 ,  [1304] = {
@@ -360,11 +360,11 @@ newbee_guide_config={
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 95,  ["hand_end_point_x"] = 0,}
 ,  [2601] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 133,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 133,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 270,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2602,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 270,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2602,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2601,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 295,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2601,  ["rewards"] = {
 }
 ,  ["backID"] = 2601,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -380,13 +380,13 @@ newbee_guide_config={
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 63,  ["hand_end_point_x"] = 0,}
 ,  [408] = {
-  ["touch_w"] = 140,  ["area_x"] = 174,  ["Sequence"] = 27,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 140,  ["touch_h"] = 147,  ["hand_direction"] = 1,  ["area_y"] = 225,  ["guideWord"] = {
+  ["touch_w"] = 140,  ["area_x"] = 324,  ["Sequence"] = 27,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 140,  ["touch_h"] = 147,  ["hand_direction"] = 1,  ["area_y"] = 225,  ["guideWord"] = {
   [1] = 6100000408,}
-,  ["touch_y"] = 225,  ["trigger"] = 1,  ["hand_start_point_x"] = 246,  ["hand_end_point_y"] = 0,  ["skip_to"] = 409,  ["TriangleCoordinate"] = 246,  ["hero"] = -1,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 225,  ["trigger"] = 1,  ["hand_start_point_x"] = 386,  ["hand_end_point_y"] = 0,  ["skip_to"] = 409,  ["TriangleCoordinate"] = 246,  ["hero"] = -1,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 297,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 408,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 297,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 408,  ["rewards"] = {
 }
-,  ["backID"] = 403,  ["touch_x"] = 174,  ["npc_y"] = 569,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 403,  ["touch_x"] = 324,  ["npc_y"] = 435,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 147,  ["hand_end_point_x"] = 0,}
 ,  [2603] = {
@@ -422,9 +422,9 @@ newbee_guide_config={
 ,  [1307] = {
   ["touch_w"] = 86,  ["area_x"] = 555,  ["Sequence"] = 71,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 86,  ["touch_h"] = 69,  ["hand_direction"] = 1,  ["area_y"] = 891,  ["guideWord"] = {
   [1] = 6100001307,}
-,  ["touch_y"] = 891,  ["trigger"] = 1,  ["hand_start_point_x"] = 600,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1308,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 891,  ["trigger"] = 1,  ["hand_start_point_x"] = 600,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1308,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 927,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1307,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 927,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1307,  ["rewards"] = {
 }
 ,  ["backID"] = 1304,  ["touch_x"] = 555,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -454,7 +454,7 @@ newbee_guide_config={
   [1] = 6100003501,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 1,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 35,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3501,  ["rewards"] = {
+,  ["SequenceType"] = 1,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 35,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3501,  ["rewards"] = {
 }
 ,  ["backID"] = 3501,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -462,11 +462,11 @@ newbee_guide_config={
 ,  [2609] = {
   ["touch_w"] = 83,  ["area_x"] = 558,  ["Sequence"] = 141,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 83,  ["touch_h"] = 65,  ["hand_direction"] = 1,  ["area_y"] = 896,  ["guideWord"] = {
 }
-,  ["touch_y"] = 896,  ["trigger"] = 1,  ["hand_start_point_x"] = 609,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2610,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 896,  ["trigger"] = 1,  ["hand_start_point_x"] = 609,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2610,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 929,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2609,  ["rewards"] = {
 }
-,  ["backID"] = 2605,  ["touch_x"] = 558,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 2609,  ["touch_x"] = 558,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 65,  ["hand_end_point_x"] = 0,}
 ,  [1309] = {
@@ -474,7 +474,7 @@ newbee_guide_config={
 }
 ,  ["touch_y"] = 741,  ["trigger"] = 1,  ["hand_start_point_x"] = 455,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1310,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 741,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1309,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 800,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1309,  ["rewards"] = {
 }
 ,  ["backID"] = 1309,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -484,7 +484,7 @@ newbee_guide_config={
   [1] = 6100000205,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 206,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 205,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 205,  ["rewards"] = {
 }
 ,  ["backID"] = 203,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -500,13 +500,13 @@ newbee_guide_config={
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [1501] = {
-  ["touch_w"] = 70,  ["area_x"] = 542,  ["Sequence"] = 78,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 70,  ["touch_h"] = 64,  ["hand_direction"] = 1,  ["area_y"] = 250,  ["guideWord"] = {
+  ["touch_w"] = 70,  ["area_x"] = 542,  ["Sequence"] = 78,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 70,  ["touch_h"] = 64,  ["hand_direction"] = 1,  ["area_y"] = 220,  ["guideWord"] = {
   [1] = 6100001501,}
-,  ["touch_y"] = 250,  ["trigger"] = 1,  ["hand_start_point_x"] = 576,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1502,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 220,  ["trigger"] = 1,  ["hand_start_point_x"] = 576,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1502,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 683,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 15,  ["triggerValue"] = 100203,  ["isMust"] = 1,  ["id"] = 1501,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 10003,  ["hand_start_point_y"] = 230,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 15,  ["triggerValue"] = 100203,  ["isMust"] = 1,  ["id"] = 1501,  ["rewards"] = {
 }
-,  ["backID"] = 1501,  ["touch_x"] = 542,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 1501,  ["touch_x"] = 542,  ["npc_y"] = 450,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 64,  ["hand_end_point_x"] = 0,}
 ,  [2102] = {
@@ -532,7 +532,7 @@ newbee_guide_config={
 ,  [1502] = {
   ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 79,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1503,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1503,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 15,  ["triggerValue"] = 100203,  ["isMust"] = 1,  ["id"] = 1502,  ["rewards"] = {
 }
@@ -564,7 +564,7 @@ newbee_guide_config={
   [1] = 6100001503,}
 ,  ["touch_y"] = 27,  ["trigger"] = 1,  ["hand_start_point_x"] = 243,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1504,  ["TriangleCoordinate"] = 243,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 66,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 15,  ["triggerValue"] = 100203,  ["isMust"] = 1,  ["id"] = 1503,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 10003,  ["hand_start_point_y"] = 66,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 15,  ["triggerValue"] = 100203,  ["isMust"] = 1,  ["id"] = 1503,  ["rewards"] = {
 }
 ,  ["backID"] = 1503,  ["touch_x"] = 201,  ["npc_y"] = 308,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -582,7 +582,7 @@ newbee_guide_config={
 ,  [1504] = {
   ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 81,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1505,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1505,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 15,  ["triggerValue"] = 100203,  ["isMust"] = 1,  ["id"] = 1504,  ["rewards"] = {
 }
@@ -594,7 +594,7 @@ newbee_guide_config={
   [1] = 6100000103,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 104,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 103,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 103,  ["rewards"] = {
 }
 ,  ["backID"] = 101,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -644,7 +644,7 @@ newbee_guide_config={
   [1] = 6100003005,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3006,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 20,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 30,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3005,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 20,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 30,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3005,  ["rewards"] = {
 }
 ,  ["backID"] = 3004,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -669,36 +669,26 @@ newbee_guide_config={
 ,  ["backID"] = 3007,  ["touch_x"] = 485,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 50,  ["hand_end_point_x"] = 0,}
-,  [3411] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 219,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100003411,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3411,  ["rewards"] = {
-}
-,  ["backID"] = 3407,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [3008] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 182,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100003008,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 20,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 30,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3008,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 20,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 30,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3008,  ["rewards"] = {
 }
 ,  ["backID"] = 3007,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [3410] = {
-  ["touch_w"] = 161,  ["area_x"] = 422,  ["Sequence"] = 218,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 161,  ["touch_h"] = 55,  ["hand_direction"] = 1,  ["area_y"] = 38,  ["guideWord"] = {
+,  [3411] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 219,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100003411,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["touch_y"] = 38,  ["trigger"] = 1,  ["hand_start_point_x"] = 501,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3411,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3411,  ["rewards"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 65,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3410,  ["rewards"] = {
+,  ["backID"] = 3411,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
-,  ["backID"] = 3407,  ["touch_x"] = 422,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 55,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [411] = {
   ["touch_w"] = 160,  ["area_x"] = 242,  ["Sequence"] = 30,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 141,  ["guideWord"] = {
 }
@@ -709,16 +699,26 @@ newbee_guide_config={
 ,  ["backID"] = 403,  ["touch_x"] = 242,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
-,  [3111] = {
-  ["touch_w"] = 74,  ["area_x"] = 284,  ["Sequence"] = 193,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 74,  ["touch_h"] = 76,  ["hand_direction"] = 1,  ["area_y"] = 140,  ["guideWord"] = {
+,  [3410] = {
+  ["touch_w"] = 161,  ["area_x"] = 422,  ["Sequence"] = 218,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 161,  ["touch_h"] = 55,  ["hand_direction"] = 1,  ["area_y"] = 38,  ["guideWord"] = {
 }
-,  ["touch_y"] = 140,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3112,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 38,  ["trigger"] = 1,  ["hand_start_point_x"] = 501,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3411,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 176,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3111,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 65,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3410,  ["rewards"] = {
 }
-,  ["backID"] = 3111,  ["touch_x"] = 284,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 3407,  ["touch_x"] = 422,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 76,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 55,  ["hand_end_point_x"] = 0,}
+,  [3112] = {
+  ["touch_w"] = 93,  ["area_x"] = 45,  ["Sequence"] = 194,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 93,  ["touch_h"] = 79,  ["hand_direction"] = 1,  ["area_y"] = 374,  ["guideWord"] = {
+}
+,  ["touch_y"] = 374,  ["trigger"] = 1,  ["hand_start_point_x"] = 89,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3113,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 408,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3112,  ["rewards"] = {
+}
+,  ["backID"] = 3111,  ["touch_x"] = 45,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 79,  ["hand_end_point_x"] = 0,}
 ,  [3408] = {
   ["touch_w"] = 91,  ["area_x"] = 191,  ["Sequence"] = 216,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 91,  ["touch_h"] = 78,  ["hand_direction"] = 1,  ["area_y"] = 507,  ["guideWord"] = {
 }
@@ -729,16 +729,26 @@ newbee_guide_config={
 ,  ["backID"] = 3407,  ["touch_x"] = 191,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 78,  ["hand_end_point_x"] = 0,}
-,  [3113] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 195,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100003113,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3114,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+,  [3114] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 196,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100003114,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 7,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3113,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3114,  ["rewards"] = {
 }
-,  ["backID"] = 3113,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 3114,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [1701] = {
+  ["touch_w"] = 90,  ["area_x"] = 156,  ["Sequence"] = 86,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 90,  ["touch_h"] = 95,  ["hand_direction"] = 1,  ["area_y"] = 17,  ["guideWord"] = {
+  [1] = 6100001701,}
+,  ["touch_y"] = 17,  ["trigger"] = 1,  ["hand_start_point_x"] = 201,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1702,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 10002,  ["hand_start_point_y"] = 63,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1701,  ["rewards"] = {
+}
+,  ["backID"] = 1701,  ["touch_x"] = 156,  ["npc_y"] = 300,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 95,  ["hand_end_point_x"] = 0,}
 ,  [3406] = {
   ["touch_w"] = 126,  ["area_x"] = 258,  ["Sequence"] = 214,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 126,  ["touch_h"] = 113,  ["hand_direction"] = 1,  ["area_y"] = 14,  ["guideWord"] = {
 }
@@ -749,46 +759,26 @@ newbee_guide_config={
 ,  ["backID"] = 3406,  ["touch_x"] = 258,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 113,  ["hand_end_point_x"] = 0,}
-,  [1701] = {
-  ["touch_w"] = 90,  ["area_x"] = 156,  ["Sequence"] = 86,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 90,  ["touch_h"] = 95,  ["hand_direction"] = 1,  ["area_y"] = 17,  ["guideWord"] = {
-  [1] = 6100001701,}
-,  ["touch_y"] = 17,  ["trigger"] = 1,  ["hand_start_point_x"] = 201,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1702,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  [414] = {
+  ["touch_w"] = 107,  ["area_x"] = 0,  ["Sequence"] = 33,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 107,  ["touch_h"] = 108,  ["hand_direction"] = 1,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100000414,}
+,  ["touch_y"] = 0,  ["trigger"] = 3,  ["hand_start_point_x"] = 56,  ["hand_end_point_y"] = 0,  ["skip_to"] = 501,  ["TriangleCoordinate"] = 56,  ["hero"] = -1,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 63,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1701,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 51,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 414,  ["rewards"] = {
 }
-,  ["backID"] = 1701,  ["touch_x"] = 156,  ["npc_y"] = 300,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 403,  ["touch_x"] = 0,  ["npc_y"] = 318,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 95,  ["hand_end_point_x"] = 0,}
-,  [402] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 21,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100000402,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 403,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 402,  ["rewards"] = {
-}
-,  ["backID"] = 401,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 108,  ["hand_end_point_x"] = 0,}
 ,  [3404] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 212,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100003404,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3405,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3404,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3404,  ["rewards"] = {
 }
 ,  ["backID"] = 3403,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [808] = {
-  ["touch_w"] = 90,  ["area_x"] = 156,  ["Sequence"] = 48,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 90,  ["touch_h"] = 95,  ["hand_direction"] = 1,  ["area_y"] = 17,  ["guideWord"] = {
-}
-,  ["touch_y"] = 17,  ["trigger"] = 1,  ["hand_start_point_x"] = 201,  ["hand_end_point_y"] = 0,  ["skip_to"] = 809,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 63,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 808,  ["rewards"] = {
-}
-,  ["backID"] = 808,  ["touch_x"] = 156,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 95,  ["hand_end_point_x"] = 0,}
 ,  [1702] = {
   ["touch_w"] = 65,  ["area_x"] = 239,  ["Sequence"] = 87,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 65,  ["touch_h"] = 63,  ["hand_direction"] = 1,  ["area_y"] = 186,  ["guideWord"] = {
 }
@@ -799,36 +789,36 @@ newbee_guide_config={
 ,  ["backID"] = 1701,  ["touch_x"] = 239,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 63,  ["hand_end_point_x"] = 0,}
+,  [407] = {
+  ["touch_w"] = 640,  ["area_x"] = 174,  ["Sequence"] = 26,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 140,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 225,  ["guideWord"] = {
+  [1] = 6100000407,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 408,  ["TriangleCoordinate"] = 246,  ["hero"] = -1,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 407,  ["rewards"] = {
+}
+,  ["backID"] = 403,  ["touch_x"] = 0,  ["npc_y"] = 435,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 147,  ["hand_end_point_x"] = 0,}
 ,  [3402] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 210,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100003402,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3403,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3402,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3402,  ["rewards"] = {
 }
 ,  ["backID"] = 3402,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [2709] = {
-  ["touch_w"] = 66,  ["area_x"] = 546,  ["Sequence"] = 157,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 66,  ["touch_h"] = 65,  ["hand_direction"] = 0,  ["area_y"] = 879,  ["guideWord"] = {
+,  [3302] = {
+  ["touch_w"] = 74,  ["area_x"] = 284,  ["Sequence"] = 205,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 74,  ["touch_h"] = 76,  ["hand_direction"] = 1,  ["area_y"] = 140,  ["guideWord"] = {
 }
-,  ["touch_y"] = 879,  ["trigger"] = 1,  ["hand_start_point_x"] = 579,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2710,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 140,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3303,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 911,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2709,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 176,  ["triggerLv"] = 27,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 33,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3302,  ["rewards"] = {
 }
-,  ["backID"] = 2706,  ["touch_x"] = 546,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 3302,  ["touch_x"] = 284,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 65,  ["hand_end_point_x"] = 0,}
-,  [3308] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 208,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100003308,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 27,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 33,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3308,  ["rewards"] = {
-}
-,  ["backID"] = 3304,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 76,  ["hand_end_point_x"] = 0,}
 ,  [1703] = {
   ["touch_w"] = 233,  ["area_x"] = 173,  ["Sequence"] = 88,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 233,  ["touch_h"] = 199,  ["hand_direction"] = 1,  ["area_y"] = 467,  ["guideWord"] = {
 }
@@ -839,26 +829,26 @@ newbee_guide_config={
 ,  ["backID"] = 1701,  ["touch_x"] = 173,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 199,  ["hand_end_point_x"] = 0,}
+,  [3308] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 208,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100003308,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 27,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 33,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3308,  ["rewards"] = {
+}
+,  ["backID"] = 3304,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [3306] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 207,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100003306,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3308,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 27,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 33,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3306,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 27,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 33,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3306,  ["rewards"] = {
 }
 ,  ["backID"] = 3304,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [2704] = {
-  ["touch_w"] = 74,  ["area_x"] = 284,  ["Sequence"] = 152,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 74,  ["touch_h"] = 76,  ["hand_direction"] = 1,  ["area_y"] = 140,  ["guideWord"] = {
-}
-,  ["touch_y"] = 140,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2705,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 176,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2704,  ["rewards"] = {
-}
-,  ["backID"] = 2704,  ["touch_x"] = 284,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 76,  ["hand_end_point_x"] = 0,}
 ,  [412] = {
   ["touch_w"] = 145,  ["area_x"] = 248,  ["Sequence"] = 31,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 145,  ["touch_h"] = 108,  ["hand_direction"] = 1,  ["area_y"] = 39,  ["guideWord"] = {
 }
@@ -879,36 +869,36 @@ newbee_guide_config={
 ,  ["backID"] = 1701,  ["touch_x"] = 162,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 78,  ["hand_end_point_x"] = 0,}
-,  [3302] = {
-  ["touch_w"] = 74,  ["area_x"] = 284,  ["Sequence"] = 205,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 74,  ["touch_h"] = 76,  ["hand_direction"] = 1,  ["area_y"] = 140,  ["guideWord"] = {
+,  [2706] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 154,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100002706,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2707,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["touch_y"] = 140,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3303,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 4,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2706,  ["rewards"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 176,  ["triggerLv"] = 27,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 33,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3302,  ["rewards"] = {
+,  ["backID"] = 2706,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
-,  ["backID"] = 3302,  ["touch_x"] = 284,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 76,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [3401] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 209,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 209,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 270,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3402,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 270,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3402,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3401,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 295,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3401,  ["rewards"] = {
 }
 ,  ["backID"] = 3401,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 50,  ["hand_end_point_x"] = 0,}
-,  [1311] = {
-  ["touch_w"] = 160,  ["area_x"] = 242,  ["Sequence"] = 75,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 141,  ["guideWord"] = {
+,  [2710] = {
+  ["touch_w"] = 238,  ["area_x"] = 381,  ["Sequence"] = 158,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 238,  ["touch_h"] = 51,  ["hand_direction"] = 0,  ["area_y"] = 843,  ["guideWord"] = {
 }
-,  ["touch_y"] = 141,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1312,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 843,  ["trigger"] = 1,  ["hand_start_point_x"] = 525,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2711,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 168,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1311,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 4,  ["hand_start_point_y"] = 867,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2710,  ["rewards"] = {
 }
-,  ["backID"] = 1310,  ["touch_x"] = 242,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 2710,  ["touch_x"] = 381,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 51,  ["hand_end_point_x"] = 0,}
 ,  [1705] = {
   ["touch_w"] = 163,  ["area_x"] = 240,  ["Sequence"] = 90,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 163,  ["touch_h"] = 51,  ["hand_direction"] = 1,  ["area_y"] = 45,  ["guideWord"] = {
 }
@@ -919,16 +909,16 @@ newbee_guide_config={
 ,  ["backID"] = 1701,  ["touch_x"] = 240,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 51,  ["hand_end_point_x"] = 0,}
-,  [403] = {
-  ["touch_w"] = 97,  ["area_x"] = 105,  ["Sequence"] = 22,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 97,  ["touch_h"] = 137,  ["hand_direction"] = 1,  ["area_y"] = 372,  ["guideWord"] = {
+,  [1311] = {
+  ["touch_w"] = 160,  ["area_x"] = 242,  ["Sequence"] = 75,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 141,  ["guideWord"] = {
 }
-,  ["touch_y"] = 372,  ["trigger"] = 1,  ["hand_start_point_x"] = 155,  ["hand_end_point_y"] = 0,  ["skip_to"] = 404,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 141,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1312,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 440,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 403,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 168,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1311,  ["rewards"] = {
 }
-,  ["backID"] = 403,  ["touch_x"] = 105,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 1310,  ["touch_x"] = 242,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 137,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
 ,  [3403] = {
   ["touch_w"] = 160,  ["area_x"] = 359,  ["Sequence"] = 211,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 174,  ["hand_direction"] = 1,  ["area_y"] = 150,  ["guideWord"] = {
 }
@@ -939,16 +929,16 @@ newbee_guide_config={
 ,  ["backID"] = 3403,  ["touch_x"] = 359,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 174,  ["hand_end_point_x"] = 0,}
-,  [3204] = {
-  ["touch_w"] = 91,  ["area_x"] = 482,  ["Sequence"] = 200,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 91,  ["touch_h"] = 79,  ["hand_direction"] = 1,  ["area_y"] = 506,  ["guideWord"] = {
+,  [1310] = {
+  ["touch_w"] = 106,  ["area_x"] = 392,  ["Sequence"] = 74,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 106,  ["touch_h"] = 142,  ["hand_direction"] = 1,  ["area_y"] = 635,  ["guideWord"] = {
 }
-,  ["touch_y"] = 506,  ["trigger"] = 1,  ["hand_start_point_x"] = 528,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3205,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 635,  ["trigger"] = 1,  ["hand_start_point_x"] = 446,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1311,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 546,  ["triggerLv"] = 24,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 32,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3204,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 699,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1310,  ["rewards"] = {
 }
-,  ["backID"] = 3203,  ["touch_x"] = 482,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 1310,  ["touch_x"] = 392,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 79,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 142,  ["hand_end_point_x"] = 0,}
 ,  [301] = {
   ["touch_w"] = 160,  ["area_x"] = 45,  ["Sequence"] = 19,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 66,  ["guideWord"] = {
 }
@@ -959,36 +949,36 @@ newbee_guide_config={
 ,  ["backID"] = 301,  ["touch_x"] = 45,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
-,  [206] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 13,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100000206,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 207,  ["TriangleCoordinate"] = 0,  ["hero"] = 1500142,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+,  [3204] = {
+  ["touch_w"] = 91,  ["area_x"] = 482,  ["Sequence"] = 200,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 91,  ["touch_h"] = 79,  ["hand_direction"] = 1,  ["area_y"] = 506,  ["guideWord"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110005,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 206,  ["rewards"] = {
+,  ["touch_y"] = 506,  ["trigger"] = 1,  ["hand_start_point_x"] = 528,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3205,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 546,  ["triggerLv"] = 24,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 32,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3204,  ["rewards"] = {
+}
+,  ["backID"] = 3203,  ["touch_x"] = 482,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 79,  ["hand_end_point_x"] = 0,}
+,  [3405] = {
+  ["touch_w"] = 83,  ["area_x"] = 558,  ["Sequence"] = 213,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 83,  ["touch_h"] = 65,  ["hand_direction"] = 1,  ["area_y"] = 896,  ["guideWord"] = {
+}
+,  ["touch_y"] = 896,  ["trigger"] = 1,  ["hand_start_point_x"] = 609,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3406,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 929,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3405,  ["rewards"] = {
+}
+,  ["backID"] = 3405,  ["touch_x"] = 558,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 65,  ["hand_end_point_x"] = 0,}
+,  [204] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 11,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100000204,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 205,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 204,  ["rewards"] = {
 }
 ,  ["backID"] = 203,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [3405] = {
-  ["touch_w"] = 83,  ["area_x"] = 558,  ["Sequence"] = 213,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 83,  ["touch_h"] = 65,  ["hand_direction"] = 1,  ["area_y"] = 896,  ["guideWord"] = {
-}
-,  ["touch_y"] = 896,  ["trigger"] = 1,  ["hand_start_point_x"] = 609,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3406,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 929,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3405,  ["rewards"] = {
-}
-,  ["backID"] = 3403,  ["touch_x"] = 558,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 65,  ["hand_end_point_x"] = 0,}
-,  [1711] = {
-  ["touch_w"] = 145,  ["area_x"] = 248,  ["Sequence"] = 96,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 145,  ["touch_h"] = 108,  ["hand_direction"] = 1,  ["area_y"] = 39,  ["guideWord"] = {
-}
-,  ["touch_y"] = 39,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1801,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 95,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 0,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1711,  ["rewards"] = {
-}
-,  ["backID"] = 1709,  ["touch_x"] = 248,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 108,  ["hand_end_point_x"] = 0,}
 ,  [1707] = {
   ["touch_w"] = 182,  ["area_x"] = 203,  ["Sequence"] = 92,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 182,  ["touch_h"] = 159,  ["hand_direction"] = 1,  ["area_y"] = 582,  ["guideWord"] = {
 }
@@ -999,16 +989,16 @@ newbee_guide_config={
 ,  ["backID"] = 1707,  ["touch_x"] = 203,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 159,  ["hand_end_point_x"] = 0,}
-,  [3114] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 196,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100003114,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+,  [1401] = {
+  ["touch_w"] = 160,  ["area_x"] = 45,  ["Sequence"] = 77,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 66,  ["guideWord"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3114,  ["rewards"] = {
+,  ["touch_y"] = 66,  ["trigger"] = 3,  ["hand_start_point_x"] = 125,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1501,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["backID"] = 3113,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 95,  ["triggerLv"] = 0,  ["skipEnd"] = -1,  ["talk_box_w"] = 0,  ["stageIdentification"] = 14,  ["triggerValue"] = 100203,  ["isMust"] = 1,  ["id"] = 1401,  ["rewards"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  ["backID"] = 1401,  ["touch_x"] = 45,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
 ,  [3407] = {
   ["touch_w"] = 74,  ["area_x"] = 284,  ["Sequence"] = 215,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 74,  ["touch_h"] = 76,  ["hand_direction"] = 1,  ["area_y"] = 140,  ["guideWord"] = {
 }
@@ -1034,31 +1024,51 @@ newbee_guide_config={
 }
 ,  ["touch_y"] = 741,  ["trigger"] = 1,  ["hand_start_point_x"] = 455,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1709,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 741,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1708,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 800,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1708,  ["rewards"] = {
 }
 ,  ["backID"] = 1708,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 99,  ["hand_end_point_x"] = 0,}
-,  [3112] = {
-  ["touch_w"] = 93,  ["area_x"] = 45,  ["Sequence"] = 194,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 93,  ["touch_h"] = 79,  ["hand_direction"] = 1,  ["area_y"] = 374,  ["guideWord"] = {
+,  [3113] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 195,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100003113,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3114,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["touch_y"] = 374,  ["trigger"] = 1,  ["hand_start_point_x"] = 89,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3113,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 7,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3113,  ["rewards"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 408,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3112,  ["rewards"] = {
+,  ["backID"] = 3113,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
-,  ["backID"] = 3111,  ["touch_x"] = 45,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 79,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [3409] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 217,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100003409,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3410,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3409,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 28,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 34,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3409,  ["rewards"] = {
 }
 ,  ["backID"] = 3407,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [3111] = {
+  ["touch_w"] = 74,  ["area_x"] = 284,  ["Sequence"] = 193,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 74,  ["touch_h"] = 76,  ["hand_direction"] = 1,  ["area_y"] = 140,  ["guideWord"] = {
+}
+,  ["touch_y"] = 140,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3112,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 176,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3111,  ["rewards"] = {
+}
+,  ["backID"] = 3111,  ["touch_x"] = 284,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 76,  ["hand_end_point_x"] = 0,}
+,  [1709] = {
+  ["touch_w"] = 102,  ["area_x"] = 396,  ["Sequence"] = 94,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 102,  ["touch_h"] = 140,  ["hand_direction"] = 1,  ["area_y"] = 261,  ["guideWord"] = {
+  [1] = 6100001709,}
+,  ["touch_y"] = 261,  ["trigger"] = 1,  ["hand_start_point_x"] = 447,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1710,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 10003,  ["hand_start_point_y"] = 360,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1709,  ["rewards"] = {
+}
+,  ["backID"] = 1709,  ["touch_x"] = 396,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 140,  ["hand_end_point_x"] = 0,}
 ,  [3110] = {
   ["touch_w"] = 126,  ["area_x"] = 258,  ["Sequence"] = 192,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 126,  ["touch_h"] = 113,  ["hand_direction"] = 1,  ["area_y"] = 14,  ["guideWord"] = {
 }
@@ -1069,32 +1079,12 @@ newbee_guide_config={
 ,  ["backID"] = 3110,  ["touch_x"] = 258,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 113,  ["hand_end_point_x"] = 0,}
-,  [1709] = {
-  ["touch_w"] = 102,  ["area_x"] = 396,  ["Sequence"] = 94,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 102,  ["touch_h"] = 140,  ["hand_direction"] = 1,  ["area_y"] = 261,  ["guideWord"] = {
-  [1] = 6100001709,}
-,  ["touch_y"] = 261,  ["trigger"] = 1,  ["hand_start_point_x"] = 447,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1710,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 552,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1709,  ["rewards"] = {
-}
-,  ["backID"] = 1709,  ["touch_x"] = 396,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 140,  ["hand_end_point_x"] = 0,}
-,  [3108] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 190,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100003108,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3109,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3108,  ["rewards"] = {
-}
-,  ["backID"] = 3105,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [2901] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 170,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 170,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 270,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2902,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 270,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2902,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 18,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 29,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2901,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 295,  ["triggerLv"] = 18,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 29,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2901,  ["rewards"] = {
 }
 ,  ["backID"] = 2901,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -1119,12 +1109,12 @@ newbee_guide_config={
 ,  ["backID"] = 1709,  ["touch_x"] = 242,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
-,  [3106] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 188,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100003106,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3107,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+,  [3108] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 190,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100003108,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3109,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3106,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3108,  ["rewards"] = {
 }
 ,  ["backID"] = 3105,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -1159,14 +1149,14 @@ newbee_guide_config={
 ,  ["backID"] = 1201,  ["touch_x"] = 45,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
-,  [3104] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 186,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100003104,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3105,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+,  [3106] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 188,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100003106,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3107,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3104,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3106,  ["rewards"] = {
 }
-,  ["backID"] = 3102,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 3105,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [2905] = {
@@ -1174,7 +1164,7 @@ newbee_guide_config={
   [1] = 6100002905,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 18,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 29,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2905,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 18,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 29,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2905,  ["rewards"] = {
 }
 ,  ["backID"] = 2903,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -1199,16 +1189,36 @@ newbee_guide_config={
 ,  ["backID"] = 602,  ["touch_x"] = 242,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
+,  [3104] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 186,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100003104,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3105,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3104,  ["rewards"] = {
+}
+,  ["backID"] = 3102,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [3102] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 184,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100003102,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3103,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3102,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 22,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 31,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3102,  ["rewards"] = {
 }
 ,  ["backID"] = 3102,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [1904] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 101,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
+  [1] = 6100001904,}
+,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1905,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 19,  ["triggerValue"] = 100205,  ["isMust"] = 1,  ["id"] = 1904,  ["rewards"] = {
+}
+,  ["backID"] = 1903,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 50,  ["hand_end_point_x"] = 0,}
 ,  [3006] = {
   ["touch_w"] = 66,  ["area_x"] = 546,  ["Sequence"] = 180,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 66,  ["touch_h"] = 65,  ["hand_direction"] = 0,  ["area_y"] = 879,  ["guideWord"] = {
 }
@@ -1219,16 +1229,6 @@ newbee_guide_config={
 ,  ["backID"] = 3004,  ["touch_x"] = 546,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 65,  ["hand_end_point_x"] = 0,}
-,  [1904] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 101,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
-  [1] = 6100001904,}
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1905,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 19,  ["triggerValue"] = 100205,  ["isMust"] = 1,  ["id"] = 1904,  ["rewards"] = {
-}
-,  ["backID"] = 1903,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 50,  ["hand_end_point_x"] = 0,}
 ,  [3004] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 178,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 224,  ["hand_direction"] = 1,  ["area_y"] = 614,  ["guideWord"] = {
 }
@@ -1249,20 +1249,10 @@ newbee_guide_config={
 ,  ["backID"] = 3002,  ["touch_x"] = 203,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 159,  ["hand_end_point_x"] = 0,}
-,  [3001] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 175,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
-}
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3002,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 20,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 30,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3001,  ["rewards"] = {
-}
-,  ["backID"] = 3001,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 50,  ["hand_end_point_x"] = 0,}
 ,  [1905] = {
   ["touch_w"] = 65,  ["area_x"] = 20,  ["Sequence"] = 102,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 65,  ["touch_h"] = 63,  ["hand_direction"] = 1,  ["area_y"] = 879,  ["guideWord"] = {
 }
-,  ["touch_y"] = 879,  ["trigger"] = 1,  ["hand_start_point_x"] = 51,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1906,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 879,  ["trigger"] = 1,  ["hand_start_point_x"] = 51,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1906,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 911,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 19,  ["triggerValue"] = 100205,  ["isMust"] = 1,  ["id"] = 1905,  ["rewards"] = {
 }
@@ -1279,6 +1269,16 @@ newbee_guide_config={
 ,  ["backID"] = 602,  ["touch_x"] = 248,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 108,  ["hand_end_point_x"] = 0,}
+,  [3001] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 175,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 270,  ["guideWord"] = {
+}
+,  ["touch_y"] = 270,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3002,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 295,  ["triggerLv"] = 20,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 30,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3001,  ["rewards"] = {
+}
+,  ["backID"] = 3001,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 50,  ["hand_end_point_x"] = 0,}
 ,  [2904] = {
   ["touch_w"] = 89,  ["area_x"] = 191,  ["Sequence"] = 173,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 89,  ["touch_h"] = 78,  ["hand_direction"] = 1,  ["area_y"] = 375,  ["guideWord"] = {
 }
@@ -1289,16 +1289,6 @@ newbee_guide_config={
 ,  ["backID"] = 2903,  ["touch_x"] = 191,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 78,  ["hand_end_point_x"] = 0,}
-,  [2902] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 171,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100002902,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2903,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 18,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 29,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2902,  ["rewards"] = {
-}
-,  ["backID"] = 2902,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [1906] = {
   ["touch_w"] = 90,  ["area_x"] = 156,  ["Sequence"] = 103,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 90,  ["touch_h"] = 95,  ["hand_direction"] = 1,  ["area_y"] = 17,  ["guideWord"] = {
 }
@@ -1309,14 +1299,24 @@ newbee_guide_config={
 ,  ["backID"] = 1906,  ["touch_x"] = 156,  ["npc_y"] = 300,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 95,  ["hand_end_point_x"] = 0,}
-,  [101] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 1,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100000101,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 102,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+,  [2902] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 171,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100002902,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2903,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 101,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10001,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 18,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 29,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2902,  ["rewards"] = {
 }
-,  ["backID"] = 101,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 2902,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [402] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 21,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100000402,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 403,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 402,  ["rewards"] = {
+}
+,  ["backID"] = 401,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [2804] = {
@@ -1324,21 +1324,11 @@ newbee_guide_config={
   [1] = 6100002804,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2805,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 15,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 28,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2804,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 15,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 28,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2804,  ["rewards"] = {
 }
 ,  ["backID"] = 2803,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [414] = {
-  ["touch_w"] = 107,  ["area_x"] = 0,  ["Sequence"] = 33,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 107,  ["touch_h"] = 108,  ["hand_direction"] = 1,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100000414,}
-,  ["touch_y"] = 0,  ["trigger"] = 3,  ["hand_start_point_x"] = 56,  ["hand_end_point_y"] = 0,  ["skip_to"] = 501,  ["TriangleCoordinate"] = 56,  ["hero"] = -1,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 51,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 414,  ["rewards"] = {
-}
-,  ["backID"] = 403,  ["touch_x"] = 0,  ["npc_y"] = 318,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 108,  ["hand_end_point_x"] = 0,}
 ,  [208] = {
   ["touch_w"] = 160,  ["area_x"] = 242,  ["Sequence"] = 15,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 141,  ["guideWord"] = {
 }
@@ -1354,29 +1344,29 @@ newbee_guide_config={
   [1] = 6100000605,}
 ,  ["touch_y"] = 12,  ["trigger"] = 3,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 701,  ["TriangleCoordinate"] = 320,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 30,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 640,  ["stageIdentification"] = 6,  ["triggerValue"] = 100102,  ["isMust"] = 1,  ["id"] = 605,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 30,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 640,  ["stageIdentification"] = 6,  ["triggerValue"] = 100102,  ["isMust"] = 1,  ["id"] = 605,  ["rewards"] = {
 }
 ,  ["backID"] = 602,  ["touch_x"] = 267,  ["npc_y"] = 251,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 41,  ["hand_end_point_x"] = 0,}
+,  [808] = {
+  ["touch_w"] = 90,  ["area_x"] = 156,  ["Sequence"] = 48,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 90,  ["touch_h"] = 95,  ["hand_direction"] = 1,  ["area_y"] = 17,  ["guideWord"] = {
+}
+,  ["touch_y"] = 17,  ["trigger"] = 1,  ["hand_start_point_x"] = 201,  ["hand_end_point_y"] = 0,  ["skip_to"] = 809,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 63,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 808,  ["rewards"] = {
+}
+,  ["backID"] = 808,  ["touch_x"] = 156,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 95,  ["hand_end_point_x"] = 0,}
 ,  [2802] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 166,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100002802,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2803,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 15,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 28,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2802,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 15,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 28,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2802,  ["rewards"] = {
 }
 ,  ["backID"] = 2802,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [2602] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 134,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100002602,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2603,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2602,  ["rewards"] = {
-}
-,  ["backID"] = 2602,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [701] = {
@@ -1389,6 +1379,16 @@ newbee_guide_config={
 ,  ["backID"] = 701,  ["touch_x"] = 45,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
+,  [2604] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 136,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100002604,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2605,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2604,  ["rewards"] = {
+}
+,  ["backID"] = 2602,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [2714] = {
   ["touch_w"] = 65,  ["area_x"] = 20,  ["Sequence"] = 162,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 65,  ["touch_h"] = 63,  ["hand_direction"] = 1,  ["area_y"] = 879,  ["guideWord"] = {
 }
@@ -1404,17 +1404,7 @@ newbee_guide_config={
   [1] = 6100002713,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2714,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2713,  ["rewards"] = {
-}
-,  ["backID"] = 2710,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [2711] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 159,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100002711,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2712,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2711,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2713,  ["rewards"] = {
 }
 ,  ["backID"] = 2710,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -1429,36 +1419,36 @@ newbee_guide_config={
 ,  ["backID"] = 1906,  ["touch_x"] = 266,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 86,  ["hand_end_point_x"] = 0,}
-,  [2710] = {
-  ["touch_w"] = 238,  ["area_x"] = 381,  ["Sequence"] = 158,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 238,  ["touch_h"] = 51,  ["hand_direction"] = 0,  ["area_y"] = 843,  ["guideWord"] = {
+,  [2711] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 159,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100002711,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2712,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["touch_y"] = 843,  ["trigger"] = 1,  ["hand_start_point_x"] = 525,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2711,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2711,  ["rewards"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 4,  ["hand_start_point_y"] = 867,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2710,  ["rewards"] = {
+,  ["backID"] = 2710,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
-,  ["backID"] = 2710,  ["touch_x"] = 381,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 51,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [3301] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 204,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 204,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 270,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3302,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 270,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3302,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 27,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 33,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3301,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 295,  ["triggerLv"] = 27,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 33,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3301,  ["rewards"] = {
 }
 ,  ["backID"] = 3301,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 50,  ["hand_end_point_x"] = 0,}
-,  [2708] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 156,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100002708,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2709,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+,  [2709] = {
+  ["touch_w"] = 66,  ["area_x"] = 546,  ["Sequence"] = 157,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 66,  ["touch_h"] = 65,  ["hand_direction"] = 0,  ["area_y"] = 879,  ["guideWord"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2708,  ["rewards"] = {
+,  ["touch_y"] = 879,  ["trigger"] = 1,  ["hand_start_point_x"] = 579,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2710,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["backID"] = 2706,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 911,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2709,  ["rewards"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  ["backID"] = 2707,  ["touch_x"] = 546,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 65,  ["hand_end_point_x"] = 0,}
 ,  [1910] = {
   ["touch_w"] = 65,  ["area_x"] = 20,  ["Sequence"] = 108,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 65,  ["touch_h"] = 63,  ["hand_direction"] = 1,  ["area_y"] = 879,  ["guideWord"] = {
 }
@@ -1469,14 +1459,14 @@ newbee_guide_config={
 ,  ["backID"] = 1910,  ["touch_x"] = 20,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 63,  ["hand_end_point_x"] = 0,}
-,  [2706] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 154,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100002706,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2707,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+,  [2708] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 156,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100002708,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2709,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 4,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2706,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2708,  ["rewards"] = {
 }
-,  ["backID"] = 2706,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 2707,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [3303] = {
@@ -1489,16 +1479,16 @@ newbee_guide_config={
 ,  ["backID"] = 3302,  ["touch_x"] = 336,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 80,  ["hand_end_point_x"] = 0,}
-,  [2702] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 150,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100002702,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2703,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+,  [2704] = {
+  ["touch_w"] = 74,  ["area_x"] = 284,  ["Sequence"] = 152,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 74,  ["touch_h"] = 76,  ["hand_direction"] = 1,  ["area_y"] = 140,  ["guideWord"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2702,  ["rewards"] = {
+,  ["touch_y"] = 140,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2705,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["backID"] = 2702,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 176,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2704,  ["rewards"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  ["backID"] = 2704,  ["touch_x"] = 284,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 76,  ["hand_end_point_x"] = 0,}
 ,  [1911] = {
   ["touch_w"] = 182,  ["area_x"] = 203,  ["Sequence"] = 109,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 182,  ["touch_h"] = 159,  ["hand_direction"] = 1,  ["area_y"] = 582,  ["guideWord"] = {
 }
@@ -1509,10 +1499,20 @@ newbee_guide_config={
 ,  ["backID"] = 1911,  ["touch_x"] = 203,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 159,  ["hand_end_point_x"] = 0,}
+,  [2702] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 150,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100002702,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2703,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10001,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 12,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 27,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2702,  ["rewards"] = {
+}
+,  ["backID"] = 2702,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [2616] = {
   ["touch_w"] = 182,  ["area_x"] = 203,  ["Sequence"] = 148,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 182,  ["touch_h"] = 159,  ["hand_direction"] = 1,  ["area_y"] = 582,  ["guideWord"] = {
 }
-,  ["touch_y"] = 582,  ["trigger"] = 1,  ["hand_start_point_x"] = 294,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 582,  ["trigger"] = 1,  ["hand_start_point_x"] = 294,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 659,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2616,  ["rewards"] = {
 }
@@ -1526,35 +1526,35 @@ newbee_guide_config={
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 63,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2615,  ["rewards"] = {
 }
-,  ["backID"] = 2611,  ["touch_x"] = 258,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 2615,  ["touch_x"] = 258,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 113,  ["hand_end_point_x"] = 0,}
-,  [2614] = {
-  ["touch_w"] = 83,  ["area_x"] = 558,  ["Sequence"] = 146,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 83,  ["touch_h"] = 65,  ["hand_direction"] = 1,  ["area_y"] = 896,  ["guideWord"] = {
-}
-,  ["touch_y"] = 896,  ["trigger"] = 1,  ["hand_start_point_x"] = 609,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2615,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 929,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2614,  ["rewards"] = {
-}
-,  ["backID"] = 2611,  ["touch_x"] = 558,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 65,  ["hand_end_point_x"] = 0,}
 ,  [1912] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 110,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 99,  ["hand_direction"] = 1,  ["area_y"] = 741,  ["guideWord"] = {
 }
 ,  ["touch_y"] = 741,  ["trigger"] = 1,  ["hand_start_point_x"] = 455,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1913,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 741,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 0,  ["stageIdentification"] = 19,  ["triggerValue"] = 100205,  ["isMust"] = 1,  ["id"] = 1912,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 800,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 0,  ["stageIdentification"] = 19,  ["triggerValue"] = 100205,  ["isMust"] = 1,  ["id"] = 1912,  ["rewards"] = {
 }
 ,  ["backID"] = 1912,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 99,  ["hand_end_point_x"] = 0,}
+,  [2614] = {
+  ["touch_w"] = 83,  ["area_x"] = 558,  ["Sequence"] = 146,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 83,  ["touch_h"] = 65,  ["hand_direction"] = 1,  ["area_y"] = 896,  ["guideWord"] = {
+}
+,  ["touch_y"] = 896,  ["trigger"] = 1,  ["hand_start_point_x"] = 609,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2615,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 929,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2614,  ["rewards"] = {
+}
+,  ["backID"] = 2614,  ["touch_x"] = 558,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 65,  ["hand_end_point_x"] = 0,}
 ,  [2613] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 145,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100002613,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2614,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2613,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2613,  ["rewards"] = {
 }
 ,  ["backID"] = 2611,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -1569,16 +1569,6 @@ newbee_guide_config={
 ,  ["backID"] = 2611,  ["touch_x"] = 483,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 76,  ["hand_end_point_x"] = 0,}
-,  [2611] = {
-  ["touch_w"] = 74,  ["area_x"] = 284,  ["Sequence"] = 143,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 74,  ["touch_h"] = 76,  ["hand_direction"] = 1,  ["area_y"] = 140,  ["guideWord"] = {
-}
-,  ["touch_y"] = 140,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2612,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 176,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2611,  ["rewards"] = {
-}
-,  ["backID"] = 2611,  ["touch_x"] = 284,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 76,  ["hand_end_point_x"] = 0,}
 ,  [1913] = {
   ["touch_w"] = 100,  ["area_x"] = 116,  ["Sequence"] = 111,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 100,  ["touch_h"] = 137,  ["hand_direction"] = 1,  ["area_y"] = 462,  ["guideWord"] = {
 }
@@ -1589,6 +1579,16 @@ newbee_guide_config={
 ,  ["backID"] = 1913,  ["touch_x"] = 116,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 137,  ["hand_end_point_x"] = 0,}
+,  [2611] = {
+  ["touch_w"] = 74,  ["area_x"] = 284,  ["Sequence"] = 143,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 74,  ["touch_h"] = 76,  ["hand_direction"] = 1,  ["area_y"] = 140,  ["guideWord"] = {
+}
+,  ["touch_y"] = 140,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2612,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10001,  ["hand_start_point_y"] = 176,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2611,  ["rewards"] = {
+}
+,  ["backID"] = 2611,  ["touch_x"] = 284,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 76,  ["hand_end_point_x"] = 0,}
 ,  [2610] = {
   ["touch_w"] = 126,  ["area_x"] = 258,  ["Sequence"] = 142,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 126,  ["touch_h"] = 113,  ["hand_direction"] = 1,  ["area_y"] = 14,  ["guideWord"] = {
 }
@@ -1604,17 +1604,7 @@ newbee_guide_config={
   [1] = 6100002608,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2609,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2608,  ["rewards"] = {
-}
-,  ["backID"] = 2605,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [2606] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 138,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100002606,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2607,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2606,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2608,  ["rewards"] = {
 }
 ,  ["backID"] = 2605,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -1629,22 +1619,22 @@ newbee_guide_config={
 ,  ["backID"] = 1913,  ["touch_x"] = 242,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
-,  [2604] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 136,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100002604,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2605,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+,  [2606] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 138,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100002606,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2607,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2604,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2606,  ["rewards"] = {
 }
-,  ["backID"] = 2602,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 2605,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [2801] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 165,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 165,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 270,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2802,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 270,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2802,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 15,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 28,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2801,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 295,  ["triggerLv"] = 15,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 28,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2801,  ["rewards"] = {
 }
 ,  ["backID"] = 2801,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -1660,15 +1650,35 @@ newbee_guide_config={
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 113,  ["hand_end_point_x"] = 0,}
 ,  [209] = {
-  ["touch_w"] = 111,  ["area_x"] = 513,  ["Sequence"] = 16,  ["DialogueTriangleCoordinate"] = 1,  ["touch_move_enable"] = 0,  ["area_w"] = 111,  ["touch_h"] = 50,  ["hand_direction"] = 3,  ["area_y"] = 780,  ["guideWord"] = {
+  ["touch_w"] = 111,  ["area_x"] = 511,  ["Sequence"] = 16,  ["DialogueTriangleCoordinate"] = 1,  ["touch_move_enable"] = 0,  ["area_w"] = 111,  ["touch_h"] = 50,  ["hand_direction"] = 3,  ["area_y"] = 780,  ["guideWord"] = {
   [1] = 6100000209,}
 ,  ["touch_y"] = 780,  ["trigger"] = 1,  ["hand_start_point_x"] = 572,  ["hand_end_point_y"] = 0,  ["skip_to"] = 210,  ["TriangleCoordinate"] = 572,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 804,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 209,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 804,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 209,  ["rewards"] = {
 }
-,  ["backID"] = 207,  ["touch_x"] = 513,  ["npc_y"] = 768,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 207,  ["touch_x"] = 511,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 50,  ["hand_end_point_x"] = 0,}
+,  [2602] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 134,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100002602,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2603,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10002,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 11,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 26,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2602,  ["rewards"] = {
+}
+,  ["backID"] = 2602,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [2803] = {
+  ["touch_w"] = 180,  ["area_x"] = 160,  ["Sequence"] = 167,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 180,  ["touch_h"] = 170,  ["hand_direction"] = 1,  ["area_y"] = 110,  ["guideWord"] = {
+}
+,  ["touch_y"] = 110,  ["trigger"] = 1,  ["hand_start_point_x"] = 250,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2804,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 150,  ["triggerLv"] = 15,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 28,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2803,  ["rewards"] = {
+}
+,  ["backID"] = 2803,  ["touch_x"] = 160,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 170,  ["hand_end_point_x"] = 0,}
 ,  [602] = {
   ["touch_w"] = 99,  ["area_x"] = 320,  ["Sequence"] = 36,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 99,  ["touch_h"] = 141,  ["hand_direction"] = 1,  ["area_y"] = 597,  ["guideWord"] = {
 }
@@ -1679,54 +1689,34 @@ newbee_guide_config={
 ,  ["backID"] = 602,  ["touch_x"] = 320,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 141,  ["hand_end_point_x"] = 0,}
-,  [2803] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 167,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 1,  ["area_y"] = 0,  ["guideWord"] = {
-}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 261,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2804,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 480,  ["triggerLv"] = 15,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 28,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2803,  ["rewards"] = {
-}
-,  ["backID"] = 2803,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [204] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 11,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100000204,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 205,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 204,  ["rewards"] = {
-}
-,  ["backID"] = 203,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [1916] = {
   ["touch_w"] = 160,  ["area_x"] = 78,  ["Sequence"] = 107,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 42,  ["guideWord"] = {
   [1] = 6100001916,}
 ,  ["touch_y"] = 42,  ["trigger"] = 1,  ["hand_start_point_x"] = 155,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1910,  ["TriangleCoordinate"] = 155,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 71,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 19,  ["triggerValue"] = 100205,  ["isMust"] = 1,  ["id"] = 1916,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 71,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 19,  ["triggerValue"] = 100205,  ["isMust"] = 1,  ["id"] = 1916,  ["rewards"] = {
 }
 ,  ["backID"] = 1916,  ["touch_x"] = 78,  ["npc_y"] = 311,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
-,  [1401] = {
-  ["touch_w"] = 160,  ["area_x"] = 45,  ["Sequence"] = 77,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 66,  ["guideWord"] = {
+,  [206] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 13,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100000206,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 207,  ["TriangleCoordinate"] = 0,  ["hero"] = 1500142,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["touch_y"] = 66,  ["trigger"] = 3,  ["hand_start_point_x"] = 125,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1501,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110005,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 206,  ["rewards"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 95,  ["triggerLv"] = 0,  ["skipEnd"] = -1,  ["talk_box_w"] = 0,  ["stageIdentification"] = 14,  ["triggerValue"] = 100203,  ["isMust"] = 1,  ["id"] = 1401,  ["rewards"] = {
+,  ["backID"] = 203,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
-,  ["backID"] = 1401,  ["touch_x"] = 45,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [2805] = {
   ["touch_w"] = 133,  ["area_x"] = 363,  ["Sequence"] = 169,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 133,  ["touch_h"] = 117,  ["hand_direction"] = 1,  ["area_y"] = 480,  ["guideWord"] = {
 }
-,  ["touch_y"] = 480,  ["trigger"] = 1,  ["hand_start_point_x"] = 426,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 480,  ["trigger"] = 1,  ["hand_start_point_x"] = 426,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 537,  ["triggerLv"] = 15,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 28,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 2805,  ["rewards"] = {
 }
-,  ["backID"] = 2803,  ["touch_x"] = 363,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 2805,  ["touch_x"] = 363,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 117,  ["hand_end_point_x"] = 0,}
 ,  [801] = {
@@ -1739,94 +1729,64 @@ newbee_guide_config={
 ,  ["backID"] = 801,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [1706] = {
-  ["touch_w"] = 65,  ["area_x"] = 20,  ["Sequence"] = 91,  ["DialogueTriangleCoordinate"] = 1,  ["touch_move_enable"] = 0,  ["area_w"] = 65,  ["touch_h"] = 63,  ["hand_direction"] = 1,  ["area_y"] = 879,  ["guideWord"] = {
-  [1] = 6100001706,}
-,  ["touch_y"] = 879,  ["trigger"] = 1,  ["hand_start_point_x"] = 51,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1707,  ["TriangleCoordinate"] = 320,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  [1711] = {
+  ["touch_w"] = 145,  ["area_x"] = 248,  ["Sequence"] = 96,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 145,  ["touch_h"] = 108,  ["hand_direction"] = 1,  ["area_y"] = 39,  ["guideWord"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 911,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1706,  ["rewards"] = {
+,  ["touch_y"] = 39,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1801,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["backID"] = 1701,  ["touch_x"] = 20,  ["npc_y"] = 287,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 95,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 0,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1711,  ["rewards"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 63,  ["hand_end_point_x"] = 0,}
-,  [2308] = {
-  ["touch_w"] = 67,  ["area_x"] = 558,  ["Sequence"] = 128,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 67,  ["touch_h"] = 62,  ["hand_direction"] = 1,  ["area_y"] = 881,  ["guideWord"] = {
+,  ["backID"] = 1709,  ["touch_x"] = 248,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
-,  ["touch_y"] = 881,  ["trigger"] = 1,  ["hand_start_point_x"] = 588,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2309,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 911,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2308,  ["rewards"] = {
-}
-,  ["backID"] = 2304,  ["touch_x"] = 558,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 62,  ["hand_end_point_x"] = 0,}
-,  [409] = {
-  ["touch_w"] = 86,  ["area_x"] = 555,  ["Sequence"] = 28,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 86,  ["touch_h"] = 69,  ["hand_direction"] = 1,  ["area_y"] = 891,  ["guideWord"] = {
-}
-,  ["touch_y"] = 891,  ["trigger"] = 1,  ["hand_start_point_x"] = 600,  ["hand_end_point_y"] = 0,  ["skip_to"] = 410,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 927,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 409,  ["rewards"] = {
-}
-,  ["backID"] = 403,  ["touch_x"] = 555,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 69,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 108,  ["hand_end_point_x"] = 0,}
 ,  [413] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 32,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 107,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100000413,}
 ,  ["touch_y"] = 0,  ["trigger"] = 3,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 414,  ["TriangleCoordinate"] = 56,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 413,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 413,  ["rewards"] = {
 }
 ,  ["backID"] = 403,  ["touch_x"] = 0,  ["npc_y"] = 318,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 108,  ["hand_end_point_x"] = 0,}
-,  [1310] = {
-  ["touch_w"] = 106,  ["area_x"] = 392,  ["Sequence"] = 74,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 106,  ["touch_h"] = 142,  ["hand_direction"] = 1,  ["area_y"] = 635,  ["guideWord"] = {
+,  [601] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 35,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100000601,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 602,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["touch_y"] = 635,  ["trigger"] = 1,  ["hand_start_point_x"] = 446,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1311,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10003,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 6,  ["triggerValue"] = 100102,  ["isMust"] = 1,  ["id"] = 601,  ["rewards"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 699,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 13,  ["triggerValue"] = 100202,  ["isMust"] = 1,  ["id"] = 1310,  ["rewards"] = {
+,  ["backID"] = 601,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
-,  ["backID"] = 1310,  ["touch_x"] = 392,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [403] = {
+  ["touch_w"] = 97,  ["area_x"] = 105,  ["Sequence"] = 22,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 97,  ["touch_h"] = 137,  ["hand_direction"] = 1,  ["area_y"] = 372,  ["guideWord"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 142,  ["hand_end_point_x"] = 0,}
-,  [1102] = {
-  ["touch_w"] = 160,  ["area_x"] = 242,  ["Sequence"] = 62,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 141,  ["guideWord"] = {
+,  ["touch_y"] = 372,  ["trigger"] = 1,  ["hand_start_point_x"] = 155,  ["hand_end_point_y"] = 0,  ["skip_to"] = 404,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["touch_y"] = 141,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1103,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 440,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 403,  ["rewards"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 168,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 11,  ["triggerValue"] = 100201,  ["isMust"] = 1,  ["id"] = 1102,  ["rewards"] = {
+,  ["backID"] = 403,  ["touch_x"] = 105,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
-,  ["backID"] = 1101,  ["touch_x"] = 242,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 137,  ["hand_end_point_x"] = 0,}
+,  [1908] = {
+  ["touch_w"] = 53,  ["area_x"] = 299,  ["Sequence"] = 105,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 53,  ["touch_h"] = 45,  ["hand_direction"] = 1,  ["area_y"] = 753,  ["guideWord"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
+,  ["touch_y"] = 753,  ["trigger"] = 1,  ["hand_start_point_x"] = 325,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1909,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 2,  ["hand_start_point_y"] = 776,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 19,  ["triggerValue"] = 100205,  ["isMust"] = 1,  ["id"] = 1908,  ["rewards"] = {
+}
+,  ["backID"] = 1906,  ["touch_x"] = 299,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 45,  ["hand_end_point_x"] = 0,}
 ,  [401] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 20,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
   [1] = 6100000401,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 402,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 401,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 10003,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 401,  ["rewards"] = {
 }
 ,  ["backID"] = 401,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [802] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 42,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100000802,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 804,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 802,  ["rewards"] = {
-}
-,  ["backID"] = 801,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
-,  [105] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 5,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100000105,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 106,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 105,  ["rewards"] = {
-}
-,  ["backID"] = 101,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
 ,  [405] = {
@@ -1839,12 +1799,42 @@ newbee_guide_config={
 ,  ["backID"] = 403,  ["touch_x"] = 222,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 52,  ["hand_end_point_x"] = 0,}
+,  [802] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 42,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100000802,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 804,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 802,  ["rewards"] = {
+}
+,  ["backID"] = 801,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [105] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 5,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100000105,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 106,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 105,  ["rewards"] = {
+}
+,  ["backID"] = 101,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [409] = {
+  ["touch_w"] = 86,  ["area_x"] = 555,  ["Sequence"] = 28,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 86,  ["touch_h"] = 69,  ["hand_direction"] = 1,  ["area_y"] = 891,  ["guideWord"] = {
+}
+,  ["touch_y"] = 891,  ["trigger"] = 1,  ["hand_start_point_x"] = 600,  ["hand_end_point_y"] = 0,  ["skip_to"] = 410,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 927,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 409,  ["rewards"] = {
+}
+,  ["backID"] = 403,  ["touch_x"] = 555,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 69,  ["hand_end_point_x"] = 0,}
 ,  [2301] = {
   ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 121,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 99,  ["hand_direction"] = 1,  ["area_y"] = 641,  ["guideWord"] = {
 }
 ,  ["touch_y"] = 641,  ["trigger"] = 1,  ["hand_start_point_x"] = 455,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2302,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 741,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2301,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 700,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2301,  ["rewards"] = {
 }
 ,  ["backID"] = 2301,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -1869,46 +1859,26 @@ newbee_guide_config={
 ,  ["backID"] = 2302,  ["touch_x"] = 407,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 57,  ["hand_end_point_x"] = 0,}
-,  [812] = {
-  ["touch_w"] = 86,  ["area_x"] = 555,  ["Sequence"] = 52,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 86,  ["touch_h"] = 69,  ["hand_direction"] = 1,  ["area_y"] = 891,  ["guideWord"] = {
-  [1] = 6100000812,}
-,  ["touch_y"] = 891,  ["trigger"] = 1,  ["hand_start_point_x"] = 600,  ["hand_end_point_y"] = 0,  ["skip_to"] = 901,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  [1102] = {
+  ["touch_w"] = 160,  ["area_x"] = 242,  ["Sequence"] = 62,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 160,  ["touch_h"] = 56,  ["hand_direction"] = 1,  ["area_y"] = 141,  ["guideWord"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 927,  ["triggerLv"] = 0,  ["skipEnd"] = 1,  ["talk_box_w"] = 640,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 812,  ["rewards"] = {
+,  ["touch_y"] = 141,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1103,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["backID"] = 808,  ["touch_x"] = 555,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 168,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 11,  ["triggerValue"] = 100201,  ["isMust"] = 1,  ["id"] = 1102,  ["rewards"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 69,  ["hand_end_point_x"] = 0,}
+,  ["backID"] = 1101,  ["touch_x"] = 242,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 56,  ["hand_end_point_x"] = 0,}
 ,  [2303] = {
   ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 123,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2304,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2304,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2303,  ["rewards"] = {
 }
 ,  ["backID"] = 2302,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 50,  ["hand_end_point_x"] = 0,}
-,  [803] = {
-  ["touch_w"] = 86,  ["area_x"] = 555,  ["Sequence"] = 43,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 86,  ["touch_h"] = 69,  ["hand_direction"] = 1,  ["area_y"] = 891,  ["guideWord"] = {
-}
-,  ["touch_y"] = 891,  ["trigger"] = 1,  ["hand_start_point_x"] = 600,  ["hand_end_point_y"] = 0,  ["skip_to"] = 804,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 927,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 803,  ["rewards"] = {
-}
-,  ["backID"] = 801,  ["touch_x"] = 555,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 69,  ["hand_end_point_x"] = 0,}
-,  [2304] = {
-  ["touch_w"] = 71,  ["area_x"] = 527,  ["Sequence"] = 124,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 71,  ["touch_h"] = 79,  ["hand_direction"] = 1,  ["area_y"] = 26,  ["guideWord"] = {
-  [1] = 6100002304,}
-,  ["touch_y"] = 26,  ["trigger"] = 1,  ["hand_start_point_x"] = 561,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2305,  ["TriangleCoordinate"] = 561,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 60,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2304,  ["rewards"] = {
-}
-,  ["backID"] = 2304,  ["touch_x"] = 527,  ["npc_y"] = 312,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 79,  ["hand_end_point_x"] = 0,}
 ,  [1907] = {
   ["touch_w"] = 161,  ["area_x"] = 377,  ["Sequence"] = 104,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 161,  ["touch_h"] = 47,  ["hand_direction"] = 1,  ["area_y"] = 305,  ["guideWord"] = {
 }
@@ -1919,50 +1889,70 @@ newbee_guide_config={
 ,  ["backID"] = 1906,  ["touch_x"] = 377,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 47,  ["hand_end_point_x"] = 0,}
+,  [2304] = {
+  ["touch_w"] = 71,  ["area_x"] = 527,  ["Sequence"] = 124,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 71,  ["touch_h"] = 79,  ["hand_direction"] = 1,  ["area_y"] = 26,  ["guideWord"] = {
+  [1] = 6100002304,}
+,  ["touch_y"] = 26,  ["trigger"] = 1,  ["hand_start_point_x"] = 561,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2305,  ["TriangleCoordinate"] = 561,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 10003,  ["hand_start_point_y"] = 60,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2304,  ["rewards"] = {
+}
+,  ["backID"] = 2304,  ["touch_x"] = 527,  ["npc_y"] = 312,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 79,  ["hand_end_point_x"] = 0,}
+,  [202] = {
+  ["touch_w"] = 182,  ["area_x"] = 203,  ["Sequence"] = 9,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 182,  ["touch_h"] = 159,  ["hand_direction"] = 1,  ["area_y"] = 582,  ["guideWord"] = {
+}
+,  ["touch_y"] = 582,  ["trigger"] = 1,  ["hand_start_point_x"] = 294,  ["hand_end_point_y"] = 0,  ["skip_to"] = 203,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 659,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 202,  ["rewards"] = {
+}
+,  ["backID"] = 202,  ["touch_x"] = 203,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 159,  ["hand_end_point_x"] = 0,}
 ,  [2305] = {
   ["touch_w"] = 162,  ["area_x"] = 402,  ["Sequence"] = 125,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 162,  ["touch_h"] = 52,  ["hand_direction"] = 1,  ["area_y"] = 50,  ["guideWord"] = {
   [1] = 6100002305,}
 ,  ["touch_y"] = 50,  ["trigger"] = 1,  ["hand_start_point_x"] = 483,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2306,  ["TriangleCoordinate"] = 483,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 77,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2305,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 77,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2305,  ["rewards"] = {
 }
 ,  ["backID"] = 2304,  ["touch_x"] = 402,  ["npc_y"] = 308,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 52,  ["hand_end_point_x"] = 0,}
-,  [1908] = {
-  ["touch_w"] = 53,  ["area_x"] = 299,  ["Sequence"] = 105,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 53,  ["touch_h"] = 45,  ["hand_direction"] = 1,  ["area_y"] = 753,  ["guideWord"] = {
+,  [2308] = {
+  ["touch_w"] = 67,  ["area_x"] = 558,  ["Sequence"] = 128,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 67,  ["touch_h"] = 62,  ["hand_direction"] = 1,  ["area_y"] = 881,  ["guideWord"] = {
 }
-,  ["touch_y"] = 753,  ["trigger"] = 1,  ["hand_start_point_x"] = 325,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1909,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 881,  ["trigger"] = 1,  ["hand_start_point_x"] = 588,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2309,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 776,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 19,  ["triggerValue"] = 100205,  ["isMust"] = 1,  ["id"] = 1908,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 911,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2308,  ["rewards"] = {
 }
-,  ["backID"] = 1906,  ["touch_x"] = 299,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 2304,  ["touch_x"] = 558,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 45,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 62,  ["hand_end_point_x"] = 0,}
 ,  [2306] = {
   ["touch_w"] = 161,  ["area_x"] = 83,  ["Sequence"] = 126,  ["DialogueTriangleCoordinate"] = 2,  ["touch_move_enable"] = 0,  ["area_w"] = 161,  ["touch_h"] = 52,  ["hand_direction"] = 1,  ["area_y"] = 50,  ["guideWord"] = {
 }
 ,  ["touch_y"] = 50,  ["trigger"] = 1,  ["hand_start_point_x"] = 162,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2307,  ["TriangleCoordinate"] = 162,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 77,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2306,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 77,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2306,  ["rewards"] = {
 }
 ,  ["backID"] = 2304,  ["touch_x"] = 83,  ["npc_y"] = 308,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 52,  ["hand_end_point_x"] = 0,}
-,  [601] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 35,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100000601,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 602,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+,  [1706] = {
+  ["touch_w"] = 65,  ["area_x"] = 20,  ["Sequence"] = 91,  ["DialogueTriangleCoordinate"] = 1,  ["touch_move_enable"] = 0,  ["area_w"] = 65,  ["touch_h"] = 63,  ["hand_direction"] = 1,  ["area_y"] = 879,  ["guideWord"] = {
+  [1] = 6100001706,}
+,  ["touch_y"] = 879,  ["trigger"] = 1,  ["hand_start_point_x"] = 51,  ["hand_end_point_y"] = 0,  ["skip_to"] = 1707,  ["TriangleCoordinate"] = 320,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10003,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 6,  ["triggerValue"] = 100102,  ["isMust"] = 1,  ["id"] = 601,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 911,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 17,  ["triggerValue"] = 100204,  ["isMust"] = 1,  ["id"] = 1706,  ["rewards"] = {
 }
-,  ["backID"] = 601,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+,  ["backID"] = 1706,  ["touch_x"] = 20,  ["npc_y"] = 115,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 63,  ["hand_end_point_x"] = 0,}
 ,  [2307] = {
   ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 127,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2308,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2308,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
 ,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2307,  ["rewards"] = {
 }
@@ -1974,7 +1964,7 @@ newbee_guide_config={
   [1] = 6100000804,}
 ,  ["touch_y"] = 14,  ["trigger"] = 1,  ["hand_start_point_x"] = 446,  ["hand_end_point_y"] = 0,  ["skip_to"] = 805,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 10002,  ["hand_start_point_y"] = 54,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 804,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 10002,  ["hand_start_point_y"] = 54,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 8,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 804,  ["rewards"] = {
 }
 ,  ["backID"] = 804,  ["touch_x"] = 395,  ["npc_y"] = 278,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -1990,11 +1980,11 @@ newbee_guide_config={
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 108,  ["hand_end_point_x"] = 0,}
 ,  [3201] = {
-  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 197,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 306,  ["guideWord"] = {
+  ["touch_w"] = 112,  ["area_x"] = 267,  ["Sequence"] = 197,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 112,  ["touch_h"] = 50,  ["hand_direction"] = 1,  ["area_y"] = 270,  ["guideWord"] = {
 }
-,  ["touch_y"] = 306,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3202,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
+,  ["touch_y"] = 270,  ["trigger"] = 1,  ["hand_start_point_x"] = 320,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3202,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = -1,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 330,  ["triggerLv"] = 24,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 32,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3201,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 295,  ["triggerLv"] = 24,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 32,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3201,  ["rewards"] = {
 }
 ,  ["backID"] = 3201,  ["touch_x"] = 267,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -2024,9 +2014,9 @@ newbee_guide_config={
 }
 ,  ["touch_y"] = 741,  ["trigger"] = 1,  ["hand_start_point_x"] = 455,  ["hand_end_point_y"] = 0,  ["skip_to"] = 2311,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 741,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2310,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 800,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 23,  ["triggerValue"] = 100207,  ["isMust"] = 1,  ["id"] = 2310,  ["rewards"] = {
 }
-,  ["backID"] = 2309,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
+,  ["backID"] = 2310,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 99,  ["hand_end_point_x"] = 0,}
 ,  [3203] = {
@@ -2074,7 +2064,7 @@ newbee_guide_config={
   [1] = 6100003205,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 3206,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 8,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 24,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 32,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3205,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 8,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 24,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 32,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3205,  ["rewards"] = {
 }
 ,  ["backID"] = 3205,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -2099,12 +2089,12 @@ newbee_guide_config={
 ,  ["backID"] = 3205,  ["touch_x"] = 467,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 66,  ["hand_end_point_x"] = 0,}
-,  [104] = {
-  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 4,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
-  [1] = 6100000104,}
-,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 105,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+,  [101] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 1,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100000101,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 102,  ["TriangleCoordinate"] = 0,  ["hero"] = 5,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 104,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110002,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 101,  ["rewards"] = {
 }
 ,  ["backID"] = 101,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
@@ -2114,11 +2104,31 @@ newbee_guide_config={
   [1] = 6100003207,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 0,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 24,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 32,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3207,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 24,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 32,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 3207,  ["rewards"] = {
 }
 ,  ["backID"] = 3205,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [104] = {
+  ["touch_w"] = 640,  ["area_x"] = 0,  ["Sequence"] = 4,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 640,  ["touch_h"] = 960,  ["hand_direction"] = 0,  ["area_y"] = 0,  ["guideWord"] = {
+  [1] = 6100000104,}
+,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 105,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 104,  ["rewards"] = {
+}
+,  ["backID"] = 101,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 960,  ["hand_end_point_x"] = 0,}
+,  [404] = {
+  ["touch_w"] = 84,  ["area_x"] = 525,  ["Sequence"] = 23,  ["DialogueTriangleCoordinate"] = 1,  ["touch_move_enable"] = 0,  ["area_w"] = 84,  ["touch_h"] = 75,  ["hand_direction"] = 4,  ["area_y"] = 558,  ["guideWord"] = {
+  [1] = 6100000404,}
+,  ["touch_y"] = 558,  ["trigger"] = 1,  ["hand_start_point_x"] = 564,  ["hand_end_point_y"] = 0,  ["skip_to"] = 405,  ["TriangleCoordinate"] = 564,  ["hero"] = -1,  ["npcDialoguePosition"] = 1,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
+}
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 596,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 404,  ["rewards"] = {
+}
+,  ["backID"] = 403,  ["touch_x"] = 525,  ["npc_y"] = 330,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
+}
+,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 75,  ["hand_end_point_x"] = 0,}
 ,  [1915] = {
   ["touch_w"] = 145,  ["area_x"] = 248,  ["Sequence"] = 113,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 145,  ["touch_h"] = 108,  ["hand_direction"] = 1,  ["area_y"] = 39,  ["guideWord"] = {
 }
@@ -2129,26 +2139,6 @@ newbee_guide_config={
 ,  ["backID"] = 1913,  ["touch_x"] = 248,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
 ,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 108,  ["hand_end_point_x"] = 0,}
-,  [404] = {
-  ["touch_w"] = 84,  ["area_x"] = 525,  ["Sequence"] = 23,  ["DialogueTriangleCoordinate"] = 1,  ["touch_move_enable"] = 0,  ["area_w"] = 84,  ["touch_h"] = 75,  ["hand_direction"] = 4,  ["area_y"] = 558,  ["guideWord"] = {
-  [1] = 6100000404,}
-,  ["touch_y"] = 558,  ["trigger"] = 1,  ["hand_start_point_x"] = 564,  ["hand_end_point_y"] = 0,  ["skip_to"] = 405,  ["TriangleCoordinate"] = 564,  ["hero"] = -1,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 596,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 4,  ["triggerValue"] = 100101,  ["isMust"] = 1,  ["id"] = 404,  ["rewards"] = {
-}
-,  ["backID"] = 403,  ["touch_x"] = 525,  ["npc_y"] = 530,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 75,  ["hand_end_point_x"] = 0,}
-,  [202] = {
-  ["touch_w"] = 182,  ["area_x"] = 203,  ["Sequence"] = 9,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 182,  ["touch_h"] = 159,  ["hand_direction"] = 1,  ["area_y"] = 582,  ["guideWord"] = {
-}
-,  ["touch_y"] = 582,  ["trigger"] = 1,  ["hand_start_point_x"] = 294,  ["hand_end_point_y"] = 0,  ["skip_to"] = 203,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
-}
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 2,  ["hand_start_point_y"] = 659,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 2,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 202,  ["rewards"] = {
-}
-,  ["backID"] = 202,  ["touch_x"] = 203,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
-}
-,  ["disassembly"] = 0,  ["VoiceInterrupt"] = -1,  ["area_h"] = 159,  ["hand_end_point_x"] = 0,}
 ,  [810] = {
   ["touch_w"] = 77,  ["area_x"] = 257,  ["Sequence"] = 50,  ["DialogueTriangleCoordinate"] = 0,  ["touch_move_enable"] = 0,  ["area_w"] = 77,  ["touch_h"] = 77,  ["hand_direction"] = 1,  ["area_y"] = 539,  ["guideWord"] = {
 }
@@ -2164,7 +2154,7 @@ newbee_guide_config={
 }
 ,  ["touch_y"] = 741,  ["trigger"] = 1,  ["hand_start_point_x"] = 455,  ["hand_end_point_y"] = 0,  ["skip_to"] = 903,  ["TriangleCoordinate"] = 0,  ["hero"] = 0,  ["npcDialoguePosition"] = 0,  ["tap_to"] = 0,  ["stop_type"] = 1,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 741,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 9,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 902,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 3,  ["hand_start_point_y"] = 800,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 0,  ["stageIdentification"] = 9,  ["triggerValue"] = 100103,  ["isMust"] = 1,  ["id"] = 902,  ["rewards"] = {
 }
 ,  ["backID"] = 902,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 0,  ["consume"] = {
 }
@@ -2174,7 +2164,7 @@ newbee_guide_config={
   [1] = 6100000102,}
 ,  ["touch_y"] = 0,  ["trigger"] = 1,  ["hand_start_point_x"] = 0,  ["hand_end_point_y"] = 0,  ["skip_to"] = 103,  ["TriangleCoordinate"] = 0,  ["hero"] = -1,  ["npcDialoguePosition"] = 2,  ["tap_to"] = 0,  ["stop_type"] = 0,  ["Special"] = {
 }
-,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 0,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 102,  ["rewards"] = {
+,  ["SequenceType"] = 0,  ["VoiceID"] = 0,  ["heroName"] = 3400110001,  ["page_to"] = 0,  ["hand_start_point_y"] = 0,  ["triggerLv"] = 0,  ["skipEnd"] = 0,  ["talk_box_w"] = 640,  ["stageIdentification"] = 1,  ["triggerValue"] = 0,  ["isMust"] = 1,  ["id"] = 102,  ["rewards"] = {
 }
 ,  ["backID"] = 101,  ["touch_x"] = 0,  ["npc_y"] = 0,  ["npc_x"] = 0,  ["talk_box_h"] = 180,  ["consume"] = {
 }

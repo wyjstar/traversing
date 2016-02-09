@@ -552,7 +552,7 @@ monster_config={
 ,  [100004114] = {
   ["cri"] = 0,  ["magicDef"] = 234,  ["hp"] = 152,  ["monsterLv"] = 1,  ["physicalDef"] = 134,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500131,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 495,  ["rageSkill"] = 1000022,  ["id"] = 100004114,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300003,  ["criCoeff"] = 12000,  ["res"] = 1500122,}
 ,  [100002132] = {
-  ["cri"] = 0,  ["magicDef"] = 198,  ["hp"] = 167,  ["monsterLv"] = 1,  ["physicalDef"] = 105,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500111,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 285,  ["rageSkill"] = 1000022,  ["id"] = 100002132,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300002,  ["criCoeff"] = 12000,  ["res"] = 1500112,}
+  ["cri"] = 0,  ["magicDef"] = 122,  ["hp"] = 102,  ["monsterLv"] = 1,  ["physicalDef"] = 65,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500111,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 277,  ["rageSkill"] = 1000022,  ["id"] = 100002132,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300002,  ["criCoeff"] = 12000,  ["res"] = 1500112,}
 ,  [100007311] = {
   ["cri"] = 2500,  ["magicDef"] = 1268,  ["hp"] = 737,  ["monsterLv"] = 1,  ["physicalDef"] = 743,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500031,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 1799,  ["rageSkill"] = 1000022,  ["id"] = 100007311,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300006,  ["criCoeff"] = 12000,  ["res"] = 1500032,}
 ,  [100005516] = {
@@ -650,11 +650,11 @@ monster_config={
 ,  [100010636] = {
   ["cri"] = 0,  ["magicDef"] = 2515,  ["hp"] = 1356,  ["monsterLv"] = 1,  ["physicalDef"] = 1388,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500281,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 2692,  ["rageSkill"] = 1000121,  ["id"] = 100010636,  ["job"] = 4,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300011,  ["criCoeff"] = 12000,  ["res"] = 1500282,}
 ,  [100001331] = {
-  ["cri"] = 0,  ["magicDef"] = 175,  ["hp"] = 191,  ["monsterLv"] = 1,  ["physicalDef"] = 60,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500131,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 273,  ["rageSkill"] = 1000022,  ["id"] = 100001331,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300001,  ["criCoeff"] = 12000,  ["res"] = 1500132,}
+  ["cri"] = 0,  ["magicDef"] = 175,  ["hp"] = 141,  ["monsterLv"] = 1,  ["physicalDef"] = 60,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500131,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 273,  ["rageSkill"] = 1000022,  ["id"] = 100001331,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300001,  ["criCoeff"] = 12000,  ["res"] = 1500132,}
 ,  [100001332] = {
-  ["cri"] = 0,  ["magicDef"] = 175,  ["hp"] = 191,  ["monsterLv"] = 1,  ["physicalDef"] = 60,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500131,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 273,  ["rageSkill"] = 1000022,  ["id"] = 100001332,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300001,  ["criCoeff"] = 12000,  ["res"] = 1500132,}
+  ["cri"] = 0,  ["magicDef"] = 175,  ["hp"] = 141,  ["monsterLv"] = 1,  ["physicalDef"] = 60,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500131,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 273,  ["rageSkill"] = 1000022,  ["id"] = 100001332,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300001,  ["criCoeff"] = 12000,  ["res"] = 1500132,}
 ,  [100001333] = {
-  ["cri"] = 0,  ["magicDef"] = 229,  ["hp"] = 435,  ["monsterLv"] = 1,  ["physicalDef"] = 63,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 290,  ["rageSkill"] = 1000052,  ["id"] = 100001333,  ["job"] = 2,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
+  ["cri"] = 0,  ["magicDef"] = 229,  ["hp"] = 288,  ["monsterLv"] = 1,  ["physicalDef"] = 63,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 273,  ["rageSkill"] = 1000052,  ["id"] = 100001333,  ["job"] = 2,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100005833] = {
   ["cri"] = 0,  ["magicDef"] = 755,  ["hp"] = 360,  ["monsterLv"] = 1,  ["physicalDef"] = 389,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 657,  ["rageSkill"] = 1000022,  ["id"] = 100005833,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300006,  ["criCoeff"] = 12000,  ["res"] = 1500122,}
 ,  [100010635] = {
@@ -690,7 +690,7 @@ monster_config={
 ,  [100002232] = {
   ["cri"] = 0,  ["magicDef"] = 213,  ["hp"] = 179,  ["monsterLv"] = 1,  ["physicalDef"] = 114,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500111,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 297,  ["rageSkill"] = 1000022,  ["id"] = 100002232,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300002,  ["criCoeff"] = 12000,  ["res"] = 1500112,}
 ,  [100002233] = {
-  ["cri"] = 0,  ["magicDef"] = 252,  ["hp"] = 338,  ["monsterLv"] = 1,  ["physicalDef"] = 95,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 320,  ["rageSkill"] = 1000052,  ["id"] = 100002233,  ["job"] = 2,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
+  ["cri"] = 0,  ["magicDef"] = 252,  ["hp"] = 338,  ["monsterLv"] = 1,  ["physicalDef"] = 95,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 300,  ["rageSkill"] = 1000052,  ["id"] = 100002233,  ["job"] = 2,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100002423] = {
   ["cri"] = 0,  ["magicDef"] = 180,  ["hp"] = 400,  ["monsterLv"] = 1,  ["physicalDef"] = 68,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 300,  ["rageSkill"] = 1000052,  ["id"] = 100002423,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100002613] = {
@@ -714,7 +714,7 @@ monster_config={
 ,  [100002622] = {
   ["cri"] = 0,  ["magicDef"] = 198,  ["hp"] = 167,  ["monsterLv"] = 1,  ["physicalDef"] = 105,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500111,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 285,  ["rageSkill"] = 1000022,  ["id"] = 100002622,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300002,  ["criCoeff"] = 12000,  ["res"] = 1500112,}
 ,  [100002433] = {
-  ["cri"] = 0,  ["magicDef"] = 234,  ["hp"] = 458,  ["monsterLv"] = 1,  ["physicalDef"] = 89,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 305,  ["rageSkill"] = 1000052,  ["id"] = 100002433,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
+  ["cri"] = 0,  ["magicDef"] = 234,  ["hp"] = 458,  ["monsterLv"] = 1,  ["physicalDef"] = 89,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 285,  ["rageSkill"] = 1000052,  ["id"] = 100002433,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100001111] = {
   ["cri"] = 0,  ["magicDef"] = 70,  ["hp"] = 76,  ["monsterLv"] = 1,  ["physicalDef"] = 24,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500131,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 163,  ["rageSkill"] = 1000022,  ["id"] = 100001111,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300001,  ["criCoeff"] = 12000,  ["res"] = 1500132,}
 ,  [100001112] = {
@@ -744,7 +744,7 @@ monster_config={
 ,  [100002321] = {
   ["cri"] = 0,  ["magicDef"] = 183,  ["hp"] = 154,  ["monsterLv"] = 1,  ["physicalDef"] = 97,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500111,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 305,  ["rageSkill"] = 1000022,  ["id"] = 100002321,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300002,  ["criCoeff"] = 12000,  ["res"] = 1500112,}
 ,  [100002133] = {
-  ["cri"] = 0,  ["magicDef"] = 234,  ["hp"] = 378,  ["monsterLv"] = 1,  ["physicalDef"] = 89,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 305,  ["rageSkill"] = 1000052,  ["id"] = 100002133,  ["job"] = 2,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
+  ["cri"] = 0,  ["magicDef"] = 204,  ["hp"] = 298,  ["monsterLv"] = 1,  ["physicalDef"] = 89,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 290,  ["rageSkill"] = 1000052,  ["id"] = 100002133,  ["job"] = 2,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100003331] = {
   ["cri"] = 0,  ["magicDef"] = 287,  ["hp"] = 207,  ["monsterLv"] = 1,  ["physicalDef"] = 163,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 408,  ["rageSkill"] = 1000022,  ["id"] = 100003331,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300003,  ["criCoeff"] = 12000,  ["res"] = 1500122,}
 ,  [100003521] = {
@@ -766,7 +766,7 @@ monster_config={
 ,  [100002521] = {
   ["cri"] = 0,  ["magicDef"] = 167,  ["hp"] = 141,  ["monsterLv"] = 1,  ["physicalDef"] = 89,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500111,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 293,  ["rageSkill"] = 1000022,  ["id"] = 100002521,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300002,  ["criCoeff"] = 12000,  ["res"] = 1500112,}
 ,  [100002333] = {
-  ["cri"] = 0,  ["magicDef"] = 270,  ["hp"] = 378,  ["monsterLv"] = 1,  ["physicalDef"] = 102,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 335,  ["rageSkill"] = 1000052,  ["id"] = 100002333,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
+  ["cri"] = 0,  ["magicDef"] = 270,  ["hp"] = 378,  ["monsterLv"] = 1,  ["physicalDef"] = 102,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 309,  ["rageSkill"] = 1000052,  ["id"] = 100002333,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100003531] = {
   ["cri"] = 0,  ["magicDef"] = 407,  ["hp"] = 293,  ["monsterLv"] = 1,  ["physicalDef"] = 231,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500121,  ["quality"] = 3,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 443,  ["rageSkill"] = 1000022,  ["id"] = 100003531,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300003,  ["criCoeff"] = 12000,  ["res"] = 1500122,}
 ,  [100002713] = {
@@ -788,7 +788,7 @@ monster_config={
 ,  [100002721] = {
   ["cri"] = 0,  ["magicDef"] = 213,  ["hp"] = 179,  ["monsterLv"] = 1,  ["physicalDef"] = 114,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500111,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 297,  ["rageSkill"] = 1000022,  ["id"] = 100002721,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300002,  ["criCoeff"] = 12000,  ["res"] = 1500112,}
 ,  [100002533] = {
-  ["cri"] = 0,  ["magicDef"] = 252,  ["hp"] = 498,  ["monsterLv"] = 1,  ["physicalDef"] = 95,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 320,  ["rageSkill"] = 1000052,  ["id"] = 100002533,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
+  ["cri"] = 0,  ["magicDef"] = 252,  ["hp"] = 498,  ["monsterLv"] = 1,  ["physicalDef"] = 95,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 297,  ["rageSkill"] = 1000052,  ["id"] = 100002533,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100002723] = {
   ["cri"] = 0,  ["magicDef"] = 252,  ["hp"] = 538,  ["monsterLv"] = 1,  ["physicalDef"] = 95,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 320,  ["rageSkill"] = 1000052,  ["id"] = 100002723,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100003732] = {
@@ -810,7 +810,7 @@ monster_config={
 ,  [100006324] = {
   ["cri"] = 2500,  ["magicDef"] = 1227,  ["hp"] = 735,  ["monsterLv"] = 1,  ["physicalDef"] = 719,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500031,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 1031,  ["rageSkill"] = 1000022,  ["id"] = 100006324,  ["job"] = 3,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300006,  ["criCoeff"] = 12000,  ["res"] = 1500032,}
 ,  [100002733] = {
-  ["cri"] = 0,  ["magicDef"] = 198,  ["hp"] = 541,  ["monsterLv"] = 1,  ["physicalDef"] = 75,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 325,  ["rageSkill"] = 1000052,  ["id"] = 100002733,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
+  ["cri"] = 0,  ["magicDef"] = 198,  ["hp"] = 541,  ["monsterLv"] = 1,  ["physicalDef"] = 75,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 301,  ["rageSkill"] = 1000052,  ["id"] = 100002733,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100004435] = {
   ["cri"] = 0,  ["magicDef"] = 508,  ["hp"] = 690,  ["monsterLv"] = 1,  ["physicalDef"] = 252,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500151,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 545,  ["rageSkill"] = 1000052,  ["id"] = 100004435,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300005,  ["criCoeff"] = 12000,  ["res"] = 1500152,}
 ,  [100003113] = {
@@ -3492,7 +3492,7 @@ monster_config={
 ,  [100010123] = {
   ["cri"] = 0,  ["magicDef"] = 1184,  ["hp"] = 1005,  ["monsterLv"] = 1,  ["physicalDef"] = 791,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500281,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 2720,  ["rageSkill"] = 1000022,  ["id"] = 100010123,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300011,  ["criCoeff"] = 12000,  ["res"] = 1500282,}
 ,  [100002131] = {
-  ["cri"] = 0,  ["magicDef"] = 198,  ["hp"] = 167,  ["monsterLv"] = 1,  ["physicalDef"] = 105,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500111,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 285,  ["rageSkill"] = 1000022,  ["id"] = 100002131,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300002,  ["criCoeff"] = 12000,  ["res"] = 1500112,}
+  ["cri"] = 0,  ["magicDef"] = 122,  ["hp"] = 102,  ["monsterLv"] = 1,  ["physicalDef"] = 65,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500111,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 277,  ["rageSkill"] = 1000022,  ["id"] = 100002131,  ["job"] = 1,  ["ductility"] = 9999,  ["hit"] = 9000,  ["deadAudio"] = 300002,  ["criCoeff"] = 12000,  ["res"] = 1500112,}
 ,  [301023092] = {
   ["cri"] = 0,  ["magicDef"] = 30205,  ["hp"] = 120822,  ["monsterLv"] = 1,  ["physicalDef"] = 30205,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500221,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 87260,  ["rageSkill"] = 1000022,  ["id"] = 301023092,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 301023,  ["criCoeff"] = 12000,  ["res"] = 1500222,}
 ,  [100009612] = {
@@ -8490,7 +8490,7 @@ monster_config={
 ,  [100003334] = {
   ["cri"] = 0,  ["magicDef"] = 359,  ["hp"] = 258,  ["monsterLv"] = 1,  ["physicalDef"] = 204,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500121,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 413,  ["rageSkill"] = 1000052,  ["id"] = 100003334,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300003,  ["criCoeff"] = 12000,  ["res"] = 1500122,}
 ,  [100002633] = {
-  ["cri"] = 0,  ["magicDef"] = 180,  ["hp"] = 499,  ["monsterLv"] = 1,  ["physicalDef"] = 68,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 310,  ["rageSkill"] = 1000052,  ["id"] = 100002633,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
+  ["cri"] = 0,  ["magicDef"] = 180,  ["hp"] = 499,  ["monsterLv"] = 1,  ["physicalDef"] = 68,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500141,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000041,  ["atk"] = 289,  ["rageSkill"] = 1000052,  ["id"] = 100002633,  ["job"] = 2,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300004,  ["criCoeff"] = 12000,  ["res"] = 1500142,}
 ,  [100005311] = {
   ["cri"] = 0,  ["magicDef"] = 389,  ["hp"] = 239,  ["monsterLv"] = 1,  ["physicalDef"] = 223,  ["dodge"] = 0,  ["block"] = 0,  ["icon"] = 1500121,  ["quality"] = 2,  ["criDedCoeff"] = 0,  ["normalSkill"] = 1000011,  ["atk"] = 568,  ["rageSkill"] = 1000022,  ["id"] = 100005311,  ["job"] = 1,  ["ductility"] = 0,  ["hit"] = 9000,  ["deadAudio"] = 300003,  ["criCoeff"] = 12000,  ["res"] = 1500122,}
 ,  [100007415] = {

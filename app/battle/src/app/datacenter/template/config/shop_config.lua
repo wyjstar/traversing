@@ -3031,9 +3031,7 @@ shop_config={
 ,  ["type"] = 1,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 10001,  ["switch"] = 1,  ["extraGain"] = {
-  ["105"] = {
-  [1] = 1,  [2] = 1,  [3] = 10001,}
-,}
+}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
@@ -3743,9 +3741,7 @@ shop_config={
 ,  ["type"] = 5,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 50001,  ["switch"] = 1,  ["extraGain"] = {
-  ["105"] = {
-  [1] = 1,  [2] = 1,  [3] = 10002,}
-,}
+}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
@@ -5005,9 +5001,7 @@ shop_config={
 ,  ["type"] = 5,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 50002,  ["switch"] = 1,  ["extraGain"] = {
-  ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 10002,}
-,}
+}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
@@ -7937,9 +7931,7 @@ shop_config={
 ,  ["type"] = 1,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 10002,  ["switch"] = 1,  ["extraGain"] = {
-  ["105"] = {
-  [1] = 10,  [2] = 10,  [3] = 10001,}
-,}
+}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {
@@ -12341,9 +12333,7 @@ shop_config={
 ,  ["type"] = 17,  ["restrictions"] = 0,  ["replaceGain"] = {
 }
 ,  ["id"] = 170001,  ["switch"] = 1,  ["extraGain"] = {
-  ["105"] = {
-  [1] = 1,  [2] = 1,  [3] = 10002,}
-,}
+}
 ,  ["attr"] = {
 }
 ,  ["batch"] = 1,  ["ExchangeValue"] = {

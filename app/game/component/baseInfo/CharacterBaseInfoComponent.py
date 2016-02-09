@@ -65,7 +65,7 @@ class CharacterBaseInfoComponent(Component):
         tb_character_level.zadd(self._level, self.id)
         self._exp = character_info['exp']
 
-        self._newbee_guide = character_info['newbee_guide']
+        self._newbee_guide = character_info.get('newbee_guide', {})
 
         self._gag = character_info['gag']
         self._closure = character_info['closure']

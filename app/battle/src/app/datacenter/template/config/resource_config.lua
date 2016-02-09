@@ -466,7 +466,7 @@ resource_config={
 ,  [620027] = {
   ["id"] = 620027,  ["pathWithName"] = "xiaolingxian_40.mp3",}
 ,  [500001] = {
-  ["id"] = 500001,  ["pathWithName"] = "pangbai_01.mp3",}
+  ["id"] = 500001,  ["pathWithName"] = "pangbai_1.mp3",}
 ,  [1200651] = {
   ["id"] = 1200651,  ["pathWithName"] = "hero_20065_4",}
 ,  [1200652] = {
@@ -520,7 +520,7 @@ resource_config={
 ,  [5026] = {
   ["id"] = 5026,  ["pathWithName"] = "ws_17",}
 ,  [500009] = {
-  ["id"] = 500009,  ["pathWithName"] = "pangbai_09.mp3",}
+  ["id"] = 500009,  ["pathWithName"] = "pangbai_9.mp3",}
 ,  [1100381] = {
   ["id"] = 1100381,  ["pathWithName"] = "hero_10038_4",}
 ,  [1100382] = {
@@ -1862,13 +1862,13 @@ resource_config={
 ,  [500011] = {
   ["id"] = 500011,  ["pathWithName"] = "pangbai_11.mp3",}
 ,  [500008] = {
-  ["id"] = 500008,  ["pathWithName"] = "pangbai_08.mp3",}
+  ["id"] = 500008,  ["pathWithName"] = "pangbai_8.mp3",}
 ,  [500007] = {
-  ["id"] = 500007,  ["pathWithName"] = "pangbai_07.mp3",}
+  ["id"] = 500007,  ["pathWithName"] = "pangbai_7.mp3",}
 ,  [500006] = {
-  ["id"] = 500006,  ["pathWithName"] = "pangbai_06.mp3",}
+  ["id"] = 500006,  ["pathWithName"] = "pangbai_6.mp3",}
 ,  [500005] = {
-  ["id"] = 500005,  ["pathWithName"] = "pangbai_05.mp3",}
+  ["id"] = 500005,  ["pathWithName"] = "pangbai_5.mp3",}
 ,  [120001] = {
   ["id"] = 120001,  ["pathWithName"] = "Skill1.mp3",}
 ,  [1500381] = {
@@ -1882,13 +1882,13 @@ resource_config={
 ,  [5064012] = {
   ["id"] = 5064012,  ["pathWithName"] = "item_64011",}
 ,  [500004] = {
-  ["id"] = 500004,  ["pathWithName"] = "pangbai_04.mp3",}
+  ["id"] = 500004,  ["pathWithName"] = "pangbai_4.mp3",}
 ,  [500003] = {
-  ["id"] = 500003,  ["pathWithName"] = "pangbai_03.mp3",}
+  ["id"] = 500003,  ["pathWithName"] = "pangbai_3.mp3",}
 ,  [5063001] = {
   ["id"] = 5063001,  ["pathWithName"] = "item_60002",}
 ,  [500002] = {
-  ["id"] = 500002,  ["pathWithName"] = "pangbai_02.mp3",}
+  ["id"] = 500002,  ["pathWithName"] = "pangbai_2.mp3",}
 ,  [5064103] = {
   ["id"] = 5064103,  ["pathWithName"] = "item_60001",}
 ,  [1500391] = {
