@@ -14,11 +14,11 @@ do
     read version
     tagname="master-$version"
     git rev-parse --verify $tagname>/dev/null 2>&1
-    echo "tagname: $tagname result $?"
-    if [ $? == 0 ]; then
-        break
-    else
+    #echo "tagname: $tagname result $?"
+    if [ "$?" == "0" ]; then
         echo "The version exist! please input a new version!"
+    else
+        break
     fi
 done
 
