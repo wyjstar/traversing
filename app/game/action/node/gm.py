@@ -38,7 +38,6 @@ def recharge(data, player):
 
     recharge_item = game_configs.recharge_config.get(recharge_id)
     if recharge_item is None:
-        logger.error('not in rechargeconfig:%s', subject)
         return {'success': 0, 'message': 1}
     response = sdk_pb2.XiaomiRechargeResponse()
     response.res.result = True
