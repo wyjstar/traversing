@@ -102,7 +102,7 @@ class CharacterGuildActivityComponent(Component):
     def add_times(self, act_id, arg):
         """docstring for add_times"""
         if not self.owner.act.is_activiy_open(act_id):
-            continue
+            return
         act_item = game_configs.activity_config.get(act_id)
         if arg not in act_item.parameterC:
             logger.debug("cant meet the parameterC %s arg %s act_id %s" % (act_item.parameterC, arg, act_id))
