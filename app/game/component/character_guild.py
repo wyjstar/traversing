@@ -166,8 +166,11 @@ class CharacterGuildComponent(Component):
         return self._praise[0]
 
     def add_praise_times(self):
-        self._praise[0] += 1
-        self._praise[1] = int(time.time())
+        if time.localtime(self._praise[1]).tm_yday != time.localtime().tm_yday:
+            self._praise = [1, int(time.time())]
+        else:
+            self._praise[0] += 1
+            self._praise[1] = int(time.time())
 
     @property
     def praise_time(self):
