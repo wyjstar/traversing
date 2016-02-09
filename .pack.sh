@@ -3,20 +3,30 @@ echo "current branch:"
 git rev-parse --abbrev-ref HEAD
 # make sure
 echo "package type: $1"
-echo -n "version: "
-read version
+#echo -n "version: "
+#read version
+version="unset"
 
-git rev-parse --verify $tagname>/dev/null 2>&1
-if [ $? = 0 ]
-then
-    echo "The version exist! please input a new version!"
+while true;
+do
+    #echo "The version exist! please input a new version!"
     echo -n "version: "
     read version
-fi
+    tagname="master-$version"
+    git rev-parse --verify $tagname>/dev/null 2>&1
+    echo "tagname: $tagname result $?"
+    if [ $? == 0 ]; then
+        break
+    else
+        echo "The version exist! please input a new version!"
+    fi
+done
 
-package="traversing_v$version"
 tagname="master-$version"
+package="traversing_v$version"
 temp_dir=/var/tmp/$package
+echo $tagname
+echo $package
 
 proj_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
