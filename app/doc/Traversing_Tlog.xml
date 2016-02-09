@@ -97,7 +97,7 @@
     <entry name="Level"            type="int"                                           desc="玩家等级" />
     <entry name="AfterMoney"       type="bigint"                                        desc="动作后的金钱数" />
     <entry name="Money"            type="bigint"                                        desc="动作涉及的金钱数" />
-    <entry name="Reason"           type="int"                                           desc="本文档最后的流水原因" />
+    <entry name="Reason"           type="string"      size="256"                         desc="本文档最后的流水原因" />
     <entry name="SubReason"        type="int"                                           desc="货币流动二级原因" />
     <entry name="ReasonEventID"    type="int"                                           desc="原因事件唯一ID，如果是关卡就是战斗唯一编号" />
     <entry name="AddOrReduce"      type="int"                                           desc="增加还是减少 0增加1减少" />
@@ -118,7 +118,7 @@
     <entry name="ItemId"                 type="int"                                            desc="道具ID" />
     <entry name="AfterCount"             type="int"                                            desc="动作后的物品存量" />
     <entry name="Count"                  type="int"                                            desc="动作涉及的物品数量" />
-    <entry name="Reason"                 type="int"                                            desc="本文档最后的流水原因因" />
+    <entry name="Reason"           type="string"      size="256"                         desc="本文档最后的流水原因" />
     <entry name="SubReason"              type="int"                                            desc="道具流动二级原因" />
     <entry name="ReasonEventID"          type="string"        size="64"                        desc="原因事件唯一ID" />
     <entry name="AddOrReduce"            type="int"                                            desc="增加还是减少0增加1减少" />

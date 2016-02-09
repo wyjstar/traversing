@@ -25,9 +25,25 @@ from shared.utils import trie_tree
 import re
 from app.proto_file.account_pb2 import AccountKick
 import time
+from app.proto_file import sdk_pb2
 
 
 remote_gate = GlobalObject().remote.get('gate')
+
+
+@remoteserviceHandle('gate')
+def recharge(data, player):
+    args = cPickle.loads(data)
+    recharge_id = int(args['recharge_id'])
+
+    recharge_item = game_configs.recharge_config.get(recharge_id)
+    if recharge_item is None:
+        logger.error('not in rechargeconfig:%s', subject)
+        return {'success': 0, 'message': 1}
+    response = sdk_pb2.XiaomiRechargeResponse()
+    response.res.result = True
+    player.recharge.recharge_gain(recharge_item, response, 0)  # 发送奖励邮件
+    return {'success': 1}
 
 
 @remoteserviceHandle('gate')
