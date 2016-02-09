@@ -6,11 +6,19 @@ echo "package type: $1"
 echo -n "version: "
 read version
 
+git rev-parse --verify $tagname>/dev/null 2>&1
+if [ $? = 0 ]
+then
+    echo "The version exist! please input a new version!"
+    echo -n "version: "
+    read version
+fi
+
 package="traversing_v$version"
 tagname="master-$version"
 temp_dir=/var/tmp/$package
 
-proj_dir=~/traversing
+proj_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cp md5.sh /var/tmp
 #[[ ! -d $proj_dir ]]&&proj_dir=~/traversing
@@ -69,15 +77,15 @@ echo "md5 $package.tar.gz"
 
 echo "pack $package success"
 
-echo -n "tag: $tagname (Y/n):"
-read confirm
-if [ "$confirm" == "Y" ];then
-    cd $proj_dir
-    git tag $tagname
-    git push --tags
+#echo -n "tag: $tagname (Y/n):"
 
-    echo "tag $tagname success"
-fi
+
+#read confirm
+#if [ "$confirm" == "Y" ];then
+cd $proj_dir
+git tag $tagname && git push --tags
+echo "tag $tagname success"
+#fi
 
 echo -n "upload ftp (Y/n):"
 read confirm
