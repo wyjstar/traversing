@@ -167,8 +167,8 @@ def update_condition_insert(player, cid, num):
 
 # UPDATE_CONDITION_MAP = {}
 # UPDATE_CONDITION_MAP[1] = update_condition1
-UPDATE_CONDITION_ADD = [3, 4, 12, 13, 14, 15, 16,
-                        19, 20, 21, 22, 23, 24, 27, 28, 29, 32, 34,
+UPDATE_CONDITION_ADD = [3, 4, 5, 12, 13, 14, 15, 16,
+                        18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 32, 34,
                         35, 36]  # 增加
 UPDATE_CONDITION_COVER = [6, 7, 8, 9, 10, 11, 17]  # 如果比原来值大覆盖
 UPDATE_CONDITION_COVER_RANK = [25, 26]  # 如果比原来值小覆盖
@@ -340,8 +340,8 @@ def get_condition_value(player, condition_conf, task_type):
 CHECK_CONDITION_MAP = {}
 CHECK_CONDITION_MAP[1] = check_condition1
 CHECK_CONDITION_MAP[2] = check_condition2
-CHECK_CONDITION_MAP[5] = check_condition5
-CHECK_CONDITION_MAP[18] = check_condition18
+# CHECK_CONDITION_MAP[5] = check_condition5
+# CHECK_CONDITION_MAP[18] = check_condition18
 CHECK_CONDITION_MAP[30] = check_condition30
 CHECK_CONDITION_MAP[31] = check_condition31
 CHECK_CONDITION_MAP[33] = check_condition33
