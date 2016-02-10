@@ -298,7 +298,7 @@ class CharacterBaseInfoComponent(Component):
             tb_character_level.zadd(self._level, self.id)
 
             # feature open
-            if not feature_open.is_not_open(self.owner, feature_open.FO_MINE):
+            if feature_open.is_not_open(self.owner, feature_open.FO_MINE):
                 self.owner.mine.reset_data()
 
     @property
