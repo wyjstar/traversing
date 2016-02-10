@@ -279,17 +279,17 @@ def fight_settlement_904(pro_data, player):
         friend_fight_times[fid].append(int(time.time()))
         player.friends.save_data()
 
-    logger.debug("damage percent: %s" % res[1])
-    logger.debug("red units: %s" % res[2])
-    player.fight_cache_component.damage_percent = res[1]
+    logger.debug("damage percent: %s" % check_res[1])
+    logger.debug("red units: %s" % check_res[2])
+    player.fight_cache_component.damage_percent = check_res[1]
 
     star = 0  # star num
     stage_info = player.fight_cache_component.stage_info
     red_units = stage_info.get('red_units')
 
-    round_to_kill_num = res[4]
-    red_left_num = res[3]
-    red_left_hp_percent = res[2]
+    round_to_kill_num = check_res[4]
+    red_left_num = check_res[3]
+    red_left_hp_percent = check_res[2]
     death_num = len(red_units) - red_left_num
     for i in range(1, 4):
         star_condition = game_configs.base_config.get('star_condition')
