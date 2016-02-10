@@ -3,14 +3,32 @@ echo "current branch:"
 git rev-parse --abbrev-ref HEAD
 # make sure
 echo "package type: $1"
-echo -n "version: "
-read version
+#echo -n "version: "
+#read version
+version="unset"
 
-package="traversing_v$version"
+while true;
+do
+    #echo "The version exist! please input a new version!"
+    echo -n "version: "
+    read version
+    tagname="master-$version"
+    git rev-parse --verify $tagname>/dev/null 2>&1
+    #echo "tagname: $tagname result $?"
+    if [ "$?" == "0" ]; then
+        echo "The version exist! please input a new version!"
+    else
+        break
+    fi
+done
+
 tagname="master-$version"
+package="traversing_v$version"
 temp_dir=/var/tmp/$package
+echo $tagname
+echo $package
 
-proj_dir=~/traversing
+proj_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cp md5.sh /var/tmp
 #[[ ! -d $proj_dir ]]&&proj_dir=~/traversing
@@ -69,16 +87,17 @@ echo "md5 $package.tar.gz"
 
 echo "pack $package success"
 
-echo -n "tag: $tagname (Y/n):"
-read confirm
-if [ "$confirm" == "Y" ];then
-    cd $proj_dir
-    git tag $tagname
-    git push --tags
+#echo -n "tag: $tagname (Y/n):"
 
-    echo "tag $tagname success"
-fi
 
+#read confirm
+#if [ "$confirm" == "Y" ];then
+cd $proj_dir
+git tag $tagname && git push --tags
+echo "tag $tagname success"
+#fi
+
+cd /var/tmp
 echo -n "upload ftp (Y/n):"
 read confirm
 
