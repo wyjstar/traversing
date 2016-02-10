@@ -97,6 +97,7 @@ git tag $tagname && git push --tags
 echo "tag $tagname success"
 #fi
 
+cd /var/tmp
 echo -n "upload ftp (Y/n):"
 read confirm
 
