@@ -241,11 +241,11 @@ def fight_settlement_904(pro_data, player):
         res.result_no = 9041
         return response.SerializePartialToString()
 
-    res = (True, 1, 1, -1, {})
+    check_res = (True, 1, 1, -1, {})
     if not request.is_skip:
-        res = pve_process_check(player, result, request.steps, const.BATTLE_PVE)
+        check_res = pve_process_check(player, result, request.steps, const.BATTLE_PVE)
 
-    if not request.is_skip and not res[0]:
+    if not request.is_skip and not check_res[0]:
         logger.error("pve_process_check error!=================")
         os.system("cp output ..")
         res.result = False
