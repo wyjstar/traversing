@@ -83,7 +83,7 @@ class PlayerCharacter(object):
             result = util.GetOneRecordInfo(CHARACTER_TABLE_NAME, pwere)
             if result:
                 logger.info('loads player in redis:%s-%s-%s', self._pid,
-                            len(result.get('base_info'), result['base_info']))
+                            len(result.get('base_info')), result['base_info'])
                 character_info.hmset(cPickle.loads(result['base_info']))
                 equipments = cPickle.loads(result['equipments'])
                 if equipments:
