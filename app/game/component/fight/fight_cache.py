@@ -261,6 +261,8 @@ class CharacterFightCacheComponent(Component):
         """取得乱入概率
         """
         stage = self._get_stage_config()
+        if not stage:
+            return 0
         logger.debug("__get_break_stage_odds %s" % stage.get("break_Probability", 0))
         return stage.get("break_Probability", 0)
 
