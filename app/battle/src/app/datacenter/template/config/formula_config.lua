@@ -242,7 +242,7 @@ formula_config={
 ,  [121] = {
   ["precondition"] = "seatHero==6",  ["formula"] = "[3,1,2,6,4,5]",  ["clientPrecondition"] = "seatHero==6",  ["id"] = 121,  ["clientFormula"] = "result=[3,1,2,6,4,5]",  ["key"] = "defaultAttackSequence_6",}
 ,  [122] = {
-  ["precondition"] = "1",  ["formula"] = "hp*0.1+atk*0.2+(physicalDef+magicDef)*0.4+(hit+dodge+cri+criCoeff+criDedCoeff+block+ductility)*5",  ["clientPrecondition"] = "1",  ["id"] = 122,  ["clientFormula"] = "result=equ_attr.hp*0.1+equ_attr.atk*0.2+(equ_attr.physicalDef+equ_attr.magicDef)*0.4+(equ_attr.hit+equ_attr.dodge+equ_attr.cri+equ_attr.criCoeff+equ_attr.criDedCoeff+equ_attr.block+equ_attr.ductility)*5",  ["key"] = "equFightValue",}
+  ["precondition"] = "1",  ["formula"] = "hp/6+atk/3+(physicalDef+magicDef)/2+hit+dodge+cri+criCoeff+criDedCoeff+ductility+block*2",  ["clientPrecondition"] = "1",  ["id"] = 122,  ["clientFormula"] = "result=equ_attr.hp/6+equ_attr.atk/3+(equ_attr.physicalDef+equ_attr.magicDef)/2+equ_attr.hit+equ_attr.dodge+equ_attr.cri+equ_attr.criCoeff+equ_attr.criDedCoeff+equ_attr.block*2+equ_attr.ductility",  ["key"] = "equFightValue",}
 ,  [123] = {
   ["precondition"] = "1",  ["formula"] = "1 if moonCardSurplusDay < 9999999 else 0",  ["clientPrecondition"] = "1",  ["id"] = 123,  ["clientFormula"] = "result=(moonCardSurplusDay < 4 and 1) or 0",  ["key"] = "moonCard",}
 ,  [124] = {

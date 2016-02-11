@@ -1,6 +1,6 @@
 special_stage_config={
   [700800] = {
-  ["resIcon"] = 7005,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700703,  ["timesDir"] = 0,  ["resHero"] = 1100562,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
+  ["resIcon"] = 7008,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700703,  ["timesDir"] = 0,  ["resHero"] = 1100562,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400708000,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 8,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
@@ -238,13 +238,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [930001] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403011,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403011,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -256,13 +256,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [930002] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403021,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403021,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -274,13 +274,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [930003] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403031,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403031,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -292,13 +292,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [930004] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403041,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403041,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -310,13 +310,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [930005] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403051,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403051,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -328,13 +328,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [930006] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403061,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403061,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -430,13 +430,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [930010] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403101,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403101,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -616,7 +616,7 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700600] = {
-  ["resIcon"] = 7005,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700503,  ["timesDir"] = 0,  ["resHero"] = 1100582,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
+  ["resIcon"] = 7006,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700503,  ["timesDir"] = 0,  ["resHero"] = 1100582,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400706000,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 6,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
@@ -998,7 +998,7 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700900] = {
-  ["resIcon"] = 7005,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700803,  ["timesDir"] = 0,  ["resHero"] = 1100652,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
+  ["resIcon"] = 7009,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700803,  ["timesDir"] = 0,  ["resHero"] = 1100652,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400709000,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 9,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
@@ -1506,7 +1506,7 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700700] = {
-  ["resIcon"] = 7005,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700603,  ["timesDir"] = 0,  ["resHero"] = 1100612,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
+  ["resIcon"] = 7007,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700603,  ["timesDir"] = 0,  ["resHero"] = 1100612,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400707000,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 7,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
@@ -1740,13 +1740,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [930009] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403091,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403091,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1758,13 +1758,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [930008] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403081,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403081,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1776,13 +1776,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [930007] = {
-  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403071,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40008,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10011,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9403071,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 3,  [2] = 3,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2006,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10008,  ["Animal_Kill_Over"] = 3,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1794,13 +1794,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [920010] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402101,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402101,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -1812,13 +1812,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [920009] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402091,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402091,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2026,13 +2026,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [910010] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401101,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401101,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2314,13 +2314,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [910002] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401021,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401021,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2332,13 +2332,13 @@ special_stage_config={
 ,}
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 9,}
 ,  [910001] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401011,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401011,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2468,7 +2468,7 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [701000] = {
-  ["resIcon"] = 7005,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700903,  ["timesDir"] = 0,  ["resHero"] = 1100482,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
+  ["resIcon"] = 7010,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 700903,  ["timesDir"] = 0,  ["resHero"] = 1100482,  ["restore"] = 0,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 0,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400701000,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 10,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
@@ -2582,13 +2582,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [910003] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401031,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401031,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2614,13 +2614,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [910004] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401041,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401041,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2646,13 +2646,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [910005] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401051,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401051,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2678,13 +2678,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [910006] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401061,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401061,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2710,13 +2710,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [910007] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401071,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401071,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2742,13 +2742,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [910008] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401081,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401081,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2774,13 +2774,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [910009] = {
-  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401091,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40001,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10009,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9401091,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 1,  [2] = 1,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2004,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10006,  ["Animal_Kill_Over"] = 1,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3580,13 +3580,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [920001] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402011,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402011,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3612,13 +3612,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [920002] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402021,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402021,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3644,13 +3644,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [920003] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402031,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402031,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3676,13 +3676,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [920004] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402041,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402041,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3708,13 +3708,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [920005] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402051,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402051,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3740,13 +3740,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [920006] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402061,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402061,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3772,13 +3772,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [920007] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402071,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402071,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3804,13 +3804,13 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [920008] = {
-  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402081,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 40004,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 0,  ["resHero"] = 10010,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 9402081,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
 ,  ["name"] = 1400900002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
   ["107"] = {
   [1] = 2,  [2] = 2,  [3] = 18,}
 ,}
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 2005,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 0,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 10007,  ["Animal_Kill_Over"] = 2,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }

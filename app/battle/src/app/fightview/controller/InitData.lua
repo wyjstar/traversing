@@ -213,17 +213,98 @@ function initGuideData()
     --     -- ["3"] = {[1] = 10002,  [2] = 60,},
     -- }
 
+    local heroBaseInfo = {
+        [1] = {
+            ["hp"]=20000,
+            ["atk"]=5000,
+            ["physical_def"] = 0,
+            ["magic_def"] =0,
+            ["hit"] = 999999,
+            ["dodge"] =0,
+            ["ductility"]=999999,
+            ["block"] = 0,
+            ["mp"]=100,
+            ["level"]=1
+        },
+        [3] ={
+            ["hp"]=12000,
+            ["atk"]=5000,
+            ["physical_def"] = 0,
+            ["magic_def"] =0,
+            ["hit"] = 999999,
+            ["dodge"] =0,
+            ["ductility"]=999999,
+            ["block"] = 0,
+            ["mp"]=100,
+            ["level"]=1
+        },
+        [5] ={
+            ["hp"]=12000,
+            ["atk"]=5000,
+            ["physical_def"] = 0,
+            ["magic_def"] =0,
+            ["hit"] = 999999,
+            ["dodge"] =0,
+            ["ductility"]=999999,
+            ["block"] = 0,
+            ["mp"]=100,
+            ["level"]=1
+        }
+    }
+
+
+    local monseterBaseInfo = {
+        [1] ={
+            ["hp"]=14000,
+            ["atk"]=5000,
+            ["physical_def"] = 0,
+            ["magic_def"] =0,
+            ["hit"] = 999999,
+            ["dodge"] =0,
+            ["ductility"]=999999,
+            ["block"] = 0,
+            ["mp"]=100,
+            ["level"]=1
+        },
+        [3] ={
+            ["hp"]=20000,
+            ["atk"]=5000,
+            ["physical_def"] = 0,
+            ["magic_def"] =0,
+            ["hit"] = 999999,
+            ["dodge"] =0,
+            ["ductility"]=999999,
+            ["block"] = 0,
+            ["mp"]=100,
+            ["level"]=1
+        },
+        [5] ={
+            ["hp"]=6500,
+            ["atk"]=5000,
+            ["physical_def"] = 0,
+            ["magic_def"] =0,
+            ["hit"] = 999999,
+            ["dodge"] =0,
+            ["ductility"]=999999,
+            ["block"] = 0,
+            ["mp"]=100,
+            ["level"]=1
+        }
+    }
+
     for i=1,6 do
         v = demoHero[tostring(i)]
         if v then
             local pos = i
+            local baseInfo = heroBaseInfo[pos]
+
             local unit_no = v[1]
-            local unit_level = v[2]
+            local unit_level = baseInfo.level
             local data = soldierTemplate:getHeroTempLateById(unit_no)
             local isawake = true
             local break_level = 0
             local unit = constructBattleUnitWithTemplate(data, pos, unit_level, break_level, isawake, false)
-            unit.skill.mp = v[3] or unit.skill.mp
+            unit.skill.mp = baseInfo.mp
 
             for k,v in pairs(unit.skill.attack_normal_skill_buffs) do
                 if v.effectId == 24 then
@@ -231,15 +312,22 @@ function initGuideData()
                 end
             end
 
-            unit._skill.mp = v[3] or unit._skill.mp
-            unit.cri_coeff = 1000
+            unit._skill.mp = baseInfo.mp
+            unit.atk = baseInfo.atk
+            unit.cri_coeff = 0
             unit.cri_ded_coeff = 0
             unit.block = 0                 -- 格挡率
-            unit.ductility = 0         -- 韧性
-            unit.hp = v[4] or unit.hp
-            unit.hp_max = v[4] or unit.hp_max
-            unit.hit = 100000                     -- 命中率
-            unit.dodge = 0                 -- 闪避率
+            unit.ductility = baseInfo.ductility         -- 韧性
+            unit.hp = baseInfo.hp
+            unit.hp_max = baseInfo.hp
+            unit.hit = baseInfo.hit                     -- 命中率
+            unit.dodge = baseInfo.dodge                 -- 闪避率
+            unit.physical_def = baseInfo.physical_def
+            unit.magic_def = baseInfo.magic_def
+
+            -- print(unit_no," info:")
+            -- table.print(unit)
+
             redUnits[pos] = unit
             updateRedUnitViewProperty(unit)
         end
@@ -248,8 +336,9 @@ function initGuideData()
     for pos, v in pairs(demoEnemy) do
         local pos = tonumber(pos)
         if v then
+            local baseInfo = monseterBaseInfo[pos]
             local unit_no = v[1]
-            local unit_level = v[2]
+            local unit_level = baseInfo.level
             local data = soldierTemplate:getHeroTempLateById(unit_no)
             local break_level = 0
             local isawake = true
@@ -260,28 +349,33 @@ function initGuideData()
                 end
             end
             blueUnits[pos] = unit
-            unit.skill.mp = v[3] 
-            unit._skill.mp = v[3]
-            unit.cri_coeff = 1000
+            unit.skill.mp = baseInfo.mp
+            unit._skill.mp = baseInfo.mp
+            unit.cri_coeff = 0
             unit.cri_ded_coeff = 0
-            unit.block = 0                 -- 格挡率
-            unit.ductility = 0         -- 韧性
-            unit.hp = v[4] or unit.hp   
-            unit.hp_max = v[4] or unit.hp_max
-            unit.hit = 100000                     -- 命中率
-            unit.dodge = 0                 -- 闪避率
+            unit.atk = baseInfo.atk
+            unit.ductility = baseInfo.ductility         -- 韧性
+            unit.hp = baseInfo.hp
+            unit.hp_max = baseInfo.hp
+            unit.hit = baseInfo.hit                     -- 命中率
+            unit.dodge = baseInfo.dodge                 -- 闪避率
+            unit.physical_def = baseInfo.physical_def
+            unit.magic_def = baseInfo.magic_def
+
+            print(unit_no," info:")
+            -- table.print(unit)
+
             updateBlueUnitViewProperty(unit)
         end
     end
-
-    local demoUnpara = baseTemplate:getBaseInfoById("demoUnpara") or {}
-    local unpar_type_id = demoUnpara[1] or 0
-    local unpar_other_id = demoUnpara[2] or 0
-    local unpar_level = demoUnpara[3] or 0
-    local unpar_job = demoUnpara[4] or 0
+    
+    local unpar_type_id = 8100004 --demoUnpara[1] or 0
+    local unpar_other_id = 8100009-- demoUnpara[2] or 0
+    local unpar_level = 50 -- demoUnpara[3] or 0
+    local unpar_job = 2--demoUnpara[4] or 0
 
     local redUnParaSkill = constructUnparaSkill(unpar_type_id, unpar_other_id, const.HOME_ARMY, "red", 7, unpar_level, unpar_job)
-
+    redUnParaSkill.mp = 52
     -- local redUnParaSkill = constructUnparaSkill(10020, 1, const.HOME_ARMY, "red", 7, 1, 1)
 
     redUnParaSkill.mp_step = 8
@@ -658,6 +752,7 @@ function constructBattleUnit(data, side, is_last_round)
         unit.unit_type = UNIT_TYPE_MONSTER
         if not SERVER_CODE then
             local pictureName = soldierTemplate:getMonsterImageName(unit.no)
+            print("BLUE:",pictureName,unit.no)
             unit.pictureName = pictureName
         end
         local bossOpeningRage = baseTemplate:getBaseInfoById("BOSSOpeningRage")
