@@ -151,7 +151,7 @@ def pve_start(red_units, blue_groups, red_unpar_data, blue_unpar_data, f_unit, s
         unpar_other_id = red_unpar_data.get("unpar_other_id", 0),
         unpar_level = red_unpar_data.get("unpar_level", 1),
         unpar_job = red_unpar_data.get("unpar_job", 1),
-        blue_skill = blue_unpar_data.get("blue_skill", 0),
+        monster_unpar = blue_unpar_data.get("blue_skill", 0),
         blue_skill_level = blue_unpar_data.get("blue_skill_level", 0),
         friend = construct_battle_unit(f_unit),
         fight_result = False,
