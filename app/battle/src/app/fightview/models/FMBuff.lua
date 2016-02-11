@@ -81,7 +81,7 @@ function FMBuff:perform_buff(owner, result)
         result.value = execute_treat(attacker, owner, self.skill_buff_info, result.is_cri, extra_msgs)
         self.value = result.value
     elseif table.inv({30}, effect_id) then
-        print("attacker_side============")
+        print("attacker_side============", attacker.is_monster)
         print(self.process.army)
         if not attacker.is_monster then
             result.value = unpara(attacker, self.skill_buff_info, owner)

@@ -219,6 +219,7 @@ end
 -- 怪物无双值
 function unpara_monster(atk, target, extra_msgs)
     local warriorsDamage = getFormulaTemplate():getFunc("monster_warriors_atkArray")(atk)
+    print("unpara_monster", warriorsDamage, atk)
     warriorsDamage = addDamageRate("blue", warriorsDamage)
     target:set_hp(target:get_hp() - warriorsDamage)
     return warriorsDamage
