@@ -798,7 +798,7 @@ end
 
 -- 更新我方显示相关属性
 function updateRedUnitViewProperty(unit)
-    unit.HOME = const.HOME_ARMY[unit.pos]
+    unit.HOME = clone(const.HOME_ARMY[unit.pos])
     unit.zorder = AEMY_ZORDER + 6 - unit.pos
     unit.viewPos = unit.pos
     unit.prelude = true
@@ -807,7 +807,7 @@ end
 
 -- 更新敌方显示相关属性
 function updateBlueUnitViewProperty(unit)
-    unit.HOME = const.HOME_ENEMY[unit.pos]
+    unit.HOME = clone(const.HOME_ENEMY[unit.pos])
     unit.zorder = ENEMY_ZORDER + 6 - unit.pos
     unit.viewPos = unit.pos + 12
     unit.prelude = false
