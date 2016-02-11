@@ -6,7 +6,7 @@ from shared.db_opear.configs_data import game_configs
 from shared.utils import pprint
 
 LOG_NAME = ""
-LOG = True
+LOG = False
 
 
 
