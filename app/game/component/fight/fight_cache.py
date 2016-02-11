@@ -260,26 +260,9 @@ class CharacterFightCacheComponent(Component):
     def __get_break_stage_odds(self):
         """取得乱入概率
         """
-        odds = 0
-        stage_break_config = self.__get_stage_break_config()
-
-        if not stage_break_config:
-            logger.info('no stage break odds')
-            return odds
-
-        for i in range(1, 8):
-            condition_config = getattr(
-                stage_break_config,
-                'condition%d' %
-                i)  # 乱入条件
-            odds_config = getattr(stage_break_config, 'odds%d' % i)  # 乱入几率
-            if self.check_condition(condition_config):
-                odds += odds_config
-            logger.info(
-                '乱入条件: %s odds:%f not replace:%s' %
-                (condition_config, odds, self._not_replace))
-
-        return odds
+        stage = self._get_stage_config()
+        logger.debug("__get_break_stage_odds %s" % stage.get("break_Probability", 0))
+        return stage.get("break_Probability", 0)
 
     def check_condition(self, condition_config):
         """
