@@ -4074,7 +4074,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930101,  ["fristGift"] = {
 }
@@ -4096,7 +4096,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930102,  ["fristGift"] = {
 }
@@ -4118,7 +4118,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930103,  ["fristGift"] = {
 }
@@ -4140,7 +4140,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930104,  ["fristGift"] = {
 }
@@ -4162,7 +4162,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930105,  ["fristGift"] = {
 }
@@ -4206,7 +4206,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930106,  ["fristGift"] = {
 }
@@ -4252,7 +4252,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930107,  ["fristGift"] = {
 }
@@ -4296,7 +4296,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930108,  ["fristGift"] = {
 }
@@ -4318,7 +4318,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930109,  ["fristGift"] = {
 }
@@ -4340,7 +4340,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930110,  ["fristGift"] = {
 }
@@ -4362,7 +4362,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930111,  ["fristGift"] = {
 }
@@ -4384,7 +4384,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930112,  ["fristGift"] = {
 }
@@ -4406,7 +4406,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930113,  ["fristGift"] = {
 }
@@ -4452,7 +4452,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930114,  ["fristGift"] = {
 }
@@ -4498,7 +4498,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930115,  ["fristGift"] = {
 }
@@ -4544,7 +4544,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930116,  ["fristGift"] = {
 }
@@ -4566,7 +4566,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930117,  ["fristGift"] = {
 }
@@ -4588,7 +4588,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930118,  ["fristGift"] = {
 }
@@ -4610,7 +4610,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930119,  ["fristGift"] = {
 }
@@ -4632,7 +4632,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930120,  ["fristGift"] = {
 }
@@ -4654,7 +4654,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930121,  ["fristGift"] = {
 }
@@ -4698,7 +4698,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930122,  ["fristGift"] = {
 }
@@ -4742,7 +4742,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930123,  ["fristGift"] = {
 }
@@ -4786,7 +4786,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930124,  ["fristGift"] = {
 }
@@ -4808,7 +4808,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930125,  ["fristGift"] = {
 }
@@ -4830,7 +4830,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930126,  ["fristGift"] = {
 }
@@ -4852,7 +4852,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930127,  ["fristGift"] = {
 }
@@ -4874,7 +4874,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930128,  ["fristGift"] = {
 }
@@ -4920,7 +4920,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930129,  ["fristGift"] = {
 }
@@ -4966,7 +4966,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930130,  ["fristGift"] = {
 }
@@ -5010,7 +5010,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930131,  ["fristGift"] = {
 }
@@ -5056,7 +5056,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930132,  ["fristGift"] = {
 }
@@ -5078,7 +5078,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930133,  ["fristGift"] = {
 }
@@ -5100,7 +5100,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930134,  ["fristGift"] = {
 }
@@ -5122,7 +5122,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930135,  ["fristGift"] = {
 }
@@ -5144,7 +5144,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930136,  ["fristGift"] = {
 }
@@ -5188,7 +5188,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930137,  ["fristGift"] = {
 }
@@ -5232,7 +5232,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930138,  ["fristGift"] = {
 }
@@ -5278,7 +5278,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930139,  ["fristGift"] = {
 }
@@ -5336,7 +5336,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930140,  ["fristGift"] = {
 }
@@ -5358,7 +5358,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930141,  ["fristGift"] = {
 }
@@ -5380,7 +5380,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930142,  ["fristGift"] = {
 }
@@ -5402,7 +5402,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930143,  ["fristGift"] = {
 }
@@ -5424,7 +5424,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930144,  ["fristGift"] = {
 }
@@ -5468,7 +5468,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930145,  ["fristGift"] = {
 }
@@ -5514,7 +5514,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930146,  ["fristGift"] = {
 }
@@ -9164,7 +9164,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930301,  ["fristGift"] = {
 }
@@ -9254,7 +9254,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930305,  ["fristGift"] = {
 }
@@ -9298,7 +9298,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930306,  ["fristGift"] = {
 }
@@ -9342,7 +9342,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930307,  ["fristGift"] = {
 }
@@ -9386,7 +9386,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930308,  ["fristGift"] = {
 }
@@ -9408,7 +9408,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930309,  ["fristGift"] = {
 }
@@ -9538,7 +9538,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930313,  ["fristGift"] = {
 }
@@ -9584,7 +9584,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930314,  ["fristGift"] = {
 }
@@ -9628,7 +9628,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930315,  ["fristGift"] = {
 }
@@ -9674,7 +9674,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930316,  ["fristGift"] = {
 }
@@ -9696,7 +9696,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930317,  ["fristGift"] = {
 }
@@ -9740,7 +9740,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930319,  ["fristGift"] = {
 }
@@ -9806,7 +9806,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930321,  ["fristGift"] = {
 }
@@ -9850,7 +9850,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930322,  ["fristGift"] = {
 }
@@ -9896,7 +9896,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930323,  ["fristGift"] = {
 }
@@ -9954,7 +9954,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930324,  ["fristGift"] = {
 }
@@ -10024,7 +10024,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930327,  ["fristGift"] = {
 }
@@ -10092,7 +10092,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930329,  ["fristGift"] = {
 }
@@ -10138,7 +10138,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930330,  ["fristGift"] = {
 }
@@ -10182,7 +10182,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930331,  ["fristGift"] = {
 }
@@ -10204,7 +10204,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930332,  ["fristGift"] = {
 }
@@ -10270,7 +10270,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930335,  ["fristGift"] = {
 }
@@ -10352,7 +10352,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930337,  ["fristGift"] = {
 }
@@ -10410,7 +10410,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930338,  ["fristGift"] = {
 }
@@ -10480,7 +10480,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930340,  ["fristGift"] = {
 }
@@ -10548,7 +10548,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930343,  ["fristGift"] = {
 }
@@ -10570,7 +10570,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930344,  ["fristGift"] = {
 }
@@ -10614,7 +10614,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930345,  ["fristGift"] = {
 }
@@ -10658,7 +10658,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930346,  ["fristGift"] = {
 }
@@ -10990,7 +10990,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930342,  ["fristGift"] = {
 }
@@ -11072,7 +11072,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930341,  ["fristGift"] = {
 }
@@ -11118,7 +11118,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930339,  ["fristGift"] = {
 }
@@ -11164,7 +11164,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930336,  ["fristGift"] = {
 }
@@ -11186,7 +11186,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930334,  ["fristGift"] = {
 }
@@ -11208,7 +11208,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930333,  ["fristGift"] = {
 }
@@ -11230,7 +11230,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930328,  ["fristGift"] = {
 }
@@ -11274,7 +11274,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930326,  ["fristGift"] = {
 }
@@ -11320,7 +11320,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930325,  ["fristGift"] = {
 }
@@ -11364,7 +11364,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930320,  ["fristGift"] = {
 }
@@ -11386,7 +11386,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930318,  ["fristGift"] = {
 }
@@ -11430,7 +11430,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930312,  ["fristGift"] = {
 }
@@ -11474,7 +11474,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930311,  ["fristGift"] = {
 }
@@ -11518,7 +11518,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930310,  ["fristGift"] = {
 }
@@ -11540,7 +11540,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930304,  ["fristGift"] = {
 }
@@ -11562,7 +11562,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930303,  ["fristGift"] = {
 }
@@ -11584,7 +11584,7 @@ stage_config={
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930302,  ["fristGift"] = {
 }

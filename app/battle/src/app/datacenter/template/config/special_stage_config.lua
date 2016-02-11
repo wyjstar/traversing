@@ -70,7 +70,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700802,  ["info"] = 5900700802,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100023,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700802,  ["info"] = 5900700802,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805302] = {
@@ -102,7 +102,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700803,  ["info"] = 5900700803,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100024,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700803,  ["info"] = 5900700803,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [809902] = {
@@ -220,7 +220,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700303,  ["info"] = 5900700303,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700303,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100009,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700303,  ["info"] = 5900700303,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700303,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [809402] = {
@@ -1040,7 +1040,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700901,  ["info"] = 5900700901,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100025,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700901,  ["info"] = 5900700901,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805401] = {
@@ -1070,7 +1070,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700902,  ["info"] = 5900700902,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100026,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700902,  ["info"] = 5900700902,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805402] = {
@@ -1102,7 +1102,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700903,  ["info"] = 5900700903,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100027,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700903,  ["info"] = 5900700903,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [810002] = {
@@ -1190,7 +1190,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700402,  ["info"] = 5900700402,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700402,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700402,  ["info"] = 5900700402,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700402,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [804902] = {
@@ -1222,7 +1222,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700403,  ["info"] = 5900700403,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700403,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100012,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700403,  ["info"] = 5900700403,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700403,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [809502] = {
@@ -1548,7 +1548,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700701,  ["info"] = 5900700701,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100019,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700701,  ["info"] = 5900700701,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805201] = {
@@ -1578,7 +1578,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700702,  ["info"] = 5900700702,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100020,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700702,  ["info"] = 5900700702,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805202] = {
@@ -1666,7 +1666,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700201,  ["info"] = 5900700201,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700201,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100004,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700201,  ["info"] = 5900700201,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700201,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [804701] = {
@@ -2128,7 +2128,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700703,  ["info"] = 5900700703,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700703,  ["info"] = 5900700703,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [807801] = {
@@ -2390,7 +2390,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700202,  ["info"] = 5900700202,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700202,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100005,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700202,  ["info"] = 5900700202,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700202,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [810001] = {
@@ -2422,7 +2422,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700203,  ["info"] = 5900700203,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700203,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100006,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700203,  ["info"] = 5900700203,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700203,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [800802] = {
@@ -2848,7 +2848,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700501,  ["info"] = 5900700501,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100013,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700501,  ["info"] = 5900700501,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [800402] = {
@@ -2990,7 +2990,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700101,  ["info"] = 5900700101,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700101,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100001,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700101,  ["info"] = 5900700101,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700101,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700601] = {
@@ -3006,7 +3006,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700601,  ["info"] = 5900700601,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100016,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700601,  ["info"] = 5900700601,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [809101] = {
@@ -3036,7 +3036,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700602,  ["info"] = 5900700602,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100017,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700602,  ["info"] = 5900700602,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700603] = {
@@ -3054,7 +3054,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700603,  ["info"] = 5900700603,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100018,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700603,  ["info"] = 5900700603,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [802902] = {
@@ -3252,7 +3252,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700502,  ["info"] = 5900700502,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100014,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700502,  ["info"] = 5900700502,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700102] = {
@@ -3268,7 +3268,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700102,  ["info"] = 5900700102,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700102,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100002,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700102,  ["info"] = 5900700102,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700102,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700103] = {
@@ -3286,7 +3286,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700103,  ["info"] = 5900700103,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700103,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100003,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700103,  ["info"] = 5900700103,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700103,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [808501] = {
@@ -3358,7 +3358,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701001,  ["info"] = 5900701001,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100028,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701001,  ["info"] = 5900701001,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [803002] = {
@@ -3390,7 +3390,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701003,  ["info"] = 5900701003,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100030,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701003,  ["info"] = 5900701003,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [806501] = {
@@ -3576,7 +3576,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700503,  ["info"] = 5900700503,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100015,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700503,  ["info"] = 5900700503,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [920001] = {
@@ -4016,7 +4016,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700801,  ["info"] = 5900700801,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100022,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700801,  ["info"] = 5900700801,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [701002] = {
@@ -4032,7 +4032,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701002,  ["info"] = 5900701002,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100029,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701002,  ["info"] = 5900701002,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700301] = {
@@ -4048,7 +4048,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700301,  ["info"] = 5900700301,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700301,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100007,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700301,  ["info"] = 5900700301,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700301,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700302] = {
@@ -4064,7 +4064,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700302,  ["info"] = 5900700302,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700302,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100008,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700302,  ["info"] = 5900700302,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700302,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700401] = {
@@ -4080,7 +4080,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700401,  ["info"] = 5900700401,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700401,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100010,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700401,  ["info"] = 5900700401,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700401,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [802602] = {

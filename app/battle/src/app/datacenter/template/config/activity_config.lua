@@ -1670,12 +1670,12 @@ activity_config={
 ,}
 ,}
 ,  [26001] = {
-  ["parameterB"] = 2,  ["actIcon"] = 0,  ["description"] = 4910026001,  ["parameterE"] = {
+  ["parameterB"] = 1,  ["actIcon"] = 0,  ["description"] = 4910026001,  ["parameterE"] = {
 }
-,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 2,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 1,  ["type"] = 26,  ["idEmail"] = 0,  ["parameterD"] = {
+,  ["beforeAct"] = 0,  ["duration"] = 3,  ["group"] = 6,  ["page"] = 0,  ["recharge"] = 0,  ["nextActivity"] = 0,  ["sort"] = 0,  ["count"] = 0,  ["parameterA"] = 0,  ["level"] = 0,  ["icon"] = 0,  ["perday"] = 1,  ["everyday"] = 1,  ["type"] = 26,  ["idEmail"] = 0,  ["parameterD"] = {
 }
-,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 26001,  ["parameterT"] = "2019-08-17 00:00:01 - 2019-08-23 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
-  [1] = 6,}
+,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 26001,  ["parameterT"] = "2015-01-01 00:00:01 - 2019-12-31 23:59:59",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
+  [1] = 160,}
 ,  ["name"] = 4900026001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
 }
 ,}

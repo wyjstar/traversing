@@ -496,11 +496,11 @@ class CharacterLineUpComponent(Component):
 
         unpar_other_id = 0
         unpar_level = self._unpar_level
-        unpar_item = game_configs.skill_peerless_effect_config.get(unpar_level)
+        unpar_item = game_configs.skill_peerless_grade_config.get(unpar_level)
         unpar_type_id = unpar_item.get("type"+str(self._unpar_type), 0)
-        unpar_job = unpar_item.type
 
         unpar_effect_item = game_configs.skill_peerless_effect_config.get(self._unpar_other_id)
+        unpar_job = unpar_effect_item.type
         if unpar_effect_item:
             hero_num = 0
             for hero_no in unpar_effect_item.trigger:
@@ -510,5 +510,6 @@ class CharacterLineUpComponent(Component):
             logger.debug("hero_num %s unpar_other_id %s" % (hero_num, unpar_other_id))
 
         red_unpar_data = dict(unpar_type=unpar_type_id, unpar_other_id=unpar_other_id, unpar_level=unpar_level, unpar_job=unpar_job)
+        logger.debug("red_unpar_data %s" % red_unpar_data)
         return red_unpar_data
 
