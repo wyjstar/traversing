@@ -42,11 +42,11 @@ to_get_config={
   [1] = 101307,  [2] = 102407,  [3] = 103505,  [4] = 104605,}
 ,  ["famShop"] = 0,}
 ,  [200010044] = {
-  ["activity"] = 1,  ["indiana"] = 1,  ["arenaShop"] = 1,  ["shopGift"] = 1,  ["everyGift"] = 1,  ["itemShop"] = 1,  ["seven"] = 1,  ["guildShop1"] = 1,  ["arena"] = 1,  ["guild"] = 1,  ["heroRefinery"] = 1,  ["signIn"] = 1,  ["getMoney"] = 1,  ["ggzj"] = 1,  ["specialShop"] = 1,  ["hjqy"] = 1,  ["soulShop"] = 1,  ["guildShop2"] = 1,  ["equRefinery"] = 1,  ["isActiveStage"] = 1,  ["isStage"] = 1,  ["pricelessTreasuresShop"] = 1,  ["equipShop"] = 1,  ["rechange"] = 1,  ["id"] = 200010044,  ["coinHero"] = 1,  ["travel"] = 1,  ["activityGive"] = 1,  ["stageBreak"] = 0,  ["online"] = 1,  ["moneyHero"] = 1,  ["moneyEqu"] = 1,  ["featsShop"] = 1,  ["isEliteStage"] = {
+  ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 1,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 1,  ["guildShop2"] = 1,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200010044,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
   [1] = 100507,  [2] = 101607,  [3] = 102705,  [4] = 103805,}
-,  ["famShop"] = 1,}
+,  ["famShop"] = 0,}
 ,  [200030063] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200030063,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
@@ -501,7 +501,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200010006,  ["coinHero"] = 1,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-  [1] = 100403,}
+  [1] = 100305,}
 ,  ["famShop"] = 0,}
 ,  [400130001] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 1,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 400130001,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
@@ -663,7 +663,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200010002,  ["coinHero"] = 1,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-  [1] = 100305,}
+}
 ,  ["famShop"] = 0,}
 ,  [400030003] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 1,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 400030003,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
@@ -759,7 +759,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200010007,  ["coinHero"] = 1,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-  [1] = 100503,}
+  [1] = 100203,}
 ,  ["famShop"] = 0,}
 ,  [300100078] = {
   ["activity"] = 0,  ["indiana"] = 1,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 300100078,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
@@ -921,7 +921,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 300100002,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-}
+  [1] = 100603,}
 ,  ["famShop"] = 0,}
 ,  [300100003] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 300100003,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
@@ -987,7 +987,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 300100013,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-}
+  [1] = 100303,}
 ,  ["famShop"] = 0,}
 ,  [300100014] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 300100014,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
@@ -1035,7 +1035,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200010001,  ["coinHero"] = 1,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-  [1] = 100303,}
+}
 ,  ["famShop"] = 0,}
 ,  [300100022] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 1,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 1,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 1,  ["rechange"] = 0,  ["id"] = 300100022,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
@@ -1053,7 +1053,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 300100024,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-}
+  [1] = 100403,}
 ,  ["famShop"] = 0,}
 ,  [200010003] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 1,  ["guildShop2"] = 1,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200010003,  ["coinHero"] = 1,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 1,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
@@ -1113,7 +1113,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 300100035,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-}
+  [1] = 100503,}
 ,  ["famShop"] = 0,}
 ,  [300100036] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 300100036,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
@@ -1167,7 +1167,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200010012,  ["coinHero"] = 1,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-}
+  [1] = 100207,}
 ,  ["famShop"] = 0,}
 ,  [300100045] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 1,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 1,  ["rechange"] = 0,  ["id"] = 300100045,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 1,  ["featsShop"] = 0,  ["isEliteStage"] = {
@@ -1413,7 +1413,7 @@ to_get_config={
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200010008,  ["coinHero"] = 1,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {
 }
 ,  ["stage"] = {
-  [1] = 100603,}
+  [1] = 100205,}
 ,  ["famShop"] = 0,}
 ,  [200030051] = {
   ["activity"] = 0,  ["indiana"] = 0,  ["arenaShop"] = 0,  ["shopGift"] = 0,  ["everyGift"] = 0,  ["itemShop"] = 0,  ["seven"] = 0,  ["guildShop1"] = 0,  ["arena"] = 0,  ["guild"] = 0,  ["heroRefinery"] = 0,  ["signIn"] = 0,  ["getMoney"] = 0,  ["ggzj"] = 0,  ["specialShop"] = 0,  ["hjqy"] = 0,  ["soulShop"] = 0,  ["guildShop2"] = 0,  ["equRefinery"] = 0,  ["isActiveStage"] = 0,  ["isStage"] = 0,  ["pricelessTreasuresShop"] = 0,  ["equipShop"] = 0,  ["rechange"] = 0,  ["id"] = 200030051,  ["coinHero"] = 0,  ["travel"] = 0,  ["activityGive"] = 0,  ["stageBreak"] = 0,  ["online"] = 0,  ["moneyHero"] = 0,  ["moneyEqu"] = 0,  ["featsShop"] = 0,  ["isEliteStage"] = {

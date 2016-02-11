@@ -42,11 +42,11 @@ features_open_config={
 ,  [10008] = {
   ["id"] = 10008,  ["type"] = 8,  ["open"] = 4,  ["open_type"] = 1,}
 ,  [10009] = {
-  ["id"] = 10009,  ["type"] = 9,  ["open"] = 10,  ["open_type"] = 1,}
+  ["id"] = 10009,  ["type"] = 9,  ["open"] = 8,  ["open_type"] = 1,}
 ,  [10010] = {
-  ["id"] = 10010,  ["type"] = 10,  ["open"] = 16,  ["open_type"] = 1,}
+  ["id"] = 10010,  ["type"] = 10,  ["open"] = 13,  ["open_type"] = 1,}
 ,  [10011] = {
-  ["id"] = 10011,  ["type"] = 11,  ["open"] = 22,  ["open_type"] = 1,}
+  ["id"] = 10011,  ["type"] = 11,  ["open"] = 18,  ["open_type"] = 1,}
 ,  [10012] = {
   ["id"] = 10012,  ["type"] = 12,  ["open"] = 10,  ["open_type"] = 1,}
 ,  [10013] = {
@@ -72,7 +72,7 @@ features_open_config={
 ,  [10023] = {
   ["id"] = 10023,  ["type"] = 23,  ["open"] = 10,  ["open_type"] = 1,}
 ,  [10024] = {
-  ["id"] = 10024,  ["type"] = 24,  ["open"] = 20,  ["open_type"] = 1,}
+  ["id"] = 10024,  ["type"] = 24,  ["open"] = 16,  ["open_type"] = 1,}
 ,  [10025] = {
-  ["id"] = 10025,  ["type"] = 25,  ["open"] = 20,  ["open_type"] = 1,}
+  ["id"] = 10025,  ["type"] = 25,  ["open"] = 16,  ["open_type"] = 1,}
 ,}

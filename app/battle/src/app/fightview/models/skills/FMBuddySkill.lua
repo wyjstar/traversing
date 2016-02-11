@@ -51,6 +51,10 @@ function FMBuddySkill:get_after_skill_buffs(is_hit)
     return self.unit._skill:get_after_skill_buffs(is_hit)
 end
 
+function FMBuddySkill:get_back_skill_buffs(is_hit, is_block)
+    return self.unit._skill:get_back_skill_buffs(is_hit, is_block)
+end
+
 function FMBuddySkill:attack_skill_buffs()
     --docstring for attack_skill_buffs--
     return self.unit._skill.attack_mp_skill_buffs
