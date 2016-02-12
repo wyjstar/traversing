@@ -240,7 +240,7 @@ function initGuideData()
         },
         [5] ={
             ["hp"]=12000,
-            ["atk"]=5000,
+            ["atk"]=8000,
             ["physical_def"] = 0,
             ["magic_def"] =0,
             ["hit"] = 999999,
@@ -255,7 +255,7 @@ function initGuideData()
 
     local monseterBaseInfo = {
         [1] ={
-            ["hp"]=14000,
+            ["hp"]=18500,
             ["atk"]=5000,
             ["physical_def"] = 0,
             ["magic_def"] =0,
@@ -267,7 +267,7 @@ function initGuideData()
             ["level"]=1
         },
         [3] ={
-            ["hp"]=20000,
+            ["hp"]=18500,
             ["atk"]=5000,
             ["physical_def"] = 0,
             ["magic_def"] =0,
@@ -279,7 +279,7 @@ function initGuideData()
             ["level"]=1
         },
         [5] ={
-            ["hp"]=6500,
+            ["hp"]=10000,
             ["atk"]=5000,
             ["physical_def"] = 0,
             ["magic_def"] =0,
