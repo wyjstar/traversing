@@ -385,6 +385,8 @@ def pvp_fight_request_1505(data, player):
             rank_incr = player.pvp.pvp_high_rank - challenge_rank
         if player.pvp.pvp_high_rank > challenge_rank:
             hook_task(player, CONDITIONId.PVP_RANK, challenge_rank)
+        formula = game_configs.formula_config.get("arenaRankUpRewardsValue").get("formula")
+        gain_num = eval(formula, dict(upRank=challenge_rank, highestRank=player.pvp.pvp_high_rank))
 
         # stage award
         stage_info_before = get_player_pvp_stage(player.pvp.pvp_high_rank)
@@ -407,9 +409,10 @@ def pvp_fight_request_1505(data, player):
 
         # 首次达到某名次的奖励
         arena_rank_rewards = game_configs.base_config.get('arenaRankUpRewards')
+
         if arena_rank_rewards:
             return_data = gain(player, arena_rank_rewards,
-                               const.ARENA_WIN, multiple=rank_incr)
+                               const.ARENA_WIN, multiple=int(gain_num))
             get_return(player, return_data, response.award)
         else:
             logger.debug('arena rank up points is not find')
