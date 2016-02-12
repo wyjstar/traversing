@@ -100,7 +100,7 @@ class CharacterRechargeGift(Component):
             self._recharge[activity_id] = {accumulating: switch}
 
         if gift_type == 10:
-            if recharge >= activity.get('parameterA'):
+            if recharge == int(activity.get('parameterA')):
                 if activity_id not in self._recharge:
                     self._recharge[activity_id] = {}
 
@@ -129,7 +129,7 @@ class CharacterRechargeGift(Component):
                     _data.is_receive = v
                     _data.recharge_time = k
                 if item.gift_type == 10:
-                    if v == 0 or k == _date_now:
+                    if k == _date_now:
                         _data = item.data.add()
                         _data.is_receive = v
                         _data.recharge_time = k
