@@ -103,7 +103,7 @@ def battle_2103(pro_data, player):
     request.ParseFromString(pro_data)
     response = hjqy_pb2.HjqyBattleResponse()
 
-    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_WORLD_BOSS):
+    if player.base_info.is_firstday_from_register(const.OPEN_FEATURE_HJQY):
         response.res.result = False
         response.res.result_no = 150901
         return response.SerializeToString()
