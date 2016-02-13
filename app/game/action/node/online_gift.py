@@ -84,12 +84,14 @@ def get_online_and_level_gift_data_1150(data, player):
 def take_recharge_gift_1151(data, player):
     request = recharge_pb2.GetRechargeGiftRequest()
     request.ParseFromString(data)
+    print '1151===============request:', request
 
     response = recharge_pb2.GetRechargeGiftResponse()
     response.res.result = True
 
     player.recharge.take_gift(request.gift, response)
     player.recharge.save_data()
+    print '1151===============response:', response
     return response.SerializeToString()
 
 
