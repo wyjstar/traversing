@@ -29,7 +29,7 @@ def get_act_gift_1832(data, player):
 
     act_conf = game_configs.activity_config.get(act_id)
     is_open = player.act.is_activiy_open(act_id)
-    if not act_conf or not is_open or act_conf.showJudgment:
+    if not act_conf or not is_open:
         response.res.result_no = 800
         return response.SerializeToString()
     act_type = act_conf.type
@@ -269,13 +269,27 @@ def get_activity_info_1855(data, player):
     # 通用 获取活动信息
     args = activity_pb2.GetActivityInfoRequese()
     args.ParseFromString(data)
-    act_types = args.act_type
+    select_type = args.select_type
+    select_values = args.value
     response = activity_pb2.GetActivityInfoResponse()
-    print act_types, '========================act type 1855'
+    print select_type, select_values, '========================act type 1855'
 
-    for act_type in act_types:
-        for act_conf in game_configs.activity_config[act_type]:
-            if act_conf.showJudgment:
+    configs = []
+    for select_value in select_values:
+        if select_type == 1:
+            configs = game_configs.activity_config.get(select_value, [])
+        elif select_type == 2:
+            configs = game_configs.activity_config.get('icon').get(select_value, [])
+        else:
+            response.res.result = False
+            print 'select type error ========================act info 1855'
+            response.res.result_no = 800
+            return response.SerializeToString()
+        if configs and configs[0].type == 18:
+            # 连续登录
+            player.act.update_act_with_get()
+        for act_conf in configs:
+            if act_conf.icon == 10179:  # 七日活动
                 continue
             if not player.act.is_activiy_open(act_conf.id):
                 continue

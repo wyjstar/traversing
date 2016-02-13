@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='activity.proto',
   package='',
-  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"*\n\x16GetActivityInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x03(\x05\"T\n\x17GetActivityInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1b\n\x04info\x18\x02 \x03(\x0b\x32\r.ActivityInfo\"\x84\x01\n\x0c\x41\x63tivityInfo\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x01(\x05\x12\r\n\x05state\x18\x02 \x01(\x05\x12\r\n\x05jindu\x18\x03 \x01(\x05\x12\x17\n\x0f\x61\x63\x63umulate_days\x18\x04 \x01(\x05\x12\x10\n\x08recharge\x18\x05 \x01(\x05\x12\x1b\n\x13max_single_recharge\x18\x06 \x01(\x05\"5\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"\x81\x01\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"m\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05\x12\x10\n\x08\x61\x63t_type\x18\x04 \x01(\x05\"y\n\x10\x46undActivityInfo\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x01(\x05\x12\r\n\x05state\x18\x02 \x01(\x05\x12\x17\n\x0f\x61\x63\x63umulate_days\x18\x03 \x01(\x05\x12\x10\n\x08recharge\x18\x04 \x01(\x05\x12\x1b\n\x13max_single_recharge\x18\x05 \x01(\x05\":\n\x17GetFundActivityResponse\x12\x1f\n\x04info\x18\x01 \x03(\x0b\x32\x11.FundActivityInfo\"=\n\x19GuildActivityInitResponse\x12 \n\x04\x61\x63ts\x18\x01 \x03(\x0b\x32\x12.GuildActivityInfo\"H\n\x11GuildActivityInfo\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x11\n\tact_times\x18\x02 \x01(\x05\x12\x10\n\x08\x66inished\x18\x03 \x01(\x08\"/\n\x1dGuildActivityGetRewardRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\"d\n\x1eGuildActivityGetRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"A\n\x17\x41\x64\x64\x41\x63tivityInitResponse\x12&\n\x0c\x61\x64\x64_act_info\x18\x01 \x03(\x0b\x32\x10.AddActivityInfo\"P\n\x0f\x41\x64\x64\x41\x63tivityInfo\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\x12+\n\x0b\x64\x65tail_info\x18\x02 \x03(\x0b\x32\x16.AddActivityDetailInfo\"V\n\x15\x41\x64\x64\x41\x63tivityDetailInfo\x12\x10\n\x08res_type\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x02(\x05\x12\x1e\n\x04item\x18\x03 \x03(\x0b\x32\x10.AddActivityItem\"3\n\x0f\x41\x64\x64\x41\x63tivityItem\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x10\n\x08\x66inished\x18\x02 \x02(\x08\"-\n\x1b\x41\x64\x64\x41\x63tivityGetRewardRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\"b\n\x1c\x41\x64\x64\x41\x63tivityGetRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x0e\x61\x63tivity.proto\x1a\x0c\x63ommon.proto\"<\n\x16GetActivityInfoRequese\x12\x13\n\x0bselect_type\x18\x01 \x02(\x05\x12\r\n\x05value\x18\x02 \x03(\x05\"T\n\x17GetActivityInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x1b\n\x04info\x18\x02 \x03(\x0b\x32\r.ActivityInfo\"\x84\x01\n\x0c\x41\x63tivityInfo\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x01(\x05\x12\r\n\x05state\x18\x02 \x01(\x05\x12\r\n\x05jindu\x18\x03 \x01(\x05\x12\x17\n\x0f\x61\x63\x63umulate_days\x18\x04 \x01(\x05\x12\x10\n\x08recharge\x18\x05 \x01(\x05\x12\x1b\n\x13max_single_recharge\x18\x06 \x01(\x05\"5\n\x11GetActGiftRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"\x81\x01\n\x12GetActGiftResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\'\n\x07\x63onsume\x18\x03 \x01(\x0b\x32\x16.GameResourcesResponse\"%\n\x11GetActInfoRequese\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\"m\n\x12GetActInfoResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x18\n\x10received_act_ids\x18\x02 \x03(\x05\x12\r\n\x05times\x18\x03 \x01(\x05\x12\x10\n\x08\x61\x63t_type\x18\x04 \x01(\x05\"y\n\x10\x46undActivityInfo\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x01(\x05\x12\r\n\x05state\x18\x02 \x01(\x05\x12\x17\n\x0f\x61\x63\x63umulate_days\x18\x03 \x01(\x05\x12\x10\n\x08recharge\x18\x04 \x01(\x05\x12\x1b\n\x13max_single_recharge\x18\x05 \x01(\x05\":\n\x17GetFundActivityResponse\x12\x1f\n\x04info\x18\x01 \x03(\x0b\x32\x11.FundActivityInfo\"=\n\x19GuildActivityInitResponse\x12 \n\x04\x61\x63ts\x18\x01 \x03(\x0b\x32\x12.GuildActivityInfo\"H\n\x11GuildActivityInfo\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x11\n\tact_times\x18\x02 \x01(\x05\x12\x10\n\x08\x66inished\x18\x03 \x01(\x08\"/\n\x1dGuildActivityGetRewardRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\"d\n\x1eGuildActivityGetRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"A\n\x17\x41\x64\x64\x41\x63tivityInitResponse\x12&\n\x0c\x61\x64\x64_act_info\x18\x01 \x03(\x0b\x32\x10.AddActivityInfo\"P\n\x0f\x41\x64\x64\x41\x63tivityInfo\x12\x10\n\x08\x61\x63t_type\x18\x01 \x02(\x05\x12+\n\x0b\x64\x65tail_info\x18\x02 \x03(\x0b\x32\x16.AddActivityDetailInfo\"V\n\x15\x41\x64\x64\x41\x63tivityDetailInfo\x12\x10\n\x08res_type\x18\x01 \x02(\x05\x12\x0b\n\x03num\x18\x02 \x02(\x05\x12\x1e\n\x04item\x18\x03 \x03(\x0b\x32\x10.AddActivityItem\"3\n\x0f\x41\x64\x64\x41\x63tivityItem\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\x12\x10\n\x08\x66inished\x18\x02 \x02(\x08\"-\n\x1b\x41\x64\x64\x41\x63tivityGetRewardRequest\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x02(\x05\"b\n\x1c\x41\x64\x64\x41\x63tivityGetRewardResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\" \n\x0e\x46ulfilActivity\x12\x0e\n\x06\x61\x63t_id\x18\x01 \x03(\x05')
 
 
 
@@ -27,8 +27,15 @@ _GETACTIVITYINFOREQUESE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='act_type', full_name='GetActivityInfoRequese.act_type', index=0,
-      number=1, type=5, cpp_type=1, label=3,
+      name='select_type', full_name='GetActivityInfoRequese.select_type', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='GetActivityInfoRequese.value', index=1,
+      number=2, type=5, cpp_type=1, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -43,7 +50,7 @@ _GETACTIVITYINFOREQUESE = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=32,
-  serialized_end=74,
+  serialized_end=92,
 )
 
 
@@ -77,8 +84,8 @@ _GETACTIVITYINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=76,
-  serialized_end=160,
+  serialized_start=94,
+  serialized_end=178,
 )
 
 
@@ -140,8 +147,8 @@ _ACTIVITYINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=163,
-  serialized_end=295,
+  serialized_start=181,
+  serialized_end=313,
 )
 
 
@@ -175,8 +182,8 @@ _GETACTGIFTREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=297,
-  serialized_end=350,
+  serialized_start=315,
+  serialized_end=368,
 )
 
 
@@ -217,8 +224,8 @@ _GETACTGIFTRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=353,
-  serialized_end=482,
+  serialized_start=371,
+  serialized_end=500,
 )
 
 
@@ -245,8 +252,8 @@ _GETACTINFOREQUESE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=484,
-  serialized_end=521,
+  serialized_start=502,
+  serialized_end=539,
 )
 
 
@@ -294,8 +301,8 @@ _GETACTINFORESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=523,
-  serialized_end=632,
+  serialized_start=541,
+  serialized_end=650,
 )
 
 
@@ -350,8 +357,8 @@ _FUNDACTIVITYINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=634,
-  serialized_end=755,
+  serialized_start=652,
+  serialized_end=773,
 )
 
 
@@ -378,8 +385,8 @@ _GETFUNDACTIVITYRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=757,
-  serialized_end=815,
+  serialized_start=775,
+  serialized_end=833,
 )
 
 
@@ -406,8 +413,8 @@ _GUILDACTIVITYINITRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=817,
-  serialized_end=878,
+  serialized_start=835,
+  serialized_end=896,
 )
 
 
@@ -448,8 +455,8 @@ _GUILDACTIVITYINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=880,
-  serialized_end=952,
+  serialized_start=898,
+  serialized_end=970,
 )
 
 
@@ -476,8 +483,8 @@ _GUILDACTIVITYGETREWARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=954,
-  serialized_end=1001,
+  serialized_start=972,
+  serialized_end=1019,
 )
 
 
@@ -511,8 +518,8 @@ _GUILDACTIVITYGETREWARDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1003,
-  serialized_end=1103,
+  serialized_start=1021,
+  serialized_end=1121,
 )
 
 
@@ -539,8 +546,8 @@ _ADDACTIVITYINITRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1105,
-  serialized_end=1170,
+  serialized_start=1123,
+  serialized_end=1188,
 )
 
 
@@ -574,8 +581,8 @@ _ADDACTIVITYINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1172,
-  serialized_end=1252,
+  serialized_start=1190,
+  serialized_end=1270,
 )
 
 
@@ -616,8 +623,8 @@ _ADDACTIVITYDETAILINFO = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1254,
-  serialized_end=1340,
+  serialized_start=1272,
+  serialized_end=1358,
 )
 
 
@@ -651,8 +658,8 @@ _ADDACTIVITYITEM = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1342,
-  serialized_end=1393,
+  serialized_start=1360,
+  serialized_end=1411,
 )
 
 
@@ -679,8 +686,8 @@ _ADDACTIVITYGETREWARDREQUEST = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1395,
-  serialized_end=1440,
+  serialized_start=1413,
+  serialized_end=1458,
 )
 
 
@@ -714,8 +721,36 @@ _ADDACTIVITYGETREWARDRESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=1442,
-  serialized_end=1540,
+  serialized_start=1460,
+  serialized_end=1558,
+)
+
+
+_FULFILACTIVITY = _descriptor.Descriptor(
+  name='FulfilActivity',
+  full_name='FulfilActivity',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='act_id', full_name='FulfilActivity.act_id', index=0,
+      number=1, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=1560,
+  serialized_end=1592,
 )
 
 _GETACTIVITYINFORESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -752,6 +787,7 @@ DESCRIPTOR.message_types_by_name['AddActivityDetailInfo'] = _ADDACTIVITYDETAILIN
 DESCRIPTOR.message_types_by_name['AddActivityItem'] = _ADDACTIVITYITEM
 DESCRIPTOR.message_types_by_name['AddActivityGetRewardRequest'] = _ADDACTIVITYGETREWARDREQUEST
 DESCRIPTOR.message_types_by_name['AddActivityGetRewardResponse'] = _ADDACTIVITYGETREWARDRESPONSE
+DESCRIPTOR.message_types_by_name['FulfilActivity'] = _FULFILACTIVITY
 
 class GetActivityInfoRequese(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -866,6 +902,12 @@ class AddActivityGetRewardResponse(_message.Message):
   DESCRIPTOR = _ADDACTIVITYGETREWARDRESPONSE
 
   # @@protoc_insertion_point(class_scope:AddActivityGetRewardResponse)
+
+class FulfilActivity(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _FULFILACTIVITY
+
+  # @@protoc_insertion_point(class_scope:FulfilActivity)
 
 
 # @@protoc_insertion_point(module_scope)

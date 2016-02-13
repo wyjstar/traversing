@@ -21,7 +21,7 @@ def get_act_info(player, act_id):
     jindu = 0
     day = player.base_info.login_day
     print act_conf, '==========get act info , act config'
-    if act_conf.type not in [65]:  # 每日的
+    if act_conf.type not in [65, 70, 72, 74]:  # 每日的
         if act_info and act_info[0] == 3:
             return {'state': 3, 'jindu': act_info[1]}
         elif act_info and act_info[0] == 2:
@@ -55,6 +55,16 @@ def get_act_info(player, act_id):
             elif days_to_current(act_info[1][1]) > 1:
                 act_info[1][0] = 1
                 act_info[1][1] = int(time.time())
+                # 重置前面的天数里的活动
+                for up_act_id in act_conf.parameterC:
+                    up_act_info = player.act.act_infos.get(up_act_id)
+                    up_act_conf = game_configs.activity_config.get(up_act_id)
+                    if not up_act_info or not up_act_conf:
+                        continue
+                    up_act_state = 1
+                    if up_act_conf.parameterA == 1:
+                        up_act_state = 2
+                    player.act.act_infos[up_act_id] = [up_act_state, [1, int(time.time())]]
             jindu = act_info[1][0]
         if jindu >= act_conf.parameterA:
             act_info[0] = 2
@@ -318,29 +328,20 @@ def get_act_info(player, act_id):
             return {'state': 1, 'jindu': act_info[1]}
 
         if len(act_conf.parameterC) == 1 and \
-                not act_conf.parameterC[0] > v['recharge']:
+                not act_conf.parameterC[0] > act_info[1][0]:
             return {'state': 1, 'jindu': act_info[1]}
 
         if len(act_conf.parameterD) == 1 and \
-                not act_conf.parameterD[0] > act_info[0]:
+                not act_conf.parameterD[0] > act_info[1][1]:
             return {'state': 1, 'jindu': act_info[1]}
         return {'state': 2, 'jindu': act_info[1]}
-    elif act_conf.type == 164:
-        if not act_info:
-            player.act.act_infos[act_id] = [1, 0]
-            return {'state': 1, 'jindu': 0}
-        if act_info[1] < int(act_conf.parameterA):
-            return {'state': 1, 'jindu': act_info[1]}
-
-        player.act.act_infos[act_id][0] = 2
-        return {'state': 2, 'jindu': act_info[1]}
-    elif act_conf.type == 65:
+    elif act_conf.type in [70, 72, 74, 65]:
         if not act_info:
             player.act.act_infos[act_id] = [1, 0, int(time.time())]
             return {'state': 1, 'jindu': 0}
         if days_to_current(act_info[2]) != 0:
             player.act.act_infos[act_id] = [1, 0, int(time.time())]
-            return {'state': 1, 'jindu': act_info[1]}
+            return {'state': 1, 'jindu': 0}
 
         if act_info and act_info[0] == 3:
             return {'state': 3, 'jindu': act_info[1]}
@@ -352,7 +353,7 @@ def get_act_info(player, act_id):
 
         player.act.act_infos[act_id][0] = 2
         return {'state': 2, 'jindu': act_info[1]}
-    elif act_conf.type == 66:
+    elif act_conf.type in [71, 73, 75, 76, 77]:
         if not act_info:
             player.act.act_infos[act_id] = [1, 0]
             return {'state': 1, 'jindu': 0}

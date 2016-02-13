@@ -46,18 +46,13 @@ class CharacterAddActivityComponent(Component):
                         act_item["num"] = 0
                         act_item["finished"] = False
                         act_item["last_time"] = 0
-                    if act_config_item.type == 65:
-                        if days_to_current(act_info.get("last_time")) > 0:
-                            act_item["num"] = 0
-                            act_item["finished"] = False
-                            act_item["last_time"] = 0
 
     def save_data(self):
         activity = tb_character_info.getObj(self.owner.base_info.id)
         activity.hset('add_act', self._add_act)
 
     def new_data(self):
-        for act_type in [64, 65, 66]:
+        for act_type in [64, 66]:
             self._add_act[act_type] = {}
             act_info = self._add_act[act_type]
             acts = game_configs.activity_config.get(act_type, [])
@@ -75,7 +70,6 @@ class CharacterAddActivityComponent(Component):
         self.save_data()
 
         return {'add_act': self._add_act}
-
 
     @property
     def act_info(self):
@@ -113,7 +107,6 @@ class CharacterAddActivityComponent(Component):
         累积消耗货币:元宝，银两，等
         """
         self.add_num(64, res_type, num)
-        self.add_num(65, res_type, num)
 
     def add_pick_card(self, res_type, num):
         """

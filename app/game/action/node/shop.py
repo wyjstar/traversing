@@ -370,7 +370,7 @@ def shop_buy_505(pro_data, player):
                 common_response.result_no = res.get('no')
 
             if not res.get('res'):
-                raise ValueError("shop bug error!")
+                raise ValueError("shop buy error!")
                 return
             _lucky_attr = res.get('lucky_attr')
 
@@ -397,10 +397,14 @@ def shop_buy_505(pro_data, player):
             logger.debug("allBuyRefresh %s" % shop_type_item.allBuyRefresh)
             need_refresh = 1
             if shop_item.batch != -1:
-                for item_id in shop['item_ids']:
-                    if not shop['items'].get(shop_id, 0):
+                # for item_id in shop['item_ids']:
+                for shop_item_id in shop['item_ids']:
+                    shop_item_conf = game_configs.shop_config.get(shop_item_id)
+                    buyed_num = shop['items'].get(shop_item_conf.id, 0)
+                    if shop_item_conf.batch == -1 or not buyed_num or buyed_num < shop_item_conf.batch:
                         need_refresh = 0
                         break
+                    #if not shop['items'].get(shop_item_conf.id, 0):
             if need_refresh and shop_type_item.allBuyRefresh:
                 logger.debug("shop auto refresh =============")
                 player.shop.auto_refresh_items(shop_item.get('type'))

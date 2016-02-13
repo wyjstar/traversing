@@ -8,3 +8,4 @@ import q360
 import baidu
 import huawei
 import meizu
+import vivo

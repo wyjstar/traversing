@@ -3,18 +3,15 @@
 created by sphinx on 11/9/14.
 """
 import base64
-import hashlib
 import json
 from flask import request
 from gfirefly.server.logobj import logger
+from sdk.api.baidu import sign_make
+from sdk.api.baidu import response_sign
 
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.gate.core.virtual_character_manager import VCharacterManager
-
-appid = "7595234"
-# 应用开发者secretkey
-secretkey = "pcSugeUWbdripDyzLSGGhZjuG2VX26BO"
 
 
 @webserviceHandle('/baidupay', methods=['post', 'get'])
@@ -29,19 +26,14 @@ def recharge_baidu_response():
     cooperatorOrderSerial = request.form['CooperatorOrderSerial']
     content = request.form['Content']
     sign = request.form['Sign']
-    # content = u'eyJVSUQiOjIxMDY0MTQ5MDEsIk1lcmNoYW5kaXNlTmFtZSI6IjYwIiwiT3JkZXJNb25leSI6IjAuMDEiLCJTdGFydERhdGVUaW1lIjoiMjAxNi0wMS0xMSAxOTowMjo0MCIsIkJhbmtEYXRlVGltZSI6IjIwMTYtMDEtMTEgMTk6MDI6NTMiLCJPcmRlclN0YXR1cyI6MSwiU3RhdHVzTXNnIjoi5oiQ5YqfIiwiRXh0SW5mbyI6IiIsIlZvdWNoZXJNb25leSI6MH0='
-    # cooperatorOrderSerial = u'10000_1452510158'
-    # orderSerial = u'5ee0f373af4b5c03_01001_2016011119_000000'
-    # sign = u'962831d61d2879f54583799c5a0009e1'
 
     # 验证签名
-    if sign != hashlib.md5(appid + orderSerial + cooperatorOrderSerial +
-                           content + secretkey).hexdigest():
+    sign_l = sign_make(sign, appid, orderSerial, cooperatorOrderSerial,
+                       content)
+    if sign != sign_l:
         resultCode = "10001"
         resultMsg = "Sign无效"
-        print 'error:', sign, 'md5:', hashlib.md5(
-            appid + orderSerial + cooperatorOrderSerial + content +
-            secretkey).hexdigest()
+        logger.error('error:md5--%s  :  %s', sign, sign_l)
         return resultMsg
 
     # base64解码
@@ -62,8 +54,7 @@ def recharge_baidu_response():
     # print resultMsg
     response = "{\"AppID\":" + appid + ",\"ResultCode\":" + resultCode + \
                ",\"ResultMsg\":\"" + resultMsg + "\",\"Sign\":\"" + \
-               hashlib.md5(appid + resultCode + secretkey).hexdigest() + \
-               "\",\"Content\":\"\"}"
+               response_sign(resultCode) + "\",\"Content\":\"\"}"
 
     player_id = int(cooperatorOrderSerial.split('_')[0])
 

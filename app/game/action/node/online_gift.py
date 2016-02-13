@@ -84,12 +84,14 @@ def get_online_and_level_gift_data_1150(data, player):
 def take_recharge_gift_1151(data, player):
     request = recharge_pb2.GetRechargeGiftRequest()
     request.ParseFromString(data)
+    print '1151===============request:', request
 
     response = recharge_pb2.GetRechargeGiftResponse()
     response.res.result = True
 
     player.recharge.take_gift(request.gift, response)
     player.recharge.save_data()
+    print '1151===============response:', response
     return response.SerializeToString()
 
 
@@ -98,10 +100,12 @@ def get_tomorrow_gift_1122(data, player):
     response = online_gift_pb2.GetActivityResponse()
     response.result = False
 
-    tomorrow_gift = game_configs.activity_config.get(15)[0]
+    tomorrow_gift = game_configs.activity_config.get(15, [])
     if not tomorrow_gift:
         logger.error('tomorrow gift is not exist')
         return response.SerializeToString()
+    else:
+        tomorrow_gift = game_configs.activity_config.get(15)[0]
     # if not tomorrow_gift.get('is_open'):
     #     logger.error('tomorrow gift is not open')
     #     return response.SerializeToString()

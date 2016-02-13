@@ -79,6 +79,8 @@ class CharacterHerosComponent(Component):
             cid = CONDITIONId.GREEN_HERO
         elif hero_conf.color == 2:
             cid = CONDITIONId.BLUE_HERO
+        elif hero_conf.color == 3:
+            cid = CONDITIONId.PURPLE_HERO
         for hero_no, hero_obj in self._heros.items():
             h_conf = game_configs.hero_config.get(hero_no)
             if h_conf.color == color:

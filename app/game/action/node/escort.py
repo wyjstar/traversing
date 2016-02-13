@@ -434,7 +434,7 @@ def in_invite(player, task_id, protect_or_rob, task_guild_id, rob_no):
     escort_component = player.escort_component
     if protect_or_rob == 1 and escort_component.protect_times >= guild_item.protectionEscortTimeMax:
         logger.error("protect_times not enough!")
-        return {'result': False, 'result_no': 190802}
+        return {'result': False, 'result_no': 190812}
     if protect_or_rob == 2 and escort_component.rob_times >= guild_item.snatchTimeMax:
         logger.error("rob_times not enough!")
         return {'result': False, 'result_no': 190803}
@@ -540,9 +540,11 @@ def add_guild_activity_times_remote(task_no, protect_or_rob, is_online, player):
     logger.debug("add_guild_activity_times_remote============%s %s" % (task_no, protect_or_rob))
     if protect_or_rob == 1:
         player.guild_activity.add_protect_escort_times(task_no)
+        player.act.add_protect_escort_times(task_no)
         hook_task(player, CONDITIONId.PROTECT_ESCORT, 1)
     elif protect_or_rob == 2:
         player.guild_activity.add_rob_escort_times(task_no)
+        player.act.add_rob_escort_times(task_no)
         hook_task(player, CONDITIONId.ROB_ESCORT, 1)
 
 

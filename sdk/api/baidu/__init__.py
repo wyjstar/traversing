@@ -52,5 +52,11 @@ def verify_login(token):
     return None
 
 
-def recharge_verify():
-    return True
+def sign_make(sign, appid, orderSerial, cooperatorOrderSerial, content):
+    # 验证签名
+    return hashlib.md5(appid + orderSerial + cooperatorOrderSerial + content +
+                       secretkey).hexdigest()
+
+
+def response_sign(resultCode):
+    return hashlib.md5(appid + resultCode + secretkey).hexdigest()

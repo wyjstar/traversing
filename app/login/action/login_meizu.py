@@ -5,7 +5,6 @@ created by sphinx on
 import json
 import uuid
 from flask import request
-from app.login.model.manager import account_cache
 from app.login.model import manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
@@ -15,16 +14,18 @@ from sdk.api.meizu import verify_login
 @webserviceHandle('/login_meizu')
 def server_meizu_login():
     """ account login """
-    token = request.args.get('access_token')
-    result = verify_login(token)
-    logger.debug("meizu login in token:%s result:%s" % (token, result))
-    if result is None or result['code'] != 200:
+    token = request.args.get('session_id')
+    uid = request.args.get('uid')
+    result = verify_login(uid, token)
+    logger.debug("meizu login in token:%s uid:%s result:%s" %
+                 (token, uid, result))
+    if result is False:
         return json.dumps(dict(result=False))
 
-    openid = result['value']['open_id']
+    openid = uid
     user_name = ''
     game_passport = uuid.uuid1().get_hex()
-    account_cache[game_passport] = openid
+    manager.account_cache[game_passport] = openid
 
     server_list = dict(result=True,
                        passport=game_passport,

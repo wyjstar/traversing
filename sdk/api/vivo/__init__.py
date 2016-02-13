@@ -2,18 +2,16 @@
 """
 created by sphinx on
 """
-import time
 import json
 import urllib
 import urllib2
-from gfirefly.server.logobj import logger
 
 # 应用开发者appid
 appid = "7595234"
 # 应用开发者secretkey
 secretkey = "pcSugeUWbdripDyzLSGGhZjuG2VX26BO"
 
-queryUrl = "https://api.vmall.com/rest.php"
+queryUrl = "https://usrsys.inner.bbk.com/auth/user/info"
 
 
 def postUrl(url, data):
@@ -26,13 +24,11 @@ def postUrl(url, data):
 
 
 def verify_login(token):
-    postdata = {'nsp_svc': "OpenUP.User.getInfo",
-                'nsp_ts': int(time.time()),
-                'access_token': token}
-    logger.debug('postdata:%s', postdata)
+    postdata = {'access_token': token}
     result = postUrl(queryUrl, postdata)
-    logger.debug('result:%s', result)
-    return json.loads(result)
+    js = json.loads(result)
+    print js
+    return js
 
 
 def recharge_verify():

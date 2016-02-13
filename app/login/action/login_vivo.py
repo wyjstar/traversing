@@ -8,19 +8,19 @@ from flask import request
 from app.login.model import manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
-from sdk.api.huawei import verify_login
+from sdk.api.vivo import verify_login
 
 
-@webserviceHandle('/login_huawei')
-def server_huawei_login():
+@webserviceHandle('/login_vivo')
+def server_vivo_login():
     """ account login """
     token = request.args.get('access_token')
-    result = __login(token)
-    logger.debug("huawei login in token:%s result:%s" % (token, result))
-    if result is None or 'error' in result:
+    result = verify_login(token)
+    logger.debug("vivo login in token:%s result:%s" % (token, result))
+    if result is None or 'uid' not in result:
         return json.dumps(dict(result=False))
 
-    openid = result.get('userID')
+    openid = result.get('uid')
     user_name = ''
     game_passport = uuid.uuid1().get_hex()
     manager.account_cache[game_passport] = openid
@@ -33,10 +33,3 @@ def server_huawei_login():
 
     logger.debug(server_list)
     return json.dumps(server_list)
-
-
-def __login(token):
-    """login """
-    res = verify_login(token)
-    # logger.debug(res)
-    return res

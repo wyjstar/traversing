@@ -2,7 +2,7 @@
 """
 created by sphinx on
 """
-from app.login.model.manager import account_cache, server_manager
+from app.login.model import manager
 from gfirefly.server.globalobject import rootserviceHandle
 from gfirefly.server.logobj import logger
 
@@ -11,11 +11,11 @@ from gfirefly.server.logobj import logger
 def account_verify_remote(key):
     response = {'result': False}
     logger.info('account verify:%s', key)
-    if key in account_cache:
+    if key in manager.account_cache:
         response['result'] = True
-        response['uuid'] = account_cache[key]
+        response['uuid'] = manager.account_cache[key]
     else:
-        logger.debug(account_cache)
+        logger.debug(manager.account_cache)
 
     logger.info('acount verify result:%s', response)
     return str(response)
@@ -23,5 +23,5 @@ def account_verify_remote(key):
 
 @rootserviceHandle
 def server_sync_remote(name, ip, port, status, server_no):
-    server_manager.sync_server(name, ip, port, status, server_no)
-    logger.info(server_manager.get_server())
+    manager.server_manager.sync_server(name, ip, port, status, server_no)
+    logger.info(manager.server_manager.get_server())

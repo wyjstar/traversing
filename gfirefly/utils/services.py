@@ -74,6 +74,7 @@ class Service(object):
             response = target(*args, **kw)
         except Exception, e:
             logger.exception(e)
+            logger.error("func:%s arg:%s kw:%s", targetKey, args, kw)
             return None
         except:
             logger.error(traceback.format_exc())

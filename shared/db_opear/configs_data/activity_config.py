@@ -8,6 +8,7 @@ from shared.db_opear.configs_data.data_helper import parse
 from shared.db_opear.configs_data.data_helper import convert_keystr2num
 import time
 import re
+from gfirefly.server.globalobject import GlobalObject
 
 
 class ActivityConfig(object):
@@ -16,6 +17,13 @@ class ActivityConfig(object):
 
     def parser(self, config_value):
         for row in config_value:
+            game_server_id = 0
+            try:
+                game_server_id = int(GlobalObject().allconfig['server_no'])
+            except:
+                pass
+            if row.get('open_zone')[0] != 0 and game_server_id not in row.get('open_zone'):
+                continue
             row["reward"] = parse(row.get("reward"))
             if re.search(r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}',
                          row["timeStart"]):
@@ -49,6 +57,12 @@ class ActivityConfig(object):
                 if not self._items.get('premise').get(item.premise):
                     self._items['premise'][item.premise] = []
                 self._items['premise'][item.premise].append(item.id)
+
+            if not self._items.get('icon'):
+                self._items['icon'] = {}
+            if not self._items.get('icon').get(item.icon):
+                self._items['icon'][item.icon] = []
+            self._items['icon'][item.icon].append(item)
 
             self._items[item.id] = item
 

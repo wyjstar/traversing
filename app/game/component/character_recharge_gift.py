@@ -81,15 +81,16 @@ class CharacterRechargeGift(Component):
                 self._recharge[activity_id] = {_time_now: 0}
 
         if gift_type == 8:  # single recharge
-            if recharge == activity.get('parameterA') or (activity.get('id') != 8010 and recharge > activity.get('parameterA')):
+            # if recharge == activity.get('parameterA') or (activity.get('id') != 8010 and recharge > activity.get('parameterA')):
+            if recharge == activity.get('parameterA'):
                 if activity_id not in self._recharge:
                     self._recharge[activity_id] = {}
-                if len(self._recharge[activity_id]) < activity.get(
-                        'repeat') or activity.get('repeat') == -1:
-                    self._recharge[activity_id].update({_time_now: recharge})
-                else:
-                    logger.debug('over activity repeat times:%s(%s)',
-                                 self._recharge, activity.get('repeat'))
+                # if len(self._recharge[activity_id]) < activity.get(
+                #         'repeat') or activity.get('repeat') == -1:
+                self._recharge[activity_id].update({_time_now: recharge})
+                # else:
+                #     logger.debug('over activity repeat times:%s(%s)',
+                #                  self._recharge, activity.get('repeat'))
 
         if gift_type == 9:  # accumulating recharge
             accumulating = 0
@@ -116,6 +117,7 @@ class CharacterRechargeGift(Component):
         _date_now = int(time.mktime(time.strptime(str_time,
                                                   '%Y-%m-%d %H:%M:%S')))
         for recharge_id, recharge_data in self._recharge.items():
+            print recharge_id, recharge_data, '========================recharege gift get data'
             activity = game_configs.activity_config.get(recharge_id)
             if activity is None:
                 logger.debug('activity id:%s not exist', recharge_id)

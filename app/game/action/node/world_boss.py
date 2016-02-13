@@ -82,7 +82,7 @@ def get_fight_info(data, player):
         logger.debug("debuff_skill %s, debuff_skill_no %s" % (debuff_skill, debuff_skill_no))
     response.debuff_skill_no = boss.debuff_skill_no
     player.world_boss.save_data()
-    logger.debug("response %s" % response)
+    # logger.debug("response %s" % response)
     return response.SerializePartialToString()
 
 
