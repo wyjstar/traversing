@@ -23,7 +23,7 @@ AppKey = GlobalObject().allconfig["xmsdk"]["AppKey"]
 AppSecret = GlobalObject().allconfig["xmsdk"]["AppSecret"]
 VerifySession_URL = GlobalObject().allconfig["xmsdk"]["VerifySession_URL"]
 
-print(AppId, AppKey, AppSecret, VerifySession_URL)
+# print(AppId, AppKey, AppSecret, VerifySession_URL)
 
 
 @webserviceHandle('/login_xiaomi')
