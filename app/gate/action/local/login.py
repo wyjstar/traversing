@@ -127,7 +127,7 @@ def __character_login(dynamic_id, pay_arg):
     if not res_data['player_data']:
         logger.error("enter scene error!")
         return {'result': False, 'result_no': 4003}
-    if not res_data['player_data'] == 4005:
+    if res_data['player_data'] == 4005:
         logger.error("enter scene error, 4005!")
         return {'result': False, 'result_no': 4005}
 

@@ -28,13 +28,22 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     is_new_character = 0
     player = PlayersManager().get_player_by_id(character_id)
     if not player:
-        if not OPEN_REGISTER:
-            return {'player_data': 4005}
         logger.debug('player login:%s', character_id)
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
+
+        if player.is_new_character() and not OPEN_REGISTER:
+            PlayersManager().drop_player_by_id(character_id)
+            logger.debug('player login, 4005 open register:%s', OPEN_REGISTER)
+            return {'player_data': 4005}
+
         is_new_character = init_player(player)
         PlayersManager().add_player(player)
     else:
+        if player.is_new_character() and not OPEN_REGISTER:
+            PlayersManager().drop_player_by_id(character_id)
+            logger.debug('player login, 4005 open register:%s', OPEN_REGISTER)
+            return {'player_data': 4005}
+
         logger.debug('player exsit! player.dynamic_id %s new dynamic_id %s' %
                      (player.dynamic_id, dynamic_id))
         if player.dynamic_id != dynamic_id:

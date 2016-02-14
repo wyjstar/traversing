@@ -237,6 +237,6 @@
         "remote_deployed": true
     },
     "open_time": "<=open_time=>",
-    "open_register": "1",
+    "open_register": "0",
     "server_no": "<=server_no=>"
 }
