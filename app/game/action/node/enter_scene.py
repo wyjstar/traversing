@@ -19,6 +19,7 @@ server_open_time = int(time.mktime(time.strptime(GlobalObject().allconfig[
     'open_time'], '%Y-%m-%d %H:%M:%S')))
 
 SDK360_RECHARGE_URL = GlobalObject().allconfig["360sdk"]["recharge_url"]
+OPEN_REGISTER = int(GlobalObject().allconfig["open_register"])
 
 
 @remoteserviceHandle('gate')
@@ -27,6 +28,8 @@ def enter_scene_remote(dynamic_id, character_id, pay_arg):
     is_new_character = 0
     player = PlayersManager().get_player_by_id(character_id)
     if not player:
+        if not OPEN_REGISTER:
+            return {'player_data': 4005}
         logger.debug('player login:%s', character_id)
         player = PlayerCharacter(character_id, dynamic_id=dynamic_id)
         is_new_character = init_player(player)
