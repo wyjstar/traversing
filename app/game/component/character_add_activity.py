@@ -147,7 +147,8 @@ class CharacterAddActivityComponent(Component):
             for res_type, act_item in act_info.items():
                 detail_info_pb = act_pb.detail_info.add()
                 detail_info_pb.res_type = int(res_type)
-                detail_info_pb.num = act_item.get("num")
+                print act_item.get('num'), '==================================act_item_num'
+                detail_info_pb.num = int(act_item.get("num"))
                 for act_id, finished in act_item.get("stages", {}).items():
                     act_item_pb = detail_info_pb.item.add()
                     act_item_pb.act_id = act_id
