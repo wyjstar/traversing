@@ -128,7 +128,8 @@ def __character_login(dynamic_id, pay_arg):
         logger.error("enter scene error!")
         return {'result': False, 'result_no': 4003}
     if res_data['player_data'] == 4005:
-        logger.error("enter scene error, 4005!")
+        logger.debug("enter scene error, 4005!")
+        VCharacterManager().drop_by_dynamic_id(dynamic_id)
         return {'result': False, 'result_no': 4005}
 
     # logger.debug("pull_message_remote")
