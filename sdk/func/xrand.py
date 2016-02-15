@@ -40,3 +40,9 @@ def randbyweight(seq, weight):
     table = [z for x, y in zip(seq, weight) for z in [x] * y]
     if len(table) > 0:
         return random.choice(table)
+
+def randomint(sn, en):
+    """
+    两个数之间随机一个数
+    """
+    return random.randint(sn, en)
