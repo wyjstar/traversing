@@ -5,7 +5,6 @@ created by sphinx on
 import json
 import uuid
 from flask import request
-from app.login.model.manager import account_cache
 from app.login.model import manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
@@ -24,7 +23,7 @@ def server_vivo_login():
     openid = result.get('uid')
     user_name = ''
     game_passport = uuid.uuid1().get_hex()
-    account_cache[game_passport] = openid
+    manager.account_cache[game_passport] = openid
 
     server_list = dict(result=True,
                        passport=game_passport,
