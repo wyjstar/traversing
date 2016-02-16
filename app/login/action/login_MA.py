@@ -5,14 +5,12 @@ created by sphinx on
 import json
 import uuid
 from flask import request
-from app.login.model.manager import account_cache
 from app.login.model import manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
 from gfirefly.server.globalobject import GlobalObject
 from geventhttpclient import HTTPClient
 from geventhttpclient.url import URL
-
 
 SERVERS_MA_WEBPORT = GlobalObject().allconfig['servers']['MA']['webport']
 SERVER_MA_URL = GlobalObject().json_config['MA_url']
@@ -29,7 +27,7 @@ def ma_server_login():
         return json.dumps(dict(result=False))
 
     game_passport = uuid.uuid1().get_hex()
-    account_cache[game_passport] = verify_passport
+    manager.account_cache[game_passport] = verify_passport
 
     server_list = dict(result=True,
                        passport=game_passport,
