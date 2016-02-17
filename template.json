@@ -227,6 +227,10 @@
     "360sdk":{
         "recharge_url" : "http://360zhugong.mobartsgame.com:30013/q360pay"
     },
+    "vivosdk":{
+        "recharge_url" : "http://360zhugong.mobartsgame.com:30013/vivopay"
+    },
+    "push":{
     "push":{
         "channel": "xinge"
     },

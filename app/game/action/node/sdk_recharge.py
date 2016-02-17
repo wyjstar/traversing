@@ -9,10 +9,13 @@ from gfirefly.server.logobj import logger
 from app.proto_file import kuaiyong_pb2
 from app.proto_file import apple_pb2
 from sdk.api import meizu
+from sdk.api.vivo import generat_orderid
 import time
 
 remote_gate = GlobalObject().remote.get('gate')
 SERVER_NO = GlobalObject().allconfig.get('server_no')
+
+VIVO_RECHARGE_URL = GlobalObject().allconfig["vivosdk"]["recharge_url"]
 
 
 @remoteserviceHandle('gate')
@@ -71,6 +74,60 @@ def meizu_flowid_12201(data, player):
             'cp_order_id=', 'cp_order_id=' + str(flowid))
         response.sign = meizu.generate_sign(recharge_info)
     logger.debug('one flowid:%s', response.flow_id)
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def vivo_flowid_12300(data, player):
+    request = kuaiyong_pb2.VivoFlowIdRequest()
+    request.ParseFromString(data)
+
+    response = kuaiyong_pb2.VivoFlowIdResponse()
+    flow_id = str(player.character_id) + '_%s_%s' % (SERVER_NO,
+                                                     int(time.time()))
+    rechargeid = request.rechargeid
+    recharge_item = game_configs.recharge_config.get('android').get(rechargeid)
+    if recharge_item is None:
+        logger.error('not in rechargeconfig:%s', rechargeid)
+        return response.SerializeToString()
+    title = request.title
+    desc = request.desc
+    orderid, accesskey = generat_orderid(
+        flow_id, VIVO_RECHARGE_URL, recharge_item.get('currence'), title, desc)
+    response.transNo = orderid
+    response.accessKey = accesskey
+
+    logger.debug('vivo flowid:%s', response)
+    return response.SerializeToString()
+
+
+@remoteserviceHandle('gate')
+def vivo_flowid_12301(data, player):
+    request = kuaiyong_pb2.VivoFlowIdRequest()
+    request.ParseFromString(data)
+
+    response = kuaiyong_pb2.VivoFlowIdResponse()
+    if player.base_info.one_dollar_flowid == 'done':
+        response.flow_id = 'done'
+    else:
+        flow_id = str(player.character_id) + '_%s_%s' % (SERVER_NO,
+                                                         int(time.time()))
+        rechargeid = request.rechargeid
+        recharge_item = game_configs.recharge_config.get('android').get(
+            rechargeid)
+        if recharge_item is None:
+            logger.error('not in rechargeconfig:%s', rechargeid)
+            return response.SerializeToString()
+        title = request.title
+        desc = request.desc
+        orderid, accesskey = generat_orderid(flow_id, VIVO_RECHARGE_URL,
+                                             recharge_item.get('currence'),
+                                             title, desc)
+        response.transNo = orderid
+        response.accessKey = accesskey
+
+        player.base_info.save_data()
+    logger.debug('vivo one flowid:%s', response.flow_id)
     return response.SerializeToString()
 
 
