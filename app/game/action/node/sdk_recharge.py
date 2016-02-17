@@ -35,6 +35,7 @@ def recharge_flowid_12100(data, player):
         flowid = str(player.character_id) + '_%s_%s' % (SERVER_NO,
                                                         int(time.time()))
         player.base_info.one_dollar_flowid = flowid
+        player.base_info.flow_orders.append(flow_id)
         player.base_info.save_data()
         response.flow_id = flowid
     logger.debug('one flowid:%s', response.flow_id)
