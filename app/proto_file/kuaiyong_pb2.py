@@ -14,7 +14,7 @@ import common_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='kuaiyong.proto',
   package='',
-  serialized_pb='\n\x0ekuaiyong.proto\x1a\x0c\x63ommon.proto\")\n\x16KuaiyongFlowIdResponse\x12\x0f\n\x07\x66low_id\x18\x01 \x01(\t\"+\n\x12MeizuFlowIdRequest\x12\x15\n\rrecharge_info\x18\x01 \x01(\t\"4\n\x13MeizuFlowIdResponse\x12\x0f\n\x07\x66low_id\x18\x01 \x01(\t\x12\x0c\n\x04sign\x18\x02 \x01(\t\"~\n\x18KuaiyongRechargeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x04info\x18\x03 \x01(\x0b\x32\x10.GetGoldResponse')
+  serialized_pb='\n\x0ekuaiyong.proto\x1a\x0c\x63ommon.proto\")\n\x16KuaiyongFlowIdResponse\x12\x0f\n\x07\x66low_id\x18\x01 \x01(\t\"+\n\x12MeizuFlowIdRequest\x12\x15\n\rrecharge_info\x18\x01 \x01(\t\"4\n\x13MeizuFlowIdResponse\x12\x0f\n\x07\x66low_id\x18\x01 \x01(\t\x12\x0c\n\x04sign\x18\x02 \x01(\t\"D\n\x11VivoFlowIdRequest\x12\x12\n\nrechargeid\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x65sc\x18\x03 \x01(\t\"8\n\x12VivoFlowIdResponse\x12\x0f\n\x07transNo\x18\x01 \x01(\t\x12\x11\n\taccessKey\x18\x02 \x01(\t\"~\n\x18KuaiyongRechargeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x1e\n\x04info\x18\x03 \x01(\x0b\x32\x10.GetGoldResponse')
 
 
 
@@ -110,6 +110,83 @@ _MEIZUFLOWIDRESPONSE = _descriptor.Descriptor(
 )
 
 
+_VIVOFLOWIDREQUEST = _descriptor.Descriptor(
+  name='VivoFlowIdRequest',
+  full_name='VivoFlowIdRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='rechargeid', full_name='VivoFlowIdRequest.rechargeid', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='title', full_name='VivoFlowIdRequest.title', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='desc', full_name='VivoFlowIdRequest.desc', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=174,
+  serialized_end=242,
+)
+
+
+_VIVOFLOWIDRESPONSE = _descriptor.Descriptor(
+  name='VivoFlowIdResponse',
+  full_name='VivoFlowIdResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='transNo', full_name='VivoFlowIdResponse.transNo', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='accessKey', full_name='VivoFlowIdResponse.accessKey', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=244,
+  serialized_end=300,
+)
+
+
 _KUAIYONGRECHARGERESPONSE = _descriptor.Descriptor(
   name='KuaiyongRechargeResponse',
   full_name='KuaiyongRechargeResponse',
@@ -147,8 +224,8 @@ _KUAIYONGRECHARGERESPONSE = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=174,
-  serialized_end=300,
+  serialized_start=302,
+  serialized_end=428,
 )
 
 _KUAIYONGRECHARGERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -157,6 +234,8 @@ _KUAIYONGRECHARGERESPONSE.fields_by_name['info'].message_type = common_pb2._GETG
 DESCRIPTOR.message_types_by_name['KuaiyongFlowIdResponse'] = _KUAIYONGFLOWIDRESPONSE
 DESCRIPTOR.message_types_by_name['MeizuFlowIdRequest'] = _MEIZUFLOWIDREQUEST
 DESCRIPTOR.message_types_by_name['MeizuFlowIdResponse'] = _MEIZUFLOWIDRESPONSE
+DESCRIPTOR.message_types_by_name['VivoFlowIdRequest'] = _VIVOFLOWIDREQUEST
+DESCRIPTOR.message_types_by_name['VivoFlowIdResponse'] = _VIVOFLOWIDRESPONSE
 DESCRIPTOR.message_types_by_name['KuaiyongRechargeResponse'] = _KUAIYONGRECHARGERESPONSE
 
 class KuaiyongFlowIdResponse(_message.Message):
@@ -176,6 +255,18 @@ class MeizuFlowIdResponse(_message.Message):
   DESCRIPTOR = _MEIZUFLOWIDRESPONSE
 
   # @@protoc_insertion_point(class_scope:MeizuFlowIdResponse)
+
+class VivoFlowIdRequest(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _VIVOFLOWIDREQUEST
+
+  # @@protoc_insertion_point(class_scope:VivoFlowIdRequest)
+
+class VivoFlowIdResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _VIVOFLOWIDRESPONSE
+
+  # @@protoc_insertion_point(class_scope:VivoFlowIdResponse)
 
 class KuaiyongRechargeResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType

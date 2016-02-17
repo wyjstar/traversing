@@ -10,10 +10,6 @@ from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.globalobject import GlobalObject
 from app.gate.core.virtual_character_manager import VCharacterManager
 
-appid = "7595234"
-# 应用开发者secretkey
-secretkey = "pcSugeUWbdripDyzLSGGhZjuG2VX26BO"
-
 
 @webserviceHandle('/vivopay', methods=['post', 'get'])
 def recharge_vivo_response():
