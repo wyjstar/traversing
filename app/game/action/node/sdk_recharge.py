@@ -92,8 +92,9 @@ def vivo_flowid_12300(data, player):
         return response.SerializeToString()
     title = request.title
     desc = request.desc
-    orderid, accesskey = generat_orderid(
-        flow_id, VIVO_RECHARGE_URL, recharge_item.get('currence'), title, desc)
+    amount = int(recharge_item.get('currence') * 100)
+    orderid, accesskey = generat_orderid(flow_id, VIVO_RECHARGE_URL, amount,
+                                         title, desc, rechargeid)
     response.transNo = orderid
     response.accessKey = accesskey
 
@@ -120,9 +121,9 @@ def vivo_flowid_12301(data, player):
             return response.SerializeToString()
         title = request.title
         desc = request.desc
+        amount = int(recharge_item.get('currence') * 100)
         orderid, accesskey = generat_orderid(flow_id, VIVO_RECHARGE_URL,
-                                             recharge_item.get('currence'),
-                                             title, desc)
+                                             amount, title, desc, rechargeid)
         response.transNo = orderid
         response.accessKey = accesskey
 
@@ -313,7 +314,7 @@ def vivo_recharge_remote(product_id, fee, order_id, is_online, player):
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
-    player.recharge.recharge_gain(recharge_item, response, 9)  # 发送奖励邮件
+    player.recharge.recharge_gain(recharge_item, response, 10)  # 发送奖励邮件
 
     remote_gate.push_object_remote(12005, response.SerializeToString(),
                                    [player.dynamic_id])

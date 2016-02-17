@@ -35,7 +35,8 @@ def verify_login(token):
     return js
 
 
-def generat_orderid(cpOrderid, callback_url, amount, desc, orderTitle):
+def generat_orderid(cpOrderid, callback_url, amount, desc, orderTitle,
+                    extinfo):
     _time = time.strftime("%Y%m%d%H%M%S")
     data = {}
     data['version'] = '1.0.0'
@@ -49,11 +50,11 @@ def generat_orderid(cpOrderid, callback_url, amount, desc, orderTitle):
     data['orderAmount'] = amount
     data['orderTitle'] = orderTitle
     data['orderDesc'] = desc
-    data['extInfo'] = ''
+    data['extInfo'] = extinfo
     sign_data = 'appId=%s' % APP_ID
     sign_data += '&cpId=%s' % CP_ID
     sign_data += '&cpOrderNumber=%s' % cpOrderid
-    # sign_data += '&extInfo=%s' % ''
+    sign_data += '&extInfo=%s' % extinfo
     sign_data += '&notifyUrl=%s' % callback_url
     sign_data += '&orderAmount=%s' % amount
     sign_data += '&orderDesc=%s' % desc
@@ -67,7 +68,7 @@ def generat_orderid(cpOrderid, callback_url, amount, desc, orderTitle):
 
     result = postUrl(orderUrl, data)
     logger.debug(result)
-    if result['respCode'] != 200:
+    if result['respCode'] != '200':
         logger.error(result)
         return None, None
     return result['orderNumber'], result['accessKey']

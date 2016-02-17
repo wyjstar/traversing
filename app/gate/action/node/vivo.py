@@ -15,9 +15,14 @@ from app.gate.core.virtual_character_manager import VCharacterManager
 def recharge_vivo_response():
     logger.debug('vivo recharge:%s', request.form)
 
-    product_id = request.form['product_id']
-    product_per_price = request.form['product_per_price']
-    cp_order_id = request.form['cp_order_id']
+    if request.form['respCode'] != '200' or request.form[
+            'tradeStatus'] != '0000':
+        logger.error('failed!! %s', request.form)
+        return json.dumps(dict(respCode=120014))
+
+    product_per_price = request.form['orderAmount'] / 100
+    cp_order_id = request.form['cpOrderNumber']
+    product_id = request.form['extInfo']
 
     player_id = int(cp_order_id.split('_')[0])
 
@@ -32,7 +37,7 @@ def recharge_vivo_response():
                                              cp_order_id, True)
     if result is True:
         logger.debug('response:success')
-        return json.dumps(dict(code=200, message='', value='', redirect=''))
+        return json.dumps(dict(respCode=200))
 
     logger.debug('response:failed')
-    return json.dumps(dict(code=120014, message='', value='', redirect=''))
+    return json.dumps(dict(respCode=120014))
