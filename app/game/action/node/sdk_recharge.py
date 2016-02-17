@@ -35,7 +35,7 @@ def recharge_flowid_12100(data, player):
         flowid = str(player.character_id) + '_%s_%s' % (SERVER_NO,
                                                         int(time.time()))
         player.base_info.one_dollar_flowid = flowid
-        player.base_info.flow_orders.append(flow_id)
+        player.base_info.flow_orders.append(flowid)
         player.base_info.save_data()
         response.flow_id = flowid
     logger.debug('one flowid:%s', response.flow_id)
@@ -133,10 +133,6 @@ def kuaiyong_recharge_remote(product_id, fee, is_online, player):
 @remoteserviceHandle('gate')
 def q360_recharge_remote(product_id, order_id, is_online, player):
     logger.debug('q360_recharge_remote:%s-%s', product_id, order_id)
-    if player.base_info.one_dollar_flowid == order_id:
-        player.base_info.one_dollar_flowid = 'done'
-        logger.debug('one dollar is ok! %s', product_id)
-
     if order_id not in player.base_info.flow_orders:
         logger.error('error flow id:%s-%s', order_id,
                      player.base_info.flow_orders)
@@ -152,6 +148,11 @@ def q360_recharge_remote(product_id, order_id, is_online, player):
     #     logger.error('recharge fee is wrong:%s-%s', fee,
     #                  recharge_item.get('currence'))
     #     return False
+
+    if player.base_info.one_dollar_flowid == order_id:
+        player.base_info.one_dollar_flowid = 'done'
+        player.base_info.save_data()
+        logger.debug('one dollar is ok! %s', product_id)
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
@@ -195,10 +196,6 @@ def baidu_recharge_remote(product_id, fee, order_id, is_online, player):
 def huawei_recharge_remote(product_id, fee, order_id, is_online, player):
     logger.debug('huawei_recharge_remote:%s-fee:%s-order:%s', product_id, fee,
                  order_id)
-    if player.base_info.one_dollar_flowid == order_id:
-        player.base_info.one_dollar_flowid = 'done'
-        logger.debug('one dollar is ok! %s', product_id)
-
     if order_id not in player.base_info.flow_orders:
         logger.error('error flow id:%s-%s', order_id,
                      player.base_info.flow_orders)
@@ -215,6 +212,11 @@ def huawei_recharge_remote(product_id, fee, order_id, is_online, player):
         logger.error('recharge fee is wrong:%s-%s', fee,
                      recharge_item.get('currence'))
         return False
+
+    if player.base_info.one_dollar_flowid == order_id:
+        player.base_info.one_dollar_flowid = 'done'
+        player.base_info.save_data()
+        logger.debug('one dollar is ok! %s', product_id)
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
