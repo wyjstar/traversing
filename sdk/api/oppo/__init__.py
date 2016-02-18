@@ -60,15 +60,30 @@ def verify_login(token, ssoid):
     logger.error(result)
     return None
 
-def check_sign(self,rdata):
+def check_sign(rdata):
     """
     验证签名
     """
     signn=base64.b64decode(rdata.pop('sign'))
-    signdata=self.sort(rdata)
+    signdata=sort(rdata)
     verifier = pk.new(PAY_PUBLIC_KEY)
     if verifier.verify(SHA.new(signdata), signn):
         return True
     else:
         return False
+
+def sort(mes):
+    """
+    取出key值,按照字母排序后将value拼接起来
+    返回字符串
+    """
+    _par = []
+
+    keys=mes.keys()
+    keys.sort()
+    for v in keys:
+        _par.append(str(mes[v]))
+    sep=''
+    message=sep.join(_par)
+    return message
 

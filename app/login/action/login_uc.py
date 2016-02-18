@@ -11,17 +11,16 @@ from gfirefly.server.logobj import logger
 from sdk.api.oppo import verify_login
 
 
-@webserviceHandle('/login_oppo')
+@webserviceHandle('/login_uc')
 def server_oppo_login():
     """ account login """
-    token = request.args.get('token')
-    ssoid = request.args.get('ssoid')
-    result = __login(token, ssoid)
-    logger.debug("oppo login in token:%s ssoid:%s result:%s" % (token, ssoid, result))
+    sid = request.args.get('sid')
+    result = __login(sid)
+    logger.debug("oppo login in sid:%s result:%s" % (sid, result))
     if result is None or 'error' in result:
         return json.dumps(dict(result=False))
 
-    openid = result['ssoid']
+    openid = sid
     user_name = ''
     game_passport = uuid.uuid1().get_hex()
     manager.account_cache[game_passport] = openid
@@ -36,8 +35,8 @@ def server_oppo_login():
     return json.dumps(server_list)
 
 
-def __login(token, ssoid):
+def __login(sid):
     """login """
-    res = verify_login(token, ssoid)
+    res = verify_login(sid)
     # logger.debug(res)
     return res
