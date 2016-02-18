@@ -40,7 +40,7 @@ def verify_login(sid):
                  'data':{'sid':sid},
                  'game':{'gameId':GAME_ID},
                  'sign':sign}
-    result = request_url(OFFICIAL_URL, json.dumps(body_data))
+    result = request_url(TEST_URL, json.dumps(body_data))
     if result:
         js = json.loads(result)
         if js['id'] == body_data['id'] and js['state']['code'] == 1:

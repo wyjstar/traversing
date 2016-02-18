@@ -17,3 +17,5 @@ import login_huawei
 import login_meizu
 import login_lenovo
 import login_vivo
+import login_oppo
+import login_uc

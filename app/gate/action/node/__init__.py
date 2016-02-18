@@ -9,3 +9,6 @@ import baidu
 import huawei
 import meizu
 import vivo
+import uc
+import oppo
+

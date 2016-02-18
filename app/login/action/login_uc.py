@@ -20,7 +20,7 @@ def server_uc_login():
     if result is None or 'error' in result:
         return json.dumps(dict(result=False))
 
-    openid = sid
+    openid = result['data']['accountId']
     user_name = ''
     game_passport = uuid.uuid1().get_hex()
     manager.account_cache[game_passport] = openid
