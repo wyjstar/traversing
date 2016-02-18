@@ -8,15 +8,15 @@ from flask import request
 from app.login.model import manager
 from gfirefly.server.globalobject import webserviceHandle
 from gfirefly.server.logobj import logger
-from sdk.api.oppo import verify_login
+from sdk.api.uc import verify_login
 
 
 @webserviceHandle('/login_uc')
-def server_oppo_login():
+def server_uc_login():
     """ account login """
     sid = request.args.get('sid')
     result = __login(sid)
-    logger.debug("oppo login in sid:%s result:%s" % (sid, result))
+    logger.debug("uc login in sid:%s result:%s" % (sid, result))
     if result is None or 'error' in result:
         return json.dumps(dict(result=False))
 

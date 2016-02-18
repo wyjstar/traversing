@@ -290,7 +290,7 @@ def oppo_recharge_remote(product_id, order_id, is_online, player):
 
 @remoteserviceHandle('gate')
 def uc_recharge_remote(product_id, order_id, is_online, player):
-    logger.debug('oppo_recharge_remote:%s-%s', product_id, order_id)
+    logger.debug('uc_recharge_remote:%s-%s', product_id, order_id)
     if player.base_info.one_dollar_flowid == order_id:
         player.base_info.one_dollar_flowid = 'done'
         logger.debug('one dollar is ok! %s', product_id)

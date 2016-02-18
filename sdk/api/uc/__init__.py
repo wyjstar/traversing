@@ -2,14 +2,10 @@
 """
 created by sphinx on
 """
+
 import json
-import base64
-import urllib
 import urllib2
 import hashlib
-import hmac
-from Crypto.Signature import PKCS1_v1_5 as pk
-from Crypto.Hash import SHA
 from gfirefly.server.logobj import logger
 from sdk.func import xtime
 
