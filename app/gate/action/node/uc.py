@@ -25,7 +25,7 @@ def recharge_uc_response():
         return "FAILURE"
     # 发货
     cpOrderId = data['cpOrderId']
-    orderId = data['orderId']
+    orderId = data['callbackInfo']
     player_id = int(cpOrderId.split('_')[0])
     oldvcharacter = VCharacterManager().get_by_id(player_id)
     if not oldvcharacter:
