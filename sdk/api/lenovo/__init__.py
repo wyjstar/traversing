@@ -18,6 +18,7 @@ def verify_login(token):
     url = '%s?lpsust=%s&realm=%s' % (lenovo_URL, token, lenovo_realm)
     logger.debug('lenovo url:%s', url)
     response = urllib.urlopen(url).read()
+    logger.debug('lenovo return:%s', response)
     xmldoc = xml.dom.minidom.parseString(response)
     accountid = xmldoc.getElementsByTagName('AccountID')
     if not accountid:
