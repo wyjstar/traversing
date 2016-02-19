@@ -2,22 +2,25 @@
 """
 created by sphinx on
 """
-import urllib2
+import urllib
+import xml.dom.minidom
 from gfirefly.server.logobj import logger
 
 lenovo_URL = 'http://passport.lenovo.com/interserver/authen/1.2/getaccountid'
 
-lenovo_realm = 'com.mobartsgame.transfer.lenovo'
+lenovo_realm = '1601251703799.app.ln'
 
 # Open AppId是：1601251703799.app.ln
 # Channel_ID :lenovo
 
 
 def verify_login(token):
-    url = '%slpsust=%s&realm=%s' % (lenovo_URL, token, lenovo_realm)
-    logger.debug('360 url:%s', url)
-    response = urllib2.urlopen(url).read()
-    return response
+    url = '%s?lpsust=%s&realm=%s' % (lenovo_URL, token, lenovo_realm)
+    logger.debug('lenovo url:%s', url)
+    response = urllib.urlopen(url).read()
+    xmldoc = xml.dom.minidom.parseString(response)
+    accountid = xmldoc.getElementsByTagName('AccountID')
+    if not accountid:
+        return ''
 
-# def recharge_verify():
-#     return True
+    return accountid[0].childNodes[0].nodeValue
