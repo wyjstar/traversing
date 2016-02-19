@@ -343,7 +343,7 @@ def oppo_recharge_remote(product_id, order_id, is_online, player):
 
     remote_gate.push_object_remote(12006, response.SerializeToString(),
                                    [player.dynamic_id])
-    logger.debug('360 response:%s', response)
+    logger.debug('oppo response:%s', response)
     return True
 
 @remoteserviceHandle('gate')
@@ -368,5 +368,5 @@ def uc_recharge_remote(product_id, order_id, is_online, player):
 
     remote_gate.push_object_remote(12007, response.SerializeToString(),
                                    [player.dynamic_id])
-    logger.debug('360 response:%s', response)
+    logger.debug('uc response:%s', response)
     return True

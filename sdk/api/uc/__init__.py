@@ -57,7 +57,9 @@ def check_sign(data, sign):
     for k,v in data.items():
         base_str += "%s=%s+" % (k, v)
     base_str += API_KEY
+    logger.debug('uc base_str:%s', base_str)
     count_sign = hashlib.md5(base_str).hexdigest()
+    logger.debug('uc count_sign:%s', count_sign)
     if count_sign == sign:
         return True
     else:
