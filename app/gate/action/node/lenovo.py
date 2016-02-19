@@ -11,18 +11,13 @@ from gfirefly.server.globalobject import GlobalObject
 from app.gate.core.virtual_character_manager import VCharacterManager
 
 
-@webserviceHandle('/lenonopay', methods=['post', 'get'])
-def recharge_lenono_response():
-    logger.debug('lenono recharge:%s', request.form)
+@webserviceHandle('/lenovopay', methods=['post', 'get'])
+def recharge_lenovo_response():
+    logger.debug('lenovo recharge:%s', request.form)
 
-    if request.form['respCode'] != '200' or request.form[
-            'tradeStatus'] != '0000':
-        logger.error('failed!! %s', request.form)
-        return json.dumps(dict(respCode=120014))
-
-    product_per_price = request.form['orderAmount'] / 100
-    cp_order_id = request.form['cpOrderNumber']
-    product_id = request.form['extInfo']
+    product_per_price = request.form['money']
+    cp_order_id = request.form['exorderno']
+    product_id = request.form['cpprivate']
 
     player_id = int(cp_order_id.split('_')[0])
 
@@ -32,7 +27,7 @@ def recharge_lenono_response():
         return json.dumps(dict(code=120014, message='', value='', redirect=''))
 
     child_node = GlobalObject().child(oldvcharacter.node)
-    result = child_node.lenono_recharge_remote(oldvcharacter.dynamic_id,
+    result = child_node.lenovo_recharge_remote(oldvcharacter.dynamic_id,
                                                product_id, product_per_price,
                                                cp_order_id, True)
     if result is True:

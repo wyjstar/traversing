@@ -314,9 +314,9 @@ def lenovo_recharge_remote(product_id, fee, order_id, is_online, player):
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
-    player.recharge.recharge_gain(recharge_item, response, 10)  # 发送奖励邮件
+    player.recharge.recharge_gain(recharge_item, response, 11)  # 发送奖励邮件
 
-    remote_gate.push_object_remote(12005, response.SerializeToString(),
+    remote_gate.push_object_remote(12006, response.SerializeToString(),
                                    [player.dynamic_id])
     logger.debug('hauwei response:%s', response)
     return True
