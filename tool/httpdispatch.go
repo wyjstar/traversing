@@ -104,7 +104,7 @@ func main() {
 	http.HandleFunc("/huaweipay", httpHanle("requestId"))
 	http.HandleFunc("/baidupay", httpHanle("CooperatorOrderSerial"))
 	http.HandleFunc("/meizupay", httpHanle("cp_order_id"))
-	http.HandleFunc("/vivopay", httpHanle("cp_order_id"))
+	http.HandleFunc("/lenovopay", httpHanle("exorderno"))
 	http.HandleFunc("/xmpay", httpHanle("cpOrderId"))
 
 	http.ListenAndServe(":40013", nil)
