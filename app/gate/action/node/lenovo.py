@@ -14,10 +14,11 @@ from app.gate.core.virtual_character_manager import VCharacterManager
 @webserviceHandle('/lenovopay', methods=['post', 'get'])
 def recharge_lenovo_response():
     logger.debug('lenovo recharge:%s', request.form)
+    data = eval(request.form['transdata'])
 
-    product_per_price = request.form['money']
-    cp_order_id = request.form['exorderno']
-    product_id = request.form['cpprivate']
+    product_per_price = data['money']
+    cp_order_id = data['exorderno']
+    product_id = data['cpprivate']
 
     player_id = int(cp_order_id.split('_')[0])
 
@@ -32,7 +33,7 @@ def recharge_lenovo_response():
                                                cp_order_id, True)
     if result is True:
         logger.debug('response:success')
-        return json.dumps(dict(respCode=200))
+        return 'SUCCESS'
 
     logger.debug('response:failed')
-    return json.dumps(dict(respCode=120014))
+    return 'FAILURE'
