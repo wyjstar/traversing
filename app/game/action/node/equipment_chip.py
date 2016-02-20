@@ -17,6 +17,7 @@ def get_equipment_chips_407(pro_data, player):
             continue
         if not game_configs.chip_config.get(equipment_chip.chip_no):
             del player.equipment_chip_component._chips[equipment_chip.chip_no]
+            continue
 
         equipment_chip_pb = response.equipment_chips.add()
         equipment_chip.update_pb(equipment_chip_pb)
