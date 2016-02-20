@@ -29,7 +29,7 @@ def kuaiyong_recharge_remote(subject, fee, is_online, player):
     if recharge_item is None:
         logger.error('not in rechargeconfig:%s', subject)
         return False
-    if fee != recharge_item.get('currence'):
+    if float(fee) != recharge_item.get('currence'):
         logger.error('recharge fee is wrong:%s-%s',
                      fee, recharge_item.get('currence'))
         return False

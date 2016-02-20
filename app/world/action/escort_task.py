@@ -153,11 +153,13 @@ def add_player_remote(guild_id, task_id, player_info, protect_or_rob, rob_no, pr
                 return {'result': False, 'result_no': 190802}
 
     if protect_or_rob == 1:
-        for task_id, info in protect_records.items():
-            task = guild.get_task_by_id(task_id)
-            if not task: continue
+        for _task_id, info in protect_records.items():
+            _task = guild.get_task_by_id(_task_id)
+            if not _task or _task.state == -1: continue
+            logger.debug("task_id %s" % _task_id)
 
-            for k, protecter in enumerate(task.protecters):
+            for k, protecter in enumerate(_task.protecters):
+                logger.debug("k %s protecter_id %s player_id %s" % (k, protecter.get("id"), player_info.get("id")))
                 if k != 0 and protecter.get("id") == player_info.get("id"):
                     logger.error("该玩家已经处于辅助劫运中，则不能再次加入!")
                     return {'result': False, 'result_no': 190811}

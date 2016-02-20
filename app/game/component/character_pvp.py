@@ -212,7 +212,9 @@ class CharacterPvpComponent(Component):
         self._pvp_overcome_buff = {}
         self._pvp_overcome_failed = False
         self.save_data()
-        tlog_action.log('OvercomeReset', self.owner, self._pvp_overcome_refresh_count)
+        tlog_action.log('OvercomeReset',
+                        self.owner,
+                        self._pvp_overcome_refresh_count)
         return True
 
     def get_overcome_id(self, index):
@@ -231,7 +233,8 @@ class CharacterPvpComponent(Component):
         else:
             rank = int(rank)
 
-        if self._pvp_current_rank == rank:
+        if len(self._pvp_arena_players) != 0 and \
+                self._pvp_current_rank == rank:
             return
         self._pvp_current_rank = rank
 
@@ -239,7 +242,8 @@ class CharacterPvpComponent(Component):
             self._pvp_arena_players = range(1, 11)
             return
 
-        # self._pvp_arena_players = range(max(1, rank-8), min(rank+1, rank_max))
+        # self._pvp_arena_players = range(max(1, rank-8),
+        #                                 min(rank+1, rank_max))
         self._pvp_arena_players = []
         stage_info = get_player_pvp_stage_up(rank)
         if stage_info:
@@ -458,7 +462,7 @@ def get_player_ids(player_id, player_ap, types, num):
         increment = player_ap * 20 / 100 * const.power_rank_xs
         index = 1
         while len(ids) < count:
-            #print(_min, increment, index, "=================")
+            # print(_min, increment, index, "=================")
             res = rank.zrangebyscore(_min - increment * (index - 1),
                                      _max + increment * (index - 1),
                                      withscores=True)

@@ -730,7 +730,7 @@ function FightProcess:do_unpara_skill()
         self:perform_one_skill(attack_units, defend_units, attacker)
         skill:reset()
     end
-    if self.small_step == STEP_BEFORE_BUFF then
+    if self.small_step == STEP_BEFORE_BUFF and self.current_skill_type == TYPE_RED_UNPARAL then
         local stepData = {}
         stepData.step_id = self.step_id
         stepData.step_type = self:get_current_type()
@@ -747,6 +747,7 @@ end
 function FightProcess:do_buddy_skill()
     if self.current_skill_type == TYPE_BUDDY then
         print("do_buddy_skill============")
+        appendFile2("buddy skill===========\n", 0)
         local attacker = self.buddy_skill.unit
         attacker.skill = self.buddy_skill
         attacker.side = "red"
