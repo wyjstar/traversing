@@ -355,15 +355,11 @@ def make_runt_857(data, player):
         response.res.result_no = 800
         return response.SerializeToString()
 
-
     runt_conf = None
     runt_ids = [0, 0, 0, 0, 0]
     flag = 0
     for runt_no in runts:
         runt_info = player.runt.m_runt.get(runt_no)
-
-        runt_ids[flag] = runt_info[0]
-        flag += 1
 
         if not runt_info:
             logger.error('make_runt_857,runt no dont find,runt no:%s', runt_no)
@@ -377,6 +373,9 @@ def make_runt_857(data, player):
             response.res.result = False
             response.res.result_no = 800
             return response.SerializeToString()
+
+        runt_ids[flag] = runt_info[0]
+        flag += 1
 
     is_afford_res = is_afford(player, runt_conf.consume)  # 校验
     if num and not is_afford_res.get('result'):
