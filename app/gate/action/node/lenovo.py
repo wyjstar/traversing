@@ -2,7 +2,6 @@
 """
 created by sphinx on 11/9/14.
 """
-import json
 from flask import request
 from gfirefly.server.logobj import logger
 
@@ -25,7 +24,7 @@ def recharge_lenovo_response():
     oldvcharacter = VCharacterManager().get_by_id(player_id)
     if not oldvcharacter:
         logger.error('fail get player node:%s', player_id)
-        return json.dumps(dict(code=120014, message='', value='', redirect=''))
+        return 'FAILURE'
 
     child_node = GlobalObject().child(oldvcharacter.node)
     result = child_node.lenovo_recharge_remote(oldvcharacter.dynamic_id,
