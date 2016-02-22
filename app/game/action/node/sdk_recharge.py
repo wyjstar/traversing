@@ -318,6 +318,13 @@ def meizu_recharge_remote(product_id, fee, order_id, is_online, player):
 def lenovo_recharge_remote(product_id, fee, order_id, is_online, player):
     logger.debug('lenovo_recharge_remote:%s-fee:%s-order:%s', product_id, fee,
                  order_id)
+    if order_id not in player.base_info.flow_orders:
+        logger.error('error flow id:%s-%s', order_id,
+                     player.base_info.flow_orders)
+        return False
+    player.base_info.flow_orders.remove(order_id)
+    player.base_info.save_data()
+
     if player.base_info.one_dollar_flowid == order_id:
         player.base_info.one_dollar_flowid = 'done'
         logger.debug('one dollar is ok! %s', product_id)
