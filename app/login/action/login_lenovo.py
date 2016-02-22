@@ -14,13 +14,13 @@ from sdk.api.lenovo import verify_login
 @webserviceHandle('/login_lenovo')
 def server_lenovo_login():
     """ account login """
-    token = request.args.get('lpsust')
+    token = request.args.get('access_token')
     result = verify_login(token)
-    logger.debug("lenovo login in token:%s uid:%s result:%s" % (token, result))
-    if result is False:
+    logger.debug("lenovo login in token:%s result:%s", token, result)
+    if result is '':
         return json.dumps(dict(result=False))
 
-    openid = '11'
+    openid = result
     user_name = ''
     game_passport = uuid.uuid1().get_hex()
     manager.account_cache[game_passport] = openid

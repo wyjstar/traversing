@@ -132,7 +132,7 @@ def vivo_flowid_12301(data, player):
         response.accessKey = accesskey
 
         player.base_info.save_data()
-    logger.debug('vivo one flowid:%s', response.flow_id)
+    logger.debug('vivo one flowid:%s', response)
     return response.SerializeToString()
 
 
@@ -315,6 +315,34 @@ def meizu_recharge_remote(product_id, fee, order_id, is_online, player):
 
 
 @remoteserviceHandle('gate')
+def lenovo_recharge_remote(product_id, fee, order_id, is_online, player):
+    logger.debug('lenovo_recharge_remote:%s-fee:%s-order:%s', product_id, fee,
+                 order_id)
+    if player.base_info.one_dollar_flowid == order_id:
+        player.base_info.one_dollar_flowid = 'done'
+        logger.debug('one dollar is ok! %s', product_id)
+
+    recharge_item = game_configs.recharge_config.get('android').get(product_id)
+    if recharge_item is None:
+        logger.error('not in rechargeconfig:%s', product_id)
+        return False
+
+    if float(fee) / 100 != recharge_item.get('currence'):
+        logger.error('recharge fee is wrong:%s-%s', fee,
+                     recharge_item.get('currence'))
+        return False
+
+    response = apple_pb2.AppleConsumeVerifyResponse()
+    response.res.result = True
+    player.recharge.recharge_gain(recharge_item, response, 11)  # 发送奖励邮件
+
+    remote_gate.push_object_remote(12006, response.SerializeToString(),
+                                   [player.dynamic_id])
+    logger.debug('hauwei response:%s', response)
+    return True
+
+
+@remoteserviceHandle('gate')
 def vivo_recharge_remote(product_id, fee, order_id, is_online, player):
     logger.debug('vivo_recharge_remote:%s-fee:%s-order:%s', product_id, fee,
                  order_id)
@@ -327,7 +355,7 @@ def vivo_recharge_remote(product_id, fee, order_id, is_online, player):
         logger.error('not in rechargeconfig:%s', product_id)
         return False
 
-    if float(fee) != recharge_item.get('currence'):
+    if float(fee) / 100 != recharge_item.get('currence'):
         logger.error('recharge fee is wrong:%s-%s', fee,
                      recharge_item.get('currence'))
         return False
@@ -340,6 +368,7 @@ def vivo_recharge_remote(product_id, fee, order_id, is_online, player):
                                    [player.dynamic_id])
     logger.debug('hauwei response:%s', response)
     return True
+
 
 @remoteserviceHandle('gate')
 def oppo_recharge_remote(product_id, order_id, is_online, player):
@@ -359,12 +388,13 @@ def oppo_recharge_remote(product_id, order_id, is_online, player):
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
-    player.recharge.recharge_gain(recharge_item, response, 1)  # 发送奖励邮件
+    player.recharge.recharge_gain(recharge_item, response, 11)  # 发送奖励邮件
 
     remote_gate.push_object_remote(12006, response.SerializeToString(),
                                    [player.dynamic_id])
-    logger.debug('360 response:%s', response)
+    logger.debug('oppo response:%s', response)
     return True
+
 
 @remoteserviceHandle('gate')
 def uc_recharge_remote(product_id, order_id, is_online, player):
@@ -384,9 +414,9 @@ def uc_recharge_remote(product_id, order_id, is_online, player):
 
     response = apple_pb2.AppleConsumeVerifyResponse()
     response.res.result = True
-    player.recharge.recharge_gain(recharge_item, response, 1)  # 发送奖励邮件
+    player.recharge.recharge_gain(recharge_item, response, 12)  # 发送奖励邮件
 
     remote_gate.push_object_remote(12007, response.SerializeToString(),
                                    [player.dynamic_id])
-    logger.debug('360 response:%s', response)
+    logger.debug('uc response:%s', response)
     return True

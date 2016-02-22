@@ -66,7 +66,7 @@ def generat_orderid(cpOrderid, callback_url, amount, desc, orderTitle,
     data['signature'] = md5(sign_data).hexdigest()
     # print data
 
-    result = postUrl(orderUrl, data)
+    result = eval(postUrl(orderUrl, data))
     logger.debug(result)
     if result['respCode'] != '200':
         logger.error(result)

@@ -20,7 +20,7 @@ def recharge_vivo_response():
         logger.error('failed!! %s', request.form)
         return json.dumps(dict(respCode=120014))
 
-    product_per_price = request.form['orderAmount'] / 100
+    product_per_price = request.form['orderAmount']
     cp_order_id = request.form['cpOrderNumber']
     product_id = request.form['extInfo']
 

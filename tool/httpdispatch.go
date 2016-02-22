@@ -48,6 +48,47 @@ func httpPostRedirect(keyName string, w http.ResponseWriter, req *http.Request) 
 	w.Write(result)
 }
 
+func lenovohttpPostRedirect(w http.ResponseWriter, req *http.Request) {
+	req.ParseForm()
+	data := req.Form
+	fmt.Println(req.URL.String(), data)
+	transdata := data.Get("transdata")
+
+	index := strings.Index(transdata, "exorderno")
+	serveridBegin := strings.Index(transdata[index:], ":\"") + index + 2
+	serveridEnd := strings.Index(transdata[serveridBegin:], "\"") + serveridBegin
+	serverID := strings.Split(transdata[serveridBegin:serveridEnd], "_")[1]
+
+	serverURL, exists := servers[serverID]
+	if !exists {
+		fmt.Println("server id is error!", serverID)
+		return
+	}
+
+	url := serverURL + req.URL.String()
+	resp, err := http.PostForm(url, data)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer resp.Body.Close()
+
+	result, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(" url:", url, "server:", serverID,
+		"post:", req.Form, "result:", string(result))
+	w.Write(result)
+}
+
 func httpHanle(keyName string) func(w http.ResponseWriter, req *http.Request) {
 	return func(w http.ResponseWriter, req *http.Request) {
 		httpPostRedirect(keyName, w, req)
@@ -104,7 +145,7 @@ func main() {
 	http.HandleFunc("/huaweipay", httpHanle("requestId"))
 	http.HandleFunc("/baidupay", httpHanle("CooperatorOrderSerial"))
 	http.HandleFunc("/meizupay", httpHanle("cp_order_id"))
-	http.HandleFunc("/vivopay", httpHanle("cp_order_id"))
+	http.HandleFunc("/lenovopay", lenovohttpPostRedirect)
 	http.HandleFunc("/xmpay", httpHanle("cpOrderId"))
 
 	http.ListenAndServe(":40013", nil)

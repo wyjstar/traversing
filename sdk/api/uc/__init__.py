@@ -53,11 +53,22 @@ def check_sign(data, sign):
     """
     验证签名
     """
-    base_str = ""
-    for k,v in data.items():
-        base_str += "%s=%s+" % (k, v)
+    accountId = data['accountId']
+    amount = data['amount']
+    callbackInfo = data['callbackInfo']
+    cpOrderId = data['cpOrderId']
+    creator = data['creator']
+    failedDesc = data['failedDesc']
+    gameId = data['gameId']
+    orderId = data['orderId']
+    orderStatus = data['orderStatus']
+    payWay = data['payWay']
+    base_str = "accountId=%samount=%scallbackInfo=%scpOrderId=%screator=%sfailedDesc=%sgameId=%sorderId=%sorderStatus=%spayWay=%s" % \
+               (accountId,amount,callbackInfo,cpOrderId,creator,failedDesc,gameId,orderId,orderStatus,payWay)
     base_str += API_KEY
+    logger.debug('uc base_str:%s', base_str)
     count_sign = hashlib.md5(base_str).hexdigest()
+    logger.debug('uc count_sign:%s', count_sign)
     if count_sign == sign:
         return True
     else:
