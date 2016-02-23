@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	// "net/url"
+	"bytes"
 	"os"
 	"strings"
 )
@@ -89,6 +90,49 @@ func lenovohttpPostRedirect(w http.ResponseWriter, req *http.Request) {
 	w.Write(result)
 }
 
+func uchttpPostRedirect(w http.ResponseWriter, req *http.Request) {
+	req.ParseForm()
+	bodydata := make([]byte, 5120)
+	bodyLen, _ := req.Body.Read(bodydata)
+	jsondata := string(bodydata)
+
+	fmt.Println(req.URL.String(), jsondata)
+
+	index := strings.Index(jsondata, "cpOrderId")
+	serveridBegin := strings.Index(jsondata[index:], ":\"") + index + 2
+	serveridEnd := strings.Index(jsondata[serveridBegin:], "\"") + serveridBegin
+	serverID := strings.Split(jsondata[serveridBegin:serveridEnd], "_")[1]
+
+	serverURL, exists := servers[serverID]
+	if !exists {
+		fmt.Println("server id is error!", serverID)
+		return
+	}
+
+	url := serverURL + req.URL.String()
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(bodydata[:bodyLen]))
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer resp.Body.Close()
+
+	result, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(" url:", url, "server:", serverID,
+		"body:", jsondata, "result:", string(result))
+	w.Write(result)
+}
+
 func httpHanle(keyName string) func(w http.ResponseWriter, req *http.Request) {
 	return func(w http.ResponseWriter, req *http.Request) {
 		httpPostRedirect(keyName, w, req)
@@ -147,6 +191,7 @@ func main() {
 	http.HandleFunc("/meizupay", httpHanle("cp_order_id"))
 	http.HandleFunc("/lenovopay", lenovohttpPostRedirect)
 	http.HandleFunc("/xmpay", httpHanle("cpOrderId"))
+	http.HandleFunc("/ucpay", uchttpPostRedirect)
 
 	http.ListenAndServe(":40013", nil)
 }
