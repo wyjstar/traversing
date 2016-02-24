@@ -14,10 +14,9 @@ from gfirefly.server.logobj import logger
 from sdk.func import xtime
 from sdk.func import xrand
 
-
-APP_KEY = "7595234"
 QUERY_URL = "http://i.open.game.oppomobile.com/gameopen/user/fileIdInfo"
-APP_SECRET = ''
+APP_KEY = "1578jpGKtgU88oo0OG0ggS0G0"
+APP_SECRET = 'faD46f86AF7D6d7c61E2a08cd9808F4A'
 PAY_PUBLIC_KEY = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCmreYIkPwVovKR8rLHWlFVw7YDfm9uQOJKL89Smt6ypXGVdrAKKl0wNYc3/jecAoPi2ylChfa2iRu5gunJyNmpWZzlCNRIau55fxGW0XEu553IiprOZcaw5OuYGlf60ga8QT6qToP0/dpiL/ZbmNUO9kUhosIjEu22uFgR+5cYyQIDAQAB'
 
 
@@ -26,7 +25,7 @@ def request_url(url, header={}):
     请求url
     """
     req = urllib2.Request(url)
-    for k,v in header.items():
+    for k, v in header.items():
         req.add_header(k, v)
     response = None
     try:
@@ -41,17 +40,22 @@ def verify_login(token, ssoid):
     """
     登录校验
     """
-    parameters = {'fileId':ssoid, 'token':token}
+    parameters = {'fileId': ssoid, 'token': token}
     url = QUERY_URL + '?' + urllib.urlencode(parameters)
     oauthTimestamp = xtime.timestamp(1000)
     oauthNonce = xtime.timestamp() + xrand.randomint(0, 9)
-    data = {'oauthConsumerKey':APP_KEY, 'oauthToken':token, 'oauthSignatureMethod':'HMAC-SHA1', 'oauthTimestamp':oauthTimestamp,
-            'oauthNonce':oauthNonce, 'oauthVersion':'1.0'}
-    base_str = urllib.urlencode(data)
+    base_str = urllib.urlencode({'oauthConsumerKey': APP_KEY}) + '&'
+    base_str += urllib.urlencode({'oauthToken': token}) + '&'
+    base_str += urllib.urlencode({'oauthSignatureMethod': 'HMAC-SHA1'}) + '&'
+    base_str += urllib.urlencode({'oauthTimestamp': oauthTimestamp}) + '&'
+    base_str += urllib.urlencode({'oauthNonce': oauthNonce}) + '&'
+    base_str += urllib.urlencode({'oauthVersion': '1.0'}) + '&'
     oauthSignature = APP_SECRET + '&'
-    sign = hmac.new(oauthSignature, base_str, hashlib.sha1).digest().encode('base64').rstrip()
+    sign = hmac.new(oauthSignature, base_str,
+                    hashlib.sha1).digest().encode('base64').rstrip()
 
-    result = request_url(url, {'parm':base_str, 'oauthsignature':sign})
+    sign = urllib.urlencode({'': sign})[1:]
+    result = request_url(url, {'param': base_str, 'oauthSignature': sign})
     if result:
         js = json.loads(result)
         if js["resultCode"] == '200' and js["ssoid"] == ssoid:
@@ -60,17 +64,19 @@ def verify_login(token, ssoid):
     logger.error(result)
     return None
 
+
 def check_sign(rdata):
     """
     验证签名
     """
-    signn=base64.b64decode(rdata.pop('sign'))
-    signdata=sort(rdata)
+    signn = base64.b64decode(rdata.pop('sign'))
+    signdata = sort(rdata)
     verifier = pk.new(PAY_PUBLIC_KEY)
     if verifier.verify(SHA.new(signdata), signn):
         return True
     else:
         return False
+
 
 def sort(mes):
     """
@@ -79,11 +85,10 @@ def sort(mes):
     """
     _par = []
 
-    keys=mes.keys()
+    keys = mes.keys()
     keys.sort()
     for v in keys:
         _par.append(str(mes[v]))
-    sep=''
-    message=sep.join(_par)
+    sep = ''
+    message = sep.join(_par)
     return message
-
