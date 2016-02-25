@@ -118,6 +118,7 @@ end
 function reload_lua_config()
     -- body
     local baseTemplate = getTemplateManager():getBaseTemplate()
+    local formulaTemplate = getTemplateManager():getFormulaTemplate()
     print("reload lua config============")
     print("demoHero",baseTemplate:getBaseInfoById("demoHero"))
     package.loaded[ '.app.battle.src.app.datacenter.template.config.monster_config'] = nil
@@ -133,6 +134,7 @@ function reload_lua_config()
 
     package.loaded[ '.app.battle.src.app.datacenter.template.config.formula_config'] = nil
     require( '.app.battle.src.app.datacenter.template.config.formula_config')
+    formulaTemplate:preLoad()
 
     package.loaded[ '.app.battle.src.app.datacenter.template.config.skill_config'] = nil
     require( '.app.battle.src.app.datacenter.template.config.skill_config')
