@@ -56,6 +56,7 @@ class GuildManager(object):
         if guild_obj:
             guild_obj.delete_guild()
             del self._guilds[g_id]
+
     def get_can_rob_escort_tasks(self, player_g_id):
         """
         获取可劫的粮草押运任务
@@ -64,17 +65,16 @@ class GuildManager(object):
         task_ids = {}
 
         guilds = {}
-        print("player_g_id", player_g_id, len(self._guilds))
+        print("player_g_id", player_g_id, len(self._guilds), type(player_g_id))
 
         for k, guild in self._guilds.items():
-            print("%s %s %s k, can-ids" % (k, guild.escort_tasks_can_rob, k))
+            print("%s %s %s k, can-ids" % (k, guild.escort_tasks_can_rob, type(k)))
             if len(guild.escort_tasks_can_rob) > 0 and player_g_id != k:
                 guild.update_all_escort_task_state()
                 print("%s %s %s k, can-ids" % (k, guild.escort_tasks_can_rob, k))
                 guilds[k] = copy.deepcopy(guild.escort_tasks_can_rob)
 
         print("get_can_rob_escort_tasks %s" % guilds)
-
 
         if len(guilds) >= target_num:
             res_g_ids = get_random_items_from_list(target_num, guilds.keys())
