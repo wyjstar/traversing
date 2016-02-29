@@ -98,7 +98,7 @@ def get_target_info_1827(data, player):
     target_conf = game_configs.activity_config.get(target_id)
 
     info = get_act_info(player, target_id)
-    if info.get('state') != 2:
+    if (target_conf.type != 30 and info.get('state') != 2) or (target_conf.type == 30 and info.get('state') == 3):
         response.res.result = False
         logger.error("this start target 条件不满足")
         response.res.result_no = 800
