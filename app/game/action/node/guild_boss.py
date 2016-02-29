@@ -218,7 +218,7 @@ def upgrade_guild_skill_2404(pro_data, player):
         response.res.result_no = 24044
         return response.SerializeToString()
 
-    if not is_afford(player, guild_skill_item.Consume):
+    if not is_afford(player, guild_skill_item.Consume).get('result'):
         logger.debug("consume not enough!")
         response.res.result_no = 24041
         return response.SerializeToString()

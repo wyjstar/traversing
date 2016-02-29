@@ -513,11 +513,11 @@ def do_hero_awake(player, hero_no, awake_item_num, response):
     logger.debug("singleConsumption %s" % singleConsumption)
     singleCoin = awake_info.silver
 
-    if not is_afford(player, singleConsumption):
+    if not is_afford(player, singleConsumption).get("result"):
         logger.error("singleConsumption is not afford!")
         return {'result': False, 'result_no': 11902}
 
-    if not is_afford(player, singleCoin):
+    if not is_afford(player, singleCoin).get("result"):
         logger.error("singleCoin is not afford!")
         return {'result': False, 'result_no': 11903}
 

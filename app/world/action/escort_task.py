@@ -15,7 +15,7 @@ from app.game.action.node._fight_start_logic import get_seeds
 from shared.utils.date_util import get_current_timestamp
 from app.world.core.guild_manager import guild_manager_obj
 from gfirefly.server.globalobject import GlobalObject
-from app.world.core.escort_task import calculate_reward
+from app.world.core.escort_task import calculate_reward, get_reward
 
 @rootserviceHandle
 def get_guild_task_records_remote(guild_id):
@@ -288,7 +288,7 @@ def start_rob_escort_remote(guild_id, task_id, rob_no, player_id):
 
         rob_task_info["rob_reward"] = mail_arg1
         for player_info in rob_task_info.get("robbers"):
-            send_mail(conf_id=1002,  receive_id=player_info.get("id"), prize=str(mail_arg1))
+            send_mail(conf_id=1002,  receive_id=player_info.get("id"), prize=str(get_reward(mail_arg1, robber_guild)))
     rob_task_info["rob_state"] = -1
     task.update_reward(task_item)
     task.save_data()
