@@ -32,15 +32,15 @@ def calculate_reward(peoplePercentage, robbedPercentage, formula_name, task_item
     percent = eval(escort_formula, {"peoplePercentage": peoplePercentage, "robbedPercentage": robbedPercentage})
 
     # add contribution
-    reward2 = task_item.reward2
-    if reward2:
-        guild.contribution += task_item.reward2[0].num
-        guild.all_contribution += task_item.reward2[0].num
-        guild.save_data()
+    #reward2 = task_item.reward2
+    #if reward2:
+        #guild.contribution += task_item.reward2[0].num
+        #guild.all_contribution += task_item.reward2[0].num
+        #guild.save_data()
     # send reward mail
     mail_arg1 = []
     mail_arg1.extend(convert_common_resource2mail(task_item.get("reward1")))
-    #mail_arg1.extend(convert_common_resource2mail(task_item.get("reward2")))
+    mail_arg1.extend(convert_common_resource2mail(task_item.get("reward2")))
     mail_arg1.extend(convert_common_resource2mail(task_item.get("reward3")))
     logger.debug("mail_arg1 %s percent %s" % (mail_arg1, percent))
     for tmp in mail_arg1:
@@ -51,6 +51,21 @@ def calculate_reward(peoplePercentage, robbedPercentage, formula_name, task_item
     logger.debug("mail_arg1 %s percent %s" % (mail_arg1, percent))
     return mail_arg1
 
+def get_reward(reward, guild):
+    """添加贡献值，分别处理"""
+    logger.debug("reward %s guildid %s" % (reward, guild.g_id))
+    mail_reward = []
+    for reward_item in reward:
+        if not reward_item:
+            continue
+        item = reward_item.values()[0]
+        if item[2] == 5:
+            guild.contribution += item[0]
+            guild.all_contribution += item[0]
+            guild.save_data()
+        else:
+            mail_reward.append(reward_item)
+    return mail_reward
 
 class EscortTask(object):
     """粮草押运任务"""
@@ -145,7 +160,7 @@ class EscortTask(object):
             for player_info in self.protecters:
                 print '===================================abc', self._reward
                 send_mail(conf_id=1001, receive_id=player_info.get("id"),
-                                      prize=str(self._reward))
+                                      prize=str(get_reward(self._reward, guild)))
             if self.task_id in guild.escort_tasks_can_rob:
                 guild.escort_tasks_can_rob.remove(self._task_id)
             # add guild activity times
@@ -155,6 +170,7 @@ class EscortTask(object):
 
         self.update_rob_state(task_item)
         self.save_data()
+
 
     def update_reward(self, task_item={}):
         logger.debug("update_reward================")
@@ -220,8 +236,10 @@ class EscortTask(object):
     def property_dict(self, rob_no=-1):
         """docstring for property_dict"""
         rob_task_infos = self._rob_task_infos
-        if rob_no != -1:
+        logger.debug("rob_no %s len rob_task_infos %s" % (rob_no, len(rob_task_infos)))
+        if rob_no != -1 and self._rob_task_infos:
             rob_task_infos = [self._rob_task_infos[rob_no]]
+
 
         return {
                 "task_id": self._task_id,

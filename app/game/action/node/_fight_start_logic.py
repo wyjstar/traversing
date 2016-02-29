@@ -22,15 +22,15 @@ def pvp_process(player, line_up, red_units, blue_units, seed1, seed2, fight_type
     if not blue_units:
         return True
 
-    unpar_type = player.line_up_component.unpar_type
-    unpar_other_id = player.line_up_component.unpar_other_id
-    red_unpar_data = dict(unpar_type=unpar_type, unpar_other_id=unpar_other_id)
+    #unpar_type = player.line_up_component.unpar_type
+    #unpar_other_id = player.line_up_component.unpar_other_id
+    #red_unpar_data = dict(unpar_type=unpar_type, unpar_other_id=unpar_other_id)
 
     if fight_type == const.BATTLE_PVP:
-        res = pvp_start(red_units, blue_units, red_unpar_data, {},
+        res = pvp_start(red_units, blue_units, {}, {},
                                 seed1, seed2, player.base_info.level)
     elif fight_type == const.BATTLE_MINE_PVP:
-        res = mine_pvp_start(red_units, blue_units, red_unpar_data, {},
+        res = mine_pvp_start(red_units, blue_units, {}, {},
                                 seed1, seed2, player.base_info.level)
     elif fight_type == const.BATTLE_GUILD:
         res = guild_pvp_start(red_units, blue_units, seed1, seed2)
