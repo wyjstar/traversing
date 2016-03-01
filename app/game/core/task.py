@@ -338,6 +338,7 @@ CHECK_CONDITION_MAP[2] = check_condition2
 CHECK_CONDITION_MAP[30] = check_condition30
 CHECK_CONDITION_MAP[31] = check_condition31
 CHECK_CONDITION_MAP[33] = check_condition33
+CHECK_CONDITION_MAP[37] = check_condition37
 CHEAK_CONDITION_CONST = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                          18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 32,
                          34, 35, 36]
