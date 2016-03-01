@@ -267,14 +267,7 @@ def check_condition1(player, condition_conf, task_type):
     return {'state': 0, 'value': 0}
 
 
-def check_condition5(player, condition_conf, task_type):
-    if player.stage_component. \
-            get_stage(condition_conf[1]).state == 1:
-                return {'state': 1, 'value': 0}
-    return {'state': 0, 'value': 0}
-
-
-def check_condition18(player, condition_conf, task_type):
+def check_condition37(player, condition_conf, task_type):
     if player.stage_component. \
             get_stage(condition_conf[1]).state == 1:
                 return {'state': 1, 'value': 0}
