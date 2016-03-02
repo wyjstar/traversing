@@ -119,9 +119,9 @@ class Guild(object):
         # 初始化粮草押运信息
         tb_guild_escort_tasks = tb_guild_info.getObj(self._g_id).getObj('escort_tasks')
         escort_tasks = tb_guild_escort_tasks.hgetall()
-        for task_id, data in escort_tasks.items():
+        for task_id, _data in escort_tasks.items():
             task = EscortTask(self)
-            task.init_data(data)
+            task.init_data(_data)
             self._escort_tasks[task.task_id] = task
         for k, task in self._escort_tasks.items():
             if task.state == 2:
@@ -133,6 +133,10 @@ class Guild(object):
         boss.load(data.get("guild_boss", {}))
         self._guild_boss = boss
         self._guild_boss_trigger_times = data.get("guild_boss_trigger_times", 0)
+        logger.debug("build %s" % data.get("build"))
+        logger.debug("guild_skills %s" % data.get("guild_skills"))
+        logger.debug("skill_point %s" % data.get("skill_point"))
+
         self._guild_skills = data.get("guild_skills", self._guild_skills)
         self._skill_point = data.get("skill_point", self._skill_point)
 

@@ -106,6 +106,10 @@ def upgrade_guild_skill_remote(guild_id, skill_type):
     skill_level = guild.guild_skills.get(skill_type)
     # 消耗技能点
     guild_skill_item = game_configs.guild_skill_config.get(skill_type).get(skill_level)
+    if guild.skill_point < guild_skill_item.Consumption:
+        logger.debug("consume not enough!")
+        return dict(result=False, result_no = 24041)
+
     guild.skill_point -= guild_skill_item.Consumption
 
     guild.guild_skills[skill_type] = skill_level + 1
