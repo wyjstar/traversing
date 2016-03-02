@@ -16,6 +16,8 @@ from shared.utils.date_util import get_current_timestamp
 from app.world.core.guild_manager import guild_manager_obj
 from gfirefly.server.globalobject import GlobalObject
 from app.world.core.escort_task import calculate_reward, get_reward
+from shared.common_logic.escort_task import load_data_to_response
+from app.proto_file import escort_pb2
 
 @rootserviceHandle
 def get_guild_task_records_remote(guild_id):
@@ -28,8 +30,10 @@ def get_guild_task_records_remote(guild_id):
         task.update_task_state()
         if task.state in [2, -1]:
             tasks[task_id] = construct_task_data(task)
-
-    return tasks
+    response = escort_pb2.GetEscortRecordsResponse()
+    load_data_to_response(tasks, response.tasks)
+    logger.debug("len %s %s" % (len(response.SerializePartialToString()), len(tasks)))
+    return response.SerializePartialToString()
 
 @rootserviceHandle
 def get_invite_remote(guild_id, protect_or_rob):
