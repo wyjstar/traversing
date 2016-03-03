@@ -21,12 +21,13 @@ def get_act_info(player, act_id):
     jindu = 0
     day = player.base_info.login_day
     print act_conf, '==========get act info , act config'
-    if act_info and act_info[0] == 3:
-        return {'state': 3, 'jindu': act_info[1]}
-    elif act_info and act_info[0] == 2:
-        return {'state': 2, 'jindu': act_info[1]}
+    if act_conf.type not in [65]:  # 每日的
+        if act_info and act_info[0] == 3:
+            return {'state': 3, 'jindu': act_info[1]}
+        elif act_info and act_info[0] == 2:
+            return {'state': 2, 'jindu': act_info[1]}
 
-    elif act_conf.type == 1:
+    if act_conf.type == 1:
         # 累计登录
         if not act_info:
             player.act.act_infos[act_id] = [1, [1, int(time.time())]]
@@ -323,6 +324,37 @@ def get_act_info(player, act_id):
         if len(act_conf.parameterD) == 1 and \
                 not act_conf.parameterD[0] > act_info[0]:
             return {'state': 1, 'jindu': act_info[1]}
+        return {'state': 2, 'jindu': act_info[1]}
+    elif act_conf.type == 164:
+        if not act_info:
+            player.act.act_infos[act_id] = [1, 0]
+            return {'state': 1, 'jindu': 0}
+        if act_info[1] < int(act_conf.parameterA):
+            return {'state': 1, 'jindu': act_info[1]}
+
+        player.act.act_infos[act_id][0] = 2
+        return {'state': 2, 'jindu': act_info[1]}
+    elif act_conf.type == 65:
+        if not act_info:
+            player.act.act_infos[act_id] = [1, 0, int(time.time())]
+            return {'state': 1, 'jindu': 0}
+        if days_to_current(act_info[2]) != 0:
+            player.act.act_infos[act_id] = [1, 0, int(time.time())]
+            return {'state': 1, 'jindu': act_info[1]}
+
+        if act_info[1] < int(act_conf.parameterA):
+            return {'state': 1, 'jindu': act_info[1]}
+
+        player.act.act_infos[act_id][0] = 2
+        return {'state': 2, 'jindu': act_info[1]}
+    elif act_conf.type == 66:
+        if not act_info:
+            player.act.act_infos[act_id] = [1, 0]
+            return {'state': 1, 'jindu': 0}
+        if act_info[1] < int(act_conf.parameterA):
+            return {'state': 1, 'jindu': act_info[1]}
+
+        player.act.act_infos[act_id][0] = 2
         return {'state': 2, 'jindu': act_info[1]}
     else:
         logger.error('get act info type error')
