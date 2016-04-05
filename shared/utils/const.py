@@ -291,3 +291,5 @@ const.ATTR_TYPE = {1:"hpHeroSelf",
              9:"criDedCoeffHero",
              10:"blockHero",
              11:"ductilityHero"}
+
+const.ESCORT_TASK_MAXNUM = 100
