@@ -14,6 +14,7 @@ from shared.utils.date_util import str_time_to_timestamp, get_current_timestamp
 from shared.common_logic.shop import guild_shops, check_time, get_new_shop_info, \
     refresh_shop_info
 from shared.utils.pyuuid import get_uuid
+from shared.utils.const import const
 
 
 class Guild(object):
@@ -425,7 +426,7 @@ class Guild(object):
         task.add_player(task_info.get("player_info"), 1, 0, self.guild_info())
         self._escort_tasks[task.task_id] = task
         self._escort_tasks_ids.append(task.task_id)
-        if len(self._escort_tasks_ids) > 1000:
+        if len(self._escort_tasks_ids) > const.ESCORT_TASK_MAXNUM:
             task_id = self._escort_tasks_ids.remove(self._escort_tasks_ids[0])
             del self._escort_task_ids[task_id]
         task.update_task_state()
