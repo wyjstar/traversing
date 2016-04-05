@@ -216,11 +216,11 @@ formula_config={
 ,  [108] = {
   ["precondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["formula"] = "atkArray*skill_buff.valueEffect/100",  ["clientPrecondition"] = "skill_buff.effectId == 3 and skill_buff.valueType == 2",  ["id"] = 108,  ["clientFormula"] = "result=atkArray*skill_buff.valueEffect/100",  ["key"] = "damage_4",}
 ,  [109] = {
-  ["precondition"] = "1",  ["formula"] = "(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["clientPrecondition"] = "1",  ["id"] = 109,  ["clientFormula"] = "result=(warriors_atkArray-enemy_physicalDefArray-enemy_magicDefArray)",  ["key"] = "warriorsDamage",}
+  ["precondition"] = "1",  ["formula"] = "500",  ["clientPrecondition"] = "1",  ["id"] = 109,  ["clientFormula"] = "result=500",  ["key"] = "warriorsDamage",}
 ,  [110] = {
   ["precondition"] = "1",  ["formula"] = "warriorsBaseDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*playerLevel",  ["clientPrecondition"] = "1",  ["id"] = 110,  ["clientFormula"] = "result=warriorsBaseDamage*skill_buff.valueEffect/100+skill_buff.levelEffectValue*playerLevel",  ["key"] = "warriorsLastDamage",}
 ,  [111] = {
-  ["precondition"] = "1",  ["formula"] = "atk*1.5",  ["clientPrecondition"] = "1",  ["id"] = 111,  ["clientFormula"] = "result=atk*1.5",  ["key"] = "monster_warriors_atkArray",}
+  ["precondition"] = "1",  ["formula"] = "atk*0.6",  ["clientPrecondition"] = "1",  ["id"] = 111,  ["clientFormula"] = "result=atk*0.6",  ["key"] = "monster_warriors_atkArray",}
 ,  [112] = {
   ["precondition"] = "skill_buff.effectId == 26 and skill_buff.valueType == 1",  ["formula"] = "allHeal+skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["clientPrecondition"] = "skill_buff.effectId == 26 and skill_buff.valueType == 1",  ["id"] = 112,  ["clientFormula"] = "result=allHeal+skill_buff.valueEffect+skill_buff.levelEffectValue*heroLevel",  ["key"] = "heal_1",}
 ,  [113] = {
@@ -248,7 +248,7 @@ formula_config={
 ,  [124] = {
   ["precondition"] = "1",  ["formula"] = "1 if weekCardSurplusDay < 4 else 0",  ["clientPrecondition"] = "1",  ["id"] = 124,  ["clientFormula"] = "result=(weekCardSurplusDay < 3 and 1) or 0",  ["key"] = "weekCard",}
 ,  [125] = {
-  ["precondition"] = "1",  ["formula"] = "upRank - highestRank",  ["clientPrecondition"] = "1",  ["id"] = 125,  ["clientFormula"] = "result=upRank - highestRank",  ["key"] = "arenaRankUpRewardsValue",}
+  ["precondition"] = "1",  ["formula"] = "(highestRank - upRank)/2",  ["clientPrecondition"] = "1",  ["id"] = 125,  ["clientFormula"] = "result=(highestRank - upRank)/2",  ["key"] = "arenaRankUpRewardsValue",}
 ,  [126] = {
   ["precondition"] = "1",  ["formula"] = "heroNum*10",  ["clientPrecondition"] = "1",  ["id"] = 126,  ["clientFormula"] = "result=heroNum*10",  ["key"] = "guide2001",}
 ,  [127] = {
@@ -284,7 +284,7 @@ formula_config={
 ,  [142] = {
   ["precondition"] = "1",  ["formula"] = "ActivityExpDrop/1000",  ["clientPrecondition"] = "1",  ["id"] = 142,  ["clientFormula"] = "result=ActivityExpDrop/1000",  ["key"] = "ActivityExpDropConvert_3",}
 ,  [143] = {
-  ["precondition"] = "skill_buff.effectId == 30",  ["formula"] = "(6*wslevel*wslevel+300)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 143,  ["clientFormula"] = "result=(6*wslevel*wslevel+300)*skill_buff.valueEffect/job",  ["key"] = "peerlessDamage",}
+  ["precondition"] = "skill_buff.effectId == 30",  ["formula"] = "(6*wslevel*wslevel+700)*skill_buff.valueEffect/job",  ["clientPrecondition"] = "1",  ["id"] = 143,  ["clientFormula"] = "result=(6*wslevel*wslevel+700)*skill_buff.valueEffect/job",  ["key"] = "peerlessDamage",}
 ,  [144] = {
   ["precondition"] = "1",  ["formula"] = "hero_info.hp*parameters",  ["clientPrecondition"] = "1",  ["id"] = 144,  ["clientFormula"] = "result=hero_info.hp*parameters",  ["key"] = "hero_Breakthrough.hp",}
 ,  [145] = {
@@ -350,11 +350,11 @@ formula_config={
 ,  [175] = {
   ["precondition"] = "1",  ["formula"] = "(magicDefHero3*0.1+magicDefHero6*0.1)/person",  ["clientPrecondition"] = "1",  ["id"] = 175,  ["clientFormula"] = "result=(magicDefHero3*0.1+magicDefHero6*0.1)/person",  ["key"] = "magicDefCheer",}
 ,  [176] = {
-  ["precondition"] = "expHero >= 50 and expHero < 100",  ["formula"] = "expHero/50",  ["clientPrecondition"] = "expHero >= 50 and expHero < 100",  ["id"] = 176,  ["clientFormula"] = "result=expHero/50",  ["key"] = "sacrificeExp_1",}
+  ["precondition"] = "expHero >= 100 and expHero < 2000",  ["formula"] = "expHero/100",  ["clientPrecondition"] = "expHero >= 100 and expHero < 2000",  ["id"] = 176,  ["clientFormula"] = "result=expHero/100",  ["key"] = "sacrificeExp_1",}
 ,  [177] = {
-  ["precondition"] = "expHero >= 100 and expHero < 200",  ["formula"] = "expHero/100",  ["clientPrecondition"] = "expHero >= 100 and expHero < 200",  ["id"] = 177,  ["clientFormula"] = "result=expHero/100",  ["key"] = "sacrificeExp_2",}
+  ["precondition"] = "expHero >= 2000 and expHero < 10000",  ["formula"] = "expHero/500",  ["clientPrecondition"] = "expHero >= 2000 and expHero < 10000",  ["id"] = 177,  ["clientFormula"] = "result=expHero/500",  ["key"] = "sacrificeExp_2",}
 ,  [178] = {
-  ["precondition"] = "expHero >= 200",  ["formula"] = "expHero/200",  ["clientPrecondition"] = "expHero >= 200",  ["id"] = 178,  ["clientFormula"] = "result=expHero/200",  ["key"] = "sacrificeExp_3",}
+  ["precondition"] = "expHero >= 10000",  ["formula"] = "expHero/1000",  ["clientPrecondition"] = "expHero >= 10000",  ["id"] = 178,  ["clientFormula"] = "result=expHero/1000",  ["key"] = "sacrificeExp_3",}
 ,  [179] = {
   ["precondition"] = "1",  ["formula"] = "\"10000\"",  ["clientPrecondition"] = "1",  ["id"] = 179,  ["clientFormula"] = "result=10000",  ["key"] = "coinWorldboss",}
 ,  [180] = {

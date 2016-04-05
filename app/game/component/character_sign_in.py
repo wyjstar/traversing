@@ -98,13 +98,17 @@ class CharacterSignInComponent(Component):
         if self._sign_in_days and sign_round - self._sign_round != 0:
             self._sign_round = sign_round
             self._sign_in_days = []
+            self._continuous_sign_in_prize = []
+            self._repair_sign_in_times = 0
+            self._box_sign_in_prize = []
         self.save_data()
 
     def get_sign_in_reward(self, num):
         for v in game_configs.activity_config[6]:
-            if v.parameterA == num:
+            if v.parameterA == num and self._sign_round == v.parameterB:
                 return v.reward, v.id
         logger.error("can not find reward!")
+
     @property
     def box_sign_in_prize(self):
         return self._box_sign_in_prize

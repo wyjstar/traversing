@@ -200,15 +200,23 @@ def sign_in_box_1404(pro_data, player):
     if _id in player.sign_in_component.box_sign_in_prize:
         response.res.result = False
         response.res.result_no = 1404
-        logger.debug(response)
+        logger.error("sign in box has got!")
         return response.SerializePartialToString()
     # 验证宝箱签到条件
     for day in activity_info.parameterC:
         if day not in player.sign_in_component.sign_in_days:
             response.res.result = False
             response.res.result_no = 1405
-            logger.debug(response)
+            logger.error("sign in box condition not enough!")
             return response.SerializePartialToString()
+
+    ## 验证宝箱累积抽奖轮数
+    #sign_round = player.sign_in_component.sign_round
+    #if activity_info.parameterB != sign_round:
+        #response.res.result = False
+        #response.res.result_no = 1406
+        #logger.error("sign in box condition has reached!")
+        #return response.SerializePartialToString()
 
     return_data = gain(player, activity_info.reward, const.BOX_SIGN)
     get_return(player, return_data, response.gain)

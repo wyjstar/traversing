@@ -26,9 +26,9 @@ recharge_config={
 ,  [2008] = {
   ["currence"] = 1,  ["platform"] = "android",  ["description"] = 0,  ["id"] = 2008,  ["res"] = 94,  ["setting"] = {
   ["107"] = {
-  [1] = 1,  [2] = 1,  [3] = 2,}
+  [1] = 10,  [2] = 10,  [3] = 2,}
 ,}
-,  ["mailId"] = 0,  ["activity"] = 1,  ["everydayGift"] = {
+,  ["mailId"] = 0,  ["activity"] = 10,  ["everydayGift"] = {
 }
 ,  ["goodsid"] = "lord_gold_1",  ["fristGift"] = {
 }
@@ -72,9 +72,9 @@ recharge_config={
 ,  [1008] = {
   ["currence"] = 1,  ["platform"] = "ios",  ["description"] = 0,  ["id"] = 1008,  ["res"] = 94,  ["setting"] = {
   ["107"] = {
-  [1] = 1,  [2] = 1,  [3] = 2,}
+  [1] = 10,  [2] = 10,  [3] = 2,}
 ,}
-,  ["mailId"] = 0,  ["activity"] = 1,  ["everydayGift"] = {
+,  ["mailId"] = 0,  ["activity"] = 10,  ["everydayGift"] = {
 }
 ,  ["goodsid"] = "lord_gold_1",  ["fristGift"] = {
 }
