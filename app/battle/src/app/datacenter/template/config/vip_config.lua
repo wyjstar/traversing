@@ -1,6 +1,6 @@
 vip_config={
   [1] = {
-  ["buyGgzjTimes"] = 1,  ["description"] = 4800000001,  ["buyGetMoneyTimes"] = 3,  ["indiana_TruceTime"] = 6,  ["rechargeAmount"] = 6,  ["openSweepTen"] = 0,  ["buyEnergyMax"] = 2,  ["buyGifts"] = 40001,  ["guildWorShip"] = 1,  ["warFogRefreshNum"] = 3,  ["guildWorshipTimes"] = 1,  ["activityCopyTimes1"] = 3,  ["equipmentStrengthOneKey"] = 0,  ["openSweep"] = 1,  ["SpeedUpThreeTimes"] = 0,  ["buyShoeTimes"] = 20,  ["equipmentStrengthCliTimes"] = {
+  ["buyGgzjTimes"] = 1,  ["description"] = 4800000001,  ["buyGetMoneyTimes"] = 3,  ["indiana_TruceTime"] = 6,  ["rechargeAmount"] = 60,  ["openSweepTen"] = 0,  ["buyEnergyMax"] = 2,  ["buyGifts"] = 40001,  ["guildWorShip"] = 1,  ["warFogRefreshNum"] = 3,  ["guildWorshipTimes"] = 1,  ["activityCopyTimes1"] = 3,  ["equipmentStrengthOneKey"] = 0,  ["openSweep"] = 1,  ["SpeedUpThreeTimes"] = 0,  ["buyShoeTimes"] = 20,  ["equipmentStrengthCliTimes"] = {
   ["3"] = 0.05,  ["2"] = 0.15,}
 ,  ["allStrength"] = 0,  ["jump"] = 1,  ["id"] = 1,  ["autoTravelGet"] = 0,  ["shopOpen"] = {
   ["1"] = 1,  ["3"] = 1,  ["21"] = 1,  ["5"] = 1,  ["4"] = 1,  ["7"] = 1,  ["22"] = 1,  ["9"] = 1,  ["24"] = 1,  ["18"] = 1,  ["19"] = 0,  ["20"] = 0,  ["12"] = 1,  ["11"] = 1,  ["10"] = 1,}

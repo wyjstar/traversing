@@ -58,9 +58,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700802] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700801,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001082,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700801,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001082,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 340,  ["chapter"] = 8,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 8,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1074,  ["playerExp"] = 0,  ["iconHero"] = 10053,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -70,7 +70,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700802,  ["info"] = 5900700802,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100023,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700802,  ["info"] = 5900700802,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805302] = {
@@ -88,9 +88,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700803] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700802,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001083,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700802,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001083,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 345,  ["chapter"] = 8,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 8,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1107,  ["playerExp"] = 0,  ["iconHero"] = 10056,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -102,7 +102,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700803,  ["info"] = 5900700803,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100024,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700803,  ["info"] = 5900700803,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [809902] = {
@@ -206,9 +206,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700303] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700302,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001033,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700302,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001033,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 270,  ["chapter"] = 3,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 3,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 618,  ["playerExp"] = 0,  ["iconHero"] = 10054,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -220,7 +220,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700303,  ["info"] = 5900700303,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700303,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100009,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700303,  ["info"] = 5900700303,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700303,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [809402] = {
@@ -816,7 +816,7 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [600203] = {
-  ["resIcon"] = 6003,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 20200,  ["HeroExp"] = 0,  ["round1"] = 2000006,  ["weeklyControl"] = {
+  ["resIcon"] = 6003,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 30300,  ["HeroExp"] = 0,  ["round1"] = 2000006,  ["weeklyControl"] = {
   [1] = 1,  [2] = 0,  [3] = 1,  [4] = 0,  [5] = 1,  [6] = 0,  [7] = 1,}
 ,  ["name"] = 1400602003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 10003,  ["Animal_Kill"] = {
 }
@@ -1028,9 +1028,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700901] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700803,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001091,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700803,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001091,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 350,  ["chapter"] = 9,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 9,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1139,  ["playerExp"] = 0,  ["iconHero"] = 30063,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -1040,7 +1040,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700901,  ["info"] = 5900700901,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100025,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700901,  ["info"] = 5900700901,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805401] = {
@@ -1058,9 +1058,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700902] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700901,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001092,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700901,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001092,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 355,  ["chapter"] = 9,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 9,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1172,  ["playerExp"] = 0,  ["iconHero"] = 30057,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -1070,7 +1070,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700902,  ["info"] = 5900700902,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100026,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700902,  ["info"] = 5900700902,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805402] = {
@@ -1088,9 +1088,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700903] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700902,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001093,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700902,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001093,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 360,  ["chapter"] = 9,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 9,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1204,  ["playerExp"] = 0,  ["iconHero"] = 10065,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -1102,7 +1102,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700903,  ["info"] = 5900700903,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100027,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700903,  ["info"] = 5900700903,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [810002] = {
@@ -1178,9 +1178,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700402] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700401,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001042,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700401,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001042,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 280,  ["chapter"] = 4,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 4,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 683,  ["playerExp"] = 0,  ["iconHero"] = 10044,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -1190,7 +1190,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700402,  ["info"] = 5900700402,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700402,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700402,  ["info"] = 5900700402,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700402,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [804902] = {
@@ -1208,9 +1208,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700403] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700402,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001043,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700402,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001043,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 285,  ["chapter"] = 4,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 4,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 716,  ["playerExp"] = 0,  ["iconHero"] = 10055,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -1222,7 +1222,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700403,  ["info"] = 5900700403,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700403,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100012,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700403,  ["info"] = 5900700403,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700403,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [809502] = {
@@ -1536,9 +1536,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700701] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700603,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001071,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700603,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001071,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 320,  ["chapter"] = 7,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 7,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 944,  ["playerExp"] = 0,  ["iconHero"] = 10052,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -1548,7 +1548,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700701,  ["info"] = 5900700701,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100019,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700701,  ["info"] = 5900700701,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805201] = {
@@ -1566,9 +1566,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700702] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700701,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001072,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700701,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001072,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 325,  ["chapter"] = 7,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 7,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 976,  ["playerExp"] = 0,  ["iconHero"] = 10045,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -1578,7 +1578,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700702,  ["info"] = 5900700702,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100020,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700702,  ["info"] = 5900700702,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [805202] = {
@@ -1654,9 +1654,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700201] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700103,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001021,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700103,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001021,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 245,  ["chapter"] = 2,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 2,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 455,  ["playerExp"] = 0,  ["iconHero"] = 10035,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -1666,7 +1666,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700201,  ["info"] = 5900700201,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700201,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100004,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700201,  ["info"] = 5900700201,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700201,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [804701] = {
@@ -2062,7 +2062,7 @@ special_stage_config={
   [1] = 1,  [2] = 1,  [3] = 0,  [4] = 1,  [5] = 0,  [6] = 1,  [7] = 0,}
 ,  ["name"] = 1400601003,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 35164,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 0,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 35000,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 0,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -2114,9 +2114,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700703] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700702,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001073,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700702,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001073,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 330,  ["chapter"] = 7,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 7,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1009,  ["playerExp"] = 0,  ["iconHero"] = 10061,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -2128,7 +2128,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700703,  ["info"] = 5900700703,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700703,  ["info"] = 5900700703,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [807801] = {
@@ -2378,9 +2378,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700202] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700201,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001022,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700201,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001022,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 250,  ["chapter"] = 2,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 2,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 488,  ["playerExp"] = 0,  ["iconHero"] = 10041,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -2390,7 +2390,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700202,  ["info"] = 5900700202,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700202,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100005,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700202,  ["info"] = 5900700202,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700202,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [810001] = {
@@ -2408,9 +2408,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700203] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700202,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001023,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700202,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001023,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 255,  ["chapter"] = 2,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 2,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 520,  ["playerExp"] = 0,  ["iconHero"] = 10036,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -2422,7 +2422,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700203,  ["info"] = 5900700203,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700203,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100006,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700203,  ["info"] = 5900700203,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700203,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [800802] = {
@@ -2836,9 +2836,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700501] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700403,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001051,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700403,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001051,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 290,  ["chapter"] = 5,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 5,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 748,  ["playerExp"] = 0,  ["iconHero"] = 10047,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -2848,7 +2848,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700501,  ["info"] = 5900700501,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100013,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700501,  ["info"] = 5900700501,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [800402] = {
@@ -2978,9 +2978,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700101] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 0,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001011,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 0,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001011,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 230,  ["chapter"] = 1,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 1,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 358,  ["playerExp"] = 0,  ["iconHero"] = 10020,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -2990,13 +2990,13 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700101,  ["info"] = 5900700101,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700101,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100001,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700101,  ["info"] = 5900700101,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700101,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700601] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700503,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001061,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700503,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001061,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 305,  ["chapter"] = 6,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 6,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 846,  ["playerExp"] = 0,  ["iconHero"] = 10042,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -3006,7 +3006,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700601,  ["info"] = 5900700601,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100016,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700601,  ["info"] = 5900700601,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [809101] = {
@@ -3024,9 +3024,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700602] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700601,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001062,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700601,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001062,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 310,  ["chapter"] = 6,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 6,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 879,  ["playerExp"] = 0,  ["iconHero"] = 10043,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -3036,13 +3036,13 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700602,  ["info"] = 5900700602,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100017,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700602,  ["info"] = 5900700602,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700603] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700602,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001063,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700602,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001063,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 315,  ["chapter"] = 6,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 6,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 911,  ["playerExp"] = 0,  ["iconHero"] = 10058,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -3054,7 +3054,7 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700603,  ["info"] = 5900700603,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100018,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700603,  ["info"] = 5900700603,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [802902] = {
@@ -3174,7 +3174,7 @@ special_stage_config={
   [1] = 1,  [2] = 1,  [3] = 0,  [4] = 1,  [5] = 0,  [6] = 1,  [7] = 0,}
 ,  ["name"] = 1400601001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 5860,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 0,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 8000,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 0,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3202,7 +3202,7 @@ special_stage_config={
   [1] = 1,  [2] = 1,  [3] = 0,  [4] = 1,  [5] = 0,  [6] = 1,  [7] = 0,}
 ,  ["name"] = 1400601002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
-,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 17582,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 0,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
+,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 17500,  ["playerExp"] = 0,  ["iconHero"] = 0,  ["icon"] = 0,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
 ,  ["coordinate"] = {
 }
@@ -3240,9 +3240,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700502] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700501,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001052,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700501,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001052,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 295,  ["chapter"] = 5,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 5,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 781,  ["playerExp"] = 0,  ["iconHero"] = 10030,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -3252,13 +3252,13 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700502,  ["info"] = 5900700502,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100014,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700502,  ["info"] = 5900700502,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700102] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700101,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001012,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700101,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001012,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 235,  ["chapter"] = 1,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 1,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 390,  ["playerExp"] = 0,  ["iconHero"] = 10023,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -3268,13 +3268,13 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700102,  ["info"] = 5900700102,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700102,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100002,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700102,  ["info"] = 5900700102,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700102,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700103] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700102,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001013,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700102,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001013,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 240,  ["chapter"] = 1,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 1,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 423,  ["playerExp"] = 0,  ["iconHero"] = 10062,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -3286,7 +3286,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700103,  ["info"] = 5900700103,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700103,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100003,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700103,  ["info"] = 5900700103,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700103,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [808501] = {
@@ -3346,9 +3346,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [701001] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700903,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001101,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700903,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001101,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 365,  ["chapter"] = 10,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 10,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1237,  ["playerExp"] = 0,  ["iconHero"] = 30060,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -3358,7 +3358,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701001,  ["info"] = 5900701001,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100028,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701001,  ["info"] = 5900701001,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [803002] = {
@@ -3376,9 +3376,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [701003] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 701002,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001103,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 701002,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001103,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 375,  ["chapter"] = 10,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 10,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1302,  ["playerExp"] = 0,  ["iconHero"] = 10048,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -3390,7 +3390,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701003,  ["info"] = 5900701003,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100030,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701003,  ["info"] = 5900701003,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [806501] = {
@@ -3562,9 +3562,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [700503] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700502,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001053,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700502,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001053,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 300,  ["chapter"] = 5,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 5,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 813,  ["playerExp"] = 0,  ["iconHero"] = 10050,  ["icon"] = 2002,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
   ["106"] = {
@@ -3576,7 +3576,7 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100031,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700503,  ["info"] = 5900700503,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100015,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700503,  ["info"] = 5900700503,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700503,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 3,  ["res"] = 1007,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [920001] = {
@@ -3976,7 +3976,7 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 7,}
 ,  [600201] = {
-  ["resIcon"] = 6001,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 1650,  ["HeroExp"] = 0,  ["round1"] = 2000004,  ["weeklyControl"] = {
+  ["resIcon"] = 6001,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 2475,  ["HeroExp"] = 0,  ["round1"] = 2000004,  ["weeklyControl"] = {
   [1] = 1,  [2] = 0,  [3] = 1,  [4] = 0,  [5] = 1,  [6] = 0,  [7] = 1,}
 ,  ["name"] = 1400602001,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 10001,  ["Animal_Kill"] = {
 }
@@ -3990,7 +3990,7 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 5,}
 ,  [600202] = {
-  ["resIcon"] = 6002,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 5050,  ["HeroExp"] = 0,  ["round1"] = 2000005,  ["weeklyControl"] = {
+  ["resIcon"] = 6002,  ["Building"] = 0,  ["high"] = 0,  ["condition"] = 0,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 7575,  ["HeroExp"] = 0,  ["round1"] = 2000005,  ["weeklyControl"] = {
   [1] = 1,  [2] = 0,  [3] = 1,  [4] = 0,  [5] = 1,  [6] = 0,  [7] = 1,}
 ,  ["name"] = 1400602002,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["dropShow"] = 10002,  ["Animal_Kill"] = {
 }
@@ -4004,9 +4004,9 @@ special_stage_config={
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 5,}
 ,  [700801] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700703,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001081,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700703,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001081,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 335,  ["chapter"] = 8,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 8,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1041,  ["playerExp"] = 0,  ["iconHero"] = 10046,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -4016,13 +4016,13 @@ special_stage_config={
   ["2"] = {
   [1] = 2,  [2] = 0,  [3] = 3300220003,  [4] = 3300220004,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700801,  ["info"] = 5900700801,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100022,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700801,  ["info"] = 5900700801,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700501,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [701002] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 701001,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001102,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 701001,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001102,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 370,  ["chapter"] = 10,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 10,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 1269,  ["playerExp"] = 0,  ["iconHero"] = 30059,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -4032,13 +4032,13 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701002,  ["info"] = 5900701002,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100029,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 701002,  ["info"] = 5900701002,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700502,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700301] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700203,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001031,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700203,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001031,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 260,  ["chapter"] = 3,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 3,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 553,  ["playerExp"] = 0,  ["iconHero"] = 10049,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -4048,13 +4048,13 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700301,  ["info"] = 5900700301,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700301,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100007,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700301,  ["info"] = 5900700301,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700301,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700302] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700301,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001032,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700301,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001032,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 265,  ["chapter"] = 3,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 3,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 586,  ["playerExp"] = 0,  ["iconHero"] = 10040,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -4064,13 +4064,13 @@ special_stage_config={
   ["3"] = {
   [1] = 0.7,  [2] = 0,  [3] = 3300220005,  [4] = 3300220006,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100021,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700302,  ["info"] = 5900700302,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700302,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100008,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700302,  ["info"] = 5900700302,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700302,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 2,  ["res"] = 1006,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [700401] = {
-  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 5,  ["condition"] = 700303,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001041,  ["weeklyControl"] = {
+  ["resIcon"] = 0,  ["Building"] = 0,  ["high"] = 1,  ["condition"] = 700303,  ["timesDir"] = 1,  ["resHero"] = 0,  ["restore"] = 100,  ["ExpDrop"] = 0,  ["HeroExp"] = 0,  ["round1"] = 7001041,  ["weeklyControl"] = {
   [1] = 1,  [2] = 1,  [3] = 1,  [4] = 1,  [5] = 1,  [6] = 1,  [7] = 1,}
-,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 275,  ["chapter"] = 4,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
+,  ["name"] = 0,  ["round3"] = 0,  ["reward"] = 0,  ["chapter"] = 4,  ["round2"] = 0,  ["dropShow"] = 0,  ["Animal_Kill"] = {
 }
 ,  ["isBoss"] = 1,  ["resMap"] = 0,  ["currency"] = 651,  ["playerExp"] = 0,  ["iconHero"] = 10031,  ["icon"] = 2001,  ["Animal_Kill_Over"] = 0,  ["stageBox"] = {
 }
@@ -4080,7 +4080,7 @@ special_stage_config={
   ["1"] = {
   [1] = 5,  [2] = 6,  [3] = 3300220001,  [4] = 3300220002,}
 ,}
-,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100011,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700401,  ["info"] = 5900700401,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700401,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
+,  ["timesExpend"] = 1,  ["warriorsSkill"] = 4100010,  ["open_time"] = "2014-09-01 00:01",  ["id"] = 700401,  ["info"] = 5900700401,  ["levelLimit"] = 0,  ["eliteDrop"] = 0,  ["commonDrop"] = 1700401,  ["timeControl"] = "0:00-23:59",  ["low"] = 1,  ["viewDir"] = 1,  ["res"] = 1003,  ["Animal_Participate"] = {
 }
 ,  ["close_time"] = "2024-08-31 23:59",  ["type"] = 6,}
 ,  [802602] = {
