@@ -3,7 +3,6 @@
 created by server on 14-6-4下午3:04.
 """
 
-
 class ConstError(Exception):
     pass
 
