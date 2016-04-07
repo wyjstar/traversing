@@ -157,9 +157,11 @@ def consume(player, item_group, reason,
 
         elif type_id == const.ITEM:
             item = player.item_package.get_item(item_no)
-            item.num -= num
+            #item.num -= num
+            player.item_package.consume_item(item_no, num)
             player.item_package.save_data()
-            after_num = item.num
+
+            after_num = item.num - num
 
         elif type_id == const.RESOURCE:
             player.finance.consume(item_no, num, 0)
