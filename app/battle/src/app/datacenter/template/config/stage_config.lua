@@ -8,7 +8,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1014041,  ["commonDrop"] = 1100105,  ["name"] = 1400101404,  ["round3"] = 1014043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014042,  ["hideHero"] = 0,  ["iconHero"] = 1500231,  ["hero_Guide"] = {
+,  ["round1"] = 1014041,  ["commonDrop"] = 1100105,  ["name"] = 1400101404,  ["round3"] = 1014043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014042,  ["hideHero"] = 0,  ["iconHero"] = 1500231,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 862,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -20,7 +20,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
+,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104601] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -30,7 +30,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1046011,  ["commonDrop"] = 1100107,  ["name"] = 1400104601,  ["round3"] = 1046013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046012,  ["hideHero"] = 0,  ["iconHero"] = 1500611,  ["hero_Guide"] = {
+,  ["round1"] = 1046011,  ["commonDrop"] = 1100107,  ["name"] = 1400104601,  ["round3"] = 1046013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046012,  ["hideHero"] = 0,  ["iconHero"] = 1500611,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1417,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -42,7 +42,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 14,}
+,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [103706] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -52,7 +52,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1037061,  ["commonDrop"] = 1100107,  ["name"] = 1400103706,  ["round3"] = 1037063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037062,  ["hideHero"] = 0,  ["iconHero"] = 1500521,  ["hero_Guide"] = {
+,  ["round1"] = 1037061,  ["commonDrop"] = 1100107,  ["name"] = 1400103706,  ["round3"] = 1037063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037062,  ["hideHero"] = 0,  ["iconHero"] = 1500521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1269,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -64,7 +64,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
+,  ["section"] = 6,  ["HeroExp"] = 30,  ["stage_break_id"] = 13,}
 ,  [100701] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -96,7 +96,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1030031,  ["commonDrop"] = 1100107,  ["name"] = 1400103003,  ["round3"] = 1030033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030032,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
+,  ["round1"] = 1030031,  ["commonDrop"] = 1100107,  ["name"] = 1400103003,  ["round3"] = 1030033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030032,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1148,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -110,7 +110,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 12,}
+,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102108] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -134,7 +134,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30051,  [3] = 30,  [4] = 0,  [5] = 3300291021,}
 ,}
-,  ["round1"] = 1021081,  ["commonDrop"] = 1100106,  ["name"] = 1400102108,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 21,  ["round2"] = 0,  ["hideHero"] = 30051,  ["iconHero"] = 1100511,  ["hero_Guide"] = {
+,  ["round1"] = 1021081,  ["commonDrop"] = 1100106,  ["name"] = 1400102108,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 21,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2002,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -180,7 +180,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1014051,  ["commonDrop"] = 1100105,  ["name"] = 1400101405,  ["round3"] = 1014053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014052,  ["hideHero"] = 0,  ["iconHero"] = 1100241,  ["hero_Guide"] = {
+,  ["round1"] = 1014051,  ["commonDrop"] = 1100105,  ["name"] = 1400101405,  ["round3"] = 1014053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014052,  ["hideHero"] = 0,  ["iconHero"] = 1100241,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 862,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -194,7 +194,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
+,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104602] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -204,7 +204,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1046021,  ["commonDrop"] = 1100107,  ["name"] = 1400104602,  ["round3"] = 1046023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046022,  ["hideHero"] = 0,  ["iconHero"] = 1500621,  ["hero_Guide"] = {
+,  ["round1"] = 1046021,  ["commonDrop"] = 1100107,  ["name"] = 1400104602,  ["round3"] = 1046023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046022,  ["hideHero"] = 0,  ["iconHero"] = 1500621,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1417,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -216,7 +216,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 14,}
+,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [103707] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -226,7 +226,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1037071,  ["commonDrop"] = 1100107,  ["name"] = 1400103707,  ["round3"] = 1037073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037072,  ["hideHero"] = 0,  ["iconHero"] = 1100361,  ["hero_Guide"] = {
+,  ["round1"] = 1037071,  ["commonDrop"] = 1100107,  ["name"] = 1400103707,  ["round3"] = 1037073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037072,  ["hideHero"] = 0,  ["iconHero"] = 1100361,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1278,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -240,7 +240,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
+,  ["section"] = 7,  ["HeroExp"] = 30,  ["stage_break_id"] = 13,}
 ,  [100702] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -272,7 +272,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1030041,  ["commonDrop"] = 1100107,  ["name"] = 1400103004,  ["round3"] = 1030043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030042,  ["hideHero"] = 0,  ["iconHero"] = 1500431,  ["hero_Guide"] = {
+,  ["round1"] = 1030041,  ["commonDrop"] = 1100107,  ["name"] = 1400103004,  ["round3"] = 1030043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030042,  ["hideHero"] = 0,  ["iconHero"] = 1500431,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1148,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -284,7 +284,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 12,}
+,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102301] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -316,7 +316,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1014061,  ["commonDrop"] = 1100105,  ["name"] = 1400101406,  ["round3"] = 1014063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014062,  ["hideHero"] = 0,  ["iconHero"] = 1500241,  ["hero_Guide"] = {
+,  ["round1"] = 1014061,  ["commonDrop"] = 1100105,  ["name"] = 1400101406,  ["round3"] = 1014063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014062,  ["hideHero"] = 0,  ["iconHero"] = 1500241,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 862,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -328,7 +328,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
+,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104603] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -338,7 +338,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1046031,  ["commonDrop"] = 1100107,  ["name"] = 1400104603,  ["round3"] = 1046033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046032,  ["hideHero"] = 0,  ["iconHero"] = 1501141,  ["hero_Guide"] = {
+,  ["round1"] = 1046031,  ["commonDrop"] = 1100107,  ["name"] = 1400104603,  ["round3"] = 1046033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046032,  ["hideHero"] = 0,  ["iconHero"] = 1501141,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1425,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -352,7 +352,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 14,}
+,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [103708] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -376,7 +376,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10066,  [3] = 30,  [4] = 0,  [5] = 3300291037,}
 ,}
-,  ["round1"] = 1037081,  ["commonDrop"] = 1100107,  ["name"] = 1400103708,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
+,  ["round1"] = 1037081,  ["commonDrop"] = 1100107,  ["name"] = 1400103708,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2556,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -446,7 +446,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1030051,  ["commonDrop"] = 1100107,  ["name"] = 1400103005,  ["round3"] = 1030053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030052,  ["hideHero"] = 0,  ["iconHero"] = 1100081,  ["hero_Guide"] = {
+,  ["round1"] = 1030051,  ["commonDrop"] = 1100107,  ["name"] = 1400103005,  ["round3"] = 1030053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030052,  ["hideHero"] = 0,  ["iconHero"] = 1100081,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1148,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -460,7 +460,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 12,}
+,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102302] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -492,7 +492,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1014071,  ["commonDrop"] = 1100105,  ["name"] = 1400101407,  ["round3"] = 1014073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014072,  ["hideHero"] = 0,  ["iconHero"] = 1100311,  ["hero_Guide"] = {
+,  ["round1"] = 1014071,  ["commonDrop"] = 1100105,  ["name"] = 1400101407,  ["round3"] = 1014073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014072,  ["hideHero"] = 0,  ["iconHero"] = 1100311,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 871,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -506,7 +506,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
+,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104604] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -516,7 +516,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1046041,  ["commonDrop"] = 1100107,  ["name"] = 1400104604,  ["round3"] = 1046043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046042,  ["hideHero"] = 0,  ["iconHero"] = 1500631,  ["hero_Guide"] = {
+,  ["round1"] = 1046041,  ["commonDrop"] = 1100107,  ["name"] = 1400104604,  ["round3"] = 1046043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046042,  ["hideHero"] = 0,  ["iconHero"] = 1500631,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1425,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -528,7 +528,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 14,}
+,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [100704] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -582,7 +582,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1030061,  ["commonDrop"] = 1100107,  ["name"] = 1400103006,  ["round3"] = 1030063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030062,  ["hideHero"] = 0,  ["iconHero"] = 1500441,  ["hero_Guide"] = {
+,  ["round1"] = 1030061,  ["commonDrop"] = 1100107,  ["name"] = 1400103006,  ["round3"] = 1030063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030062,  ["hideHero"] = 0,  ["iconHero"] = 1500441,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1148,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -594,7 +594,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 12,}
+,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102303] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -642,7 +642,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30063,  [3] = 30,  [4] = 0,  [5] = 3300291014,}
 ,}
-,  ["round1"] = 1014081,  ["commonDrop"] = 1100105,  ["name"] = 1400101408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 0,  ["hideHero"] = 30063,  ["iconHero"] = 1100631,  ["hero_Guide"] = {
+,  ["round1"] = 1014081,  ["commonDrop"] = 1100105,  ["name"] = 1400101408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1742,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -664,7 +664,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1046051,  ["commonDrop"] = 1100107,  ["name"] = 1400104605,  ["round3"] = 1046053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046052,  ["hideHero"] = 0,  ["iconHero"] = 1100351,  ["hero_Guide"] = {
+,  ["round1"] = 1046051,  ["commonDrop"] = 1100107,  ["name"] = 1400104605,  ["round3"] = 1046053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046052,  ["hideHero"] = 0,  ["iconHero"] = 1100351,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1425,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -678,7 +678,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 14,}
+,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [101600] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2022,  ["dragonGift"] = {
   ["106"] = {
@@ -748,7 +748,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 32,  ["stage_break_id"] = 12,}
+,  ["section"] = 2,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [103007] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -758,7 +758,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1030071,  ["commonDrop"] = 1100107,  ["name"] = 1400103007,  ["round3"] = 1030073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030072,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
+,  ["round1"] = 1030071,  ["commonDrop"] = 1100107,  ["name"] = 1400103007,  ["round3"] = 1030073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030072,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1157,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -772,7 +772,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 12,}
+,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102304] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -804,7 +804,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1046061,  ["commonDrop"] = 1100107,  ["name"] = 1400104606,  ["round3"] = 1046063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046062,  ["hideHero"] = 0,  ["iconHero"] = 1500641,  ["hero_Guide"] = {
+,  ["round1"] = 1046061,  ["commonDrop"] = 1100107,  ["name"] = 1400104606,  ["round3"] = 1046063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046062,  ["hideHero"] = 0,  ["iconHero"] = 1500641,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1425,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -816,7 +816,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 14,}
+,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [101601] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -826,7 +826,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1016011,  ["commonDrop"] = 1100105,  ["name"] = 1400101601,  ["round3"] = 1016013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016012,  ["hideHero"] = 0,  ["iconHero"] = 1500211,  ["hero_Guide"] = {
+,  ["round1"] = 1016011,  ["commonDrop"] = 1100105,  ["name"] = 1400101601,  ["round3"] = 1016013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016012,  ["hideHero"] = 0,  ["iconHero"] = 1500211,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 888,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -838,7 +838,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
+,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [100706] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -884,7 +884,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 32,  ["stage_break_id"] = 12,}
+,  ["section"] = 3,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [103008] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -908,7 +908,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30051,  [3] = 30,  [4] = 0,  [5] = 3300291030,}
 ,}
-,  ["round1"] = 1030081,  ["commonDrop"] = 1100107,  ["name"] = 1400103008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 0,  ["hideHero"] = 30051,  ["iconHero"] = 1100511,  ["hero_Guide"] = {
+,  ["round1"] = 1030081,  ["commonDrop"] = 1100107,  ["name"] = 1400103008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100651,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2314,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -978,7 +978,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1046071,  ["commonDrop"] = 1100107,  ["name"] = 1400104607,  ["round3"] = 1046073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046072,  ["hideHero"] = 0,  ["iconHero"] = 1100581,  ["hero_Guide"] = {
+,  ["round1"] = 1046071,  ["commonDrop"] = 1100107,  ["name"] = 1400104607,  ["round3"] = 1046073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 1046072,  ["hideHero"] = 0,  ["iconHero"] = 1100581,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1434,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -992,7 +992,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 14,}
+,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 0,}
 ,  [101602] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1002,7 +1002,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1016021,  ["commonDrop"] = 1100105,  ["name"] = 1400101602,  ["round3"] = 1016023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016022,  ["hideHero"] = 0,  ["iconHero"] = 1500221,  ["hero_Guide"] = {
+,  ["round1"] = 1016021,  ["commonDrop"] = 1100105,  ["name"] = 1400101602,  ["round3"] = 1016023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016022,  ["hideHero"] = 0,  ["iconHero"] = 1500221,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 888,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1014,7 +1014,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
+,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [100707] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1082,7 +1082,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 32,  ["stage_break_id"] = 12,}
+,  ["section"] = 4,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [910002] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1136,7 +1136,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1032011,  ["commonDrop"] = 1100107,  ["name"] = 1400103201,  ["round3"] = 1032013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032012,  ["hideHero"] = 0,  ["iconHero"] = 1500451,  ["hero_Guide"] = {
+,  ["round1"] = 1032011,  ["commonDrop"] = 1100107,  ["name"] = 1400103201,  ["round3"] = 1032013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032012,  ["hideHero"] = 0,  ["iconHero"] = 1500451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1174,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1148,7 +1148,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
+,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102306] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1224,7 +1224,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1016031,  ["commonDrop"] = 1100105,  ["name"] = 1400101603,  ["round3"] = 1016033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016032,  ["hideHero"] = 0,  ["iconHero"] = 1500731,  ["hero_Guide"] = {
+,  ["round1"] = 1016031,  ["commonDrop"] = 1100105,  ["name"] = 1400101603,  ["round3"] = 1016033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016032,  ["hideHero"] = 0,  ["iconHero"] = 1500731,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 897,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1238,7 +1238,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
+,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [910008] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1284,7 +1284,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30057,  [3] = 30,  [4] = 0,  [5] = 3300291007,}
 ,}
-,  ["round1"] = 1007081,  ["commonDrop"] = 1100101,  ["name"] = 1400100708,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 7,  ["round2"] = 0,  ["hideHero"] = 30057,  ["iconHero"] = 1100571,  ["hero_Guide"] = {
+,  ["round1"] = 1007081,  ["commonDrop"] = 1100101,  ["name"] = 1400100708,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 7,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1414,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1320,7 +1320,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 32,  ["stage_break_id"] = 12,}
+,  ["section"] = 5,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [100900] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2015,  ["dragonGift"] = {
   ["106"] = {
@@ -1354,7 +1354,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1032021,  ["commonDrop"] = 1100107,  ["name"] = 1400103202,  ["round3"] = 1032023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032022,  ["hideHero"] = 0,  ["iconHero"] = 1500461,  ["hero_Guide"] = {
+,  ["round1"] = 1032021,  ["commonDrop"] = 1100107,  ["name"] = 1400103202,  ["round3"] = 1032023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032022,  ["hideHero"] = 0,  ["iconHero"] = 1500461,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1174,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1366,7 +1366,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
+,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102307] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1400,7 +1400,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1016041,  ["commonDrop"] = 1100105,  ["name"] = 1400101604,  ["round3"] = 1016043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016042,  ["hideHero"] = 0,  ["iconHero"] = 1500231,  ["hero_Guide"] = {
+,  ["round1"] = 1016041,  ["commonDrop"] = 1100105,  ["name"] = 1400101604,  ["round3"] = 1016043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016042,  ["hideHero"] = 0,  ["iconHero"] = 1500231,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 897,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1412,7 +1412,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
+,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [103906] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1434,7 +1434,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 32,  ["stage_break_id"] = 12,}
+,  ["section"] = 6,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [100901] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1456,7 +1456,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
+,  ["section"] = 1,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
 ,  [103203] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1466,7 +1466,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1032031,  ["commonDrop"] = 1100107,  ["name"] = 1400103203,  ["round3"] = 1032033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032032,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
+,  ["round1"] = 1032031,  ["commonDrop"] = 1100107,  ["name"] = 1400103203,  ["round3"] = 1032033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032032,  ["hideHero"] = 0,  ["iconHero"] = 1500721,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1183,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1480,7 +1480,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
+,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102308] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1504,7 +1504,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30063,  [3] = 30,  [4] = 0,  [5] = 3300291023,}
 ,}
-,  ["round1"] = 1023081,  ["commonDrop"] = 1100107,  ["name"] = 1400102308,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 23,  ["round2"] = 0,  ["hideHero"] = 30063,  ["iconHero"] = 1100631,  ["hero_Guide"] = {
+,  ["round1"] = 1023081,  ["commonDrop"] = 1100107,  ["name"] = 1400102308,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 23,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2072,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1550,7 +1550,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1016051,  ["commonDrop"] = 1100105,  ["name"] = 1400101605,  ["round3"] = 1016053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
+,  ["round1"] = 1016051,  ["commonDrop"] = 1100105,  ["name"] = 1400101605,  ["round3"] = 1016053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 906,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1564,7 +1564,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
+,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [103907] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1588,7 +1588,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 32,  ["stage_break_id"] = 12,}
+,  ["section"] = 7,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [100902] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1610,7 +1610,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
+,  ["section"] = 2,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
 ,  [103204] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1620,7 +1620,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1032041,  ["commonDrop"] = 1100107,  ["name"] = 1400103204,  ["round3"] = 1032043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032042,  ["hideHero"] = 0,  ["iconHero"] = 1500471,  ["hero_Guide"] = {
+,  ["round1"] = 1032041,  ["commonDrop"] = 1100107,  ["name"] = 1400103204,  ["round3"] = 1032043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032042,  ["hideHero"] = 0,  ["iconHero"] = 1500471,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1183,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1632,7 +1632,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
+,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [102501] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1654,7 +1654,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
+,  ["section"] = 1,  ["HeroExp"] = 22,  ["stage_break_id"] = 12,}
 ,  [101606] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1664,7 +1664,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1016061,  ["commonDrop"] = 1100105,  ["name"] = 1400101606,  ["round3"] = 1016063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016062,  ["hideHero"] = 0,  ["iconHero"] = 1500241,  ["hero_Guide"] = {
+,  ["round1"] = 1016061,  ["commonDrop"] = 1100105,  ["name"] = 1400101606,  ["round3"] = 1016063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016062,  ["hideHero"] = 0,  ["iconHero"] = 1500241,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 906,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1676,7 +1676,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
+,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [103908] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1700,7 +1700,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30051,  [3] = 30,  [4] = 0,  [5] = 3300291039,}
 ,}
-,  ["round1"] = 1039081,  ["commonDrop"] = 1100107,  ["name"] = 1400103908,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 39,  ["round2"] = 0,  ["hideHero"] = 30051,  ["iconHero"] = 1100511,  ["hero_Guide"] = {
+,  ["round1"] = 1039081,  ["commonDrop"] = 1100107,  ["name"] = 1400103908,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 39,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2626,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1736,7 +1736,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
+,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
 ,  [104100] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2047,  ["dragonGift"] = {
   ["106"] = {
@@ -1770,7 +1770,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1032051,  ["commonDrop"] = 1100107,  ["name"] = 1400103205,  ["round3"] = 1032053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032052,  ["hideHero"] = 0,  ["iconHero"] = 1100081,  ["hero_Guide"] = {
+,  ["round1"] = 1032051,  ["commonDrop"] = 1100107,  ["name"] = 1400103205,  ["round3"] = 1032053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032052,  ["hideHero"] = 0,  ["iconHero"] = 1100081,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1183,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1784,7 +1784,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
+,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [100200] = {
   ["sectionCount"] = 7,  ["chapterBg"] = 2008,  ["dragonGift"] = {
   ["106"] = {
@@ -1797,7 +1797,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400100200,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4002,  ["warriorsSkill"] = 0,  ["resMap"] = 3002,  ["chapter"] = 2,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30051,  [2] = 5700000001,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500100200,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -1830,7 +1830,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
+,  ["section"] = 2,  ["HeroExp"] = 22,  ["stage_break_id"] = 12,}
 ,  [101607] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1840,7 +1840,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1016071,  ["commonDrop"] = 1100106,  ["name"] = 1400101607,  ["round3"] = 1016073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016072,  ["hideHero"] = 0,  ["iconHero"] = 1100501,  ["hero_Guide"] = {
+,  ["round1"] = 1016071,  ["commonDrop"] = 1100106,  ["name"] = 1400101607,  ["round3"] = 1016073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 1016072,  ["hideHero"] = 0,  ["iconHero"] = 1100501,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 914,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1854,7 +1854,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
+,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [100904] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1876,7 +1876,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
+,  ["section"] = 4,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
 ,  [104101] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1898,7 +1898,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 32,  ["stage_break_id"] = 11,}
+,  ["section"] = 1,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [103206] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1908,7 +1908,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1032061,  ["commonDrop"] = 1100107,  ["name"] = 1400103206,  ["round3"] = 1032063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032062,  ["hideHero"] = 0,  ["iconHero"] = 1500481,  ["hero_Guide"] = {
+,  ["round1"] = 1032061,  ["commonDrop"] = 1100107,  ["name"] = 1400103206,  ["round3"] = 1032063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032062,  ["hideHero"] = 0,  ["iconHero"] = 1500481,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1183,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -1920,7 +1920,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
+,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [100201] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1966,7 +1966,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
+,  ["section"] = 3,  ["HeroExp"] = 22,  ["stage_break_id"] = 12,}
 ,  [101608] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -1990,7 +1990,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30057,  [3] = 30,  [4] = 0,  [5] = 3300291016,}
 ,}
-,  ["round1"] = 1016081,  ["commonDrop"] = 1100106,  ["name"] = 1400101608,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 0,  ["hideHero"] = 30057,  ["iconHero"] = 1100571,  ["hero_Guide"] = {
+,  ["round1"] = 1016081,  ["commonDrop"] = 1100106,  ["name"] = 1400101608,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 16,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1828,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2050,7 +2050,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
+,  ["section"] = 5,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
 ,  [104102] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2072,7 +2072,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 32,  ["stage_break_id"] = 11,}
+,  ["section"] = 2,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [103207] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2082,7 +2082,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1032071,  ["commonDrop"] = 1100107,  ["name"] = 1400103207,  ["round3"] = 1032073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032072,  ["hideHero"] = 0,  ["iconHero"] = 1100281,  ["hero_Guide"] = {
+,  ["round1"] = 1032071,  ["commonDrop"] = 1100107,  ["name"] = 1400103207,  ["round3"] = 1032073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 1032072,  ["hideHero"] = 0,  ["iconHero"] = 1100281,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1191,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2096,7 +2096,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 11,}
+,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [100202] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2140,7 +2140,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
+,  ["section"] = 4,  ["HeroExp"] = 22,  ["stage_break_id"] = 12,}
 ,  [101801] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2150,7 +2150,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1018011,  ["commonDrop"] = 1100106,  ["name"] = 1400101801,  ["round3"] = 1018013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018012,  ["hideHero"] = 0,  ["iconHero"] = 1500251,  ["hero_Guide"] = {
+,  ["round1"] = 1018011,  ["commonDrop"] = 1100106,  ["name"] = 1400101801,  ["round3"] = 1018013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018012,  ["hideHero"] = 0,  ["iconHero"] = 1500251,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 932,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2162,7 +2162,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
+,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [100906] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2184,7 +2184,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
+,  ["section"] = 6,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
 ,  [104103] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2208,7 +2208,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 32,  ["stage_break_id"] = 11,}
+,  ["section"] = 3,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [103208] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2232,7 +2232,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30063,  [3] = 30,  [4] = 0,  [5] = 3300291032,}
 ,}
-,  ["round1"] = 1032081,  ["commonDrop"] = 1100107,  ["name"] = 1400103208,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 0,  ["hideHero"] = 30063,  ["iconHero"] = 1100631,  ["hero_Guide"] = {
+,  ["round1"] = 1032081,  ["commonDrop"] = 1100107,  ["name"] = 1400103208,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 32,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2382,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2316,7 +2316,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
+,  ["section"] = 5,  ["HeroExp"] = 22,  ["stage_break_id"] = 12,}
 ,  [101802] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2326,7 +2326,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1018021,  ["commonDrop"] = 1100106,  ["name"] = 1400101802,  ["round3"] = 1018023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018022,  ["hideHero"] = 0,  ["iconHero"] = 1500261,  ["hero_Guide"] = {
+,  ["round1"] = 1018021,  ["commonDrop"] = 1100106,  ["name"] = 1400101802,  ["round3"] = 1018023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018022,  ["hideHero"] = 0,  ["iconHero"] = 1500261,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 932,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2338,7 +2338,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
+,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [100907] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2362,7 +2362,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
+,  ["section"] = 7,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
 ,  [104104] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2384,7 +2384,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 32,  ["stage_break_id"] = 11,}
+,  ["section"] = 4,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [100204] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2416,7 +2416,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1034011,  ["commonDrop"] = 1100107,  ["name"] = 1400103401,  ["round3"] = 1034013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034012,  ["hideHero"] = 0,  ["iconHero"] = 1500451,  ["hero_Guide"] = {
+,  ["round1"] = 1034011,  ["commonDrop"] = 1100107,  ["name"] = 1400103401,  ["round3"] = 1034013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034012,  ["hideHero"] = 0,  ["iconHero"] = 1500451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1209,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2428,7 +2428,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 28,  ["stage_break_id"] = 13,}
+,  ["section"] = 1,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
 ,  [102506] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2450,7 +2450,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
+,  ["section"] = 6,  ["HeroExp"] = 22,  ["stage_break_id"] = 12,}
 ,  [101803] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2460,7 +2460,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1018031,  ["commonDrop"] = 1100106,  ["name"] = 1400101803,  ["round3"] = 1018033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018032,  ["hideHero"] = 0,  ["iconHero"] = 1100251,  ["hero_Guide"] = {
+,  ["round1"] = 1018031,  ["commonDrop"] = 1100106,  ["name"] = 1400101803,  ["round3"] = 1018033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018032,  ["hideHero"] = 0,  ["iconHero"] = 1100251,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 940,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2474,7 +2474,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
+,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [100908] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2498,7 +2498,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30060,  [3] = 30,  [4] = 0,  [5] = 3300291009,}
 ,}
-,  ["round1"] = 1009081,  ["commonDrop"] = 1100102,  ["name"] = 1400100908,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 9,  ["round2"] = 0,  ["hideHero"] = 30060,  ["iconHero"] = 1100601,  ["hero_Guide"] = {
+,  ["round1"] = 1009081,  ["commonDrop"] = 1100102,  ["name"] = 1400100908,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 9,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1500,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2534,7 +2534,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 32,  ["stage_break_id"] = 11,}
+,  ["section"] = 5,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [101100] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2017,  ["dragonGift"] = {
   ["106"] = {
@@ -2547,7 +2547,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400101100,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4011,  ["warriorsSkill"] = 0,  ["resMap"] = 3011,  ["chapter"] = 11,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30051,  [2] = 5700000006,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500101100,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -2592,7 +2592,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1034021,  ["commonDrop"] = 1100107,  ["name"] = 1400103402,  ["round3"] = 1034023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034022,  ["hideHero"] = 0,  ["iconHero"] = 1500461,  ["hero_Guide"] = {
+,  ["round1"] = 1034021,  ["commonDrop"] = 1100107,  ["name"] = 1400103402,  ["round3"] = 1034023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034022,  ["hideHero"] = 0,  ["iconHero"] = 1500461,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1209,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2604,7 +2604,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 28,  ["stage_break_id"] = 13,}
+,  ["section"] = 2,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
 ,  [102507] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2628,7 +2628,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 22,  ["stage_break_id"] = 13,}
+,  ["section"] = 7,  ["HeroExp"] = 22,  ["stage_break_id"] = 12,}
 ,  [101804] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2638,7 +2638,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1018041,  ["commonDrop"] = 1100106,  ["name"] = 1400101804,  ["round3"] = 1018043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018042,  ["hideHero"] = 0,  ["iconHero"] = 1500271,  ["hero_Guide"] = {
+,  ["round1"] = 1018041,  ["commonDrop"] = 1100106,  ["name"] = 1400101804,  ["round3"] = 1018043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018042,  ["hideHero"] = 0,  ["iconHero"] = 1500271,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 940,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2650,7 +2650,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
+,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [104106] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2672,7 +2672,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 32,  ["stage_break_id"] = 11,}
+,  ["section"] = 6,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [101101] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2694,7 +2694,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
+,  ["section"] = 1,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
 ,  [100206] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2726,7 +2726,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1034031,  ["commonDrop"] = 1100107,  ["name"] = 1400103403,  ["round3"] = 1034033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034032,  ["hideHero"] = 0,  ["iconHero"] = 1100281,  ["hero_Guide"] = {
+,  ["round1"] = 1034031,  ["commonDrop"] = 1100107,  ["name"] = 1400103403,  ["round3"] = 1034033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034032,  ["hideHero"] = 0,  ["iconHero"] = 1100281,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1217,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2740,7 +2740,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 28,  ["stage_break_id"] = 13,}
+,  ["section"] = 3,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
 ,  [102508] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2764,7 +2764,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30057,  [3] = 30,  [4] = 0,  [5] = 3300291025,}
 ,}
-,  ["round1"] = 1025081,  ["commonDrop"] = 1100107,  ["name"] = 1400102508,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 25,  ["round2"] = 0,  ["hideHero"] = 30057,  ["iconHero"] = 1100571,  ["hero_Guide"] = {
+,  ["round1"] = 1025081,  ["commonDrop"] = 1100107,  ["name"] = 1400102508,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 25,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100651,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2140,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2810,7 +2810,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1018051,  ["commonDrop"] = 1100106,  ["name"] = 1400101805,  ["round3"] = 1018053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018052,  ["hideHero"] = 0,  ["iconHero"] = 1100261,  ["hero_Guide"] = {
+,  ["round1"] = 1018051,  ["commonDrop"] = 1100106,  ["name"] = 1400101805,  ["round3"] = 1018053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018052,  ["hideHero"] = 0,  ["iconHero"] = 1100261,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 940,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2824,7 +2824,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
+,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [104107] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2848,7 +2848,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 32,  ["stage_break_id"] = 11,}
+,  ["section"] = 7,  ["HeroExp"] = 32,  ["stage_break_id"] = 15,}
 ,  [101102] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2870,7 +2870,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
+,  ["section"] = 2,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
 ,  [100207] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2904,7 +2904,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1034041,  ["commonDrop"] = 1100107,  ["name"] = 1400103404,  ["round3"] = 1034043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034042,  ["hideHero"] = 0,  ["iconHero"] = 1500471,  ["hero_Guide"] = {
+,  ["round1"] = 1034041,  ["commonDrop"] = 1100107,  ["name"] = 1400103404,  ["round3"] = 1034043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034042,  ["hideHero"] = 0,  ["iconHero"] = 1500471,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1217,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2916,7 +2916,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 28,  ["stage_break_id"] = 13,}
+,  ["section"] = 4,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
 ,  [102701] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2938,7 +2938,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 24,  ["stage_break_id"] = 15,}
+,  ["section"] = 1,  ["HeroExp"] = 24,  ["stage_break_id"] = 13,}
 ,  [101806] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2948,7 +2948,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1018061,  ["commonDrop"] = 1100106,  ["name"] = 1400101806,  ["round3"] = 1018063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018062,  ["hideHero"] = 0,  ["iconHero"] = 1500281,  ["hero_Guide"] = {
+,  ["round1"] = 1018061,  ["commonDrop"] = 1100106,  ["name"] = 1400101806,  ["round3"] = 1018063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018062,  ["hideHero"] = 0,  ["iconHero"] = 1500281,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 940,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -2960,7 +2960,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
+,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [104108] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -2984,7 +2984,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30063,  [3] = 30,  [4] = 0,  [5] = 3300291041,}
 ,}
-,  ["round1"] = 1041081,  ["commonDrop"] = 1100107,  ["name"] = 1400104108,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 41,  ["round2"] = 0,  ["hideHero"] = 30063,  ["iconHero"] = 1100631,  ["hero_Guide"] = {
+,  ["round1"] = 1041081,  ["commonDrop"] = 1100107,  ["name"] = 1400104108,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 41,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2694,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3020,7 +3020,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
+,  ["section"] = 3,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
 ,  [104300] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2049,  ["dragonGift"] = {
   ["106"] = {
@@ -3054,7 +3054,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1034051,  ["commonDrop"] = 1100107,  ["name"] = 1400103405,  ["round3"] = 1034053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034052,  ["hideHero"] = 0,  ["iconHero"] = 1100611,  ["hero_Guide"] = {
+,  ["round1"] = 1034051,  ["commonDrop"] = 1100107,  ["name"] = 1400103405,  ["round3"] = 1034053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034052,  ["hideHero"] = 0,  ["iconHero"] = 1100611,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1217,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3068,9 +3068,9 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 13,}
+,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
 ,  [100400] = {
-  ["sectionCount"] = 8,  ["chapterBg"] = 2010,  ["dragonGift"] = {
+  ["sectionCount"] = 7,  ["chapterBg"] = 2010,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -3081,7 +3081,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400100400,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4004,  ["warriorsSkill"] = 0,  ["resMap"] = 3004,  ["chapter"] = 4,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30063,  [2] = 5700000002,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500100400,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -3114,7 +3114,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 24,  ["stage_break_id"] = 15,}
+,  ["section"] = 2,  ["HeroExp"] = 24,  ["stage_break_id"] = 13,}
 ,  [101807] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3124,7 +3124,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1018071,  ["commonDrop"] = 1100106,  ["name"] = 1400101807,  ["round3"] = 1018073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018072,  ["hideHero"] = 0,  ["iconHero"] = 1100271,  ["hero_Guide"] = {
+,  ["round1"] = 1018071,  ["commonDrop"] = 1100106,  ["name"] = 1400101807,  ["round3"] = 1018073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 1018072,  ["hideHero"] = 0,  ["iconHero"] = 1100271,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 949,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3138,7 +3138,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 15,}
+,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101104] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3160,7 +3160,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
+,  ["section"] = 4,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
 ,  [104301] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3182,7 +3182,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 34,  ["stage_break_id"] = 13,}
+,  ["section"] = 1,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
 ,  [103406] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3192,7 +3192,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1034061,  ["commonDrop"] = 1100107,  ["name"] = 1400103406,  ["round3"] = 1034063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034062,  ["hideHero"] = 0,  ["iconHero"] = 1500481,  ["hero_Guide"] = {
+,  ["round1"] = 1034061,  ["commonDrop"] = 1100107,  ["name"] = 1400103406,  ["round3"] = 1034063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034062,  ["hideHero"] = 0,  ["iconHero"] = 1500481,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1217,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3204,7 +3204,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 28,  ["stage_break_id"] = 13,}
+,  ["section"] = 6,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
 ,  [100401] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3250,7 +3250,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 15,}
+,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 13,}
 ,  [101808] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3274,7 +3274,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30060,  [3] = 30,  [4] = 0,  [5] = 3300291018,}
 ,}
-,  ["round1"] = 1018081,  ["commonDrop"] = 1100106,  ["name"] = 1400101808,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 0,  ["hideHero"] = 30060,  ["iconHero"] = 1100601,  ["hero_Guide"] = {
+,  ["round1"] = 1018081,  ["commonDrop"] = 1100106,  ["name"] = 1400101808,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 18,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1898,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3299,7 +3299,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400102000,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4020,  ["warriorsSkill"] = 0,  ["resMap"] = 3020,  ["chapter"] = 20,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30051,  [2] = 5700000011,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500102000,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -3334,7 +3334,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
+,  ["section"] = 5,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
 ,  [104302] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3356,7 +3356,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 34,  ["stage_break_id"] = 13,}
+,  ["section"] = 2,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
 ,  [103407] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3366,7 +3366,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1034071,  ["commonDrop"] = 1100107,  ["name"] = 1400103407,  ["round3"] = 1034073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034072,  ["hideHero"] = 0,  ["iconHero"] = 1100481,  ["hero_Guide"] = {
+,  ["round1"] = 1034071,  ["commonDrop"] = 1100107,  ["name"] = 1400103407,  ["round3"] = 1034073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 1034072,  ["hideHero"] = 0,  ["iconHero"] = 1100481,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1226,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3380,7 +3380,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 28,  ["stage_break_id"] = 13,}
+,  ["section"] = 7,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
 ,  [100402] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3424,7 +3424,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 24,  ["stage_break_id"] = 15,}
+,  ["section"] = 4,  ["HeroExp"] = 24,  ["stage_break_id"] = 13,}
 ,  [102001] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3434,7 +3434,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1020011,  ["commonDrop"] = 1100106,  ["name"] = 1400102001,  ["round3"] = 1020013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020012,  ["hideHero"] = 0,  ["iconHero"] = 1500291,  ["hero_Guide"] = {
+,  ["round1"] = 1020011,  ["commonDrop"] = 1100106,  ["name"] = 1400102001,  ["round3"] = 1020013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020012,  ["hideHero"] = 0,  ["iconHero"] = 1500291,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 966,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3446,7 +3446,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
+,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101106] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3468,7 +3468,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
+,  ["section"] = 6,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
 ,  [104303] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3492,7 +3492,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 34,  ["stage_break_id"] = 13,}
+,  ["section"] = 3,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
 ,  [103408] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3516,7 +3516,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30057,  [3] = 30,  [4] = 0,  [5] = 3300291034,}
 ,}
-,  ["round1"] = 1034081,  ["commonDrop"] = 1100107,  ["name"] = 1400103408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 0,  ["hideHero"] = 30057,  ["iconHero"] = 1100571,  ["hero_Guide"] = {
+,  ["round1"] = 1034081,  ["commonDrop"] = 1100107,  ["name"] = 1400103408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 34,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2452,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3600,7 +3600,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 24,  ["stage_break_id"] = 15,}
+,  ["section"] = 5,  ["HeroExp"] = 24,  ["stage_break_id"] = 13,}
 ,  [102002] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3610,7 +3610,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1020021,  ["commonDrop"] = 1100106,  ["name"] = 1400102002,  ["round3"] = 1020023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020022,  ["hideHero"] = 0,  ["iconHero"] = 1500301,  ["hero_Guide"] = {
+,  ["round1"] = 1020021,  ["commonDrop"] = 1100106,  ["name"] = 1400102002,  ["round3"] = 1020023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020022,  ["hideHero"] = 0,  ["iconHero"] = 1500301,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 966,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3622,7 +3622,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
+,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101107] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3646,7 +3646,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 12,  ["stage_break_id"] = 14,}
+,  ["section"] = 7,  ["HeroExp"] = 12,  ["stage_break_id"] = 15,}
 ,  [104304] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3668,7 +3668,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 34,  ["stage_break_id"] = 13,}
+,  ["section"] = 4,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
 ,  [100404] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3700,7 +3700,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1036011,  ["commonDrop"] = 1100107,  ["name"] = 1400103601,  ["round3"] = 1036013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036012,  ["hideHero"] = 0,  ["iconHero"] = 1500491,  ["hero_Guide"] = {
+,  ["round1"] = 1036011,  ["commonDrop"] = 1100107,  ["name"] = 1400103601,  ["round3"] = 1036013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036012,  ["hideHero"] = 0,  ["iconHero"] = 1500491,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1243,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3712,7 +3712,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 30,  ["stage_break_id"] = 15,}
+,  ["section"] = 1,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [102706] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3734,7 +3734,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 24,  ["stage_break_id"] = 15,}
+,  ["section"] = 6,  ["HeroExp"] = 24,  ["stage_break_id"] = 13,}
 ,  [102003] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3744,7 +3744,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1020031,  ["commonDrop"] = 1100106,  ["name"] = 1400102003,  ["round3"] = 1020033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020032,  ["hideHero"] = 0,  ["iconHero"] = 1500841,  ["hero_Guide"] = {
+,  ["round1"] = 1020031,  ["commonDrop"] = 1100106,  ["name"] = 1400102003,  ["round3"] = 1020033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020032,  ["hideHero"] = 0,  ["iconHero"] = 1500841,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 975,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3758,7 +3758,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
+,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [101108] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3782,7 +3782,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30059,  [3] = 30,  [4] = 0,  [5] = 3300291011,}
 ,}
-,  ["round1"] = 1011081,  ["commonDrop"] = 1100105,  ["name"] = 1400101108,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 11,  ["round2"] = 0,  ["hideHero"] = 30059,  ["iconHero"] = 1100591,  ["hero_Guide"] = {
+,  ["round1"] = 1011081,  ["commonDrop"] = 1100105,  ["name"] = 1400101108,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 11,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1604,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3818,7 +3818,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 34,  ["stage_break_id"] = 13,}
+,  ["section"] = 5,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
 ,  [101300] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2019,  ["dragonGift"] = {
   ["106"] = {
@@ -3831,7 +3831,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400101300,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4013,  ["warriorsSkill"] = 0,  ["resMap"] = 3013,  ["chapter"] = 13,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30063,  [2] = 5700000007,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500101300,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -3876,7 +3876,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1036021,  ["commonDrop"] = 1100107,  ["name"] = 1400103602,  ["round3"] = 1036023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036022,  ["hideHero"] = 0,  ["iconHero"] = 1500501,  ["hero_Guide"] = {
+,  ["round1"] = 1036021,  ["commonDrop"] = 1100107,  ["name"] = 1400103602,  ["round3"] = 1036023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036022,  ["hideHero"] = 0,  ["iconHero"] = 1500501,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1243,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3888,7 +3888,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 30,  ["stage_break_id"] = 15,}
+,  ["section"] = 2,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [102707] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3912,7 +3912,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 24,  ["stage_break_id"] = 15,}
+,  ["section"] = 7,  ["HeroExp"] = 24,  ["stage_break_id"] = 13,}
 ,  [102004] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3922,7 +3922,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1020041,  ["commonDrop"] = 1100106,  ["name"] = 1400102004,  ["round3"] = 1020043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020042,  ["hideHero"] = 0,  ["iconHero"] = 1500311,  ["hero_Guide"] = {
+,  ["round1"] = 1020041,  ["commonDrop"] = 1100106,  ["name"] = 1400102004,  ["round3"] = 1020043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020042,  ["hideHero"] = 0,  ["iconHero"] = 1500311,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 975,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3934,7 +3934,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
+,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [104306] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3956,7 +3956,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 34,  ["stage_break_id"] = 13,}
+,  ["section"] = 6,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
 ,  [101301] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -3966,7 +3966,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1013011,  ["commonDrop"] = 1100105,  ["name"] = 1400101301,  ["round3"] = 1013013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013012,  ["hideHero"] = 0,  ["iconHero"] = 1500171,  ["hero_Guide"] = {
+,  ["round1"] = 1013011,  ["commonDrop"] = 1100105,  ["name"] = 1400101301,  ["round3"] = 1013013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013012,  ["hideHero"] = 0,  ["iconHero"] = 1500171,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 828,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -3978,7 +3978,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
+,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
 ,  [100406] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4010,7 +4010,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1036031,  ["commonDrop"] = 1100107,  ["name"] = 1400103603,  ["round3"] = 1036033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036032,  ["hideHero"] = 0,  ["iconHero"] = 1100171,  ["hero_Guide"] = {
+,  ["round1"] = 1036031,  ["commonDrop"] = 1100107,  ["name"] = 1400103603,  ["round3"] = 1036033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036032,  ["hideHero"] = 0,  ["iconHero"] = 1100171,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1252,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4024,7 +4024,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 30,  ["stage_break_id"] = 15,}
+,  ["section"] = 3,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [102708] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4048,7 +4048,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30060,  [3] = 30,  [4] = 0,  [5] = 3300291027,}
 ,}
-,  ["round1"] = 1027081,  ["commonDrop"] = 1100107,  ["name"] = 1400102708,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 27,  ["round2"] = 0,  ["hideHero"] = 30060,  ["iconHero"] = 1100601,  ["hero_Guide"] = {
+,  ["round1"] = 1027081,  ["commonDrop"] = 1100107,  ["name"] = 1400102708,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 27,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2210,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4180,7 +4180,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1013021,  ["commonDrop"] = 1100105,  ["name"] = 1400101302,  ["round3"] = 1013023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013022,  ["hideHero"] = 0,  ["iconHero"] = 1500181,  ["hero_Guide"] = {
+,  ["round1"] = 1013021,  ["commonDrop"] = 1100105,  ["name"] = 1400101302,  ["round3"] = 1013023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013022,  ["hideHero"] = 0,  ["iconHero"] = 1500181,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 828,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4192,7 +4192,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
+,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
 ,  [930106] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4270,7 +4270,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1036041,  ["commonDrop"] = 1100107,  ["name"] = 1400103604,  ["round3"] = 1036043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036042,  ["hideHero"] = 0,  ["iconHero"] = 1500511,  ["hero_Guide"] = {
+,  ["round1"] = 1036041,  ["commonDrop"] = 1100107,  ["name"] = 1400103604,  ["round3"] = 1036043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036042,  ["hideHero"] = 0,  ["iconHero"] = 1500511,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1252,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4282,7 +4282,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 30,  ["stage_break_id"] = 15,}
+,  ["section"] = 4,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [930108] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4424,7 +4424,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1013031,  ["commonDrop"] = 1100105,  ["name"] = 1400101303,  ["round3"] = 1013033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013032,  ["hideHero"] = 0,  ["iconHero"] = 1500781,  ["hero_Guide"] = {
+,  ["round1"] = 1013031,  ["commonDrop"] = 1100105,  ["name"] = 1400101303,  ["round3"] = 1013033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013032,  ["hideHero"] = 0,  ["iconHero"] = 1500781,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 836,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4438,7 +4438,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
+,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
 ,  [930114] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4473,7 +4473,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400104500,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4045,  ["warriorsSkill"] = 0,  ["resMap"] = 3045,  ["chapter"] = 45,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30059,  [2] = 5700000025,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500104500,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -4516,7 +4516,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1036051,  ["commonDrop"] = 1100107,  ["name"] = 1400103605,  ["round3"] = 1036053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036052,  ["hideHero"] = 0,  ["iconHero"] = 1500961,  ["hero_Guide"] = {
+,  ["round1"] = 1036051,  ["commonDrop"] = 1100107,  ["name"] = 1400103605,  ["round3"] = 1036053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036052,  ["hideHero"] = 0,  ["iconHero"] = 1500961,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1252,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4530,7 +4530,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 30,  ["stage_break_id"] = 15,}
+,  ["section"] = 5,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [930116] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4672,7 +4672,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1013041,  ["commonDrop"] = 1100105,  ["name"] = 1400101304,  ["round3"] = 1013043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013042,  ["hideHero"] = 0,  ["iconHero"] = 1500191,  ["hero_Guide"] = {
+,  ["round1"] = 1013041,  ["commonDrop"] = 1100105,  ["name"] = 1400101304,  ["round3"] = 1013043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013042,  ["hideHero"] = 0,  ["iconHero"] = 1500191,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 836,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4684,7 +4684,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
+,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
 ,  [930122] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4728,7 +4728,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 15,}
+,  ["section"] = 1,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930123] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4760,7 +4760,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1036061,  ["commonDrop"] = 1100107,  ["name"] = 1400103606,  ["round3"] = 1036063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036062,  ["hideHero"] = 0,  ["iconHero"] = 1500521,  ["hero_Guide"] = {
+,  ["round1"] = 1036061,  ["commonDrop"] = 1100107,  ["name"] = 1400103606,  ["round3"] = 1036063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036062,  ["hideHero"] = 0,  ["iconHero"] = 1500521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1252,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4772,7 +4772,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 30,  ["stage_break_id"] = 15,}
+,  ["section"] = 6,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [930124] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4895,7 +4895,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400102200,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4022,  ["warriorsSkill"] = 0,  ["resMap"] = 3022,  ["chapter"] = 22,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30063,  [2] = 5700000012,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500102200,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -4938,7 +4938,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1013051,  ["commonDrop"] = 1100105,  ["name"] = 1400101305,  ["round3"] = 1013053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013052,  ["hideHero"] = 0,  ["iconHero"] = 1500791,  ["hero_Guide"] = {
+,  ["round1"] = 1013051,  ["commonDrop"] = 1100105,  ["name"] = 1400101305,  ["round3"] = 1013053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013052,  ["hideHero"] = 0,  ["iconHero"] = 1500791,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 845,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -4952,7 +4952,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
 ,  [930130] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -4996,7 +4996,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 15,}
+,  ["section"] = 2,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930131] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5028,7 +5028,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1036071,  ["commonDrop"] = 1100107,  ["name"] = 1400103607,  ["round3"] = 1036073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036072,  ["hideHero"] = 0,  ["iconHero"] = 1500981,  ["hero_Guide"] = {
+,  ["round1"] = 1036071,  ["commonDrop"] = 1100107,  ["name"] = 1400103607,  ["round3"] = 1036073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 1036072,  ["hideHero"] = 0,  ["iconHero"] = 1500981,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1261,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5042,7 +5042,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 30,  ["stage_break_id"] = 15,}
+,  ["section"] = 7,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [930132] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5206,7 +5206,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1013061,  ["commonDrop"] = 1100105,  ["name"] = 1400101306,  ["round3"] = 1013063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013062,  ["hideHero"] = 0,  ["iconHero"] = 1500201,  ["hero_Guide"] = {
+,  ["round1"] = 1013061,  ["commonDrop"] = 1100105,  ["name"] = 1400101306,  ["round3"] = 1013063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013062,  ["hideHero"] = 0,  ["iconHero"] = 1500201,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 845,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5218,7 +5218,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
+,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
 ,  [930138] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5264,7 +5264,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 15,}
+,  ["section"] = 3,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [930139] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5310,7 +5310,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30060,  [3] = 30,  [4] = 0,  [5] = 3300291036,}
 ,}
-,  ["round1"] = 1036081,  ["commonDrop"] = 1100107,  ["name"] = 1400103608,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 0,  ["hideHero"] = 30060,  ["iconHero"] = 1100601,  ["hero_Guide"] = {
+,  ["round1"] = 1036081,  ["commonDrop"] = 1100107,  ["name"] = 1400103608,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 36,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2522,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5486,7 +5486,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1013071,  ["commonDrop"] = 1100105,  ["name"] = 1400101307,  ["round3"] = 1013073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013072,  ["hideHero"] = 0,  ["iconHero"] = 1500801,  ["hero_Guide"] = {
+,  ["round1"] = 1013071,  ["commonDrop"] = 1100105,  ["name"] = 1400101307,  ["round3"] = 1013073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 1013072,  ["hideHero"] = 0,  ["iconHero"] = 1500801,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 854,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5500,7 +5500,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
+,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
 ,  [930146] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5544,7 +5544,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 15,}
+,  ["section"] = 4,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [100604] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5576,7 +5576,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1038011,  ["commonDrop"] = 1100107,  ["name"] = 1400103801,  ["round3"] = 1038013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038012,  ["hideHero"] = 0,  ["iconHero"] = 1500531,  ["hero_Guide"] = {
+,  ["round1"] = 1038011,  ["commonDrop"] = 1100107,  ["name"] = 1400103801,  ["round3"] = 1038013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038012,  ["hideHero"] = 0,  ["iconHero"] = 1500531,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1278,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5588,7 +5588,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 30,  ["stage_break_id"] = 14,}
+,  ["section"] = 1,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [102906] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5658,7 +5658,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10053,  [3] = 30,  [4] = 0,  [5] = 3300291013,}
 ,}
-,  ["round1"] = 1013081,  ["commonDrop"] = 1100105,  ["name"] = 1400101308,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
+,  ["round1"] = 1013081,  ["commonDrop"] = 1100105,  ["name"] = 1400101308,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 13,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1708,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5694,7 +5694,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 15,}
+,  ["section"] = 5,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101500] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2021,  ["dragonGift"] = {
   ["106"] = {
@@ -5707,7 +5707,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400101500,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4015,  ["warriorsSkill"] = 0,  ["resMap"] = 3015,  ["chapter"] = 15,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30057,  [2] = 5700000008,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500101500,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -5752,7 +5752,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1038021,  ["commonDrop"] = 1100107,  ["name"] = 1400103802,  ["round3"] = 1038023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038022,  ["hideHero"] = 0,  ["iconHero"] = 1500541,  ["hero_Guide"] = {
+,  ["round1"] = 1038021,  ["commonDrop"] = 1100107,  ["name"] = 1400103802,  ["round3"] = 1038023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038022,  ["hideHero"] = 0,  ["iconHero"] = 1500541,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1278,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5764,7 +5764,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 30,  ["stage_break_id"] = 14,}
+,  ["section"] = 2,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [102907] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5832,7 +5832,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 15,}
+,  ["section"] = 6,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101501] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5842,7 +5842,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1015011,  ["commonDrop"] = 1100105,  ["name"] = 1400101501,  ["round3"] = 1015013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015012,  ["hideHero"] = 0,  ["iconHero"] = 1500211,  ["hero_Guide"] = {
+,  ["round1"] = 1015011,  ["commonDrop"] = 1100105,  ["name"] = 1400101501,  ["round3"] = 1015013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015012,  ["hideHero"] = 0,  ["iconHero"] = 1500211,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 871,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5854,7 +5854,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [100606] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5886,7 +5886,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1038031,  ["commonDrop"] = 1100107,  ["name"] = 1400103803,  ["round3"] = 1038033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038032,  ["hideHero"] = 0,  ["iconHero"] = 1500991,  ["hero_Guide"] = {
+,  ["round1"] = 1038031,  ["commonDrop"] = 1100107,  ["name"] = 1400103803,  ["round3"] = 1038033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038032,  ["hideHero"] = 0,  ["iconHero"] = 1500991,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1287,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5900,7 +5900,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 30,  ["stage_break_id"] = 14,}
+,  ["section"] = 3,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [102908] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -5924,7 +5924,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30059,  [3] = 30,  [4] = 0,  [5] = 3300291029,}
 ,}
-,  ["round1"] = 1029081,  ["commonDrop"] = 1100107,  ["name"] = 1400102908,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 29,  ["round2"] = 0,  ["hideHero"] = 30059,  ["iconHero"] = 1100591,  ["hero_Guide"] = {
+,  ["round1"] = 1029081,  ["commonDrop"] = 1100107,  ["name"] = 1400102908,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 29,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2278,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -5949,7 +5949,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400103100,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4031,  ["warriorsSkill"] = 0,  ["resMap"] = 3031,  ["chapter"] = 31,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30063,  [2] = 5700000017,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500103100,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -6008,7 +6008,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 15,}
+,  ["section"] = 7,  ["HeroExp"] = 36,  ["stage_break_id"] = 12,}
 ,  [101502] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6018,7 +6018,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1015021,  ["commonDrop"] = 1100105,  ["name"] = 1400101502,  ["round3"] = 1015023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015022,  ["hideHero"] = 0,  ["iconHero"] = 1500221,  ["hero_Guide"] = {
+,  ["round1"] = 1015021,  ["commonDrop"] = 1100105,  ["name"] = 1400101502,  ["round3"] = 1015023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015022,  ["hideHero"] = 0,  ["iconHero"] = 1500221,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 871,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6030,7 +6030,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [100607] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6064,7 +6064,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1038041,  ["commonDrop"] = 1100107,  ["name"] = 1400103804,  ["round3"] = 1038043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038042,  ["hideHero"] = 0,  ["iconHero"] = 1500551,  ["hero_Guide"] = {
+,  ["round1"] = 1038041,  ["commonDrop"] = 1100107,  ["name"] = 1400103804,  ["round3"] = 1038043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038042,  ["hideHero"] = 0,  ["iconHero"] = 1500551,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1287,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6076,7 +6076,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 30,  ["stage_break_id"] = 14,}
+,  ["section"] = 4,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [103101] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6086,7 +6086,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1031011,  ["commonDrop"] = 1100107,  ["name"] = 1400103101,  ["round3"] = 1031013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031012,  ["hideHero"] = 0,  ["iconHero"] = 1500411,  ["hero_Guide"] = {
+,  ["round1"] = 1031011,  ["commonDrop"] = 1100107,  ["name"] = 1400103101,  ["round3"] = 1031013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031012,  ["hideHero"] = 0,  ["iconHero"] = 1500411,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1157,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6098,7 +6098,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
+,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [102206] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6144,7 +6144,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30060,  [3] = 30,  [4] = 0,  [5] = 3300291045,}
 ,}
-,  ["round1"] = 1045081,  ["commonDrop"] = 1100107,  ["name"] = 1400104508,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 45,  ["round2"] = 0,  ["hideHero"] = 30060,  ["iconHero"] = 1100601,  ["hero_Guide"] = {
+,  ["round1"] = 1045081,  ["commonDrop"] = 1100107,  ["name"] = 1400104508,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 45,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100651,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2834,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6166,7 +6166,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1015031,  ["commonDrop"] = 1100105,  ["name"] = 1400101503,  ["round3"] = 1015033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015032,  ["hideHero"] = 0,  ["iconHero"] = 1500811,  ["hero_Guide"] = {
+,  ["round1"] = 1015031,  ["commonDrop"] = 1100105,  ["name"] = 1400101503,  ["round3"] = 1015033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015032,  ["hideHero"] = 0,  ["iconHero"] = 1500811,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 871,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6180,7 +6180,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [900001] = {
   ["sectionCount"] = 43,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6203,42 +6203,6 @@ stage_config={
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [100608] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-  [1] = 250,  [2] = 250,}
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100608,  ["restore"] = 100,  ["SpecialDropmax"] = 1,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 21,  ["Determination"] = {
-  ["1"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 4,  [4] = 3300290001,}
-,  ["8"] = {
-  [1] = 0.03,  [2] = 100051,  [3] = 30,  [4] = 0,  [5] = 3300292006,}
-,  ["3"] = {
-  [1] = 0.03,  [2] = 30,  [3] = 3300290003,}
-,  ["2"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 4,  [4] = 3300290002,}
-,  ["5"] = {
-  [1] = 0.03,  [2] = 500000,  [3] = 3300290005,}
-,  ["4"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 3300290004,}
-,  ["7"] = {
-  [1] = 0.03,  [2] = 10052,  [3] = 30,  [4] = 0,  [5] = 3300291006,}
-,}
-,  ["round1"] = 1006081,  ["commonDrop"] = 1100101,  ["name"] = 1400100608,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 6,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
-}
-,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1378,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
-}
-,  ["res"] = 1008,  ["eliteDropFrequency"] = 5,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 14,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 100608,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 5,  ["vigor"] = 12,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100608,  ["playerExp"] = 12,  ["starGift"] = {
-}
-,  ["section"] = 8,  ["HeroExp"] = 10,  ["stage_break_id"] = 0,}
 ,  [900002] = {
   ["sectionCount"] = 42,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6270,7 +6234,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1038051,  ["commonDrop"] = 1100107,  ["name"] = 1400103805,  ["round3"] = 1038053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038052,  ["hideHero"] = 0,  ["iconHero"] = 1501001,  ["hero_Guide"] = {
+,  ["round1"] = 1038051,  ["commonDrop"] = 1100107,  ["name"] = 1400103805,  ["round3"] = 1038053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038052,  ["hideHero"] = 0,  ["iconHero"] = 1501001,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1287,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6284,7 +6248,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 30,  ["stage_break_id"] = 14,}
+,  ["section"] = 5,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [100800] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2014,  ["dragonGift"] = {
   ["106"] = {
@@ -6297,7 +6261,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400100800,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4008,  ["warriorsSkill"] = 0,  ["resMap"] = 3008,  ["chapter"] = 8,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30060,  [2] = 5700000004,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500100800,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -6340,7 +6304,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1031021,  ["commonDrop"] = 1100107,  ["name"] = 1400103102,  ["round3"] = 1031023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031022,  ["hideHero"] = 0,  ["iconHero"] = 1500421,  ["hero_Guide"] = {
+,  ["round1"] = 1031021,  ["commonDrop"] = 1100107,  ["name"] = 1400103102,  ["round3"] = 1031023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031022,  ["hideHero"] = 0,  ["iconHero"] = 1500421,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1157,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6352,7 +6316,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
+,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [102207] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6386,7 +6350,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1015041,  ["commonDrop"] = 1100105,  ["name"] = 1400101504,  ["round3"] = 1015043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015042,  ["hideHero"] = 0,  ["iconHero"] = 1500231,  ["hero_Guide"] = {
+,  ["round1"] = 1015041,  ["commonDrop"] = 1100105,  ["name"] = 1400101504,  ["round3"] = 1015043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015042,  ["hideHero"] = 0,  ["iconHero"] = 1500231,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 880,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6398,7 +6362,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [103806] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6408,7 +6372,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1038061,  ["commonDrop"] = 1100107,  ["name"] = 1400103806,  ["round3"] = 1038063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038062,  ["hideHero"] = 0,  ["iconHero"] = 1500561,  ["hero_Guide"] = {
+,  ["round1"] = 1038061,  ["commonDrop"] = 1100107,  ["name"] = 1400103806,  ["round3"] = 1038063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038062,  ["hideHero"] = 0,  ["iconHero"] = 1500561,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1287,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6420,7 +6384,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 30,  ["stage_break_id"] = 14,}
+,  ["section"] = 6,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [100801] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6452,7 +6416,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1031031,  ["commonDrop"] = 1100107,  ["name"] = 1400103103,  ["round3"] = 1031033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031032,  ["hideHero"] = 0,  ["iconHero"] = 1500731,  ["hero_Guide"] = {
+,  ["round1"] = 1031031,  ["commonDrop"] = 1100107,  ["name"] = 1400103103,  ["round3"] = 1031033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031032,  ["hideHero"] = 0,  ["iconHero"] = 1500731,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1165,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6466,7 +6430,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
+,  ["section"] = 3,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [102208] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6515,7 +6479,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400102400,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4024,  ["warriorsSkill"] = 0,  ["resMap"] = 3024,  ["chapter"] = 24,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30057,  [2] = 5700000013,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500102400,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -6536,7 +6500,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1015051,  ["commonDrop"] = 1100105,  ["name"] = 1400101505,  ["round3"] = 1015053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015052,  ["hideHero"] = 0,  ["iconHero"] = 1100611,  ["hero_Guide"] = {
+,  ["round1"] = 1015051,  ["commonDrop"] = 1100105,  ["name"] = 1400101505,  ["round3"] = 1015053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015052,  ["hideHero"] = 0,  ["iconHero"] = 1100611,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 880,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6550,7 +6514,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [103807] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6560,7 +6524,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1038071,  ["commonDrop"] = 1100107,  ["name"] = 1400103807,  ["round3"] = 1038073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038072,  ["hideHero"] = 0,  ["iconHero"] = 1501011,  ["hero_Guide"] = {
+,  ["round1"] = 1038071,  ["commonDrop"] = 1100107,  ["name"] = 1400103807,  ["round3"] = 1038073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 1038072,  ["hideHero"] = 0,  ["iconHero"] = 1501011,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1295,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6574,7 +6538,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 30,  ["stage_break_id"] = 14,}
+,  ["section"] = 7,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
 ,  [100802] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6606,7 +6570,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1031041,  ["commonDrop"] = 1100107,  ["name"] = 1400103104,  ["round3"] = 1031043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031042,  ["hideHero"] = 0,  ["iconHero"] = 1500431,  ["hero_Guide"] = {
+,  ["round1"] = 1031041,  ["commonDrop"] = 1100107,  ["name"] = 1400103104,  ["round3"] = 1031043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031042,  ["hideHero"] = 0,  ["iconHero"] = 1500431,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1165,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6618,7 +6582,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
+,  ["section"] = 4,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [930201] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6730,7 +6694,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30059,  [3] = 30,  [4] = 0,  [5] = 3300291038,}
 ,}
-,  ["round1"] = 1038081,  ["commonDrop"] = 1100107,  ["name"] = 1400103808,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 0,  ["hideHero"] = 30059,  ["iconHero"] = 1100591,  ["hero_Guide"] = {
+,  ["round1"] = 1038081,  ["commonDrop"] = 1100107,  ["name"] = 1400103808,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 38,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2590,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6801,7 +6765,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400104000,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4040,  ["warriorsSkill"] = 0,  ["resMap"] = 3040,  ["chapter"] = 40,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30063,  [2] = 5700000022,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500104000,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -6844,7 +6808,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1031051,  ["commonDrop"] = 1100107,  ["name"] = 1400103105,  ["round3"] = 1031053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
+,  ["round1"] = 1031051,  ["commonDrop"] = 1100107,  ["name"] = 1400103105,  ["round3"] = 1031053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1165,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6858,7 +6822,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [930208] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -6934,7 +6898,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1015071,  ["commonDrop"] = 1100105,  ["name"] = 1400101507,  ["round3"] = 1015073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015072,  ["hideHero"] = 0,  ["iconHero"] = 1100481,  ["hero_Guide"] = {
+,  ["round1"] = 1015071,  ["commonDrop"] = 1100105,  ["name"] = 1400101507,  ["round3"] = 1015073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015072,  ["hideHero"] = 0,  ["iconHero"] = 1100481,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 888,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -6948,7 +6912,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [930212] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -7090,7 +7054,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1031061,  ["commonDrop"] = 1100107,  ["name"] = 1400103106,  ["round3"] = 1031063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031062,  ["hideHero"] = 0,  ["iconHero"] = 1500441,  ["hero_Guide"] = {
+,  ["round1"] = 1031061,  ["commonDrop"] = 1100107,  ["name"] = 1400103106,  ["round3"] = 1031063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031062,  ["hideHero"] = 0,  ["iconHero"] = 1500441,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1165,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -7102,7 +7066,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
+,  ["section"] = 6,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [930216] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -7194,7 +7158,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10052,  [3] = 30,  [4] = 0,  [5] = 3300291015,}
 ,}
-,  ["round1"] = 1015081,  ["commonDrop"] = 1100105,  ["name"] = 1400101508,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
+,  ["round1"] = 1015081,  ["commonDrop"] = 1100105,  ["name"] = 1400101508,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100651,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1776,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -7241,7 +7205,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400101700,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4017,  ["warriorsSkill"] = 0,  ["resMap"] = 3017,  ["chapter"] = 17,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30060,  [2] = 5700000009,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500101700,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -7374,7 +7338,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1031071,  ["commonDrop"] = 1100107,  ["name"] = 1400103107,  ["round3"] = 1031073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031072,  ["hideHero"] = 0,  ["iconHero"] = 1100491,  ["hero_Guide"] = {
+,  ["round1"] = 1031071,  ["commonDrop"] = 1100107,  ["name"] = 1400103107,  ["round3"] = 1031073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 1031072,  ["hideHero"] = 0,  ["iconHero"] = 1100491,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1174,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -7388,7 +7352,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
+,  ["section"] = 7,  ["HeroExp"] = 26,  ["stage_break_id"] = 15,}
 ,  [930224] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -7508,7 +7472,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1017011,  ["commonDrop"] = 1100106,  ["name"] = 1400101701,  ["round3"] = 1017013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017012,  ["hideHero"] = 0,  ["iconHero"] = 1500251,  ["hero_Guide"] = {
+,  ["round1"] = 1017011,  ["commonDrop"] = 1100106,  ["name"] = 1400101701,  ["round3"] = 1017013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017012,  ["hideHero"] = 0,  ["iconHero"] = 1500251,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 914,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -7520,7 +7484,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 1,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [930229] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -7656,7 +7620,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10053,  [3] = 30,  [4] = 0,  [5] = 3300291031,}
 ,}
-,  ["round1"] = 1031081,  ["commonDrop"] = 1100107,  ["name"] = 1400103108,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
+,  ["round1"] = 1031081,  ["commonDrop"] = 1100107,  ["name"] = 1400103108,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 31,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2348,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -7703,7 +7667,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400103300,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4033,  ["warriorsSkill"] = 0,  ["resMap"] = 3033,  ["chapter"] = 33,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30057,  [2] = 5700000018,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500103300,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -7792,7 +7756,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1017021,  ["commonDrop"] = 1100106,  ["name"] = 1400101702,  ["round3"] = 1017023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017022,  ["hideHero"] = 0,  ["iconHero"] = 1500261,  ["hero_Guide"] = {
+,  ["round1"] = 1017021,  ["commonDrop"] = 1100106,  ["name"] = 1400101702,  ["round3"] = 1017023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017022,  ["hideHero"] = 0,  ["iconHero"] = 1500261,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 914,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -7804,7 +7768,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 2,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [930237] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -7948,7 +7912,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1033011,  ["commonDrop"] = 1100107,  ["name"] = 1400103301,  ["round3"] = 1033013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033012,  ["hideHero"] = 0,  ["iconHero"] = 1500451,  ["hero_Guide"] = {
+,  ["round1"] = 1033011,  ["commonDrop"] = 1100107,  ["name"] = 1400103301,  ["round3"] = 1033013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033012,  ["hideHero"] = 0,  ["iconHero"] = 1500451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1191,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -7960,7 +7924,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 1,  ["HeroExp"] = 28,  ["stage_break_id"] = 11,}
 ,  [102406] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8036,7 +8000,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1017031,  ["commonDrop"] = 1100106,  ["name"] = 1400101703,  ["round3"] = 1017033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017032,  ["hideHero"] = 0,  ["iconHero"] = 1500701,  ["hero_Guide"] = {
+,  ["round1"] = 1017031,  ["commonDrop"] = 1100106,  ["name"] = 1400101703,  ["round3"] = 1017033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017032,  ["hideHero"] = 0,  ["iconHero"] = 1500701,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 923,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8050,7 +8014,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 3,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [930245] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8096,7 +8060,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10046,  [3] = 30,  [4] = 0,  [5] = 3300291008,}
 ,}
-,  ["round1"] = 1008081,  ["commonDrop"] = 1100102,  ["name"] = 1400100808,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 8,  ["round2"] = 0,  ["hideHero"] = 10046,  ["iconHero"] = 1100461,  ["hero_Guide"] = {
+,  ["round1"] = 1008081,  ["commonDrop"] = 1100102,  ["name"] = 1400100808,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 8,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1466,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8167,7 +8131,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400101000,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4010,  ["warriorsSkill"] = 0,  ["resMap"] = 3010,  ["chapter"] = 10,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30059,  [2] = 5700000005,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500101000,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -8188,7 +8152,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1033021,  ["commonDrop"] = 1100107,  ["name"] = 1400103302,  ["round3"] = 1033023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033022,  ["hideHero"] = 0,  ["iconHero"] = 1500461,  ["hero_Guide"] = {
+,  ["round1"] = 1033021,  ["commonDrop"] = 1100107,  ["name"] = 1400103302,  ["round3"] = 1033023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033022,  ["hideHero"] = 0,  ["iconHero"] = 1500461,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1191,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8200,7 +8164,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 2,  ["HeroExp"] = 28,  ["stage_break_id"] = 11,}
 ,  [102407] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8234,7 +8198,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1017041,  ["commonDrop"] = 1100106,  ["name"] = 1400101704,  ["round3"] = 1017043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017042,  ["hideHero"] = 0,  ["iconHero"] = 1500271,  ["hero_Guide"] = {
+,  ["round1"] = 1017041,  ["commonDrop"] = 1100106,  ["name"] = 1400101704,  ["round3"] = 1017043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017042,  ["hideHero"] = 0,  ["iconHero"] = 1500271,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 923,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8246,7 +8210,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 4,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [104006] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8300,7 +8264,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1033031,  ["commonDrop"] = 1100107,  ["name"] = 1400103303,  ["round3"] = 1033033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033032,  ["hideHero"] = 0,  ["iconHero"] = 1500731,  ["hero_Guide"] = {
+,  ["round1"] = 1033031,  ["commonDrop"] = 1100107,  ["name"] = 1400103303,  ["round3"] = 1033033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033032,  ["hideHero"] = 0,  ["iconHero"] = 1500731,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1200,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8314,7 +8278,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 3,  ["HeroExp"] = 28,  ["stage_break_id"] = 11,}
 ,  [102408] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8338,7 +8302,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10052,  [3] = 30,  [4] = 0,  [5] = 3300291024,}
 ,}
-,  ["round1"] = 1024081,  ["commonDrop"] = 1100107,  ["name"] = 1400102408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 24,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
+,  ["round1"] = 1024081,  ["commonDrop"] = 1100107,  ["name"] = 1400102408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 24,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2106,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8363,7 +8327,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400102600,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4026,  ["warriorsSkill"] = 0,  ["resMap"] = 3026,  ["chapter"] = 26,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30060,  [2] = 5700000014,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500102600,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -8384,7 +8348,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1017051,  ["commonDrop"] = 1100106,  ["name"] = 1400101705,  ["round3"] = 1017053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017052,  ["hideHero"] = 0,  ["iconHero"] = 1500821,  ["hero_Guide"] = {
+,  ["round1"] = 1017051,  ["commonDrop"] = 1100106,  ["name"] = 1400101705,  ["round3"] = 1017053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017052,  ["hideHero"] = 0,  ["iconHero"] = 1500821,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 923,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8398,7 +8362,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [104007] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8454,7 +8418,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1033041,  ["commonDrop"] = 1100107,  ["name"] = 1400103304,  ["round3"] = 1033043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033042,  ["hideHero"] = 0,  ["iconHero"] = 1500471,  ["hero_Guide"] = {
+,  ["round1"] = 1033041,  ["commonDrop"] = 1100107,  ["name"] = 1400103304,  ["round3"] = 1033043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033042,  ["hideHero"] = 0,  ["iconHero"] = 1500471,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1200,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8466,7 +8430,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 4,  ["HeroExp"] = 28,  ["stage_break_id"] = 11,}
 ,  [102601] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8498,7 +8462,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1017061,  ["commonDrop"] = 1100106,  ["name"] = 1400101706,  ["round3"] = 1017063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017062,  ["hideHero"] = 0,  ["iconHero"] = 1500281,  ["hero_Guide"] = {
+,  ["round1"] = 1017061,  ["commonDrop"] = 1100106,  ["name"] = 1400101706,  ["round3"] = 1017063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017062,  ["hideHero"] = 0,  ["iconHero"] = 1500281,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 923,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8510,7 +8474,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [104008] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8534,7 +8498,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10053,  [3] = 30,  [4] = 0,  [5] = 3300291040,}
 ,}
-,  ["round1"] = 1040081,  ["commonDrop"] = 1100107,  ["name"] = 1400104008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 40,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
+,  ["round1"] = 1040081,  ["commonDrop"] = 1100107,  ["name"] = 1400104008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 40,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100651,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2660,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8604,7 +8568,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1033051,  ["commonDrop"] = 1100107,  ["name"] = 1400103305,  ["round3"] = 1033053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
+,  ["round1"] = 1033051,  ["commonDrop"] = 1100107,  ["name"] = 1400103305,  ["round3"] = 1033053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033052,  ["hideHero"] = 0,  ["iconHero"] = 1100041,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1200,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8618,9 +8582,9 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 11,}
 ,  [100300] = {
-  ["sectionCount"] = 8,  ["chapterBg"] = 2009,  ["dragonGift"] = {
+  ["sectionCount"] = 7,  ["chapterBg"] = 2009,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -8674,7 +8638,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1017071,  ["commonDrop"] = 1100106,  ["name"] = 1400101707,  ["round3"] = 1017073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017072,  ["hideHero"] = 0,  ["iconHero"] = 1500831,  ["hero_Guide"] = {
+,  ["round1"] = 1017071,  ["commonDrop"] = 1100106,  ["name"] = 1400101707,  ["round3"] = 1017073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 1017072,  ["hideHero"] = 0,  ["iconHero"] = 1500831,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 932,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8688,7 +8652,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
+,  ["section"] = 7,  ["HeroExp"] = 16,  ["stage_break_id"] = 13,}
 ,  [101004] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8742,7 +8706,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1033061,  ["commonDrop"] = 1100107,  ["name"] = 1400103306,  ["round3"] = 1033063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033062,  ["hideHero"] = 0,  ["iconHero"] = 1500481,  ["hero_Guide"] = {
+,  ["round1"] = 1033061,  ["commonDrop"] = 1100107,  ["name"] = 1400103306,  ["round3"] = 1033063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033062,  ["hideHero"] = 0,  ["iconHero"] = 1500481,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1200,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8754,7 +8718,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 6,  ["HeroExp"] = 28,  ["stage_break_id"] = 11,}
 ,  [100301] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8776,7 +8740,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  ["section"] = 1,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [102603] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8824,7 +8788,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10046,  [3] = 30,  [4] = 0,  [5] = 3300291017,}
 ,}
-,  ["round1"] = 1017081,  ["commonDrop"] = 1100106,  ["name"] = 1400101708,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 0,  ["hideHero"] = 10046,  ["iconHero"] = 1100461,  ["hero_Guide"] = {
+,  ["round1"] = 1017081,  ["commonDrop"] = 1100106,  ["name"] = 1400101708,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 17,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1864,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8849,7 +8813,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400101900,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4019,  ["warriorsSkill"] = 0,  ["resMap"] = 3019,  ["chapter"] = 19,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30059,  [2] = 5700000010,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500101900,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -8916,7 +8880,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1033071,  ["commonDrop"] = 1100107,  ["name"] = 1400103307,  ["round3"] = 1033073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033072,  ["hideHero"] = 0,  ["iconHero"] = 1100491,  ["hero_Guide"] = {
+,  ["round1"] = 1033071,  ["commonDrop"] = 1100107,  ["name"] = 1400103307,  ["round3"] = 1033073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 33,  ["round2"] = 1033072,  ["hideHero"] = 0,  ["iconHero"] = 1100491,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1209,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8930,7 +8894,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 7,  ["HeroExp"] = 28,  ["stage_break_id"] = 11,}
 ,  [100302] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8952,7 +8916,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  ["section"] = 2,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [102604] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -8984,7 +8948,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1019011,  ["commonDrop"] = 1100106,  ["name"] = 1400101901,  ["round3"] = 1019013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019012,  ["hideHero"] = 0,  ["iconHero"] = 1500251,  ["hero_Guide"] = {
+,  ["round1"] = 1019011,  ["commonDrop"] = 1100106,  ["name"] = 1400101901,  ["round3"] = 1019013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019012,  ["hideHero"] = 0,  ["iconHero"] = 1500251,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 949,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -8996,7 +8960,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
+,  ["section"] = 1,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
 ,  [101006] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9102,7 +9066,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [103500] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2041,  ["dragonGift"] = {
   ["106"] = {
@@ -9115,7 +9079,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400103500,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4035,  ["warriorsSkill"] = 0,  ["resMap"] = 3035,  ["chapter"] = 35,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30060,  [2] = 5700000019,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500103500,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -9182,7 +9146,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1019021,  ["commonDrop"] = 1100106,  ["name"] = 1400101902,  ["round3"] = 1019023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019022,  ["hideHero"] = 0,  ["iconHero"] = 1500261,  ["hero_Guide"] = {
+,  ["round1"] = 1019021,  ["commonDrop"] = 1100106,  ["name"] = 1400101902,  ["round3"] = 1019023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019022,  ["hideHero"] = 0,  ["iconHero"] = 1500261,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 949,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9194,7 +9158,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
+,  ["section"] = 2,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
 ,  [101007] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9284,7 +9248,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  ["section"] = 4,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [930306] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9316,7 +9280,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1035011,  ["commonDrop"] = 1100107,  ["name"] = 1400103501,  ["round3"] = 1035013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035012,  ["hideHero"] = 0,  ["iconHero"] = 1500491,  ["hero_Guide"] = {
+,  ["round1"] = 1035011,  ["commonDrop"] = 1100107,  ["name"] = 1400103501,  ["round3"] = 1035013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035012,  ["hideHero"] = 0,  ["iconHero"] = 1500491,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1226,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9328,7 +9292,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 1,  ["HeroExp"] = 28,  ["stage_break_id"] = 12,}
 ,  [930307] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9426,7 +9390,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1019031,  ["commonDrop"] = 1100106,  ["name"] = 1400101903,  ["round3"] = 1019033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019032,  ["hideHero"] = 0,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
+,  ["round1"] = 1019031,  ["commonDrop"] = 1100106,  ["name"] = 1400101903,  ["round3"] = 1019033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019032,  ["hideHero"] = 0,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 958,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9440,7 +9404,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
+,  ["section"] = 3,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
 ,  [101008] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9464,7 +9428,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10066,  [3] = 30,  [4] = 0,  [5] = 3300291010,}
 ,}
-,  ["round1"] = 1010081,  ["commonDrop"] = 1100102,  ["name"] = 1400101008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 10,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
+,  ["round1"] = 1010081,  ["commonDrop"] = 1100102,  ["name"] = 1400101008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 10,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100651,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1552,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9570,7 +9534,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  ["section"] = 5,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [930314] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9602,7 +9566,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1035021,  ["commonDrop"] = 1100107,  ["name"] = 1400103502,  ["round3"] = 1035023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035022,  ["hideHero"] = 0,  ["iconHero"] = 1500501,  ["hero_Guide"] = {
+,  ["round1"] = 1035021,  ["commonDrop"] = 1100107,  ["name"] = 1400103502,  ["round3"] = 1035023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035022,  ["hideHero"] = 0,  ["iconHero"] = 1500501,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1226,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9614,7 +9578,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 2,  ["HeroExp"] = 28,  ["stage_break_id"] = 12,}
 ,  [930315] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9714,7 +9678,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1019041,  ["commonDrop"] = 1100106,  ["name"] = 1400101904,  ["round3"] = 1019043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019042,  ["hideHero"] = 0,  ["iconHero"] = 1500271,  ["hero_Guide"] = {
+,  ["round1"] = 1019041,  ["commonDrop"] = 1100106,  ["name"] = 1400101904,  ["round3"] = 1019043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019042,  ["hideHero"] = 0,  ["iconHero"] = 1500271,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 958,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9726,7 +9690,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
+,  ["section"] = 4,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
 ,  [930319] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9780,7 +9744,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1012011,  ["commonDrop"] = 1100105,  ["name"] = 1400101201,  ["round3"] = 1012013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012012,  ["hideHero"] = 0,  ["iconHero"] = 1500171,  ["hero_Guide"] = {
+,  ["round1"] = 1012011,  ["commonDrop"] = 1100105,  ["name"] = 1400101201,  ["round3"] = 1012013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012012,  ["hideHero"] = 0,  ["iconHero"] = 1500171,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 802,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9792,7 +9756,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 12,}
+,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [930321] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9836,7 +9800,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  ["section"] = 6,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [930322] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9868,7 +9832,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1035031,  ["commonDrop"] = 1100107,  ["name"] = 1400103503,  ["round3"] = 1035033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035032,  ["hideHero"] = 0,  ["iconHero"] = 1500961,  ["hero_Guide"] = {
+,  ["round1"] = 1035031,  ["commonDrop"] = 1100107,  ["name"] = 1400103503,  ["round3"] = 1035033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035032,  ["hideHero"] = 0,  ["iconHero"] = 1500961,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1235,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9882,7 +9846,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 3,  ["HeroExp"] = 28,  ["stage_break_id"] = 12,}
 ,  [930323] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -9928,7 +9892,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10046,  [3] = 30,  [4] = 0,  [5] = 3300291026,}
 ,}
-,  ["round1"] = 1026081,  ["commonDrop"] = 1100107,  ["name"] = 1400102608,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 26,  ["round2"] = 0,  ["hideHero"] = 10046,  ["iconHero"] = 1100461,  ["hero_Guide"] = {
+,  ["round1"] = 1026081,  ["commonDrop"] = 1100107,  ["name"] = 1400102608,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 26,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2176,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -9975,7 +9939,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400102800,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4028,  ["warriorsSkill"] = 0,  ["resMap"] = 3028,  ["chapter"] = 28,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30059,  [2] = 5700000015,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500102800,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -9996,7 +9960,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1019051,  ["commonDrop"] = 1100106,  ["name"] = 1400101905,  ["round3"] = 1019053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019052,  ["hideHero"] = 0,  ["iconHero"] = 1100491,  ["hero_Guide"] = {
+,  ["round1"] = 1019051,  ["commonDrop"] = 1100106,  ["name"] = 1400101905,  ["round3"] = 1019053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019052,  ["hideHero"] = 0,  ["iconHero"] = 1100491,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 958,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10010,7 +9974,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
 ,  [930327] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10066,7 +10030,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1012021,  ["commonDrop"] = 1100105,  ["name"] = 1400101202,  ["round3"] = 1012023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012022,  ["hideHero"] = 0,  ["iconHero"] = 1500181,  ["hero_Guide"] = {
+,  ["round1"] = 1012021,  ["commonDrop"] = 1100105,  ["name"] = 1400101202,  ["round3"] = 1012023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012022,  ["hideHero"] = 0,  ["iconHero"] = 1500181,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 802,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10078,7 +10042,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 12,}
+,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [930329] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10124,7 +10088,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  ["section"] = 7,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
 ,  [930330] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10156,7 +10120,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1035041,  ["commonDrop"] = 1100107,  ["name"] = 1400103504,  ["round3"] = 1035043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035042,  ["hideHero"] = 0,  ["iconHero"] = 1500511,  ["hero_Guide"] = {
+,  ["round1"] = 1035041,  ["commonDrop"] = 1100107,  ["name"] = 1400103504,  ["round3"] = 1035043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035042,  ["hideHero"] = 0,  ["iconHero"] = 1500511,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1235,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10168,7 +10132,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 4,  ["HeroExp"] = 28,  ["stage_break_id"] = 12,}
 ,  [930331] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10244,7 +10208,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1019061,  ["commonDrop"] = 1100106,  ["name"] = 1400101906,  ["round3"] = 1019063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019062,  ["hideHero"] = 0,  ["iconHero"] = 1500281,  ["hero_Guide"] = {
+,  ["round1"] = 1019061,  ["commonDrop"] = 1100106,  ["name"] = 1400101906,  ["round3"] = 1019063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019062,  ["hideHero"] = 0,  ["iconHero"] = 1500281,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 958,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10256,7 +10220,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
+,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
 ,  [930335] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10302,8 +10266,8 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10052,  [3] = 30,  [4] = 0,  [5] = 3300291042,}
 ,}
-,  ["round1"] = 1042081,  ["commonDrop"] = 1100107,  ["name"] = 1400104208,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 42,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
-  [1] = 30057,  [2] = 5700000023,}
+,  ["round1"] = 1042081,  ["commonDrop"] = 1100107,  ["name"] = 1400104208,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 42,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
+}
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2730,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
 ,  ["res"] = 1008,  ["eliteDropFrequency"] = 5,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 14,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -10324,7 +10288,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1012031,  ["commonDrop"] = 1100105,  ["name"] = 1400101203,  ["round3"] = 1012033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012032,  ["hideHero"] = 0,  ["iconHero"] = 1100331,  ["hero_Guide"] = {
+,  ["round1"] = 1012031,  ["commonDrop"] = 1100105,  ["name"] = 1400101203,  ["round3"] = 1012033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012032,  ["hideHero"] = 0,  ["iconHero"] = 1100331,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 810,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10338,7 +10302,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 12,}
+,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [930337] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10361,42 +10325,30 @@ stage_config={
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [100308] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-  [1] = 250,  [2] = 250,}
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100308,  ["restore"] = 100,  ["SpecialDropmax"] = 1,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 21,  ["Determination"] = {
-  ["1"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 4,  [4] = 3300290001,}
-,  ["8"] = {
-  [1] = 0.03,  [2] = 100053,  [3] = 30,  [4] = 0,  [5] = 3300292003,}
-,  ["3"] = {
-  [1] = 0.03,  [2] = 30,  [3] = 3300290003,}
-,  ["2"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 4,  [4] = 3300290002,}
-,  ["5"] = {
-  [1] = 0.03,  [2] = 500000,  [3] = 3300290005,}
-,  ["4"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 3300290004,}
-,  ["7"] = {
-  [1] = 0.03,  [2] = 30051,  [3] = 30,  [4] = 0,  [5] = 3300291003,}
+,  [104400] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2050,  ["dragonGift"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
-,  ["round1"] = 1003081,  ["commonDrop"] = 1100101,  ["name"] = 1400100308,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 3,  ["round2"] = 0,  ["hideHero"] = 30051,  ["iconHero"] = 1100511,  ["hero_Guide"] = {
+,  ["coordinate"] = {
 }
-,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1292,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+,  ["high"] = 0,  ["condition"] = 104307,  ["eliteDrop2"] = 0,  ["restore"] = 0,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 0,  ["failGuide"] = {
 }
-,  ["res"] = 1008,  ["eliteDropFrequency"] = 5,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 14,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["id"] = 100308,  ["fristGift"] = {
+,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400104400,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4044,  ["warriorsSkill"] = 0,  ["resMap"] = 3044,  ["chapter"] = 44,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500104400,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+  [1] = 7,  [2] = 14,  [3] = 21,}
+,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 104400,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 5,  ["vigor"] = 12,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100308,  ["playerExp"] = 12,  ["starGift"] = {
-}
-,  ["section"] = 8,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+  [1] = 3128,  [2] = 3129,  [3] = 3130,}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930338] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10428,7 +10380,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1035051,  ["commonDrop"] = 1100107,  ["name"] = 1400103505,  ["round3"] = 1035053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035052,  ["hideHero"] = 0,  ["iconHero"] = 1100171,  ["hero_Guide"] = {
+,  ["round1"] = 1035051,  ["commonDrop"] = 1100107,  ["name"] = 1400103505,  ["round3"] = 1035053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035052,  ["hideHero"] = 0,  ["iconHero"] = 1100171,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1235,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10442,9 +10394,9 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 28,  ["stage_break_id"] = 12,}
 ,  [100500] = {
-  ["sectionCount"] = 8,  ["chapterBg"] = 2011,  ["dragonGift"] = {
+  ["sectionCount"] = 7,  ["chapterBg"] = 2011,  ["dragonGift"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 3001,}
 ,}
@@ -10520,7 +10472,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1019071,  ["commonDrop"] = 1100106,  ["name"] = 1400101907,  ["round3"] = 1019073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019072,  ["hideHero"] = 0,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
+,  ["round1"] = 1019071,  ["commonDrop"] = 1100106,  ["name"] = 1400101907,  ["round3"] = 1019073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 1019072,  ["hideHero"] = 0,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 966,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10534,7 +10486,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
+,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
 ,  [930343] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10588,7 +10540,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1012041,  ["commonDrop"] = 1100105,  ["name"] = 1400101204,  ["round3"] = 1012043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012042,  ["hideHero"] = 0,  ["iconHero"] = 1500191,  ["hero_Guide"] = {
+,  ["round1"] = 1012041,  ["commonDrop"] = 1100105,  ["name"] = 1400101204,  ["round3"] = 1012043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012042,  ["hideHero"] = 0,  ["iconHero"] = 1500191,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 810,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10600,7 +10552,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 12,}
+,  ["section"] = 4,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [930345] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10676,7 +10628,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1035061,  ["commonDrop"] = 1100107,  ["name"] = 1400103506,  ["round3"] = 1035063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035062,  ["hideHero"] = 0,  ["iconHero"] = 1500521,  ["hero_Guide"] = {
+,  ["round1"] = 1035061,  ["commonDrop"] = 1100107,  ["name"] = 1400103506,  ["round3"] = 1035063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035062,  ["hideHero"] = 0,  ["iconHero"] = 1500521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1235,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10688,7 +10640,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 6,  ["HeroExp"] = 28,  ["stage_break_id"] = 12,}
 ,  [100501] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10710,7 +10662,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
+,  ["section"] = 1,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
 ,  [102803] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10758,7 +10710,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10066,  [3] = 30,  [4] = 0,  [5] = 3300291019,}
 ,}
-,  ["round1"] = 1019081,  ["commonDrop"] = 1100106,  ["name"] = 1400101908,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
+,  ["round1"] = 1019081,  ["commonDrop"] = 1100106,  ["name"] = 1400101908,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 19,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1932,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10804,7 +10756,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1012051,  ["commonDrop"] = 1100105,  ["name"] = 1400101205,  ["round3"] = 1012053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012052,  ["hideHero"] = 0,  ["iconHero"] = 1500761,  ["hero_Guide"] = {
+,  ["round1"] = 1012051,  ["commonDrop"] = 1100105,  ["name"] = 1400101205,  ["round3"] = 1012053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012052,  ["hideHero"] = 0,  ["iconHero"] = 1500761,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 819,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10818,7 +10770,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 12,}
+,  ["section"] = 5,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104402] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10850,7 +10802,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1035071,  ["commonDrop"] = 1100107,  ["name"] = 1400103507,  ["round3"] = 1035073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035072,  ["hideHero"] = 0,  ["iconHero"] = 1100181,  ["hero_Guide"] = {
+,  ["round1"] = 1035071,  ["commonDrop"] = 1100107,  ["name"] = 1400103507,  ["round3"] = 1035073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 1035072,  ["hideHero"] = 0,  ["iconHero"] = 1100181,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1243,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10864,7 +10816,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 28,  ["stage_break_id"] = 0,}
+,  ["section"] = 7,  ["HeroExp"] = 28,  ["stage_break_id"] = 12,}
 ,  [100502] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10886,7 +10838,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
+,  ["section"] = 2,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
 ,  [102804] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10930,7 +10882,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
+,  ["section"] = 1,  ["HeroExp"] = 20,  ["stage_break_id"] = 15,}
 ,  [101206] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10940,7 +10892,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1012061,  ["commonDrop"] = 1100105,  ["name"] = 1400101206,  ["round3"] = 1012063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012062,  ["hideHero"] = 0,  ["iconHero"] = 1500201,  ["hero_Guide"] = {
+,  ["round1"] = 1012061,  ["commonDrop"] = 1100105,  ["name"] = 1400101206,  ["round3"] = 1012063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012062,  ["hideHero"] = 0,  ["iconHero"] = 1500201,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 819,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -10952,7 +10904,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 12,}
+,  ["section"] = 6,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [104403] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -10977,28 +10929,6 @@ stage_config={
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 34,  ["stage_break_id"] = 0,}
-,  [930342] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9303421,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930342,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103508] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -11022,7 +10952,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10046,  [3] = 30,  [4] = 0,  [5] = 3300291035,}
 ,}
-,  ["round1"] = 1035081,  ["commonDrop"] = 1100107,  ["name"] = 1400103508,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 0,  ["hideHero"] = 10046,  ["iconHero"] = 1100461,  ["hero_Guide"] = {
+,  ["round1"] = 1035081,  ["commonDrop"] = 1100107,  ["name"] = 1400103508,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 35,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100651,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2486,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -11058,29 +10988,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 8,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
-,  [930341] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9303411,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930341,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  ["section"] = 3,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
 ,  [103700] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2043,  ["dragonGift"] = {
   ["106"] = {
@@ -11093,7 +11001,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400103700,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4037,  ["warriorsSkill"] = 0,  ["resMap"] = 3037,  ["chapter"] = 37,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30059,  [2] = 5700000020,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500103700,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -11104,28 +11012,6 @@ stage_config={
 }
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
   [1] = 3107,  [2] = 3108,  [3] = 3109,}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930339] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9303391,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930339,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102805] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
@@ -11151,6 +11037,72 @@ stage_config={
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
+,  [930342] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9303421,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930342,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  [930341] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9303411,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930341,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  [930339] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9303391,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930339,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930336] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -11167,72 +11119,6 @@ stage_config={
 ,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930336,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930334] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9303341,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930334,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930333] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9303331,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930333,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930328] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9303281,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930328,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -11260,8 +11146,8 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
-,  [930326] = {
+,  ["section"] = 2,  ["HeroExp"] = 20,  ["stage_break_id"] = 15,}
+,  [930334] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
@@ -11270,13 +11156,13 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 9303261,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+,  ["round1"] = 9303341,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
 ,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["id"] = 930326,  ["fristGift"] = {
+,  ["id"] = 930334,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -11292,7 +11178,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1012071,  ["commonDrop"] = 1100105,  ["name"] = 1400101207,  ["round3"] = 1012073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012072,  ["hideHero"] = 0,  ["iconHero"] = 1500771,  ["hero_Guide"] = {
+,  ["round1"] = 1012071,  ["commonDrop"] = 1100105,  ["name"] = 1400101207,  ["round3"] = 1012073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 1012072,  ["hideHero"] = 0,  ["iconHero"] = 1500771,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 828,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -11306,8 +11192,8 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 12,}
-,  [930325] = {
+,  ["section"] = 7,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
+,  [930333] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
@@ -11316,13 +11202,13 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 9303251,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+,  ["round1"] = 9303331,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
 ,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["id"] = 930325,  ["fristGift"] = {
+,  ["id"] = 930333,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -11351,7 +11237,7 @@ stage_config={
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 4,  ["HeroExp"] = 34,  ["stage_break_id"] = 0,}
-,  [930320] = {
+,  [930328] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
@@ -11360,20 +11246,20 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 9303201,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+,  ["round1"] = 9303281,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
 ,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["id"] = 930320,  ["fristGift"] = {
+,  ["id"] = 930328,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930318] = {
+,  [930326] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
@@ -11382,13 +11268,13 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 9303181,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+,  ["round1"] = 9303261,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
 ,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["id"] = 930318,  ["fristGift"] = {
+,  ["id"] = 930326,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -11416,8 +11302,8 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
-,  [930312] = {
+,  ["section"] = 4,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  [930325] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
@@ -11426,13 +11312,13 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 9303121,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+,  ["round1"] = 9303251,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
 ,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["id"] = 930312,  ["fristGift"] = {
+,  ["id"] = 930325,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -11448,7 +11334,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1037011,  ["commonDrop"] = 1100107,  ["name"] = 1400103701,  ["round3"] = 1037013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037012,  ["hideHero"] = 0,  ["iconHero"] = 1500491,  ["hero_Guide"] = {
+,  ["round1"] = 1037011,  ["commonDrop"] = 1100107,  ["name"] = 1400103701,  ["round3"] = 1037013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037012,  ["hideHero"] = 0,  ["iconHero"] = 1500491,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1261,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -11460,8 +11346,8 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
-,  [930311] = {
+,  ["section"] = 1,  ["HeroExp"] = 30,  ["stage_break_id"] = 13,}
+,  [930320] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
@@ -11470,13 +11356,13 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 9303111,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+,  ["round1"] = 9303201,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
 ,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["id"] = 930311,  ["fristGift"] = {
+,  ["id"] = 930320,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -11505,6 +11391,72 @@ stage_config={
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 6,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
+,  [930318] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9303181,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930318,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  [930312] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9303121,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930312,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  [930311] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9303111,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930311,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [930310] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -11521,72 +11473,6 @@ stage_config={
 ,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
 ,  ["id"] = 930310,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930304] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9303041,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930304,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930303] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9303031,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930303,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930302] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9303021,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930302,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -11616,30 +11502,28 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
-,  [104400] = {
-  ["sectionCount"] = 8,  ["chapterBg"] = 2050,  ["dragonGift"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 3001,}
-,}
+,  ["section"] = 3,  ["HeroExp"] = 20,  ["stage_break_id"] = 15,}
+,  [930304] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 104307,  ["eliteDrop2"] = 0,  ["restore"] = 0,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 0,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400104400,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4044,  ["warriorsSkill"] = 0,  ["resMap"] = 3044,  ["chapter"] = 44,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30060,  [2] = 5700000024,}
-,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500104400,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
-  [1] = 7,  [2] = 14,  [3] = 21,}
-,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["round1"] = 9303041,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
-,  ["id"] = 104400,  ["fristGift"] = {
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930304,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-  [1] = 3128,  [2] = 3129,  [3] = 3130,}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [101208] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
@@ -11664,7 +11548,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30051,  [3] = 30,  [4] = 0,  [5] = 3300291012,}
 ,}
-,  ["round1"] = 1012081,  ["commonDrop"] = 1100105,  ["name"] = 1400101208,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 0,  ["hideHero"] = 30051,  ["iconHero"] = 1100511,  ["hero_Guide"] = {
+,  ["round1"] = 1012081,  ["commonDrop"] = 1100105,  ["name"] = 1400101208,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 12,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1656,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -11677,7 +11561,7 @@ stage_config={
 ,  ["limitTimes"] = 5,  ["vigor"] = 12,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2101208,  ["playerExp"] = 12,  ["starGift"] = {
 }
 ,  ["section"] = 8,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
-,  [930241] = {
+,  [930303] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
@@ -11686,13 +11570,13 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 9302411,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+,  ["round1"] = 9303031,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["id"] = 930241,  ["fristGift"] = {
+,  ["id"] = 930303,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -11747,42 +11631,28 @@ stage_config={
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
   [1] = 3038,  [2] = 3039,  [3] = 3040,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [100408] = {
+,  [930241] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
-  [1] = 250,  [2] = 250,}
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100408,  ["restore"] = 100,  ["SpecialDropmax"] = 1,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
-,  ["condition2"] = 21,  ["Determination"] = {
-  ["1"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 4,  [4] = 3300290001,}
-,  ["8"] = {
-  [1] = 0.03,  [2] = 100054,  [3] = 30,  [4] = 0,  [5] = 3300292004,}
-,  ["3"] = {
-  [1] = 0.03,  [2] = 30,  [3] = 3300290003,}
-,  ["2"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 4,  [4] = 3300290002,}
-,  ["5"] = {
-  [1] = 0.03,  [2] = 500000,  [3] = 3300290005,}
-,  ["4"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 3300290004,}
-,  ["7"] = {
-  [1] = 0.03,  [2] = 10053,  [3] = 30,  [4] = 0,  [5] = 3300291004,}
-,}
-,  ["round1"] = 1004081,  ["commonDrop"] = 1100101,  ["name"] = 1400100408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 4,  ["round2"] = 0,  ["hideHero"] = 10053,  ["iconHero"] = 1100531,  ["hero_Guide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
-,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1326,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["res"] = 1008,  ["eliteDropFrequency"] = 5,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 14,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["round1"] = 9302411,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
-,  ["id"] = 100408,  ["fristGift"] = {
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930241,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 5,  ["vigor"] = 12,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100408,  ["playerExp"] = 12,  ["starGift"] = {
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
 }
-,  ["section"] = 8,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100505] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -11806,7 +11676,51 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
+,  ["section"] = 5,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  [930302] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9303021,  ["commonDrop"] = 0,  ["name"] = 1400930301,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 3,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930302,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  [103702] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+  [1] = 124,  [2] = 389,}
+,  ["high"] = 2,  ["condition"] = 103701,  ["eliteDrop2"] = 2103702,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 1037021,  ["commonDrop"] = 1100107,  ["name"] = 1400103702,  ["round3"] = 1037023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037022,  ["hideHero"] = 0,  ["iconHero"] = 1500501,  ["hero_Guide"] = {
+}
+,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1261,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+}
+,  ["res"] = 1002,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 103702,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+}
+,  ["section"] = 2,  ["HeroExp"] = 30,  ["stage_break_id"] = 13,}
 ,  [102005] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -11816,7 +11730,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1020051,  ["commonDrop"] = 1100106,  ["name"] = 1400102005,  ["round3"] = 1020053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020052,  ["hideHero"] = 0,  ["iconHero"] = 1500851,  ["hero_Guide"] = {
+,  ["round1"] = 1020051,  ["commonDrop"] = 1100106,  ["name"] = 1400102005,  ["round3"] = 1020053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020052,  ["hideHero"] = 0,  ["iconHero"] = 1500851,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 975,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -11830,53 +11744,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
-,  [103702] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-  [1] = 124,  [2] = 389,}
-,  ["high"] = 2,  ["condition"] = 103701,  ["eliteDrop2"] = 2103702,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 1037021,  ["commonDrop"] = 1100107,  ["name"] = 1400103702,  ["round3"] = 1037023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037022,  ["hideHero"] = 0,  ["iconHero"] = 1500501,  ["hero_Guide"] = {
-}
-,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1261,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
-}
-,  ["res"] = 1002,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 103702,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
-}
-,  ["section"] = 2,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
-,  [100600] = {
-  ["sectionCount"] = 8,  ["chapterBg"] = 2012,  ["dragonGift"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 3001,}
-,}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 100507,  ["eliteDrop2"] = 0,  ["restore"] = 0,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 0,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400100600,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4006,  ["warriorsSkill"] = 0,  ["resMap"] = 3006,  ["chapter"] = 6,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30057,  [2] = 5700000003,}
-,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500100600,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
-  [1] = 7,  [2] = 14,  [3] = 21,}
-,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 100600,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-  [1] = 3014,  [2] = 3015,  [3] = 3016,}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [102807] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -11901,6 +11769,30 @@ stage_config={
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 7,  ["HeroExp"] = 24,  ["stage_break_id"] = 0,}
+,  [100600] = {
+  ["sectionCount"] = 7,  ["chapterBg"] = 2012,  ["dragonGift"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 3001,}
+,}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 100507,  ["eliteDrop2"] = 0,  ["restore"] = 0,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 0,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400100600,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4006,  ["warriorsSkill"] = 0,  ["resMap"] = 3006,  ["chapter"] = 6,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500100600,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+  [1] = 7,  [2] = 14,  [3] = 21,}
+,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 100600,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+  [1] = 3014,  [2] = 3015,  [3] = 3016,}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102900] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2035,  ["dragonGift"] = {
   ["106"] = {
@@ -11913,7 +11805,7 @@ stage_config={
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
 ,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400102900,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4029,  ["warriorsSkill"] = 0,  ["resMap"] = 3029,  ["chapter"] = 29,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30051,  [2] = 5700000016,}
+}
 ,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500102900,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
   [1] = 7,  [2] = 14,  [3] = 21,}
 ,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
@@ -11925,28 +11817,6 @@ stage_config={
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
   [1] = 3083,  [2] = 3084,  [3] = 3085,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930242] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9302421,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930242,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102006] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -11956,7 +11826,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1020061,  ["commonDrop"] = 1100106,  ["name"] = 1400102006,  ["round3"] = 1020063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020062,  ["hideHero"] = 0,  ["iconHero"] = 1500321,  ["hero_Guide"] = {
+,  ["round1"] = 1020061,  ["commonDrop"] = 1100106,  ["name"] = 1400102006,  ["round3"] = 1020063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020062,  ["hideHero"] = 0,  ["iconHero"] = 1500321,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 975,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -11968,7 +11838,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
+,  ["section"] = 6,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [100601] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12012,7 +11882,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
+,  ["section"] = 4,  ["HeroExp"] = 20,  ["stage_break_id"] = 15,}
 ,  [102901] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12035,6 +11905,28 @@ stage_config={
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 1,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
+,  [930242] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9302421,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930242,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102007] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12044,7 +11936,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1020071,  ["commonDrop"] = 1100106,  ["name"] = 1400102007,  ["round3"] = 1020073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020072,  ["hideHero"] = 0,  ["iconHero"] = 1500861,  ["hero_Guide"] = {
+,  ["round1"] = 1020071,  ["commonDrop"] = 1100106,  ["name"] = 1400102007,  ["round3"] = 1020073,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 1020072,  ["hideHero"] = 0,  ["iconHero"] = 1500861,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 984,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -12058,31 +11950,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 14,}
-,  [104307] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-  [1] = 391,  [2] = 1436,}
-,  ["high"] = 2,  ["condition"] = 104306,  ["eliteDrop2"] = 2104307,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 1043071,  ["commonDrop"] = 1100107,  ["name"] = 1400104307,  ["round3"] = 1043073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 43,  ["round2"] = 1043072,  ["hideHero"] = 0,  ["iconHero"] = 1100401,  ["hero_Guide"] = {
-}
-,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1382,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
-}
-,  ["res"] = 1007,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 2126,}
-,}
-,  ["id"] = 104307,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
-}
-,  ["section"] = 7,  ["HeroExp"] = 34,  ["stage_break_id"] = 13,}
+,  ["section"] = 7,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
 ,  [104406] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12114,7 +11982,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1014011,  ["commonDrop"] = 1100105,  ["name"] = 1400101401,  ["round3"] = 1014013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014012,  ["hideHero"] = 0,  ["iconHero"] = 1500211,  ["hero_Guide"] = {
+,  ["round1"] = 1014011,  ["commonDrop"] = 1100105,  ["name"] = 1400101401,  ["round3"] = 1014013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014012,  ["hideHero"] = 0,  ["iconHero"] = 1500211,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 854,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -12126,7 +11994,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
+,  ["section"] = 1,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [100602] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12170,7 +12038,55 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
+,  ["section"] = 6,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  [104307] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+  [1] = 391,  [2] = 1436,}
+,  ["high"] = 2,  ["condition"] = 104306,  ["eliteDrop2"] = 2104307,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 1043071,  ["commonDrop"] = 1100107,  ["name"] = 1400104307,  ["round3"] = 1043073,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 43,  ["round2"] = 1043072,  ["hideHero"] = 0,  ["iconHero"] = 1100401,  ["hero_Guide"] = {
+}
+,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1382,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+}
+,  ["res"] = 1007,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 2126,}
+,}
+,  ["id"] = 104307,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+}
+,  ["section"] = 7,  ["HeroExp"] = 34,  ["stage_break_id"] = 11,}
+,  [103703] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+  [1] = 375,  [2] = 645,}
+,  ["high"] = 2,  ["condition"] = 103702,  ["eliteDrop2"] = 2103703,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 1037031,  ["commonDrop"] = 1100107,  ["name"] = 1400103703,  ["round3"] = 1037033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037032,  ["hideHero"] = 0,  ["iconHero"] = 1100181,  ["hero_Guide"] = {
+}
+,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1269,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+}
+,  ["res"] = 1003,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 2106,}
+,}
+,  ["id"] = 103703,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+}
+,  ["section"] = 3,  ["HeroExp"] = 30,  ["stage_break_id"] = 13,}
 ,  [102902] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12193,52 +12109,6 @@ stage_config={
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 2,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
-,  [103703] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-  [1] = 375,  [2] = 645,}
-,  ["high"] = 2,  ["condition"] = 103702,  ["eliteDrop2"] = 2103703,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 4,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 1037031,  ["commonDrop"] = 1100107,  ["name"] = 1400103703,  ["round3"] = 1037033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037032,  ["hideHero"] = 0,  ["iconHero"] = 1100181,  ["hero_Guide"] = {
-}
-,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1269,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
-}
-,  ["res"] = 1003,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 2106,}
-,}
-,  ["id"] = 103703,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
-}
-,  ["section"] = 3,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
-,  [930234] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9302341,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930234,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [102808] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12262,7 +12132,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10066,  [3] = 30,  [4] = 0,  [5] = 3300291028,}
 ,}
-,  ["round1"] = 1028081,  ["commonDrop"] = 1100107,  ["name"] = 1400102808,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 28,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
+,  ["round1"] = 1028081,  ["commonDrop"] = 1100107,  ["name"] = 1400102808,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 28,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2244,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -12298,7 +12168,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30059,  [3] = 30,  [4] = 0,  [5] = 3300291020,}
 ,}
-,  ["round1"] = 1020081,  ["commonDrop"] = 1100106,  ["name"] = 1400102008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 0,  ["hideHero"] = 30059,  ["iconHero"] = 1100591,  ["hero_Guide"] = {
+,  ["round1"] = 1020081,  ["commonDrop"] = 1100106,  ["name"] = 1400102008,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 20,  ["round2"] = 0,  ["hideHero"] = 10065,  ["iconHero"] = 1100651,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1968,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -12311,42 +12181,28 @@ stage_config={
 ,  ["limitTimes"] = 5,  ["vigor"] = 12,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2102008,  ["playerExp"] = 12,  ["starGift"] = {
 }
 ,  ["section"] = 8,  ["HeroExp"] = 18,  ["stage_break_id"] = 0,}
-,  [100508] = {
+,  [930211] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
-  [1] = 250,  [2] = 250,}
-,  ["high"] = 3,  ["condition"] = 0,  ["eliteDrop2"] = 2100508,  ["restore"] = 100,  ["SpecialDropmax"] = 1,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
-,  ["condition2"] = 21,  ["Determination"] = {
-  ["1"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 4,  [4] = 3300290001,}
-,  ["8"] = {
-  [1] = 0.03,  [2] = 100046,  [3] = 30,  [4] = 0,  [5] = 3300292005,}
-,  ["3"] = {
-  [1] = 0.03,  [2] = 30,  [3] = 3300290003,}
-,  ["2"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 4,  [4] = 3300290002,}
-,  ["5"] = {
-  [1] = 0.03,  [2] = 500000,  [3] = 3300290005,}
-,  ["4"] = {
-  [1] = 0.03,  [2] = 3,  [3] = 3300290004,}
-,  ["7"] = {
-  [1] = 0.03,  [2] = 30063,  [3] = 30,  [4] = 0,  [5] = 3300291005,}
-,}
-,  ["round1"] = 1005081,  ["commonDrop"] = 1100101,  ["name"] = 1400100508,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 5,  ["round2"] = 0,  ["hideHero"] = 30063,  ["iconHero"] = 1100631,  ["hero_Guide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
-,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1362,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["res"] = 1008,  ["eliteDropFrequency"] = 5,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 14,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["round1"] = 9302111,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
-,  ["id"] = 100508,  ["fristGift"] = {
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930211,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 5,  ["vigor"] = 12,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 2100508,  ["playerExp"] = 12,  ["starGift"] = {
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
 }
-,  ["section"] = 8,  ["HeroExp"] = 8,  ["stage_break_id"] = 0,}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103000] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2036,  ["dragonGift"] = {
   ["106"] = {
@@ -12418,29 +12274,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
-,  [930233] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9302331,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930233,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 20,  ["stage_break_id"] = 15,}
 ,  [104308] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12464,7 +12298,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30057,  [3] = 30,  [4] = 0,  [5] = 3300291043,}
 ,}
-,  ["round1"] = 1043081,  ["commonDrop"] = 1100107,  ["name"] = 1400104308,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 43,  ["round2"] = 0,  ["hideHero"] = 30057,  ["iconHero"] = 1100571,  ["hero_Guide"] = {
+,  ["round1"] = 1043081,  ["commonDrop"] = 1100107,  ["name"] = 1400104308,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 43,  ["round2"] = 0,  ["hideHero"] = 10052,  ["iconHero"] = 1100521,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2764,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -12501,6 +12335,28 @@ stage_config={
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 3,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
+,  [930234] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9302341,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930234,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [104407] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12534,7 +12390,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1014021,  ["commonDrop"] = 1100105,  ["name"] = 1400101402,  ["round3"] = 1014023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014022,  ["hideHero"] = 0,  ["iconHero"] = 1500221,  ["hero_Guide"] = {
+,  ["round1"] = 1014021,  ["commonDrop"] = 1100105,  ["name"] = 1400101402,  ["round3"] = 1014023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014022,  ["hideHero"] = 0,  ["iconHero"] = 1500221,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 854,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -12546,23 +12402,23 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
-,  [900003] = {
-  ["sectionCount"] = 43,  ["chapterBg"] = 0,  ["dragonGift"] = {
+,  ["section"] = 2,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
+,  [930233] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 30,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 0,  ["commonDrop"] = 1900003,  ["name"] = 1400900003,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 3,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+,  ["round1"] = 9302331,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
-,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500900003,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 9,  ["meritorious_service"] = 0,  ["star"] = {
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
 }
-,  ["res"] = 1001,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 9,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["id"] = 900003,  ["fristGift"] = {
+,  ["id"] = 930233,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -12592,23 +12448,23 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 8,  ["stage_break_id"] = 11,}
-,  [930211] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+,  ["section"] = 7,  ["HeroExp"] = 8,  ["stage_break_id"] = 12,}
+,  [900003] = {
+  ["sectionCount"] = 43,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 30,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 9302111,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+,  ["round1"] = 0,  ["commonDrop"] = 1900003,  ["name"] = 1400900003,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 3,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500900003,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 9,  ["meritorious_service"] = 0,  ["star"] = {
 }
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["res"] = 1001,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 9,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["id"] = 930211,  ["fristGift"] = {
+,  ["id"] = 900003,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
@@ -12624,7 +12480,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1037041,  ["commonDrop"] = 1100107,  ["name"] = 1400103704,  ["round3"] = 1037043,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037042,  ["hideHero"] = 0,  ["iconHero"] = 1500511,  ["hero_Guide"] = {
+,  ["round1"] = 1037041,  ["commonDrop"] = 1100107,  ["name"] = 1400103704,  ["round3"] = 1037043,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037042,  ["hideHero"] = 0,  ["iconHero"] = 1500511,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1269,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -12636,7 +12492,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 4,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
+,  ["section"] = 4,  ["HeroExp"] = 30,  ["stage_break_id"] = 13,}
 ,  [102904] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12681,72 +12537,30 @@ stage_config={
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [102401] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
+,  [103800] = {
+  ["sectionCount"] = 8,  ["chapterBg"] = 2044,  ["dragonGift"] = {
+  ["106"] = {
+  [1] = 1,  [2] = 1,  [3] = 3001,}
+,}
 ,  ["coordinate"] = {
-  [1] = 349,  [2] = 177,}
-,  ["high"] = 2,  ["condition"] = 102307,  ["eliteDrop2"] = 2102401,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
+}
+,  ["high"] = 0,  ["condition"] = 103707,  ["eliteDrop2"] = 0,  ["restore"] = 0,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 0,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1024011,  ["commonDrop"] = 1100107,  ["name"] = 1400102401,  ["round3"] = 1024013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 24,  ["round2"] = 1024012,  ["hideHero"] = 0,  ["iconHero"] = 1500331,  ["hero_Guide"] = {
+,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400103800,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4038,  ["warriorsSkill"] = 0,  ["resMap"] = 3038,  ["chapter"] = 38,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
-,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1036,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500103800,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+  [1] = 7,  [2] = 14,  [3] = 21,}
+,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
 }
-,  ["res"] = 1001,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 102401,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
-}
-,  ["section"] = 1,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
-,  [930226] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9302261,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930226,  ["fristGift"] = {
+,  ["id"] = 103800,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+  [1] = 3110,  [2] = 3111,  [3] = 3112,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [103001] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-  [1] = 349,  [2] = 177,}
-,  ["high"] = 2,  ["condition"] = 102907,  ["eliteDrop2"] = 2103001,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 1030011,  ["commonDrop"] = 1100107,  ["name"] = 1400103001,  ["round3"] = 1030013,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030012,  ["hideHero"] = 0,  ["iconHero"] = 1500411,  ["hero_Guide"] = {
-}
-,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1139,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
-}
-,  ["res"] = 1001,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 103001,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
-}
-,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 12,}
 ,  [102905] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12771,6 +12585,50 @@ stage_config={
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 5,  ["HeroExp"] = 24,  ["stage_break_id"] = 14,}
+,  [103001] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+  [1] = 349,  [2] = 177,}
+,  ["high"] = 2,  ["condition"] = 102907,  ["eliteDrop2"] = 2103001,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 1030011,  ["commonDrop"] = 1100107,  ["name"] = 1400103001,  ["round3"] = 1030013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030012,  ["hideHero"] = 0,  ["iconHero"] = 1500411,  ["hero_Guide"] = {
+}
+,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1139,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+}
+,  ["res"] = 1001,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 103001,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+}
+,  ["section"] = 1,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
+,  [102401] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+  [1] = 349,  [2] = 177,}
+,  ["high"] = 2,  ["condition"] = 102307,  ["eliteDrop2"] = 2102401,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 1024011,  ["commonDrop"] = 1100107,  ["name"] = 1400102401,  ["round3"] = 1024013,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 24,  ["round2"] = 1024012,  ["hideHero"] = 0,  ["iconHero"] = 1500331,  ["hero_Guide"] = {
+}
+,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1036,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+}
+,  ["res"] = 1001,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 102401,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+}
+,  ["section"] = 1,  ["HeroExp"] = 22,  ["stage_break_id"] = 0,}
 ,  [102106] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12792,31 +12650,51 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 6,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
-,  [103800] = {
-  ["sectionCount"] = 8,  ["chapterBg"] = 2044,  ["dragonGift"] = {
-  ["106"] = {
-  [1] = 1,  [2] = 1,  [3] = 3001,}
-,}
+,  ["section"] = 6,  ["HeroExp"] = 20,  ["stage_break_id"] = 15,}
+,  [930226] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
 ,  ["coordinate"] = {
 }
-,  ["high"] = 0,  ["condition"] = 103707,  ["eliteDrop2"] = 0,  ["restore"] = 0,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 0,  ["failGuide"] = {
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 0,  ["commonDrop"] = 0,  ["name"] = 1400103800,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 4038,  ["warriorsSkill"] = 0,  ["resMap"] = 3038,  ["chapter"] = 38,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-  [1] = 30051,  [2] = 5700000021,}
-,  ["icon"] = 0,  ["isBoss"] = 0,  ["info"] = 1500103800,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
-  [1] = 7,  [2] = 14,  [3] = 21,}
-,  ["res"] = 0,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 1,  ["starMagnification"] = 10000,  ["type"] = 0,  ["Pressing"] = 0,  ["stageBox"] = {
+,  ["round1"] = 9302261,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
 }
-,  ["id"] = 103800,  ["fristGift"] = {
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930226,  ["fristGift"] = {
 }
 ,  ["open"] = {
 }
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-  [1] = 3110,  [2] = 3111,  [3] = 3112,}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  [101506] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+  [1] = 97,  [2] = 1247,}
+,  ["high"] = 2,  ["condition"] = 101505,  ["eliteDrop2"] = 2101506,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 1015061,  ["commonDrop"] = 1100105,  ["name"] = 1400101506,  ["round3"] = 1015063,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015062,  ["hideHero"] = 0,  ["iconHero"] = 1500241,  ["hero_Guide"] = {
+}
+,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 880,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
+}
+,  ["res"] = 1006,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 101506,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
+}
+,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 12,}
 ,  [910004] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12839,28 +12717,6 @@ stage_config={
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [101506] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-  [1] = 97,  [2] = 1247,}
-,  ["high"] = 2,  ["condition"] = 101505,  ["eliteDrop2"] = 2101506,  ["restore"] = 100,  ["SpecialDropmax"] = 5,  ["Upperlimit"] = 0,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 1015061,  ["commonDrop"] = 1100105,  ["name"] = 1400101506,  ["round3"] = 1015063,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 15,  ["round2"] = 1015062,  ["hideHero"] = 0,  ["iconHero"] = 1500241,  ["hero_Guide"] = {
-}
-,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 880,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
-}
-,  ["res"] = 1006,  ["eliteDropFrequency"] = 10,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 1,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 101506,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
-}
-,  ["section"] = 6,  ["HeroExp"] = 16,  ["stage_break_id"] = 0,}
 ,  [104408] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12884,7 +12740,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 10046,  [3] = 30,  [4] = 0,  [5] = 3300291044,}
 ,}
-,  ["round1"] = 1044081,  ["commonDrop"] = 1100107,  ["name"] = 1400104408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 44,  ["round2"] = 0,  ["hideHero"] = 10046,  ["iconHero"] = 1100461,  ["hero_Guide"] = {
+,  ["round1"] = 1044081,  ["commonDrop"] = 1100107,  ["name"] = 1400104408,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 44,  ["round2"] = 0,  ["hideHero"] = 10045,  ["iconHero"] = 1100451,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2798,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -12906,7 +12762,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1014031,  ["commonDrop"] = 1100105,  ["name"] = 1400101403,  ["round3"] = 1014033,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014032,  ["hideHero"] = 0,  ["iconHero"] = 1100051,  ["hero_Guide"] = {
+,  ["round1"] = 1014031,  ["commonDrop"] = 1100105,  ["name"] = 1400101403,  ["round3"] = 1014033,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 14,  ["round2"] = 1014032,  ["hideHero"] = 0,  ["iconHero"] = 1100051,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 854,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -12920,7 +12776,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 7,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 11,}
+,  ["section"] = 3,  ["HeroExp"] = 14,  ["stage_break_id"] = 0,}
 ,  [910005] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -12998,7 +12854,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1037051,  ["commonDrop"] = 1100107,  ["name"] = 1400103705,  ["round3"] = 1037053,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037052,  ["hideHero"] = 0,  ["iconHero"] = 1100191,  ["hero_Guide"] = {
+,  ["round1"] = 1037051,  ["commonDrop"] = 1100107,  ["name"] = 1400103705,  ["round3"] = 1037053,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 37,  ["round2"] = 1037052,  ["hideHero"] = 0,  ["iconHero"] = 1100191,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1269,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -13012,7 +12868,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 5,  ["HeroExp"] = 30,  ["stage_break_id"] = 0,}
+,  ["section"] = 5,  ["HeroExp"] = 30,  ["stage_break_id"] = 13,}
 ,  [100700] = {
   ["sectionCount"] = 8,  ["chapterBg"] = 2013,  ["dragonGift"] = {
   ["106"] = {
@@ -13037,28 +12893,6 @@ stage_config={
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
   [1] = 3017,  [2] = 3018,  [3] = 3019,}
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
-,  [930210] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9302101,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930210,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100100] = {
   ["sectionCount"] = 3,  ["chapterBg"] = 2007,  ["dragonGift"] = {
 }
@@ -13079,6 +12913,28 @@ stage_config={
 ,  ["open"] = {
 }
 ,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  [930210] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9302101,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930210,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
 }
 ,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [103901] = {
@@ -13102,7 +12958,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 1,  ["HeroExp"] = 32,  ["stage_break_id"] = 12,}
+,  ["section"] = 1,  ["HeroExp"] = 32,  ["stage_break_id"] = 14,}
 ,  [103002] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -13112,7 +12968,7 @@ stage_config={
 }
 ,  ["condition2"] = 0,  ["Determination"] = {
 }
-,  ["round1"] = 1030021,  ["commonDrop"] = 1100107,  ["name"] = 1400103002,  ["round3"] = 1030023,  ["break_Probability"] = 0.05,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030022,  ["hideHero"] = 0,  ["iconHero"] = 1500421,  ["hero_Guide"] = {
+,  ["round1"] = 1030021,  ["commonDrop"] = 1100107,  ["name"] = 1400103002,  ["round3"] = 1030023,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 30,  ["round2"] = 1030022,  ["hideHero"] = 0,  ["iconHero"] = 1500421,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2001,  ["isBoss"] = 0,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 1139,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }
@@ -13124,7 +12980,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 12,}
+,  ["section"] = 2,  ["HeroExp"] = 26,  ["stage_break_id"] = 0,}
 ,  [100101] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -13170,29 +13026,7 @@ stage_config={
 }
 ,  ["limitTimes"] = 10,  ["vigor"] = 6,  ["Lowerlimit"] = 3,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
-,  ["section"] = 7,  ["HeroExp"] = 20,  ["stage_break_id"] = 12,}
-,  [930205] = {
-  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
-}
-,  ["coordinate"] = {
-}
-,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
-}
-,  ["condition2"] = 0,  ["Determination"] = {
-}
-,  ["round1"] = 9302051,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
-}
-,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
-}
-,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
-}
-,  ["id"] = 930205,  ["fristGift"] = {
-}
-,  ["open"] = {
-}
-,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
-}
-,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
+,  ["section"] = 7,  ["HeroExp"] = 20,  ["stage_break_id"] = 15,}
 ,  [100102] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -13215,6 +13049,28 @@ stage_config={
 ,  ["limitTimes"] = 99,  ["vigor"] = 6,  ["Lowerlimit"] = 0,  ["eliteDrop"] = 2200001,  ["playerExp"] = 6,  ["starGift"] = {
 }
 ,  ["section"] = 2,  ["HeroExp"] = 6,  ["stage_break_id"] = 0,}
+,  [930205] = {
+  ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
+}
+,  ["coordinate"] = {
+}
+,  ["high"] = 0,  ["condition"] = 0,  ["eliteDrop2"] = 0,  ["restore"] = 100,  ["SpecialDropmax"] = 0,  ["Upperlimit"] = 1,  ["failGuide"] = {
+}
+,  ["condition2"] = 0,  ["Determination"] = {
+}
+,  ["round1"] = 9302051,  ["commonDrop"] = 0,  ["name"] = 1400930201,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 0,  ["round2"] = 0,  ["hideHero"] = 0,  ["iconHero"] = 0,  ["hero_Guide"] = {
+}
+,  ["icon"] = 0,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 0,  ["currency"] = 0,  ["sort"] = 12,  ["meritorious_service"] = 50,  ["star"] = {
+}
+,  ["res"] = 1014,  ["eliteDropFrequency"] = 0,  ["chaptersTab"] = 0,  ["starMagnification"] = 0,  ["type"] = 2,  ["Pressing"] = 0,  ["stageBox"] = {
+}
+,  ["id"] = 930205,  ["fristGift"] = {
+}
+,  ["open"] = {
+}
+,  ["limitTimes"] = 0,  ["vigor"] = 0,  ["Lowerlimit"] = 1,  ["eliteDrop"] = 0,  ["playerExp"] = 0,  ["starGift"] = {
+}
+,  ["section"] = 0,  ["HeroExp"] = 0,  ["stage_break_id"] = 0,}
 ,  [100103] = {
   ["sectionCount"] = 0,  ["chapterBg"] = 0,  ["dragonGift"] = {
 }
@@ -13260,7 +13116,7 @@ stage_config={
 ,  ["7"] = {
   [1] = 0.03,  [2] = 30059,  [3] = 30,  [4] = 0,  [5] = 3300291046,}
 ,}
-,  ["round1"] = 1046081,  ["commonDrop"] = 1100107,  ["name"] = 1400104608,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 0,  ["hideHero"] = 30059,  ["iconHero"] = 1100591,  ["hero_Guide"] = {
+,  ["round1"] = 1046081,  ["commonDrop"] = 1100107,  ["name"] = 1400104608,  ["round3"] = 0,  ["break_Probability"] = 0,  ["stage_line"] = 0,  ["warriorsSkill"] = 0,  ["resMap"] = 0,  ["chapter"] = 46,  ["round2"] = 0,  ["hideHero"] = 10066,  ["iconHero"] = 1100661,  ["hero_Guide"] = {
 }
 ,  ["icon"] = 2002,  ["isBoss"] = 1,  ["info"] = 0,  ["low"] = 1,  ["currency"] = 2868,  ["sort"] = 1,  ["meritorious_service"] = 0,  ["star"] = {
 }

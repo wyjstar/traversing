@@ -235,19 +235,19 @@ base_config={
 ,  ["6"] = {
   [1] = 60,}
 ,}
-,  ["buy_vigor_num"] = 120,  ["CardTimeCumulateTimes"] = 10,  ["weekCardFreshTime"] = "0:00:00",  ["equMallOpenLevel"] = 10,  ["warFogBossCriServer"] = 2,  ["money_inspire_price_multiple"] = 1,  ["CardTimeActivity2"] = {
+,  ["buy_vigor_num"] = 120,  ["CardTimeActivity2"] = {
   ["13001"] = {
   [1] = 610,}
 ,}
-,  ["warFogBossFreeReliveTime"] = 300,  ["CardTimeParticipateInAwards"] = 100,  ["nextDayOpenTime"] = {
+,  ["CardTimeCumulateTimes"] = 10,  ["weekCardFreshTime"] = "0:00:00",  ["equMallOpenLevel"] = 10,  ["warFogBossCriServer"] = 2,  ["money_inspire_price_multiple"] = 1,  ["CardTimeParticipateInAwards"] = 100,  ["warFogBossFreeReliveTime"] = 300,  ["friendApplyLevelGapAdd"] = 5,  ["nextDayOpenTime"] = {
   ["2"] = {
   [1] = "0:00:30",}
 ,}
-,  ["vigorValueFriendGive"] = 2,  ["friendApplyLevelGapAdd"] = 5,  ["friendActivityReward"] = {
+,  ["vigorValueFriendGive"] = 2,  ["friendActivityReward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 1103,}
 ,}
-,  ["friendActivityValue"] = 100,  ["worldbossHurtRankRewards"] = {
+,  ["worldbossHurtRankRewards"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 600001,}
 ,  ["3"] = {
@@ -269,7 +269,7 @@ base_config={
 ,  ["10"] = {
   [1] = 10,  [2] = 10,  [3] = 600010,}
 ,}
-,  ["initialVipLevel"] = 0,  ["indianaMatch"] = {
+,  ["friendActivityValue"] = 100,  ["initialVipLevel"] = 0,  ["DrawCardShow2_time"] = 3,  ["indianaMatch"] = {
   [1] = 60001,  [2] = 60002,  [3] = 60003,}
 ,  ["CardFirst"] = {
   ["101"] = {
@@ -283,13 +283,13 @@ base_config={
 ,  ["5"] = {
   [1] = 10044,  [2] = 190,  [3] = 50,  [4] = 240000,}
 ,}
-,  ["arenaFightCd"] = 300,  ["DrawCardShow2_time"] = 3,  ["arena_free_times"] = 5,  ["cheer_partner_seat5"] = {
-  ["3"] = 0.1,  ["2"] = 0.1,}
-,  ["chat_interval"] = 30,  ["warFogBossMoneyRelivePrice"] = 20,  ["activityOpenDay"] = {
+,  ["arenaFightCd"] = 300,  ["activityOpenDay"] = {
   ["1"] = {
   [1] = "0:00:00",  [2] = 3300009020,  [3] = 3400009020,}
 ,}
-,  ["Worship2Fresh"] = "9:00:00",  ["AnimalCoolingTime"] = 300,  ["equRefundRatio"] = 0.8,  ["warFogBossInspireAtk"] = 0.05,  ["seven1_Icon"] = {
+,  ["arena_free_times"] = 5,  ["cheer_partner_seat5"] = {
+  ["3"] = 0.1,  ["2"] = 0.1,}
+,  ["chat_interval"] = 30,  ["warFogBossMoneyRelivePrice"] = 20,  ["AnimalCoolingTime"] = 300,  ["Worship2Fresh"] = "9:00:00",  ["equRefundRatio"] = 0.8,  ["seven1_Icon"] = {
   ["1"] = {
   [1] = 1600001,}
 ,  ["4"] = {
@@ -299,7 +299,7 @@ base_config={
 ,  ["2"] = {
   [1] = 1600017,}
 ,}
-,  ["worShipCoolingTime"] = 300,  ["initialHead"] = 10044,  ["public_chat_open_level"] = 10,  ["maxOfFriendApply"] = 100,  ["hjqyDayReward"] = {
+,  ["warFogBossInspireAtk"] = 0.05,  ["worShipCoolingTime"] = 300,  ["initialHead"] = 10044,  ["chat_show_max"] = 10,  ["public_chat_open_level"] = 10,  ["maxOfFriendApply"] = 100,  ["hjqyDayReward"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 501,}
 ,  ["3"] = {

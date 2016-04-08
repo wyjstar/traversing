@@ -214,6 +214,7 @@ def fight_settlement_904(pro_data, player):
 
     stage_id = request.stage_id
     result = request.result
+    always_win = request.always_win
 
     # logger.debug("steps:%s", request.steps)
     # player.fight_cache_component.red_units
@@ -222,6 +223,7 @@ def fight_settlement_904(pro_data, player):
     stage_config = player.fight_cache_component._get_stage_config()
     response = stage_response_pb2.StageSettlementResponse()
     res = response.res
+
 
     if (stage_config.type not in [1, 2, 3] or stage.star_num != 3) and request.is_skip:
         logger.error("can not be skip error!================= common stage")
@@ -319,6 +321,10 @@ def fight_settlement_904(pro_data, player):
                 result = False
                 break
 
+    if always_win and stage_id in game_configs.stage_show_config:
+        # 新手引导中的假战斗，必胜，三星
+        result = True
+        star = 3
     res = fight_settlement(stage, result, player, star, response)
     logger.debug("steps:%s", request.steps)
     logger.debug("fight_settlement_904 end: %s" % time.time())

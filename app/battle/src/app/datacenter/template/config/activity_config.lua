@@ -90,7 +90,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 18004,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18003,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900018004,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18003,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6004,}
 ,}
@@ -472,7 +472,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 18005,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900018005,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6005,}
 ,}
@@ -664,7 +664,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 18006,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18005,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900018006,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18005,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6006,}
 ,}
@@ -936,7 +936,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 18007,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18006,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900018007,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18006,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6007,}
 ,}
@@ -1782,7 +1782,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 18001,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900018001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6001,}
 ,}
@@ -1948,7 +1948,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 4004,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 4003,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900004004,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 4003,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6024,}
 ,}
@@ -2332,7 +2332,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 18002,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900018002,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6002,}
 ,}
@@ -2404,7 +2404,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3010,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003010,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 139,}
 ,}
@@ -2548,7 +2548,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 4005,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 4004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900004005,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 4004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6025,}
 ,}
@@ -2856,7 +2856,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2003,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900002003,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6033,}
 ,}
@@ -2880,7 +2880,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3019,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003019,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 148,}
 ,}
@@ -2904,7 +2904,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3017,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003017,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 146,}
 ,}
@@ -2916,7 +2916,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3018,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003018,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 147,}
 ,}
@@ -2940,7 +2940,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3009,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003009,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 138,}
 ,}
@@ -3012,7 +3012,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3006,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003006,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 135,}
 ,}
@@ -3024,7 +3024,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3020,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003020,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 149,}
 ,}
@@ -3084,7 +3084,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3005,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003005,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 134,}
 ,}
@@ -3096,7 +3096,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 18003,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900018003,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 18002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6003,}
 ,}
@@ -3132,7 +3132,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2006,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2005,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900002006,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2005,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6036,}
 ,}
@@ -3228,7 +3228,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2001,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900002001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6031,}
 ,}
@@ -3252,7 +3252,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2002,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900002002,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6032,}
 ,}
@@ -3264,7 +3264,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 4001,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900004001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6021,}
 ,}
@@ -3276,7 +3276,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 4002,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 4001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900004002,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 4001,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6022,}
 ,}
@@ -3288,7 +3288,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 4003,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 4002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900004003,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 4002,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6023,}
 ,}
@@ -3300,7 +3300,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2004,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2003,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900002004,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2003,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6034,}
 ,}
@@ -3324,7 +3324,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2005,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900002005,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2004,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6035,}
 ,}
@@ -3372,7 +3372,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2019-01-01 00:00:01",  ["id"] = 2007,  ["parameterT"] = "7",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2006,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900002007,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 2006,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 6037,}
 ,}
@@ -3420,7 +3420,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3011,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003011,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 140,}
 ,}
@@ -3528,7 +3528,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3001,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003001,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 130,}
 ,}
@@ -3540,7 +3540,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3002,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003002,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 131,}
 ,}
@@ -3552,7 +3552,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3003,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003003,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 132,}
 ,}
@@ -3564,7 +3564,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3004,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003004,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 133,}
 ,}
@@ -3600,7 +3600,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3007,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003007,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 136,}
 ,}
@@ -3612,7 +3612,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3008,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003008,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 137,}
 ,}
@@ -3660,7 +3660,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3012,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003012,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 141,}
 ,}
@@ -3672,7 +3672,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3013,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003013,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 142,}
 ,}
@@ -3684,7 +3684,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3014,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003014,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 143,}
 ,}
@@ -3696,7 +3696,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3015,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003015,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 144,}
 ,}
@@ -3708,7 +3708,7 @@ activity_config={
 }
 ,  ["timeStart"] = "2015-01-01 00:00:01",  ["id"] = 3016,  ["parameterT"] = "0",  ["isEmail"] = 0,  ["open_zone"] = 0,  ["parameterC"] = {
 }
-,  ["name"] = 0,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
+,  ["name"] = 4900003016,  ["DegreeOfCompletion"] = 0,  ["repeat"] = 1,  ["premise"] = 0,  ["timeEnd"] = "2019-12-31 23:59:59",  ["reward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 145,}
 ,}
