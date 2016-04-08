@@ -57,3 +57,9 @@ class CharacterHeroChipsComponent(Component):
             self._chips[hero_chip.chip_no].num += hero_chip.num
         else:
             self._chips[hero_chip.chip_no] = hero_chip
+
+    def get_num(self, hero_chip_no):
+        if hero_chip_no in self._chips:  # 已经存在的item_no
+            return self._chips[hero_chip_no].num
+        else:
+            return 0

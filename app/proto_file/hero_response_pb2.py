@@ -15,7 +15,7 @@ import hero_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hero_response.proto',
   package='',
-  serialized_pb='\n\x13hero_response.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\"*\n\x10GetHerosResponse\x12\x16\n\x05heros\x18\x01 \x03(\x0b\x32\x07.HeroPB\"O\n\x13HeroUpgradeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"\x87\x01\n\x11HeroBreakResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x13\n\x0b\x62reak_level\x18\x03 \x01(\x05\x12\x16\n\x0e\x62reak_item_num\x18\x04 \x01(\x05\"[\n\x15HeroSacrificeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"J\n\x13HeroComposeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x15\n\x04hero\x18\x02 \x01(\x0b\x32\x07.HeroPB\"V\n\x10HeroSellResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"[\n\x12HeroRefineResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"j\n\x18OneKeyHeroUpgradeRespone\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x03(\x05\"\x9a\x01\n\x11HeroAwakeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x13\n\x0b\x61wake_level\x18\x02 \x01(\x05\x12\x11\n\tawake_exp\x18\x03 \x01(\x05\x12\x16\n\x0e\x61wake_item_num\x18\x04 \x01(\x05\x12\'\n\x07\x63onsume\x18\x05 \x01(\x0b\x32\x16.GameResourcesResponse')
+  serialized_pb='\n\x13hero_response.proto\x1a\x0c\x63ommon.proto\x1a\nhero.proto\"*\n\x10GetHerosResponse\x12\x16\n\x05heros\x18\x01 \x03(\x0b\x32\x07.HeroPB\"O\n\x13HeroUpgradeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\"\x87\x01\n\x11HeroBreakResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\x12\x13\n\x0b\x62reak_level\x18\x03 \x01(\x05\x12\x16\n\x0e\x62reak_item_num\x18\x04 \x01(\x05\"[\n\x15HeroSacrificeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"J\n\x13HeroComposeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x15\n\x04hero\x18\x02 \x01(\x0b\x32\x07.HeroPB\"V\n\x10HeroSellResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12$\n\x04gain\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"[\n\x12HeroRefineResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\'\n\x07\x63onsume\x18\x02 \x01(\x0b\x32\x16.GameResourcesResponse\"j\n\x18OneKeyHeroUpgradeRespone\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\r\n\x05level\x18\x02 \x01(\x05\x12\x0b\n\x03\x65xp\x18\x03 \x01(\x05\x12\x14\n\x0c\x65xp_item_num\x18\x04 \x03(\x05\"\x9a\x01\n\x11HeroAwakeResponse\x12\x1c\n\x03res\x18\x01 \x02(\x0b\x32\x0f.CommonResponse\x12\x13\n\x0b\x61wake_level\x18\x02 \x01(\x05\x12\x11\n\tawake_exp\x18\x03 \x01(\x05\x12\x16\n\x0e\x61wake_item_num\x18\x04 \x01(\x05\x12\'\n\x07\x63onsume\x18\x05 \x01(\x0b\x32\x16.GameResourcesResponse\"M\n\x1cHeroBreakRelatedInfoResponse\x12\x16\n\x0e\x62reak_item_num\x18\x01 \x01(\x05\x12\x15\n\rhero_chip_num\x18\x02 \x01(\x05')
 
 
 
@@ -383,6 +383,41 @@ _HEROAWAKERESPONSE = _descriptor.Descriptor(
   serialized_end=925,
 )
 
+
+_HEROBREAKRELATEDINFORESPONSE = _descriptor.Descriptor(
+  name='HeroBreakRelatedInfoResponse',
+  full_name='HeroBreakRelatedInfoResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='break_item_num', full_name='HeroBreakRelatedInfoResponse.break_item_num', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='hero_chip_num', full_name='HeroBreakRelatedInfoResponse.hero_chip_num', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=927,
+  serialized_end=1004,
+)
+
 _GETHEROSRESPONSE.fields_by_name['heros'].message_type = hero_pb2._HEROPB
 _HEROUPGRADERESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
 _HEROBREAKRESPONSE.fields_by_name['res'].message_type = common_pb2._COMMONRESPONSE
@@ -407,6 +442,7 @@ DESCRIPTOR.message_types_by_name['HeroSellResponse'] = _HEROSELLRESPONSE
 DESCRIPTOR.message_types_by_name['HeroRefineResponse'] = _HEROREFINERESPONSE
 DESCRIPTOR.message_types_by_name['OneKeyHeroUpgradeRespone'] = _ONEKEYHEROUPGRADERESPONE
 DESCRIPTOR.message_types_by_name['HeroAwakeResponse'] = _HEROAWAKERESPONSE
+DESCRIPTOR.message_types_by_name['HeroBreakRelatedInfoResponse'] = _HEROBREAKRELATEDINFORESPONSE
 
 class GetHerosResponse(_message.Message):
   __metaclass__ = _reflection.GeneratedProtocolMessageType
@@ -461,6 +497,12 @@ class HeroAwakeResponse(_message.Message):
   DESCRIPTOR = _HEROAWAKERESPONSE
 
   # @@protoc_insertion_point(class_scope:HeroAwakeResponse)
+
+class HeroBreakRelatedInfoResponse(_message.Message):
+  __metaclass__ = _reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _HEROBREAKRELATEDINFORESPONSE
+
+  # @@protoc_insertion_point(class_scope:HeroBreakRelatedInfoResponse)
 
 
 # @@protoc_insertion_point(module_scope)

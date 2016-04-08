@@ -69,3 +69,10 @@ message HeroAwakeResponse
     optional int32 awake_item_num = 4; // 消耗的觉醒丹数量
     optional GameResourcesResponse consume = 5; // 觉醒实际消耗
 }
+
+// 武将突破信息同步, command 122
+message HeroBreakRelatedInfoResponse
+{
+    optional int32 break_item_num = 1; //突破丹数量
+    optional int32 hero_chip_num = 2; //武将碎片数量
+}

@@ -578,3 +578,27 @@ def do_hero_awake(player, hero_no, awake_item_num, response):
     tlog_action.log('HeroAwake', player, hero_no, use_num, hero.awake_level-1)
 
     return {'result': True}
+
+
+@remoteserviceHandle('gate')
+def hero_break_sync_info_122(data, player):
+    """
+    同步武将突破信息
+    """
+    request = hero_request_pb2.HeroBreakRelatedInfoRequest()
+    request.ParseFromString(data)
+    response = hero_response_pb2.HeroBreakRelatedInfoResponse()
+    hero_no = request.hero_no
+
+    item = player.item_package.get_item(20006)
+    if item:
+        response.break_item_num = item.item_no
+    else:
+        response.break_item_num = 0
+
+    chip_no = game_configs.chip_config.get("mapping").get(hero_no).get("id")
+    response.hero_chip_num = player.hero_chip_component.get_num(chip_no)
+
+
+    return response.SerializeToString()
+
