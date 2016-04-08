@@ -50,3 +50,8 @@ message HeroAwakeRequest
     required int32 hero_no = 1; // 武将编号
     optional int32 awake_item_num = 2; // 觉醒道具数量
 }
+// 武将突破信息同步, command 122
+message HeroBreakRelatedInfoRequest
+{
+    required int32 hero_no = 1; // 武将编号
+}

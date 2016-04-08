@@ -367,4 +367,20 @@ formula_config={
   ["precondition"] = "1",  ["formula"] = "playerLuckyValue/50000",  ["clientPrecondition"] = "1",  ["id"] = 183,  ["clientFormula"] = "result=playerLuckyValue/50000",  ["key"] = "shopLuckyValue",}
 ,  [184] = {
   ["precondition"] = "1",  ["formula"] = "damage if damage<=10000 else 10000+damage/10",  ["clientPrecondition"] = "1",  ["id"] = 184,  ["clientFormula"] = "result=(damage <= 10000 and damage) or 10000+damage/10",  ["key"] = "coinWarFogboss",}
+,  [185] = {
+  ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 185,  ["clientFormula"] = "result=rand_name_config[math.random(1,496)].prefix_1 .. rand_name_config[math.random(1,2190)].name_1",  ["key"] = "rand_name_1",}
+,  [186] = {
+  ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 186,  ["clientFormula"] = "result=rand_name_config[math.random(1,496)].prefix_1 .. rand_name_config[math.random(1,4063)].name_2",  ["key"] = "rand_name_2",}
+,  [187] = {
+  ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 187,  ["clientFormula"] = "result=rand_name_config[math.random(1,496)].prefix_1 .. rand_name_config[math.random(1,116)].name_3",  ["key"] = "rand_name_3",}
+,  [188] = {
+  ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 188,  ["clientFormula"] = "result=rand_name_config[math.random(1,496)].prefix_1 .. rand_name_config[math.random(1,96)].name_4",  ["key"] = "rand_name_4",}
+,  [189] = {
+  ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 189,  ["clientFormula"] = "result=rand_name_config[math.random(1,496)].prefix_1 .. rand_name_config[math.random(1,96)].name_4 .. rand_name_config[math.random(1,116)].name_3",  ["key"] = "rand_name_5",}
+,  [190] = {
+  ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 190,  ["clientFormula"] = "result=rand_name_config[math.random(1,496)].prefix_1 .. rand_name_config[math.random(1,96)].name_4 .. rand_name_config[math.random(1,96)].name_4",  ["key"] = "rand_name_6",}
+,  [191] = {
+  ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 191,  ["clientFormula"] = "result=rand_name_config[math.random(1,496)].prefix_1 .. rand_name_config[math.random(1,116)].name_3 .. rand_name_config[math.random(1,96)].name_4",  ["key"] = "rand_name_7",}
+,  [192] = {
+  ["precondition"] = "1",  ["formula"] = "1",  ["clientPrecondition"] = "1",  ["id"] = 192,  ["clientFormula"] = "result=rand_name_config[math.random(1,496)].prefix_1 .. rand_name_config[math.random(1,116)].name_3 .. rand_name_config[math.random(1,116)].name_3",  ["key"] = "rand_name_8",}
 ,}
