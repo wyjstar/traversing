@@ -65,7 +65,7 @@ base_config={
 ,  ["10"] = {
   [1] = 10,  [2] = 10,  [3] = 11,}
 ,}
-,  ["weekCardMaxDays"] = 9,  ["bbs_Url"] = "http://bbs.g.qq.com/forum.php?mod=forumdisplay&fid=56656&ADTAG=game.app.duangsg",  ["warFogStrongpointOdds"] = {
+,  ["weekCardMaxDays"] = 9,  ["bbs_Url"] = "http://bbs.mobartsgame.com/forum.php?mod=forumdisplay&fid=46",  ["warFogStrongpointOdds"] = {
   ["1"] = 0.7,  ["3"] = 0.05,  ["2"] = 0.2,  ["5"] = 0,  ["4"] = 0.05,}
 ,  ["hjqyMeritoriousServiceRate"] = 2,  ["guildInviteTime"] = 4320,  ["heroSacrificeOpenStage"] = 100303,  ["travelVigorInit"] = 15,  ["seven2"] = {
   ["1"] = {
@@ -235,19 +235,19 @@ base_config={
 ,  ["6"] = {
   [1] = 60,}
 ,}
-,  ["buy_vigor_num"] = 120,  ["CardTimeCumulateTimes"] = 10,  ["weekCardFreshTime"] = "0:00:00",  ["equMallOpenLevel"] = 10,  ["warFogBossCriServer"] = 2,  ["money_inspire_price_multiple"] = 1,  ["CardTimeActivity2"] = {
+,  ["buy_vigor_num"] = 120,  ["CardTimeActivity2"] = {
   ["13001"] = {
   [1] = 610,}
 ,}
-,  ["warFogBossFreeReliveTime"] = 300,  ["CardTimeParticipateInAwards"] = 100,  ["nextDayOpenTime"] = {
+,  ["CardTimeCumulateTimes"] = 10,  ["weekCardFreshTime"] = "0:00:00",  ["equMallOpenLevel"] = 10,  ["warFogBossCriServer"] = 2,  ["money_inspire_price_multiple"] = 1,  ["CardTimeParticipateInAwards"] = 100,  ["warFogBossFreeReliveTime"] = 300,  ["friendApplyLevelGapAdd"] = 5,  ["nextDayOpenTime"] = {
   ["2"] = {
   [1] = "0:00:30",}
 ,}
-,  ["vigorValueFriendGive"] = 2,  ["friendApplyLevelGapAdd"] = 5,  ["friendActivityReward"] = {
+,  ["vigorValueFriendGive"] = 2,  ["friendActivityReward"] = {
   ["106"] = {
   [1] = 1,  [2] = 1,  [3] = 1103,}
 ,}
-,  ["friendActivityValue"] = 100,  ["worldbossHurtRankRewards"] = {
+,  ["worldbossHurtRankRewards"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 600001,}
 ,  ["3"] = {
@@ -269,7 +269,7 @@ base_config={
 ,  ["10"] = {
   [1] = 10,  [2] = 10,  [3] = 600010,}
 ,}
-,  ["initialVipLevel"] = 0,  ["indianaMatch"] = {
+,  ["friendActivityValue"] = 100,  ["initialVipLevel"] = 0,  ["DrawCardShow2_time"] = 3,  ["indianaMatch"] = {
   [1] = 60001,  [2] = 60002,  [3] = 60003,}
 ,  ["CardFirst"] = {
   ["101"] = {
@@ -283,13 +283,13 @@ base_config={
 ,  ["5"] = {
   [1] = 10044,  [2] = 190,  [3] = 50,  [4] = 240000,}
 ,}
-,  ["arenaFightCd"] = 300,  ["DrawCardShow2_time"] = 3,  ["arena_free_times"] = 5,  ["cheer_partner_seat5"] = {
-  ["3"] = 0.1,  ["2"] = 0.1,}
-,  ["chat_interval"] = 30,  ["warFogBossMoneyRelivePrice"] = 20,  ["activityOpenDay"] = {
+,  ["arenaFightCd"] = 300,  ["activityOpenDay"] = {
   ["1"] = {
   [1] = "0:00:00",  [2] = 3300009020,  [3] = 3400009020,}
 ,}
-,  ["Worship2Fresh"] = "9:00:00",  ["AnimalCoolingTime"] = 300,  ["equRefundRatio"] = 0.8,  ["warFogBossInspireAtk"] = 0.05,  ["seven1_Icon"] = {
+,  ["arena_free_times"] = 5,  ["cheer_partner_seat5"] = {
+  ["3"] = 0.1,  ["2"] = 0.1,}
+,  ["chat_interval"] = 30,  ["warFogBossMoneyRelivePrice"] = 20,  ["AnimalCoolingTime"] = 300,  ["Worship2Fresh"] = "9:00:00",  ["equRefundRatio"] = 0.8,  ["seven1_Icon"] = {
   ["1"] = {
   [1] = 1600001,}
 ,  ["4"] = {
@@ -299,7 +299,7 @@ base_config={
 ,  ["2"] = {
   [1] = 1600017,}
 ,}
-,  ["worShipCoolingTime"] = 300,  ["initialHead"] = 10044,  ["public_chat_open_level"] = 10,  ["maxOfFriendApply"] = 100,  ["hjqyDayReward"] = {
+,  ["warFogBossInspireAtk"] = 0.05,  ["worShipCoolingTime"] = 300,  ["initialHead"] = 10044,  ["chat_show_max"] = 10,  ["public_chat_open_level"] = 10,  ["maxOfFriendApply"] = 100,  ["hjqyDayReward"] = {
   ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 501,}
 ,  ["3"] = {
@@ -454,7 +454,7 @@ base_config={
 ,  ["travelShoe2"] = {
   [1] = 19,  [2] = 20,  [3] = 100,  [4] = 3,}
 ,  ["worldbossInspireAtk"] = 0.05,  ["sacrificeGainExp"] = {
-  ["200"] = 10003,  ["100"] = 10002,  ["50"] = 10001,}
+  ["1000"] = 10003,  ["500"] = 10002,  ["100"] = 10001,}
 ,  ["stageAOpen"] = 100506,  ["hjqyExchangeNumber"] = 1,  ["GoddessOpenLevel"] = 2,  ["warFogBossInspireAtkMoney"] = 0.1,  ["getMoneyFreeTimes"] = 1,  ["equUpgradeOpenStage"] = 100205,  ["totemRefreshItem"] = {
   ["105"] = {
   [1] = 1,  [2] = 1,  [3] = 50004,}
@@ -796,7 +796,7 @@ base_config={
   [1] = 5,  [2] = 5,  [3] = 2,}
 ,}
 ,  ["hjqyExchangeBUFFNumber"] = 2,  ["warFogBossMoneyInspirePrice"] = 20,  ["hjqyOpenDay"] = {
-  ["2"] = {
+  ["1"] = {
   [1] = "0:00:00",  [2] = 3300009037,  [3] = 3400009037,}
 ,}
 ,  ["hjqyEscapeTime"] = 30,  ["friendApplyLevelGap"] = 5,  ["EscortRefreshFrequencyMax"] = 20,  ["share_GetCard_6"] = 0,  ["multiple_for_SettleExp"] = 2,  ["wushang_value_config"] = {
@@ -1182,26 +1182,54 @@ base_config={
   [1] = 33004,  [2] = 33005,  [3] = 33006,}
 ,}
 ,  ["warFogBossGoldcoinInspireLimited"] = 20,  ["cookingWineOutput"] = 60,  ["hjqyDayPointsTime"] = "0:00:00",  ["weekCardRemindMail"] = 202,  ["wushuangTimeMax"] = 2,  ["ggzjRule2"] = {
-  ["1"] = {
+  ["24"] = {
+  [1] = 3001,  [2] = 99999,  [3] = 30024,}
+,  ["23"] = {
+  [1] = 2500,  [2] = 3000,  [3] = 30023,}
+,  ["22"] = {
+  [1] = 2001,  [2] = 2500,  [3] = 30022,}
+,  ["21"] = {
+  [1] = 1701,  [2] = 2000,  [3] = 30021,}
+,  ["20"] = {
+  [1] = 1401,  [2] = 1700,  [3] = 30020,}
+,  ["19"] = {
+  [1] = 1101,  [2] = 1400,  [3] = 30019,}
+,  ["18"] = {
+  [1] = 801,  [2] = 1100,  [3] = 30018,}
+,  ["9"] = {
+  [1] = 51,  [2] = 60,  [3] = 30009,}
+,  ["1"] = {
   [1] = 1,  [2] = 1,  [3] = 30001,}
+,  ["15"] = {
+  [1] = 251,  [2] = 350,  [3] = 30015,}
 ,  ["3"] = {
-  [1] = 3,  [2] = 3,  [3] = 30003,}
+  [1] = 2,  [2] = 2,  [3] = 30003,}
 ,  ["2"] = {
   [1] = 2,  [2] = 2,  [3] = 30002,}
 ,  ["5"] = {
-  [1] = 10,  [2] = 19,  [3] = 30005,}
+  [1] = 11,  [2] = 20,  [3] = 30005,}
 ,  ["4"] = {
-  [1] = 4,  [2] = 9,  [3] = 30004,}
+  [1] = 4,  [2] = 10,  [3] = 30004,}
 ,  ["7"] = {
-  [1] = 50,  [2] = 99,  [3] = 30007,}
+  [1] = 31,  [2] = 40,  [3] = 30007,}
 ,  ["6"] = {
-  [1] = 20,  [2] = 49,  [3] = 30006,}
-,  ["9"] = {
-  [1] = 300,  [2] = 999,  [3] = 30009,}
+  [1] = 21,  [2] = 30,  [3] = 30006,}
+,  ["14"] = {
+  [1] = 201,  [2] = 250,  [3] = 30014,}
 ,  ["8"] = {
-  [1] = 100,  [2] = 299,  [3] = 30008,}
+  [1] = 41,  [2] = 50,  [3] = 30008,}
+,  ["16"] = {
+  [1] = 351,  [2] = 550,  [3] = 30016,}
+,  ["17"] = {
+  [1] = 551,  [2] = 800,  [3] = 30017,}
+,  ["13"] = {
+  [1] = 151,  [2] = 200,  [3] = 30013,}
+,  ["12"] = {
+  [1] = 101,  [2] = 150,  [3] = 30012,}
+,  ["11"] = {
+  [1] = 71,  [2] = 100,  [3] = 30011,}
 ,  ["10"] = {
-  [1] = 1000,  [2] = 99999,  [3] = 30010,}
+  [1] = 61,  [2] = 70,  [3] = 30010,}
 ,}
 ,  ["heroAwakeBack"] = 0.8,  ["version_of_game"] = {
   ["current_version"] = "4.0.1",  ["version"] = "1.0.1",}

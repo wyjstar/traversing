@@ -10,7 +10,7 @@ currency_config={
 ,  [3] = {
   ["toGet"] = 500000003,  ["buyPrice"] = {
 }
-,  ["quality"] = 3,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000003,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 3,  ["icon"] = 3,  ["des"] = 4600000003,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000003,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 3,  ["icon"] = 3,  ["des"] = 4600000003,}
 ,  [4] = {
   ["toGet"] = 500000004,  ["buyPrice"] = {
   ["1"] = {
@@ -46,7 +46,7 @@ currency_config={
 ,  ["10"] = {
   [1] = 2,  [2] = 100,}
 ,}
-,  ["quality"] = 3,  ["buyOneNumber"] = 20,  ["storageMax"] = 20,  ["name"] = 4500000004,  ["recoveryTime"] = 300,  ["recoveryNumber"] = 1,  ["id"] = 4,  ["icon"] = 4,  ["des"] = 0,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 20,  ["storageMax"] = 20,  ["name"] = 4500000004,  ["recoveryTime"] = 300,  ["recoveryNumber"] = 1,  ["id"] = 4,  ["icon"] = 4,  ["des"] = 4600000004,}
 ,  [5] = {
   ["toGet"] = 500000005,  ["buyPrice"] = {
 }
@@ -94,7 +94,7 @@ currency_config={
 ,  [8] = {
   ["toGet"] = 500000008,  ["buyPrice"] = {
 }
-,  ["quality"] = 3,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000008,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 8,  ["icon"] = 8,  ["des"] = 4600000008,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000008,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 8,  ["icon"] = 8,  ["des"] = 4600000008,}
 ,  [9] = {
   ["toGet"] = 500000009,  ["buyPrice"] = {
 }
@@ -110,7 +110,7 @@ currency_config={
 ,  [12] = {
   ["toGet"] = 500000012,  ["buyPrice"] = {
 }
-,  ["quality"] = 3,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000012,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 12,  ["icon"] = 12,  ["des"] = 4600000011,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000012,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 12,  ["icon"] = 12,  ["des"] = 4600000011,}
 ,  [13] = {
   ["toGet"] = 500000013,  ["buyPrice"] = {
 }
@@ -118,7 +118,7 @@ currency_config={
 ,  [14] = {
   ["toGet"] = 500000014,  ["buyPrice"] = {
 }
-,  ["quality"] = 3,  ["buyOneNumber"] = 0,  ["storageMax"] = 5,  ["name"] = 4500000014,  ["recoveryTime"] = 1800,  ["recoveryNumber"] = 1,  ["id"] = 14,  ["icon"] = 14,  ["des"] = 0,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 0,  ["storageMax"] = 5,  ["name"] = 4500000014,  ["recoveryTime"] = 1800,  ["recoveryNumber"] = 1,  ["id"] = 14,  ["icon"] = 14,  ["des"] = 0,}
 ,  [15] = {
   ["toGet"] = 500000015,  ["buyPrice"] = {
 }
@@ -148,7 +148,7 @@ currency_config={
 ,  [21] = {
   ["toGet"] = 500000021,  ["buyPrice"] = {
 }
-,  ["quality"] = 3,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000021,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 21,  ["icon"] = 21,  ["des"] = 4600000020,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000021,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 21,  ["icon"] = 21,  ["des"] = 4600000020,}
 ,  [22] = {
   ["toGet"] = 500000022,  ["buyPrice"] = {
 }
@@ -164,7 +164,7 @@ currency_config={
 ,  [25] = {
   ["toGet"] = 500000025,  ["buyPrice"] = {
 }
-,  ["quality"] = 3,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000025,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 25,  ["icon"] = 25,  ["des"] = 4600000025,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000025,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 25,  ["icon"] = 25,  ["des"] = 4600000025,}
 ,  [26] = {
   ["toGet"] = 500000026,  ["buyPrice"] = {
   ["1"] = {
@@ -180,15 +180,15 @@ currency_config={
 ,  ["6"] = {
   [1] = 2,  [2] = 80,}
 ,}
-,  ["quality"] = 3,  ["buyOneNumber"] = 1,  ["storageMax"] = 10,  ["name"] = 4500000026,  ["recoveryTime"] = 3600,  ["recoveryNumber"] = 1,  ["id"] = 26,  ["icon"] = 26,  ["des"] = 4600000026,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 1,  ["storageMax"] = 10,  ["name"] = 4500000026,  ["recoveryTime"] = 3600,  ["recoveryNumber"] = 1,  ["id"] = 26,  ["icon"] = 26,  ["des"] = 4600000026,}
 ,  [27] = {
   ["toGet"] = 500000027,  ["buyPrice"] = {
 }
-,  ["quality"] = 3,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000027,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 27,  ["icon"] = 27,  ["des"] = 4600000027,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000027,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 27,  ["icon"] = 27,  ["des"] = 4600000027,}
 ,  [28] = {
   ["toGet"] = 500000028,  ["buyPrice"] = {
 }
-,  ["quality"] = 3,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000028,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 28,  ["icon"] = 28,  ["des"] = 4600000028,}
+,  ["quality"] = 5,  ["buyOneNumber"] = 0,  ["storageMax"] = 0,  ["name"] = 4500000028,  ["recoveryTime"] = 0,  ["recoveryNumber"] = 0,  ["id"] = 28,  ["icon"] = 28,  ["des"] = 4600000028,}
 ,  [29] = {
   ["toGet"] = 500000029,  ["buyPrice"] = {
 }

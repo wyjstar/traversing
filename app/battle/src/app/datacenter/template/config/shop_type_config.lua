@@ -40,7 +40,7 @@ shop_type_config={
 }
 ,}
 ,  [9] = {
-  ["itemNum"] = 6,  ["openStage"] = 100303,  ["openLevel"] = 1,  ["id"] = 9,  ["refresh"] = -1,  ["luckyValue"] = {
+  ["itemNum"] = 6,  ["openStage"] = 100303,  ["openLevel"] = 1,  ["id"] = 9,  ["refresh"] = 6,  ["luckyValue"] = {
 }
 ,  ["luckyValueLimited"] = 0,  ["freeRefreshTimes"] = 0,  ["luckyValueResetTime"] = "-1",  ["refreshPrice"] = {
   ["107"] = {

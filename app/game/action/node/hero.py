@@ -592,12 +592,13 @@ def hero_break_sync_info_122(data, player):
 
     item = player.item_package.get_item(20006)
     if item:
-        response.break_item_num = item.item_no
+        response.break_item_num = item.num
     else:
         response.break_item_num = 0
 
     chip_no = game_configs.chip_config.get("mapping").get(hero_no).get("id")
     response.hero_chip_num = player.hero_chip_component.get_num(chip_no)
+    logger.debug(response)
 
 
     return response.SerializeToString()
