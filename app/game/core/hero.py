@@ -323,8 +323,12 @@ class Hero(object):
                     add_item = CommonItem(dict(hp=item.hp, atk=item.atk, physicalDef=item.physicalDef, magicDef=item.magicDef))
                     attr += add_item
 
-                lst = game_configs.seal_config.get(pulse-1)
-                if lst and _refine_attr.id == lst[-1].id:
+                last_lst = game_configs.seal_config.get(pulse-1)
+                if last_lst:
+                    first_item = last_lst[0]
+                    attr += CommonItem(dict(hp=first_item.hp, atk=first_item.atk, physicalDef=first_item.physicalDef, magicDef=first_item.magicDef))
+
+                if _refine_attr.id == lst[-1].id:
                     first_item = lst[0]
                     attr += CommonItem(dict(hp=first_item.hp, atk=first_item.atk, physicalDef=first_item.physicalDef, magicDef=first_item.magicDef))
 
