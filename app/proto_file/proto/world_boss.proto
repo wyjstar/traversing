@@ -47,6 +47,7 @@ message PvbBeforeInfoResponse{
     optional int32 encourage_gold_num = 15;     // 元宝鼓舞次数
     optional int32 gold_reborn_times = 16;     // 元宝复活次数
     optional int32 hp_max = 17;     //boss最大血量
+    optional int32 last_coin_encourage_time = 18;     // 上次金币鼓舞时间
 }
 
 //请求pvb玩家信息, command:1702

@@ -77,6 +77,7 @@ def get_fight_info(data, player):
     response.fight_times = boss.fight_times
     response.last_fight_time = int(boss.last_fight_time)
     response.gold_reborn_times = boss.gold_reborn_times
+    response.last_coin_encourage_time = boss.last_coin_encourage_time
     logger.debug("gold_reborn_times %s " % response.gold_reborn_times)
     #print response
     print "*" * 80
@@ -118,6 +119,14 @@ def encourage_heros_1703(data, player):
         goldcoin_inspire_price = base_config.get("coin_inspire_price")
         goldcoin_inspire_price_multiple = base_config.get("coin_inspire_price_multi")
         goldcoinInspireLimited = base_config.get("coin_inspire_limit")
+        goldcoin_inspire_CD = base_config.get("coin_inspire_cd")
+        if get_current_timestamp() - boss.last_coin_encourage_time > goldcoin_inspire_CD:
+            logger.debug("coin encourage CD not enough %s, %s" % (boss.last_coin_encourage_time, goldcoin_inspire_CD))
+            response.result = False
+            response.result_no = 1704
+            logger.debug("*" * 80)
+            print response
+            return response.SerializePartialToString()
 
         if boss.encourage_coin_num >= goldcoinInspireLimited:
             logger.debug("coin encourage too many times %s, %s" % (boss.encourage_coin_num, goldcoinInspireLimited))
@@ -140,6 +149,7 @@ def encourage_heros_1703(data, player):
         player.finance.coin -= need_coin
         player.finance.save_data()
         boss.encourage_coin_num += 1
+        boss.last_coin_encourage_time = get_current_timestamp()
 
     if request.finance_type == 2:
         # 钻石鼓舞
