@@ -5,6 +5,11 @@ from gtwisted.core import reactor
 from shared.utils.mail_helper import deal_mail
 import time
 from app.world.action.gateforwarding import limit_hero_obj
+from shared.utils.ranking import Ranking
+from gfirefly.server.globalobject import GlobalObject
+
+
+childsmanager = GlobalObject().root.childsmanager
 
 
 def send_reward(act_id):
@@ -18,14 +23,15 @@ def send_reward(act_id):
             break
         mail_id = get_mail_id(rank, act_id)
         mail_data, _ = deal_mail(conf_id=mail_id, receive_id=p_id)
-        child = childsmanager.childs.values()[0]
-        child.push_message_remote('receive_mail_remote', p_id, mail_data)
+        for child in childsmanager.childs.values():
+            child.push_message_remote('receive_mail_remote', p_id, mail_data)
+            break
         rank += 1
 
 
 def get_mail_id(rank, act_id):
     reward_info = game_configs.base_config. \
-        get('CardTimeParticipateInAwards').get(act_id)
+        get('CardTimeActivity').get(act_id)
     for _, info in reward_info.items():
         if info[0] <= rank <= info[1]:
             return info[2]
@@ -59,7 +65,7 @@ def get_activity_info():
     act_confs = game_configs.activity_config.get(17)
     activity_id = 0
     timeEnd = 0
-    now = time.time()
+    now = time.time()+1
     for act_conf in act_confs:
         if act_conf.timeStart <= now <= act_conf.timeEnd:
             activity_id = act_conf.id

@@ -32,7 +32,7 @@ class CharacterLimitHeroComponent(Component):
                 character_info.get("integral_draw_times")
             self._activity_id = character_info.get("activity_id")
         else:
-            self._activity_id = activity_id
+            self.update(activity_id)
 
     def save_data(self):
         data_obj = tb_character_info.getObj(self.owner.base_info.id)

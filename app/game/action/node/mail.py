@@ -19,6 +19,7 @@ from app.game.core.mail_helper import send_mail
 
 remote_gate = GlobalObject().remote.get('gate')
 
+
 def month_reward(player):
     """
     发放月卡永久奖励
@@ -27,6 +28,7 @@ def month_reward(player):
     for _ in range(times):
         send_mail(conf_id=mail_id, receive_id=player.base_info.id)
     player.rebate.save_data()
+
 
 @remoteserviceHandle('gate')
 def get_all_mail_info_1301(proto_data, player):

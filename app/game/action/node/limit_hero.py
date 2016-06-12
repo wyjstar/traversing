@@ -23,7 +23,8 @@ def get_limit_hero_info_1812(data, player):
     response.activity_id = activity_id
 
     if not activity_id:
-        response.res.result = True
+        response.res.result = False
+        response.res.result_no = 864
         # logger.debug(response)
         return response.SerializeToString()
 

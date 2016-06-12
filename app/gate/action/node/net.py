@@ -24,6 +24,12 @@ def push_all_object_remote(topic_id, message):
     push_all_objects(topic_id, message)
 
 
+@remoteserviceHandle('world')
+def push_message_remote(key, character_id, *args):
+    transit_remote = GlobalObject().remote['transit']
+    return transit_remote.push_message_remote(key, character_id, *args)
+
+
 def push_all_objects(topic_id, message):
     """
     向全服玩家发送消息
