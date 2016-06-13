@@ -48,5 +48,6 @@ def net_conn_lost_remote(player):
     remote_gate.add_push_message_remote(player.base_info.id, 1, message, int(time.time())+time_add)
 
     # TODO 是否需要保存数据
+    player.line_up.save_data()
     PlayersManager().drop_player(player)
     return True
