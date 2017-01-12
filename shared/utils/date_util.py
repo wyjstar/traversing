@@ -68,7 +68,7 @@ def days_to_current(timestamp):
     yday = now.tm_yday
     if now.tm_year > some_date.tm_year:
         diff = 365
-        if some_date.tm_year % 4:
+        if not some_date.tm_year % 4:
             diff = 366
         yday = yday + diff
 
