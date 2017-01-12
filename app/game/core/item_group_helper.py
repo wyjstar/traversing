@@ -268,7 +268,9 @@ def gain(player, item_group, reason,
                 # 获取hero对应的hero_chip_no, hero_chip_num
                 hero_chip_config_item = game_configs.chip_config.get("mapping").get(item_no)
                 hero_chip_no = hero_chip_config_item.id
-                CardImparirment = game_configs.base_config.get("CardImparirment")
+                CardImparirment = 1
+                if reason == const.SHOP_DRAW_HERO:
+                    CardImparirment = game_configs.base_config.get("CardImparirment")
                 hero_chip_num = int(hero_chip_config_item.needNum * num * CardImparirment)
 
                 hero_chip = HeroChip(hero_chip_no, hero_chip_num)
