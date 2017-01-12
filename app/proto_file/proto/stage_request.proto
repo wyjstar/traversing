@@ -27,6 +27,7 @@ message StageSettlementRequest{
 	repeated StepInfo steps = 3; // 战斗步骤
 	required bool result = 4;  //输赢
 	optional bool is_skip = 5; // 是否跳过
+	optional bool always_win = 6; // 不需要校验，直接三星
 }
 
 // 扫荡 command:907
