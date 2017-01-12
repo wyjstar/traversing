@@ -65,7 +65,14 @@ def is_next_day(current_time_stamp, last_time_stamp):
 def days_to_current(timestamp):
     now = time.localtime(time.time())
     some_date = time.localtime(timestamp)
-    return now.tm_yday-some_date.tm_yday
+    yday = now.tm_yday
+    if now.tm_year > some_date.tm_year:
+        diff = 365
+        if some_date.tm_year % 4:
+            diff = 366
+        yday = yday + diff
+
+    return yday-some_date.tm_yday
 
 def is_past_time(next_time, last_time):
     """
