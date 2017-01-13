@@ -474,7 +474,7 @@ def assembly_slots(line_up_slots, response):
             hero = add_slot.hero
             hero_obj.update_pb(hero)
             link_info = slot.hero_slot.link
-            for key, value in link_info.items():
+            for key, value in link_info:
                 add_link = hero.links.add()
                 add_link.link_no = key
                 add_link.is_activation = value
@@ -504,7 +504,7 @@ def assembly_sub_slots(sub_slots, response):
             hero = add_slot.hero
             hero_obj.update_pb(hero)
             link_info = slot.hero_slot.link
-            for key, value in link_info.items():
+            for key, value in link_info:
                 add_link = hero.links.add()
                 add_link.link_no = key
                 add_link.is_activation = value

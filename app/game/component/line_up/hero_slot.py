@@ -3,8 +3,8 @@
 created by server on 14-8-13下午3:32.
 """
 from app.game.component.baseInfo.slot_base_info import SlotBaseInfoComponent
-from app.game.core.fight.skill import Skill
-from app.game.core.fight.skill_helper import SkillHelper
+#from app.game.core.fight.skill import Skill
+#from app.game.core.fight.skill_helper import SkillHelper
 
 
 class HeroSlotComponent(SlotBaseInfoComponent):
@@ -37,7 +37,7 @@ class HeroSlotComponent(SlotBaseInfoComponent):
     def link(self):
         """羁绊
         """
-        link_data = {}
+        link_data = []
         if not self.hero_obj:
             return link_data
         for i in range(1, 6):
@@ -47,7 +47,9 @@ class HeroSlotComponent(SlotBaseInfoComponent):
                 continue
 
             result = self.__is_activation(trigger_list)
-            link_data[link_no] = result
+            link_data.append((link_no, result))
+            #link_data[link_no] = result
+        print("link %s" % link_data)
 
         return link_data
 
@@ -71,25 +73,25 @@ class HeroSlotComponent(SlotBaseInfoComponent):
                     break
         return activation
 
-    @property
-    def link_attr(self):
-        """羁绊属性数值
-        """
-        skills = []
-        for skill_id, activation in self.link.items():
-            if activation:  # 激活
-                skill = Skill(skill_id)
-                skill.init_attr()
-                skills.append(skill)
+    #@property
+    #def link_attr(self):
+        #"""羁绊属性数值
+        #"""
+        #skills = []
+        #for skill_id, activation in self.link.items():
+            #if activation:  # 激活
+                #skill = Skill(skill_id)
+                #skill.init_attr()
+                #skills.append(skill)
 
-        skill_helper = SkillHelper(skills)
-        skill_helper.init_attr()
-        attr = skill_helper.parse_buffs()
-        return attr
+        #skill_helper = SkillHelper(skills)
+        #skill_helper.init_attr()
+        #attr = skill_helper.parse_buffs()
+        #return attr
 
     @property
     def link_skill_ids(self):
         """
         已经激活的羁绊技能ids
         """
-        return [skill_id for skill_id, activation in self.link.items() if activation]
+        return [skill_id for skill_id, activation in self.link if activation]
