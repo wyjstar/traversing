@@ -176,51 +176,51 @@ class LineUpSlotComponent(Component):
             return None
         return self.assemble_hero(hero)
 
-    def hero_attr(self):
-        """
-        英雄属性：包括突破和羁绊
-        """
-        attr = CommonItem()
-        # 英雄
-        hero_obj = self.hero_slot.hero_obj
+    #def hero_attr(self):
+        #"""
+        #英雄属性：包括突破和羁绊
+        #"""
+        #attr = CommonItem()
+        ## 英雄
+        #hero_obj = self.hero_slot.hero_obj
 
-        if not hero_obj:
-            return None, attr, hero_obj
+        #if not hero_obj:
+            #return None, attr, hero_obj
 
-        # hero_no, quality, hp, atk, physical_def, magic_def, hit
-        # dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
-        # rage_skill, break_skills
+        ## hero_no, quality, hp, atk, physical_def, magic_def, hit
+        ## dodge, cri, cri_coeff, cri_ded_coeff, block, normal_skill
+        ## rage_skill, break_skills
 
-        hero_base_attr = hero_obj.calculate_attr()  # 英雄基础属性，等级成长
+        #hero_base_attr = hero_obj.calculate_attr()  # 英雄基础属性，等级成长
 
-        # hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
-        # magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
+        ## hp, hp_rate, atk, atk_rate,physical_def,physical_def_rate,
+        ## magic_def, magic_def_rate, hit, dodge, cri, cri_coeff, cri_ded_coeff, block
 
-        attr = CommonItem()
-        hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
-        attr += hero_break_attr
-        hero_link_attr = self.hero_slot.link_attr  # 英雄羁绊技能属性
-        attr += hero_link_attr
+        #attr = CommonItem()
+        #hero_break_attr = hero_obj.break_attr()  # 英雄突破技能属性
+        #attr += hero_break_attr
+        #hero_link_attr = self.hero_slot.link_attr  # 英雄羁绊技能属性
+        #attr += hero_link_attr
 
-        if hero_obj.refine != 0:
-            _refine_attr = game_configs.seal_config.get(hero_obj.refine)
-            if _refine_attr:
-                attr += _refine_attr
-                extra_attr = None
-                for k, v in game_configs.seal_config:
-                    if v.get('allInt') > 0:
-                        continue
-                    if v.get('allInt2') > _refine_attr.get('allInt2'):
-                        continue
-                    extra_attr = v
-                if extra_attr:
-                    attr += extra_attr
+        #if hero_obj.refine != 0:
+            #_refine_attr = game_configs.seal_config.get(hero_obj.refine)
+            #if _refine_attr:
+                #attr += _refine_attr
+                #extra_attr = None
+                #for k, v in game_configs.seal_config:
+                    #if v.get('allInt') > 0:
+                        #continue
+                    #if v.get('allInt2') > _refine_attr.get('allInt2'):
+                        #continue
+                    #extra_attr = v
+                #if extra_attr:
+                    #attr += extra_attr
 
-            else:
-                logger.error('cant find refine config:%s', hero_obj.refine)
-        attr += self.owner.owner.travel_component.get_travel_item_attr()
+            #else:
+                #logger.error('cant find refine config:%s', hero_obj.refine)
+        #attr += self.owner.owner.travel_component.get_travel_item_attr()
 
-        return hero_base_attr, attr, hero_obj
+        #return hero_base_attr, attr, hero_obj
 
     def equ_attr(self, hero_self_attr):
         """
