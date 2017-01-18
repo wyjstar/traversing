@@ -223,6 +223,7 @@ const.UPGRADE_GUILD_SKILL = 2404 # 公会技能升级
 const.GUILD_BOSS_IN = 240301 #   公会boss 参与
 const.GUILD_BOSS_KILL = 240302 #  公会boss 击杀
 const.GUILD_ACTIVITY = 250201 #
+const.ADD_ACTIVITY = 260201 # 累积活动:元宝，体力，抽卡
 # 等级流水
 # const.STAGE = 27  # 关卡
 # const.STAGE_SWEEP = 22  # 关卡扫荡

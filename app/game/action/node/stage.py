@@ -549,7 +549,7 @@ def stage_sweep(stage_id, times, player, sweep_type):
                     data = gain(player, break_stage_info.reward, const.STAGE_SWEEP)
                     get_return(player, data, drops)
 
-            player.stamina.stamina -= stage_config.vigor
+            player.finance.consume(const.STAMINA, stage_config.vigor, const.STAGE_SWEEP)
             # 经验
             for (slot_no, lineUpSlotComponent) in player.line_up_component.line_up_slots.items():
                 hero = lineUpSlotComponent.hero_slot.hero_obj

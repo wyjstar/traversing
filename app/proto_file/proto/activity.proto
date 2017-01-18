@@ -55,3 +55,36 @@ message GuildActivityGetRewardResponse{
 	required CommonResponse res = 1; 
     optional GameResourcesResponse gain = 2; //活动奖励
 }
+
+//累积活动 2601
+message AddActivityInitResponse{
+    repeated AddActivityInfo add_act_info = 1; 
+}
+
+//累积活动类型信息
+message AddActivityInfo{
+    required int32 act_type = 1; // 类型
+    repeated AddActivityDetailInfo detail_info = 2; // 详细信息
+}
+//累积活动详细信息
+message AddActivityDetailInfo{
+    required int32 res_type = 1; // 资源类型
+    required int32 num = 2;      // 当前数量
+    repeated AddActivityItem item = 3; //
+}
+
+//累积活动详细信息
+message AddActivityItem{
+    required int32 act_id = 1;   // 活动id
+    required bool finished = 2;  // 是否完成
+}
+
+//获取奖励 2602
+message AddActivityGetRewardRequest{
+	required int32 act_id = 1; //活动id
+}
+
+message AddActivityGetRewardResponse{
+	required CommonResponse res = 1; 
+    optional GameResourcesResponse gain = 2; //活动奖励
+}

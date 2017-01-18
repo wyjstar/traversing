@@ -113,3 +113,4 @@ import rob_treasure
 import escort
 import guild_boss
 import guild_activity
+import add_activity

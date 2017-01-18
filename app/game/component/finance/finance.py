@@ -107,6 +107,7 @@ class CharacterFinanceComponent(Component):
         return True
 
     def consume(self, fType, num, reason):
+        logger.debug("consume============= %s" % num)
         if fType >= len(self._finances):
             logger.error('consume error finance type:%s', fType)
             return False
@@ -116,6 +117,7 @@ class CharacterFinanceComponent(Component):
             return False
         if fType != const.GOLD:
             self._finances[fType] -= int(num)
+            self._owner.add_activity.add_currency(fType, num)
             if reason:
                 tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
                                 fType, 0, reason, self._finances[fType], '')
@@ -167,10 +169,12 @@ class CharacterFinanceComponent(Component):
         """
         消耗元宝
         """
+        logger.debug("consume_gold============= %s" % num)
         if num > self._finances[const.GOLD]:
             return False
         self._finances[const.CONSUME_GOLD] += num
         self._finances[const.GOLD] -= num
+        self._owner.add_activity.add_currency(const.GOLD, num)
         if reason:
             tlog_action.log('ItemFlow', self.owner, const.REDUCE, const.RESOURCE, num,
                             2, 0, reason, self._finances[const.GOLD], '')

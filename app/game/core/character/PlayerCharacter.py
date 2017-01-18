@@ -63,6 +63,7 @@ class PlayerCharacter(object):
         a['fund_activity'] = component.CharacterFundActivity(self)
         a['escort_component'] = component.CharacterEscortComponent(self)
         a['guild_activity'] = component.CharacterGuildActivityComponent(self)
+        a['add_activity'] = component.CharacterAddActivityComponent(self)
         logger.debug("keys %s" % a.keys())
         self._components = a
         self._pay = component.CharacterPay(self)
@@ -303,6 +304,10 @@ class PlayerCharacter(object):
     @property
     def guild_activity(self):
         return self._components['guild_activity']
+
+    @property
+    def add_activity(self):
+        return self._components['add_activity']
 
     def set_level_related(self, level=0):
         """docstring for set_level"""
