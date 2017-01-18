@@ -224,6 +224,7 @@ def fight_settlement_904(pro_data, player):
     response = stage_response_pb2.StageSettlementResponse()
     res = response.res
 
+    check_res = (True, 1, 1, -1, {})
     if not always_win:
         if (stage_config.type not in [1, 2, 3] or stage.star_num != 3) and request.is_skip:
             logger.error("can not be skip error!================= common stage")
@@ -243,7 +244,6 @@ def fight_settlement_904(pro_data, player):
             res.result_no = 9041
             return response.SerializePartialToString()
 
-        check_res = (True, 1, 1, -1, {})
         if not request.is_skip:
             check_res = pve_process_check(player, result, request.steps, const.BATTLE_PVE)
 
