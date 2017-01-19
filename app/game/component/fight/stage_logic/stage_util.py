@@ -58,20 +58,18 @@ def settle(player, result, response, conf, stage_type=0, star_num=0):
     # 构造掉落
     settlement_drops = player.fight_cache_component.fighting_settlement(result, star_num)
 
-    is_open = 0
-    if stage_type == 1:
-        act_confs = game_configs.activity_config.get(27, [])
-        part_multiple = []
-        for act_conf in act_confs:
-            if player.base_info.is_activiy_open(act_conf.id):
-                is_open = 1
-                part_multiple = [act_conf.parameterC, act_conf.parameterA]
-                break
+    #is_open = 0
+    #if stage_type == 1:
+        #act_confs = game_configs.activity_config.get(67, [])
+        #part_multiple = []
+        #for act_conf in act_confs:
+            #if player.base_info.is_activiy_open(act_conf.id):
+                #is_open = 1
+                #part_multiple = [act_conf.parameterC, act_conf.parameterA]
+                #break
     logger.debug("stage_util.drops %s" % settlement_drops)
-    if is_open:
-        data = gain(player, settlement_drops, const.STAGE, part_multiple=part_multiple)
-    else:
-        data = gain(player, settlement_drops, const.STAGE)
+    multiple, part_multiple = get_drop_activity(player, player.fight_cache_component.stage_id, stage_type, star_num)
+    data = gain(player, settlement_drops, const.STAGE, multiple=multiple, part_multiple=part_multiple)
     get_return(player, data, response.drops)
     logger.debug("stage_util.drops %s" % response.drops)
 
@@ -84,3 +82,36 @@ def settle(player, result, response, conf, stage_type=0, star_num=0):
             logger.debug("break_stage_info=============%s %s" % (break_stage_info.reward, 1))
             data = gain(player, break_stage_info.reward, const.STAGE)
             get_return(player, data, response.drops)
+
+
+
+def get_drop_activity(player, stage_id, stage_type, star_num):
+    """
+    返回掉落活动
+    """
+    multiple=1
+    part_multiple=[]
+
+    if stage_type == 1:
+        act_confs = game_configs.activity_config.get(67, [])
+        for act_conf in act_confs:
+            logger.debug("act_conf parameterE %s" % act_conf.parameterE)
+            if player.base_info.is_activiy_open(act_conf.id):
+                con_types = act_conf.parameterE.keys()
+                if 1 in con_types or (2 in con_types and stage_id in act_conf.parameterE.get(2, [])):
+                    # 关卡条件
+                    if 3 not in con_types or (3 in con_types and star_num >= act_conf.parameterE.get(3)):
+                        # 星星数条件
+                        if 4 in con_types:
+                            # 全部掉落加n倍
+                            multiple = max(act_conf.parameterA, multiple)
+                        elif 5 in con_types:
+                            # 指定掉落加n倍
+                            _part_multiple={}
+                            _part_multiple["times"] = act_conf.parameterA
+                            _part_multiple["item_type"] = act_conf.parameterE[0]
+                            _part_multiple["item_ids"] = act_conf.parameterE[1:]
+                            part_multiple.append(_part_multiple)
+
+    logger.debug("multiple, part_multiple % %" % (multiple, part_multiple))
+    return multiple, part_multiple
