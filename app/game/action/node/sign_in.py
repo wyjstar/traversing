@@ -10,7 +10,7 @@ from shared.db_opear.configs_data import game_configs
 from app.game.core.item_group_helper import gain, get_return
 from app.proto_file.sign_in_pb2 import SignInResponse
 from app.proto_file.sign_in_pb2 import ContinuousSignInResponse
-from app.proto_file.sign_in_pb2 import GetSignInResponse
+from app.proto_file.sign_in_pb2 import GetSignInResponse, SignInBoxRequest
 from shared.utils.const import const
 from shared.utils.xtime import timestamp_to_date
 from gfirefly.server.logobj import logger
@@ -167,4 +167,35 @@ def repair_sign_in_1403(pro_data, player):
     player.pay.pay(need_gold, func)
     response.res.result = True
     print("===========3")
+    return response.SerializePartialToString()
+
+@remoteserviceHandle('gate')
+def sign_in_box_1404(pro_data, player):
+    """签到宝箱领奖"""
+    request = SignInBoxRequest()
+    request.ParseFromString(pro_data)
+    _id = request.id
+    response = SignInResponse()
+
+    activity_info = game_configs.activity_config.get(_id)
+
+    # 验证宝箱签到, 是否领取
+    if _id not in player.sigin_in.box_sign_in_prize:
+        response.res.result = False
+        response.res.result_no = 1404
+        logger.debug(response)
+        return response.SerializePartialToString()
+    # 验证宝箱签到条件
+    for day in activity_info.parameterC:
+        if day not in player.sign_in.sign_in_days:
+            response.res.result = False
+            response.res.result_no = 1405
+            logger.debug(response)
+            return response.SerializePartialToString()
+
+    return_data = gain(player, activity_info.reward, const.BOX_SIGN)
+    get_return(player, return_data, response.gain)
+
+    response.res.result = True
+    logger.debug(response)
     return response.SerializePartialToString()

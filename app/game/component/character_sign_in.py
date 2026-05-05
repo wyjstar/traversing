@@ -17,6 +17,7 @@ class CharacterSignInComponent(Component):
         self._sign_in_days = []  # 签到日期
         self._continuous_sign_in_prize = []  # 已经获取的累积签到奖励，保存列表[7，15，25]
         self._repair_sign_in_times = 0  # 补充签到次数
+        self._box_sign_in_prize = []  # 已经获取的宝箱签到奖励，保存列表activity_config id
 
     def init_data(self, character_info):
         sign_in_data = character_info.get('sign_in')
@@ -24,12 +25,14 @@ class CharacterSignInComponent(Component):
         self._sign_in_days = sign_in_data.get('sign_in_days')
         self._continuous_sign_in_prize = sign_in_data.get('continuous_sign_in_prize')
         self._repair_sign_in_times = sign_in_data.get('repair_sign_in_times')
+        self._box_sign_in_prize = sign_in_data.get('box_sign_in_prize')
 
     def save_data(self):
         props = dict(
             sign_round=self._sign_round,
             sign_in_days=self._sign_in_days,
             continuous_sign_in_prize=self._continuous_sign_in_prize,
+            box_sign_in_prize=self._box_sign_in_prize,
             repair_sign_in_times=self._repair_sign_in_times)
 
         sign_in_data = tb_character_info.getObj(self.owner.base_info.id)
@@ -100,3 +103,11 @@ class CharacterSignInComponent(Component):
             if v.parameterA == num:
                 return v.reward
         logger.error("can not find reward!")
+    @property
+    def box_sign_in_prize(self):
+        return self._box_sign_in_prize
+
+    @box_sign_in_prize.setter
+    def box_sign_in_prize(self, value):
+        self._box_sign_in_prize = value
+

@@ -155,9 +155,10 @@ const.COMMON_BUY_PVP = 1809  # 通用商城PVP商店
 const.COMMON_BUY_MELT = 1811  # 通用商城熔炼商店
 const.COMMON_BUY_EQUIPMENT = 1812  # 通用商城装备商店
 
-const.SIGN_GIFT = 19  # 签到奖励
-const.CONTINUS_SIGN = 20  # 连续签到
-const.REPAIR_SIGN = 21  # 补充签到
+const.SIGN_GIFT = 1401  # 签到奖励
+const.CONTINUS_SIGN = 1402  # 连续签到
+const.REPAIR_SIGN = 1403  # 补充签到
+const.BOX_SIGN = 1404  # 宝箱签到
 const.STAGE_SWEEP = 22  # 关卡扫荡
 const.CHAPTER_AWARD = 23  # 章节奖励
 const.TRAVEL = 24  # 游历
